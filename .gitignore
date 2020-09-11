@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#pointless map
+public/sw.js.map
