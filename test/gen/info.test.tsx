@@ -1,8 +1,8 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import { Info } from "../../pages/gen/info"
+import { Info } from "../../pages/[id]/info"
 
-describe("info page", () => {
+xdescribe("info page", () => {
   const setup = () => {
     return render(<Info />)
   }

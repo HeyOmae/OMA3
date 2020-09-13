@@ -1,6 +1,15 @@
 import Head from "next/head"
 import { Layout } from "../components/layout"
 import { Button } from "@material-ui/core"
+import dynamic from "next/dynamic"
+import { Runner } from "../types/runner"
+
+const AllRunnersAccess = dynamic(
+  () => import("../components/allRunnersAccess"),
+  {
+    ssr: false,
+  }
+)
 
 export const Home = (): JSX.Element => (
   <Layout>
@@ -27,7 +36,18 @@ export const Home = (): JSX.Element => (
         Test Button
       </Button>
 
-      <Button>Create Runner</Button>
+      <AllRunnersAccess>
+        {({ runners, add }) => (
+          <div>
+            <ul>
+              {runners.map(({ name, id }) => (
+                <li key={id}>{name}</li>
+              ))}
+            </ul>
+            <Button onClick={() => add(new Runner())}>Create Runner</Button>
+          </div>
+        )}
+      </AllRunnersAccess>
 
       <div>
         <a href="https://nextjs.org/docs">
