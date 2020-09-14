@@ -1,10 +1,16 @@
 import React from "react"
-import { render, fireEvent, screen, setupIndexedDB } from "./testUtils"
+import {
+  render,
+  fireEvent,
+  screen,
+  setupIndexedDB,
+  withTestRouter,
+  waitFor,
+} from "./testUtils"
 import { Home } from "../pages/index"
 import { Runner } from "../types/runner"
 import { initDB } from "react-indexed-db"
 
-const mockAddToIDB = jest.fn(() => Promise.resolve(new Runner()))
 const mockedRunners: Runner[] = [
   {
     id: 1,
@@ -23,9 +29,6 @@ const mockedRunners: Runner[] = [
       "He was born in the 1990's and now has an AI living in his brain.",
   },
 ]
-// jest.mock("next/dynamic", () => () => ({ children }) =>
-//   children({ runners: mockedRunners, add: mockAddToIDB })
-// )
 
 describe("Home page", () => {
   beforeAll((done) => {
@@ -50,15 +53,19 @@ describe("Home page", () => {
 
     setupIndexedDB(done, { payload: mockedRunners })
   })
-  xit("clicking button triggers alert", () => {
-    const { getByText } = render(<Home />, {})
-    window.alert = jest.fn()
-    fireEvent.click(getByText("Test Button"))
-    expect(window.alert).toHaveBeenCalledWith("With typescript and Jest")
-  })
+  const setup = () => {
+    const push = jest.fn()
+
+    return {
+      ...render(
+        withTestRouter(<Home />, { push, pathname: "/[id]", asPath: "/4" })
+      ),
+      push,
+    }
+  }
 
   it("should load a list of runners", async () => {
-    const { getByText } = render(<Home />)
+    const { getByText } = setup()
 
     expect(await screen.findByText("Bull")).toBeInTheDocument()
 
@@ -67,13 +74,25 @@ describe("Home page", () => {
     })
   })
 
-  xit("should add a new runner to the indexed db", async (done) => {
-    const { getByText } = render(<Home />)
+  it("should add a new runner to the indexed db", async () => {
+    const { getByText, push } = setup()
+
     expect(await screen.findByText("Create Runner")).toBeInTheDocument()
+
+    expect(
+      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+        .records.length
+    ).toEqual(3)
 
     fireEvent.click(getByText("Create Runner"))
 
-    expect(mockAddToIDB).toHaveBeenCalledWith(new Runner())
-    done()
+    await waitFor(() =>
+      expect(push).toHaveBeenCalledWith("/[id]/info", "/4/info")
+    )
+
+    expect(
+      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+        .records.length
+    ).toEqual(4)
   })
 })

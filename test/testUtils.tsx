@@ -1,3 +1,7 @@
+import React from "react"
+import { NextRouter } from "next/router"
+import { RouterContext } from "next/dist/next-server/lib/router-context"
+import { createRouter } from "next/router"
 import { render } from "@testing-library/react"
 // import { ThemeProvider } from "my-ui-lib"
 // import { TranslationProvider } from "my-i18n-lib"
@@ -54,4 +58,58 @@ export const setupIndexedDB = (
     })
     // }
   }
+}
+
+export const withTestRouter = (
+  tree: React.ReactElement,
+  {
+    route = "",
+    pathname = "",
+    query = {},
+    asPath = "",
+    push = async () => true,
+    replace = async () => true,
+    reload = () => null,
+    back = () => null,
+    prefetch = async () => undefined,
+    beforePopState = () => null,
+    isFallback = false,
+    events = {
+      on: () => null,
+      off: () => null,
+      emit: () => null,
+    },
+  }: Partial<NextRouter> = {}
+) => {
+  // const router = createRouter("", { id: "1701" }, "", {
+  //   subscription: jest.fn(),
+  //   wrapApp: jest.fn(),
+  //   isFallback: false,
+  //   initialProps: {},
+  //   pageLoader: {},
+  //   Component: jest.fn(),
+  //   initialStyleSheets: [],
+  //   App: jest.fn(),
+  // })
+  return (
+    <RouterContext.Provider
+      value={{
+        basePath: "",
+        route,
+        pathname,
+        query,
+        asPath,
+        push,
+        replace,
+        reload,
+        back,
+        prefetch,
+        beforePopState,
+        isFallback,
+        events,
+      }}
+    >
+      {tree}
+    </RouterContext.Provider>
+  )
 }
