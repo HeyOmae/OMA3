@@ -1,8 +1,9 @@
 import React from "react"
 import { NextRouter } from "next/router"
 import { RouterContext } from "next/dist/next-server/lib/router-context"
-import { createRouter } from "next/router"
 import { render } from "@testing-library/react"
+import { initDB } from "react-indexed-db"
+import { mockedRunners } from "./mocks"
 // import { ThemeProvider } from "my-ui-lib"
 // import { TranslationProvider } from "my-i18n-lib"
 // import defaultStrings from "i18n/en-x-default"
@@ -28,17 +29,38 @@ export * from "@testing-library/react"
 export { customRender as render }
 
 export interface DbSetupConfig {
-  payload: any[]
+  payload?: any[]
   dbName?: string
   tableName?: string
 }
 
 export const setupIndexedDB = (
   done: jest.DoneCallback,
-  { dbName = "omae", tableName = "runners", payload }: DbSetupConfig
+  {
+    dbName = "omae",
+    tableName = "runners",
+    payload = mockedRunners,
+  }: DbSetupConfig = {}
 ) => {
+  initDB({
+    name: "omae",
+    version: 1,
+    objectStoresMeta: [
+      {
+        store: "runners",
+        storeConfig: { keyPath: "id", autoIncrement: true },
+        storeSchema: [
+          { name: "name", keypath: "name", options: { unique: true } },
+          {
+            name: "description",
+            keypath: "description",
+            options: { unique: false },
+          },
+        ],
+      },
+    ],
+  })
   const request = indexedDB.open(dbName, 1)
-  // console.log("request DB!!!!!!!!!! ->", request)
   request.onsuccess = () => {
     const db = request.result
     const transaction = db.transaction([tableName], "readwrite")
@@ -50,7 +72,7 @@ export const setupIndexedDB = (
     const itemsLeftToAdd = payload.length - 1
 
     payload.forEach((stuff, index) => {
-      objectStore.add(stuff).onsuccess = (x) => {
+      objectStore.add(stuff).onsuccess = () => {
         if (itemsLeftToAdd == index) {
           done()
         }

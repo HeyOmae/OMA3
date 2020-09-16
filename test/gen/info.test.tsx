@@ -1,16 +1,18 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { render, withTestRouter, setupIndexedDB } from "../testUtils"
 import { Info } from "../../pages/[id]/info"
 
-xdescribe("info page", () => {
+describe("info page", () => {
+  beforeAll((done) => {
+    setupIndexedDB(done)
+  })
   const setup = () => {
-    return render(<Info />)
+    return render(withTestRouter(<Info />, { pathname: "/[id]", asPath: "/3" }))
   }
   it("should have an input for the players information", () => {
-    const { getByLabelText, getByText } = setup()
+    const { getByLabelText } = setup()
 
     getByLabelText("Runner's name *")
     getByLabelText("Runner's description")
-    getByText("Save")
   })
 })
