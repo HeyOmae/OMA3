@@ -1,14 +1,11 @@
 import React from "react"
 import { RunnerAccess } from "./runnerAccess"
 import { render, screen } from "@testing-library/react"
-import { RouterContext } from "next/dist/next-server/lib/router-context"
-import { createRouter } from "next/router"
+import { mockedRunners } from "../test/mocks"
+import { withTestRouter } from "../test/testUtils"
 
 const mockUpdateToIDB = jest.fn()
-const mockedRunner = {
-  name: "Bull",
-  description: "The best ork decker you never met.",
-}
+const mockedRunner = mockedRunners[0]
 jest.mock("react-indexed-db", () => ({
   useIndexedDB: () => ({
     update: mockUpdateToIDB,
@@ -16,20 +13,10 @@ jest.mock("react-indexed-db", () => ({
   }),
 }))
 
-describe("<DbAccess/>", () => {
-  const router = createRouter("", { id: "1701" }, "", {
-    subscription: jest.fn(),
-    wrapApp: jest.fn(),
-    isFallback: false,
-    initialProps: {},
-    pageLoader: {},
-    Component: jest.fn(),
-    initialStyleSheets: [],
-    App: jest.fn(),
-  })
+describe("<RunnerAccess/>", () => {
   const setup = () => {
     return render(
-      <RouterContext.Provider value={router}>
+      withTestRouter(
         <RunnerAccess>
           {({ runner, update }) => (
             <>
@@ -37,8 +24,9 @@ describe("<DbAccess/>", () => {
               <button onClick={() => update(runner)}>save</button>
             </>
           )}
-        </RunnerAccess>
-      </RouterContext.Provider>
+        </RunnerAccess>,
+        { query: { id: "1701" } }
+      )
     )
   }
 
