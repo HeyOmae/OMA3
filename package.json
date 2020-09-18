@@ -49,7 +49,7 @@
     "eslint-plugin-react": "^7.19.0",
     "fake-indexeddb": "^3.1.2",
     "husky": "^4.2.3",
-    "jest": "^25.2.3",
+    "jest": "^26.4.2",
     "jest-watch-typeahead": "^0.5.0",
     "lint-staged": "^10.0.10",
     "prettier": "^2.0.2",
