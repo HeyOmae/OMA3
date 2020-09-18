@@ -1,9 +1,9 @@
 import {
   render,
   setupIndexedDB,
-  waitFor,
   withTestRouter,
   screen,
+  waitFor,
 } from "../test/testUtils"
 import { useRunnerAccess } from "./useRunnerAccess"
 
@@ -37,5 +37,23 @@ describe("useRunnerAccess hook", () => {
     setup()
 
     expect(await screen.findByText("Bull")).toBeInTheDocument()
+  })
+
+  it("should update indexedDb", async () => {
+    const { getByText } = setup()
+
+    expect(
+      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+        .records[0].value.name
+    ).toEqual("Bull")
+
+    await waitFor(() => getByText("update").click())
+
+    await waitFor(() =>
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[0].value.name
+      ).toEqual("William “Bull” MacCallister")
+    )
   })
 })
