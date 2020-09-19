@@ -13,17 +13,28 @@ describe("useRunnerAccess hook", () => {
   })
   const setup = () => {
     const Test = () => {
-      const [runner, updateRunner] = useRunnerAccess()
+      const [runner, dispatch] = useRunnerAccess((state, { type, payload }) => {
+        switch (type) {
+          case "updateName":
+            return { ...state, name: payload }
+
+          default:
+            return state
+        }
+      })
 
       return runner ? (
         <div>
           <p>{runner.name}</p>
           <button
             onClick={() =>
-              updateRunner({ ...runner, name: "William “Bull” MacCallister" })
+              dispatch({
+                type: "updateName",
+                payload: "William “Bull” MacCallister",
+              })
             }
           >
-            update
+            update name
           </button>
         </div>
       ) : (
@@ -33,27 +44,34 @@ describe("useRunnerAccess hook", () => {
     return render(withTestRouter(<Test />, { query: { id: "1" } }))
   }
 
-  it("should get the runner data", async () => {
+  it("should get the runner data from indexedDb", async () => {
     setup()
 
     expect(await screen.findByText("Bull")).toBeInTheDocument()
   })
 
-  it("should update indexedDb", async () => {
-    const { getByText } = setup()
+  describe("reducer", () => {
+    it("should update a field on the object", async () => {
+      const { getByText } = setup()
 
-    expect(
-      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records[0].value.name
-    ).toEqual("Bull")
+      await waitFor(() => expect(getByText("Bull")).toBeInTheDocument())
+      // expect(
+      //   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+      //     .records[0].value.name
+      // ).toEqual("Bull")
 
-    await waitFor(() => getByText("update").click())
+      await waitFor(() => getByText("update name").click())
 
-    await waitFor(() =>
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.name
-      ).toEqual("William “Bull” MacCallister")
-    )
+      await waitFor(() =>
+        expect(getByText("William “Bull” MacCallister")).toBeInTheDocument()
+      )
+
+      // await waitFor(() =>
+      //   expect(
+      //     indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+      //       .records[0].value.name
+      //   ).toEqual("William “Bull” MacCallister")
+      // )
+    })
   })
 })
