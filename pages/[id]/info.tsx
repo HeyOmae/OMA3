@@ -1,26 +1,39 @@
-import { useCallback, useEffect, useState } from "react"
+import { Reducer, useCallback, useReducer } from "react"
 import { Layout } from "../../components/layout"
 import { Grid, TextField } from "@material-ui/core"
 import Link from "next/link"
-import { useIndexedDB } from "react-indexed-db"
-import { useRouter } from "next/router"
+import { useRunnerAccess } from "../../hooks/useRunnerAccess"
 import { Runner } from "../../types/runner"
 
-export const Info = () => {
-  const { getByID, update } = useIndexedDB("runners")
-  const router = useRouter()
-  const [runnerName, setRunnerName] = useState<string>("")
-  const [runnerDescription, setRunnerDescription] = useState<string>("")
+interface Action {
+  type: "updateName" | "updateDescription"
+  payload: string
+}
 
-  useEffect(() => {
-    const { id } = router.query
-    getByID<Runner>(id as string).then((loadedRunner) => {
-      if (loadedRunner) {
-        setRunnerName(loadedRunner.name)
-        setRunnerDescription(loadedRunner.description)
+export const Info = () => {
+  const [runnerFromDB, updateRunner] = useRunnerAccess()
+
+  const [runner, dispatch] = useReducer<Reducer<Runner, Action>, Runner>(
+    (state, { type, payload }) => {
+      switch (type) {
+        case "updateName":
+          return {
+            ...state,
+            name: payload,
+          }
+        case "updateDescription":
+          return {
+            ...state,
+            description: payload,
+          }
+
+        default:
+          return state
       }
-    })
-  }, [])
+    },
+    new Runner(),
+    () => runnerFromDB
+  )
 
   const saveToIDB = useCallback(() => {
     console.log("taco")
@@ -39,8 +52,10 @@ export const Info = () => {
               required
               fullWidth
               onBlur={saveToIDB}
-              value={runnerName}
-              onChange={({ target }) => setRunnerName(target.value)}
+              value={runner.name}
+              onChange={({ target }) =>
+                dispatch({ type: "updateName", payload: target.value })
+              }
             />
           </Grid>
           <Grid item xs={12}>
@@ -52,8 +67,10 @@ export const Info = () => {
               rows={5}
               variant="outlined"
               onBlur={saveToIDB}
-              value={runnerDescription}
-              onChange={({ target }) => setRunnerDescription(target.value)}
+              value={runner.description}
+              onChange={({ target }) =>
+                dispatch({ type: "updateDescription", payload: target.value })
+              }
             />
           </Grid>
           <Grid item xs={12}>
