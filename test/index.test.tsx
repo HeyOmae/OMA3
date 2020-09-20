@@ -56,4 +56,17 @@ describe("Home page", () => {
         .records.length
     ).toEqual(4)
   })
+
+  it("should not display the id if there is no name", async () => {
+    const { getByText } = setup()
+
+    expect(
+      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+        .records.length
+    ).toEqual(4)
+
+    await waitFor(() =>
+      expect(getByText("4")).toHaveAttribute("href", "/4/info")
+    )
+  })
 })
