@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { useEffect, useState, Reducer, useReducer } from "react"
+import { useEffect, Reducer, useReducer } from "react"
 import { useIndexedDB } from "react-indexed-db"
 import { Runner } from "../types/runner"
 
@@ -32,7 +32,7 @@ export const useRunnerAccess: UseRunnerAccess = (reducer) => {
       return action.payload
     }
     return reducer(state, action)
-  }, new Runner())
+  }, undefined)
 
   useEffect(() => {
     let isMounted = true
