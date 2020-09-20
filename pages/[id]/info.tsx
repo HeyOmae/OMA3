@@ -26,9 +26,8 @@ export const Info = (): JSX.Element => {
   const [runner, dispatch, save] = useRunnerAccess(reducer)
 
   const saveToIDB = useCallback(() => {
-    console.log("taco")
-    // add({ name: name.current.value, description: description.current.value })
-  }, [])
+    save(runner)
+  }, [runner])
 
   return runner ? (
     <Layout>
