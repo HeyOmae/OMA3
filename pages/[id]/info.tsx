@@ -1,46 +1,36 @@
-import { Reducer, useCallback, useReducer } from "react"
+import { useCallback } from "react"
 import { Layout } from "../../components/layout"
 import { Grid, TextField } from "@material-ui/core"
 import Link from "next/link"
 import { useRunnerAccess } from "../../hooks/useRunnerAccess"
-import { Runner } from "../../types/runner"
+import { CircularProgress } from "@material-ui/core"
 
-interface Action {
-  type: "updateName" | "updateDescription"
-  payload: string
-}
+export const Info = (): JSX.Element => {
+  const reducer = useCallback((state, { type, payload }) => {
+    switch (type) {
+      case "updateName":
+        return {
+          ...state,
+          name: payload,
+        }
+      case "updateDescription":
+        return {
+          ...state,
+          description: payload,
+        }
 
-export const Info = () => {
-  const [runnerFromDB, updateRunner] = useRunnerAccess()
-
-  const [runner, dispatch] = useReducer<Reducer<Runner, Action>, Runner>(
-    (state, { type, payload }) => {
-      switch (type) {
-        case "updateName":
-          return {
-            ...state,
-            name: payload,
-          }
-        case "updateDescription":
-          return {
-            ...state,
-            description: payload,
-          }
-
-        default:
-          return state
-      }
-    },
-    new Runner(),
-    () => runnerFromDB
-  )
+      default:
+        return state
+    }
+  }, [])
+  const [runner, dispatch, save] = useRunnerAccess(reducer)
 
   const saveToIDB = useCallback(() => {
     console.log("taco")
     // add({ name: name.current.value, description: description.current.value })
   }, [])
 
-  return (
+  return runner ? (
     <Layout>
       <h1>Runner Info</h1>
       <form>
@@ -81,6 +71,8 @@ export const Info = () => {
         </Grid>
       </form>
     </Layout>
+  ) : (
+    <CircularProgress />
   )
 }
 
