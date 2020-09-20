@@ -1,5 +1,10 @@
-export class Runner {
+export interface Runner {
   id?: number
-  name = ""
-  description = ""
+  name: string
+  description: string
+}
+
+export const initRunner: Runner = {
+  name: "",
+  description: "",
 }

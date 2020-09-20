@@ -1,7 +1,7 @@
 import React from "react"
 import { AllRunnersAccess } from "./index"
 import { render, screen } from "@testing-library/react"
-import { Runner } from "../../types/runner"
+import { initRunner } from "../../types/runner"
 import { mockedRunners } from "../../test/mocks"
 
 const mockAddToIDB = jest.fn()
@@ -23,7 +23,7 @@ describe("<AllRunnersAccess/>", () => {
               <li key={id}>{name}</li>
             ))}
             <li>
-              <button onClick={() => add(new Runner())}>Add Runner</button>
+              <button onClick={() => add(initRunner)}>Add Runner</button>
             </li>
           </ul>
         )}
@@ -47,6 +47,6 @@ describe("<AllRunnersAccess/>", () => {
 
     getByText("Add Runner").click()
 
-    expect(mockAddToIDB).toHaveBeenCalledWith(new Runner())
+    expect(mockAddToIDB).toHaveBeenCalledWith(initRunner)
   })
 })

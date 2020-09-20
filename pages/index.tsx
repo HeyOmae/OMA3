@@ -3,7 +3,7 @@ import Head from "next/head"
 import { Layout } from "../components/layout"
 import { Button, Link } from "@material-ui/core"
 import dynamic from "next/dynamic"
-import { Runner } from "../types/runner"
+import { initRunner } from "../types/runner"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 
@@ -56,7 +56,7 @@ export const Home: FC = () => {
               </ul>
               <Button
                 onClick={() => {
-                  add(new Runner()).then((event) => {
+                  add(initRunner).then((event) => {
                     push("/[id]/info", `/${event}/info`)
                   })
                 }}

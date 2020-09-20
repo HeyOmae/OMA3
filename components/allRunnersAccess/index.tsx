@@ -1,9 +1,18 @@
-import { useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { useIndexedDB } from "react-indexed-db"
 import { CircularProgress } from "@material-ui/core"
 import { Runner } from "../../types/runner"
 
-export const AllRunnersAccess = ({ children }) => {
+interface RenderProps {
+  runners: Runner[]
+  add: (value: Runner) => Promise<any>
+}
+
+interface Props {
+  children: (args: RenderProps) => JSX.Element
+}
+
+export const AllRunnersAccess: FC<Props> = ({ children }) => {
   const { getAll, add } = useIndexedDB("runners")
   const [runners, setRunners] = useState<Runner[]>()
   useEffect(() => {
