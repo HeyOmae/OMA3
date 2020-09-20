@@ -30,8 +30,8 @@ describe("Home page", () => {
 
     expect(await screen.findByText("Bull")).toBeInTheDocument()
 
-    mockedRunners.forEach(({ name }) => {
-      expect(getByText(name)).toBeTruthy()
+    mockedRunners.forEach(({ name, id }) => {
+      expect(getByText(name)).toHaveAttribute("href", `/${id}/info`)
     })
   })
 
