@@ -48,7 +48,7 @@ export const Home: FC = () => {
                   return (
                     <li key={id}>
                       <NextLink href="[id]/info" as={href} passHref>
-                        <Link>{name}</Link>
+                        <Link>{name || id}</Link>
                       </NextLink>
                     </li>
                   )
