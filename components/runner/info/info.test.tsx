@@ -1,6 +1,11 @@
 import React from "react"
-import { render, withTestRouter, setupIndexedDB, waitFor } from "../testUtils"
-import { Info } from "../../pages/[id]/info"
+import {
+  render,
+  withTestRouter,
+  setupIndexedDB,
+  waitFor,
+} from "../../../test/testUtils"
+import { Info } from "./"
 import { fireEvent } from "@testing-library/react"
 
 describe("info page", () => {

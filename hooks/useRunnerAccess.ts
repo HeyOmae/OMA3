@@ -37,7 +37,7 @@ export const useRunnerAccess: UseRunnerAccess = (reducer) => {
   useEffect(() => {
     let isMounted = true
     const { id } = router.query
-    getByID<Runner>(id as string).then((payload) => {
+    getByID<Runner>(+id).then((payload) => {
       if (isMounted) {
         dispatch({ type: DONE_LOADING, payload })
       }
