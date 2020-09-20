@@ -28,7 +28,7 @@ describe("info page", () => {
     })
   })
 
-  xit("should update the indexedDb after an input loses focus", async () => {
+  it("should update the indexedDb after an input loses focus", async () => {
     const { getByLabelText } = setup()
 
     await waitFor(() => {
@@ -41,12 +41,18 @@ describe("info page", () => {
     fireEvent.change(getByLabelText("Runner's name *"), {
       target: { value: "William “Bull” MacCallister" },
     })
-    fireEvent.blur(getByLabelText("Runner's name *"))
-    // console.log(
-    //   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-    //     .records
-    // )
     await waitFor(() => {
+      expect(getByLabelText("Runner's name *")).toHaveValue(
+        "William “Bull” MacCallister"
+      )
+    })
+    fireEvent.blur(getByLabelText("Runner's name *"))
+
+    await waitFor(() => {
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records.length
+      ).toBe(3)
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records[0].value.name
