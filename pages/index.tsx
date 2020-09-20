@@ -1,9 +1,11 @@
+import { FC } from "react"
 import Head from "next/head"
 import { Layout } from "../components/layout"
-import { Button } from "@material-ui/core"
+import { Button, Link } from "@material-ui/core"
 import dynamic from "next/dynamic"
 import { Runner } from "../types/runner"
 import { useRouter } from "next/router"
+import NextLink from "next/link"
 
 const AllRunnersAccess = dynamic(
   () => import("../components/allRunnersAccess"),
@@ -12,7 +14,7 @@ const AllRunnersAccess = dynamic(
   }
 )
 
-export const Home = (): JSX.Element => {
+export const Home: FC = () => {
   const { push } = useRouter()
   return (
     <Layout>
@@ -41,9 +43,16 @@ export const Home = (): JSX.Element => {
           {({ runners, add }) => (
             <div>
               <ul>
-                {runners.map(({ name, id }) => (
-                  <li key={id}>{name}</li>
-                ))}
+                {runners.map(({ name, id }) => {
+                  const href = `${id}/info`
+                  return (
+                    <li key={id}>
+                      <NextLink href="[id]/info" as={href} passHref>
+                        <Link>{name}</Link>
+                      </NextLink>
+                    </li>
+                  )
+                })}
               </ul>
               <Button
                 onClick={() => {

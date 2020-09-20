@@ -1,7 +1,8 @@
+import { FC } from "react"
 import Head from "next/head"
 import { Container } from "@material-ui/core"
 
-export const Layout = ({ children }) => (
+export const Layout: FC = ({ children }): JSX.Element => (
   <Container>
     <Head>
       <meta charSet="utf-8" />

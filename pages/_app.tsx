@@ -24,7 +24,7 @@ if (typeof window !== "undefined") {
   })
 }
 
-const App = ({ Component, pageProps }: AppProps) => (
+const App = ({ Component, pageProps }: AppProps): JSX.Element => (
   <>
     <CssBaseline />
     <Component {...pageProps} />

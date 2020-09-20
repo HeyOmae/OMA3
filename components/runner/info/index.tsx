@@ -1,6 +1,5 @@
 import { useCallback } from "react"
 import { Grid, TextField } from "@material-ui/core"
-import Link from "next/link"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import { CircularProgress } from "@material-ui/core"
 
@@ -59,11 +58,6 @@ export const Info = (): JSX.Element => {
             }
           />
         </Grid>
-        <Grid item xs={12}>
-          <Link href="/">
-            <a>Back</a>
-          </Link>
-        </Grid>{" "}
       </Grid>
     </form>
   ) : (
