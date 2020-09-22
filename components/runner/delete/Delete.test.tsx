@@ -3,7 +3,6 @@ import { Delete } from "./"
 import {
   render,
   setupIndexedDB,
-  wait,
   waitFor,
   withTestRouter,
 } from "../../../test/testUtils"
