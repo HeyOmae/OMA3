@@ -8,6 +8,7 @@
     "prettier",
     "prettier/@typescript-eslint"
   ],
+  "ignorePatterns": ["public/sw.js", "public/workbox-*.js"],
   "env": {
     "es6": true,
     "browser": true,

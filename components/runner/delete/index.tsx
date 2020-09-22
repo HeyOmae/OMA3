@@ -16,3 +16,5 @@ export const Delete: FC = () => {
     </Button>
   )
 }
+
+export default Delete
