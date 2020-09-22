@@ -9,9 +9,7 @@ import { Info } from "./"
 import { fireEvent } from "@testing-library/react"
 
 describe("info page", () => {
-  beforeAll((done) => {
-    setupIndexedDB(done)
-  })
+  beforeAll(setupIndexedDB)
   const setup = () => {
     return render(
       withTestRouter(<Info />, {
