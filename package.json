@@ -53,6 +53,6 @@
     "jest-watch-typeahead": "^0.6.1",
     "lint-staged": "^10.0.10",
     "prettier": "^2.1.2",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.3"
   }
 }
