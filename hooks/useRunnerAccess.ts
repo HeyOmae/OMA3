@@ -34,17 +34,19 @@ export const useRunnerAccess: UseRunnerAccess = (reducer) => {
     return reducer(state, action)
   }, undefined)
 
+  const { id } = router.query
   useEffect(() => {
     let isMounted = true
-    const { id } = router.query
 
-    getByID<Runner>(+id).then((payload) => {
-      if (isMounted) {
-        dispatch({ type: DONE_LOADING, payload })
-      }
-    })
+    if (id) {
+      getByID<Runner>(+id).then((payload) => {
+        if (isMounted) {
+          dispatch({ type: DONE_LOADING, payload })
+        }
+      })
+    }
     return () => (isMounted = false)
-  }, [])
+  }, [id])
 
   return [runner, dispatch, update]
 }
