@@ -1,8 +1,14 @@
-import { FC } from "react"
+import { FC, useState, useEffect } from "react"
 import Head from "next/head"
-import { Container } from "@material-ui/core"
+import {
+  Container,
+  BottomNavigation,
+  BottomNavigationAction,
+} from "@material-ui/core"
+import { Home } from "@material-ui/icons"
+import { useRouter } from "next/router"
 
-export const Layout: FC = ({ children }): JSX.Element => (
+export const Layout: FC = ({ children }) => (
   <Container>
     <Head>
       <meta charSet="utf-8" />
@@ -83,3 +89,30 @@ export const Layout: FC = ({ children }): JSX.Element => (
     {children}
   </Container>
 )
+
+export const RunnerLayout: FC = ({ children }) => {
+  const { push } = useRouter()
+  const [nav, setNav] = useState<number>()
+
+  useEffect(() => {
+    switch (nav) {
+      case 0:
+        push("/")
+        break
+
+      default:
+        break
+    }
+  }, [nav])
+  return (
+    <Layout>
+      {children}
+      <BottomNavigation
+        value={nav}
+        onChange={(e, selection: number) => setNav(selection)}
+      >
+        <BottomNavigationAction label="Home" icon={<Home />} />
+      </BottomNavigation>
+    </Layout>
+  )
+}
