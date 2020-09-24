@@ -4,9 +4,12 @@ import {
   Container,
   BottomNavigation,
   BottomNavigationAction,
+  Drawer,
+  Link,
 } from "@material-ui/core"
-import { Home } from "@material-ui/icons"
+import { Home, Menu } from "@material-ui/icons"
 import { useRouter } from "next/router"
+import NextLink from "next/link"
 
 export const Layout: FC = ({ children }) => (
   <Container>
@@ -112,7 +115,20 @@ export const RunnerLayout: FC = ({ children }) => {
         onChange={(e, selection: number) => setNav(selection)}
       >
         <BottomNavigationAction label="Home" icon={<Home />} />
+        <BottomNavigationAction label="Menu" icon={<Menu />} />
       </BottomNavigation>
+      <Drawer
+        anchor="bottom"
+        open={nav === 1}
+        onClose={() => setNav(undefined)}
+      >
+        <NextLink href="/[id]/info" as={`/${1}/info`} passHref>
+          <Link>Info</Link>
+        </NextLink>
+        <NextLink href="/[id]/delete" as={`/${1}/delete`} passHref>
+          <Link>Delete</Link>
+        </NextLink>
+      </Drawer>
     </Layout>
   )
 }

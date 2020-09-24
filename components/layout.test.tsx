@@ -26,4 +26,18 @@ describe("<RunnerLayout />", () => {
       expect(push).toHaveBeenCalledWith("/")
     })
   })
+
+  it("should open a drawer to navigate the runner chargen routes", async () => {
+    const { getByText, queryByText } = setup()
+
+    expect(queryByText("Info")).not.toBeInTheDocument()
+    expect(queryByText("Delete")).not.toBeInTheDocument()
+
+    getByText("Menu").click()
+
+    await waitFor(() => {
+      expect(getByText("Info")).toHaveAttribute("href", "/1/info")
+      expect(getByText("Delete")).toHaveAttribute("href", "/1/delete")
+    })
+  })
 })
