@@ -55,6 +55,7 @@ export const Home: FC = () => {
                 })}
               </ul>
               <Button
+                variant="contained"
                 onClick={() => {
                   add(initRunner).then((event) => {
                     push("/[id]/info", `/${event}/info`)
