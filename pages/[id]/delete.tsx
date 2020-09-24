@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { Layout } from "../../components/layout"
+import { RunnerLayout } from "../../components/layout"
 import dynamic from "next/dynamic"
 
 const Delete = dynamic(() => import("../../components/runner/delete"), {
@@ -7,11 +7,11 @@ const Delete = dynamic(() => import("../../components/runner/delete"), {
 })
 
 export const DeletePage: FC = () => (
-  <Layout>
+  <RunnerLayout>
     <h1>Retirement Page</h1>
     <p>Do you want to delete your runner?</p>
     <Delete />
-  </Layout>
+  </RunnerLayout>
 )
 
 export default DeletePage
