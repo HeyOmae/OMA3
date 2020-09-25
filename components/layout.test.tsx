@@ -36,8 +36,15 @@ describe("<RunnerLayout />", () => {
     getByText("Menu").click()
 
     await waitFor(() => {
-      expect(getByText("Info")).toHaveAttribute("href", "/1/info")
-      expect(getByText("Delete")).toHaveAttribute("href", "/1/delete")
+      expect(getByText("Info").closest("a")).toHaveAttribute("href", "/1/info")
+      expect(getByText("Priority").closest("a")).toHaveAttribute(
+        "href",
+        "/1/priority"
+      )
+      expect(getByText("Delete").closest("a")).toHaveAttribute(
+        "href",
+        "/1/delete"
+      )
     })
   })
 })

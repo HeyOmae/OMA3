@@ -5,9 +5,9 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Drawer,
-  Link,
+  Button,
 } from "@material-ui/core"
-import { Home, Menu } from "@material-ui/icons"
+import { Delete, Home, Menu, TableChart, AccountBox } from "@material-ui/icons"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 
@@ -94,7 +94,7 @@ export const Layout: FC = ({ children }) => (
 )
 
 export const RunnerLayout: FC = ({ children }) => {
-  const { push } = useRouter()
+  const { push, query } = useRouter()
   const [nav, setNav] = useState<number>()
 
   useEffect(() => {
@@ -122,11 +122,28 @@ export const RunnerLayout: FC = ({ children }) => {
         open={nav === 1}
         onClose={() => setNav(undefined)}
       >
-        <NextLink href="/[id]/info" as={`/${1}/info`} passHref>
-          <Link>Info</Link>
+        <NextLink href="/[id]/info" as={`/${query.id}/info`} passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<AccountBox />}
+          >
+            Info
+          </Button>
         </NextLink>
-        <NextLink href="/[id]/delete" as={`/${1}/delete`} passHref>
-          <Link>Delete</Link>
+        <NextLink href="/[id]/info" as={`/${query.id}/priority`} passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<TableChart />}
+          >
+            Priority
+          </Button>
+        </NextLink>
+        <NextLink href="/[id]/delete" as={`/${query.id}/delete`} passHref>
+          <Button variant="contained" color="primary" startIcon={<Delete />}>
+            Delete
+          </Button>
         </NextLink>
       </Drawer>
     </Layout>
