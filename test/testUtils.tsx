@@ -19,7 +19,7 @@ const Providers = ({ children }) => {
   // )
 }
 
-const customRender = (ui, options = {}) =>
+const customRender = (ui: JSX.Element, options = {}) =>
   render(ui, { wrapper: Providers, ...options })
 
 // re-export everything
@@ -102,36 +102,24 @@ export const withTestRouter = (
       emit: () => null,
     },
   }: Partial<NextRouter> = {}
-) => {
-  // const router = createRouter("", { id: "1701" }, "", {
-  //   subscription: jest.fn(),
-  //   wrapApp: jest.fn(),
-  //   isFallback: false,
-  //   initialProps: {},
-  //   pageLoader: {},
-  //   Component: jest.fn(),
-  //   initialStyleSheets: [],
-  //   App: jest.fn(),
-  // })
-  return (
-    <RouterContext.Provider
-      value={{
-        basePath: "",
-        route,
-        pathname,
-        query,
-        asPath,
-        push,
-        replace,
-        reload,
-        back,
-        prefetch,
-        beforePopState,
-        isFallback,
-        events,
-      }}
-    >
-      {tree}
-    </RouterContext.Provider>
-  )
-}
+) => (
+  <RouterContext.Provider
+    value={{
+      basePath: "",
+      route,
+      pathname,
+      query,
+      asPath,
+      push,
+      replace,
+      reload,
+      back,
+      prefetch,
+      beforePopState,
+      isFallback,
+      events,
+    }}
+  >
+    {tree}
+  </RouterContext.Provider>
+)
