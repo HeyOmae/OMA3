@@ -1,0 +1,24 @@
+{
+  "metatypes": {
+    "a": {
+      "supportedMetatypes": ["Dwarf", "Ork", "Troll"],
+      "adjustmentPoints": 13
+    },
+    "b": {
+      "supportedMetatypes": ["Dwarf", "Elf", "Ork", "Troll"],
+      "adjustmentPoints": 11
+    },
+    "c": {
+      "supportedMetatypes": ["Dwarf", "Elf", "Human", "Ork", "Troll"],
+      "adjustmentPoints": 9
+    },
+    "d": {
+      "supportedMetatypes": ["Dwarf", "Elf", "Human", "Ork", "Troll"],
+      "adjustmentPoints": 4
+    },
+    "e": {
+      "supportedMetatypes": ["Dwarf", "Elf", "Human", "Ork", "Troll"],
+      "adjustmentPoints": 1
+    }
+  }
+}

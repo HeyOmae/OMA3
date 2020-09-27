@@ -131,7 +131,7 @@ export const RunnerLayout: FC = ({ children }) => {
             Info
           </Button>
         </NextLink>
-        <NextLink href="/[id]/info" as={`/${query.id}/priority`} passHref>
+        <NextLink href="/[id]/priority" as={`/${query.id}/priority`} passHref>
           <Button
             variant="contained"
             color="primary"
