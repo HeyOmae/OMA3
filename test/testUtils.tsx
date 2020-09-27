@@ -64,10 +64,6 @@ export const setupIndexedDB = (
   request.onsuccess = () => {
     const db = request.result
     const transaction = db.transaction([tableName], "readwrite")
-    // transaction.oncomplete = done
-    // const objectStore = db.createObjectStore(tableName, { keyPath: "id" })
-
-    // transaction.oncomplete = () => {
     const objectStore = transaction.objectStore(tableName)
     const itemsLeftToAdd = payload.length - 1
 
@@ -78,7 +74,6 @@ export const setupIndexedDB = (
         }
       }
     })
-    // }
   }
 }
 
