@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import {
   Grid,
   FormControl,
@@ -6,23 +6,49 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  CircularProgress,
 } from "@material-ui/core"
 import priorityData from "../../../data/priorityTable.json"
+import { PriorityRating } from "../../../types/runner"
+import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 
-type priorityRating = "a" | "b" | "c" | "d" | "e"
+// Action Types
+const METATYPE = Symbol("METATYPE")
 
 export const PriorityTable = () => {
-  const [metatype, setMetatype] = useState<priorityRating>("a")
+  const [runner, dispatch, save] = useRunnerAccess<symbol, PriorityRating>(
+    (runner, { type, payload }) => {
+      switch (type) {
+        case METATYPE:
+          return {
+            ...runner,
+            priority: {
+              ...runner.priority,
+              metatype: payload,
+            },
+          }
 
-  return (
+        default:
+          return runner
+      }
+    }
+  )
+
+  useEffect(() => {
+    if (runner) save(runner)
+  }, [runner])
+
+  return runner ? (
     <Grid container direction="column" justify="center" alignItems="baseline">
       <FormControl component="fieldset">
         <FormLabel component="legend">Metatype</FormLabel>
         <RadioGroup
           aria-label="metatype"
           name="metatype"
-          value={metatype}
-          onChange={(event, value: priorityRating) => setMetatype(value)}
+          value={runner.priority?.metatype ?? ""}
+          onChange={(event, payload: PriorityRating) =>
+            dispatch({ type: METATYPE, payload })
+          }
         >
           {Object.entries(priorityData.metatypes).map(
             ([key, { supportedMetatypes, adjustmentPoints }]) => (
@@ -37,6 +63,8 @@ export const PriorityTable = () => {
         </RadioGroup>
       </FormControl>
     </Grid>
+  ) : (
+    <CircularProgress />
   )
 }
 
