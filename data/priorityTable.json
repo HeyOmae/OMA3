@@ -20,5 +20,12 @@
       "supportedMetatypes": ["Dwarf", "Elf", "Human", "Ork", "Troll"],
       "adjustmentPoints": 1
     }
+  },
+  "attributes": {
+    "a": 24,
+    "b": 16,
+    "c": 12,
+    "d": 8,
+    "e": 2
   }
 }

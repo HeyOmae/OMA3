@@ -3,9 +3,9 @@ import { useEffect, Reducer, useReducer } from "react"
 import { useIndexedDB } from "react-indexed-db"
 import { Runner } from "../types/runner"
 
-interface Action {
-  type: string
-  payload: string
+interface Action<T, P> {
+  type: T
+  payload: P
 }
 const DONE_LOADING = Symbol("DONE_LOADING")
 interface ActionDoneLoading {
@@ -13,26 +13,29 @@ interface ActionDoneLoading {
   payload: Runner
 }
 
-type LoadRunnerReducer = Reducer<Runner, ActionDoneLoading | Action>
-type RunnerReducer = Reducer<Runner, Action>
+type LoadRunnerReducer<T, P> = Reducer<Runner, ActionDoneLoading | Action<T, P>>
+type RunnerReducer<T, P> = Reducer<Runner, Action<T, P>>
 
-type UseRunnerAccess = (
-  reducer: RunnerReducer
+type UseRunnerAccess = <T, P>(
+  reducer: RunnerReducer<T, P>
 ) => [
   runner: Runner,
-  dispatch: (action: Action) => void,
+  dispatch: (action: Action<T, P>) => void,
   updateIndexedDb: (value: Runner, key?: any) => Promise<any>
 ]
 
-export const useRunnerAccess: UseRunnerAccess = (reducer) => {
+export const useRunnerAccess: UseRunnerAccess = <T, P>(reducer) => {
   const { getByID, update } = useIndexedDB("runners")
   const router = useRouter()
-  const [runner, dispatch] = useReducer<LoadRunnerReducer>((state, action) => {
-    if (action.type === DONE_LOADING) {
-      return action.payload
-    }
-    return reducer(state, action)
-  }, undefined)
+  const [runner, dispatch] = useReducer<LoadRunnerReducer<T, P>>(
+    (state, action) => {
+      if (action.type === DONE_LOADING) {
+        return action.payload
+      }
+      return reducer(state, action)
+    },
+    undefined
+  )
 
   const { id } = router.query
   useEffect(() => {

@@ -13,7 +13,7 @@ describe("useRunnerAccess hook", () => {
   })
   const setup = () => {
     const Test = () => {
-      const [runner, dispatch, save] = useRunnerAccess(
+      const [runner, dispatch, save] = useRunnerAccess<string, string>(
         (state, { type, payload }) => {
           switch (type) {
             case "updateName":
