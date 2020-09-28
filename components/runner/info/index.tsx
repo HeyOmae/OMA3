@@ -2,9 +2,10 @@ import { useCallback } from "react"
 import { Grid, TextField } from "@material-ui/core"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import { CircularProgress } from "@material-ui/core"
+import { Runner } from "../../../types/runner"
 
 export const Info = (): JSX.Element => {
-  const reducer = useCallback((state, { type, payload }) => {
+  const reducer = useCallback((state: Runner, { type, payload }) => {
     switch (type) {
       case "updateName":
         return {
@@ -21,7 +22,7 @@ export const Info = (): JSX.Element => {
         return state
     }
   }, [])
-  const [runner, dispatch, save] = useRunnerAccess(reducer)
+  const [runner, dispatch, save] = useRunnerAccess<string, string>(reducer)
 
   const saveToIDB = useCallback(() => {
     save(runner)

@@ -50,4 +50,34 @@ describe("<PriorityTable/>", () => {
       })
     })
   })
+
+  describe("attributes selection", () => {
+    it("should have 5 options", async () => {
+      const { getByLabelText } = setup()
+
+      await waitFor(() => {
+        expect(getByLabelText("24")).toBeInTheDocument()
+        expect(getByLabelText("16")).toBeInTheDocument()
+        expect(getByLabelText("12")).toBeInTheDocument()
+        expect(getByLabelText("8")).toBeInTheDocument()
+        expect(getByLabelText("2")).toBeInTheDocument()
+      })
+    })
+
+    it("should create the priority property for the player when setting metatype", async () => {
+      const { getByLabelText } = setup()
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[0].priority
+      ).toBeUndefined()
+      await waitFor(() => getByLabelText("16").click())
+
+      await waitFor(() => {
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[0].value.priority.attributes
+        ).toEqual("b")
+      })
+    })
+  })
 })
