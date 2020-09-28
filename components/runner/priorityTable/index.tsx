@@ -14,6 +14,7 @@ import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 
 // Action Types
 const METATYPE = Symbol("METATYPE")
+const ATTRIBUTES = Symbol("ATTRIBUTES")
 
 export const PriorityTable = () => {
   const [runner, dispatch, save] = useRunnerAccess<symbol, PriorityRating>(
@@ -25,6 +26,15 @@ export const PriorityTable = () => {
             priority: {
               ...runner.priority,
               metatype: payload,
+            },
+          }
+
+        case ATTRIBUTES:
+          return {
+            ...runner,
+            priority: {
+              ...runner.priority,
+              attributes: payload,
             },
           }
 
@@ -60,6 +70,26 @@ export const PriorityTable = () => {
               />
             )
           )}
+        </RadioGroup>
+      </FormControl>
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Attributes</FormLabel>
+        <RadioGroup
+          aria-label="attributes"
+          name="attributes"
+          value={runner.priority?.attributes ?? ""}
+          onChange={(event, payload: PriorityRating) =>
+            dispatch({ type: ATTRIBUTES, payload })
+          }
+        >
+          {Object.entries(priorityData.attributes).map(([key, value]) => (
+            <FormControlLabel
+              key={key}
+              value={key}
+              control={<Radio />}
+              label={value}
+            />
+          ))}
         </RadioGroup>
       </FormControl>
     </Grid>
