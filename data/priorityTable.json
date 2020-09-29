@@ -35,5 +35,37 @@
     "d": 16,
     "e": 10
   },
-  "mag/res": {}
+  "mag/res": {
+    "a": {
+      "Full": ["Magic", 4],
+      "Aspected": ["Magic", 5],
+      "Mystic Adept": ["Magic", 4],
+      "Adept": ["Magic", 4],
+      "Technomancer": ["Resonance", 4]
+    },
+    "b": {
+      "Full": ["Magic", 3],
+      "Aspected": ["Magic", 4],
+      "Mystic Adept": ["Magic", 3],
+      "Adept": ["Magic", 3],
+      "Technomancer": ["Resonance", 3]
+    },
+    "c": {
+      "Full": ["Magic", 2],
+      "Aspected": ["Magic", 3],
+      "Mystic Adept": ["Magic", 2],
+      "Adept": ["Magic", 2],
+      "Technomancer": ["Resonance", 2]
+    },
+    "d": {
+      "Full": ["Magic", 1],
+      "Aspected": ["Magic", 2],
+      "Mystic Adept": ["Magic", 1],
+      "Adept": ["Magic", 1],
+      "Technomancer": ["Resonance", 1]
+    },
+    "e": {
+      "Mundane": []
+    }
+  }
 }

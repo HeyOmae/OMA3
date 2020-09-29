@@ -128,4 +128,62 @@ describe("<PriorityTable/>", () => {
       })
     })
   })
+
+  describe("skills selection", () => {
+    it("should have 5 options", async () => {
+      const { getByRole } = setup()
+
+      await waitFor(() => {
+        const magresRadioInputs = getByRole("radiogroup", {
+          name: "mag/res",
+        })
+        expect(
+          getByLabelText(
+            magresRadioInputs,
+            "Full: 4 Magic, Aspected: 5 Magic, Mystic Adept: 4 Magic, Adept: 4 Magic, Technomancer: 4 Resonance"
+          )
+        ).toBeInTheDocument()
+        expect(
+          getByLabelText(
+            magresRadioInputs,
+            "Full: 3 Magic, Aspected: 4 Magic, Mystic Adept: 3 Magic, Adept: 3 Magic, Technomancer: 3 Resonance"
+          )
+        ).toBeInTheDocument()
+        expect(
+          getByLabelText(
+            magresRadioInputs,
+            "Full: 2 Magic, Aspected: 3 Magic, Mystic Adept: 2 Magic, Adept: 2 Magic, Technomancer: 2 Resonance"
+          )
+        ).toBeInTheDocument()
+        expect(
+          getByLabelText(
+            magresRadioInputs,
+            "Full: 1 Magic, Aspected: 2 Magic, Mystic Adept: 1 Magic, Adept: 1 Magic, Technomancer: 1 Resonance"
+          )
+        ).toBeInTheDocument()
+        expect(getByLabelText(magresRadioInputs, "Mundane")).toBeInTheDocument()
+      })
+    })
+
+    xit("should create the priority property for the player when setting metatype", async () => {
+      const { getByRole } = setup()
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[0].value.priority.skills
+      ).toBeUndefined()
+      await waitFor(() => {
+        const skillRadioInputs = getByRole("radiogroup", {
+          name: "skills",
+        })
+        getByLabelText(skillRadioInputs, "20").click()
+      })
+
+      await waitFor(() => {
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[0].value.priority.skills
+        ).toEqual("c")
+      })
+    })
+  })
 })
