@@ -82,6 +82,7 @@ export const PriorityTable = () => {
           )}
         </RadioGroup>
       </FormControl>
+
       <FormControl component="fieldset">
         <FormLabel component="legend">Attributes</FormLabel>
         <RadioGroup
@@ -102,6 +103,7 @@ export const PriorityTable = () => {
           ))}
         </RadioGroup>
       </FormControl>
+
       <FormControl component="fieldset">
         <FormLabel component="legend">Skills</FormLabel>
         <RadioGroup
@@ -118,6 +120,32 @@ export const PriorityTable = () => {
               value={key}
               control={<Radio />}
               label={value}
+            />
+          ))}
+        </RadioGroup>
+      </FormControl>
+
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Mag/Res</FormLabel>
+        <RadioGroup
+          aria-label="mag/res"
+          name="mag/res"
+          value={runner.priority?.["mag/res"] ?? ""}
+          onChange={(event, payload: PriorityRating) =>
+            dispatch({ type: SKILLS, payload })
+          }
+        >
+          {Object.entries(priorityData["mag/res"]).map(([key, value]) => (
+            <FormControlLabel
+              key={key}
+              value={key}
+              control={<Radio />}
+              label={Object.entries(value)
+                .map(
+                  ([type, [attribute, rating]]) =>
+                    `${type}${attribute ? `: ${rating} ${attribute}` : ""}`
+                )
+                .join(", ")}
             />
           ))}
         </RadioGroup>
