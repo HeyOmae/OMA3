@@ -3,11 +3,12 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.MuiFormGroup-root {
+.priortiyTable .priortiyTable--column {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  height: 100%;
 }
 
-.MuiFormControlLabel-root {
+.priortiyTable--column--item {
   padding: 1rem 0;
 }
