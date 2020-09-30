@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import {
-  Grid,
   FormControl,
   FormLabel,
   RadioGroup,
@@ -11,12 +10,14 @@ import {
 import priorityData from "../../../data/priorityTable.json"
 import { PriorityRating } from "../../../types/runner"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
+import styles from "./priorityTable.module.css"
 
 // Action Types
 const METATYPE = Symbol("METATYPE")
 const ATTRIBUTES = Symbol("ATTRIBUTES")
 const SKILLS = Symbol("SKILLS")
 const MAGRES = Symbol("MAGRES")
+const RESOURCES = Symbol("RESOURCES")
 
 export const PriorityTable = () => {
   const [runner, dispatch, save] = useRunnerAccess<symbol, PriorityRating>(
@@ -58,6 +59,15 @@ export const PriorityTable = () => {
             },
           }
 
+        case RESOURCES:
+          return {
+            ...runner,
+            priority: {
+              ...runner.priority,
+              resources: payload,
+            },
+          }
+
         default:
           return runner
       }
@@ -69,7 +79,7 @@ export const PriorityTable = () => {
   }, [runner])
 
   return runner ? (
-    <Grid container direction="column" justify="center" alignItems="baseline">
+    <div className={styles.priortiyTable}>
       <FormControl component="fieldset">
         <FormLabel component="legend">Metatype</FormLabel>
         <RadioGroup
@@ -160,7 +170,28 @@ export const PriorityTable = () => {
           ))}
         </RadioGroup>
       </FormControl>
-    </Grid>
+
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Resources</FormLabel>
+        <RadioGroup
+          aria-label="resources"
+          name="resources"
+          value={runner.priority?.resources ?? ""}
+          onChange={(event, payload: PriorityRating) =>
+            dispatch({ type: RESOURCES, payload })
+          }
+        >
+          {Object.entries(priorityData.resources).map(([key, value]) => (
+            <FormControlLabel
+              key={key}
+              value={key}
+              control={<Radio />}
+              label={<>{value}&yen;</>}
+            />
+          ))}
+        </RadioGroup>
+      </FormControl>
+    </div>
   ) : (
     <CircularProgress />
   )
