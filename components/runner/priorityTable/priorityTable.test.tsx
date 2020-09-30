@@ -35,7 +35,7 @@ describe("<PriorityTable/>", () => {
       })
     })
 
-    it("should create the priority property for the player when setting metatype", async () => {
+    it("should create the priority property for the player", async () => {
       const { getByLabelText } = setup()
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
@@ -68,7 +68,7 @@ describe("<PriorityTable/>", () => {
       })
     })
 
-    it("should create the priority property for the player when setting metatype", async () => {
+    it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
@@ -107,7 +107,7 @@ describe("<PriorityTable/>", () => {
       })
     })
 
-    it("should create the priority property for the player when setting metatype", async () => {
+    it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
@@ -165,24 +165,27 @@ describe("<PriorityTable/>", () => {
       })
     })
 
-    xit("should create the priority property for the player when setting metatype", async () => {
+    it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.priority.skills
+          .records[0].value.priority.magres
       ).toBeUndefined()
       await waitFor(() => {
-        const skillRadioInputs = getByRole("radiogroup", {
-          name: "skills",
+        const magresRadioInputs = getByRole("radiogroup", {
+          name: "mag/res",
         })
-        getByLabelText(skillRadioInputs, "20").click()
+        getByLabelText(
+          magresRadioInputs,
+          "Full: 1 Magic, Aspected: 2 Magic, Mystic Adept: 1 Magic, Adept: 1 Magic, Technomancer: 1 Resonance"
+        ).click()
       })
 
       await waitFor(() => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.skills
-        ).toEqual("c")
+            .records.records[0].value.priority.magres
+        ).toEqual("d")
       })
     })
   })
