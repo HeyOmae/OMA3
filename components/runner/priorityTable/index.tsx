@@ -16,6 +16,7 @@ import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 const METATYPE = Symbol("METATYPE")
 const ATTRIBUTES = Symbol("ATTRIBUTES")
 const SKILLS = Symbol("SKILLS")
+const MAGRES = Symbol("MAGRES")
 
 export const PriorityTable = () => {
   const [runner, dispatch, save] = useRunnerAccess<symbol, PriorityRating>(
@@ -45,6 +46,15 @@ export const PriorityTable = () => {
             priority: {
               ...runner.priority,
               skills: payload,
+            },
+          }
+
+        case MAGRES:
+          return {
+            ...runner,
+            priority: {
+              ...runner.priority,
+              magres: payload,
             },
           }
 
@@ -132,7 +142,7 @@ export const PriorityTable = () => {
           name="mag/res"
           value={runner.priority?.["mag/res"] ?? ""}
           onChange={(event, payload: PriorityRating) =>
-            dispatch({ type: SKILLS, payload })
+            dispatch({ type: MAGRES, payload })
           }
         >
           {Object.entries(priorityData["mag/res"]).map(([key, value]) => (
