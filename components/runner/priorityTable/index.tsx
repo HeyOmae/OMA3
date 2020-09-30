@@ -83,6 +83,7 @@ export const PriorityTable = () => {
       <FormControl component="fieldset">
         <FormLabel component="legend">Metatype</FormLabel>
         <RadioGroup
+          className={styles["priortiyTable--column"]}
           aria-label="metatype"
           name="metatype"
           value={runner.priority?.metatype ?? ""}
@@ -93,6 +94,7 @@ export const PriorityTable = () => {
           {Object.entries(priorityData.metatypes).map(
             ([key, { supportedMetatypes, adjustmentPoints }]) => (
               <FormControlLabel
+                className={styles["priortiyTable--column--item"]}
                 key={key}
                 value={key}
                 control={<Radio />}
@@ -106,6 +108,7 @@ export const PriorityTable = () => {
       <FormControl component="fieldset">
         <FormLabel component="legend">Attributes</FormLabel>
         <RadioGroup
+          className={styles["priortiyTable--column"]}
           aria-label="attributes"
           name="attributes"
           value={runner.priority?.attributes ?? ""}
@@ -115,6 +118,7 @@ export const PriorityTable = () => {
         >
           {Object.entries(priorityData.attributes).map(([key, value]) => (
             <FormControlLabel
+              className={styles["priortiyTable--column--item"]}
               key={key}
               value={key}
               control={<Radio />}
@@ -127,6 +131,7 @@ export const PriorityTable = () => {
       <FormControl component="fieldset">
         <FormLabel component="legend">Skills</FormLabel>
         <RadioGroup
+          className={styles["priortiyTable--column"]}
           aria-label="skills"
           name="skills"
           value={runner.priority?.skills ?? ""}
@@ -136,6 +141,7 @@ export const PriorityTable = () => {
         >
           {Object.entries(priorityData.skills).map(([key, value]) => (
             <FormControlLabel
+              className={styles["priortiyTable--column--item"]}
               key={key}
               value={key}
               control={<Radio />}
@@ -148,6 +154,7 @@ export const PriorityTable = () => {
       <FormControl component="fieldset">
         <FormLabel component="legend">Mag/Res</FormLabel>
         <RadioGroup
+          className={styles["priortiyTable--column"]}
           aria-label="mag/res"
           name="mag/res"
           value={runner.priority?.["mag/res"] ?? ""}
@@ -157,6 +164,7 @@ export const PriorityTable = () => {
         >
           {Object.entries(priorityData["mag/res"]).map(([key, value]) => (
             <FormControlLabel
+              className={styles["priortiyTable--column--item"]}
               key={key}
               value={key}
               control={<Radio />}
@@ -174,6 +182,7 @@ export const PriorityTable = () => {
       <FormControl component="fieldset">
         <FormLabel component="legend">Resources</FormLabel>
         <RadioGroup
+          className={styles["priortiyTable--column"]}
           aria-label="resources"
           name="resources"
           value={runner.priority?.resources ?? ""}
@@ -183,6 +192,7 @@ export const PriorityTable = () => {
         >
           {Object.entries(priorityData.resources).map(([key, value]) => (
             <FormControlLabel
+              className={styles["priortiyTable--column--item"]}
               key={key}
               value={key}
               control={<Radio />}
