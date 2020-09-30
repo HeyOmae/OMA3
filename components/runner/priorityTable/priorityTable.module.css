@@ -1,0 +1,13 @@
+.priortiyTable {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.MuiFormGroup-root {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.MuiFormControlLabel-root {
+  padding: 1rem 0;
+}

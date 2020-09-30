@@ -129,7 +129,7 @@ describe("<PriorityTable/>", () => {
     })
   })
 
-  describe("skills selection", () => {
+  describe("Magic and Resonance selection", () => {
     it("should have 5 options", async () => {
       const { getByRole } = setup()
 
@@ -186,6 +186,54 @@ describe("<PriorityTable/>", () => {
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[0].value.priority.magres
         ).toEqual("d")
+      })
+    })
+  })
+
+  describe("Resources selection", () => {
+    it("should have 5 options", async () => {
+      const { getByRole } = setup()
+
+      await waitFor(() => {
+        const resourcesRadioInputs = getByRole("radiogroup", {
+          name: "resources",
+        })
+        expect(
+          getByLabelText(resourcesRadioInputs, "450000¥")
+        ).toBeInTheDocument()
+        expect(
+          getByLabelText(resourcesRadioInputs, "275000¥")
+        ).toBeInTheDocument()
+        expect(
+          getByLabelText(resourcesRadioInputs, "150000¥")
+        ).toBeInTheDocument()
+        expect(
+          getByLabelText(resourcesRadioInputs, "50000¥")
+        ).toBeInTheDocument()
+        expect(
+          getByLabelText(resourcesRadioInputs, "8000¥")
+        ).toBeInTheDocument()
+      })
+    })
+
+    it("should create the priority property for the player", async () => {
+      const { getByRole } = setup()
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[0].value.priority.resources
+      ).toBeUndefined()
+      await waitFor(() => {
+        const skillRadioInputs = getByRole("radiogroup", {
+          name: "resources",
+        })
+        getByLabelText(skillRadioInputs, "8000¥").click()
+      })
+
+      await waitFor(() => {
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[0].value.priority.resources
+        ).toEqual("e")
       })
     })
   })
