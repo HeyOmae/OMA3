@@ -169,7 +169,7 @@ describe("<PriorityTable/>", () => {
       const { getByRole } = setup()
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.priority.magres
+          .records[0].value.priority["mag/res"]
       ).toBeUndefined()
       await waitFor(() => {
         const magresRadioInputs = getByRole("radiogroup", {
@@ -184,7 +184,7 @@ describe("<PriorityTable/>", () => {
       await waitFor(() => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.magres
+            .records.records[0].value.priority["mag/res"]
         ).toEqual("d")
       })
     })

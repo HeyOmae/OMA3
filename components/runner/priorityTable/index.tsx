@@ -55,7 +55,7 @@ export const PriorityTable = () => {
             ...runner,
             priority: {
               ...runner.priority,
-              magres: payload,
+              "mag/res": payload,
             },
           }
 
