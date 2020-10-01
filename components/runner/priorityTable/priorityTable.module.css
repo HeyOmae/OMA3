@@ -3,12 +3,12 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.priortiyTable .priortiyTable--column {
+.priortiyTable .column {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   height: 100%;
 }
 
-.priortiyTable--column--item {
+.item {
   padding: 1rem 0;
 }
