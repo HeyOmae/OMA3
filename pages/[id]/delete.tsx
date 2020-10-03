@@ -8,7 +8,7 @@ const Delete = dynamic(() => import("../../components/runner/delete"), {
 
 export const DeletePage: FC = () => (
   <RunnerLayout>
-    <h1>Retirement Page</h1>
+    <h1>Retirement</h1>
     <p>Do you want to delete your runner?</p>
     <Delete />
   </RunnerLayout>
