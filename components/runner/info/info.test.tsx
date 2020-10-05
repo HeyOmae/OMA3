@@ -8,7 +8,7 @@ import {
 import { Info } from "./"
 import { fireEvent } from "@testing-library/react"
 
-describe("info page", () => {
+describe("<Info/>", () => {
   beforeAll(setupIndexedDB)
   const setup = () => {
     return render(
