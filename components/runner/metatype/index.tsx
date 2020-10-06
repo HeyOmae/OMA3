@@ -5,6 +5,8 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  Typography,
+  Slider,
 } from "@material-ui/core"
 import { useEffect } from "react"
 import metatypeData from "../../../data/metatype.json"
@@ -52,6 +54,26 @@ export const Metatype = () => {
           ))}
         </RadioGroup>
       </FormControl>
+      {metatypeData[runner.metatype] &&
+        Object.entries(metatypeData[runner.metatype].Attributes).map(
+          ([attribute, { min, max }]) => (
+            <div key={attribute}>
+              <Typography id={`${attribute}-slider`} gutterBottom>
+                {attribute}
+              </Typography>
+              <Slider
+                defaultValue={1}
+                getAriaValueText={(value) => value.toString()}
+                aria-labelledby={`${attribute}-slider`}
+                valueLabelDisplay="auto"
+                step={1}
+                marks
+                min={min}
+                max={max}
+              />
+            </div>
+          )
+        )}
     </div>
   ) : (
     <CircularProgress />
