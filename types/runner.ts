@@ -1,5 +1,7 @@
 export type PriorityRating = "a" | "b" | "c" | "d" | "e"
 
+export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
+
 export interface Runner {
   id?: number
   name: string
@@ -11,6 +13,7 @@ export interface Runner {
     "mag/res"?: PriorityRating
     resources?: PriorityRating
   }
+  metatype?: Metatypes
 }
 
 export const initRunner: Runner = {
