@@ -24,4 +24,30 @@ describe("<Metatype/>", () => {
       expect(getByLabelText(metatypeRadio, "Troll")).toBeInTheDocument()
     })
   })
+
+  it("should save the metatype selection", async () => {
+    const { getByRole } = setup()
+
+    expect(
+      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+        .records[0].value.metatype
+    ).toBeUndefined()
+
+    await waitFor(() => {
+      const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
+      getByLabelText(metatypeRadio, "Ork").click()
+    })
+
+    await waitFor(() => {
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[0].value.metatype
+      ).toEqual("Ork")
+
+      const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
+      expect(
+        (getByLabelText(metatypeRadio, "Ork") as HTMLInputElement).checked
+      ).toBe(true)
+    })
+  })
 })
