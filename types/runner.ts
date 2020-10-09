@@ -13,6 +13,11 @@ export type Attributes =
   | MentalAttributes
   | SpecialAttributes
 
+export interface AttributeStats {
+  adjustment?: number
+  points?: number
+}
+
 export interface Runner {
   id?: number
   name: string
@@ -25,7 +30,7 @@ export interface Runner {
     resources?: PriorityRating
   }
   metatype?: Metatypes
-  attributes?: Partial<Record<Attributes, number>>
+  attributes?: Partial<Record<Attributes, AttributeStats>>
 }
 
 export const initRunner: Runner = {

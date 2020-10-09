@@ -2,6 +2,7 @@ import {
   CircularProgress,
   FormControl,
   FormControlLabel,
+  FormGroup,
   FormLabel,
   Radio,
   RadioGroup,
@@ -11,13 +12,15 @@ import {
 import { useEffect } from "react"
 import metatypeData from "../../../data/metatype.json"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import { Metatypes, Attributes } from "../../../types/runner"
+import { Attributes, Metatypes } from "../../../types/runner"
 
 const SET_METATYPE = Symbol("SET_METATYPE")
 const SET_ATTRIBUTE = Symbol("SET_ATTRIBUTE")
 
-interface Payload extends Partial<Record<Attributes, number>> {
+interface Payload {
   metatype?: Metatypes
+  key?: Attributes
+  value?: number
 }
 
 export const Metatype = () => {
@@ -34,7 +37,10 @@ export const Metatype = () => {
             ...runner,
             attributes: {
               ...runner.attributes,
-              ...payload,
+              [payload.key]: {
+                ...runner.attributes?.[payload.key],
+                points: payload.value,
+              },
             },
           }
       }
@@ -46,7 +52,7 @@ export const Metatype = () => {
   }, [runner])
 
   return runner ? (
-    <div>
+    <FormGroup>
       <FormControl component="fieldset">
         <FormLabel component="legend">Metatypes</FormLabel>
         <RadioGroup
@@ -84,17 +90,20 @@ export const Metatype = () => {
                 min={min}
                 max={max}
                 data-testid={`${attribute}-slider`}
-                onChange={(event, value) => {
+                onChange={(event, value: number) => {
                   dispatch({
                     type: SET_ATTRIBUTE,
-                    payload: { [attribute]: value },
+                    payload: {
+                      key: attribute as Attributes,
+                      value,
+                    },
                   })
                 }}
               />
             </div>
           )
         )}
-    </div>
+    </FormGroup>
   ) : (
     <CircularProgress />
   )
