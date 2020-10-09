@@ -106,7 +106,7 @@ describe("<Metatype/>", () => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[0].value.attributes.Body
-        ).toBe(6)
+        ).toEqual({ points: 6 })
       })
     })
   })
