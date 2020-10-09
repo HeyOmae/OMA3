@@ -4,6 +4,7 @@ import {
   setupIndexedDB,
   waitFor,
   withTestRouter,
+  SliderHelper,
 } from "../../../test/testUtils"
 import { Metatype } from "./index"
 
@@ -62,16 +63,19 @@ describe("<Metatype/>", () => {
     })
   })
 
-  describe("attributes sliders", () => {
+  describe.only("attributes sliders", () => {
     it("should be visible if metatype is selected", async () => {
       const { getByLabelText, getByText } = setup()
       await waitFor(() => {
         getByLabelText("Ork").click()
       })
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.metatype
-      ).toEqual("Ork")
+
+      await waitFor(() => {
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[0].value.metatype
+        ).toEqual("Ork")
+      })
 
       await waitFor(() => {
         expect(getByText("Body")).toBeInTheDocument()
@@ -83,6 +87,26 @@ describe("<Metatype/>", () => {
         expect(getByText("Intuition")).toBeInTheDocument()
         expect(getByText("Charisma")).toBeInTheDocument()
         expect(getByText("Edge")).toBeInTheDocument()
+      })
+    })
+
+    it("should set the appropriate attribute on the character", async () => {
+      const { getByTestId } = setup()
+
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[0].value.attributes
+      ).toBeUndefined()
+
+      await waitFor(() => {
+        SliderHelper.change(getByTestId("Body-slider"), 7, 1, 9)
+      })
+
+      await waitFor(() => {
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[0].value.attributes.Body
+        ).toBe(6)
       })
     })
   })

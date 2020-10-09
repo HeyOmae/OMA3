@@ -2,6 +2,17 @@ export type PriorityRating = "a" | "b" | "c" | "d" | "e"
 
 export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
 
+export type PhysicalAttributes = "Body" | "Agility" | "Reaction" | "Strength"
+
+export type MentalAttributes = "Willpower" | "Logic" | "Intuition" | "Charisma"
+
+export type SpecialAttributes = "Edge"
+
+export type Attributes =
+  | PhysicalAttributes
+  | MentalAttributes
+  | SpecialAttributes
+
 export interface Runner {
   id?: number
   name: string
@@ -14,6 +25,7 @@ export interface Runner {
     resources?: PriorityRating
   }
   metatype?: Metatypes
+  attributes?: Partial<Record<Attributes, number>>
 }
 
 export const initRunner: Runner = {

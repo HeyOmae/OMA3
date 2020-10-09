@@ -11,18 +11,31 @@ import {
 import { useEffect } from "react"
 import metatypeData from "../../../data/metatype.json"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import { Metatypes } from "../../../types/runner"
+import { Metatypes, Attributes } from "../../../types/runner"
 
 const SET_METATYPE = Symbol("SET_METATYPE")
+const SET_ATTRIBUTE = Symbol("SET_ATTRIBUTE")
+
+interface Payload extends Partial<Record<Attributes, number>> {
+  metatype?: Metatypes
+}
 
 export const Metatype = () => {
-  const [runner, dispatch, save] = useRunnerAccess<symbol, Metatypes>(
+  const [runner, dispatch, save] = useRunnerAccess<symbol, Payload>(
     (runner, { type, payload }) => {
       switch (type) {
         case SET_METATYPE:
           return {
             ...runner,
-            metatype: payload,
+            metatype: payload.metatype,
+          }
+        case SET_ATTRIBUTE:
+          return {
+            ...runner,
+            attributes: {
+              ...runner.attributes,
+              ...payload,
+            },
           }
       }
     }
@@ -40,8 +53,8 @@ export const Metatype = () => {
           aria-label="metatypes"
           name="metatypes"
           value={runner.metatype ?? ""}
-          onChange={(event, payload: Metatypes) =>
-            dispatch({ type: SET_METATYPE, payload })
+          onChange={(event, metatype: Metatypes) =>
+            dispatch({ type: SET_METATYPE, payload: { metatype } })
           }
         >
           {Object.keys(metatypeData).map((metatypeName) => (
@@ -70,6 +83,13 @@ export const Metatype = () => {
                 marks
                 min={min}
                 max={max}
+                data-testid={`${attribute}-slider`}
+                onChange={(event, value) => {
+                  dispatch({
+                    type: SET_ATTRIBUTE,
+                    payload: { [attribute]: value },
+                  })
+                }}
               />
             </div>
           )
