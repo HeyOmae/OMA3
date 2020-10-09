@@ -1,7 +1,7 @@
 import React from "react"
 import { NextRouter } from "next/router"
 import { RouterContext } from "next/dist/next-server/lib/router-context"
-import { render } from "@testing-library/react"
+import { fireEvent, render } from "@testing-library/react"
 import { initDB } from "react-indexed-db"
 import { mockedRunners } from "./mocks"
 // import { ThemeProvider } from "my-ui-lib"
@@ -118,3 +118,33 @@ export const withTestRouter = (
     {tree}
   </RouterContext.Provider>
 )
+
+export class SliderHelper {
+  private static height = 10
+
+  // For simplicity pretend that slider's width is 100
+  private static width = 100
+
+  private static getBoundingClientRectMock() {
+    return {
+      bottom: SliderHelper.height,
+      height: SliderHelper.height,
+      left: 0,
+      right: SliderHelper.width,
+      top: 0,
+      width: SliderHelper.width,
+      x: 0,
+      y: 0,
+    } as DOMRect
+  }
+
+  static change(element: HTMLElement, value: number, min = 0, max = 100) {
+    const getBoundingClientRect = element.getBoundingClientRect
+    element.getBoundingClientRect = SliderHelper.getBoundingClientRectMock
+    fireEvent.mouseDown(element, {
+      clientX: ((value - min) / (max - min)) * SliderHelper.width,
+      clientY: SliderHelper.height,
+    })
+    element.getBoundingClientRect = getBoundingClientRect
+  }
+}
