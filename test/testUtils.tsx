@@ -148,3 +148,16 @@ export class SliderHelper {
     element.getBoundingClientRect = getBoundingClientRect
   }
 }
+
+export const searchRegexInNodes = (regex: RegExp) => (
+  content: string,
+  node: HTMLElement
+) => {
+  const hasText = (node) => regex.test(node.textContent)
+  const nodeHasText = hasText(node)
+  const childrenDontHaveText = Array.from(node.children).every(
+    (child) => !hasText(child)
+  )
+
+  return nodeHasText && childrenDontHaveText
+}
