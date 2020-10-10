@@ -47,7 +47,7 @@ describe("<PriorityTable/>", () => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[0].value.priority
-        ).toEqual({ metatype: "a" })
+        ).toEqual({ metatype: "A" })
       })
     })
   })
@@ -86,7 +86,7 @@ describe("<PriorityTable/>", () => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[0].value.priority.attributes
-        ).toEqual("b")
+        ).toEqual("B")
       })
     })
   })
@@ -124,7 +124,7 @@ describe("<PriorityTable/>", () => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[0].value.priority.skills
-        ).toEqual("c")
+        ).toEqual("C")
       })
     })
   })
@@ -185,7 +185,7 @@ describe("<PriorityTable/>", () => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[0].value.priority["mag/res"]
-        ).toEqual("d")
+        ).toEqual("D")
       })
     })
   })
@@ -233,7 +233,7 @@ describe("<PriorityTable/>", () => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[0].value.priority.resources
-        ).toEqual("e")
+        ).toEqual("E")
       })
     })
   })

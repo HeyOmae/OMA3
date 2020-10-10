@@ -1,4 +1,4 @@
-export type PriorityRating = "a" | "b" | "c" | "d" | "e"
+export type PriorityRating = "A" | "B" | "C" | "D" | "E"
 
 export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
 
@@ -14,9 +14,11 @@ export type Attributes =
   | SpecialAttributes
 
 export interface AttributeStats {
-  adjustment?: number
-  points?: number
+  adjustment: number
+  points: number
 }
+
+type RunnerAttributes = Record<Attributes, AttributeStats>
 
 export interface Runner {
   id?: number
@@ -30,10 +32,22 @@ export interface Runner {
     resources?: PriorityRating
   }
   metatype?: Metatypes
-  attributes?: Partial<Record<Attributes, AttributeStats>>
+  attributes?: RunnerAttributes
 }
 
 export const initRunner: Runner = {
   name: "",
   description: "",
+}
+
+export const initRunnerAttributes: RunnerAttributes = {
+  Body: { adjustment: 0, points: 0 },
+  Agility: { adjustment: 0, points: 0 },
+  Reaction: { adjustment: 0, points: 0 },
+  Strength: { adjustment: 0, points: 0 },
+  Willpower: { adjustment: 0, points: 0 },
+  Logic: { adjustment: 0, points: 0 },
+  Intuition: { adjustment: 0, points: 0 },
+  Charisma: { adjustment: 0, points: 0 },
+  Edge: { adjustment: 0, points: 0 },
 }
