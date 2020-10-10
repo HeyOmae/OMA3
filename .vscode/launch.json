@@ -1,0 +1,62 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest (Current File): Only test currently opened file",
+      "cwd": "${workspaceFolder}",
+      "program": "node_modules/jest/bin/jest.js",
+      "args": [
+        "${fileBasenameNoExtension}",
+        "--config",
+        "${workspaceFolder}/jest.config.js",
+        "--colors",
+        "--verbose",
+        "--runInBand",
+        "--no-cache",
+        "--watch"
+      ],
+      "console": "integratedTerminal",
+      "protocol": "inspector",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest (Watch): Watch for changes",
+      "cwd": "${workspaceFolder}",
+      "program": "node_modules/jest/bin/jest.js",
+      "args": [
+        "--config",
+        "${workspaceFolder}/jest.config.js",
+        "--colors",
+        "--verbose",
+        "--runInBand",
+        "--no-cache",
+        "--watch"
+      ],
+      "console": "integratedTerminal",
+      "protocol": "inspector",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest (Once): Single run all tests",
+      "cwd": "${workspaceFolder}",
+      "program": "node_modules/jest/bin/jest.js",
+      "args": [
+        "--config",
+        "${workspaceFolder}/jest.config.js",
+        "--colors",
+        "--verbose",
+        "--runInBand",
+        "--no-cache"
+      ],
+      "console": "integratedTerminal",
+      "protocol": "inspector",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
