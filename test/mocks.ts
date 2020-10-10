@@ -16,5 +16,12 @@ export const mockedRunners: Runner[] = [
     name: "FastJack",
     description:
       "He was born in the 1990's and now has an AI living in his brain.",
+    priority: {
+      metatype: "D",
+      attributes: "C",
+      skills: "B",
+      "mag/res": "E",
+      resources: "A",
+    },
   },
 ]

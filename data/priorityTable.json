@@ -1,78 +1,78 @@
 {
   "metatypes": {
-    "a": {
+    "A": {
       "supportedMetatypes": ["Dwarf", "Ork", "Troll"],
       "adjustmentPoints": 13
     },
-    "b": {
+    "B": {
       "supportedMetatypes": ["Dwarf", "Elf", "Ork", "Troll"],
       "adjustmentPoints": 11
     },
-    "c": {
+    "C": {
       "supportedMetatypes": ["Dwarf", "Elf", "Human", "Ork", "Troll"],
       "adjustmentPoints": 9
     },
-    "d": {
+    "D": {
       "supportedMetatypes": ["Dwarf", "Elf", "Human", "Ork", "Troll"],
       "adjustmentPoints": 4
     },
-    "e": {
+    "E": {
       "supportedMetatypes": ["Dwarf", "Elf", "Human", "Ork", "Troll"],
       "adjustmentPoints": 1
     }
   },
   "attributes": {
-    "a": 24,
-    "b": 16,
-    "c": 12,
-    "d": 8,
-    "e": 2
+    "A": 24,
+    "B": 16,
+    "C": 12,
+    "D": 8,
+    "E": 2
   },
   "skills": {
-    "a": 32,
-    "b": 24,
-    "c": 20,
-    "d": 16,
-    "e": 10
+    "A": 32,
+    "B": 24,
+    "C": 20,
+    "D": 16,
+    "E": 10
   },
   "mag/res": {
-    "a": {
+    "A": {
       "Full": ["Magic", 4],
       "Aspected": ["Magic", 5],
       "Mystic Adept": ["Magic", 4],
       "Adept": ["Magic", 4],
       "Technomancer": ["Resonance", 4]
     },
-    "b": {
+    "B": {
       "Full": ["Magic", 3],
       "Aspected": ["Magic", 4],
       "Mystic Adept": ["Magic", 3],
       "Adept": ["Magic", 3],
       "Technomancer": ["Resonance", 3]
     },
-    "c": {
+    "C": {
       "Full": ["Magic", 2],
       "Aspected": ["Magic", 3],
       "Mystic Adept": ["Magic", 2],
       "Adept": ["Magic", 2],
       "Technomancer": ["Resonance", 2]
     },
-    "d": {
+    "D": {
       "Full": ["Magic", 1],
       "Aspected": ["Magic", 2],
       "Mystic Adept": ["Magic", 1],
       "Adept": ["Magic", 1],
       "Technomancer": ["Resonance", 1]
     },
-    "e": {
+    "E": {
       "Mundane": []
     }
   },
   "resources": {
-    "a": 450000,
-    "b": 275000,
-    "c": 150000,
-    "d": 50000,
-    "e": 8000
+    "A": 450000,
+    "B": 275000,
+    "C": 150000,
+    "D": 50000,
+    "E": 8000
   }
 }
