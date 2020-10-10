@@ -1,4 +1,4 @@
-import { Runner } from "../types/runner"
+import { initRunnerAttributes, Runner } from "../types/runner"
 
 export const mockedRunners: Runner[] = [
   {
@@ -25,3 +25,9 @@ export const mockedRunners: Runner[] = [
     },
   },
 ]
+
+export const orkRunner: Runner = {
+  ...mockedRunners[0],
+  metatype: "Ork",
+  attributes: initRunnerAttributes,
+}

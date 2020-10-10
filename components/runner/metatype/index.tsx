@@ -15,9 +15,10 @@ import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import { Attributes, Metatypes } from "../../../types/runner"
 
 const SET_METATYPE = Symbol("SET_METATYPE")
-const SET_ATTRIBUTE = Symbol("SET_ATTRIBUTE")
+export const SPEND_ATTRIBUTE_POINTS = Symbol("SPEND_ATTRIBUTE_POINTS")
+export const SPEND_ADJUSTMENT_POINTS = Symbol("SPEND_ADJUSTMENT_POINTS")
 
-interface Payload {
+export interface Payload {
   metatype?: Metatypes
   key?: Attributes
   value?: number
