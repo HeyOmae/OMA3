@@ -1,0 +1,33 @@
+import { FC } from "react"
+import { FormControlLabel, Typography, Grid, Switch } from "@material-ui/core"
+
+export interface Props {
+  toggleSpending: () => void
+  isSpendingAdjustmentPoints: boolean
+}
+
+export const SpendingPointsToggle: FC<Props> = ({
+  isSpendingAdjustmentPoints,
+  toggleSpending,
+}) => (
+  <Typography component="div">
+    <Grid component="label" container alignItems="center" spacing={1}>
+      <Grid item>Adjustment</Grid>
+      <Grid item>
+        <FormControlLabel
+          value="Spend Points"
+          control={
+            <Switch
+              value={isSpendingAdjustmentPoints}
+              onChange={toggleSpending}
+              color="primary"
+            />
+          }
+          label="Spend Points"
+          labelPlacement="top"
+        />
+      </Grid>
+      <Grid item>Attribute</Grid>
+    </Grid>
+  </Typography>
+)
