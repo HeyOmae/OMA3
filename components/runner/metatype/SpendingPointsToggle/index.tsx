@@ -18,7 +18,7 @@ export const SpendingPointsToggle: FC<Props> = ({
           value="Spend Points"
           control={
             <Switch
-              value={isSpendingAdjustmentPoints}
+              checked={isSpendingAdjustmentPoints}
               onChange={toggleSpending}
               color="primary"
             />
