@@ -6,13 +6,18 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
-  Typography,
-  Slider,
 } from "@material-ui/core"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import metatypeData from "../../../data/metatype.json"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import { Attributes, Metatypes } from "../../../types/runner"
+import {
+  Attributes,
+  initRunnerAttributes,
+  Metatypes,
+} from "../../../types/runner"
+import { DisplayPoints } from "./DisplayPoints"
+import { AttributeSelection } from "./AttributeSelection"
+import { SpendingPointsToggle } from "./SpendingPointsToggle"
 
 const SET_METATYPE = Symbol("SET_METATYPE")
 export const SPEND_ATTRIBUTE_POINTS = Symbol("SPEND_ATTRIBUTE_POINTS")
@@ -32,20 +37,40 @@ export const Metatype = () => {
           return {
             ...runner,
             metatype: payload.metatype,
+            attributes: initRunnerAttributes,
           }
-        case SET_ATTRIBUTE:
+        case SPEND_ATTRIBUTE_POINTS: {
+          const attribute = runner.attributes?.[payload.key]
           return {
             ...runner,
             attributes: {
               ...runner.attributes,
               [payload.key]: {
-                ...runner.attributes?.[payload.key],
-                points: payload.value,
+                ...attribute,
+                points: payload.value - attribute.adjustment,
               },
             },
           }
+        }
+        case SPEND_ADJUSTMENT_POINTS: {
+          const attribute = runner.attributes?.[payload.key]
+          return {
+            ...runner,
+            attributes: {
+              ...runner.attributes,
+              [payload.key]: {
+                ...attribute,
+                adjustment: payload.value - attribute.points,
+              },
+            },
+          }
+        }
       }
     }
+  )
+
+  const [isSpendingAdjustmentPoints, setIsSpendingAdjustmentPoints] = useState(
+    true
   )
 
   useEffect(() => {
@@ -74,36 +99,18 @@ export const Metatype = () => {
           ))}
         </RadioGroup>
       </FormControl>
-      {metatypeData[runner.metatype] &&
-        Object.entries(metatypeData[runner.metatype].Attributes).map(
-          ([attribute, { min, max }]) => (
-            <div key={attribute}>
-              <Typography id={`${attribute}-slider`} gutterBottom>
-                {attribute}
-              </Typography>
-              <Slider
-                defaultValue={1}
-                getAriaValueText={(value) => value.toString()}
-                aria-labelledby={`${attribute}-slider`}
-                valueLabelDisplay="auto"
-                step={1}
-                marks
-                min={min}
-                max={max}
-                data-testid={`${attribute}-slider`}
-                onChange={(event, value: number) => {
-                  dispatch({
-                    type: SET_ATTRIBUTE,
-                    payload: {
-                      key: attribute as Attributes,
-                      value,
-                    },
-                  })
-                }}
-              />
-            </div>
-          )
-        )}
+      <DisplayPoints runner={runner} />
+      <SpendingPointsToggle
+        isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
+        toggleSpending={() =>
+          setIsSpendingAdjustmentPoints(!isSpendingAdjustmentPoints)
+        }
+      />
+      <AttributeSelection
+        runner={runner}
+        dispatch={dispatch}
+        isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
+      />
     </FormGroup>
   ) : (
     <CircularProgress />
