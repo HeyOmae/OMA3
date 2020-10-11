@@ -54,13 +54,14 @@ export const Metatype = () => {
         }
         case SPEND_ADJUSTMENT_POINTS: {
           const attribute = runner.attributes?.[payload.key]
+          const newValue = payload.value - attribute.points
           return {
             ...runner,
             attributes: {
               ...runner.attributes,
               [payload.key]: {
                 ...attribute,
-                adjustment: payload.value - attribute.points,
+                adjustment: newValue < 0 ? 0 : newValue,
               },
             },
           }

@@ -6,10 +6,11 @@ import { SPEND_ADJUSTMENT_POINTS, SPEND_ATTRIBUTE_POINTS } from ".."
 describe("AttributeSelection", () => {
   const setup = ({
     isSpendingAdjustmentPoints = true,
+    runner = orkRunner,
   }: Partial<Props> = {}) => {
     const props: Props = {
       dispatch: jest.fn(),
-      runner: orkRunner,
+      runner,
       isSpendingAdjustmentPoints,
     }
     return { ...render(<AttributeSelection {...props} />), props }
@@ -25,6 +26,20 @@ describe("AttributeSelection", () => {
     expect(getByText("Intuition")).toBeInTheDocument()
     expect(getByText("Charisma")).toBeInTheDocument()
     expect(getByText("Edge")).toBeInTheDocument()
+  })
+
+  it("should get the value from combining the adjustment and attribute points", () => {
+    const { getByTestId } = setup({
+      runner: {
+        ...orkRunner,
+        attributes: {
+          ...orkRunner.attributes,
+          Body: { adjustment: 2, points: 3 },
+        },
+      },
+    })
+
+    expect(getByTestId("Body-slider").querySelector("input").value).toEqual("6")
   })
 
   describe("Adjustment Points", () => {

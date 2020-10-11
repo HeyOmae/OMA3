@@ -130,6 +130,50 @@ describe("<Metatype/>", () => {
           ).toEqual({ adjustment: 2, points: 0 })
         })
       })
+
+      it("should not be able to go negative", async () => {
+        const { getByTestId, getByLabelText, getByText } = setup()
+
+        // Test to see if you spend adjustment first and then attribute points
+        await waitFor(() => {
+          expect(getByLabelText("Dwarf")).toBeInTheDocument()
+          expect(getByLabelText("Spend Points")).toBeInTheDocument()
+        })
+
+        getByLabelText("Dwarf").click()
+        SliderHelper.change(getByTestId("Willpower-slider"), 4, 1, 7)
+
+        await waitFor(() => {
+          expect(
+            getByText(searchRegexInNodes(/Adjustment Points1/))
+          ).toBeInTheDocument()
+        })
+
+        getByLabelText("Spend Points").click()
+
+        SliderHelper.change(getByTestId("Willpower-slider"), 7, 1, 7)
+
+        await waitFor(() => {
+          expect(
+            getByText(searchRegexInNodes(/Attribute Points9/))
+          ).toBeInTheDocument()
+        })
+
+        getByLabelText("Spend Points").click()
+
+        SliderHelper.change(getByTestId("Willpower-slider"), 1, 1, 7)
+
+        await waitFor(() => {
+          expect(
+            indexedDB._databases.get("omae").rawObjectStores.get("runners")
+              .records.records[2].value.attributes.Willpower
+          ).toEqual({ adjustment: 0, points: 3 })
+
+          expect(
+            getByTestId("Willpower-slider").querySelector("input").value
+          ).toEqual("4")
+        })
+      })
     })
 
     it("should set the appropriate attribute on the character", async () => {

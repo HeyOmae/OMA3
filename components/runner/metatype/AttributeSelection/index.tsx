@@ -33,6 +33,11 @@ export const AttributeSelection: FC<Props> = ({
               marks
               min={min}
               max={max}
+              value={
+                min +
+                runner.attributes[attribute].adjustment +
+                runner.attributes[attribute].points
+              }
               data-testid={`${attribute}-slider`}
               disabled={
                 isSpendingAdjustmentPoints
