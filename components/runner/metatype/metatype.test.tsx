@@ -176,46 +176,92 @@ describe("<Metatype/>", () => {
       })
     })
 
-    it("should set the appropriate attribute on the character", async () => {
-      const { getByTestId, getByLabelText, getByText } = setup()
+    describe("spending attribute points", () => {
+      it("should set the appropriate attribute on the character", async () => {
+        const { getByTestId, getByLabelText, getByText } = setup()
 
-      await waitFor(() => {
-        expect(getByLabelText("Troll")).toBeInTheDocument()
-        expect(getByLabelText("Spend Points")).toBeInTheDocument()
+        await waitFor(() => {
+          expect(getByLabelText("Troll")).toBeInTheDocument()
+          expect(getByLabelText("Spend Points")).toBeInTheDocument()
+        })
+
+        getByLabelText("Troll").click()
+        getByLabelText("Spend Points").click()
+
+        await waitFor(() => {
+          expect(
+            indexedDB._databases.get("omae").rawObjectStores.get("runners")
+              .records.records[2].value.attributes
+          ).toEqual(initRunnerAttributes)
+          expect(
+            indexedDB._databases.get("omae").rawObjectStores.get("runners")
+              .records.records[2].value.metatype
+          ).toEqual("Troll")
+        })
+
+        await waitFor(() => {
+          expect(
+            getByText(searchRegexInNodes(/Attribute Points12/))
+          ).toBeInTheDocument()
+          SliderHelper.change(getByTestId("Body-slider"), 7, 1, 9)
+        })
+
+        await waitFor(() => {
+          expect(
+            getByText(searchRegexInNodes(/Attribute Points6/))
+          ).toBeInTheDocument()
+        })
+
+        await waitFor(() => {
+          expect(
+            indexedDB._databases.get("omae").rawObjectStores.get("runners")
+              .records.records[2].value.attributes.Body
+          ).toEqual({ adjustment: 0, points: 6 })
+        })
       })
 
-      getByLabelText("Troll").click()
-      getByLabelText("Spend Points").click()
+      it("should not be able to go negative", async () => {
+        const { getByTestId, getByLabelText, getByText } = setup()
 
-      await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.attributes
-        ).toEqual(initRunnerAttributes)
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.metatype
-        ).toEqual("Troll")
-      })
+        // Test to see if you spend adjustment first and then attribute points
+        await waitFor(() => {
+          expect(getByLabelText("Elf")).toBeInTheDocument()
+          expect(getByLabelText("Spend Points")).toBeInTheDocument()
+        })
 
-      await waitFor(() => {
-        expect(
-          getByText(searchRegexInNodes(/Attribute Points12/))
-        ).toBeInTheDocument()
-        SliderHelper.change(getByTestId("Body-slider"), 7, 1, 9)
-      })
+        getByLabelText("Spend Points").click()
+        getByLabelText("Elf").click()
+        SliderHelper.change(getByTestId("Agility-slider"), 4, 1, 7)
 
-      await waitFor(() => {
-        expect(
-          getByText(searchRegexInNodes(/Attribute Points6/))
-        ).toBeInTheDocument()
-      })
+        await waitFor(() => {
+          expect(
+            getByText(searchRegexInNodes(/Attribute Points9/))
+          ).toBeInTheDocument()
+        })
 
-      await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.attributes.Body
-        ).toEqual({ adjustment: 0, points: 6 })
+        getByLabelText("Spend Points").click()
+        SliderHelper.change(getByTestId("Agility-slider"), 7, 1, 7)
+
+        await waitFor(() => {
+          expect(
+            getByText(searchRegexInNodes(/Adjustment Points1/))
+          ).toBeInTheDocument()
+        })
+
+        getByLabelText("Spend Points").click()
+
+        SliderHelper.change(getByTestId("Agility-slider"), 1, 1, 7)
+
+        await waitFor(() => {
+          expect(
+            indexedDB._databases.get("omae").rawObjectStores.get("runners")
+              .records.records[2].value.attributes.Agility
+          ).toEqual({ adjustment: 3, points: 0 })
+
+          expect(
+            getByTestId("Agility-slider").querySelector("input").value
+          ).toEqual("4")
+        })
       })
     })
 
