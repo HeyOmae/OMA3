@@ -99,6 +99,7 @@ export const Metatype = () => {
           ))}
         </RadioGroup>
       </FormControl>
+      <h1>Attributes</h1>
       <DisplayPoints runner={runner} />
       <SpendingPointsToggle
         isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
@@ -116,3 +117,5 @@ export const Metatype = () => {
     <CircularProgress />
   )
 }
+
+export default Metatype
