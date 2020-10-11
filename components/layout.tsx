@@ -7,7 +7,14 @@ import {
   Drawer,
   Button,
 } from "@material-ui/core"
-import { Delete, Home, Menu, TableChart, AccountBox } from "@material-ui/icons"
+import {
+  Delete,
+  Home,
+  Menu,
+  TableChart,
+  AccountBox,
+  AccessibilityNew,
+} from "@material-ui/icons"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 
@@ -138,6 +145,15 @@ export const RunnerLayout: FC = ({ children }) => {
             startIcon={<TableChart />}
           >
             Priority
+          </Button>
+        </NextLink>
+        <NextLink href="/[id]/metatype" as={`/${query.id}/metatype`} passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<AccessibilityNew />}
+          >
+            Metatype & Attributes
           </Button>
         </NextLink>
         <NextLink href="/[id]/delete" as={`/${query.id}/delete`} passHref>

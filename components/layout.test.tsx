@@ -41,6 +41,10 @@ describe("<RunnerLayout />", () => {
         "href",
         "/1/priority"
       )
+      expect(getByText("Metatype & Attributes").closest("a")).toHaveAttribute(
+        "href",
+        "/1/metatype"
+      )
       expect(getByText("Delete").closest("a")).toHaveAttribute(
         "href",
         "/1/delete"
