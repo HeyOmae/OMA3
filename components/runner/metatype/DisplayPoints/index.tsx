@@ -22,13 +22,12 @@ export const DisplayPoints: FC<Props> = ({ runner }) => {
     <dl>
       <dt>Adjustment Points</dt>
       <dd>
-        {(priorityData.metatypes[runner.priority.metatype]?.adjustmentPoints ??
-          0) - adjustmentSpend}
+        {priorityData.metatypes[runner.priority.metatype].adjustmentPoints -
+          adjustmentSpend}
       </dd>
       <dt>Attribute Points</dt>
       <dd>
-        {(priorityData.attributes[runner.priority.attributes] ?? 0) -
-          attributeSpend}
+        {priorityData.attributes[runner.priority.attributes] - attributeSpend}
       </dd>
     </dl>
   )

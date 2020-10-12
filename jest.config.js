@@ -15,4 +15,13 @@ module.exports = {
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js",
   },
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
+  coveragePathIgnorePatterns: ["/node_modules/", "/test/"],
 }
