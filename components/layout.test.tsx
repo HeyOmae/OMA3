@@ -1,5 +1,11 @@
 import { RunnerLayout } from "./layout"
-import { render, waitFor, withTestRouter } from "../test/testUtils"
+import {
+  render,
+  waitFor,
+  withTestRouter,
+  waitForElementToBeRemoved,
+  fireEvent,
+} from "../test/testUtils"
 
 describe("<RunnerLayout />", () => {
   const setup = () => {
@@ -50,5 +56,22 @@ describe("<RunnerLayout />", () => {
         "/1/delete"
       )
     })
+  })
+
+  it("should close the drawer when clicking outside of it", async () => {
+    const { getByText, queryByText, getByRole, push } = setup()
+
+    expect(queryByText("Info")).not.toBeInTheDocument()
+
+    getByText("Menu").click()
+
+    expect(queryByText("Info")).toBeInTheDocument()
+
+    await waitFor(() => {
+      fireEvent.click(getByRole("presentation").firstChild)
+    })
+
+    expect(push).not.toHaveBeenCalled()
+    await waitForElementToBeRemoved(() => queryByText("Info"))
   })
 })
