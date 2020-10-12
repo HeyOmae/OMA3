@@ -1,27 +1,70 @@
-# NextJS Typescript Boilerplate
+# OMAE V3
 
-Bootstrap a developer-friendly NextJS app configured with:
+This is the third iteration of the Shadowrun Character generator; Omae, called OMA3 for the cool hype soulless corporate branding types.
 
+OMA3 is a progressive web app using IndexedDB to actually SAVE your runner for the first time. Which is something that has been requested a lot. Also, because this is a progressive web app, it also means you get to use it OFFLINE. The future is now my chummers!
+
+## Technologies
+
+OMA3 is leveraging the (currently as of 2020) latest in modern web standards and technologies. (At least until 2029 when the first Matrix Crash happens)
+
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Material-UI](https://material-ui.com/)
 - [Typescript](https://www.typescriptlang.org/)
 - Linting with [ESLint](https://eslint.org/)
 - Formatting with [Prettier](https://prettier.io/)
 - Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
 - Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
+- [next-pwa](https://github.com/shadowwalker/next-pwa#readme)
+- [react-indexed-db](https://github.com/assuncaocharles/react-indexed-db)
 
-## Deploy your own
+## Want to contribute
 
-Deploy the example using [Vercel](https://vercel.com):
+Fork this bad boy and git gud!
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
+If you seriously want to help message me on the [twitters](https://twitter.com/dethstrobe) or [reddits](https://www.reddit.com/user/dethstrobe).
 
-## How to use
+I'll start setting up a project board in github and will be more then happy to delegate work if there are people actually willing to help. I'm also willing to mentor in a purely hypothetical situation that you want to learn about web development.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+I'm currently attempting to have 100% code coverage, which might get relaxed later as I have less time for this project. But that's a future problem, my current wide eyed bright future naivete thinks I really can keep it at 100% coverage.
 
-```bash
-npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-# or
-yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+## The basics of getting started
+
+### Start locally
+
+The quickest way to start the app from this repo is to run this command
+
+```
+npm run dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Then visit [localhost:3000](http://localhost:3000/)
+
+But if you are not going to be actively developing but want to run it on your local machine, you'll need to first build the app
+
+```
+npm build
+```
+
+Once done you can run the transpiled code called with
+
+```
+npm start
+```
+
+and visit [localhost:3000](http://localhost:3000/)
+
+### Testing
+
+This will run all the unit tests in watch mode and should rerun again if you make changes
+
+```
+npm test -- --watch
+```
+
+Also, to check that coverage is still at 100% you can
+
+```
+npm test -- --coverage
+```
