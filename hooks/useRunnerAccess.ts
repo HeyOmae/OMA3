@@ -43,13 +43,12 @@ export const useRunnerAccess: UseRunnerAccess = <T, P>(reducer) => {
   useEffect(() => {
     let isMounted = true
 
-    if (id) {
-      getByID<Runner>(+id).then((payload) => {
-        if (isMounted) {
-          dispatch({ type: DONE_LOADING, payload })
-        }
-      })
-    }
+    getByID<Runner>(+id).then((payload) => {
+      if (isMounted) {
+        dispatch({ type: DONE_LOADING, payload })
+      }
+    })
+
     return () => (isMounted = false)
   }, [id])
 
