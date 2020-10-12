@@ -95,8 +95,13 @@ export const Layout: FC = ({ children }) => (
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
+
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Audiowide"
+      />
     </Head>
-    {children}
+    <main>{children}</main>
   </Container>
 )
 
@@ -115,8 +120,8 @@ export const RunnerLayout: FC = ({ children }) => {
     }
   }, [nav])
   return (
-    <Layout>
-      {children}
+    <>
+      <Layout>{children}</Layout>
       <BottomNavigation
         value={nav}
         onChange={(e, selection: number) => setNav(selection)}
@@ -162,6 +167,6 @@ export const RunnerLayout: FC = ({ children }) => {
           </Button>
         </NextLink>
       </Drawer>
-    </Layout>
+    </>
   )
 }

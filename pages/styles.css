@@ -1,0 +1,81 @@
+:root {
+  --clearscan3: #c1eafd3b;
+  --clearscan2: #61798485;
+  --clearscan: #84378485;
+  --scan3: #c1eafd;
+  --scan2: #617984;
+  --scan: #843784;
+  --neon2: #ff00ff;
+  --neon: #00eeff;
+}
+@keyframes scanning {
+  from {
+    background: linear-gradient(
+      to bottom,
+      var(--scan3),
+      var(--scan3) 50%,
+      var(--scan2) 50%,
+      var(--scan2)
+    );
+  }
+  to {
+    background: linear-gradient(
+      to bottom,
+      var(--scan2),
+      var(--scan2) 50%,
+      var(--scan) 50%,
+      var(--scan)
+    );
+  }
+}
+
+body {
+  background: linear-gradient(
+    to bottom,
+    var(--scan2),
+    var(--scan2) 50%,
+    var(--scan) 50%,
+    var(--scan)
+  );
+  background-size: 100% 0.5rem;
+  animation-name: scanning;
+  animation-duration: 1s;
+}
+
+main {
+  color: var(--neon);
+}
+
+main {
+  margin: 1rem 0;
+  border: 1px var(--neon) solid;
+  padding: 1rem;
+  background: linear-gradient(
+    30deg,
+    var(--clearscan3),
+    var(--clearscan2) 50%,
+    var(--clearscan)
+  );
+  border-radius: 1rem 0 1rem 0;
+}
+
+@keyframes glow {
+  to {
+    text-shadow: var(--neon2) 1px 1px 5px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  padding: 0.5rem 1rem;
+  color: white;
+  text-shadow: var(--neon2) 3px 3px 0;
+  animation: glow 0.7s infinite alternate;
+  font-family: Audiowide;
+  border-bottom: 1px var(--neon) solid;
+  border-top-left-radius: 1rem;
+  border-radius: 1rem;
+}

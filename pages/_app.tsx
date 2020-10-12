@@ -1,6 +1,8 @@
 import { AppProps } from "next/app"
 import CssBaseline from "@material-ui/core/CssBaseline"
 
+import "./styles.css"
+
 if (typeof window !== "undefined") {
   import("react-indexed-db").then(({ initDB }) => {
     initDB({

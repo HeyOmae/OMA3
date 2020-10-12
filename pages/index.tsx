@@ -22,42 +22,41 @@ export const Home: FC = () => {
         <title>OMAE 3.0</title>
       </Head>
 
-      <main>
-        <h1>Welcome to OMA3</h1>
+      <h1>Welcome to OMA3</h1>
 
-        <p>
-          Shadowrun 6<sup>th</sup> Edition Character Generator
-        </p>
+      <h2>
+        Shadowrun 6<sup>th</sup> Edition Character Generator
+      </h2>
 
-        <AllRunnersAccess>
-          {({ runners, add }) => (
-            <div>
-              <ul>
-                {runners.map(({ name, id }) => {
-                  const href = `${id}/info`
-                  return (
-                    <li key={id}>
-                      <NextLink href="[id]/info" as={href} passHref>
-                        <Link>{name || id}</Link>
-                      </NextLink>
-                    </li>
-                  )
-                })}
-              </ul>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  add(initRunner).then((event) => {
-                    push("/[id]/info", `/${event}/info`)
-                  })
-                }}
-              >
-                Create Runner
-              </Button>
-            </div>
-          )}
-        </AllRunnersAccess>
-      </main>
+      <AllRunnersAccess>
+        {({ runners, add }) => (
+          <div>
+            <ul>
+              {runners.map(({ name, id }) => {
+                const href = `${id}/info`
+                return (
+                  <li key={id}>
+                    <NextLink href="[id]/info" as={href} passHref>
+                      <Link>{name || id}</Link>
+                    </NextLink>
+                  </li>
+                )
+              })}
+            </ul>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                add(initRunner).then((event) => {
+                  push("/[id]/info", `/${event}/info`)
+                })
+              }}
+            >
+              Create Runner
+            </Button>
+          </div>
+        )}
+      </AllRunnersAccess>
     </Layout>
   )
 }
