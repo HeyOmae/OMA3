@@ -29,16 +29,6 @@ export const Home: FC = () => {
           Shadowrun 6<sup>th</sup> Edition Character Generator
         </p>
 
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => {
-            window.alert("With typescript and Jest")
-          }}
-        >
-          Test Button
-        </Button>
-
         <AllRunnersAccess>
           {({ runners, add }) => (
             <div>

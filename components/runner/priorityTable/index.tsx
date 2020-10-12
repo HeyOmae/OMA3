@@ -67,9 +67,6 @@ export const PriorityTable = () => {
               resources: payload,
             },
           }
-
-        default:
-          return runner
       }
     }
   )
