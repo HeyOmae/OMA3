@@ -17,9 +17,6 @@ export const Info = (): JSX.Element => {
           ...state,
           description: payload,
         }
-
-      default:
-        return state
     }
   }, [])
   const [runner, dispatch, save] = useRunnerAccess<string, string>(reducer)

@@ -61,5 +61,22 @@ describe("<Info/>", () => {
           .records[0].value.name
       ).toEqual("William “Bull” MacCallister")
     })
+
+    fireEvent.change(getByLabelText("Runner's description"), {
+      target: {
+        value:
+          "Retired runner. Working as a fixer in the Ork Underground in Seattle.",
+      },
+    })
+    fireEvent.blur(getByLabelText("Runner's description"))
+
+    waitFor(() => {
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[0].value.description
+      ).toEqual(
+        "Retired runner. Working as a fixer in the Ork Underground in Seattle."
+      )
+    })
   })
 })
