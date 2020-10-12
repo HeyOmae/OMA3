@@ -18,19 +18,22 @@ export interface AttributeStats {
   points: number
 }
 
+export type PriorityTypes =
+  | "metatype"
+  | "attributes"
+  | "skills"
+  | "mag/res"
+  | "resources"
+
+type Priority = Partial<Record<PriorityTypes, PriorityRating>>
+
 type RunnerAttributes = Record<Attributes, AttributeStats>
 
 export interface Runner {
   id?: number
   name: string
   description: string
-  priority?: {
-    metatype?: PriorityRating
-    attributes?: PriorityRating
-    skills?: PriorityRating
-    "mag/res"?: PriorityRating
-    resources?: PriorityRating
-  }
+  priority?: Priority
   metatype?: Metatypes
   attributes?: RunnerAttributes
 }

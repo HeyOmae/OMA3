@@ -18,6 +18,7 @@ import {
 import { DisplayPoints } from "./DisplayPoints"
 import { AttributeSelection } from "./AttributeSelection"
 import { SpendingPointsToggle } from "./SpendingPointsToggle"
+import { PriorityWarning } from "../../priorityWarning"
 
 const SET_METATYPE = Symbol("SET_METATYPE")
 export const SPEND_ATTRIBUTE_POINTS = Symbol("SPEND_ATTRIBUTE_POINTS")
@@ -80,41 +81,51 @@ export const Metatype = () => {
   }, [runner])
 
   return runner ? (
-    <FormGroup>
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Metatypes</FormLabel>
-        <RadioGroup
-          aria-label="metatypes"
-          name="metatypes"
-          value={runner.metatype ?? ""}
-          onChange={(event, metatype: Metatypes) =>
-            dispatch({ type: SET_METATYPE, payload: { metatype } })
-          }
-        >
-          {Object.keys(metatypeData).map((metatypeName) => (
-            <FormControlLabel
-              key={metatypeName}
-              value={metatypeName}
-              control={<Radio />}
-              label={metatypeName}
+    runner.priority?.metatype ? (
+      <FormGroup>
+        <FormControl component="fieldset">
+          <FormLabel component="legend">Metatypes</FormLabel>
+          <RadioGroup
+            aria-label="metatypes"
+            name="metatypes"
+            value={runner.metatype ?? ""}
+            onChange={(event, metatype: Metatypes) =>
+              dispatch({ type: SET_METATYPE, payload: { metatype } })
+            }
+          >
+            {Object.keys(metatypeData).map((metatypeName) => (
+              <FormControlLabel
+                key={metatypeName}
+                value={metatypeName}
+                control={<Radio />}
+                label={metatypeName}
+              />
+            ))}
+          </RadioGroup>
+        </FormControl>
+        <h1>Attributes</h1>
+        {runner.priority.attributes ? (
+          <>
+            <DisplayPoints runner={runner} />
+            <SpendingPointsToggle
+              isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
+              toggleSpending={() =>
+                setIsSpendingAdjustmentPoints(!isSpendingAdjustmentPoints)
+              }
             />
-          ))}
-        </RadioGroup>
-      </FormControl>
-      <h1>Attributes</h1>
-      <DisplayPoints runner={runner} />
-      <SpendingPointsToggle
-        isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
-        toggleSpending={() =>
-          setIsSpendingAdjustmentPoints(!isSpendingAdjustmentPoints)
-        }
-      />
-      <AttributeSelection
-        runner={runner}
-        dispatch={dispatch}
-        isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
-      />
-    </FormGroup>
+            <AttributeSelection
+              runner={runner}
+              dispatch={dispatch}
+              isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
+            />
+          </>
+        ) : (
+          <PriorityWarning requirement="attributes" />
+        )}
+      </FormGroup>
+    ) : (
+      <PriorityWarning requirement="metatype" />
+    )
   ) : (
     <CircularProgress />
   )
