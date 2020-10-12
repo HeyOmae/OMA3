@@ -59,6 +59,14 @@ describe("useRunnerAccess hook", () => {
     expect(await screen.findByText("Bull")).toBeInTheDocument()
   })
 
+  it("should not do bad stuff if component is unmounted while getting runner from indexedDB", () => {
+    const { getByText, unmount } = setup()
+
+    expect(getByText("Loading...")).toBeInTheDocument()
+    unmount()
+    // There should be a big ugly error log in the console if this test fails
+  })
+
   describe("reducer", () => {
     it("should update a field on the object", async () => {
       const { getByText } = setup()
