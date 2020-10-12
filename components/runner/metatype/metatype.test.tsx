@@ -12,8 +12,8 @@ import { Metatype } from "./index"
 
 describe("<Metatype/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = () =>
-    render(withTestRouter(<Metatype />, { query: { id: "3" } }))
+  const setup = (id = "3") =>
+    render(withTestRouter(<Metatype />, { query: { id } }))
 
   it("should have a radio buttons with the metatypes", async () => {
     const { getByRole, queryByText } = setup()
@@ -324,6 +324,41 @@ describe("<Metatype/>", () => {
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
             .records.records[2].value.attributes.Charisma
         ).toEqual({ adjustment: 2, points: 1 })
+      })
+    })
+  })
+
+  describe("Priority Missing", () => {
+    it("should tell the user metatype is not set", async () => {
+      const { getByText, queryByRole } = setup("1")
+
+      await waitFor(() => {
+        expect(
+          queryByRole("radiogroup", { name: "metatypes" })
+        ).not.toBeInTheDocument()
+        expect(getByText("You need to set the metatype priority"))
+      })
+    })
+
+    it("should tell the user attributes is not set", async () => {
+      const { getByText, queryByText, getByRole } = setup("2")
+
+      await waitFor(() => {
+        expect(
+          getByRole("radiogroup", { name: "metatypes" })
+        ).toBeInTheDocument()
+
+        expect(queryByText("Body")).not.toBeInTheDocument()
+        expect(queryByText("Agility")).not.toBeInTheDocument()
+        expect(queryByText("Reaction")).not.toBeInTheDocument()
+        expect(queryByText("Strength")).not.toBeInTheDocument()
+        expect(queryByText("Willpower")).not.toBeInTheDocument()
+        expect(queryByText("Logic")).not.toBeInTheDocument()
+        expect(queryByText("Intuition")).not.toBeInTheDocument()
+        expect(queryByText("Charisma")).not.toBeInTheDocument()
+        expect(queryByText("Edge")).not.toBeInTheDocument()
+
+        expect(getByText("You need to set the attributes priority"))
       })
     })
   })

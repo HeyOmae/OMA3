@@ -10,6 +10,9 @@ export const mockedRunners: Runner[] = [
     id: 2,
     name: "Man-of-many-names",
     description: "Not knowns by any other name",
+    priority: {
+      metatype: "E",
+    },
   },
   {
     id: 3,
