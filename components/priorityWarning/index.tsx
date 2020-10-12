@@ -14,9 +14,10 @@ export const PriorityWarning: FC<Props> = ({ requirement }) => {
   const { query } = useRouter()
   return (
     <Alert
+      severity="error"
       action={
-        <NextLink passHref href={"/[id]/priority"} as={`${query.id}/priority`}>
-          <Button variant="contained" color="primary" endIcon={<TableChart />}>
+        <NextLink passHref href={"/[id]/priority"} as={`/${query.id}/priority`}>
+          <Button color="inherit" size="small" endIcon={<TableChart />}>
             Go to Priority Table
           </Button>
         </NextLink>
