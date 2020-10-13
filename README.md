@@ -44,7 +44,7 @@ Then visit [localhost:3000](http://localhost:3000/)
 But if you are not going to be actively developing but want to run it on your local machine, you'll need to first build the app
 
 ```
-npm build
+npm run build
 ```
 
 Once done you can run the transpiled code called with
