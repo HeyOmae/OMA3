@@ -26,7 +26,7 @@ export const Info = (): JSX.Element => {
   }, [runner])
 
   return runner ? (
-    <form>
+    <form autoComplete="off">
       <Grid container>
         <Grid item xs={12}>
           <TextField
@@ -34,6 +34,7 @@ export const Info = (): JSX.Element => {
             label="Runner's name"
             required
             fullWidth
+            variant="filled"
             onBlur={saveToIDB}
             value={runner.name}
             onChange={({ target }) =>
@@ -43,12 +44,13 @@ export const Info = (): JSX.Element => {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            margin="normal"
             id="runner--description"
             label="Runner's description"
             multiline
             fullWidth
             rows={5}
-            variant="outlined"
+            variant="filled"
             onBlur={saveToIDB}
             value={runner.description}
             onChange={({ target }) =>

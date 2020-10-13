@@ -1,5 +1,6 @@
 import { FC } from "react"
 import { FormControlLabel, Typography, Grid, Switch } from "@material-ui/core"
+import styles from "./SpendingPointsToggle.module.css"
 
 export interface Props {
   toggleSpending: () => void
@@ -12,7 +13,9 @@ export const SpendingPointsToggle: FC<Props> = ({
 }) => (
   <Typography component="div">
     <Grid component="label" container alignItems="center" spacing={1}>
-      <Grid item>Adjustment</Grid>
+      <Grid item className={!isSpendingAdjustmentPoints ? styles.active : ""}>
+        Attribute
+      </Grid>
       <Grid item>
         <FormControlLabel
           value="Spend Points"
@@ -27,7 +30,9 @@ export const SpendingPointsToggle: FC<Props> = ({
           labelPlacement="top"
         />
       </Grid>
-      <Grid item>Attribute</Grid>
+      <Grid item className={isSpendingAdjustmentPoints ? styles.active : ""}>
+        Adjustment
+      </Grid>
     </Grid>
   </Typography>
 )

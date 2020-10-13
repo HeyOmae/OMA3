@@ -7,6 +7,7 @@
   --scan: #843784;
   --neon2: #ff00ff;
   --neon: #00eeff;
+  --shadowdistance: 0.09em;
 }
 @keyframes scanning {
   from {
@@ -29,7 +30,12 @@
   }
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
+  min-height: 100%;
   background: linear-gradient(
     to bottom,
     var(--scan2),
@@ -44,6 +50,7 @@ body {
 
 main {
   color: var(--neon);
+  overflow: auto;
 }
 
 main {
@@ -61,7 +68,7 @@ main {
 
 @keyframes glow {
   to {
-    text-shadow: var(--neon2) 1px 1px 5px;
+    text-shadow: var(--neon2) 0.06em 0.06em 0.2em;
   }
 }
 
@@ -70,12 +77,23 @@ h2,
 h3,
 h4,
 h5 {
+  margin-top: 0;
   padding: 0.5rem 1rem;
   color: white;
-  text-shadow: var(--neon2) 3px 3px 0;
+  text-shadow: var(--neon2) var(--shadowdistance) var(--shadowdistance) 0;
   animation: glow 0.7s infinite alternate;
   font-family: Audiowide;
   border-bottom: 1px var(--neon) solid;
   border-top-left-radius: 1rem;
   border-radius: 1rem;
+}
+
+input {
+  background-color: white;
+}
+
+.bad-stuff {
+  color: red;
+  text-shadow: black var(--shadowdistance) var(--shadowdistance) 0;
+  animation: glow 0.7s infinite alternate;
 }

@@ -11,23 +11,25 @@ export const DisplayPoints: FC<Props> = ({ runner }) => {
     () =>
       Object.values(runner.attributes ?? {}).reduce(
         (accumulator, { adjustment, points }) => [
-          accumulator[0] + adjustment,
-          accumulator[1] + points,
+          accumulator[0] - adjustment,
+          accumulator[1] - points,
         ],
-        [0, 0]
+        [
+          priorityData.metatypes[runner.priority.metatype].adjustmentPoints,
+          priorityData.attributes[runner.priority.attributes],
+        ]
       ),
     [runner.attributes]
   )
   return (
     <dl>
       <dt>Adjustment Points</dt>
-      <dd>
-        {priorityData.metatypes[runner.priority.metatype].adjustmentPoints -
-          adjustmentSpend}
+      <dd className={adjustmentSpend < 0 ? "bad-stuff" : ""}>
+        {adjustmentSpend}
       </dd>
       <dt>Attribute Points</dt>
-      <dd>
-        {priorityData.attributes[runner.priority.attributes] - attributeSpend}
+      <dd className={attributeSpend < 0 ? "bad-stuff" : ""}>
+        {attributeSpend}
       </dd>
     </dl>
   )
