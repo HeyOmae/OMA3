@@ -1,0 +1,4 @@
+.active {
+  font-weight: bolder;
+  text-shadow: var(--neon2) 2px 2px 0;
+}

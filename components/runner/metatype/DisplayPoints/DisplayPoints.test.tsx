@@ -36,4 +36,21 @@ describe("DisplayPoints", () => {
       getByText(searchRegexInNodes(/Attribute Points7/))
     ).toBeInTheDocument()
   })
+
+  it("should give highlight negative points as bad-stuff", () => {
+    const { getByText } = setup({
+      runner: {
+        ...mockedRunners[2],
+        attributes: {
+          ...mockedRunners[2].attributes,
+          Body: { adjustment: 1, points: 9 },
+          Strength: { adjustment: 2, points: 3 },
+          Logic: { adjustment: 2, points: 2 },
+        },
+      },
+    })
+
+    expect(getByText("-1")).toHaveClass("bad-stuff")
+    expect(getByText("-2")).toHaveClass("bad-stuff")
+  })
 })

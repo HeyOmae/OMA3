@@ -24,10 +24,21 @@ export const Home: FC = () => {
 
       <h1>Welcome to OMA3</h1>
 
-      <h2>
+      <small>
         Shadowrun 6<sup>th</sup> Edition Character Generator
-      </h2>
+      </small>
 
+      <p>
+        This is a web app for generating Shadowrun 6th Characters. You&apos;ll
+        need the core rule book to make sense out of any of this. You can
+        purchase a copy{" "}
+        <a href="https://www.drivethrurpg.com/product/286850/Shadowrun-Sixth-World-Core-Rulebook">
+          here
+        </a>
+        .
+      </p>
+
+      <h2>List of Runners</h2>
       <AllRunnersAccess>
         {({ runners, add }) => (
           <div>

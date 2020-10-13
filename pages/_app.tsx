@@ -1,5 +1,5 @@
 import { AppProps } from "next/app"
-import CssBaseline from "@material-ui/core/CssBaseline"
+import { CssBaseline, ThemeProvider, createMuiTheme } from "@material-ui/core"
 
 import "./styles.css"
 
@@ -26,11 +26,22 @@ if (typeof window !== "undefined") {
   })
 }
 
+const oma3Style = createMuiTheme({
+  overrides: {
+    MuiInputLabel: {
+      root: { color: "white" },
+    },
+    MuiInputBase: {
+      root: { color: "white" },
+    },
+  },
+})
+
 const App = ({ Component, pageProps }: AppProps): JSX.Element => (
-  <>
+  <ThemeProvider theme={oma3Style}>
     <CssBaseline />
     <Component {...pageProps} />
-  </>
+  </ThemeProvider>
 )
 
 export default App
