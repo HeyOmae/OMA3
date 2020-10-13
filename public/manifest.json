@@ -3,7 +3,7 @@
   "short_name": "OMA3",
   "theme_color": "#2feef4",
   "background_color": "#ffb3fa",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [
