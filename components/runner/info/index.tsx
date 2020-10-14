@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { useCallback, useRef } from "react"
 import { Grid, TextField } from "@material-ui/core"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import { CircularProgress } from "@material-ui/core"
@@ -19,31 +19,30 @@ export const Info = (): JSX.Element => {
         }
     }
   }, [])
-  const [runner, dispatch, save] = useRunnerAccess<string, string>(reducer)
-
-  const saveToIDB = useCallback(() => {
-    save(runner)
-  }, [runner])
+  const name = useRef<HTMLInputElement>()
+  const description = useRef<HTMLInputElement>()
+  const [runner, dispatch] = useRunnerAccess<string, string>(reducer)
 
   return runner ? (
     <form autoComplete="off">
       <Grid container>
         <Grid item xs={12}>
           <TextField
+            inputRef={name}
+            defaultValue={runner.name}
             id="runner--name"
             label="Runner's name"
             required
             fullWidth
             variant="filled"
-            onBlur={saveToIDB}
-            value={runner.name}
-            onChange={({ target }) =>
-              dispatch({ type: "updateName", payload: target.value })
+            onBlur={() =>
+              dispatch({ type: "updateName", payload: name.current.value })
             }
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
+            inputRef={description}
             margin="normal"
             id="runner--description"
             label="Runner's description"
@@ -51,11 +50,13 @@ export const Info = (): JSX.Element => {
             fullWidth
             rows={5}
             variant="filled"
-            onBlur={saveToIDB}
-            value={runner.description}
-            onChange={({ target }) =>
-              dispatch({ type: "updateDescription", payload: target.value })
+            onBlur={() =>
+              dispatch({
+                type: "updateDescription",
+                payload: description.current.value,
+              })
             }
+            defaultValue={runner.description}
           />
         </Grid>
       </Grid>

@@ -20,11 +20,7 @@ export type DispatchAction<T, P> = (action: Action<T, P>) => void
 
 type UseRunnerAccess = <T, P>(
   reducer: RunnerReducer<T, P>
-) => [
-  runner: Runner,
-  dispatch: DispatchAction<T, P>,
-  updateIndexedDb: (value: Runner, key?: any) => Promise<any>
-]
+) => [runner: Runner, dispatch: DispatchAction<T, P>]
 
 export const useRunnerAccess: UseRunnerAccess = <T, P>(reducer) => {
   const { getByID, update } = useIndexedDB("runners")
@@ -52,5 +48,9 @@ export const useRunnerAccess: UseRunnerAccess = <T, P>(reducer) => {
     return () => (isMounted = false)
   }, [id])
 
-  return [runner, dispatch, update]
+  useEffect(() => {
+    if (runner) update(runner)
+  }, [runner])
+
+  return [runner, dispatch]
 }

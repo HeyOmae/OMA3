@@ -13,7 +13,7 @@ describe("useRunnerAccess hook", () => {
   })
   const setup = () => {
     const Test = () => {
-      const [runner, dispatch, save] = useRunnerAccess<string, string>(
+      const [runner, dispatch] = useRunnerAccess<string, string>(
         (state, { type, payload }) => {
           switch (type) {
             case "updateName":
@@ -38,13 +38,6 @@ describe("useRunnerAccess hook", () => {
           >
             update name
           </button>
-          <button
-            onClick={() => {
-              save(runner)
-            }}
-          >
-            Save
-          </button>
         </div>
       ) : (
         <div>Loading...</div>
@@ -67,21 +60,7 @@ describe("useRunnerAccess hook", () => {
     // There should be a big ugly error log in the console if this test fails
   })
 
-  describe("reducer", () => {
-    it("should update a field on the object", async () => {
-      const { getByText } = setup()
-
-      await waitFor(() => expect(getByText("Bull")).toBeInTheDocument())
-
-      await waitFor(() => getByText("update name").click())
-
-      await waitFor(() =>
-        expect(getByText("William “Bull” MacCallister")).toBeInTheDocument()
-      )
-    })
-  })
-
-  it("should update indexedDb", async () => {
+  it("should update indexedDb when there are changes made to the runner", async () => {
     const { getByText } = setup()
 
     await waitFor(() => expect(getByText("Bull")).toBeInTheDocument())
@@ -96,12 +75,9 @@ describe("useRunnerAccess hook", () => {
     ).toBe(3)
 
     getByText("update name").click()
-    await waitFor(() =>
-      expect(getByText("William “Bull” MacCallister")).toBeInTheDocument()
-    )
-    getByText("Save").click()
 
     await waitFor(() => {
+      expect(getByText("William “Bull” MacCallister")).toBeInTheDocument()
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records.length
