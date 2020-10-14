@@ -6,6 +6,7 @@ import {
   BottomNavigationAction,
   Drawer,
   Button,
+  AppBar,
 } from "@material-ui/core"
 import {
   Delete,
@@ -17,8 +18,13 @@ import {
 } from "@material-ui/icons"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
+import styles from "./layout.module.css"
 
-export const Layout: FC = ({ children }) => (
+interface Props {
+  className?: string
+}
+
+export const Layout: FC<Props> = ({ children, className }) => (
   <Container>
     <Head>
       <meta charSet="utf-8" />
@@ -101,7 +107,7 @@ export const Layout: FC = ({ children }) => (
         href="https://fonts.googleapis.com/css?family=Audiowide"
       />
     </Head>
-    <main>{children}</main>
+    <main className={className}>{children}</main>
   </Container>
 )
 
@@ -121,14 +127,16 @@ export const RunnerLayout: FC = ({ children }) => {
   }, [nav])
   return (
     <>
-      <Layout>{children}</Layout>
-      <BottomNavigation
-        value={nav}
-        onChange={(e, selection: number) => setNav(selection)}
-      >
-        <BottomNavigationAction label="Home" icon={<Home />} />
-        <BottomNavigationAction label="Menu" icon={<Menu />} />
-      </BottomNavigation>
+      <Layout className={styles["with-app-bar"]}>{children}</Layout>
+      <AppBar position="fixed" color="primary">
+        <BottomNavigation
+          value={nav}
+          onChange={(e, selection: number) => setNav(selection)}
+        >
+          <BottomNavigationAction label="Home" icon={<Home />} />
+          <BottomNavigationAction label="Menu" icon={<Menu />} />
+        </BottomNavigation>
+      </AppBar>
       <Drawer
         anchor="bottom"
         open={nav === 1}

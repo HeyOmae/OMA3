@@ -34,6 +34,12 @@ const oma3Style = createMuiTheme({
     MuiInputBase: {
       root: { color: "white" },
     },
+    MuiAppBar: {
+      positionFixed: {
+        top: "auto",
+        bottom: 0,
+      },
+    },
   },
 })
 
