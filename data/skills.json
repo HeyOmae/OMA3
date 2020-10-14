@@ -1,0 +1,410 @@
+[
+  {
+     "name": "astral",
+     "attribute": "Intuition",
+     "category": "Magic",
+     "untrained": false,
+     "restrict": true,
+     "specializations": [
+        {
+           "name": "astral combat"
+        },
+        {
+           "name": "astral signatures"
+        },
+        {
+           "name": "emotional stress"
+        },
+        {
+           "name": "spirit types"
+        }
+     ]
+  },
+  {
+     "name": "athletics",
+     "attribute": "Agility",
+     "category": "Physical",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "climbing"
+        },
+        {
+           "name": "flying"
+        },
+        {
+           "name": "gymnastics"
+        },
+        {
+           "name": "sprinting"
+        },
+        {
+           "name": "swimming"
+        },
+        {
+           "name": "throwing"
+        },
+        {
+           "name": "archery"
+        }
+     ]
+  },
+  {
+     "name": "biotech",
+     "attribute": "Logic",
+     "category": "Technical",
+     "untrained": false,
+     "specializations": [
+        {
+           "name": "biotechnology"
+        },
+        {
+           "name": "cybertechnology"
+        },
+        {
+           "name": "first aid"
+        },
+        {
+           "name": "medicine"
+        }
+     ]
+  },
+  {
+     "name": "close combat",
+     "attribute": "Agility",
+     "category": "Combat",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "blades"
+        },
+        {
+           "name": "clubs"
+        },
+        {
+           "name": "unarmed"
+        }
+     ]
+  },
+  {
+     "name": "con",
+     "attribute": "Charisma",
+     "category": "Social",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "acting"
+        },
+        {
+           "name": "disguise"
+        },
+        {
+           "name": "impersonation"
+        },
+        {
+           "name": "performance"
+        }
+     ]
+  },
+  {
+     "name": "conjuring",
+     "attribute": "Magic",
+     "category": "Magic",
+     "untrained": false,
+     "restrict": true,
+     "specializations": [
+        {
+           "name": "banishing"
+        },
+        {
+           "name": "summoning"
+        }
+     ]
+  },
+  {
+     "name": "cracking",
+     "attribute": "Logic",
+     "category": "Technical",
+     "untrained": false,
+     "specializations": [
+        {
+           "name": "cybercombat"
+        },
+        {
+           "name": "electronic warfare"
+        },
+        {
+           "name": "hacking"
+        }
+     ]
+  },
+  {
+     "name": "electronics",
+     "attribute": "Logic",
+     "category": "Technical",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "computer"
+        },
+        {
+           "name": "hardware"
+        },
+        {
+           "name": "software"
+        }
+     ]
+  },
+  {
+     "name": "enchanting",
+     "attribute": "Magic",
+     "category": "Magic",
+     "untrained": false,
+     "restrict": true,
+     "specializations": [
+        {
+           "name": "alchemy"
+        },
+        {
+           "name": "artificing"
+        },
+        {
+           "name": "disenchanting"
+        }
+     ]
+  },
+  {
+     "name": "engineering",
+     "attribute": "Logic",
+     "category": "Technical",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "aeronautics mechanic"
+        },
+        {
+           "name": "armorer"
+        },
+        {
+           "name": "automotive mechanic"
+        },
+        {
+           "name": "demolitions"
+        },
+        {
+           "name": "gunnery"
+        },
+        {
+           "name": "industrial mechanic"
+        },
+        {
+           "name": "lockpicking"
+        },
+        {
+           "name": "nautical mechanic"
+        }
+     ]
+  },
+  {
+     "name": "exotic weapons",
+     "attribute": "Agility",
+     "category": "Combat",
+     "untrained": false
+  },
+  {
+     "name": "firearms",
+     "attribute": "Agility",
+     "category": "Combat",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "automatics",
+           "@subtypes": "MACHINE PISTOLS,LMG,MMG,HMG"
+        },
+        {
+           "name": "pistols",
+           "@subtypes": "TASERS,HOLDOUTS,PISTOLS LIGHT,PISTOLS HEAVY"
+        },
+        {
+           "name": "longarms"
+        },
+        {
+           "name": "rifles",
+           "@subtypes": "RIFLE ASSAULT,RIFLE HUNTING,RIFLE SNIPER"
+        },
+        {
+           "name": "shotguns",
+           "@subtypes": "SHOTGUNS"
+        }
+     ]
+  },
+  {
+     "name": "influence",
+     "attribute": "Charisma",
+     "category": "Social",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "etiquette"
+        },
+        {
+           "name": "instruction"
+        },
+        {
+           "name": "intimidation"
+        },
+        {
+           "name": "leadership"
+        },
+        {
+           "name": "negotiation"
+        }
+     ]
+  },
+  {
+     "name": "outdoors",
+     "attribute": "Intuition",
+     "category": "Physical",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "navigation"
+        },
+        {
+           "name": "survival"
+        },
+        {
+           "name": "tracking woods"
+        },
+        {
+           "name": "tracking desert"
+        },
+        {
+           "name": "tracking urban"
+        },
+        {
+           "name": "tracking other"
+        }
+     ]
+  },
+  {
+     "name": "perception",
+     "attribute": "Intuition",
+     "category": "Physical",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "visual"
+        },
+        {
+           "name": "aural"
+        },
+        {
+           "name": "tactile"
+        },
+        {
+           "name": "scent"
+        },
+        {
+           "name": "taste"
+        },
+        {
+           "name": "perception woods"
+        },
+        {
+           "name": "perception desert"
+        },
+        {
+           "name": "perception urban"
+        },
+        {
+           "name": "perception other"
+        }
+     ]
+  },
+  {
+     "name": "piloting",
+     "attribute": "Reaction",
+     "category": "Technical",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "ground craft"
+        },
+        {
+           "name": "aircraft"
+        },
+        {
+           "name": "watercraft"
+        }
+     ]
+  },
+  {
+     "name": "sorcery",
+     "attribute": "Magic",
+     "category": "Magic",
+     "untrained": false,
+     "restrict": true,
+     "specializations": [
+        {
+           "name": "counterspelling"
+        },
+        {
+           "name": "ritual spellcasting"
+        },
+        {
+           "name": "spellcasting"
+        }
+     ]
+  },
+  {
+     "name": "stealth",
+     "attribute": "Agility",
+     "category": "Physical",
+     "untrained": true,
+     "specializations": [
+        {
+           "name": "disguise"
+        },
+        {
+           "name": "palming"
+        },
+        {
+           "name": "sneaking"
+        },
+        {
+           "name": "camouflage"
+        }
+     ]
+  },
+  {
+     "name": "tasking",
+     "attribute": "Resonance",
+     "category": "Resonance",
+     "untrained": false,
+     "restrict": true,
+     "specializations": [
+        {
+           "name": "compiling"
+        },
+        {
+           "name": "decompiling"
+        },
+        {
+           "name": "registering"
+        }
+     ]
+  },
+  {
+     "name": "knowledge",
+     "attribute": "Logic",
+     "category": "Knowledge",
+     "untrained": false
+  },
+  {
+     "name": "language",
+     "attribute": "Logic",
+     "category": "Language",
+     "untrained": false
+  }
+]
