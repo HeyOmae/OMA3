@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import {
   FormControl,
   FormLabel,
@@ -20,7 +19,7 @@ const MAGRES = Symbol("MAGRES")
 const RESOURCES = Symbol("RESOURCES")
 
 export const PriorityTable = () => {
-  const [runner, dispatch, save] = useRunnerAccess<symbol, PriorityRating>(
+  const [runner, dispatch] = useRunnerAccess<symbol, PriorityRating>(
     (runner, { type, payload }) => {
       switch (type) {
         case METATYPE:
@@ -70,10 +69,6 @@ export const PriorityTable = () => {
       }
     }
   )
-
-  useEffect(() => {
-    if (runner) save(runner)
-  }, [runner])
 
   return runner ? (
     <div className={styles.priortiyTable}>

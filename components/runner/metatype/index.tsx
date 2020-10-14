@@ -7,7 +7,7 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import metatypeData from "../../../data/metatype.json"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import {
@@ -31,7 +31,7 @@ export interface Payload {
 }
 
 export const Metatype = () => {
-  const [runner, dispatch, save] = useRunnerAccess<symbol, Payload>(
+  const [runner, dispatch] = useRunnerAccess<symbol, Payload>(
     (runner, { type, payload }) => {
       switch (type) {
         case SET_METATYPE:
@@ -75,10 +75,6 @@ export const Metatype = () => {
   const [isSpendingAdjustmentPoints, setIsSpendingAdjustmentPoints] = useState(
     true
   )
-
-  useEffect(() => {
-    if (runner) save(runner)
-  }, [runner])
 
   return runner ? (
     runner.priority?.metatype ? (
