@@ -6,7 +6,7 @@ export type PhysicalAttributes = "Body" | "Agility" | "Reaction" | "Strength"
 
 export type MentalAttributes = "Willpower" | "Logic" | "Intuition" | "Charisma"
 
-export type SpecialAttributes = "Edge"
+export type SpecialAttributes = "Edge" | "Magic" | "Resonance"
 
 export type Attributes =
   | PhysicalAttributes
@@ -29,6 +29,20 @@ type Priority = Partial<Record<PriorityTypes, PriorityRating>>
 
 type RunnerAttributes = Record<Attributes, AttributeStats>
 
+interface Skill {
+  rating: number
+  attribute: {
+    primary: Attributes
+    secondary?: Attributes
+  }
+  specialization?: string
+  expertise?: string
+}
+
+type Skills = {
+  [skillName: string]: Skill
+}
+
 export interface Runner {
   id?: number
   name: string
@@ -36,6 +50,7 @@ export interface Runner {
   priority?: Priority
   metatype?: Metatypes
   attributes?: RunnerAttributes
+  skills?: Skills
 }
 
 export const initRunner: Runner = {
@@ -53,4 +68,6 @@ export const initRunnerAttributes: RunnerAttributes = {
   Intuition: { adjustment: 0, points: 0 },
   Charisma: { adjustment: 0, points: 0 },
   Edge: { adjustment: 0, points: 0 },
+  Magic: { adjustment: 0, points: 0 },
+  Resonance: { adjustment: 0, points: 0 },
 }
