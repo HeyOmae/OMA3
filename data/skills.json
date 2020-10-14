@@ -2,6 +2,7 @@
   {
      "name": "astral",
      "attribute": "Intuition",
+     "secondary": "Willpower",
      "category": "Magic",
      "untrained": false,
      "restrict": true,
@@ -23,6 +24,7 @@
   {
      "name": "athletics",
      "attribute": "Agility",
+     "secondary": "Strength",
      "category": "Physical",
      "untrained": true,
      "specializations": [
@@ -52,6 +54,7 @@
   {
      "name": "biotech",
      "attribute": "Logic",
+     "secondary": "Intuition",
      "category": "Technical",
      "untrained": false,
      "specializations": [
@@ -141,6 +144,7 @@
   {
      "name": "electronics",
      "attribute": "Logic",
+     "secondary": "Intuition",
      "category": "Technical",
      "untrained": true,
      "specializations": [
@@ -176,6 +180,7 @@
   {
      "name": "engineering",
      "attribute": "Logic",
+     "secondary": "Intuition",
      "category": "Technical",
      "untrained": true,
      "specializations": [
@@ -241,6 +246,7 @@
   {
      "name": "influence",
      "attribute": "Charisma",
+     "secondary": "Logic",
      "category": "Social",
      "untrained": true,
      "specializations": [
@@ -290,6 +296,7 @@
   {
      "name": "perception",
      "attribute": "Intuition",
+     "secondary": "Logic",
      "category": "Physical",
      "untrained": true,
      "specializations": [
