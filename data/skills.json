@@ -401,17 +401,5 @@
            "name": "registering"
         }
      ]
-  },
-  {
-     "name": "knowledge",
-     "attribute": "Logic",
-     "category": "Knowledge",
-     "untrained": false
-  },
-  {
-     "name": "language",
-     "attribute": "Logic",
-     "category": "Language",
-     "untrained": false
   }
 ]
