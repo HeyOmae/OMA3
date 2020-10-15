@@ -13,13 +13,29 @@ describe("<Skills/>", () => {
     return render(withTestRouter(<Skills />, { query: { id: "3" } }))
   }
 
-  // placeholder test, remove later, this is stupid in retrospective
-  it("should get the runner data", async () => {
+  it("should display a list of skills", () => {
     const { getByText } = setup()
 
-    await waitFor(() => {
-      getByText("FastJack").click()
-      expect(getByText("FastJack")).toBeInTheDocument()
+    waitFor(() => {
+      getByText("astral")
+      getByText("athletics")
+      getByText("biotech")
+      getByText("close combat")
+      getByText("con")
+      getByText("conjuring")
+      getByText("cracking")
+      getByText("electronics")
+      getByText("enchanting")
+      getByText("engineering")
+      getByText("exotic weapons")
+      getByText("firearms")
+      getByText("influence")
+      getByText("outdoors")
+      getByText("perception")
+      getByText("piloting")
+      getByText("sorcery")
+      getByText("stealth")
+      getByText("tasking")
     })
   })
 })
