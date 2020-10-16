@@ -12,9 +12,26 @@ import {
 } from "@material-ui/core"
 import { Add } from "@material-ui/icons"
 import skillsData from "../../../data/skills.json"
+import { Skills as SkillsType, Attributes } from "../../../types/runner"
+
+const ADD_SKILL = Symbol("ADD_SKILL")
 
 const Skills: FC = () => {
-  const [runner, dispatch] = useRunnerAccess((runner) => runner)
+  const [runner, dispatch] = useRunnerAccess<symbol, SkillsType>(
+    (runner, { type, payload }) => {
+      switch (type) {
+        case ADD_SKILL:
+          return {
+            ...runner,
+            skills: {
+              ...runner.skills,
+              ...payload,
+            },
+          }
+      }
+    }
+  )
+
   return runner ? (
     <TableContainer>
       <Table stickyHeader>
@@ -33,9 +50,20 @@ const Skills: FC = () => {
               <TableCell>
                 <IconButton
                   color="secondary"
-                  onClick={() => dispatch({ type: "", payload: "" })}
-                  aria-label="add skill"
-                  data-testid={`add-${name.replace(" ", "-")}`}
+                  onClick={() =>
+                    dispatch({
+                      type: ADD_SKILL,
+                      payload: {
+                        [name]: {
+                          rating: 1,
+                          attribute: {
+                            primary: attribute as Attributes,
+                          },
+                        },
+                      },
+                    })
+                  }
+                  aria-label={`add-${name.replace(" ", "-")}`}
                 >
                   <Add />
                 </IconButton>
