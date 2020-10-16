@@ -39,7 +39,7 @@ interface Skill {
   expertise?: string
 }
 
-type Skills = {
+export type Skills = {
   [skillName: string]: Skill
 }
 
