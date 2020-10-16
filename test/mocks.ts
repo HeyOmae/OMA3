@@ -12,6 +12,43 @@ export const mockedRunners: Runner[] = [
     description: "Not knowns by any other name",
     priority: {
       metatype: "E",
+      skills: "C",
+      attributes: "B",
+    },
+    attributes: {
+      Body: { adjustment: 0, points: 0 },
+      Agility: { adjustment: 0, points: 0 },
+      Reaction: { adjustment: 0, points: 0 },
+      Strength: { adjustment: 0, points: 0 },
+      Willpower: { adjustment: 0, points: 0 },
+      Logic: { adjustment: 0, points: 1 },
+      Intuition: { adjustment: 0, points: 5 },
+      Charisma: { adjustment: 0, points: 0 },
+      Edge: { adjustment: 0, points: 0 },
+      Magic: { adjustment: 0, points: 0 },
+      Resonance: { adjustment: 0, points: 0 },
+    },
+    skills: {
+      conjuring: {
+        rating: 6,
+        attribute: {
+          primary: "Magic",
+        },
+        specialization: "banishing",
+      },
+      sorcery: {
+        rating: 5,
+        attribute: {
+          primary: "Magic",
+        },
+      },
+      perception: {
+        rating: 4,
+        attribute: {
+          primary: "Intuition",
+          secondary: "Logic",
+        },
+      },
     },
   },
   {
@@ -25,6 +62,15 @@ export const mockedRunners: Runner[] = [
       skills: "B",
       "mag/res": "E",
       resources: "A",
+    },
+  },
+  {
+    id: 4,
+    name: "/dev/grrl",
+    description:
+      "Elvin decker from Boston. Hacker her way on to JackPoint at 16 and enter the shadows.",
+    priority: {
+      metatype: "D",
     },
   },
 ]

@@ -7,6 +7,7 @@ import {
 } from "../../../test/testUtils"
 import { Info } from "./"
 import { fireEvent } from "@testing-library/react"
+import { mockedRunners } from "../../../test/mocks"
 
 describe("<Info/>", () => {
   beforeAll(setupIndexedDB)
@@ -55,7 +56,7 @@ describe("<Info/>", () => {
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records.length
-      ).toBe(3)
+      ).toBe(mockedRunners.length)
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records[0].value.name

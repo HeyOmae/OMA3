@@ -341,7 +341,7 @@ describe("<Metatype/>", () => {
     })
 
     it("should tell the user attributes is not set", async () => {
-      const { getByText, queryByText, getByRole } = setup("2")
+      const { getByText, queryByText, getByRole } = setup("4")
 
       await waitFor(() => {
         expect(

@@ -6,6 +6,7 @@ import {
   waitFor,
   withTestRouter,
 } from "../../../test/testUtils"
+import { mockedRunners } from "../../../test/mocks"
 
 describe("<Delete/>", () => {
   beforeAll(setupIndexedDB)
@@ -23,7 +24,7 @@ describe("<Delete/>", () => {
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
         .records.length
-    ).toBe(3)
+    ).toBe(mockedRunners.length)
 
     getByText("Retire Runner").click()
 
@@ -31,7 +32,7 @@ describe("<Delete/>", () => {
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records.length
-      ).toBe(2)
+      ).toBe(mockedRunners.length - 1)
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records[0].value.id

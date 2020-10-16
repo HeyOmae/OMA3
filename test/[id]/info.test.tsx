@@ -2,6 +2,7 @@ import React from "react"
 import { render, withTestRouter, setupIndexedDB, waitFor } from "../testUtils"
 import { InfoPage } from "../../pages/[id]/info"
 import { fireEvent } from "@testing-library/react"
+import { mockedRunners } from "../mocks"
 
 describe("info page", () => {
   beforeAll((done) => {
@@ -52,7 +53,7 @@ describe("info page", () => {
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records.length
-      ).toBe(3)
+      ).toBe(mockedRunners.length)
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records[0].value.name
