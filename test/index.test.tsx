@@ -43,30 +43,37 @@ describe("Home page", () => {
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
         .records.length
-    ).toEqual(3)
+    ).toEqual(mockedRunners.length)
 
     fireEvent.click(getByText("Create Runner"))
 
     await waitFor(() =>
-      expect(push).toHaveBeenCalledWith("/[id]/info", "/4/info")
+      expect(push).toHaveBeenCalledWith(
+        "/[id]/info",
+        `/${mockedRunners.length + 1}/info`
+      )
     )
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
         .records.length
-    ).toEqual(4)
+    ).toEqual(mockedRunners.length + 1)
   })
 
   it("should not display the id if there is no name", async () => {
     const { getByText } = setup()
+    const runnerId = mockedRunners.length + 1
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
         .records.length
-    ).toEqual(4)
+    ).toEqual(runnerId)
 
     await waitFor(() =>
-      expect(getByText("4")).toHaveAttribute("href", "/4/info")
+      expect(getByText(runnerId.toString())).toHaveAttribute(
+        "href",
+        `/${runnerId}/info`
+      )
     )
   })
 })
