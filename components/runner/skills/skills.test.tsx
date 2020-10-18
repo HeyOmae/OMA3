@@ -5,6 +5,7 @@ import {
   withTestRouter,
   setupIndexedDB,
   waitFor,
+  SliderHelper,
 } from "../../../test/testUtils"
 
 describe("<Skills/>", () => {
@@ -96,6 +97,45 @@ describe("<Skills/>", () => {
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records[2].value.skills.con
       ).toBeUndefined()
+    })
+  })
+
+  describe("rating slider", () => {
+    it("should update the rating of the skill", async () => {
+      const { getByTestId, getByLabelText } = setup()
+
+      await waitFor(() => {
+        expect(getByLabelText("add cracking skill")).toBeInTheDocument()
+      })
+
+      getByLabelText("add cracking skill").click()
+
+      await waitFor(() => {
+        expect(getByTestId("cracking-rating")).toBeInTheDocument()
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[2].value.skills.cracking
+        ).toEqual({
+          rating: 1,
+          attribute: {
+            primary: "Logic",
+          },
+        })
+      })
+
+      SliderHelper.change(getByTestId("cracking-rating"), 5, 1, 6)
+
+      await waitFor(() => {
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[2].value.skills.cracking
+        ).toEqual({
+          rating: 5,
+          attribute: {
+            primary: "Logic",
+          },
+        })
+      })
     })
   })
 })
