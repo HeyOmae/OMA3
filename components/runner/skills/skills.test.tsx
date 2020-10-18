@@ -48,10 +48,10 @@ describe("<Skills/>", () => {
     ).toBeUndefined()
 
     await waitFor(() => {
-      expect(getByLabelText("add-firearms")).toBeInTheDocument()
+      expect(getByLabelText("add firearms skill")).toBeInTheDocument()
     })
 
-    getByLabelText("add-firearms").click()
+    getByLabelText("add firearms skill").click()
 
     await waitFor(() => {
       expect(
@@ -63,6 +63,39 @@ describe("<Skills/>", () => {
           primary: "Agility",
         },
       })
+    })
+  })
+
+  it("should remove a skill", async () => {
+    const { getByLabelText, queryByLabelText } = setup()
+
+    await waitFor(() => {
+      expect(getByLabelText("add con skill")).toBeInTheDocument()
+    })
+
+    getByLabelText("add con skill").click()
+
+    await waitFor(() => {
+      expect(getByLabelText("remove con skill")).toBeInTheDocument()
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[2].value.skills.con
+      ).toEqual({
+        rating: 1,
+        attribute: {
+          primary: "Charisma",
+        },
+      })
+    })
+
+    getByLabelText("remove con skill").click()
+
+    await waitFor(() => {
+      expect(queryByLabelText("remove con skill")).not.toBeInTheDocument()
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records[2].value.skills.con
+      ).toBeUndefined()
     })
   })
 })

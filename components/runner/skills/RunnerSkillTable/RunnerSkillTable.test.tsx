@@ -1,10 +1,12 @@
 import { RunnerSkillTable, Props } from "."
 import { render, within } from "../../../../test/testUtils"
 import { mockedRunners } from "../../../../test/mocks"
+import { REMOVE_SKILL } from ".."
 
 describe("<RunnerSkillTable/>", () => {
-  const setup = (props: Props = { skills: mockedRunners[1].skills }) =>
-    render(<RunnerSkillTable {...props} />)
+  const setup = (
+    props: Props = { skills: mockedRunners[1].skills, dispatch: jest.fn() }
+  ) => ({ ...render(<RunnerSkillTable {...props} />), props })
 
   it("should display a table with the runner's skills", async () => {
     const { getByText } = setup()
@@ -30,5 +32,16 @@ describe("<RunnerSkillTable/>", () => {
     expect(
       await perceptionRow.findByText("Intuition/Logic")
     ).toBeInTheDocument()
+  })
+
+  it("should dispatch to remove a skill", () => {
+    const { getByLabelText, props } = setup()
+
+    getByLabelText("remove conjuring skill").click()
+
+    expect(props.dispatch).toHaveBeenCalledWith({
+      type: REMOVE_SKILL,
+      payload: { skillToRemove: "conjuring" },
+    })
   })
 })

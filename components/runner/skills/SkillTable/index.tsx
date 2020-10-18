@@ -8,15 +8,14 @@ import {
   TableBody,
   IconButton,
 } from "@material-ui/core"
-import { ADD_SKILL } from ".."
+import { ADD_SKILL, ActionPayload } from ".."
 import { Attributes } from "../../../../types/runner"
 import skillsData from "../../../../data/skills.json"
-import { Skills } from "../../../../types/runner"
 import { Add } from "@material-ui/icons"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 
 interface Props {
-  dispatch: DispatchAction<symbol, Skills>
+  dispatch: DispatchAction<symbol, ActionPayload>
 }
 
 export const SkillTable: FC<Props> = ({ dispatch }) => (
@@ -41,16 +40,18 @@ export const SkillTable: FC<Props> = ({ dispatch }) => (
                   dispatch({
                     type: ADD_SKILL,
                     payload: {
-                      [name]: {
-                        rating: 1,
-                        attribute: {
-                          primary: attribute as Attributes,
+                      skillToAdd: {
+                        [name]: {
+                          rating: 1,
+                          attribute: {
+                            primary: attribute as Attributes,
+                          },
                         },
                       },
                     },
                   })
                 }
-                aria-label={`add-${name.replace(" ", "-")}`}
+                aria-label={`add ${name} skill`}
               >
                 <Add />
               </IconButton>

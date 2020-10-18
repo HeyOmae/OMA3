@@ -30,7 +30,8 @@
     "@typescript-eslint/no-unused-vars": [
       2,
       {
-        "argsIgnorePattern": "^_"
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
       }
     ],
     "no-console": [
