@@ -6,6 +6,7 @@ import {
   setupIndexedDB,
   waitFor,
   SliderHelper,
+  fireEvent,
 } from "../../../test/testUtils"
 
 describe("<Skills/>", () => {
@@ -135,6 +136,43 @@ describe("<Skills/>", () => {
             primary: "Logic",
           },
         })
+      })
+    })
+  })
+
+  describe("specialization", () => {
+    it("should set the specialization in indexedDB", async () => {
+      const { getByLabelText, getByTestId } = setup()
+
+      await waitFor(() => {
+        expect(getByLabelText("add close combat skill")).toBeInTheDocument()
+      })
+
+      getByLabelText("add close combat skill").click()
+
+      await waitFor(() => {
+        expect(getByTestId("close-combat-rating")).toBeInTheDocument()
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[2].value.skills["close combat"]
+        ).toEqual({
+          rating: 1,
+          attribute: {
+            primary: "Agility",
+          },
+        })
+      })
+
+      const specInput = getByLabelText("close combat specialization")
+
+      fireEvent.change(specInput, { target: { value: "blades" } })
+      fireEvent.keyDown(specInput, { key: "Enter" })
+
+      await waitFor(() => {
+        expect(
+          indexedDB._databases.get("omae").rawObjectStores.get("runners")
+            .records.records[2].value.skills["close combat"].specialization
+        ).toEqual("blades")
       })
     })
   })

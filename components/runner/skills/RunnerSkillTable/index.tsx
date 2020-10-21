@@ -9,10 +9,18 @@ import {
   TableBody,
   IconButton,
   Slider,
+  TextField,
 } from "@material-ui/core"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { ActionPayload, CHANGE_SKILL_RATING, REMOVE_SKILL } from ".."
+import {
+  ActionPayload,
+  CHANGE_SKILL_RATING,
+  CHANGE_SPECIALIZATION,
+  REMOVE_SKILL,
+} from ".."
 import { Remove } from "@material-ui/icons"
+import { Autocomplete } from "@material-ui/lab"
+import skillData from "../../../../data/skills.json"
 
 export interface Props {
   skills: Skills
@@ -34,6 +42,7 @@ export const RunnerSkillTable: FC<Props> = ({ skills, dispatch }) => (
       <TableBody>
         {Object.entries(skills).map(
           ([skillName, { rating, attribute, specialization }]) => {
+            const skillNameHyphen = skillName.replace(" ", "-")
             return (
               <TableRow key={skillName}>
                 <TableCell>
@@ -64,7 +73,7 @@ export const RunnerSkillTable: FC<Props> = ({ skills, dispatch }) => (
                     min={1}
                     max={6}
                     value={rating}
-                    data-testid={`${skillName}-rating`}
+                    data-testid={`${skillNameHyphen}-rating`}
                     onChange={(event, value) =>
                       dispatch({
                         type: CHANGE_SKILL_RATING,
@@ -81,7 +90,36 @@ export const RunnerSkillTable: FC<Props> = ({ skills, dispatch }) => (
                 <TableCell>{`${attribute.primary}${
                   attribute.secondary ? `/${attribute.secondary}` : ""
                 }`}</TableCell>
-                <TableCell>{specialization}</TableCell>
+                <TableCell>
+                  <Autocomplete
+                    freeSolo
+                    value={specialization ?? ""}
+                    id={`${skillNameHyphen}-specializations`}
+                    options={(
+                      skillData.find(({ name }) => name === skillName)
+                        .specializations ?? []
+                    ).map(({ name }) => name)}
+                    onChange={(event, spec) =>
+                      dispatch({
+                        type: CHANGE_SPECIALIZATION,
+                        payload: {
+                          specializationChange: {
+                            name: skillName,
+                            specialization: spec,
+                          },
+                        },
+                      })
+                    }
+                    renderInput={(params) => {
+                      return (
+                        <TextField
+                          {...params}
+                          label={`${skillName} specialization`}
+                        />
+                      )
+                    }}
+                  />
+                </TableCell>
               </TableRow>
             )
           }

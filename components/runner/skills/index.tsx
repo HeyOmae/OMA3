@@ -8,6 +8,7 @@ import { RunnerSkillTable } from "./RunnerSkillTable"
 export const ADD_SKILL = Symbol("ADD_SKILL")
 export const REMOVE_SKILL = Symbol("REMOVE_SKILL")
 export const CHANGE_SKILL_RATING = Symbol("CHANGE_SKILL_RATING")
+export const CHANGE_SPECIALIZATION = Symbol("CHANGE_SPECIALIZATION")
 
 export interface ActionPayload {
   skillToRemove?: string
@@ -15,6 +16,10 @@ export interface ActionPayload {
   skillToChangeRating?: {
     name: string
     rating: number
+  }
+  specializationChange?: {
+    name: string
+    specialization: string
   }
 }
 
@@ -48,6 +53,17 @@ const Skills: FC = () => {
               [payload.skillToChangeRating.name]: {
                 ...runner.skills[payload.skillToChangeRating.name],
                 rating: payload.skillToChangeRating.rating,
+              },
+            },
+          }
+        case CHANGE_SPECIALIZATION:
+          return {
+            ...runner,
+            skills: {
+              ...runner.skills,
+              [payload.specializationChange.name]: {
+                ...runner.skills[payload.specializationChange.name],
+                specialization: payload.specializationChange.specialization,
               },
             },
           }
