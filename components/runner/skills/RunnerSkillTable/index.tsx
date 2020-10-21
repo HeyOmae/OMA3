@@ -97,7 +97,7 @@ export const RunnerSkillTable: FC<Props> = ({ skills, dispatch }) => (
                     id={`${skillNameHyphen}-specializations`}
                     options={(
                       skillData.find(({ name }) => name === skillName)
-                        .specializations ?? []
+                        ?.specializations ?? []
                     ).map(({ name }) => name)}
                     onChange={(event, spec) =>
                       dispatch({

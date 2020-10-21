@@ -128,5 +128,36 @@ describe("<RunnerSkillTable/>", () => {
         },
       })
     })
+
+    it("should not error out when a skill is not listed in the skills.json", () => {
+      const { getByLabelText, props } = setup({
+        skills: {
+          cooking: {
+            rating: 5,
+            attribute: { primary: "Agility", secondary: "Intuition" },
+          },
+        },
+        dispatch: jest.fn(),
+      })
+
+      expect(getByLabelText("cooking specialization")).toBeInTheDocument()
+
+      fireEvent.change(getByLabelText("cooking specialization"), {
+        target: { value: "japanese cuisine" },
+      })
+      fireEvent.keyDown(getByLabelText("cooking specialization"), {
+        key: "Enter",
+      })
+
+      expect(props.dispatch).toHaveBeenCalledWith({
+        type: CHANGE_SPECIALIZATION,
+        payload: {
+          specializationChange: {
+            name: "cooking",
+            specialization: "japanese cuisine",
+          },
+        },
+      })
+    })
   })
 })
