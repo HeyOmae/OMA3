@@ -72,9 +72,10 @@ const Skills: FC = () => {
     }
   )
 
-  const skillPoints = useMemo(() => {
-    return PriorityData.skills[runner?.priority.skills]
-  }, [runner])
+  const skillPoints = useMemo(
+    () => PriorityData.skills[runner?.priority.skills],
+    [runner]
+  )
 
   return runner ? (
     <Grid container>

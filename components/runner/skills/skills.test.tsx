@@ -42,12 +42,12 @@ describe("<Skills/>", () => {
     })
   })
 
-  it("should display skill points", async () => {
+  it("should display the remaining skill points", async () => {
     const { getByText } = setup("2")
 
     await waitFor(() => {
       expect(
-        getByText(searchRegexInNodes(/Skill Points:20/))
+        getByText(searchRegexInNodes(/Skill Points:4\/20/))
       ).toBeInTheDocument()
     })
   })

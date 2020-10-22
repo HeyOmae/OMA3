@@ -14,7 +14,7 @@ describe("<RunnerSkillTable/>", () => {
   const setup = (
     props: Props = {
       skills: mockedRunners[1].skills,
-      skillPoints: 24,
+      skillPoints: 20,
       dispatch: jest.fn(),
     }
   ) => ({ ...render(<RunnerSkillTable {...props} />), props })
@@ -168,10 +168,10 @@ describe("<RunnerSkillTable/>", () => {
   })
 
   describe("skill points", () => {
-    it("should display the amount of skill points", async () => {
+    it("should display the remaining skill points", async () => {
       const { getByText } = setup()
 
-      expect(getByText(searchRegexInNodes(/Skill Points:24/)))
+      expect(getByText(searchRegexInNodes(/Skill Points:4\/20/)))
     })
   })
 })
