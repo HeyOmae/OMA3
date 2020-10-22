@@ -173,5 +173,15 @@ describe("<RunnerSkillTable/>", () => {
 
       expect(getByText(searchRegexInNodes(/Skill Points:4\/20/)))
     })
+
+    it("should alert the user about bad stuff when they've used too many skill points", () => {
+      const { getByText } = setup({
+        skills: mockedRunners[1].skills,
+        skillPoints: 12,
+        dispatch: jest.fn(),
+      })
+
+      expect(getByText("-4/12")).toHaveClass("bad-stuff")
+    })
   })
 })
