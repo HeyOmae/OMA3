@@ -187,4 +187,14 @@ describe("<Skills/>", () => {
       })
     })
   })
+
+  it("should warn the user if skill priority isn't set", async () => {
+    const { getByText } = setup("1")
+
+    await waitFor(() => {
+      expect(
+        getByText("You need to set the skills priority")
+      ).toBeInTheDocument()
+    })
+  })
 })

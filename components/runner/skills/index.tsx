@@ -5,6 +5,7 @@ import { Skills as SkillsType } from "../../../types/runner"
 import { SkillTable } from "./SkillTable"
 import { RunnerSkillTable } from "./RunnerSkillTable"
 import PriorityData from "../../../data/priorityTable.json"
+import { PriorityWarning } from "../../priorityWarning"
 
 export const ADD_SKILL = Symbol("ADD_SKILL")
 export const REMOVE_SKILL = Symbol("REMOVE_SKILL")
@@ -73,25 +74,29 @@ const Skills: FC = () => {
   )
 
   const skillPoints = useMemo(
-    () => PriorityData.skills[runner?.priority.skills],
+    () => PriorityData.skills[runner?.priority?.skills],
     [runner]
   )
 
   return runner ? (
-    <Grid container>
-      <Grid item xs={12} sm={6}>
-        <SkillTable dispatch={dispatch} />
-      </Grid>
-      {runner.skills && (
+    skillPoints ? (
+      <Grid container>
         <Grid item xs={12} sm={6}>
-          <RunnerSkillTable
-            skills={runner.skills}
-            skillPoints={skillPoints}
-            dispatch={dispatch}
-          />
+          <SkillTable dispatch={dispatch} />
         </Grid>
-      )}
-    </Grid>
+        {runner.skills && (
+          <Grid item xs={12} sm={6}>
+            <RunnerSkillTable
+              skills={runner.skills}
+              skillPoints={skillPoints}
+              dispatch={dispatch}
+            />
+          </Grid>
+        )}
+      </Grid>
+    ) : (
+      <PriorityWarning requirement="skills" />
+    )
   ) : (
     <CircularProgress />
   )
