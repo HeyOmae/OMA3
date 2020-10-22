@@ -336,7 +336,9 @@ describe("<Metatype/>", () => {
         expect(
           queryByRole("radiogroup", { name: "metatypes" })
         ).not.toBeInTheDocument()
-        expect(getByText("You need to set the metatype priority"))
+        expect(
+          getByText("You need to set the metatype priority")
+        ).toBeInTheDocument()
       })
     })
 
