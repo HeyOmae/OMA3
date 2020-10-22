@@ -7,12 +7,13 @@ import {
   waitFor,
   SliderHelper,
   fireEvent,
+  searchRegexInNodes,
 } from "../../../test/testUtils"
 
 describe("<Skills/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = () => {
-    return render(withTestRouter(<Skills />, { query: { id: "3" } }))
+  const setup = (id = "3") => {
+    return render(withTestRouter(<Skills />, { query: { id } }))
   }
 
   it("should display a list of skills", async () => {
@@ -38,6 +39,16 @@ describe("<Skills/>", () => {
       getByText("sorcery")
       getByText("stealth")
       getByText("tasking")
+    })
+  })
+
+  it("should display skill points", async () => {
+    const { getByText } = setup("2")
+
+    await waitFor(() => {
+      expect(
+        getByText(searchRegexInNodes(/Skill Points:20/))
+      ).toBeInTheDocument()
     })
   })
 

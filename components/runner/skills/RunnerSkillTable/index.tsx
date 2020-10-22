@@ -24,13 +24,22 @@ import skillData from "../../../../data/skills.json"
 
 export interface Props {
   skills: Skills
+  skillPoints: number
   dispatch: DispatchAction<symbol, ActionPayload>
 }
 
-export const RunnerSkillTable: FC<Props> = ({ skills, dispatch }) => (
+export const RunnerSkillTable: FC<Props> = ({
+  skills,
+  skillPoints,
+  dispatch,
+}) => (
   <TableContainer>
     <Table stickyHeader>
       <TableHead>
+        <TableRow>
+          <TableCell>Skill Points:</TableCell>
+          <TableCell>{skillPoints}</TableCell>
+        </TableRow>
         <TableRow>
           <TableCell>Remove</TableCell>
           <TableCell>Skill</TableCell>
