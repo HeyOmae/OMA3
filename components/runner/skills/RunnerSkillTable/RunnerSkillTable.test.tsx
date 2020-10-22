@@ -5,13 +5,18 @@ import {
   SliderHelper,
   fireEvent,
   getByText as globalGetByText,
+  searchRegexInNodes,
 } from "../../../../test/testUtils"
 import { mockedRunners } from "../../../../test/mocks"
 import { CHANGE_SKILL_RATING, CHANGE_SPECIALIZATION, REMOVE_SKILL } from ".."
 
 describe("<RunnerSkillTable/>", () => {
   const setup = (
-    props: Props = { skills: mockedRunners[1].skills, dispatch: jest.fn() }
+    props: Props = {
+      skills: mockedRunners[1].skills,
+      skillPoints: 24,
+      dispatch: jest.fn(),
+    }
   ) => ({ ...render(<RunnerSkillTable {...props} />), props })
 
   it("should display a table with the runner's skills", async () => {
@@ -137,6 +142,7 @@ describe("<RunnerSkillTable/>", () => {
             attribute: { primary: "Agility", secondary: "Intuition" },
           },
         },
+        skillPoints: 24,
         dispatch: jest.fn(),
       })
 
@@ -158,6 +164,14 @@ describe("<RunnerSkillTable/>", () => {
           },
         },
       })
+    })
+  })
+
+  describe("skill points", () => {
+    it("should display the amount of skill points", async () => {
+      const { getByText } = setup()
+
+      expect(getByText(searchRegexInNodes(/Skill Points:24/)))
     })
   })
 })
