@@ -51,6 +51,10 @@ describe("<RunnerLayout />", () => {
         "href",
         "/1/metatype"
       )
+      expect(getByText("Skills").closest("a")).toHaveAttribute(
+        "href",
+        "/1/skills"
+      )
       expect(getByText("Delete").closest("a")).toHaveAttribute(
         "href",
         "/1/delete"
