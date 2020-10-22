@@ -15,6 +15,7 @@ import {
   TableChart,
   AccountBox,
   AccessibilityNew,
+  DirectionsRun,
 } from "@material-ui/icons"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
@@ -167,6 +168,15 @@ export const RunnerLayout: FC = ({ children }) => {
             startIcon={<AccessibilityNew />}
           >
             Metatype & Attributes
+          </Button>
+        </NextLink>
+        <NextLink href="/[id]/skills" as={`/${query.id}/skills`} passHref>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={<DirectionsRun />}
+          >
+            Skills
           </Button>
         </NextLink>
         <NextLink href="/[id]/delete" as={`/${query.id}/delete`} passHref>
