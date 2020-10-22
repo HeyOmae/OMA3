@@ -21,6 +21,7 @@ import {
 import { Remove } from "@material-ui/icons"
 import { Autocomplete } from "@material-ui/lab"
 import skillData from "../../../../data/skills.json"
+import styles from "../skills.module.css"
 
 export interface Props {
   skills: Skills
@@ -42,12 +43,15 @@ export const RunnerSkillTable: FC<Props> = ({
   )
 
   return (
-    <TableContainer>
+    <TableContainer className={styles.container}>
       <Table stickyHeader>
         <TableHead>
           <TableRow>
-            <TableCell>Skill Points:</TableCell>
-            <TableCell>
+            <TableCell colSpan={2}>Skill Points:</TableCell>
+            <TableCell
+              colSpan={3}
+              className={pointsRemaining < 0 ? "bad-stuff" : ""}
+            >
               {pointsRemaining}/{skillPoints}
             </TableCell>
           </TableRow>
@@ -82,7 +86,7 @@ export const RunnerSkillTable: FC<Props> = ({
                     </IconButton>
                   </TableCell>
                   <TableCell>{skillName}</TableCell>
-                  <TableCell>
+                  <TableCell width="30%">
                     <Slider
                       defaultValue={rating}
                       getAriaValueText={(value) => value.toString()}
@@ -110,7 +114,7 @@ export const RunnerSkillTable: FC<Props> = ({
                   <TableCell>{`${attribute.primary}${
                     attribute.secondary ? `/${attribute.secondary}` : ""
                   }`}</TableCell>
-                  <TableCell>
+                  <TableCell width="30%">
                     <Autocomplete
                       freeSolo
                       value={specialization ?? ""}
@@ -135,6 +139,7 @@ export const RunnerSkillTable: FC<Props> = ({
                           <TextField
                             {...params}
                             label={`${skillName} specialization`}
+                            variant="filled"
                           />
                         )
                       }}

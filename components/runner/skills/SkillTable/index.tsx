@@ -13,13 +13,14 @@ import { Attributes } from "../../../../types/runner"
 import skillsData from "../../../../data/skills.json"
 import { Add } from "@material-ui/icons"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
+import styles from "../skills.module.css"
 
 interface Props {
   dispatch: DispatchAction<symbol, ActionPayload>
 }
 
 export const SkillTable: FC<Props> = ({ dispatch }) => (
-  <TableContainer>
+  <TableContainer className={styles.container}>
     <Table stickyHeader>
       <TableHead>
         <TableRow>
@@ -27,11 +28,10 @@ export const SkillTable: FC<Props> = ({ dispatch }) => (
           <TableCell>Skill Name</TableCell>
           <TableCell>Attribute</TableCell>
           <TableCell>Untrained</TableCell>
-          <TableCell>Specialization</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {skillsData.map(({ name, attribute, untrained, specializations }) => (
+        {skillsData.map(({ name, attribute, untrained }) => (
           <TableRow key={name}>
             <TableCell>
               <IconButton
@@ -59,9 +59,6 @@ export const SkillTable: FC<Props> = ({ dispatch }) => (
             <TableCell>{name}</TableCell>
             <TableCell>{attribute}</TableCell>
             <TableCell>{untrained ? "Yes" : "No"}</TableCell>
-            <TableCell>
-              {specializations && specializations.join(", ")}
-            </TableCell>
           </TableRow>
         ))}
       </TableBody>

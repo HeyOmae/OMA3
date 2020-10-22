@@ -80,12 +80,14 @@ const Skills: FC = () => {
 
   return runner ? (
     skillPoints ? (
-      <Grid container>
-        <Grid item xs={12} sm={6}>
+      <Grid container spacing={2}>
+        <Grid item sm={12} md={4}>
+          <h2>Skills to learn</h2>
           <SkillTable dispatch={dispatch} />
         </Grid>
         {runner.skills && (
-          <Grid item xs={12} sm={6}>
+          <Grid item sm={12} md={8}>
+            <h2>Known skills</h2>
             <RunnerSkillTable
               skills={runner.skills}
               skillPoints={skillPoints}
