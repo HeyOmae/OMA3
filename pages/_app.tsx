@@ -26,6 +26,8 @@ if (typeof window !== "undefined") {
   })
 }
 
+const NEON = "var(--neon)"
+
 const oma3Style = createMuiTheme({
   overrides: {
     MuiInputLabel: {
@@ -38,6 +40,18 @@ const oma3Style = createMuiTheme({
       positionFixed: {
         top: "auto",
         bottom: 0,
+      },
+    },
+    MuiTableCell: {
+      head: {
+        color: "white",
+      },
+      stickyHeader: {
+        backgroundColor: "black",
+        background: "var(--cyberGrad)",
+      },
+      body: {
+        color: NEON,
       },
     },
   },

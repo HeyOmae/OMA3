@@ -8,6 +8,12 @@
   --neon2: #ff00ff;
   --neon: #00eeff;
   --shadowdistance: 0.09em;
+  --cyberGrad: linear-gradient(
+    30deg,
+    var(--clearscan3),
+    var(--clearscan2) 50%,
+    var(--clearscan)
+  );
 }
 @keyframes scanning {
   from {
@@ -57,12 +63,7 @@ main {
   margin: 1rem 0;
   border: 1px var(--neon) solid;
   padding: 1rem;
-  background: linear-gradient(
-    30deg,
-    var(--clearscan3),
-    var(--clearscan2) 50%,
-    var(--clearscan)
-  );
+  background: var(--cyberGrad);
   border-radius: 1rem 0 1rem 0;
 }
 
