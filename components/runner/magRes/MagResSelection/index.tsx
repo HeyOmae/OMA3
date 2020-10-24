@@ -3,15 +3,21 @@ import { FormControlLabel, Radio, RadioGroup } from "@material-ui/core"
 import { SET_MAGRES } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { MagRes } from "../../../../types/MagRes"
+import { MagResPriorityTableOptions } from "../../../../types/PriorityRating"
 
 export interface Props {
   selected?: MagRes
+  priority: MagResPriorityTableOptions
   dispatch: DispatchAction<symbol, unknown>
 }
 
 type OnChange = (event: ChangeEvent<HTMLInputElement>, value: string) => void
 
-export const MagResSelection: FC<Props> = ({ selected = "", dispatch }) => {
+export const MagResSelection: FC<Props> = ({
+  selected = "",
+  priority,
+  dispatch,
+}) => {
   const onChange: OnChange = useCallback(
     (event, value) => {
       dispatch({ type: SET_MAGRES, payload: { magres: value } })
@@ -28,18 +34,30 @@ export const MagResSelection: FC<Props> = ({ selected = "", dispatch }) => {
         value={selected}
         onChange={onChange}
       >
-        <FormControlLabel value="Full" control={<Radio />} label="Full Mage" />
+        <FormControlLabel
+          value="Full"
+          control={<Radio />}
+          label="Full Mage"
+          disabled={!priority.Full}
+        />
         <FormControlLabel
           value="Aspected"
           control={<Radio />}
           label="Aspected"
+          disabled={!priority.Aspected}
         />
         <FormControlLabel
           value="Mystic Adept"
           control={<Radio />}
           label="Mystic Adept"
+          disabled={!priority["Mystic Adept"]}
         />
-        <FormControlLabel value="Adept" control={<Radio />} label="Adept" />
+        <FormControlLabel
+          value="Adept"
+          control={<Radio />}
+          label="Adept"
+          disabled={!priority.Adept}
+        />
       </RadioGroup>
       <h1>Emergent</h1>
       <RadioGroup
@@ -52,6 +70,7 @@ export const MagResSelection: FC<Props> = ({ selected = "", dispatch }) => {
           value="Technomancer"
           control={<Radio />}
           label="Technomancer"
+          disabled={!priority.Technomancer}
         />
       </RadioGroup>
       <h1>Mundane</h1>
@@ -61,7 +80,12 @@ export const MagResSelection: FC<Props> = ({ selected = "", dispatch }) => {
         value={selected}
         onChange={onChange}
       >
-        <FormControlLabel value="Mundane" control={<Radio />} label="Mundane" />
+        <FormControlLabel
+          value="Mundane"
+          control={<Radio />}
+          label="Mundane"
+          disabled={!priority.Mundane}
+        />
       </RadioGroup>
     </>
   )

@@ -1,11 +1,17 @@
 import { MagResSelection, Props } from "./index"
 import { render } from "../../../../test/testUtils"
 import { SET_MAGRES } from ".."
+import priorityData from "../../../../data/priorityTable.json"
+import { MagResPriorityTableOptions } from "../../../../types/PriorityRating"
 
 describe("Magic and Resonance", () => {
-  const setup = ({ selected }: Partial<Props> = {}) => {
+  const setup = ({
+    selected,
+    priority = priorityData["mag/res"].A as MagResPriorityTableOptions,
+  }: Partial<Props> = {}) => {
     const props: Props = {
       selected,
+      priority,
       dispatch: jest.fn(),
     }
     return { ...render(<MagResSelection {...props} />), props }
@@ -62,6 +68,38 @@ describe("Magic and Resonance", () => {
       type: SET_MAGRES,
       payload: { magres: "Technomancer" },
     })
+  })
+
+  it("should check the box  of the selected magres type", () => {
+    const { getByLabelText } = setup({ selected: "Technomancer" })
+
+    expect(getByLabelText("Technomancer")).toBeChecked()
+  })
+
+  it("should disable mundane when they have magres priority over E", () => {
+    const { getByLabelText } = setup({
+      priority: {
+        Full: ["Magic", 1],
+        Aspected: ["Magic", 2],
+        "Mystic Adept": ["Magic", 1],
+        Adept: ["Magic", 1],
+        Technomancer: ["Resonance", 1],
+      },
+    })
+
+    expect(getByLabelText("Mundane")).toBeDisabled()
+  })
+
+  it("should disable the other mag/res options if priority is set to E", () => {
+    const { getByLabelText, props } = setup({
+      priority: priorityData["mag/res"].E as MagResPriorityTableOptions,
+    })
+
+    expect(getByLabelText("Full Mage")).toBeDisabled()
+    expect(getByLabelText("Aspected")).toBeDisabled()
+    expect(getByLabelText("Mystic Adept")).toBeDisabled()
+    expect(getByLabelText("Adept")).toBeDisabled()
+    expect(getByLabelText("Technomancer")).toBeDisabled()
 
     getByLabelText("Mundane").click()
 
@@ -69,11 +107,5 @@ describe("Magic and Resonance", () => {
       type: SET_MAGRES,
       payload: { magres: "Mundane" },
     })
-  })
-
-  it("should check the box  of the selected magres type", () => {
-    const { getByLabelText } = setup({ selected: "Technomancer" })
-
-    expect(getByLabelText("Technomancer")).toBeChecked()
   })
 })
