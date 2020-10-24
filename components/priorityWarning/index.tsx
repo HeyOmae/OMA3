@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { PriorityTypes } from "../../types/runner"
+import { PriorityTypes } from "../../types/PriorityRating"
 import { Alert, AlertTitle } from "@material-ui/lab"
 import { Button } from "@material-ui/core"
 import { TableChart } from "@material-ui/icons"

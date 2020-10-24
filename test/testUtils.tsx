@@ -4,6 +4,7 @@ import { RouterContext } from "next/dist/next-server/lib/router-context"
 import { fireEvent, render } from "@testing-library/react"
 import { initDB } from "react-indexed-db"
 import { mockedRunners } from "./mocks"
+import { Runner } from "../types/runner"
 // import { ThemeProvider } from "my-ui-lib"
 // import { TranslationProvider } from "my-i18n-lib"
 // import defaultStrings from "i18n/en-x-default"
@@ -96,7 +97,7 @@ export const withTestRouter = (
       off: () => null,
       emit: () => null,
     },
-  }: Partial<NextRouter> = {}
+  }: Partial<NextRouter> = { query: { id: "1" } }
 ) => (
   <RouterContext.Provider
     value={{
@@ -161,3 +162,7 @@ export const searchRegexInNodes = (regex: RegExp) => (
 
   return nodeHasText && childrenDontHaveText
 }
+
+export const runnerFromDB = (id = 0): Runner =>
+  indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+    .records[id].value

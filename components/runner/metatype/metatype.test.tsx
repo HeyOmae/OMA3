@@ -6,6 +6,7 @@ import {
   withTestRouter,
   SliderHelper,
   searchRegexInNodes,
+  runnerFromDB,
 } from "../../../test/testUtils"
 import { initRunnerAttributes } from "../../../types/runner"
 import { Metatype } from "./index"
@@ -43,10 +44,7 @@ describe("<Metatype/>", () => {
   it("should save the metatype selection and set attributes to initial state", async () => {
     const { getByRole } = setup()
 
-    expect(
-      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records[2].value.metatype
-    ).toBeUndefined()
+    expect(runnerFromDB(2).metatype).toBeUndefined()
 
     await waitFor(() => {
       const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
@@ -54,14 +52,8 @@ describe("<Metatype/>", () => {
     })
 
     await waitFor(() => {
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[2].value.metatype
-      ).toEqual("Ork")
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[2].value.attributes
-      ).toEqual(initRunnerAttributes)
+      expect(runnerFromDB(2).metatype).toEqual("Ork")
+      expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
 
       const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
       expect(
@@ -78,10 +70,7 @@ describe("<Metatype/>", () => {
       })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.metatype
-        ).toEqual("Ork")
+        expect(runnerFromDB(2).metatype).toEqual("Ork")
       })
 
       await waitFor(() => {
@@ -101,14 +90,8 @@ describe("<Metatype/>", () => {
       it("should update indexedDB", async () => {
         const { getByTestId, getByText } = setup()
 
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.attributes
-        ).toEqual(initRunnerAttributes)
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.metatype
-        ).toEqual("Ork")
+        expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
+        expect(runnerFromDB(2).metatype).toEqual("Ork")
 
         await waitFor(() => {
           expect(
@@ -124,10 +107,10 @@ describe("<Metatype/>", () => {
         })
 
         await waitFor(() => {
-          expect(
-            indexedDB._databases.get("omae").rawObjectStores.get("runners")
-              .records.records[2].value.attributes.Body
-          ).toEqual({ adjustment: 2, points: 0 })
+          expect(runnerFromDB(2).attributes.Body).toEqual({
+            adjustment: 2,
+            points: 0,
+          })
         })
       })
 
@@ -164,10 +147,10 @@ describe("<Metatype/>", () => {
         SliderHelper.change(getByTestId("Willpower-slider"), 1, 1, 7)
 
         await waitFor(() => {
-          expect(
-            indexedDB._databases.get("omae").rawObjectStores.get("runners")
-              .records.records[2].value.attributes.Willpower
-          ).toEqual({ adjustment: 0, points: 3 })
+          expect(runnerFromDB(2).attributes.Willpower).toEqual({
+            adjustment: 0,
+            points: 3,
+          })
 
           expect(
             getByTestId("Willpower-slider").querySelector("input").value
@@ -189,14 +172,8 @@ describe("<Metatype/>", () => {
         getByLabelText("Spend Points").click()
 
         await waitFor(() => {
-          expect(
-            indexedDB._databases.get("omae").rawObjectStores.get("runners")
-              .records.records[2].value.attributes
-          ).toEqual(initRunnerAttributes)
-          expect(
-            indexedDB._databases.get("omae").rawObjectStores.get("runners")
-              .records.records[2].value.metatype
-          ).toEqual("Troll")
+          expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
+          expect(runnerFromDB(2).metatype).toEqual("Troll")
         })
 
         await waitFor(() => {
@@ -213,10 +190,10 @@ describe("<Metatype/>", () => {
         })
 
         await waitFor(() => {
-          expect(
-            indexedDB._databases.get("omae").rawObjectStores.get("runners")
-              .records.records[2].value.attributes.Body
-          ).toEqual({ adjustment: 0, points: 6 })
+          expect(runnerFromDB(2).attributes.Body).toEqual({
+            adjustment: 0,
+            points: 6,
+          })
         })
       })
 
@@ -253,10 +230,10 @@ describe("<Metatype/>", () => {
         SliderHelper.change(getByTestId("Agility-slider"), 1, 1, 7)
 
         await waitFor(() => {
-          expect(
-            indexedDB._databases.get("omae").rawObjectStores.get("runners")
-              .records.records[2].value.attributes.Agility
-          ).toEqual({ adjustment: 3, points: 0 })
+          expect(runnerFromDB(2).attributes.Agility).toEqual({
+            adjustment: 3,
+            points: 0,
+          })
 
           expect(
             getByTestId("Agility-slider").querySelector("input").value
@@ -295,10 +272,10 @@ describe("<Metatype/>", () => {
       })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.attributes.Agility
-        ).toEqual({ adjustment: 2, points: 4 })
+        expect(runnerFromDB(2).attributes.Agility).toEqual({
+          adjustment: 2,
+          points: 4,
+        })
       })
 
       // Test to see if you spend attribute first and then adjustment
@@ -320,10 +297,10 @@ describe("<Metatype/>", () => {
       })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.attributes.Charisma
-        ).toEqual({ adjustment: 2, points: 1 })
+        expect(runnerFromDB(2).attributes.Charisma).toEqual({
+          adjustment: 2,
+          points: 1,
+        })
       })
     })
   })

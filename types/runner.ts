@@ -1,47 +1,9 @@
-export type PriorityRating = "A" | "B" | "C" | "D" | "E"
+import { MagRes } from "./MagRes"
+import { Priority } from "./PriorityRating"
+import { RunnerAttributes } from "./RunnerAttributes"
+import { Skills } from "./Skill"
 
 export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
-
-export type PhysicalAttributes = "Body" | "Agility" | "Reaction" | "Strength"
-
-export type MentalAttributes = "Willpower" | "Logic" | "Intuition" | "Charisma"
-
-export type SpecialAttributes = "Edge" | "Magic" | "Resonance"
-
-export type Attributes =
-  | PhysicalAttributes
-  | MentalAttributes
-  | SpecialAttributes
-
-export interface AttributeStats {
-  adjustment: number
-  points: number
-}
-
-export type PriorityTypes =
-  | "metatype"
-  | "attributes"
-  | "skills"
-  | "mag/res"
-  | "resources"
-
-type Priority = Partial<Record<PriorityTypes, PriorityRating>>
-
-type RunnerAttributes = Record<Attributes, AttributeStats>
-
-interface Skill {
-  rating: number
-  attribute: {
-    primary: Attributes
-    secondary?: Attributes
-  }
-  specialization?: string
-  expertise?: string
-}
-
-export type Skills = {
-  [skillName: string]: Skill
-}
 
 export interface Runner {
   id?: number
@@ -51,6 +13,7 @@ export interface Runner {
   metatype?: Metatypes
   attributes?: RunnerAttributes
   skills?: Skills
+  magres?: MagRes
 }
 
 export const initRunner: Runner = {

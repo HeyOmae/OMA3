@@ -5,6 +5,7 @@ import {
   setupIndexedDB,
   waitFor,
   getByLabelText,
+  runnerFromDB,
 } from "../../../test/testUtils"
 import { PriorityTable } from "./"
 
@@ -37,10 +38,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByLabelText } = setup()
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.priority
-      ).toBeUndefined()
+      expect(runnerFromDB().priority).toBeUndefined()
       await waitFor(() => getByLabelText("Dwarf, Ork, Troll (13)").click())
 
       await waitFor(() => {
@@ -70,10 +68,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.attributes
-      ).toBeUndefined()
+      expect(runnerFromDB().attributes).toBeUndefined()
 
       await waitFor(() => {
         const attributeRadioInputs = getByRole("radiogroup", {
@@ -109,10 +104,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.priority.skills
-      ).toBeUndefined()
+      expect(runnerFromDB().priority.skills).toBeUndefined()
       await waitFor(() => {
         const skillRadioInputs = getByRole("radiogroup", {
           name: "skills",
@@ -167,10 +159,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.priority["mag/res"]
-      ).toBeUndefined()
+      expect(runnerFromDB().priority["mag/res"]).toBeUndefined()
       await waitFor(() => {
         const magresRadioInputs = getByRole("radiogroup", {
           name: "mag/res",
@@ -218,10 +207,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.priority.resources
-      ).toBeUndefined()
+      expect(runnerFromDB().priority.resources).toBeUndefined()
       await waitFor(() => {
         const skillRadioInputs = getByRole("radiogroup", {
           name: "resources",

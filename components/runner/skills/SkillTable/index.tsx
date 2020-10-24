@@ -9,7 +9,7 @@ import {
   IconButton,
 } from "@material-ui/core"
 import { ADD_SKILL, ActionPayload } from ".."
-import { Attributes } from "../../../../types/runner"
+import { Attributes } from "../../../../types/RunnerAttributes"
 import skillsData from "../../../../data/skills.json"
 import { Add } from "@material-ui/icons"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"

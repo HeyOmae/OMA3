@@ -8,6 +8,7 @@ import {
   SliderHelper,
   fireEvent,
   searchRegexInNodes,
+  runnerFromDB,
 } from "../../../test/testUtils"
 
 describe("<Skills/>", () => {
@@ -55,10 +56,7 @@ describe("<Skills/>", () => {
   it("should add a skill at rating 1 to the runner skills", async () => {
     const { getByLabelText } = setup()
 
-    expect(
-      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records[2].value.skills
-    ).toBeUndefined()
+    expect(runnerFromDB(2).skills).toBeUndefined()
 
     await waitFor(() => {
       expect(getByLabelText("add firearms skill")).toBeInTheDocument()
@@ -67,10 +65,7 @@ describe("<Skills/>", () => {
     getByLabelText("add firearms skill").click()
 
     await waitFor(() => {
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[2].value.skills.firearms
-      ).toEqual({
+      expect(runnerFromDB(2).skills.firearms).toEqual({
         rating: 1,
         attribute: {
           primary: "Agility",
@@ -90,10 +85,7 @@ describe("<Skills/>", () => {
 
     await waitFor(() => {
       expect(getByLabelText("remove con skill")).toBeInTheDocument()
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[2].value.skills.con
-      ).toEqual({
+      expect(runnerFromDB(2).skills.con).toEqual({
         rating: 1,
         attribute: {
           primary: "Charisma",
@@ -105,10 +97,7 @@ describe("<Skills/>", () => {
 
     await waitFor(() => {
       expect(queryByLabelText("remove con skill")).not.toBeInTheDocument()
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[2].value.skills.con
-      ).toBeUndefined()
+      expect(runnerFromDB(2).skills.con).toBeUndefined()
     })
   })
 
@@ -124,10 +113,7 @@ describe("<Skills/>", () => {
 
       await waitFor(() => {
         expect(getByTestId("cracking-rating")).toBeInTheDocument()
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.skills.cracking
-        ).toEqual({
+        expect(runnerFromDB(2).skills.cracking).toEqual({
           rating: 1,
           attribute: {
             primary: "Logic",
@@ -138,10 +124,7 @@ describe("<Skills/>", () => {
       SliderHelper.change(getByTestId("cracking-rating"), 5, 1, 6)
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.skills.cracking
-        ).toEqual({
+        expect(runnerFromDB(2).skills.cracking).toEqual({
           rating: 5,
           attribute: {
             primary: "Logic",
@@ -163,10 +146,7 @@ describe("<Skills/>", () => {
 
       await waitFor(() => {
         expect(getByTestId("close-combat-rating")).toBeInTheDocument()
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.skills["close combat"]
-        ).toEqual({
+        expect(runnerFromDB(2).skills["close combat"]).toEqual({
           rating: 1,
           attribute: {
             primary: "Agility",
@@ -180,10 +160,9 @@ describe("<Skills/>", () => {
       fireEvent.keyDown(specInput, { key: "Enter" })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[2].value.skills["close combat"].specialization
-        ).toEqual("blades")
+        expect(runnerFromDB(2).skills["close combat"].specialization).toEqual(
+          "blades"
+        )
       })
     })
   })

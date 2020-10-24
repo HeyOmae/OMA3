@@ -2,6 +2,7 @@ import React from "react"
 import { Delete } from "./"
 import {
   render,
+  runnerFromDB,
   setupIndexedDB,
   waitFor,
   withTestRouter,
@@ -33,10 +34,7 @@ describe("<Delete/>", () => {
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records.length
       ).toBe(mockedRunners.length - 1)
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.id
-      ).toBe(2)
+      expect(runnerFromDB().id).toBe(2)
     })
 
     await waitFor(() => {

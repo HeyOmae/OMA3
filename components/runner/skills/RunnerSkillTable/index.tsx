@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react"
-import { Skills } from "../../../../types/runner"
+import { Skills } from "../../../../types/Skill"
 import {
   TableContainer,
   Table,
