@@ -5,6 +5,7 @@ import {
   withTestRouter,
   screen,
   waitFor,
+  runnerFromDB,
 } from "../test/testUtils"
 import { useRunnerAccess } from "./useRunnerAccess"
 
@@ -66,10 +67,7 @@ describe("useRunnerAccess hook", () => {
 
     await waitFor(() => expect(getByText("Bull")).toBeInTheDocument())
 
-    expect(
-      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records[0].value.name
-    ).toEqual("Bull")
+    expect(runnerFromDB().name).toEqual("Bull")
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
         .records.length
@@ -83,10 +81,7 @@ describe("useRunnerAccess hook", () => {
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records.length
       ).toBe(mockedRunners.length)
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.name
-      ).toEqual("William “Bull” MacCallister")
+      expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
     })
   })
 })

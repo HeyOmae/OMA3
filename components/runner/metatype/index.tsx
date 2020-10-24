@@ -10,11 +10,8 @@ import {
 import { useState } from "react"
 import metatypeData from "../../../data/metatype.json"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import {
-  Attributes,
-  initRunnerAttributes,
-  Metatypes,
-} from "../../../types/runner"
+import { initRunnerAttributes, Metatypes } from "../../../types/runner"
+import { Attributes } from "../../../types/RunnerAttributes"
 import { DisplayPoints } from "./DisplayPoints"
 import { AttributeSelection } from "./AttributeSelection"
 import { SpendingPointsToggle } from "./SpendingPointsToggle"

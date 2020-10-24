@@ -4,6 +4,7 @@ import {
   withTestRouter,
   setupIndexedDB,
   waitFor,
+  runnerFromDB,
 } from "../../../test/testUtils"
 import { Info } from "./"
 import { fireEvent } from "@testing-library/react"
@@ -57,10 +58,7 @@ describe("<Info/>", () => {
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
           .records.length
       ).toBe(mockedRunners.length)
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.name
-      ).toEqual("William “Bull” MacCallister")
+      expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
     })
 
     fireEvent.change(getByLabelText("Runner's description"), {
@@ -72,10 +70,7 @@ describe("<Info/>", () => {
     fireEvent.blur(getByLabelText("Runner's description"))
 
     waitFor(() => {
-      expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records[0].value.description
-      ).toEqual(
+      expect(runnerFromDB().description).toEqual(
         "Retired runner. Working as a fixer in the Ork Underground in Seattle."
       )
     })

@@ -1,7 +1,8 @@
 import { FC } from "react"
 import { Payload, SPEND_ADJUSTMENT_POINTS, SPEND_ATTRIBUTE_POINTS } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { Attributes, Runner } from "../../../../types/runner"
+import { Runner } from "../../../../types/runner"
+import { Attributes } from "../../../../types/RunnerAttributes"
 import metatypeData from "../../../../data/metatype.json"
 import { Typography, Slider } from "@material-ui/core"
 

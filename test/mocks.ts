@@ -14,6 +14,7 @@ export const mockedRunners: Runner[] = [
       metatype: "E",
       skills: "C",
       attributes: "B",
+      "mag/res": "A",
     },
     attributes: {
       Body: { adjustment: 0, points: 0 },

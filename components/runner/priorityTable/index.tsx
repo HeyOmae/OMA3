@@ -7,7 +7,7 @@ import {
   CircularProgress,
 } from "@material-ui/core"
 import priorityData from "../../../data/priorityTable.json"
-import { PriorityRating } from "../../../types/runner"
+import { PriorityRating } from "../../../types/PriorityRating"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import styles from "./priorityTable.module.css"
 
