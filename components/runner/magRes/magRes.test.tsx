@@ -45,6 +45,39 @@ describe("Magic and Resonance", () => {
     })
   })
 
+  it("should reset the attributes between selecting magres options", async () => {
+    const { getByLabelText, getByTestId } = setup()
+
+    expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+
+    await waitFor(() => getByLabelText("Aspected"))
+    getByLabelText("Aspected").click()
+
+    await waitFor(() => getByTestId("Magic-attribute-slider"))
+    SliderHelper.change(getByTestId("Magic-attribute-slider"), 6, 5, 6)
+
+    await waitFor(() => {
+      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(1)
+    })
+
+    getByLabelText("Technomancer").click()
+
+    await waitFor(() => getByTestId("Resonance-attribute-slider"))
+    SliderHelper.change(getByTestId("Resonance-attribute-slider"), 5, 4, 6)
+
+    await waitFor(() => {
+      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(1)
+    })
+
+    getByLabelText("Mystic Adept").click()
+
+    await waitFor(() => {
+      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
+    })
+  })
+
   describe("setting attribute", () => {
     it("should set magic attribute", async () => {
       const { getByTestId, getByLabelText } = setup()
