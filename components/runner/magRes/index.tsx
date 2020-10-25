@@ -5,6 +5,7 @@ import { MagResSelection } from "./MagResSelection"
 import priorityData from "../../../data/priorityTable.json"
 import { MagResPriorityTableOptions } from "../../../types/PriorityRating"
 import { MagResAttributeSlider } from "./MagResAttributeSlider"
+import { initRunnerAttribute } from "../../../types/runner"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -20,7 +21,15 @@ export const MagRes = () => {
     (runner, { type, payload }) => {
       switch (type) {
         case SET_MAGRES:
-          return { ...runner, magres: payload.magres }
+          return {
+            ...runner,
+            magres: payload.magres,
+            attributes: {
+              ...runner.attributes,
+              Magic: initRunnerAttribute,
+              Resonance: initRunnerAttribute,
+            },
+          }
         case SET_MAGIC:
           return {
             ...runner,

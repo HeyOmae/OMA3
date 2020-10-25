@@ -1,6 +1,6 @@
 import { MagRes } from "./MagRes"
 import { Priority } from "./PriorityRating"
-import { RunnerAttributes } from "./RunnerAttributes"
+import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
 import { Skills } from "./Skill"
 
 export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
@@ -20,17 +20,18 @@ export const initRunner: Runner = {
   name: "",
   description: "",
 }
+export const initRunnerAttribute: AttributeStats = { adjustment: 0, points: 0 }
 
 export const initRunnerAttributes: RunnerAttributes = {
-  Body: { adjustment: 0, points: 0 },
-  Agility: { adjustment: 0, points: 0 },
-  Reaction: { adjustment: 0, points: 0 },
-  Strength: { adjustment: 0, points: 0 },
-  Willpower: { adjustment: 0, points: 0 },
-  Logic: { adjustment: 0, points: 0 },
-  Intuition: { adjustment: 0, points: 0 },
-  Charisma: { adjustment: 0, points: 0 },
-  Edge: { adjustment: 0, points: 0 },
-  Magic: { adjustment: 0, points: 0 },
-  Resonance: { adjustment: 0, points: 0 },
+  Body: initRunnerAttribute,
+  Agility: initRunnerAttribute,
+  Reaction: initRunnerAttribute,
+  Strength: initRunnerAttribute,
+  Willpower: initRunnerAttribute,
+  Logic: initRunnerAttribute,
+  Intuition: initRunnerAttribute,
+  Charisma: initRunnerAttribute,
+  Edge: initRunnerAttribute,
+  Magic: initRunnerAttribute,
+  Resonance: initRunnerAttribute,
 }
