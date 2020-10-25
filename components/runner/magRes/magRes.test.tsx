@@ -5,6 +5,7 @@ import {
   setupIndexedDB,
   withTestRouter,
   runnerFromDB,
+  SliderHelper,
 } from "../../../test/testUtils"
 
 describe("Magic and Resonance", () => {
@@ -27,16 +28,51 @@ describe("Magic and Resonance", () => {
     })
   })
 
-  it("should set the magres on the runner", async () => {
-    const { getByLabelText } = setup()
-
+  it("should set the magres on the runner and display magic slider", async () => {
+    const { getByLabelText, queryByTestId } = setup()
     await waitFor(() => {
-      getByLabelText("Full Mage").click()
+      getByLabelText("Full Mage")
     })
+
+    expect(queryByTestId("Magic-attribute=slider")).not.toBeInTheDocument()
+    getByLabelText("Full Mage").click()
 
     await waitFor(() => {
       expect(getByLabelText("Full Mage")).toBeChecked()
       expect(runnerFromDB(1).magres).toEqual("Full")
+
+      expect(queryByTestId("Magic-attribute-slider")).toBeInTheDocument()
+    })
+  })
+
+  describe("setting attribute", () => {
+    it("should set magic attribute", async () => {
+      const { getByTestId, getByLabelText } = setup()
+      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+
+      await waitFor(() => getByLabelText("Adept"))
+      getByLabelText("Adept").click()
+
+      await waitFor(() => getByTestId("Magic-attribute-slider"))
+      SliderHelper.change(getByTestId("Magic-attribute-slider"), 6, 4, 6)
+
+      await waitFor(() => {
+        expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(2)
+      })
+    })
+    it("should set resonance attribute", async () => {
+      const { getByTestId, getByLabelText } = setup()
+      expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
+
+      await waitFor(() => getByLabelText("Technomancer"))
+      getByLabelText("Technomancer").click()
+
+      await waitFor(() => getByTestId("Resonance-attribute-slider"))
+      SliderHelper.change(getByTestId("Resonance-attribute-slider"), 6, 4, 6)
+
+      await waitFor(() => {
+        expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(2)
+      })
     })
   })
 })
