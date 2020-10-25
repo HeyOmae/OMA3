@@ -4,11 +4,12 @@ import { SET_MAGRES } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { MagRes } from "../../../../types/MagRes"
 import { MagResPriorityTableOptions } from "../../../../types/PriorityRating"
+import { Payload } from "../"
 
 export interface Props {
   selected?: MagRes
   priority: MagResPriorityTableOptions
-  dispatch: DispatchAction<symbol, unknown>
+  dispatch: DispatchAction<symbol, Payload>
 }
 
 type OnChange = (event: ChangeEvent<HTMLInputElement>, value: string) => void
@@ -19,7 +20,7 @@ export const MagResSelection: FC<Props> = ({
   dispatch,
 }) => {
   const onChange: OnChange = useCallback(
-    (event, value) => {
+    (event, value: MagRes) => {
       dispatch({ type: SET_MAGRES, payload: { magres: value } })
     },
     [dispatch]
