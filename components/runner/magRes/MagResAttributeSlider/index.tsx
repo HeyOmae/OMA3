@@ -2,10 +2,13 @@ import { FC } from "react"
 import { Slider } from "@material-ui/core"
 import { Payload, SET_MAGIC, SET_RESONANCE } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { SpecialAttributes } from "../../../../types/RunnerAttributes"
+import {
+  RunnerAttributes,
+  SpecialAttributes,
+} from "../../../../types/RunnerAttributes"
 
 export interface Props {
-  adjustmentPoints: number
+  attributes: RunnerAttributes
   attribute: SpecialAttributes
   min: number
   max: number
@@ -13,7 +16,7 @@ export interface Props {
 }
 
 export const MagResAttributeSlider: FC<Props> = ({
-  adjustmentPoints,
+  attributes,
   attribute,
   min,
   max,
@@ -22,7 +25,7 @@ export const MagResAttributeSlider: FC<Props> = ({
   <>
     <h1>{attribute}</h1>
     <Slider
-      value={min + adjustmentPoints}
+      value={min + attributes[attribute].adjustment}
       aria-labelledby={`${attribute} attribute`}
       getAriaValueText={(value) => value.toString()}
       marks

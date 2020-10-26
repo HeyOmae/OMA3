@@ -72,9 +72,7 @@ export const MagRes = () => {
           attribute={priority[runner.magres][0]}
           min={priority[runner.magres][1]}
           max={6}
-          adjustmentPoints={
-            runner.attributes[priority[runner.magres][0]].adjustment
-          }
+          attributes={runner.attributes}
           dispatch={dispatch}
         />
       )}

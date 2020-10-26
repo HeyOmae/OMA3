@@ -1,14 +1,15 @@
 import { MagResAttributeSlider, Props } from "./index"
 import { render, SliderHelper } from "../../../../test/testUtils"
 import { SET_MAGIC, SET_RESONANCE } from ".."
+import { mockedRunners } from "../../../../test/mocks"
 
 describe("Magic/Resonance Attribute Slider", () => {
   const setup = ({
     attribute = "Magic",
-    adjustmentPoints = 0,
+    attributes = mockedRunners[1].attributes,
   }: Partial<Props> = {}) => {
     const props: Props = {
-      adjustmentPoints,
+      attributes,
       attribute,
       min: 4,
       max: 6,
@@ -28,7 +29,12 @@ describe("Magic/Resonance Attribute Slider", () => {
     })
 
     it("should set value based off adjustment points", () => {
-      const { getByTestId } = setup({ adjustmentPoints: 2 })
+      const { getByTestId } = setup({
+        attributes: {
+          ...mockedRunners[1].attributes,
+          Magic: { adjustment: 2, points: 0 },
+        },
+      })
 
       expect(
         getByTestId("Magic-attribute-slider").querySelector("input").value
@@ -59,8 +65,11 @@ describe("Magic/Resonance Attribute Slider", () => {
 
     it("should set value based off adjustment points", () => {
       const { getByTestId } = setup({
-        adjustmentPoints: 2,
         attribute: "Resonance",
+        attributes: {
+          ...mockedRunners[1].attributes,
+          Resonance: { adjustment: 2, points: 0 },
+        },
       })
 
       expect(
