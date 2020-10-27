@@ -55,6 +55,10 @@ describe("<RunnerLayout />", () => {
         "href",
         "/1/skills",
       )
+      expect(getByText("Magic & Resonance").closest("a")).toHaveAttribute(
+        "href",
+        "/1/magres",
+      )
       expect(getByText("Delete").closest("a")).toHaveAttribute(
         "href",
         "/1/delete",
