@@ -6,8 +6,10 @@ import {
   RunnerAttributes,
   SpecialAttributes,
 } from "../../../../types/RunnerAttributes"
+import { useSpendPoints } from "../../../../hooks/useSpendPoints"
 
 export interface Props {
+  adjustmentPoints: number
   attributes: RunnerAttributes
   attribute: SpecialAttributes
   min: number
@@ -16,29 +18,39 @@ export interface Props {
 }
 
 export const MagResAttributeSlider: FC<Props> = ({
+  adjustmentPoints,
   attributes,
   attribute,
   min,
   max,
   dispatch,
-}) => (
-  <>
-    <h1>{attribute}</h1>
-    <Slider
-      value={min + attributes[attribute].adjustment}
-      aria-labelledby={`${attribute} attribute`}
-      getAriaValueText={(value) => value.toString()}
-      marks
-      defaultValue={min}
-      min={min}
-      max={max}
-      data-testid={`${attribute}-attribute-slider`}
-      onChange={(event, value) =>
-        dispatch({
-          type: attribute === "Magic" ? SET_MAGIC : SET_RESONANCE,
-          payload: { adjustment: +value - min },
-        })
-      }
-    />
-  </>
-)
+}) => {
+  const [adjustmentPointsLeft] = useSpendPoints(adjustmentPoints, 0, attributes)
+  return (
+    <>
+      <h1>{attribute}</h1>
+      <dl>
+        <dt>Adjustment Points</dt>
+        <dd className={adjustmentPointsLeft < 0 ? "bad-stuff" : ""}>
+          {adjustmentPointsLeft}/{adjustmentPoints}
+        </dd>
+      </dl>
+      <Slider
+        value={min + attributes[attribute].adjustment}
+        aria-labelledby={`${attribute} attribute`}
+        getAriaValueText={(value) => value.toString()}
+        marks
+        defaultValue={min}
+        min={min}
+        max={max}
+        data-testid={`${attribute}-attribute-slider`}
+        onChange={(event, value) =>
+          dispatch({
+            type: attribute === "Magic" ? SET_MAGIC : SET_RESONANCE,
+            payload: { adjustment: +value - min },
+          })
+        }
+      />
+    </>
+  )
+}
