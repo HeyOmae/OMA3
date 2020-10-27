@@ -6,6 +6,7 @@ import priorityData from "../../../data/priorityTable.json"
 import { MagResPriorityTableOptions } from "../../../types/PriorityRating"
 import { MagResAttributeSlider } from "./MagResAttributeSlider"
 import { initRunnerAttribute } from "../../../types/runner"
+import { PriorityWarning } from "../../priorityWarning"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -56,11 +57,19 @@ export const MagRes = () => {
     },
   )
 
+  // This is kind of ugly. Refactor later or something
+  if (!runner) {
+    return <CircularProgress />
+  } else if (!runner.priority?.metatype) {
+    return <PriorityWarning requirement="metatype" />
+  } else if (!runner.priority["mag/res"]) {
+    return <PriorityWarning requirement="mag/res" />
+  }
   const priority = priorityData["mag/res"][
-    runner?.priority["mag/res"]
+    runner.priority["mag/res"]
   ] as MagResPriorityTableOptions
 
-  return runner ? (
+  return (
     <>
       <MagResSelection
         selected={runner.magres}
@@ -80,8 +89,6 @@ export const MagRes = () => {
         />
       )}
     </>
-  ) : (
-    <CircularProgress />
   )
 }
 

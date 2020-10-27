@@ -9,7 +9,8 @@ import {
 } from "../../../test/testUtils"
 
 describe("Magic and Resonance", () => {
-  const setup = () => render(withTestRouter(<MagRes />, { query: { id: "2" } }))
+  const setup = (id = "2") =>
+    render(withTestRouter(<MagRes />, { query: { id } }))
   beforeAll(setupIndexedDB)
   it("should display magic types, technomancer, and mundane selection", async () => {
     const { getByText, getAllByText } = setup()
@@ -118,6 +119,23 @@ describe("Magic and Resonance", () => {
       await waitFor(() => {
         expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(2)
         expect(getByText("-1/1")).toHaveClass("bad-stuff")
+      })
+    })
+  })
+
+  describe("runner priority checks", () => {
+    it("should make sure the metatype is set", async () => {
+      const { getByText } = setup("1")
+
+      await waitFor(() => {
+        expect(getByText("You need to set the metatype priority"))
+      })
+    })
+
+    it("should make sure the mag/res is set", async () => {
+      const { getByText } = setup("4")
+      await waitFor(() => {
+        expect(getByText("You need to set the mag/res priority"))
       })
     })
   })

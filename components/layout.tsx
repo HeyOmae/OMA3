@@ -16,6 +16,7 @@ import {
   AccountBox,
   AccessibilityNew,
   DirectionsRun,
+  FlashOn,
 } from "@material-ui/icons"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
@@ -177,6 +178,11 @@ export const RunnerLayout: FC = ({ children }) => {
             startIcon={<DirectionsRun />}
           >
             Skills
+          </Button>
+        </NextLink>
+        <NextLink href="/[id]/magres" as={`/${query.id}/magres`} passHref>
+          <Button variant="contained" color="primary" startIcon={<FlashOn />}>
+            Magic & Resonance
           </Button>
         </NextLink>
         <NextLink href="/[id]/delete" as={`/${query.id}/delete`} passHref>
