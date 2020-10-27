@@ -76,18 +76,21 @@ export const MagRes = () => {
         dispatch={dispatch}
         priority={priority}
       />
-      {runner.magres && (
-        <MagResAttributeSlider
-          adjustmentPoints={
-            priorityData.metatypes[runner.priority.metatype].adjustmentPoints
-          }
-          attribute={priority[runner.magres][0]}
-          min={priority[runner.magres][1]}
-          max={6}
-          attributes={runner.attributes}
-          dispatch={dispatch}
-        />
-      )}
+      {runner.magres &&
+        (runner.magres === "Mundane" ? (
+          <h1>Nothing Special Here...</h1>
+        ) : (
+          <MagResAttributeSlider
+            adjustmentPoints={
+              priorityData.metatypes[runner.priority.metatype].adjustmentPoints
+            }
+            attribute={priority[runner.magres][0]}
+            min={priority[runner.magres][1]}
+            max={6}
+            attributes={runner.attributes}
+            dispatch={dispatch}
+          />
+        ))}
     </>
   )
 }

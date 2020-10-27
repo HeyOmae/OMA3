@@ -121,6 +121,18 @@ describe("Magic and Resonance", () => {
         expect(getByText("-1/1")).toHaveClass("bad-stuff")
       })
     })
+    it("should hide this sections for mundanes", async () => {
+      const { getByLabelText, getByText } = setup("3")
+
+      await waitFor(() => {
+        getByLabelText("Mundane")
+      })
+      getByLabelText("Mundane").click()
+
+      await waitFor(() => {
+        expect(getByText("Nothing Special Here...")).toBeInTheDocument()
+      })
+    })
   })
 
   describe("runner priority checks", () => {
