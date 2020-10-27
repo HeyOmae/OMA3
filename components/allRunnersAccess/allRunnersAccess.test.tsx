@@ -27,7 +27,7 @@ describe("<AllRunnersAccess/>", () => {
             </li>
           </ul>
         )}
-      </AllRunnersAccess>
+      </AllRunnersAccess>,
     )
   }
   it("should return a list of runners", async () => {

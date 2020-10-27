@@ -11,7 +11,7 @@ const AllRunnersAccess = dynamic(
   () => import("../components/allRunnersAccess"),
   {
     ssr: false,
-  }
+  },
 )
 
 export const Home: FC = () => {

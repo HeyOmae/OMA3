@@ -22,16 +22,16 @@ describe("<PriorityTable/>", () => {
       await waitFor(() => {
         expect(getByLabelText("Dwarf, Ork, Troll (13)")).toBeInTheDocument()
         expect(
-          getByLabelText("Dwarf, Elf, Ork, Troll (11)")
+          getByLabelText("Dwarf, Elf, Ork, Troll (11)"),
         ).toBeInTheDocument()
         expect(
-          getByLabelText("Dwarf, Elf, Human, Ork, Troll (9)")
+          getByLabelText("Dwarf, Elf, Human, Ork, Troll (9)"),
         ).toBeInTheDocument()
         expect(
-          getByLabelText("Dwarf, Elf, Human, Ork, Troll (4)")
+          getByLabelText("Dwarf, Elf, Human, Ork, Troll (4)"),
         ).toBeInTheDocument()
         expect(
-          getByLabelText("Dwarf, Elf, Human, Ork, Troll (1)")
+          getByLabelText("Dwarf, Elf, Human, Ork, Troll (1)"),
         ).toBeInTheDocument()
       })
     })
@@ -44,7 +44,7 @@ describe("<PriorityTable/>", () => {
       await waitFor(() => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority
+            .records.records[0].value.priority,
         ).toEqual({ metatype: "A" })
       })
     })
@@ -80,7 +80,7 @@ describe("<PriorityTable/>", () => {
       await waitFor(() => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.attributes
+            .records.records[0].value.priority.attributes,
         ).toEqual("B")
       })
     })
@@ -115,7 +115,7 @@ describe("<PriorityTable/>", () => {
       await waitFor(() => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.skills
+            .records.records[0].value.priority.skills,
         ).toEqual("C")
       })
     })
@@ -132,26 +132,26 @@ describe("<PriorityTable/>", () => {
         expect(
           getByLabelText(
             magresRadioInputs,
-            "Full: 4 Magic, Aspected: 5 Magic, Mystic Adept: 4 Magic, Adept: 4 Magic, Technomancer: 4 Resonance"
-          )
+            "Full: 4 Magic, Aspected: 5 Magic, Mystic Adept: 4 Magic, Adept: 4 Magic, Technomancer: 4 Resonance",
+          ),
         ).toBeInTheDocument()
         expect(
           getByLabelText(
             magresRadioInputs,
-            "Full: 3 Magic, Aspected: 4 Magic, Mystic Adept: 3 Magic, Adept: 3 Magic, Technomancer: 3 Resonance"
-          )
+            "Full: 3 Magic, Aspected: 4 Magic, Mystic Adept: 3 Magic, Adept: 3 Magic, Technomancer: 3 Resonance",
+          ),
         ).toBeInTheDocument()
         expect(
           getByLabelText(
             magresRadioInputs,
-            "Full: 2 Magic, Aspected: 3 Magic, Mystic Adept: 2 Magic, Adept: 2 Magic, Technomancer: 2 Resonance"
-          )
+            "Full: 2 Magic, Aspected: 3 Magic, Mystic Adept: 2 Magic, Adept: 2 Magic, Technomancer: 2 Resonance",
+          ),
         ).toBeInTheDocument()
         expect(
           getByLabelText(
             magresRadioInputs,
-            "Full: 1 Magic, Aspected: 2 Magic, Mystic Adept: 1 Magic, Adept: 1 Magic, Technomancer: 1 Resonance"
-          )
+            "Full: 1 Magic, Aspected: 2 Magic, Mystic Adept: 1 Magic, Adept: 1 Magic, Technomancer: 1 Resonance",
+          ),
         ).toBeInTheDocument()
         expect(getByLabelText(magresRadioInputs, "Mundane")).toBeInTheDocument()
       })
@@ -166,14 +166,14 @@ describe("<PriorityTable/>", () => {
         })
         getByLabelText(
           magresRadioInputs,
-          "Full: 1 Magic, Aspected: 2 Magic, Mystic Adept: 1 Magic, Adept: 1 Magic, Technomancer: 1 Resonance"
+          "Full: 1 Magic, Aspected: 2 Magic, Mystic Adept: 1 Magic, Adept: 1 Magic, Technomancer: 1 Resonance",
         ).click()
       })
 
       await waitFor(() => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority["mag/res"]
+            .records.records[0].value.priority["mag/res"],
         ).toEqual("D")
       })
     })
@@ -188,19 +188,19 @@ describe("<PriorityTable/>", () => {
           name: "resources",
         })
         expect(
-          getByLabelText(resourcesRadioInputs, "450000¥")
+          getByLabelText(resourcesRadioInputs, "450000¥"),
         ).toBeInTheDocument()
         expect(
-          getByLabelText(resourcesRadioInputs, "275000¥")
+          getByLabelText(resourcesRadioInputs, "275000¥"),
         ).toBeInTheDocument()
         expect(
-          getByLabelText(resourcesRadioInputs, "150000¥")
+          getByLabelText(resourcesRadioInputs, "150000¥"),
         ).toBeInTheDocument()
         expect(
-          getByLabelText(resourcesRadioInputs, "50000¥")
+          getByLabelText(resourcesRadioInputs, "50000¥"),
         ).toBeInTheDocument()
         expect(
-          getByLabelText(resourcesRadioInputs, "8000¥")
+          getByLabelText(resourcesRadioInputs, "8000¥"),
         ).toBeInTheDocument()
       })
     })
@@ -218,7 +218,7 @@ describe("<PriorityTable/>", () => {
       await waitFor(() => {
         expect(
           indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.resources
+            .records.records[0].value.priority.resources,
         ).toEqual("E")
       })
     })

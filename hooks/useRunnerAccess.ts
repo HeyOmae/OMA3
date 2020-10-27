@@ -19,7 +19,7 @@ type RunnerReducer<T, P> = Reducer<Runner, Action<T, P>>
 export type DispatchAction<T, P> = (action: Action<T, P>) => void
 
 type UseRunnerAccess = <T, P>(
-  reducer: RunnerReducer<T, P>
+  reducer: RunnerReducer<T, P>,
 ) => [runner: Runner, dispatch: DispatchAction<T, P>]
 
 export const useRunnerAccess: UseRunnerAccess = <T, P>(reducer) => {
@@ -32,7 +32,7 @@ export const useRunnerAccess: UseRunnerAccess = <T, P>(reducer) => {
       }
       return reducer(state, action)
     },
-    undefined
+    undefined,
   )
 
   const { id } = router.query

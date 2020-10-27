@@ -26,7 +26,7 @@ describe("SpendingPointsToggle", () => {
     const { getByLabelText } = setup({ isSpendingAdjustmentPoints: false })
 
     expect((getByLabelText("Spend Points") as HTMLInputElement).checked).toBe(
-      false
+      false,
     )
   })
 })

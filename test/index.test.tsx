@@ -19,7 +19,7 @@ describe("Home page", () => {
 
     return {
       ...render(
-        withTestRouter(<Home />, { push, pathname: "/[id]", asPath: "/4" })
+        withTestRouter(<Home />, { push, pathname: "/[id]", asPath: "/4" }),
       ),
       push,
     }
@@ -42,7 +42,7 @@ describe("Home page", () => {
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records.length
+        .records.length,
     ).toEqual(mockedRunners.length)
 
     fireEvent.click(getByText("Create Runner"))
@@ -50,13 +50,13 @@ describe("Home page", () => {
     await waitFor(() =>
       expect(push).toHaveBeenCalledWith(
         "/[id]/info",
-        `/${mockedRunners.length + 1}/info`
-      )
+        `/${mockedRunners.length + 1}/info`,
+      ),
     )
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records.length
+        .records.length,
     ).toEqual(mockedRunners.length + 1)
   })
 
@@ -66,14 +66,14 @@ describe("Home page", () => {
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records.length
+        .records.length,
     ).toEqual(runnerId)
 
     await waitFor(() =>
       expect(getByText(runnerId.toString())).toHaveAttribute(
         "href",
-        `/${runnerId}/info`
-      )
+        `/${runnerId}/info`,
+      ),
     )
   })
 })

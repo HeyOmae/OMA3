@@ -57,7 +57,7 @@ describe("<Metatype/>", () => {
 
       const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
       expect(
-        (getByLabelText(metatypeRadio, "Ork") as HTMLInputElement).checked
+        (getByLabelText(metatypeRadio, "Ork") as HTMLInputElement).checked,
       ).toBe(true)
     })
   })
@@ -95,14 +95,14 @@ describe("<Metatype/>", () => {
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Adjustment Points4/))
+            getByText(searchRegexInNodes(/Adjustment Points4/)),
           ).toBeInTheDocument()
           SliderHelper.change(getByTestId("Body-slider"), 3, 1, 9)
         })
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Adjustment Points2/))
+            getByText(searchRegexInNodes(/Adjustment Points2/)),
           ).toBeInTheDocument()
         })
 
@@ -128,7 +128,7 @@ describe("<Metatype/>", () => {
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Adjustment Points1/))
+            getByText(searchRegexInNodes(/Adjustment Points1/)),
           ).toBeInTheDocument()
         })
 
@@ -138,7 +138,7 @@ describe("<Metatype/>", () => {
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Attribute Points9/))
+            getByText(searchRegexInNodes(/Attribute Points9/)),
           ).toBeInTheDocument()
         })
 
@@ -153,7 +153,7 @@ describe("<Metatype/>", () => {
           })
 
           expect(
-            getByTestId("Willpower-slider").querySelector("input").value
+            getByTestId("Willpower-slider").querySelector("input").value,
           ).toEqual("4")
         })
       })
@@ -178,14 +178,14 @@ describe("<Metatype/>", () => {
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Attribute Points12/))
+            getByText(searchRegexInNodes(/Attribute Points12/)),
           ).toBeInTheDocument()
           SliderHelper.change(getByTestId("Body-slider"), 7, 1, 9)
         })
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Attribute Points6/))
+            getByText(searchRegexInNodes(/Attribute Points6/)),
           ).toBeInTheDocument()
         })
 
@@ -212,7 +212,7 @@ describe("<Metatype/>", () => {
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Attribute Points9/))
+            getByText(searchRegexInNodes(/Attribute Points9/)),
           ).toBeInTheDocument()
         })
 
@@ -221,7 +221,7 @@ describe("<Metatype/>", () => {
 
         await waitFor(() => {
           expect(
-            getByText(searchRegexInNodes(/Adjustment Points1/))
+            getByText(searchRegexInNodes(/Adjustment Points1/)),
           ).toBeInTheDocument()
         })
 
@@ -236,7 +236,7 @@ describe("<Metatype/>", () => {
           })
 
           expect(
-            getByTestId("Agility-slider").querySelector("input").value
+            getByTestId("Agility-slider").querySelector("input").value,
           ).toEqual("4")
         })
       })
@@ -257,7 +257,7 @@ describe("<Metatype/>", () => {
 
       await waitFor(() => {
         expect(
-          getByText(searchRegexInNodes(/Adjustment Points2/))
+          getByText(searchRegexInNodes(/Adjustment Points2/)),
         ).toBeInTheDocument()
       })
 
@@ -267,7 +267,7 @@ describe("<Metatype/>", () => {
 
       await waitFor(() => {
         expect(
-          getByText(searchRegexInNodes(/Attribute Points8/))
+          getByText(searchRegexInNodes(/Attribute Points8/)),
         ).toBeInTheDocument()
       })
 
@@ -284,7 +284,7 @@ describe("<Metatype/>", () => {
 
       await waitFor(() => {
         expect(
-          getByText(searchRegexInNodes(/Attribute Points7/))
+          getByText(searchRegexInNodes(/Attribute Points7/)),
         ).toBeInTheDocument()
       })
 
@@ -292,7 +292,7 @@ describe("<Metatype/>", () => {
 
       await waitFor(() => {
         expect(
-          getByText(searchRegexInNodes(/Adjustment Points0/))
+          getByText(searchRegexInNodes(/Adjustment Points0/)),
         ).toBeInTheDocument()
       })
 
@@ -311,10 +311,10 @@ describe("<Metatype/>", () => {
 
       await waitFor(() => {
         expect(
-          queryByRole("radiogroup", { name: "metatypes" })
+          queryByRole("radiogroup", { name: "metatypes" }),
         ).not.toBeInTheDocument()
         expect(
-          getByText("You need to set the metatype priority")
+          getByText("You need to set the metatype priority"),
         ).toBeInTheDocument()
       })
     })
@@ -324,7 +324,7 @@ describe("<Metatype/>", () => {
 
       await waitFor(() => {
         expect(
-          getByRole("radiogroup", { name: "metatypes" })
+          getByRole("radiogroup", { name: "metatypes" }),
         ).toBeInTheDocument()
 
         expect(queryByText("Body")).not.toBeInTheDocument()

@@ -66,11 +66,11 @@ export const Metatype = () => {
           }
         }
       }
-    }
+    },
   )
 
   const [isSpendingAdjustmentPoints, setIsSpendingAdjustmentPoints] = useState(
-    true
+    true,
   )
 
   return runner ? (

@@ -4,7 +4,7 @@ import { render, withTestRouter } from "../../test/testUtils"
 describe("<Priority Warning", () => {
   const setup = (props: Props = { requirement: "metatype" }) =>
     render(
-      withTestRouter(<PriorityWarning {...props} />, { query: { id: "2" } })
+      withTestRouter(<PriorityWarning {...props} />, { query: { id: "2" } }),
     )
   it("should let the user known that the priority needs to be set", () => {
     const { getByText } = setup()
@@ -16,7 +16,7 @@ describe("<Priority Warning", () => {
 
     expect(getByText("Go to Priority Table").closest("a")).toHaveAttribute(
       "href",
-      "/2/priority"
+      "/2/priority",
     )
   })
 })

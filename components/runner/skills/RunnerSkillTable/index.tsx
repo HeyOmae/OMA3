@@ -39,7 +39,7 @@ export const RunnerSkillTable: FC<Props> = ({
       Object.values(skills).reduce((acc, { rating, specialization }) => {
         return acc - rating - (specialization ? 1 : 0)
       }, skillPoints),
-    [skills, skillPoints]
+    [skills, skillPoints],
   )
 
   return (
@@ -147,7 +147,7 @@ export const RunnerSkillTable: FC<Props> = ({
                   </TableCell>
                 </TableRow>
               )
-            }
+            },
           )}
         </TableBody>
       </Table>
