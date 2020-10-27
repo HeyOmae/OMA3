@@ -70,12 +70,12 @@ const Skills: FC = () => {
             },
           }
       }
-    }
+    },
   )
 
   const skillPoints = useMemo(
     () => PriorityData.skills[runner?.priority?.skills],
-    [runner]
+    [runner],
   )
 
   return runner ? (

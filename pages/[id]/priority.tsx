@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 
 const PriorityTable = dynamic(
   () => import("../../components/runner/priorityTable"),
-  { ssr: false }
+  { ssr: false },
 )
 
 export const PriorityPage = () => (

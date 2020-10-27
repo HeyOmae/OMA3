@@ -20,7 +20,7 @@ describe("info page", () => {
         pathname: "/[id]",
         asPath: "/1",
         query: { id: "1" },
-      })
+      }),
     )
   }
 
@@ -30,7 +30,7 @@ describe("info page", () => {
     await waitFor(() => {
       expect(getByLabelText("Runner's name *")).toHaveValue("Bull")
       expect(getByLabelText("Runner's description")).toHaveValue(
-        "The best ork decker you never met."
+        "The best ork decker you never met.",
       )
     })
   })
@@ -41,7 +41,7 @@ describe("info page", () => {
     await waitFor(() => {
       expect(getByLabelText("Runner's name *")).toHaveValue("Bull")
       expect(getByLabelText("Runner's description")).toHaveValue(
-        "The best ork decker you never met."
+        "The best ork decker you never met.",
       )
     })
 
@@ -50,7 +50,7 @@ describe("info page", () => {
     })
     await waitFor(() => {
       expect(getByLabelText("Runner's name *")).toHaveValue(
-        "William “Bull” MacCallister"
+        "William “Bull” MacCallister",
       )
     })
     fireEvent.blur(getByLabelText("Runner's name *"))
@@ -58,7 +58,7 @@ describe("info page", () => {
     await waitFor(() => {
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records.length
+          .records.length,
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
     })

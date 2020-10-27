@@ -16,8 +16,8 @@ describe("<RunnerLayout />", () => {
           <RunnerLayout>
             <p>Some content</p>
           </RunnerLayout>,
-          { query: { id: "1" }, push }
-        )
+          { query: { id: "1" }, push },
+        ),
       ),
       push,
     }
@@ -45,19 +45,19 @@ describe("<RunnerLayout />", () => {
       expect(getByText("Info").closest("a")).toHaveAttribute("href", "/1/info")
       expect(getByText("Priority").closest("a")).toHaveAttribute(
         "href",
-        "/1/priority"
+        "/1/priority",
       )
       expect(getByText("Metatype & Attributes").closest("a")).toHaveAttribute(
         "href",
-        "/1/metatype"
+        "/1/metatype",
       )
       expect(getByText("Skills").closest("a")).toHaveAttribute(
         "href",
-        "/1/skills"
+        "/1/skills",
       )
       expect(getByText("Delete").closest("a")).toHaveAttribute(
         "href",
-        "/1/delete"
+        "/1/delete",
       )
     })
   })

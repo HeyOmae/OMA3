@@ -41,7 +41,7 @@ export const setupIndexedDB = (
     dbName = "omae",
     tableName = "runners",
     payload = mockedRunners,
-  }: DbSetupConfig = {}
+  }: DbSetupConfig = {},
 ) => {
   initDB({
     name: "omae",
@@ -97,7 +97,7 @@ export const withTestRouter = (
       off: () => null,
       emit: () => null,
     },
-  }: Partial<NextRouter> = { query: { id: "1" } }
+  }: Partial<NextRouter> = { query: { id: "1" } },
 ) => (
   <RouterContext.Provider
     value={{
@@ -152,12 +152,12 @@ export class SliderHelper {
 
 export const searchRegexInNodes = (regex: RegExp) => (
   content: string,
-  node: HTMLElement
+  node: HTMLElement,
 ) => {
   const hasText = (node) => regex.test(node.textContent)
   const nodeHasText = hasText(node)
   const childrenDontHaveText = Array.from(node.children).every(
-    (child) => !hasText(child)
+    (child) => !hasText(child),
   )
 
   return nodeHasText && childrenDontHaveText

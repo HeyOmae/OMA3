@@ -58,7 +58,7 @@ export const AttributeSelection: FC<Props> = ({
               }}
             />
           </div>
-        )
+        ),
       )}
   </>
 )

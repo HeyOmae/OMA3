@@ -8,11 +8,11 @@ describe("DisplayPoints", () => {
     const { getByText } = setup()
 
     expect(
-      getByText(searchRegexInNodes(/Adjustment Points4/))
+      getByText(searchRegexInNodes(/Adjustment Points4/)),
     ).toBeInTheDocument()
 
     expect(
-      getByText(searchRegexInNodes(/Attribute Points12/))
+      getByText(searchRegexInNodes(/Attribute Points12/)),
     ).toBeInTheDocument()
   })
 
@@ -30,10 +30,10 @@ describe("DisplayPoints", () => {
     })
 
     expect(
-      getByText(searchRegexInNodes(/Adjustment Points1/))
+      getByText(searchRegexInNodes(/Adjustment Points1/)),
     ).toBeInTheDocument()
     expect(
-      getByText(searchRegexInNodes(/Attribute Points7/))
+      getByText(searchRegexInNodes(/Attribute Points7/)),
     ).toBeInTheDocument()
   })
 

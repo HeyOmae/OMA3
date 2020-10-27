@@ -48,7 +48,7 @@ describe("<Skills/>", () => {
 
     await waitFor(() => {
       expect(
-        getByText(searchRegexInNodes(/Skill Points:4\/20/))
+        getByText(searchRegexInNodes(/Skill Points:4\/20/)),
       ).toBeInTheDocument()
     })
   })
@@ -161,7 +161,7 @@ describe("<Skills/>", () => {
 
       await waitFor(() => {
         expect(runnerFromDB(2).skills["close combat"].specialization).toEqual(
-          "blades"
+          "blades",
         )
       })
     })
@@ -172,7 +172,7 @@ describe("<Skills/>", () => {
 
     await waitFor(() => {
       expect(
-        getByText("You need to set the skills priority")
+        getByText("You need to set the skills priority"),
       ).toBeInTheDocument()
     })
   })

@@ -24,7 +24,7 @@ describe("<Delete/>", () => {
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records.length
+        .records.length,
     ).toBe(mockedRunners.length)
 
     getByText("Retire Runner").click()
@@ -32,7 +32,7 @@ describe("<Delete/>", () => {
     await waitFor(() => {
       expect(
         indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records.length
+          .records.length,
       ).toBe(mockedRunners.length - 1)
       expect(runnerFromDB().id).toBe(2)
     })

@@ -23,7 +23,7 @@ export const MagResSelection: FC<Props> = ({
     (event, value: MagRes) => {
       dispatch({ type: SET_MAGRES, payload: { magres: value } })
     },
-    [dispatch]
+    [dispatch],
   )
 
   return (

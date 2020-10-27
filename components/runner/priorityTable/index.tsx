@@ -67,7 +67,7 @@ export const PriorityTable = () => {
             },
           }
       }
-    }
+    },
   )
 
   return runner ? (
@@ -92,7 +92,7 @@ export const PriorityTable = () => {
                 control={<Radio />}
                 label={`${supportedMetatypes.join(", ")} (${adjustmentPoints})`}
               />
-            )
+            ),
           )}
         </RadioGroup>
       </FormControl>
@@ -163,7 +163,7 @@ export const PriorityTable = () => {
               label={Object.entries(value)
                 .map(
                   ([type, [attribute, rating]]) =>
-                    `${type}${attribute ? `: ${rating} ${attribute}` : ""}`
+                    `${type}${attribute ? `: ${rating} ${attribute}` : ""}`,
                 )
                 .join(", ")}
             />

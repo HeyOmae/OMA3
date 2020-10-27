@@ -16,7 +16,7 @@ describe("<RunnerSkillTable/>", () => {
       skills: mockedRunners[1].skills,
       skillPoints: 20,
       dispatch: jest.fn(),
-    }
+    },
   ) => ({ ...render(<RunnerSkillTable {...props} />), props })
 
   it("should display a table with the runner's skills", async () => {
@@ -30,7 +30,7 @@ describe("<RunnerSkillTable/>", () => {
     expect(await conjuringRow.findByText("Magic")).toBeInTheDocument()
     // specialization
     expect(
-      await conjuringRow.findByLabelText("conjuring specialization")
+      await conjuringRow.findByLabelText("conjuring specialization"),
     ).toHaveDisplayValue("banishing")
 
     const sorceryRow = within(getByText("sorcery").closest("tr"))
@@ -41,22 +41,22 @@ describe("<RunnerSkillTable/>", () => {
     expect(await sorceryRow.findByText("Magic")).toBeInTheDocument()
     // specialization
     expect(
-      await sorceryRow.findByLabelText("sorcery specialization")
+      await sorceryRow.findByLabelText("sorcery specialization"),
     ).toHaveDisplayValue("")
 
     const perceptionRow = within(getByText("perception").closest("tr"))
     // rating
     const perceptionRating = await perceptionRow.findByTestId(
-      "perception-rating"
+      "perception-rating",
     )
     expect(perceptionRating.querySelector("input")).toHaveValue("4")
     // attribute
     expect(
-      await perceptionRow.findByText("Intuition/Logic")
+      await perceptionRow.findByText("Intuition/Logic"),
     ).toBeInTheDocument()
     // specialization
     expect(
-      await perceptionRow.findByLabelText("perception specialization")
+      await perceptionRow.findByLabelText("perception specialization"),
     ).toHaveDisplayValue("")
   })
 
