@@ -7,8 +7,10 @@ describe("Magic/Resonance Attribute Slider", () => {
   const setup = ({
     attribute = "Magic",
     attributes = mockedRunners[1].attributes,
+    adjustmentPoints = 9,
   }: Partial<Props> = {}) => {
     const props: Props = {
+      adjustmentPoints,
       attributes,
       attribute,
       min: 4,
@@ -18,18 +20,19 @@ describe("Magic/Resonance Attribute Slider", () => {
     return { ...render(<MagResAttributeSlider {...props} />), props }
   }
   describe("Magic", () => {
-    it("should have a slider and title", () => {
+    it("should have a slider, title, and display adjustment points", () => {
       const { getByTestId, getByText } = setup()
 
       expect(getByText("Magic")).toBeInTheDocument()
       expect(getByTestId("Magic-attribute-slider")).toBeInTheDocument()
       expect(
-        getByTestId("Magic-attribute-slider").querySelector("input").value
+        getByTestId("Magic-attribute-slider").querySelector("input").value,
       ).toEqual("4")
+      expect(getByText("9/9")).toBeInTheDocument()
     })
 
     it("should set value based off adjustment points", () => {
-      const { getByTestId } = setup({
+      const { getByTestId, getByText } = setup({
         attributes: {
           ...mockedRunners[1].attributes,
           Magic: { adjustment: 2, points: 0 },
@@ -37,8 +40,9 @@ describe("Magic/Resonance Attribute Slider", () => {
       })
 
       expect(
-        getByTestId("Magic-attribute-slider").querySelector("input").value
+        getByTestId("Magic-attribute-slider").querySelector("input").value,
       ).toEqual("6")
+      expect(getByText("7/9")).toBeInTheDocument()
     })
 
     it("should dispatch", () => {
@@ -59,12 +63,13 @@ describe("Magic/Resonance Attribute Slider", () => {
       expect(getByText("Resonance")).toBeInTheDocument()
       expect(getByTestId("Resonance-attribute-slider")).toBeInTheDocument()
       expect(
-        getByTestId("Resonance-attribute-slider").querySelector("input").value
+        getByTestId("Resonance-attribute-slider").querySelector("input").value,
       ).toEqual("4")
+      expect(getByText("9/9")).toBeInTheDocument()
     })
 
     it("should set value based off adjustment points", () => {
-      const { getByTestId } = setup({
+      const { getByTestId, getByText } = setup({
         attribute: "Resonance",
         attributes: {
           ...mockedRunners[1].attributes,
@@ -73,8 +78,9 @@ describe("Magic/Resonance Attribute Slider", () => {
       })
 
       expect(
-        getByTestId("Resonance-attribute-slider").querySelector("input").value
+        getByTestId("Resonance-attribute-slider").querySelector("input").value,
       ).toEqual("6")
+      expect(getByText("7/9")).toBeInTheDocument()
     })
 
     it("should dispatch", () => {
@@ -87,5 +93,17 @@ describe("Magic/Resonance Attribute Slider", () => {
         payload: { adjustment: 1 },
       })
     })
+  })
+
+  it("should show bad-stuff styling when adjuestmentPoints go negative", () => {
+    const { getByText } = setup({
+      adjustmentPoints: 1,
+      attributes: {
+        ...mockedRunners[1].attributes,
+        Magic: { adjustment: 2, points: 0 },
+      },
+    })
+
+    expect(getByText("-1/1")).toHaveClass("bad-stuff")
   })
 })

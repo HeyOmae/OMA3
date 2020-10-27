@@ -46,28 +46,37 @@ describe("Magic and Resonance", () => {
   })
 
   it("should reset the attributes between selecting magres options", async () => {
-    const { getByLabelText, getByTestId } = setup()
+    const { getByLabelText, getByTestId, getByText } = setup()
 
     expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
 
     await waitFor(() => getByLabelText("Aspected"))
     getByLabelText("Aspected").click()
-
+    expect(getByText("1/1")).toBeInTheDocument()
     await waitFor(() => getByTestId("Magic-attribute-slider"))
     SliderHelper.change(getByTestId("Magic-attribute-slider"), 6, 5, 6)
 
     await waitFor(() => {
       expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(1)
+
+      expect(getByText("0/1")).toBeInTheDocument()
     })
 
     getByLabelText("Technomancer").click()
 
-    await waitFor(() => getByTestId("Resonance-attribute-slider"))
+    await waitFor(() => {
+      getByTestId("Resonance-attribute-slider")
+
+      expect(getByText("1/1")).toBeInTheDocument()
+    })
+
     SliderHelper.change(getByTestId("Resonance-attribute-slider"), 5, 4, 6)
 
     await waitFor(() => {
       expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
       expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(1)
+
+      expect(getByText("0/1")).toBeInTheDocument()
     })
 
     getByLabelText("Mystic Adept").click()
@@ -75,26 +84,29 @@ describe("Magic and Resonance", () => {
     await waitFor(() => {
       expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
       expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
+
+      expect(getByText("1/1")).toBeInTheDocument()
     })
   })
 
   describe("setting attribute", () => {
     it("should set magic attribute", async () => {
-      const { getByTestId, getByLabelText } = setup()
-      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+      const { getByTestId, getByLabelText, getByText } = setup()
 
       await waitFor(() => getByLabelText("Adept"))
       getByLabelText("Adept").click()
+      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
 
       await waitFor(() => getByTestId("Magic-attribute-slider"))
       SliderHelper.change(getByTestId("Magic-attribute-slider"), 6, 4, 6)
 
       await waitFor(() => {
         expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(2)
+        expect(getByText("-1/1")).toHaveClass("bad-stuff")
       })
     })
     it("should set resonance attribute", async () => {
-      const { getByTestId, getByLabelText } = setup()
+      const { getByTestId, getByLabelText, getByText } = setup()
       expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
 
       await waitFor(() => getByLabelText("Technomancer"))
@@ -105,6 +117,7 @@ describe("Magic and Resonance", () => {
 
       await waitFor(() => {
         expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(2)
+        expect(getByText("-1/1")).toHaveClass("bad-stuff")
       })
     })
   })

@@ -53,7 +53,7 @@ export const MagRes = () => {
             },
           }
       }
-    }
+    },
   )
 
   const priority = priorityData["mag/res"][
@@ -69,6 +69,9 @@ export const MagRes = () => {
       />
       {runner.magres && (
         <MagResAttributeSlider
+          adjustmentPoints={
+            priorityData.metatypes[runner.priority.metatype].adjustmentPoints
+          }
           attribute={priority[runner.magres][0]}
           min={priority[runner.magres][1]}
           max={6}

@@ -1,25 +1,17 @@
-import { FC, useMemo } from "react"
+import { FC } from "react"
 import { Runner } from "../../../../types/runner"
 import priorityData from "../../../../data/priorityTable.json"
+import { useSpendPoints } from "../../../../hooks/useSpendPoints"
 
 export interface Props {
   runner: Runner
 }
 
 export const DisplayPoints: FC<Props> = ({ runner }) => {
-  const [adjustmentSpend, attributeSpend] = useMemo<[number, number]>(
-    () =>
-      Object.values(runner.attributes ?? {}).reduce(
-        (accumulator, { adjustment, points }) => [
-          accumulator[0] - adjustment,
-          accumulator[1] - points,
-        ],
-        [
-          priorityData.metatypes[runner.priority.metatype].adjustmentPoints,
-          priorityData.attributes[runner.priority.attributes],
-        ]
-      ),
-    [runner.attributes]
+  const [adjustmentSpend, attributeSpend] = useSpendPoints(
+    priorityData.metatypes[runner.priority.metatype].adjustmentPoints,
+    priorityData.attributes[runner.priority.attributes],
+    runner.attributes,
   )
   return (
     <dl>
