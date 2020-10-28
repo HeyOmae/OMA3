@@ -1,0 +1,742 @@
+[
+  {
+    "name": "Acid stream",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 5,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      }
+    ]
+  },
+  {
+    "name": "Toxic wave",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 6,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Blast",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 4,
+    "damage": "Stun",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Clout",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 3,
+    "damage": "Stun",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      }
+    ]
+  },
+  {
+    "name": "Flamestrike",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 5,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      }
+    ]
+  },
+  {
+    "name": "Fireball",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 6,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Ice spear",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 5,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      }
+    ]
+  },
+  {
+    "name": "Ice storm",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 6,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Lightning bolt",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 5,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      }
+    ]
+  },
+  {
+    "name": "Lightning ball",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 6,
+    "damage": "Physical special",
+    "spellfeature": [
+      {
+        "ref": "Indirect"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Manabolt",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Mana",
+    "duration": "Instantaneous",
+    "drain": 4,
+    "damage": "Physical",
+    "spellfeature": [
+      {
+        "ref": "direct"
+      }
+    ]
+  },
+  {
+    "name": "Manaball",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Mana",
+    "duration": "Instantaneous",
+    "drain": 5,
+    "damage": "Physical",
+    "spellfeature": [
+      {
+        "ref": "direct"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Powerbolt",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 4,
+    "damage": "Physical",
+    "spellfeature": [
+      {
+        "ref": "direct"
+      }
+    ]
+  },
+  {
+    "name": "Powerball",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 5,
+    "damage": "Physical",
+    "spellfeature": [
+      {
+        "ref": "direct"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Stunbolt",
+    "category": "Combat",
+    "range": "Line of sight",
+    "type": "Mana",
+    "duration": "Instantaneous",
+    "drain": 3,
+    "damage": "Stun",
+    "spellfeature": [
+      {
+        "ref": "direct"
+      }
+    ]
+  },
+  {
+    "name": "Stunball",
+    "category": "Combat",
+    "range": "Line of sight area",
+    "type": "Mana",
+    "duration": "Instantaneous",
+    "drain": 4,
+    "damage": "Stun",
+    "spellfeature": [
+      {
+        "ref": "direct"
+      },
+      {
+        "ref": "Area"
+      }
+    ]
+  },
+  {
+    "name": "Analyze device",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 2
+  },
+  {
+    "name": "Analyze magic",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Analyze truth",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Clairaudience",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Clairvoyance",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Combat sense",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Detect enemies",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Detect life",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Detect magic",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 4
+  },
+  {
+    "name": "Mindlink",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Mind probe",
+    "category": "Detection",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 5
+  },
+  {
+    "name": "Antidote",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Permanent",
+    "drain": 5
+  },
+  {
+    "name": "Cleansing heal",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Permanent",
+    "drain": 5
+  },
+  {
+    "name": "Cooling heal",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Permanent",
+    "drain": 5
+  },
+  {
+    "name": "Decrease attribute",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Heal",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Permanent",
+    "drain": 3
+  },
+  {
+    "name": "Increase attribute",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Increase reflexes",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 5
+  },
+  {
+    "name": "Resist pain",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Stabilize",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Permanent",
+    "drain": 3
+  },
+  {
+    "name": "Warming heal",
+    "category": "Health",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Permanent",
+    "drain": 5
+  },
+  {
+    "name": "Agony",
+    "category": "Illusion",
+    "range": "Line of sight",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3,
+    "spellfeature": {
+      "ref": "sense single"
+    }
+  },
+  {
+    "name": "Confusion",
+    "category": "Illusion",
+    "range": "Line of sight",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3,
+    "spellfeature": {
+      "ref": "sense multi"
+    }
+  },
+  {
+    "name": "Chaos",
+    "category": "Illusion",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4,
+    "spellfeature": {
+      "ref": "sense multi"
+    }
+  },
+  {
+    "name": "Hush",
+    "category": "Illusion",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3,
+    "spellfeature": {
+      "ref": "sense single"
+    }
+  },
+  {
+    "name": "Silence",
+    "category": "Illusion",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4,
+    "spellfeature": {
+      "ref": "sense single"
+    }
+  },
+  {
+    "name": "Invisibility",
+    "category": "Illusion",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3,
+    "spellfeature": {
+      "ref": "sense single"
+    }
+  },
+  {
+    "name": "Improved invisibility",
+    "category": "Illusion",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4,
+    "spellfeature": {
+      "ref": "sense single"
+    }
+  },
+  {
+    "name": "Mask",
+    "category": "Illusion",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3,
+    "spellfeature": {
+      "ref": "sense multi"
+    }
+  },
+  {
+    "name": "Physical mask",
+    "category": "Illusion",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4,
+    "spellfeature": {
+      "ref": "sense multi"
+    }
+  },
+  {
+    "name": "Phantasm",
+    "category": "Illusion",
+    "range": "Line of sight area",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3,
+    "spellfeature": {
+      "ref": "sense multi"
+    }
+  },
+  {
+    "name": "Trid phantasm",
+    "category": "Illusion",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4,
+    "spellfeature": {
+      "ref": "sense multi"
+    }
+  },
+  {
+    "name": "Sensor sneak",
+    "category": "Illusion",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 2,
+    "spellfeature": {
+      "ref": "sense multi"
+    }
+  },
+  {
+    "name": "Animate metal",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Limited",
+    "drain": 6
+  },
+  {
+    "name": "Animate plastic",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Limited",
+    "drain": 3
+  },
+  {
+    "name": "Animate stone",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Limited",
+    "drain": 5
+  },
+  {
+    "name": "Animate wood",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Limited",
+    "drain": 4
+  },
+  {
+    "name": "Armor",
+    "category": "Manipulation",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4
+  },
+  {
+    "name": "Control actions",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Mana",
+    "duration": "Limited",
+    "drain": 4
+  },
+  {
+    "name": "Control thoughts",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Mana",
+    "duration": "Limited",
+    "drain": 4
+  },
+  {
+    "name": "Darkness",
+    "category": "Manipulation",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Light",
+    "category": "Manipulation",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Elemental armor",
+    "category": "Manipulation",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 5
+  },
+  {
+    "name": "Fling",
+    "category": "Manipulation",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Instantaneous",
+    "drain": 5
+  },
+  {
+    "name": "Focus burst",
+    "category": "Manipulation",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Limited",
+    "drain": 7
+  },
+  {
+    "name": "Levitate",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 6
+  },
+  {
+    "name": "Mana barrier",
+    "category": "Manipulation",
+    "range": "Line of sight area",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 5
+  },
+  {
+    "name": "Mystic armor",
+    "category": "Manipulation",
+    "range": "Touch",
+    "type": "Mana",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Overclock",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4
+  },
+  {
+    "name": "Physical barrier",
+    "category": "Manipulation",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 6
+  },
+  {
+    "name": "Shape metal",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 5
+  },
+  {
+    "name": "Shape plastic",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 2
+  },
+  {
+    "name": "Shape stone",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4
+  },
+  {
+    "name": "Shape wood",
+    "category": "Manipulation",
+    "range": "Line of sight",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Strengthen wall",
+    "category": "Manipulation",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 4
+  },
+  {
+    "name": "Thunder",
+    "category": "Manipulation",
+    "range": "Line of sight area",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 3
+  },
+  {
+    "name": "Vehicle armor",
+    "category": "Manipulation",
+    "range": "Touch",
+    "type": "Physical",
+    "duration": "Sustained",
+    "drain": 6
+  }
+]
