@@ -5,9 +5,21 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core"
-import { Detection } from "../../../../data/spells.json"
+import { FC } from "react"
 
-export const DetectionSpells = () => (
+interface Spell {
+  name: string
+  range: string
+  type: string
+  duration: string
+  drain: number
+}
+
+interface Props {
+  spells: Spell[]
+}
+
+export const SpellsTable: FC<Props> = ({ spells }) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -19,7 +31,7 @@ export const DetectionSpells = () => (
       </TableRow>
     </TableHead>
     <TableBody>
-      {Detection.map(({ name, range, type, duration, drain }) => (
+      {spells.map(({ name, range, type, duration, drain }) => (
         <TableRow key={name}>
           <TableCell>{name}</TableCell>
           <TableCell>{range}</TableCell>

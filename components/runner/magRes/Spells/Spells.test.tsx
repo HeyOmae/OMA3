@@ -25,4 +25,28 @@ describe("<Spells/>", () => {
       expect(getByText(name)).toBeInTheDocument()
     })
   })
+
+  it("should display health spells", () => {
+    const { getByText } = setup()
+
+    spellsData.Health.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument()
+    })
+  })
+
+  it("should display illusion spells", () => {
+    const { getByText } = setup()
+
+    spellsData.Illusion.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument()
+    })
+  })
+
+  it("should display Manipulation spells", () => {
+    const { getByText } = setup()
+
+    spellsData.Manipulation.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument()
+    })
+  })
 })
