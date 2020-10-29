@@ -17,4 +17,12 @@ describe("<Spells/>", () => {
       },
     )
   })
+
+  it("should display detection spells", () => {
+    const { getByText } = setup()
+
+    spellsData.Detection.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument()
+    })
+  })
 })
