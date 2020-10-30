@@ -1,4 +1,4 @@
-import { MagRes } from "./MagRes"
+import { MagRes, Spells } from "./MagRes"
 import { Priority } from "./PriorityRating"
 import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
 import { Skills } from "./Skill"
@@ -14,6 +14,7 @@ export interface Runner {
   attributes?: RunnerAttributes
   skills?: Skills
   magres?: MagRes
+  spells?: Spells
 }
 
 export const initRunner: Runner = {

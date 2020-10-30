@@ -6,14 +6,13 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  IconButton,
 } from "@material-ui/core"
 import { ADD_SKILL, ActionPayload } from ".."
 import { Attributes } from "../../../../types/RunnerAttributes"
 import skillsData from "../../../../data/skills.json"
-import { Add } from "@material-ui/icons"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import styles from "../skills.module.css"
+import { AddButton } from "../../../common"
 
 interface Props {
   dispatch: DispatchAction<symbol, ActionPayload>
@@ -34,8 +33,7 @@ export const SkillTable: FC<Props> = ({ dispatch }) => (
         {skillsData.map(({ name, attribute, untrained }) => (
           <TableRow key={name}>
             <TableCell>
-              <IconButton
-                color="secondary"
+              <AddButton
                 onClick={() =>
                   dispatch({
                     type: ADD_SKILL,
@@ -52,9 +50,7 @@ export const SkillTable: FC<Props> = ({ dispatch }) => (
                   })
                 }
                 aria-label={`add ${name} skill`}
-              >
-                <Add />
-              </IconButton>
+              />
             </TableCell>
             <TableCell>{name}</TableCell>
             <TableCell>{attribute}</TableCell>
