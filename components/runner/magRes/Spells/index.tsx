@@ -6,6 +6,7 @@ import {
   Illusion,
   Manipulation,
 } from "../../../../data/spells.json"
+import { GeneralSpell } from "../../../../types/MagRes"
 
 export const Spells = () => {
   return (
@@ -13,13 +14,13 @@ export const Spells = () => {
       <h1>Combat Spells</h1>
       <CombatSpells />
       <h1>Detection Spells</h1>
-      <SpellsTable spells={Detection} />
+      <SpellsTable spells={Detection as GeneralSpell[]} />
       <h1>Health Spells</h1>
-      <SpellsTable spells={Health} />
+      <SpellsTable spells={Health as GeneralSpell[]} />
       <h1>Illusion Spells</h1>
-      <SpellsTable spells={Illusion} />
+      <SpellsTable spells={Illusion as GeneralSpell[]} />
       <h1>Manipulation Spells</h1>
-      <SpellsTable spells={Manipulation} />
+      <SpellsTable spells={Manipulation as GeneralSpell[]} />
     </>
   )
 }

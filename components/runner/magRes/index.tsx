@@ -1,20 +1,28 @@
+import { createContext } from "react"
 import { CircularProgress } from "@material-ui/core"
-import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import { MagRes as MagicResonance } from "../../../types/MagRes"
+import { DispatchAction, useRunnerAccess } from "../../../hooks/useRunnerAccess"
+import { MagRes as MagicResonance, Spell } from "../../../types/MagRes"
 import { MagResSelection } from "./MagResSelection"
 import priorityData from "../../../data/priorityTable.json"
 import { MagResPriorityTableOptions } from "../../../types/PriorityRating"
 import { MagResAttributeSlider } from "./MagResAttributeSlider"
 import { initRunnerAttribute } from "../../../types/runner"
 import { PriorityWarning } from "../../priorityWarning"
+import { Spells } from "./Spells"
+
+export const DispatchProvider = createContext<DispatchAction<symbol, Payload>>(
+  undefined,
+)
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
 export const SET_RESONANCE = Symbol("SET_RESONANCE")
+export const SET_SPELL = Symbol("SET_SPELL")
 
 export interface Payload {
   magres?: MagicResonance
   adjustment?: number
+  spell?: Spell
 }
 
 export const MagRes = () => {
@@ -51,6 +59,17 @@ export const MagRes = () => {
                 ...runner.attributes.Resonance,
                 adjustment: payload.adjustment,
               },
+            },
+          }
+        case SET_SPELL:
+          return {
+            ...runner,
+            spells: {
+              ...runner.spells,
+              [payload.spell.category]: [
+                ...(runner.spells?.[payload.spell.category] ?? []),
+                payload.spell,
+              ],
             },
           }
       }
@@ -91,6 +110,14 @@ export const MagRes = () => {
             dispatch={dispatch}
           />
         ))}
+      {runner.magres &&
+        (runner.magres === "Full" ||
+          runner.magres === "Aspected" ||
+          runner.magres === "Mystic Adept") && (
+          <DispatchProvider.Provider value={dispatch}>
+            <Spells />
+          </DispatchProvider.Provider>
+        )}
     </>
   )
 }

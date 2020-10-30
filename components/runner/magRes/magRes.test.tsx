@@ -7,6 +7,7 @@ import {
   runnerFromDB,
   SliderHelper,
 } from "../../../test/testUtils"
+import spellData from "../../../data/spells.json"
 
 describe("Magic and Resonance", () => {
   const setup = (id = "2") =>
@@ -148,6 +149,83 @@ describe("Magic and Resonance", () => {
       const { getByText } = setup("4")
       await waitFor(() => {
         expect(getByText("You need to set the mag/res priority"))
+      })
+    })
+  })
+
+  describe("Spells", () => {
+    it("should display spells for mages", async () => {
+      const { getByLabelText, getByText } = setup()
+      await waitFor(() => getByLabelText("Full Mage"))
+      getByLabelText("Full Mage").click()
+
+      await waitFor(() => {
+        expect(getByText("Combat Spells")).toBeInTheDocument()
+      })
+    })
+
+    it("should display spells for aspected mages", async () => {
+      const { getByLabelText, getByText } = setup()
+      await waitFor(() => getByLabelText("Aspected"))
+      getByLabelText("Aspected").click()
+
+      await waitFor(() => {
+        expect(getByText("Detection Spells")).toBeInTheDocument()
+      })
+    })
+
+    it("should display spells for mystic adepts", async () => {
+      const { getByLabelText, getByText } = setup()
+      await waitFor(() => getByLabelText("Mystic Adept"))
+      getByLabelText("Mystic Adept").click()
+
+      await waitFor(() => {
+        expect(getByText("Health Spells")).toBeInTheDocument()
+      })
+    })
+
+    it("should add spells to the runner", async () => {
+      const { getByLabelText } = setup()
+      await waitFor(() => getByLabelText("Mystic Adept"))
+      getByLabelText("Mystic Adept").click()
+
+      await waitFor(() => {
+        expect(getByLabelText("Fireball")).toBeInTheDocument()
+      })
+
+      getByLabelText("Fireball").click()
+
+      await waitFor(() => {
+        expect(runnerFromDB(1).spells).toBeDefined()
+      })
+
+      const fireballSpell = spellData.Combat.find(
+        ({ name }) => name === "Fireball",
+      )
+      expect(runnerFromDB(1).spells.Combat).toEqual([fireballSpell])
+
+      const manaboltSpell = spellData.Combat.find(
+        ({ name }) => name === "Manabolt",
+      )
+
+      getByLabelText("Manabolt").click()
+      await waitFor(() => {
+        expect(runnerFromDB(1).spells.Combat).toEqual([
+          fireballSpell,
+          manaboltSpell,
+        ])
+      })
+
+      const manaBarrierSpell = spellData.Manipulation.find(
+        ({ name }) => name === "Mana barrier",
+      )
+      getByLabelText("Mana barrier").click()
+      await waitFor(() => {
+        expect(runnerFromDB(1).spells.Combat).toEqual([
+          fireballSpell,
+          manaboltSpell,
+        ])
+        expect(runnerFromDB(1).spells.Manipulation).toEqual([manaBarrierSpell])
       })
     })
   })
