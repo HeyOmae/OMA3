@@ -1,11 +1,12 @@
 import { FC } from "react"
 import Head from "next/head"
 import { Layout } from "../components/layout"
-import { Button, Link } from "@material-ui/core"
+import { Button, IconButton, Link } from "@material-ui/core"
 import dynamic from "next/dynamic"
 import { initRunner } from "../types/runner"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
+import { GitHub } from "@material-ui/icons"
 
 const AllRunnersAccess = dynamic(
   () => import("../components/allRunnersAccess"),
@@ -68,6 +69,21 @@ export const Home: FC = () => {
           </div>
         )}
       </AllRunnersAccess>
+
+      <section>
+        <h2>Contribute</h2>
+        <p>
+          Looking for something to help with. Check out the{" "}
+          <a href="https://github.com/HeyOmae/OMA3/projects">project board.</a>
+        </p>
+        <p>
+          Notice a bug?{" "}
+          <a href="https://github.com/HeyOmae/OMA3/issues">Create an issue.</a>
+        </p>
+        <IconButton href="https://github.com/HeyOmae/OMA3">
+          <GitHub />
+        </IconButton>
+      </section>
     </Layout>
   )
 }
