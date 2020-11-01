@@ -39,6 +39,7 @@ export const MagResAttributeSlider: FC<Props> = ({
         value={min + attributes[attribute].adjustment}
         aria-labelledby={`${attribute} attribute`}
         getAriaValueText={(value) => value.toString()}
+        valueLabelDisplay="auto"
         marks
         defaultValue={min}
         min={min}

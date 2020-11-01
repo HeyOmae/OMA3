@@ -165,7 +165,7 @@
       "damage": "Physical",
       "spellfeature": [
         {
-          "ref": "direct"
+          "ref": "Direct"
         }
       ]
     },
@@ -179,7 +179,7 @@
       "damage": "Physical",
       "spellfeature": [
         {
-          "ref": "direct"
+          "ref": "Direct"
         },
         {
           "ref": "Area"
@@ -196,7 +196,7 @@
       "damage": "Physical",
       "spellfeature": [
         {
-          "ref": "direct"
+          "ref": "Direct"
         }
       ]
     },
@@ -210,7 +210,7 @@
       "damage": "Physical",
       "spellfeature": [
         {
-          "ref": "direct"
+          "ref": "Direct"
         },
         {
           "ref": "Area"
@@ -227,7 +227,7 @@
       "damage": "Stun",
       "spellfeature": [
         {
-          "ref": "direct"
+          "ref": "Direct"
         }
       ]
     },
@@ -241,7 +241,7 @@
       "damage": "Stun",
       "spellfeature": [
         {
-          "ref": "direct"
+          "ref": "Direct"
         },
         {
           "ref": "Area"
