@@ -1,4 +1,4 @@
-import { FC, useContext } from "react"
+import { FC } from "react"
 import {
   Table,
   TableBody,
@@ -7,16 +7,17 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core"
-import { DispatchProvider, SET_SPELL } from ".."
+import { Payload, SET_SPELL } from ".."
 import { AddButton } from "../../../common"
 import { CombatSpell } from "../../../../types/MagRes"
+import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 
 interface Props {
   spells: CombatSpell[]
+  dispatch: DispatchAction<symbol, Payload>
 }
 
-export const CombatSpells: FC<Props> = ({ spells }) => {
-  const dispatch = useContext(DispatchProvider)
+export const CombatSpells: FC<Props> = ({ spells, dispatch }) => {
   return (
     <TableContainer className="table-container">
       <Table stickyHeader>

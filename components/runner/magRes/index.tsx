@@ -1,6 +1,5 @@
-import { createContext } from "react"
 import { CircularProgress, Grid } from "@material-ui/core"
-import { DispatchAction, useRunnerAccess } from "../../../hooks/useRunnerAccess"
+import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import { MagRes as MagicResonance, Spell } from "../../../types/MagRes"
 import { MagResSelection } from "./MagResSelection"
 import priorityData from "../../../data/priorityTable.json"
@@ -9,10 +8,6 @@ import { MagResAttributeSlider } from "./MagResAttributeSlider"
 import { initRunnerAttribute } from "../../../types/runner"
 import { PriorityWarning } from "../../priorityWarning"
 import { Spells } from "./Spells"
-
-export const DispatchProvider = createContext<DispatchAction<symbol, Payload>>(
-  undefined,
-)
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -114,17 +109,15 @@ export const MagRes = () => {
         (runner.magres === "Full" ||
           runner.magres === "Aspected" ||
           runner.magres === "Mystic Adept") && (
-          <DispatchProvider.Provider value={dispatch}>
-            <Grid container spacing={2}>
-              <Grid item sm={12} md={6}>
-                <h2>Spells</h2>
-                <Spells />
-              </Grid>
-              <Grid item sm={12} md={6}>
-                <h2>Known Spells</h2>
-              </Grid>
+          <Grid container spacing={2}>
+            <Grid item sm={12} md={6}>
+              <h2>Spells</h2>
+              <Spells dispatch={dispatch} />
             </Grid>
-          </DispatchProvider.Provider>
+            <Grid item sm={12} md={6}>
+              <h2>Known Spells</h2>
+            </Grid>
+          </Grid>
         )}
     </>
   )
