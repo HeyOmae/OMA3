@@ -6,18 +6,18 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core"
-import { FC, useContext } from "react"
-import { DispatchProvider, SET_SPELL } from ".."
+import { FC } from "react"
+import { Payload, SET_SPELL } from ".."
+import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { GeneralSpell } from "../../../../types/MagRes"
 import { AddButton } from "../../../common"
 
 interface Props {
   spells: GeneralSpell[]
+  dispatch: DispatchAction<symbol, Payload>
 }
 
-export const SpellsTable: FC<Props> = ({ spells }) => {
-  const dispatch = useContext(DispatchProvider)
-
+export const SpellsTable: FC<Props> = ({ spells, dispatch }) => {
   return (
     <TableContainer className="table-container">
       <Table stickyHeader>

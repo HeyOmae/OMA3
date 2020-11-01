@@ -1,18 +1,16 @@
-import { Spells } from "./index"
+import { Spells, Props } from "./index"
 import spellsData from "../../../../data/spells.json"
 import { render } from "../../../../test/testUtils"
-import { DispatchProvider, SET_SPELL } from ".."
+import { SET_SPELL } from ".."
 
 describe("<Spells/>", () => {
   const setup = () => {
-    const dispatch = jest.fn()
+    const props: Props = {
+      dispatch: jest.fn(),
+    }
     return {
-      ...render(
-        <DispatchProvider.Provider value={dispatch}>
-          <Spells />
-        </DispatchProvider.Provider>,
-      ),
-      dispatch,
+      ...render(<Spells {...props} />),
+      props,
     }
   }
   it("should display combat spells", () => {
@@ -63,11 +61,11 @@ describe("<Spells/>", () => {
 
   describe("learning", () => {
     it("should dispatch adding combat spell", () => {
-      const { getByLabelText, dispatch } = setup()
+      const { getByLabelText, props } = setup()
 
       getByLabelText("Lightning bolt").click()
 
-      expect(dispatch).toHaveBeenCalledWith({
+      expect(props.dispatch).toHaveBeenCalledWith({
         type: SET_SPELL,
         payload: {
           spell: spellsData.Combat.find(
@@ -78,11 +76,11 @@ describe("<Spells/>", () => {
     })
 
     it("should dispatch adding other spells", () => {
-      const { getByLabelText, dispatch } = setup()
+      const { getByLabelText, props } = setup()
 
       getByLabelText("Analyze truth").click()
 
-      expect(dispatch).toHaveBeenCalledWith({
+      expect(props.dispatch).toHaveBeenCalledWith({
         type: SET_SPELL,
         payload: {
           spell: spellsData.Detection.find(
