@@ -14,7 +14,7 @@ export interface Runner {
   attributes?: RunnerAttributes
   skills?: Skills
   magres?: MagRes
-  spells?: Spells
+  spells?: Partial<Spells>
 }
 
 export const initRunner: Runner = {

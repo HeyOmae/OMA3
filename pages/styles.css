@@ -98,3 +98,7 @@ input {
   text-shadow: black var(--shadowdistance) var(--shadowdistance) 0;
   animation: glow 0.7s infinite alternate;
 }
+
+.table-container {
+  max-height: calc(100vh - 192px);
+}

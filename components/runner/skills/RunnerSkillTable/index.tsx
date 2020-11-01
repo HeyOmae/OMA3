@@ -21,7 +21,6 @@ import {
 import { Remove } from "@material-ui/icons"
 import { Autocomplete } from "@material-ui/lab"
 import skillData from "../../../../data/skills.json"
-import styles from "../skills.module.css"
 
 export interface Props {
   skills: Skills
@@ -43,7 +42,7 @@ export const RunnerSkillTable: FC<Props> = ({
   )
 
   return (
-    <TableContainer className={styles.container}>
+    <TableContainer className="table-container">
       <Table stickyHeader>
         <TableHead>
           <TableRow>

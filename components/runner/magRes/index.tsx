@@ -1,5 +1,5 @@
 import { createContext } from "react"
-import { CircularProgress } from "@material-ui/core"
+import { CircularProgress, Grid } from "@material-ui/core"
 import { DispatchAction, useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import { MagRes as MagicResonance, Spell } from "../../../types/MagRes"
 import { MagResSelection } from "./MagResSelection"
@@ -115,7 +115,15 @@ export const MagRes = () => {
           runner.magres === "Aspected" ||
           runner.magres === "Mystic Adept") && (
           <DispatchProvider.Provider value={dispatch}>
-            <Spells />
+            <Grid container spacing={2}>
+              <Grid item sm={12} md={6}>
+                <h2>Spells</h2>
+                <Spells />
+              </Grid>
+              <Grid item sm={12} md={6}>
+                <h2>Known Spells</h2>
+              </Grid>
+            </Grid>
           </DispatchProvider.Provider>
         )}
     </>

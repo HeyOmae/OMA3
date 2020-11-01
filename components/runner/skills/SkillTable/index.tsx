@@ -11,7 +11,6 @@ import { ADD_SKILL, ActionPayload } from ".."
 import { Attributes } from "../../../../types/RunnerAttributes"
 import skillsData from "../../../../data/skills.json"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import styles from "../skills.module.css"
 import { AddButton } from "../../../common"
 
 interface Props {
@@ -19,7 +18,7 @@ interface Props {
 }
 
 export const SkillTable: FC<Props> = ({ dispatch }) => (
-  <TableContainer className={styles.container}>
+  <TableContainer className="table-container">
     <Table stickyHeader>
       <TableHead>
         <TableRow>

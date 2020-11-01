@@ -74,6 +74,116 @@ export const mockedRunners: Runner[] = [
       metatype: "D",
     },
   },
+  {
+    id: 5,
+    name: "Winterhawk",
+    description:
+      "Alexander King, also known as the Shadowrunner Winterhawk is an English human male hermetic mage. He is known for his academic work in thaumaturgy.",
+    priority: {
+      metatype: "D",
+      skills: "B",
+      attributes: "C",
+      "mag/res": "A",
+      resources: "E",
+    },
+    magres: "Full",
+    spells: {
+      Combat: [
+        {
+          name: "Manabolt",
+          category: "Combat",
+          range: "Line of sight",
+          type: "Mana",
+          duration: "Instantaneous",
+          drain: 4,
+          damage: "Physical",
+          spellfeature: [
+            {
+              ref: "Direct",
+            },
+          ],
+        },
+        {
+          name: "Fireball",
+          category: "Combat",
+          range: "Line of sight area",
+          type: "Physical",
+          duration: "Instantaneous",
+          drain: 6,
+          damage: "Physical special",
+          spellfeature: [
+            {
+              ref: "Indirect",
+            },
+            {
+              ref: "Area",
+            },
+          ],
+        },
+        {
+          name: "Stunball",
+          category: "Combat",
+          range: "Line of sight area",
+          type: "Mana",
+          duration: "Instantaneous",
+          drain: 4,
+          damage: "Stun",
+          spellfeature: [
+            {
+              ref: "Direct",
+            },
+            {
+              ref: "Area",
+            },
+          ],
+        },
+      ],
+      Health: [
+        {
+          name: "Heal",
+          category: "Health",
+          range: "Touch",
+          type: "Physical",
+          duration: "Permanent",
+          drain: 3,
+        },
+      ],
+      Manipulation: [
+        {
+          name: "Armor",
+          category: "Manipulation",
+          range: "Touch",
+          type: "Physical",
+          duration: "Sustained",
+          drain: 4,
+        },
+        {
+          name: "Levitate",
+          category: "Manipulation",
+          range: "Line of sight",
+          type: "Physical",
+          duration: "Sustained",
+          drain: 6,
+        },
+        {
+          name: "Mana barrier",
+          category: "Manipulation",
+          range: "Line of sight area",
+          type: "Mana",
+          duration: "Sustained",
+          drain: 5,
+        },
+        {
+          name: "Physical barrier",
+          category: "Manipulation",
+          range: "Line of sight area",
+          type: "Physical",
+          duration: "Sustained",
+          drain: 6,
+        },
+      ],
+    },
+  },
 ]
 
 export const orkRunner: Runner = {
