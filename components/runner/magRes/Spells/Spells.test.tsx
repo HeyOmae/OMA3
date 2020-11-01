@@ -63,7 +63,7 @@ describe("<Spells/>", () => {
     it("should dispatch adding combat spell", () => {
       const { getByLabelText, props } = setup()
 
-      getByLabelText("Lightning bolt").click()
+      getByLabelText("Learn Lightning bolt").click()
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: SET_SPELL,
@@ -78,7 +78,7 @@ describe("<Spells/>", () => {
     it("should dispatch adding other spells", () => {
       const { getByLabelText, props } = setup()
 
-      getByLabelText("Analyze truth").click()
+      getByLabelText("Learn Analyze truth").click()
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: SET_SPELL,

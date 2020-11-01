@@ -15,15 +15,20 @@ import { AddButton } from "../../../common"
 interface Props {
   spells: GeneralSpell[]
   dispatch: DispatchAction<symbol, Payload>
+  actionLabel: "Learn" | "Remove"
 }
 
-export const SpellsTable: FC<Props> = ({ spells, dispatch }) => {
+export const SpellsTable: FC<Props> = ({
+  spells,
+  dispatch,
+  actionLabel = "Learn",
+}) => {
   return (
     <TableContainer className="table-container">
       <Table stickyHeader>
         <TableHead>
           <TableRow>
-            <TableCell>Learn</TableCell>
+            <TableCell>{actionLabel}</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Range</TableCell>
             <TableCell>Type</TableCell>
@@ -38,7 +43,7 @@ export const SpellsTable: FC<Props> = ({ spells, dispatch }) => {
               <TableRow key={name}>
                 <TableCell>
                   <AddButton
-                    aria-label={name}
+                    aria-label={`${actionLabel} ${name}`}
                     onClick={() => {
                       dispatch({ type: SET_SPELL, payload: { spell } })
                     }}

@@ -190,10 +190,10 @@ describe("Magic and Resonance", () => {
       getByLabelText("Mystic Adept").click()
 
       await waitFor(() => {
-        expect(getByLabelText("Fireball")).toBeInTheDocument()
+        expect(getByLabelText("Learn Fireball")).toBeInTheDocument()
       })
 
-      getByLabelText("Fireball").click()
+      getByLabelText("Learn Fireball").click()
 
       await waitFor(() => {
         expect(runnerFromDB(1).spells).toBeDefined()
@@ -208,7 +208,7 @@ describe("Magic and Resonance", () => {
         ({ name }) => name === "Manabolt",
       )
 
-      getByLabelText("Manabolt").click()
+      getByLabelText("Learn Manabolt").click()
       await waitFor(() => {
         expect(runnerFromDB(1).spells.Combat).toEqual([
           fireballSpell,
@@ -219,7 +219,7 @@ describe("Magic and Resonance", () => {
       const manaBarrierSpell = spellData.Manipulation.find(
         ({ name }) => name === "Mana barrier",
       )
-      getByLabelText("Mana barrier").click()
+      getByLabelText("Learn Mana barrier").click()
       await waitFor(() => {
         expect(runnerFromDB(1).spells.Combat).toEqual([
           fireballSpell,
