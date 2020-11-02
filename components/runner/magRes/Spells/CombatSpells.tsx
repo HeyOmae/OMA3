@@ -7,21 +7,24 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core"
-import { Payload, SET_SPELL } from ".."
-import { AddButton } from "../../../common"
+import { Payload } from ".."
 import { CombatSpell } from "../../../../types/MagRes"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
+import { ActionLabel, AddSpellButtonProps } from "."
+import { RemoveSpellButtonProps } from "./RunnerSpells"
 
 interface Props {
   spells: CombatSpell[]
   dispatch: DispatchAction<symbol, Payload>
-  actionLabel: "Learn" | "Remove"
+  actionLabel: ActionLabel
+  ActionButton: FC<AddSpellButtonProps | RemoveSpellButtonProps>
 }
 
 export const CombatSpells: FC<Props> = ({
   spells,
   dispatch,
-  actionLabel = "Learn",
+  actionLabel,
+  ActionButton,
 }) => {
   return (
     <TableContainer className="table-container">
@@ -38,7 +41,7 @@ export const CombatSpells: FC<Props> = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {spells.map((spell: CombatSpell) => {
+          {spells.map((spell: CombatSpell, spellIndex) => {
             const {
               name,
               range,
@@ -52,12 +55,21 @@ export const CombatSpells: FC<Props> = ({
             return (
               <TableRow key={name}>
                 <TableCell>
-                  <AddButton
-                    aria-label={`${actionLabel} ${name}`}
-                    onClick={() => {
-                      dispatch({ type: SET_SPELL, payload: { spell } })
-                    }}
-                  />
+                  {actionLabel === "Learn" ? (
+                    <ActionButton
+                      dispatch={dispatch}
+                      actionLabel={actionLabel}
+                      spell={spell}
+                    />
+                  ) : (
+                    <ActionButton
+                      dispatch={dispatch}
+                      actionLabel={actionLabel}
+                      spellCategory={spell.category}
+                      spellName={spell.name}
+                      spellIndex={spellIndex}
+                    />
+                  )}
                 </TableCell>
                 <TableCell>
                   {name} ({ref} {category}

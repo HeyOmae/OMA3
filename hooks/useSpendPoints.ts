@@ -8,7 +8,7 @@ export const useSpendPoints = (
 ) =>
   useMemo<[number, number]>(
     () =>
-      Object.values(attributes ?? {}).reduce(
+      Object.values(attributes).reduce(
         (accumulator, { adjustment, points }) => [
           accumulator[0] - adjustment,
           accumulator[1] - points,

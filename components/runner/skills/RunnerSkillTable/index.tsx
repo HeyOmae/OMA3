@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react"
+import React, { FC, useMemo } from "react"
 import { Skills } from "../../../../types/Skill"
 import {
   TableContainer,
@@ -7,7 +7,6 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  IconButton,
   Slider,
   TextField,
 } from "@material-ui/core"
@@ -18,9 +17,9 @@ import {
   CHANGE_SPECIALIZATION,
   REMOVE_SKILL,
 } from ".."
-import { Remove } from "@material-ui/icons"
 import { Autocomplete } from "@material-ui/lab"
 import skillData from "../../../../data/skills.json"
+import { RemoveButton } from "../../../common"
 
 export interface Props {
   skills: Skills
@@ -69,8 +68,7 @@ export const RunnerSkillTable: FC<Props> = ({
               return (
                 <TableRow key={skillName}>
                   <TableCell>
-                    <IconButton
-                      color="secondary"
+                    <RemoveButton
                       aria-label={`remove ${skillName} skill`}
                       onClick={() =>
                         dispatch({
@@ -80,9 +78,7 @@ export const RunnerSkillTable: FC<Props> = ({
                           },
                         })
                       }
-                    >
-                      <Remove />
-                    </IconButton>
+                    />
                   </TableCell>
                   <TableCell>{skillName}</TableCell>
                   <TableCell width="30%">
