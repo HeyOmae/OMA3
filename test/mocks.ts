@@ -64,6 +64,7 @@ export const mockedRunners: Runner[] = [
       "mag/res": "E",
       resources: "A",
     },
+    attributes: initRunnerAttributes,
   },
   {
     id: 4,
@@ -86,6 +87,7 @@ export const mockedRunners: Runner[] = [
       "mag/res": "A",
       resources: "E",
     },
+    attributes: initRunnerAttributes,
     magres: "Full",
     spells: {
       Combat: [
@@ -183,6 +185,13 @@ export const mockedRunners: Runner[] = [
         },
       ],
     },
+  },
+  {
+    id: 6,
+    name: "Elijah",
+    description:
+      "He studied thaumaturgy and then became a freelance arcano-archaeologist",
+    priority: { metatype: "E", "mag/res": "A" },
   },
 ]
 

@@ -151,6 +151,13 @@ describe("Magic and Resonance", () => {
         expect(getByText("You need to set the mag/res priority"))
       })
     })
+
+    it("should make sure the attributes are set", async () => {
+      const { getByText } = setup("6")
+      await waitFor(() => {
+        expect(getByText("You need to set the attributes priority"))
+      })
+    })
   })
 
   describe("Spells", () => {
@@ -226,6 +233,27 @@ describe("Magic and Resonance", () => {
           manaboltSpell,
         ])
         expect(runnerFromDB(1).spells.Manipulation).toEqual([manaBarrierSpell])
+      })
+    })
+
+    describe("Runner spells", () => {
+      it("should display a runner's spells", async () => {
+        const { getByLabelText, getByText } = setup("5")
+
+        await waitFor(() => {
+          expect(getByText("Known Spells")).toBeInTheDocument()
+        })
+
+        expect(getByLabelText("Remove Manabolt")).toBeInTheDocument()
+        expect(getByLabelText("Remove Fireball")).toBeInTheDocument()
+        expect(getByLabelText("Remove Stunball")).toBeInTheDocument()
+
+        expect(getByLabelText("Remove Heal")).toBeInTheDocument()
+
+        expect(getByLabelText("Remove Armor")).toBeInTheDocument()
+        expect(getByLabelText("Remove Levitate")).toBeInTheDocument()
+        expect(getByLabelText("Remove Mana barrier")).toBeInTheDocument()
+        expect(getByLabelText("Remove Physical barrier")).toBeInTheDocument()
       })
     })
   })

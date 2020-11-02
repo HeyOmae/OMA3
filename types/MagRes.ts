@@ -35,7 +35,7 @@ export type NonCombatSpellsCategory =
   | "Illusion"
   | "Manipulation"
 
-export type SpellCategory = CombatSpellsCategory & NonCombatSpellsCategory
+export type SpellCategory = CombatSpellsCategory | NonCombatSpellsCategory
 
 type NonCombatSpells = Record<NonCombatSpellsCategory, GeneralSpell[]>
 

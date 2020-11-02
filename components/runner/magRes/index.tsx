@@ -1,6 +1,10 @@
 import { CircularProgress, Grid } from "@material-ui/core"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import { MagRes as MagicResonance, Spell } from "../../../types/MagRes"
+import {
+  MagRes as MagicResonance,
+  Spell,
+  SpellCategory,
+} from "../../../types/MagRes"
 import { MagResSelection } from "./MagResSelection"
 import priorityData from "../../../data/priorityTable.json"
 import { MagResPriorityTableOptions } from "../../../types/PriorityRating"
@@ -8,16 +12,22 @@ import { MagResAttributeSlider } from "./MagResAttributeSlider"
 import { initRunnerAttribute } from "../../../types/runner"
 import { PriorityWarning } from "../../priorityWarning"
 import { Spells } from "./Spells"
+import { RunnerSpells } from "./Spells/RunnerSpells"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
 export const SET_RESONANCE = Symbol("SET_RESONANCE")
 export const SET_SPELL = Symbol("SET_SPELL")
+export const REMOVE_SPELL = Symbol("REMOVE_SPELL")
 
 export interface Payload {
   magres?: MagicResonance
   adjustment?: number
   spell?: Spell
+  removeSpell?: {
+    spellCategory: SpellCategory
+    spellIndex: number
+  }
 }
 
 export const MagRes = () => {
@@ -78,6 +88,8 @@ export const MagRes = () => {
     return <PriorityWarning requirement="metatype" />
   } else if (!runner.priority["mag/res"]) {
     return <PriorityWarning requirement="mag/res" />
+  } else if (!runner.attributes) {
+    return <PriorityWarning requirement="attributes" />
   }
   const priority = priorityData["mag/res"][
     runner.priority["mag/res"]
@@ -114,9 +126,12 @@ export const MagRes = () => {
               <h2>Spells</h2>
               <Spells dispatch={dispatch} />
             </Grid>
-            <Grid item sm={12} md={6}>
-              <h2>Known Spells</h2>
-            </Grid>
+            {runner.spells && (
+              <Grid item sm={12} md={6}>
+                <h2>Known Spells</h2>
+                <RunnerSpells spells={runner.spells} dispatch={dispatch} />
+              </Grid>
+            )}
           </Grid>
         )}
     </>

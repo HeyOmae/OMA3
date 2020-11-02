@@ -7,21 +7,24 @@ import {
   TableRow,
 } from "@material-ui/core"
 import { FC } from "react"
-import { Payload, SET_SPELL } from ".."
+import { AddSpellButtonProps } from "."
+import { Payload } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { GeneralSpell } from "../../../../types/MagRes"
-import { AddButton } from "../../../common"
+import { RemoveSpellButtonProps } from "./RunnerSpells"
 
 interface Props {
   spells: GeneralSpell[]
   dispatch: DispatchAction<symbol, Payload>
   actionLabel: "Learn" | "Remove"
+  ActionButton: FC<AddSpellButtonProps | RemoveSpellButtonProps>
 }
 
 export const SpellsTable: FC<Props> = ({
   spells,
   dispatch,
-  actionLabel = "Learn",
+  actionLabel,
+  ActionButton,
 }) => {
   return (
     <TableContainer className="table-container">
@@ -37,17 +40,26 @@ export const SpellsTable: FC<Props> = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {spells.map((spell) => {
+          {spells.map((spell, spellIndex) => {
             const { name, range, type, duration, drain } = spell
             return (
               <TableRow key={name}>
                 <TableCell>
-                  <AddButton
-                    aria-label={`${actionLabel} ${name}`}
-                    onClick={() => {
-                      dispatch({ type: SET_SPELL, payload: { spell } })
-                    }}
-                  />
+                  {actionLabel === "Learn" ? (
+                    <ActionButton
+                      dispatch={dispatch}
+                      actionLabel={actionLabel}
+                      spell={spell}
+                    />
+                  ) : (
+                    <ActionButton
+                      dispatch={dispatch}
+                      actionLabel={actionLabel}
+                      spellCategory={spell.category}
+                      spellName={spell.name}
+                      spellIndex={spellIndex}
+                    />
+                  )}
                 </TableCell>
                 <TableCell>{name}</TableCell>
                 <TableCell>{range}</TableCell>

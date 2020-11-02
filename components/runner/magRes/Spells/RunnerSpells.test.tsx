@@ -1,10 +1,15 @@
-import { RunnerSpells } from "./RunnerSpells"
+import { RunnerSpells, Props } from "./RunnerSpells"
 import { render } from "../../../../test/testUtils"
 import { mockedRunners } from "../../../../test/mocks"
+import { REMOVE_SPELL } from ".."
 
 describe("<RunnerSpells/>", () => {
   const setup = () => {
-    return render(<RunnerSpells spells={mockedRunners[4].spells} />)
+    const props: Props = {
+      spells: mockedRunners[4].spells,
+      dispatch: jest.fn(),
+    }
+    return { ...render(<RunnerSpells {...props} />), props }
   }
   it("should render spells", () => {
     const { getByText } = setup()
@@ -22,5 +27,32 @@ describe("<RunnerSpells/>", () => {
     expect(getByText("Levitate")).toBeInTheDocument()
     expect(getByText("Mana barrier")).toBeInTheDocument()
     expect(getByText("Physical barrier")).toBeInTheDocument()
+  })
+
+  it("should dispatch the remove spell action", () => {
+    const { getByLabelText, props } = setup()
+
+    getByLabelText("Remove Manabolt").click()
+
+    expect(props.dispatch).toHaveBeenCalledWith({
+      type: REMOVE_SPELL,
+      payload: {
+        removeSpell: {
+          spellCategory: "Combat",
+          spellIndex: 0,
+        },
+      },
+    })
+
+    getByLabelText("Remove Mana barrier").click()
+    expect(props.dispatch).toHaveBeenCalledWith({
+      type: REMOVE_SPELL,
+      payload: {
+        removeSpell: {
+          spellCategory: "Manipulation",
+          spellIndex: 2,
+        },
+      },
+    })
   })
 })
