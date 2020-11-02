@@ -255,6 +255,35 @@ describe("Magic and Resonance", () => {
         expect(getByLabelText("Remove Mana barrier")).toBeInTheDocument()
         expect(getByLabelText("Remove Physical barrier")).toBeInTheDocument()
       })
+
+      it("should remove a spell", async () => {
+        const { getByLabelText } = setup("5")
+        expect(runnerFromDB(4).spells.Combat.length).toEqual(3)
+        expect(runnerFromDB(4).spells.Combat[1].name).toEqual("Fireball")
+
+        await waitFor(() => {
+          expect(getByLabelText("Remove Fireball")).toBeInTheDocument()
+        })
+        getByLabelText("Remove Fireball").click()
+
+        await waitFor(() => {
+          expect(runnerFromDB(4).spells.Combat.length).toEqual(2)
+        })
+        expect(runnerFromDB(4).spells.Combat[1].name).toEqual("Stunball")
+
+        expect(runnerFromDB(4).spells.Manipulation.length).toEqual(4)
+        expect(runnerFromDB(4).spells.Manipulation[2].name).toEqual(
+          "Mana barrier",
+        )
+        getByLabelText("Remove Mana barrier").click()
+
+        await waitFor(() => {
+          expect(runnerFromDB(4).spells.Manipulation.length).toEqual(3)
+        })
+        expect(runnerFromDB(4).spells.Manipulation[2].name).toEqual(
+          "Physical barrier",
+        )
+      })
     })
   })
 })

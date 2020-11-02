@@ -77,6 +77,22 @@ export const MagRes = () => {
               ],
             },
           }
+
+        case REMOVE_SPELL: {
+          const {
+            removeSpell: { spellCategory, spellIndex },
+          } = payload
+          return {
+            ...runner,
+            spells: {
+              ...runner.spells,
+              [spellCategory]: [
+                ...runner.spells[spellCategory].slice(0, spellIndex),
+                ...runner.spells[spellCategory].slice(spellIndex + 1),
+              ],
+            },
+          }
+        }
       }
     },
   )
