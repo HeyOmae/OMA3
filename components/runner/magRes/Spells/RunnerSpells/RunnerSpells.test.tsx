@@ -1,7 +1,7 @@
-import { RunnerSpells, Props } from "./RunnerSpells"
-import { render } from "../../../../test/testUtils"
-import { mockedRunners } from "../../../../test/mocks"
-import { REMOVE_SPELL } from ".."
+import { RunnerSpells, Props } from "."
+import { render } from "../../../../../test/testUtils"
+import { mockedRunners } from "../../../../../test/mocks"
+import { REMOVE_SPELL } from "../.."
 
 describe("<RunnerSpells/>", () => {
   const setup = () => {

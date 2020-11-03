@@ -13,6 +13,7 @@ import { initRunnerAttribute } from "../../../types/runner"
 import { PriorityWarning } from "../../priorityWarning"
 import { Spells } from "./Spells"
 import { RunnerSpells } from "./Spells/RunnerSpells"
+import { RemainingSpells } from "./RemainingSpells"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -145,6 +146,13 @@ export const MagRes = () => {
             {runner.spells && (
               <Grid item sm={12} md={6}>
                 <h2>Known Spells</h2>
+                <RemainingSpells
+                  spells={runner.spells}
+                  rating={
+                    runner.attributes.Magic.adjustment +
+                    priority[runner.magres][1]
+                  }
+                />
                 <RunnerSpells spells={runner.spells} dispatch={dispatch} />
               </Grid>
             )}

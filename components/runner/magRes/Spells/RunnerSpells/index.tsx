@@ -1,15 +1,15 @@
 import { FC, Fragment } from "react"
-import { CombatSpells } from "./CombatSpells"
+import { CombatSpells } from "../CombatSpells"
 import {
   GeneralSpell,
   NonCombatSpellsCategory,
   SpellCategory,
   Spells,
-} from "../../../../types/MagRes"
-import { SpellsTable } from "./SpellsTable"
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { Payload, REMOVE_SPELL } from ".."
-import { RemoveButton } from "../../../common"
+} from "../../../../../types/MagRes"
+import { SpellsTable } from "../SpellsTable"
+import { DispatchAction } from "../../../../../hooks/useRunnerAccess"
+import { Payload, REMOVE_SPELL } from "../.."
+import { RemoveButton } from "../../../../common"
 
 export interface RemoveSpellButtonProps {
   dispatch: DispatchAction<symbol, Payload>
