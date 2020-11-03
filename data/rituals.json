@@ -1,0 +1,83 @@
+[
+  {
+    "name": "circle_of_healing",
+    "threshold": "7",
+    "ritualfeature": [
+      {
+        "ref": "anchored"
+      },
+      {
+        "ref": "spell"
+      }
+    ]
+  },
+  {
+    "name": "circle_of_protection",
+    "threshold": "6",
+    "ritualfeature": {
+      "ref": "anchored"
+    }
+  },
+  {
+    "name": "curse",
+    "threshold": "5",
+    "ritualfeature": [
+      {
+        "ref": "material_link"
+      },
+      {
+        "ref": "spell"
+      }
+    ]
+  },
+  {
+    "name": "prodigal_spell",
+    "threshold": "6",
+    "ritualfeature": [
+      {
+        "ref": "spell"
+      },
+      {
+        "ref": "spotter"
+      }
+    ]
+  },
+  {
+    "name": "remote_sensing",
+    "threshold": "5",
+    "ritualfeature": [
+      {
+        "ref": "spell"
+      },
+      {
+        "ref": "spotter"
+      }
+    ]
+  },
+  {
+    "name": "renascence",
+    "threshold": "6",
+    "ritualfeature": [
+      {
+        "ref": "anchored"
+      },
+      {
+        "ref": "spell"
+      }
+    ]
+  },
+  {
+    "name": "ward",
+    "threshold": "6",
+    "ritualfeature": {
+      "ref": "anchored"
+    }
+  },
+  {
+    "name": "watcher",
+    "threshold": "4",
+    "ritualfeature": {
+      "ref": "minion"
+    }
+  }
+]
