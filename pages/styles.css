@@ -14,6 +14,11 @@
     var(--clearscan2) 50%,
     var(--clearscan)
   );
+  --extra-small: 0px;
+  --small: 600px;
+  --medium: 960px;
+  --large: 1280px;
+  --extra-large: 1920px;
 }
 @keyframes scanning {
   from {
