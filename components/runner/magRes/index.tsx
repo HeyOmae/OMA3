@@ -14,6 +14,7 @@ import { PriorityWarning } from "../../priorityWarning"
 import { Spells } from "./Spells"
 import { RunnerSpells } from "./Spells/RunnerSpells"
 import { RemainingSpells } from "./RemainingSpells"
+import styles from "./magRes.module.css"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -139,12 +140,12 @@ export const MagRes = () => {
           runner.magres === "Aspected" ||
           runner.magres === "Mystic Adept") && (
           <Grid container spacing={2}>
-            <Grid item sm={12} md={6}>
+            <Grid item sm={12} md={6} className={styles.scrollGrid}>
               <h2>Spells</h2>
               <Spells dispatch={dispatch} />
             </Grid>
             {runner.spells && (
-              <Grid item sm={12} md={6}>
+              <Grid item sm={12} md={6} className={styles.scrollGrid}>
                 <h2>Known Spells</h2>
                 <RemainingSpells
                   spells={runner.spells}

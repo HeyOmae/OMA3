@@ -1,0 +1,6 @@
+@media (min-width: 960px) {
+  .scrollGrid {
+    overflow: auto;
+    max-height: calc(100vh - 56px);
+  }
+}
