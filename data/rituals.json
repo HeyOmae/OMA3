@@ -1,6 +1,6 @@
 [
   {
-    "name": "circle_of_healing",
+    "name": "Circle of healing",
     "threshold": "7",
     "ritualfeature": [
       {
@@ -12,18 +12,18 @@
     ]
   },
   {
-    "name": "circle_of_protection",
+    "name": "Circle of protection",
     "threshold": "6",
     "ritualfeature": {
       "ref": "anchored"
     }
   },
   {
-    "name": "curse",
+    "name": "Curse",
     "threshold": "5",
     "ritualfeature": [
       {
-        "ref": "material_link"
+        "ref": "material link"
       },
       {
         "ref": "spell"
@@ -31,7 +31,7 @@
     ]
   },
   {
-    "name": "prodigal_spell",
+    "name": "Prodigal spell",
     "threshold": "6",
     "ritualfeature": [
       {
@@ -43,7 +43,7 @@
     ]
   },
   {
-    "name": "remote_sensing",
+    "name": "Remote sensing",
     "threshold": "5",
     "ritualfeature": [
       {
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "name": "renascence",
+    "name": "Renascence",
     "threshold": "6",
     "ritualfeature": [
       {
@@ -67,14 +67,14 @@
     ]
   },
   {
-    "name": "ward",
+    "name": "Ward",
     "threshold": "6",
     "ritualfeature": {
       "ref": "anchored"
     }
   },
   {
-    "name": "watcher",
+    "name": "Watcher",
     "threshold": "4",
     "ritualfeature": {
       "ref": "minion"
