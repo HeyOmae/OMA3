@@ -286,4 +286,31 @@ describe("Magic and Resonance", () => {
       })
     })
   })
+
+  describe("Rituals", () => {
+    it("should add a ritual to the runner", async () => {
+      const { getByLabelText, getByText } = setup("5")
+
+      expect(runnerFromDB(4).rituals).toBeUndefined()
+      await waitFor(() => {
+        expect(getByText("Rituals")).toBeInTheDocument()
+      })
+
+      getByLabelText("Add Ward").click()
+
+      await waitFor(() => {
+        expect(runnerFromDB(4).rituals).toEqual([
+          {
+            name: "Ward",
+            threshold: 6,
+            ritualfeature: [
+              {
+                ref: "anchored",
+              },
+            ],
+          },
+        ])
+      })
+    })
+  })
 })

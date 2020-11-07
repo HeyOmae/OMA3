@@ -42,3 +42,9 @@ type NonCombatSpells = Record<NonCombatSpellsCategory, GeneralSpell[]>
 export type Spells = {
   Combat: CombatSpell[]
 } & NonCombatSpells
+
+export type Ritual = {
+  name: string
+  threshold: number
+  ritualfeature?: Spellfeature[]
+}
