@@ -2,6 +2,7 @@ import { CircularProgress, Grid } from "@material-ui/core"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import {
   MagRes as MagicResonance,
+  Ritual,
   Spell,
   SpellCategory,
 } from "../../../types/MagRes"
@@ -15,12 +16,14 @@ import { Spells } from "./Spells"
 import { RunnerSpells } from "./Spells/RunnerSpells"
 import { RemainingSpells } from "./RemainingSpells"
 import styles from "./magRes.module.css"
+import { Rituals } from "./Rituals"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
 export const SET_RESONANCE = Symbol("SET_RESONANCE")
 export const SET_SPELL = Symbol("SET_SPELL")
 export const REMOVE_SPELL = Symbol("REMOVE_SPELL")
+export const SET_RITUAL = Symbol("SET_RITUAL")
 
 export interface Payload {
   magres?: MagicResonance
@@ -30,6 +33,7 @@ export interface Payload {
     spellCategory: SpellCategory
     spellIndex: number
   }
+  ritual?: Ritual
 }
 
 export const MagRes = () => {
@@ -95,6 +99,11 @@ export const MagRes = () => {
             },
           }
         }
+        case SET_RITUAL:
+          return {
+            ...runner,
+            rituals: [...(runner.rituals ?? []), payload.ritual],
+          }
       }
     },
   )
@@ -144,19 +153,26 @@ export const MagRes = () => {
               <h2>Spells</h2>
               <Spells dispatch={dispatch} />
             </Grid>
-            {runner.spells && (
-              <Grid item sm={12} md={6} className={styles.scrollGrid}>
-                <h2>Known Spells</h2>
-                <RemainingSpells
-                  spells={runner.spells}
-                  rating={
-                    runner.attributes.Magic.adjustment +
-                    priority[runner.magres][1]
-                  }
-                />
-                <RunnerSpells spells={runner.spells} dispatch={dispatch} />
-              </Grid>
-            )}
+            <Grid item sm={12} md={6} className={styles.scrollGrid}>
+              {runner.spells && (
+                <>
+                  <h2>Known Spells</h2>
+                  <RemainingSpells
+                    spells={runner.spells}
+                    rating={
+                      runner.attributes.Magic.adjustment +
+                      priority[runner.magres][1]
+                    }
+                  />
+                  <RunnerSpells spells={runner.spells} dispatch={dispatch} />
+                </>
+              )}
+            </Grid>
+
+            <Grid item sm={12} md={6} className={styles.scrollGrid}>
+              <h2>Rituals</h2>
+              <Rituals dispatch={dispatch} />
+            </Grid>
           </Grid>
         )}
     </>
