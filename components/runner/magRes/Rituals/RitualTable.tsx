@@ -11,10 +11,11 @@ import { Payload } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { Ritual } from "../../../../types/MagRes"
 import { AddRitualButton } from "./AddRitualButton"
+import { RemoveRitualButton } from "./RunnerRituals/RemoveRitualButton"
 
 interface Props {
   rituals: Ritual[]
-  ActionButton: typeof AddRitualButton
+  ActionButton: typeof AddRitualButton | typeof RemoveRitualButton
   dispatch: DispatchAction<symbol, Payload>
 }
 
@@ -30,12 +31,16 @@ export const RitualTable: FC<Props> = ({ rituals, ActionButton, dispatch }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {rituals.map((ritual) => {
+        {rituals.map((ritual, ritualIndex) => {
           const { name, threshold, ritualfeature } = ritual
           return (
             <TableRow key={name}>
               <TableCell>
-                <ActionButton dispatch={dispatch} ritual={ritual} />
+                <ActionButton
+                  dispatch={dispatch}
+                  ritual={ritual}
+                  ritualIndex={ritualIndex}
+                />
               </TableCell>
               <TableCell>{name}</TableCell>
               <TableCell>({Object.values(ritualfeature).join(", ")})</TableCell>

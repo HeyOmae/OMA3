@@ -17,6 +17,7 @@ import { RunnerSpells } from "./Spells/RunnerSpells"
 import { RemainingSpells } from "./RemainingSpells"
 import styles from "./magRes.module.css"
 import { Rituals } from "./Rituals"
+import { RunnerRituals } from "./Rituals/RunnerRituals"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -24,6 +25,7 @@ export const SET_RESONANCE = Symbol("SET_RESONANCE")
 export const SET_SPELL = Symbol("SET_SPELL")
 export const REMOVE_SPELL = Symbol("REMOVE_SPELL")
 export const SET_RITUAL = Symbol("SET_RITUAL")
+export const REMOVE_RITUAL = Symbol("REMOVE_RITUAL")
 
 export interface Payload {
   magres?: MagicResonance
@@ -34,6 +36,7 @@ export interface Payload {
     spellIndex: number
   }
   ritual?: Ritual
+  removeRitual?: number
 }
 
 export const MagRes = () => {
@@ -172,6 +175,14 @@ export const MagRes = () => {
             <Grid item sm={12} md={6} className={styles.scrollGrid}>
               <h2>Rituals</h2>
               <Rituals dispatch={dispatch} />
+            </Grid>
+            <Grid item sm={12} md={6} className={styles.scrollGrid}>
+              {runner.rituals && (
+                <>
+                  <h2>Known Rituals</h2>
+                  <RunnerRituals dispatch={dispatch} rituals={runner.rituals} />
+                </>
+              )}
             </Grid>
           </Grid>
         )}
