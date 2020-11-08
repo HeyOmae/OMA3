@@ -193,6 +193,52 @@ export const mockedRunners: Runner[] = [
       "He studied thaumaturgy and then became a freelance arcano-archaeologist",
     priority: { metatype: "E", "mag/res": "A" },
   },
+  {
+    id: 7,
+    name: "Frosty",
+    description: "Immortal elf runner",
+    priority: {
+      metatype: "D",
+      skills: "B",
+      attributes: "C",
+      "mag/res": "A",
+      resources: "E",
+    },
+    attributes: initRunnerAttributes,
+    magres: "Full",
+    rituals: [
+      {
+        name: "Ward",
+        threshold: 6,
+        ritualfeature: [
+          {
+            ref: "anchored",
+          },
+        ],
+      },
+      {
+        name: "Circle of protection",
+        threshold: 6,
+        ritualfeature: [
+          {
+            ref: "anchored",
+          },
+        ],
+      },
+      {
+        name: "Curse",
+        threshold: 5,
+        ritualfeature: [
+          {
+            ref: "material link",
+          },
+          {
+            ref: "spell",
+          },
+        ],
+      },
+    ],
+  },
 ]
 
 export const orkRunner: Runner = {

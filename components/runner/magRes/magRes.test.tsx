@@ -312,5 +312,15 @@ describe("Magic and Resonance", () => {
         ])
       })
     })
+
+    it("should render the rituals a runner knowns", async () => {
+      const { getByLabelText, getByText } = setup("7")
+
+      await waitFor(() => {
+        getByText("Known Rituals")
+      })
+
+      expect(getByLabelText("Remove Ward")).toBeInTheDocument()
+    })
   })
 })
