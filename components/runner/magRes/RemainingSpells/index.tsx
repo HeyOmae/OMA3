@@ -1,12 +1,17 @@
 import { FC, useMemo } from "react"
-import { Spells } from "../../../../types/MagRes"
+import { Ritual, Spells } from "../../../../types/MagRes"
 
 export interface Props {
   rating: number
-  spells: Partial<Spells>
+  spells?: Partial<Spells>
+  rituals?: Ritual[]
 }
 
-export const RemainingSpells: FC<Props> = ({ rating, spells }) => {
+export const RemainingSpells: FC<Props> = ({
+  rating,
+  spells = {},
+  rituals = [],
+}) => {
   const totalSpells = rating * 2,
     numberOfKnownSpells = useMemo(
       () =>
@@ -16,7 +21,7 @@ export const RemainingSpells: FC<Props> = ({ rating, spells }) => {
         ),
       [spells],
     ),
-    remainingNumberOfSpells = totalSpells - numberOfKnownSpells
+    remainingNumberOfSpells = totalSpells - numberOfKnownSpells - rituals.length
 
   return (
     <dl>

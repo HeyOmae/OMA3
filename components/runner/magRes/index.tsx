@@ -160,31 +160,27 @@ export const MagRes = () => {
           runner.magres === "Aspected" ||
           runner.magres === "Mystic Adept") && (
           <Grid container spacing={2}>
+            <Grid item alignItems="center" xs={12}>
+              <RemainingSpells
+                spells={runner.spells}
+                rating={priority[runner.magres][1]}
+                rituals={runner.rituals}
+              />
+            </Grid>
             <Grid item sm={12} md={6} className={styles.scrollGrid}>
               <h2>Spells</h2>
               <Spells dispatch={dispatch} />
+
+              <h2>Rituals</h2>
+              <Rituals dispatch={dispatch} />
             </Grid>
             <Grid item sm={12} md={6} className={styles.scrollGrid}>
               {runner.spells && (
                 <>
                   <h2>Known Spells</h2>
-                  <RemainingSpells
-                    spells={runner.spells}
-                    rating={
-                      runner.attributes.Magic.adjustment +
-                      priority[runner.magres][1]
-                    }
-                  />
                   <RunnerSpells spells={runner.spells} dispatch={dispatch} />
                 </>
               )}
-            </Grid>
-
-            <Grid item sm={12} md={6} className={styles.scrollGrid}>
-              <h2>Rituals</h2>
-              <Rituals dispatch={dispatch} />
-            </Grid>
-            <Grid item sm={12} md={6} className={styles.scrollGrid}>
               {runner.rituals && (
                 <>
                   <h2>Known Rituals</h2>

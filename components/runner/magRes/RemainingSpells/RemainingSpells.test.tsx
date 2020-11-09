@@ -3,8 +3,10 @@ import { mockedRunners } from "../../../../test/mocks"
 import { render } from "../../../../test/testUtils"
 
 describe("<RemainingSpell/>", () => {
-  const setup = ({ rating = 4, spells = {} }: Partial<Props> = {}) =>
-    render(<RemainingSpells rating={rating} spells={spells} />)
+  const setup = ({ rating = 4, spells, rituals }: Partial<Props> = {}) =>
+    render(
+      <RemainingSpells rating={rating} spells={spells} rituals={rituals} />,
+    )
   it("should display the number of spells a runner can know", () => {
     const { getByText } = setup()
 
@@ -40,5 +42,11 @@ describe("<RemainingSpell/>", () => {
     })
 
     expect(getByText("-1/8")).toHaveClass("bad-stuff")
+  })
+
+  it("should count rituals in the remaining spell count", () => {
+    const { getByText } = setup({ rituals: mockedRunners[6].rituals })
+
+    expect(getByText("5/8")).toBeInTheDocument()
   })
 })
