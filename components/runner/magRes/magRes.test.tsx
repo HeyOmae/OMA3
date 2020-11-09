@@ -335,6 +335,8 @@ describe("Magic and Resonance", () => {
         expect(getByText("Known Rituals")).toBeInTheDocument()
       })
 
+      expect(getByText("5/8")).toBeInTheDocument()
+
       getByLabelText("Remove Ward").click()
 
       expect(queryByLabelText("Remove Ward")).not.toBeInTheDocument()
@@ -364,6 +366,8 @@ describe("Magic and Resonance", () => {
           },
         ])
       })
+
+      expect(getByText("6/8")).toBeInTheDocument()
     })
   })
 })
