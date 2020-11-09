@@ -43,7 +43,9 @@ export const RitualTable: FC<Props> = ({ rituals, ActionButton, dispatch }) => (
                 />
               </TableCell>
               <TableCell>{name}</TableCell>
-              <TableCell>({Object.values(ritualfeature).join(", ")})</TableCell>
+              <TableCell>
+                ({ritualfeature.map(({ ref }) => ref).join(", ")})
+              </TableCell>
               <TableCell>{threshold}</TableCell>
             </TableRow>
           )
