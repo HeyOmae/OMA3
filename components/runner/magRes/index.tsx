@@ -107,6 +107,14 @@ export const MagRes = () => {
             ...runner,
             rituals: [...(runner.rituals ?? []), payload.ritual],
           }
+        case REMOVE_RITUAL:
+          return {
+            ...runner,
+            rituals: [
+              ...runner.rituals.slice(0, payload.removeRitual),
+              ...runner.rituals.slice(payload.removeRitual + 1),
+            ],
+          }
       }
     },
   )

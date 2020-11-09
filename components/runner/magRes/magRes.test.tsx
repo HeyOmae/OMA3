@@ -8,6 +8,7 @@ import {
   SliderHelper,
 } from "../../../test/testUtils"
 import spellData from "../../../data/spells.json"
+import { mockedRunners } from "../../../test/mocks"
 
 describe("Magic and Resonance", () => {
   const setup = (id = "2") =>
@@ -320,7 +321,49 @@ describe("Magic and Resonance", () => {
         getByText("Known Rituals")
       })
 
-      expect(getByLabelText("Remove Ward")).toBeInTheDocument()
+      mockedRunners[6].rituals.forEach(({ name }) => {
+        expect(getByLabelText(`Remove ${name}`)).toBeInTheDocument()
+      })
+    })
+
+    it("should remove a ritual from the runner", async () => {
+      const { getByLabelText, getByText, queryByLabelText } = setup("7")
+
+      expect(runnerFromDB(6).rituals).toHaveLength(3)
+
+      await waitFor(() => {
+        expect(getByText("Known Rituals")).toBeInTheDocument()
+      })
+
+      getByLabelText("Remove Ward").click()
+
+      expect(queryByLabelText("Remove Ward")).not.toBeInTheDocument()
+
+      await waitFor(() => {
+        expect(runnerFromDB(6).rituals).toEqual([
+          {
+            name: "Circle of protection",
+            threshold: 6,
+            ritualfeature: [
+              {
+                ref: "anchored",
+              },
+            ],
+          },
+          {
+            name: "Curse",
+            threshold: 5,
+            ritualfeature: [
+              {
+                ref: "material link",
+              },
+              {
+                ref: "spell",
+              },
+            ],
+          },
+        ])
+      })
     })
   })
 })
