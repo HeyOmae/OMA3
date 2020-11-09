@@ -160,7 +160,7 @@ export const MagRes = () => {
           runner.magres === "Aspected" ||
           runner.magres === "Mystic Adept") && (
           <Grid container spacing={2}>
-            <Grid item alignItems="center" xs={12}>
+            <Grid item xs={12}>
               <RemainingSpells
                 spells={runner.spells}
                 rating={priority[runner.magres][1]}

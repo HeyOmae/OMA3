@@ -19,6 +19,12 @@ describe("<Rituals />", () => {
     })
   })
 
+  it("should display the features of a spell", () => {
+    const { getAllByText } = setup()
+
+    expect(getAllByText("(anchored, spell)").length).toBeGreaterThan(0)
+  })
+
   it("should dispatch add ritual action", () => {
     const { getByLabelText, props } = setup()
 
