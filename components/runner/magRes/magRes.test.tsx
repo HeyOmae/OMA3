@@ -8,6 +8,7 @@ import {
   SliderHelper,
 } from "../../../test/testUtils"
 import spellData from "../../../data/spells.json"
+import ritualData from "../../../data/rituals.json"
 import { mockedRunners } from "../../../test/mocks"
 
 describe("Magic and Resonance", () => {
@@ -289,6 +290,25 @@ describe("Magic and Resonance", () => {
   })
 
   describe("Rituals", () => {
+    it("should display the rituals after clicking the header", async () => {
+      const { getByText } = setup()
+
+      await waitFor(() => {
+        expect(getByText("Rituals")).toBeInTheDocument()
+      })
+
+      ritualData.forEach(({ name }) => {
+        expect(getByText(name)).not.toBeVisible()
+      })
+
+      getByText("Rituals").click()
+
+      await waitFor(() => {
+        ritualData.forEach(({ name }) => {
+          expect(getByText(name)).toBeVisible()
+        })
+      })
+    })
     it("should add a ritual to the runner", async () => {
       const { getByLabelText, getByText } = setup("5")
 

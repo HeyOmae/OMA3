@@ -5,12 +5,17 @@ interface Props extends CollapseProps {
   children: [btnText: ReactNode, content: ReactNode]
 }
 
-export const Accordian: FC<Props> = ({ children: [btnText, content] }) => {
+export const Accordion: FC<Props> = ({
+  children: [btnText, content],
+  ...props
+}) => {
   const [showContent, setShowContent] = useState(false)
   return (
     <>
       <Button onClick={() => setShowContent(!showContent)}>{btnText}</Button>
-      <Collapse in={showContent}>{content}</Collapse>
+      <Collapse in={showContent} {...props}>
+        {content}
+      </Collapse>
     </>
   )
 }
