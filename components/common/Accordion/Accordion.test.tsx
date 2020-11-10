@@ -1,13 +1,13 @@
 import { render, waitFor } from "../../../test/testUtils"
-import { Accordian } from "./index"
+import { Accordion } from "./index"
 
-describe("<Accordian/>", () => {
+describe("<Accordion/>", () => {
   const setup = () => {
     return render(
-      <Accordian timeout={0}>
+      <Accordion timeout={0}>
         <h1>The Button</h1>
         <p>I am some child content</p>
-      </Accordian>,
+      </Accordion>,
     )
   }
 

@@ -15,6 +15,17 @@ describe("<Spells/>", () => {
   }
   it("should display combat spells", () => {
     const { getByText } = setup()
+    spellsData.Combat.forEach(
+      ({ name, category, spellfeature: [{ ref }, area] }) => {
+        expect(
+          getByText(
+            `${name} (${ref} ${category}${area ? `, ${area.ref}` : ""})`,
+          ),
+        ).not.toBeVisible()
+      },
+    )
+
+    getByText("Combat Spells").click()
 
     spellsData.Combat.forEach(
       ({ name, category, spellfeature: [{ ref }, area] }) => {
@@ -22,7 +33,7 @@ describe("<Spells/>", () => {
           getByText(
             `${name} (${ref} ${category}${area ? `, ${area.ref}` : ""})`,
           ),
-        ).toBeInTheDocument()
+        ).toBeVisible()
       },
     )
   })
@@ -31,7 +42,13 @@ describe("<Spells/>", () => {
     const { getByText } = setup()
 
     spellsData.Detection.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(getByText(name)).not.toBeVisible()
+    })
+
+    getByText("Detection Spells").click()
+
+    spellsData.Detection.forEach(({ name }) => {
+      expect(getByText(name)).toBeVisible()
     })
   })
 
@@ -39,7 +56,13 @@ describe("<Spells/>", () => {
     const { getByText } = setup()
 
     spellsData.Health.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(getByText(name)).not.toBeVisible()
+    })
+
+    getByText("Health Spells").click()
+
+    spellsData.Health.forEach(({ name }) => {
+      expect(getByText(name)).toBeVisible()
     })
   })
 
@@ -47,7 +70,13 @@ describe("<Spells/>", () => {
     const { getByText } = setup()
 
     spellsData.Illusion.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(getByText(name)).not.toBeVisible()
+    })
+
+    getByText("Illusion Spells").click()
+
+    spellsData.Illusion.forEach(({ name }) => {
+      expect(getByText(name)).toBeVisible()
     })
   })
 
@@ -55,7 +84,13 @@ describe("<Spells/>", () => {
     const { getByText } = setup()
 
     spellsData.Manipulation.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(getByText(name)).not.toBeVisible()
+    })
+
+    getByText("Manipulation Spells").click()
+
+    spellsData.Manipulation.forEach(({ name }) => {
+      expect(getByText(name)).toBeVisible()
     })
   })
 

@@ -12,6 +12,7 @@ import { Payload, SET_SPELL } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { FC } from "react"
 import { AddButton } from "../../../common"
+import { Accordion } from "../../../common/Accordion"
 
 export interface Props {
   dispatch: DispatchAction<symbol, Payload>
@@ -41,41 +42,51 @@ const AddSpellButton: FC<AddSpellButtonProps> = ({
 export const Spells: FC<Props> = ({ dispatch }) => {
   return (
     <>
-      <h3>Combat Spells</h3>
-      <CombatSpells
-        spells={Combat as CombatSpell[]}
-        dispatch={dispatch}
-        actionLabel="Learn"
-        ActionButton={AddSpellButton}
-      />
-      <h3>Detection Spells</h3>
-      <SpellsTable
-        spells={Detection as GeneralSpell[]}
-        dispatch={dispatch}
-        actionLabel="Learn"
-        ActionButton={AddSpellButton}
-      />
-      <h3>Health Spells</h3>
-      <SpellsTable
-        spells={Health as GeneralSpell[]}
-        dispatch={dispatch}
-        actionLabel="Learn"
-        ActionButton={AddSpellButton}
-      />
-      <h3>Illusion Spells</h3>
-      <SpellsTable
-        spells={Illusion as GeneralSpell[]}
-        dispatch={dispatch}
-        actionLabel="Learn"
-        ActionButton={AddSpellButton}
-      />
-      <h3>Manipulation Spells</h3>
-      <SpellsTable
-        spells={Manipulation as GeneralSpell[]}
-        dispatch={dispatch}
-        actionLabel="Learn"
-        ActionButton={AddSpellButton}
-      />
+      <Accordion>
+        <h3>Combat Spells</h3>
+        <CombatSpells
+          spells={Combat as CombatSpell[]}
+          dispatch={dispatch}
+          actionLabel="Learn"
+          ActionButton={AddSpellButton}
+        />
+      </Accordion>
+      <Accordion>
+        <h3>Detection Spells</h3>
+        <SpellsTable
+          spells={Detection as GeneralSpell[]}
+          dispatch={dispatch}
+          actionLabel="Learn"
+          ActionButton={AddSpellButton}
+        />
+      </Accordion>
+      <Accordion>
+        <h3>Health Spells</h3>
+        <SpellsTable
+          spells={Health as GeneralSpell[]}
+          dispatch={dispatch}
+          actionLabel="Learn"
+          ActionButton={AddSpellButton}
+        />
+      </Accordion>
+      <Accordion>
+        <h3>Illusion Spells</h3>
+        <SpellsTable
+          spells={Illusion as GeneralSpell[]}
+          dispatch={dispatch}
+          actionLabel="Learn"
+          ActionButton={AddSpellButton}
+        />
+      </Accordion>
+      <Accordion>
+        <h3>Manipulation Spells</h3>
+        <SpellsTable
+          spells={Manipulation as GeneralSpell[]}
+          dispatch={dispatch}
+          actionLabel="Learn"
+          ActionButton={AddSpellButton}
+        />
+      </Accordion>
     </>
   )
 }
