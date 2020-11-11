@@ -1,21 +1,30 @@
-import { Button, Collapse, CollapseProps } from "@material-ui/core"
-import { FC, ReactNode, useState } from "react"
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@material-ui/core"
+import { ExpandMore } from "@material-ui/icons"
+import { FC, ReactNode } from "react"
 
-interface Props extends CollapseProps {
-  children: [btnText: ReactNode, content: ReactNode]
+interface Props {
+  children: [summary: ReactNode, content: ReactNode]
+  label: string
 }
 
-export const Accordion: FC<Props> = ({
-  children: [btnText, content],
-  ...props
+export const AccordionWrapper: FC<Props> = ({
+  children: [summary, content],
+  label,
 }) => {
-  const [showContent, setShowContent] = useState(false)
   return (
-    <>
-      <Button onClick={() => setShowContent(!showContent)}>{btnText}</Button>
-      <Collapse in={showContent} {...props}>
-        {content}
-      </Collapse>
-    </>
+    <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMore />}
+        aria-controls={`${label}-content`}
+        id={`${label}-header`}
+      >
+        {summary}
+      </AccordionSummary>
+      <AccordionDetails>{content}</AccordionDetails>
+    </Accordion>
   )
 }

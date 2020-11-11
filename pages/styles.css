@@ -92,6 +92,7 @@ h5 {
   border-bottom: 1px var(--neon) solid;
   border-top-left-radius: 1rem;
   border-radius: 1rem;
+  width: 100%;
 }
 
 input {

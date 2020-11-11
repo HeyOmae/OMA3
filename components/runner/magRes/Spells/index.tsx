@@ -12,7 +12,7 @@ import { Payload, SET_SPELL } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { FC } from "react"
 import { AddButton } from "../../../common"
-import { Accordion } from "../../../common/Accordion"
+import { AccordionWrapper } from "../../../common/Accordion"
 
 export interface Props {
   dispatch: DispatchAction<symbol, Payload>
@@ -42,7 +42,7 @@ const AddSpellButton: FC<AddSpellButtonProps> = ({
 export const Spells: FC<Props> = ({ dispatch }) => {
   return (
     <>
-      <Accordion>
+      <AccordionWrapper label="combat-spells">
         <h3>Combat Spells</h3>
         <CombatSpells
           spells={Combat as CombatSpell[]}
@@ -50,8 +50,8 @@ export const Spells: FC<Props> = ({ dispatch }) => {
           actionLabel="Learn"
           ActionButton={AddSpellButton}
         />
-      </Accordion>
-      <Accordion>
+      </AccordionWrapper>
+      <AccordionWrapper label="detection-spells">
         <h3>Detection Spells</h3>
         <SpellsTable
           spells={Detection as GeneralSpell[]}
@@ -59,8 +59,8 @@ export const Spells: FC<Props> = ({ dispatch }) => {
           actionLabel="Learn"
           ActionButton={AddSpellButton}
         />
-      </Accordion>
-      <Accordion>
+      </AccordionWrapper>
+      <AccordionWrapper label="health-spells">
         <h3>Health Spells</h3>
         <SpellsTable
           spells={Health as GeneralSpell[]}
@@ -68,8 +68,8 @@ export const Spells: FC<Props> = ({ dispatch }) => {
           actionLabel="Learn"
           ActionButton={AddSpellButton}
         />
-      </Accordion>
-      <Accordion>
+      </AccordionWrapper>
+      <AccordionWrapper label="illusion-spells">
         <h3>Illusion Spells</h3>
         <SpellsTable
           spells={Illusion as GeneralSpell[]}
@@ -77,8 +77,8 @@ export const Spells: FC<Props> = ({ dispatch }) => {
           actionLabel="Learn"
           ActionButton={AddSpellButton}
         />
-      </Accordion>
-      <Accordion>
+      </AccordionWrapper>
+      <AccordionWrapper label="manipulation-spells">
         <h3>Manipulation Spells</h3>
         <SpellsTable
           spells={Manipulation as GeneralSpell[]}
@@ -86,7 +86,7 @@ export const Spells: FC<Props> = ({ dispatch }) => {
           actionLabel="Learn"
           ActionButton={AddSpellButton}
         />
-      </Accordion>
+      </AccordionWrapper>
     </>
   )
 }
