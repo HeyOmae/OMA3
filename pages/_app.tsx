@@ -27,6 +27,7 @@ if (typeof window !== "undefined") {
 }
 
 const NEON = "var(--neon)"
+const NEON2 = "var(--neon2)"
 
 const oma3Style = createMuiTheme({
   overrides: {
@@ -52,6 +53,17 @@ const oma3Style = createMuiTheme({
       },
       body: {
         color: NEON,
+      },
+    },
+    MuiAccordion: {
+      root: {
+        background: "none",
+        boxShadow: "none",
+      },
+    },
+    MuiAccordionSummary: {
+      expandIcon: {
+        color: NEON2,
       },
     },
   },

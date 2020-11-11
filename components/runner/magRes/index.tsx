@@ -18,7 +18,7 @@ import { RemainingSpells } from "./RemainingSpells"
 import styles from "./magRes.module.css"
 import { Rituals } from "./Rituals"
 import { RunnerRituals } from "./Rituals/RunnerRituals"
-import { Accordion } from "../../common/Accordion"
+import { AccordionWrapper } from "../../common/Accordion"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -172,10 +172,10 @@ export const MagRes = () => {
               <h2>Spells</h2>
               <Spells dispatch={dispatch} />
 
-              <Accordion>
+              <AccordionWrapper label="rituals">
                 <h2>Rituals</h2>
                 <Rituals dispatch={dispatch} />
-              </Accordion>
+              </AccordionWrapper>
             </Grid>
             <Grid item sm={12} md={6} className={styles.scrollGrid}>
               {runner.spells && (
