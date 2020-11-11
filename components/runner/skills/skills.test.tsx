@@ -21,25 +21,25 @@ describe("<Skills/>", () => {
     const { getByText } = setup()
 
     await waitFor(() => {
-      getByText("astral")
-      getByText("athletics")
-      getByText("biotech")
-      getByText("close combat")
-      getByText("con")
-      getByText("conjuring")
-      getByText("cracking")
-      getByText("electronics")
-      getByText("enchanting")
-      getByText("engineering")
-      getByText("exotic weapons")
-      getByText("firearms")
-      getByText("influence")
-      getByText("outdoors")
-      getByText("perception")
-      getByText("piloting")
-      getByText("sorcery")
-      getByText("stealth")
-      getByText("tasking")
+      getByText("Astral")
+      getByText("Athletics")
+      getByText("Biotech")
+      getByText("Close combat")
+      getByText("Con")
+      getByText("Conjuring")
+      getByText("Cracking")
+      getByText("Electronics")
+      getByText("Enchanting")
+      getByText("Engineering")
+      getByText("Exotic weapons")
+      getByText("Firearms")
+      getByText("Influence")
+      getByText("Outdoors")
+      getByText("Perception")
+      getByText("Piloting")
+      getByText("Sorcery")
+      getByText("Stealth")
+      getByText("Tasking")
     })
   })
 
@@ -59,13 +59,13 @@ describe("<Skills/>", () => {
     expect(runnerFromDB(2).skills).toBeUndefined()
 
     await waitFor(() => {
-      expect(getByLabelText("add firearms skill")).toBeInTheDocument()
+      expect(getByLabelText("add Firearms skill")).toBeInTheDocument()
     })
 
-    getByLabelText("add firearms skill").click()
+    getByLabelText("add Firearms skill").click()
 
     await waitFor(() => {
-      expect(runnerFromDB(2).skills.firearms).toEqual({
+      expect(runnerFromDB(2).skills.Firearms).toEqual({
         rating: 1,
         attribute: {
           primary: "Agility",
@@ -78,14 +78,14 @@ describe("<Skills/>", () => {
     const { getByLabelText, queryByLabelText } = setup()
 
     await waitFor(() => {
-      expect(getByLabelText("add con skill")).toBeInTheDocument()
+      expect(getByLabelText("add Con skill")).toBeInTheDocument()
     })
 
-    getByLabelText("add con skill").click()
+    getByLabelText("add Con skill").click()
 
     await waitFor(() => {
-      expect(getByLabelText("remove con skill")).toBeInTheDocument()
-      expect(runnerFromDB(2).skills.con).toEqual({
+      expect(getByLabelText("remove Con skill")).toBeInTheDocument()
+      expect(runnerFromDB(2).skills.Con).toEqual({
         rating: 1,
         attribute: {
           primary: "Charisma",
@@ -93,11 +93,11 @@ describe("<Skills/>", () => {
       })
     })
 
-    getByLabelText("remove con skill").click()
+    getByLabelText("remove Con skill").click()
 
     await waitFor(() => {
-      expect(queryByLabelText("remove con skill")).not.toBeInTheDocument()
-      expect(runnerFromDB(2).skills.con).toBeUndefined()
+      expect(queryByLabelText("remove Con skill")).not.toBeInTheDocument()
+      expect(runnerFromDB(2).skills.Con).toBeUndefined()
     })
   })
 
@@ -106,14 +106,14 @@ describe("<Skills/>", () => {
       const { getByTestId, getByLabelText } = setup()
 
       await waitFor(() => {
-        expect(getByLabelText("add cracking skill")).toBeInTheDocument()
+        expect(getByLabelText("add Cracking skill")).toBeInTheDocument()
       })
 
-      getByLabelText("add cracking skill").click()
+      getByLabelText("add Cracking skill").click()
 
       await waitFor(() => {
-        expect(getByTestId("cracking-rating")).toBeInTheDocument()
-        expect(runnerFromDB(2).skills.cracking).toEqual({
+        expect(getByTestId("Cracking-rating")).toBeInTheDocument()
+        expect(runnerFromDB(2).skills.Cracking).toEqual({
           rating: 1,
           attribute: {
             primary: "Logic",
@@ -121,10 +121,10 @@ describe("<Skills/>", () => {
         })
       })
 
-      SliderHelper.change(getByTestId("cracking-rating"), 5, 1, 6)
+      SliderHelper.change(getByTestId("Cracking-rating"), 5, 1, 6)
 
       await waitFor(() => {
-        expect(runnerFromDB(2).skills.cracking).toEqual({
+        expect(runnerFromDB(2).skills.Cracking).toEqual({
           rating: 5,
           attribute: {
             primary: "Logic",
@@ -139,14 +139,14 @@ describe("<Skills/>", () => {
       const { getByLabelText, getByTestId } = setup()
 
       await waitFor(() => {
-        expect(getByLabelText("add close combat skill")).toBeInTheDocument()
+        expect(getByLabelText("add Close combat skill")).toBeInTheDocument()
       })
 
-      getByLabelText("add close combat skill").click()
+      getByLabelText("add Close combat skill").click()
 
       await waitFor(() => {
-        expect(getByTestId("close-combat-rating")).toBeInTheDocument()
-        expect(runnerFromDB(2).skills["close combat"]).toEqual({
+        expect(getByTestId("Close-combat-rating")).toBeInTheDocument()
+        expect(runnerFromDB(2).skills["Close combat"]).toEqual({
           rating: 1,
           attribute: {
             primary: "Agility",
@@ -154,14 +154,14 @@ describe("<Skills/>", () => {
         })
       })
 
-      const specInput = getByLabelText("close combat specialization")
+      const specInput = getByLabelText("Close combat specialization")
 
-      fireEvent.change(specInput, { target: { value: "blades" } })
+      fireEvent.change(specInput, { target: { value: "Blades" } })
       fireEvent.keyDown(specInput, { key: "Enter" })
 
       await waitFor(() => {
-        expect(runnerFromDB(2).skills["close combat"].specialization).toEqual(
-          "blades",
+        expect(runnerFromDB(2).skills["Close combat"].specialization).toEqual(
+          "Blades",
         )
       })
     })
