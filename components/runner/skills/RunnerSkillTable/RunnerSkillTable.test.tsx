@@ -22,32 +22,32 @@ describe("<RunnerSkillTable/>", () => {
   it("should display a table with the runner's skills", async () => {
     const { getByText } = setup()
 
-    const conjuringRow = within(getByText("conjuring").closest("tr"))
+    const conjuringRow = within(getByText("Conjuring").closest("tr"))
     // rating
-    const conjuringRating = await conjuringRow.findByTestId("conjuring-rating")
+    const conjuringRating = await conjuringRow.findByTestId("Conjuring-rating")
     expect(conjuringRating.querySelector("input")).toHaveValue("6")
     // attribute
     expect(await conjuringRow.findByText("Magic")).toBeInTheDocument()
     // specialization
     expect(
-      await conjuringRow.findByLabelText("conjuring specialization"),
-    ).toHaveDisplayValue("banishing")
+      await conjuringRow.findByLabelText("Conjuring specialization"),
+    ).toHaveDisplayValue("Banishing")
 
-    const sorceryRow = within(getByText("sorcery").closest("tr"))
+    const sorceryRow = within(getByText("Sorcery").closest("tr"))
     // rating
-    const sorceryRating = await sorceryRow.findByTestId("sorcery-rating")
+    const sorceryRating = await sorceryRow.findByTestId("Sorcery-rating")
     expect(sorceryRating.querySelector("input")).toHaveValue("5")
     // attribute
     expect(await sorceryRow.findByText("Magic")).toBeInTheDocument()
     // specialization
     expect(
-      await sorceryRow.findByLabelText("sorcery specialization"),
+      await sorceryRow.findByLabelText("Sorcery specialization"),
     ).toHaveDisplayValue("")
 
-    const perceptionRow = within(getByText("perception").closest("tr"))
+    const perceptionRow = within(getByText("Perception").closest("tr"))
     // rating
     const perceptionRating = await perceptionRow.findByTestId(
-      "perception-rating",
+      "Perception-rating",
     )
     expect(perceptionRating.querySelector("input")).toHaveValue("4")
     // attribute
@@ -56,7 +56,7 @@ describe("<RunnerSkillTable/>", () => {
     ).toBeInTheDocument()
     // specialization
     expect(
-      await perceptionRow.findByLabelText("perception specialization"),
+      await perceptionRow.findByLabelText("Perception specialization"),
     ).toHaveDisplayValue("")
   })
 
@@ -64,11 +64,11 @@ describe("<RunnerSkillTable/>", () => {
     it("should dispatch to remove a skill", () => {
       const { getByLabelText, props } = setup()
 
-      getByLabelText("remove conjuring skill").click()
+      getByLabelText("remove Conjuring skill").click()
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: REMOVE_SKILL,
-        payload: { skillToRemove: "conjuring" },
+        payload: { skillToRemove: "Conjuring" },
       })
     })
   })
@@ -76,13 +76,13 @@ describe("<RunnerSkillTable/>", () => {
   it("should adjust skill rating", () => {
     const { getByTestId, props } = setup()
 
-    SliderHelper.change(getByTestId("perception-rating"), 5, 1, 6)
+    SliderHelper.change(getByTestId("Perception-rating"), 5, 1, 6)
 
     expect(props.dispatch).toHaveBeenCalledWith({
       type: CHANGE_SKILL_RATING,
       payload: {
         skillToChangeRating: {
-          name: "perception",
+          name: "Perception",
           rating: 5,
         },
       },
@@ -92,7 +92,7 @@ describe("<RunnerSkillTable/>", () => {
   describe("specialization", () => {
     it("should set specialization from dropdown", async () => {
       const { getByLabelText, props, queryByRole } = setup()
-      const specInput = getByLabelText("conjuring specialization")
+      const specInput = getByLabelText("Conjuring specialization")
 
       expect(queryByRole("listbox")).not.toBeInTheDocument()
 
@@ -100,14 +100,14 @@ describe("<RunnerSkillTable/>", () => {
 
       expect(queryByRole("listbox")).toBeInTheDocument()
 
-      fireEvent.click(globalGetByText(queryByRole("listbox"), "summoning"))
+      fireEvent.click(globalGetByText(queryByRole("listbox"), "Summoning"))
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,
         payload: {
           specializationChange: {
-            name: "conjuring",
-            specialization: "summoning",
+            name: "Conjuring",
+            specialization: "Summoning",
           },
         },
       })
@@ -116,10 +116,10 @@ describe("<RunnerSkillTable/>", () => {
     it("should allow free form specialization", () => {
       const { getByLabelText, props } = setup()
 
-      fireEvent.change(getByLabelText("conjuring specialization"), {
+      fireEvent.change(getByLabelText("Conjuring specialization"), {
         target: { value: "wild" },
       })
-      fireEvent.keyDown(getByLabelText("conjuring specialization"), {
+      fireEvent.keyDown(getByLabelText("Conjuring specialization"), {
         key: "Enter",
       })
 
@@ -127,7 +127,7 @@ describe("<RunnerSkillTable/>", () => {
         type: CHANGE_SPECIALIZATION,
         payload: {
           specializationChange: {
-            name: "conjuring",
+            name: "Conjuring",
             specialization: "wild",
           },
         },

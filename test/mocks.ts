@@ -30,20 +30,20 @@ export const mockedRunners: Runner[] = [
       Resonance: { adjustment: 0, points: 0 },
     },
     skills: {
-      conjuring: {
+      Conjuring: {
         rating: 6,
         attribute: {
           primary: "Magic",
         },
-        specialization: "banishing",
+        specialization: "Banishing",
       },
-      sorcery: {
+      Sorcery: {
         rating: 5,
         attribute: {
           primary: "Magic",
         },
       },
-      perception: {
+      Perception: {
         rating: 4,
         attribute: {
           primary: "Intuition",
