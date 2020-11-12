@@ -21,7 +21,7 @@ interface Props {
 
 export const RitualTable: FC<Props> = ({ rituals, ActionButton, dispatch }) => (
   <TableContainer>
-    <Table>
+    <Table stickyHeader>
       <TableHead>
         <TableRow>
           <TableCell>Learn</TableCell>
