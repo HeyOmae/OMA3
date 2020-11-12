@@ -48,3 +48,51 @@ export type Ritual = {
   threshold: number
   ritualfeature?: Spellfeature[]
 }
+
+interface Attrmod {
+  attr?: string
+  val?: number
+  ar?: number[]
+}
+
+export type AdeptPower = {
+  name: string
+  cost: number
+  level?: true
+  activation: "Minor action" | "Major action" | "Passive"
+  modifications?:
+    | {
+        allowmod?: {
+          skill: string
+        }
+        attrmod?: Attrmod
+        edgemod?: {
+          type: "BONUS"
+          skill: string
+        }
+        itemattrmod?: {
+          attr: string
+          val: number
+          type: string
+        }
+        skillmod?: {
+          val: number
+          modType: string
+        }
+        itemmod?: {
+          item: string
+          rating: number
+        }
+        specrulemod?: {
+          ref: string
+          lvl: number
+        }
+      }
+    | Attrmod[]
+  select?: string
+  requires?: {
+    skillreq: {
+      val: number
+    }
+  }
+}

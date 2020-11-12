@@ -76,7 +76,7 @@
     "modifications": {
       "attrmod": {
         "attr": "ATTACK RATING",
-        "ar": "2,2,2,2,2"
+        "ar": [2, 2, 2, 2, 2]
       }
     }
   },
