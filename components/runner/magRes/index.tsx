@@ -1,6 +1,7 @@
 import { CircularProgress, Grid } from "@material-ui/core"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import {
+  AdeptPower,
   MagRes as MagicResonance,
   Ritual,
   Spell,
@@ -27,6 +28,7 @@ export const SET_SPELL = Symbol("SET_SPELL")
 export const REMOVE_SPELL = Symbol("REMOVE_SPELL")
 export const SET_RITUAL = Symbol("SET_RITUAL")
 export const REMOVE_RITUAL = Symbol("REMOVE_RITUAL")
+export const SET_POWER = Symbol("SET_POWER")
 
 export interface Payload {
   magres?: MagicResonance
@@ -38,6 +40,7 @@ export interface Payload {
   }
   ritual?: Ritual
   removeRitual?: number
+  power?: AdeptPower
 }
 
 export const MagRes = () => {
