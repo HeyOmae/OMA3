@@ -1,4 +1,4 @@
-import { MagRes, Ritual, Spells } from "./MagRes"
+import { AdeptPower, MagRes, Ritual, Spells } from "./MagRes"
 import { Priority } from "./PriorityRating"
 import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
 import { Skills } from "./Skill"
@@ -16,6 +16,7 @@ export interface Runner {
   magres?: MagRes
   spells?: Partial<Spells>
   rituals?: Ritual[]
+  powers?: AdeptPower[]
 }
 
 export const initRunner: Runner = {

@@ -20,6 +20,7 @@ import styles from "./magRes.module.css"
 import { Rituals } from "./Rituals"
 import { RunnerRituals } from "./Rituals/RunnerRituals"
 import { AccordionWrapper } from "../../common/Accordion"
+import { AdeptPowers } from "./AdeptPowers"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -119,6 +120,11 @@ export const MagRes = () => {
               ...runner.rituals.slice(payload.removeRitual + 1),
             ],
           }
+        case SET_POWER:
+          return {
+            ...runner,
+            powers: [...(runner.powers ?? []), payload.power],
+          }
       }
     },
   )
@@ -148,54 +154,68 @@ export const MagRes = () => {
         (runner.magres === "Mundane" ? (
           <h1>Nothing Special Here...</h1>
         ) : (
-          <MagResAttributeSlider
-            adjustmentPoints={
-              priorityData.metatypes[runner.priority.metatype].adjustmentPoints
-            }
-            attribute={priority[runner.magres][0]}
-            min={priority[runner.magres][1]}
-            max={6}
-            attributes={runner.attributes}
-            dispatch={dispatch}
-          />
-        ))}
-      {runner.magres &&
-        (runner.magres === "Full" ||
-          runner.magres === "Aspected" ||
-          runner.magres === "Mystic Adept") && (
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <RemainingSpells
-                spells={runner.spells}
-                rating={priority[runner.magres][1]}
-                rituals={runner.rituals}
-              />
-            </Grid>
-            <Grid item sm={12} md={6} className={styles.scrollGrid}>
-              <h2>Spells</h2>
-              <Spells dispatch={dispatch} />
+          <>
+            <MagResAttributeSlider
+              adjustmentPoints={
+                priorityData.metatypes[runner.priority.metatype]
+                  .adjustmentPoints
+              }
+              attribute={priority[runner.magres][0]}
+              min={priority[runner.magres][1]}
+              max={6}
+              attributes={runner.attributes}
+              dispatch={dispatch}
+            />
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <RemainingSpells
+                  spells={runner.spells}
+                  rating={priority[runner.magres][1]}
+                  rituals={runner.rituals}
+                />
+              </Grid>
+              <Grid item sm={12} md={6} className={styles.scrollGrid}>
+                {(runner.magres === "Full" ||
+                  runner.magres === "Aspected" ||
+                  runner.magres === "Mystic Adept") && (
+                  <>
+                    <h2>Spells</h2>
+                    <Spells dispatch={dispatch} />
 
-              <AccordionWrapper label="rituals">
-                <h2>Rituals</h2>
-                <Rituals dispatch={dispatch} />
-              </AccordionWrapper>
+                    <AccordionWrapper label="rituals">
+                      <h2>Rituals</h2>
+                      <Rituals dispatch={dispatch} />
+                    </AccordionWrapper>
+                  </>
+                )}
+                {(runner.magres === "Mystic Adept" ||
+                  runner.magres === "Adept") && (
+                  <AccordionWrapper label="adept-powers">
+                    <h2>Adept Powers</h2>
+                    <AdeptPowers dispatch={dispatch} />
+                  </AccordionWrapper>
+                )}
+              </Grid>
+              <Grid item sm={12} md={6} className={styles.scrollGrid}>
+                {runner.spells && (
+                  <>
+                    <h2>Known Spells</h2>
+                    <RunnerSpells spells={runner.spells} dispatch={dispatch} />
+                  </>
+                )}
+                {runner.rituals && (
+                  <>
+                    <h2>Known Rituals</h2>
+                    <RunnerRituals
+                      dispatch={dispatch}
+                      rituals={runner.rituals}
+                    />
+                  </>
+                )}
+              </Grid>
             </Grid>
-            <Grid item sm={12} md={6} className={styles.scrollGrid}>
-              {runner.spells && (
-                <>
-                  <h2>Known Spells</h2>
-                  <RunnerSpells spells={runner.spells} dispatch={dispatch} />
-                </>
-              )}
-              {runner.rituals && (
-                <>
-                  <h2>Known Rituals</h2>
-                  <RunnerRituals dispatch={dispatch} rituals={runner.rituals} />
-                </>
-              )}
-            </Grid>
-          </Grid>
-        )}
+          </>
+        ))}
     </>
   )
 }

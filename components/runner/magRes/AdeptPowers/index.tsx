@@ -13,7 +13,7 @@ import { AdeptPower } from "../../../../types/MagRes"
 import { AddAdeptPowerButton } from "./AddAdeptPowerButton"
 import PowersData from "../../../../data/adeptPowers.json"
 
-interface Props {
+export interface Props {
   dispatch: DispatchAction<symbol, Payload>
 }
 
