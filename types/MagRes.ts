@@ -58,7 +58,7 @@ interface Attrmod {
 export type AdeptPower = {
   name: string
   cost: number
-  level?: true
+  levels?: true
   activation: "Minor action" | "Major action" | "Passive"
   modifications?:
     | {

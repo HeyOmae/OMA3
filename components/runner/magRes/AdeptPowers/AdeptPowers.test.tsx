@@ -1,5 +1,8 @@
 import { AdeptPowers } from "./index"
-import { render } from "../../../../test/testUtils"
+import {
+  render,
+  getByText as globalGetByText,
+} from "../../../../test/testUtils"
 import PowersData from "../../../../data/adeptPowers.json"
 
 describe("<AdpetPowers/>", () => {
@@ -12,5 +15,17 @@ describe("<AdpetPowers/>", () => {
     PowersData.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument()
     })
+  })
+
+  it("should display the cost per level", () => {
+    const { getByText } = setup()
+
+    const levelPower = getByText("Adrenaline boost").closest("tr")
+
+    expect(globalGetByText(levelPower, "0.25 per level")).toBeInTheDocument()
+
+    const nonLevelPower = getByText("Astral perception").closest("tr")
+
+    expect(globalGetByText(nonLevelPower, "1")).toBeInTheDocument()
   })
 })
