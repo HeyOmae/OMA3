@@ -9,12 +9,10 @@ export interface Props {
   dispatch: DispatchAction<symbol, Payload>
 }
 
-export const Rituals: FC<Props> = ({ dispatch }) => {
-  return (
-    <RitualTable
-      rituals={ritualData}
-      ActionButton={AddRitualButton}
-      dispatch={dispatch}
-    />
-  )
-}
+export const Rituals: FC<Props> = ({ dispatch }) => (
+  <RitualTable
+    rituals={ritualData}
+    ActionButton={AddRitualButton}
+    dispatch={dispatch}
+  />
+)

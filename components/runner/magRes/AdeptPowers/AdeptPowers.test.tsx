@@ -1,13 +1,17 @@
-import { AdeptPowers } from "./index"
+import { AdeptPowers, Props } from "./index"
 import {
   render,
   getByText as globalGetByText,
 } from "../../../../test/testUtils"
 import PowersData from "../../../../data/adeptPowers.json"
+import { SET_POWER } from ".."
 
 describe("<AdpetPowers/>", () => {
   const setup = () => {
-    return render(<AdeptPowers />)
+    const props: Props = {
+      dispatch: jest.fn(),
+    }
+    return { ...render(<AdeptPowers {...props} />), props }
   }
   it("should render the adept powers", () => {
     const { getByText } = setup()
@@ -27,5 +31,18 @@ describe("<AdpetPowers/>", () => {
     const nonLevelPower = getByText("Astral perception").closest("tr")
 
     expect(globalGetByText(nonLevelPower, "1")).toBeInTheDocument()
+  })
+
+  it("should dispatch the set adept power action", () => {
+    const { getByLabelText, props } = setup()
+
+    getByLabelText("Add Astral perception").click()
+
+    expect(props.dispatch).toHaveBeenCalledWith({
+      type: SET_POWER,
+      payload: {
+        power: PowersData[1],
+      },
+    })
   })
 })
