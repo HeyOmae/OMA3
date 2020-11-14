@@ -10,6 +10,7 @@ import {
 import spellData from "../../../data/spells.json"
 import ritualData from "../../../data/rituals.json"
 import { mockedRunners } from "../../../test/mocks"
+import PowersData from "../../../data/adeptPowers.json"
 
 describe("Magic and Resonance", () => {
   const setup = (id = "2") =>
@@ -388,6 +389,70 @@ describe("Magic and Resonance", () => {
       })
 
       expect(getByText("6/8")).toBeInTheDocument()
+    })
+  })
+
+  describe("Adept Powers", () => {
+    it("should display for adepts and mystic adepts", async () => {
+      const { getByLabelText, getByText, queryByText } = setup()
+
+      await waitFor(() => {
+        expect(getByLabelText("Technomancer")).toBeInTheDocument()
+      })
+      getByLabelText("Technomancer").click()
+
+      await waitFor(() => {
+        expect(queryByText("Adept Powers")).not.toBeInTheDocument()
+      })
+
+      getByLabelText("Mystic Adept").click()
+
+      await waitFor(() => {
+        expect(getByText("Adept Powers")).toBeInTheDocument()
+      })
+
+      expect(getByText("Spells")).toBeInTheDocument()
+
+      getByLabelText("Adept").click()
+
+      expect(queryByText("Spells")).not.toBeInTheDocument()
+      expect(getByText("Adept Powers")).toBeInTheDocument()
+
+      getByLabelText("Full Mage").click()
+
+      expect(queryByText("Adept Powers")).not.toBeInTheDocument()
+    })
+
+    it("should display the powers after clicking the title", async () => {
+      const { getByText, getByLabelText } = setup()
+      await waitFor(() => {
+        expect(getByLabelText("Adept")).toBeInTheDocument()
+      })
+      getByLabelText("Adept").click()
+
+      expect(getByText("Combat sense")).not.toBeVisible()
+
+      getByText("Adept Powers").click()
+
+      expect(getByText("Combat sense")).toBeVisible()
+    })
+
+    it("should add adept power to runner", async () => {
+      const { getByLabelText } = setup()
+
+      await waitFor(() => {
+        expect(getByLabelText("Adept")).toBeInTheDocument()
+      })
+
+      getByLabelText("Adept").click()
+
+      expect(runnerFromDB(1).powers).toBeUndefined()
+
+      getByLabelText("Add Astral perception").click()
+
+      await waitFor(() => {
+        expect(runnerFromDB(1).powers[0]).toEqual(PowersData[1])
+      })
     })
   })
 })
