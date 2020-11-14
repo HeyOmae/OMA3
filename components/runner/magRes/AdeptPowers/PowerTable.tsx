@@ -25,13 +25,13 @@ export const PowerTable: FC<Props> = ({ powers }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {powers.map(({ name, cost, level, activation }) => (
+        {powers.map(({ name, cost, levels, activation }) => (
           <TableRow key={name}>
             <TableCell>+</TableCell>
             <TableCell>{name}</TableCell>
             <TableCell>
               {cost}
-              {level && " per level"}
+              {levels && " per level"}
             </TableCell>
             <TableCell>{activation}</TableCell>
           </TableRow>
