@@ -239,6 +239,53 @@ export const mockedRunners: Runner[] = [
       },
     ],
   },
+  {
+    id: 8,
+    name: "Ma'Fan",
+    description:
+      "Yuan Lai (aka Ma'Fan) is a Chinese international cat burglar and shadowrunner. She is a member of Jackpoint. She is awakened; being a physical adept. She suffers from gremlins and doesn't often use technology.",
+    priority: {
+      metatype: "D",
+      skills: "B",
+      attributes: "C",
+      "mag/res": "A",
+      resources: "E",
+    },
+    attributes: initRunnerAttributes,
+    magres: "Adept",
+    powers: [
+      {
+        name: "Traceless walk",
+        cost: 0.5,
+        activation: "Passive",
+      },
+      {
+        name: "Improved reflexes",
+        cost: 1.0,
+        levels: true,
+        max: 4,
+        activation: "Passive",
+        modifications: [
+          {
+            attr: "REACTION",
+            val: 1,
+            type: "augmented",
+          },
+          {
+            attr: "INITIATIVE DICE PHYSICAL",
+            val: 1,
+          },
+        ],
+      },
+      {
+        name: "Attribute boost",
+        cost: 0.25,
+        levels: true,
+        select: "PHYSICAL ATTRIBUTE",
+        activation: "Major action",
+      },
+    ],
+  },
 ]
 
 export const orkRunner: Runner = {
