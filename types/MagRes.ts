@@ -53,12 +53,14 @@ interface Attrmod {
   attr?: string
   val?: number
   ar?: number[]
+  type?: string
 }
 
 export type AdeptPower = {
   name: string
   cost: number
   levels?: true
+  max?: number
   activation: "Minor action" | "Major action" | "Passive"
   modifications?:
     | {

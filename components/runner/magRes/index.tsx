@@ -21,6 +21,7 @@ import { Rituals } from "./Rituals"
 import { RunnerRituals } from "./Rituals/RunnerRituals"
 import { AccordionWrapper } from "../../common/Accordion"
 import { AdeptPowers } from "./AdeptPowers"
+import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -210,6 +211,12 @@ export const MagRes = () => {
                       dispatch={dispatch}
                       rituals={runner.rituals}
                     />
+                  </>
+                )}
+                {runner.powers && (
+                  <>
+                    <h2>Known Adept Powers</h2>
+                    <RunnerAdeptPowers powers={runner.powers} />
                   </>
                 )}
               </Grid>
