@@ -457,5 +457,20 @@ describe("Magic and Resonance", () => {
         expect(runnerFromDB(1).powers[0]).toEqual(PowersData[1])
       })
     })
+
+    it("should remove adept power from runner", async () => {
+      const { getByLabelText } = setup("8")
+
+      expect(runnerFromDB(7).powers).toHaveLength(3)
+
+      await waitFor(() => {
+        expect(getByLabelText("Remove Improved reflexes")).toBeInTheDocument()
+      })
+      getByLabelText("Remove Improved reflexes").click()
+
+      await waitFor(() => {
+        expect(runnerFromDB(7).powers).toHaveLength(2)
+      })
+    })
   })
 })
