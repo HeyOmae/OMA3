@@ -31,6 +31,7 @@ export const REMOVE_SPELL = Symbol("REMOVE_SPELL")
 export const SET_RITUAL = Symbol("SET_RITUAL")
 export const REMOVE_RITUAL = Symbol("REMOVE_RITUAL")
 export const SET_POWER = Symbol("SET_POWER")
+export const REMOVE_POWER = Symbol("REMOVE_POWER")
 
 export interface Payload {
   magres?: MagicResonance
@@ -43,6 +44,7 @@ export interface Payload {
   ritual?: Ritual
   removeRitual?: number
   power?: AdeptPower
+  removePower?: number
 }
 
 export const MagRes = () => {
@@ -125,6 +127,14 @@ export const MagRes = () => {
           return {
             ...runner,
             powers: [...(runner.powers ?? []), payload.power],
+          }
+        case REMOVE_POWER:
+          return {
+            ...runner,
+            powers: [
+              ...runner.powers.slice(0, payload.removePower),
+              ...runner.powers.slice(payload.removePower + 1),
+            ],
           }
       }
     },
@@ -216,7 +226,10 @@ export const MagRes = () => {
                 {runner.powers && (
                   <>
                     <h2>Known Adept Powers</h2>
-                    <RunnerAdeptPowers powers={runner.powers} />
+                    <RunnerAdeptPowers
+                      powers={runner.powers}
+                      dispatch={dispatch}
+                    />
                   </>
                 )}
               </Grid>

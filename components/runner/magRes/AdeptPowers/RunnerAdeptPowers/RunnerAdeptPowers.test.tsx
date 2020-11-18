@@ -4,11 +4,13 @@ import {
   getByText as contentGetByText,
 } from "../../../../../test/testUtils"
 import { mockedRunners } from "../../../../../test/mocks"
+import { REMOVE_POWER } from "../.."
 
 describe("<RunnerAdeptPowers/>", () => {
   const setup = () => {
     const props: Props = {
       powers: mockedRunners[7].powers,
+      dispatch: jest.fn(),
     }
     return { ...render(<RunnerAdeptPowers {...props} />), props }
   }
@@ -22,6 +24,17 @@ describe("<RunnerAdeptPowers/>", () => {
 
       expect(contentGetByText(row, activation)).toBeInTheDocument()
       expect(contentGetByText(row, cost.toString())).toBeInTheDocument()
+    })
+  })
+
+  it("should dispatch the remove adept power", () => {
+    const { getByLabelText, props } = setup()
+
+    getByLabelText("Remove Improved reflexes").click()
+
+    expect(props.dispatch).toHaveBeenCalledWith({
+      type: REMOVE_POWER,
+      payload: { removePower: 1 },
     })
   })
 })
