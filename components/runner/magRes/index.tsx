@@ -32,6 +32,7 @@ export const SET_RITUAL = Symbol("SET_RITUAL")
 export const REMOVE_RITUAL = Symbol("REMOVE_RITUAL")
 export const SET_POWER = Symbol("SET_POWER")
 export const REMOVE_POWER = Symbol("REMOVE_POWER")
+export const CHANGE_POWER_LEVEL = Symbol("CHANGE_POWER_LEVEL")
 
 export interface Payload {
   magres?: MagicResonance
@@ -45,6 +46,10 @@ export interface Payload {
   removeRitual?: number
   power?: AdeptPower
   removePower?: number
+  powerLevel?: {
+    powerIndex: number
+    level: number
+  }
 }
 
 export const MagRes = () => {
@@ -136,6 +141,18 @@ export const MagRes = () => {
               ...runner.powers.slice(payload.removePower + 1),
             ],
           }
+        case CHANGE_POWER_LEVEL: {
+          const { powerIndex, level } = payload.powerLevel
+
+          return {
+            ...runner,
+            powers: [
+              ...runner.powers.slice(0, powerIndex),
+              { ...runner.powers[powerIndex], level },
+              ...runner.powers.slice(powerIndex + 1),
+            ],
+          }
+        }
       }
     },
   )

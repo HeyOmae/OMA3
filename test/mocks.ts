@@ -281,6 +281,7 @@ export const mockedRunners: Runner[] = [
         name: "Attribute boost",
         cost: 0.25,
         levels: true,
+        level: 2,
         select: "PHYSICAL ATTRIBUTE",
         activation: "Major action",
       },
