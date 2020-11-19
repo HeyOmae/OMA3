@@ -472,5 +472,23 @@ describe("Magic and Resonance", () => {
         expect(runnerFromDB(7).powers).toHaveLength(2)
       })
     })
+
+    it("should update the level of an adept power", async () => {
+      const { getByTestId } = setup("8")
+
+      const attributeBoostIndex = runnerFromDB(7).powers.findIndex(
+        ({ name }) => name === "Attribute boost",
+      )
+      expect(runnerFromDB(7).powers[attributeBoostIndex].level).toBe(2)
+      await waitFor(() => {
+        expect(getByTestId("slider-Attribute boost")).toBeInTheDocument()
+      })
+
+      SliderHelper.change(getByTestId("slider-Attribute boost"), 6, 1, 6)
+
+      await waitFor(() => {
+        expect(runnerFromDB(7).powers[attributeBoostIndex].level).toBe(6)
+      })
+    })
   })
 })

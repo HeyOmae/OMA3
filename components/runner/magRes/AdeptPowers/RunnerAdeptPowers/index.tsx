@@ -1,4 +1,5 @@
 import {
+  Slider,
   Table,
   TableBody,
   TableCell,
@@ -7,7 +8,7 @@ import {
   TableRow,
 } from "@material-ui/core"
 import { FC } from "react"
-import { Payload, REMOVE_POWER } from "../.."
+import { CHANGE_POWER_LEVEL, Payload, REMOVE_POWER } from "../.."
 import { DispatchAction } from "../../../../../hooks/useRunnerAccess"
 import { AdeptPower } from "../../../../../types/MagRes"
 import { RemoveButton } from "../../../../common"
@@ -32,7 +33,7 @@ export const RunnerAdeptPowers: FC<Props> = ({ powers, dispatch }) => {
         </TableHead>
         <TableBody>
           {powers.map((power: AdeptPower, powerIndex) => {
-            const { name, activation, cost } = power
+            const { name, activation, cost, levels, level = 1, max } = power
             return (
               <TableRow key={name}>
                 <TableCell>
@@ -51,7 +52,35 @@ export const RunnerAdeptPowers: FC<Props> = ({ powers, dispatch }) => {
                   </RemoveButton>
                 </TableCell>
                 <TableCell>{name}</TableCell>
-                <TableCell>N/A</TableCell>
+                <TableCell>
+                  {levels ? (
+                    <Slider
+                      defaultValue={level}
+                      getAriaValueText={(value) => value.toString()}
+                      aria-labelledby={`${name} level slider`}
+                      valueLabelDisplay="auto"
+                      step={1}
+                      marks
+                      min={1}
+                      max={max ?? 6}
+                      value={level}
+                      data-testid={`slider-${name}`}
+                      onChange={(event, value) =>
+                        dispatch({
+                          type: CHANGE_POWER_LEVEL,
+                          payload: {
+                            powerLevel: {
+                              powerIndex,
+                              level: +value,
+                            },
+                          },
+                        })
+                      }
+                    />
+                  ) : (
+                    "N/A"
+                  )}
+                </TableCell>
                 <TableCell>{cost}</TableCell>
                 <TableCell>{activation}</TableCell>
               </TableRow>

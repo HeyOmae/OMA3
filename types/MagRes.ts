@@ -61,6 +61,7 @@ export type AdeptPower = {
   cost: number
   levels?: true
   max?: number
+  level?: number
   activation: "Minor action" | "Major action" | "Passive"
   modifications?:
     | {
