@@ -197,9 +197,12 @@ export const MagRes = () => {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <RemainingSpells
-                  spells={runner.spells}
+                  magRes={runner.magres}
                   rating={priority[runner.magres][1]}
+                  adjustmentPoints={runner.attributes.Magic.adjustment}
+                  spells={runner.spells}
                   rituals={runner.rituals}
+                  powers={runner.powers}
                 />
               </Grid>
               <Grid item sm={12} md={6} className={styles.scrollGrid}>

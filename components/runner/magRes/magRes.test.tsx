@@ -448,10 +448,12 @@ describe("Magic and Resonance", () => {
 
       expect(runnerFromDB(1).powers).toBeUndefined()
       expect(queryByText("Known Adept Powers")).not.toBeInTheDocument()
+      expect(queryByText("4/4")).toBeInTheDocument()
 
       getByLabelText("Add Astral perception").click()
 
       expect(queryByText("Known Adept Powers")).toBeInTheDocument()
+      expect(queryByText("3/4")).toBeInTheDocument()
 
       await waitFor(() => {
         expect(runnerFromDB(1).powers[0]).toEqual(PowersData[1])
@@ -459,14 +461,17 @@ describe("Magic and Resonance", () => {
     })
 
     it("should remove adept power from runner", async () => {
-      const { getByLabelText } = setup("8")
+      const { getByLabelText, getByText } = setup("8")
 
       expect(runnerFromDB(7).powers).toHaveLength(3)
 
       await waitFor(() => {
         expect(getByLabelText("Remove Improved reflexes")).toBeInTheDocument()
       })
+      expect(getByText("2/4")).toBeInTheDocument()
+
       getByLabelText("Remove Improved reflexes").click()
+      expect(getByText("3/4")).toBeInTheDocument()
 
       await waitFor(() => {
         expect(runnerFromDB(7).powers).toHaveLength(2)

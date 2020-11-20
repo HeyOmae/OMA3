@@ -3,9 +3,23 @@ import { mockedRunners } from "../../../../test/mocks"
 import { render } from "../../../../test/testUtils"
 
 describe("<RemainingSpell/>", () => {
-  const setup = ({ rating = 4, spells, rituals }: Partial<Props> = {}) =>
+  const setup = ({
+    rating = 4,
+    adjustmentPoints = 0,
+    spells,
+    rituals,
+    powers,
+    magRes = "Full",
+  }: Partial<Props> = {}) =>
     render(
-      <RemainingSpells rating={rating} spells={spells} rituals={rituals} />,
+      <RemainingSpells
+        rating={rating}
+        adjustmentPoints={adjustmentPoints}
+        spells={spells}
+        rituals={rituals}
+        powers={powers}
+        magRes={magRes}
+      />,
     )
   it("should display the number of spells a runner can know", () => {
     const { getByText } = setup()
@@ -48,5 +62,30 @@ describe("<RemainingSpell/>", () => {
     const { getByText } = setup({ rituals: mockedRunners[6].rituals })
 
     expect(getByText("5/8")).toBeInTheDocument()
+  })
+
+  it("should display the power points left for adepts based off magic rating", () => {
+    const { getByText, queryByText } = setup({
+      adjustmentPoints: 1,
+      powers: mockedRunners[7].powers,
+      magRes: "Adept",
+    })
+
+    expect(queryByText("Spells Remaining")).not.toBeInTheDocument()
+    expect(getByText("Power Points Left")).toBeInTheDocument()
+    expect(getByText("3/5")).toBeInTheDocument()
+  })
+
+  it("should display the power points and spells for mystic adepts", () => {
+    const { getByText } = setup({
+      adjustmentPoints: 1,
+      spells: mockedRunners[4].spells,
+      powers: mockedRunners[7].powers,
+      magRes: "Mystic Adept",
+    })
+
+    expect(getByText("Spells Remaining")).toBeInTheDocument()
+    expect(getByText("Power Points Left")).toBeInTheDocument()
+    expect(getByText("3/5")).toBeInTheDocument()
   })
 })
