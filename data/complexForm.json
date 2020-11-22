@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Cleaner",
+    "duration": "Permanent",
+    "fade": 2
+  },
+  {
+    "name": "Diffusion",
+    "duration": "Sustained",
+    "fade": 4,
+    "choice": "MATRIX_ATTRIBUTE",
+    "multiple": true
+  },
+  {
+    "name": "Editor",
+    "duration": "Permanent",
+    "fade": 3
+  },
+  {
+    "name": "Emulate",
+    "duration": "Sustained",
+    "fade": 0,
+    "choice": "PROGRAM",
+    "multiple": true
+  },
+  {
+    "name": "Infusion",
+    "duration": "Sustained",
+    "fade": 4,
+    "choice": "MATRIX_ATTRIBUTE",
+    "multiple": true
+  },
+  {
+    "name": "Mirrored_persona",
+    "duration": "Sustained",
+    "fade": 3
+  },
+  {
+    "name": "Pulse_storm",
+    "duration": "Immediate",
+    "fade": 3
+  },
+  {
+    "name": "Puppeteer",
+    "duration": "Sustained",
+    "fade": 5
+  },
+  {
+    "name": "Resonance_channel",
+    "duration": "Sustained",
+    "fade": 2
+  },
+  {
+    "name": "Resonance_spike",
+    "duration": "Immediate",
+    "fade": 4
+  },
+  {
+    "name": "Resonance_veil",
+    "duration": "Sustained",
+    "fade": 4
+  },
+  {
+    "name": "Static_bomb",
+    "duration": "Immediate",
+    "fade": 6
+  },
+  {
+    "name": "Static_veil",
+    "duration": "Sustained",
+    "fade": 3
+  },
+  {
+    "name": "Stitches",
+    "duration": "Permanent",
+    "fade": 4
+  },
+  {
+    "name": "Tattletale",
+    "duration": "Permanent",
+    "fade": 3
+  }
+]
