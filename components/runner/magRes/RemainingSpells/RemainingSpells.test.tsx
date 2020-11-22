@@ -78,14 +78,28 @@ describe("<RemainingSpell/>", () => {
 
   it("should display the power points and spells for mystic adepts", () => {
     const { getByText } = setup({
-      adjustmentPoints: 1,
+      adjustmentPoints: 2,
       spells: mockedRunners[4].spells,
       powers: mockedRunners[7].powers,
       magRes: "Mystic Adept",
     })
 
     expect(getByText("Spells Remaining")).toBeInTheDocument()
+    expect(getByText("0/8")).toBeInTheDocument()
     expect(getByText("Power Points Left")).toBeInTheDocument()
-    expect(getByText("3/5")).toBeInTheDocument()
+    expect(getByText("0/2")).toBeInTheDocument()
+  })
+
+  it("should style the power points with bad-stuff when negative", () => {
+    const { getByText } = setup({
+      adjustmentPoints: 2,
+      spells: mockedRunners[4].spells,
+      rituals: mockedRunners[6].rituals,
+      powers: mockedRunners[7].powers,
+      magRes: "Mystic Adept",
+    })
+
+    expect(getByText("-3/8")).toHaveClass("bad-stuff")
+    expect(getByText("-2/0")).toHaveClass("bad-stuff")
   })
 })
