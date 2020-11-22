@@ -129,7 +129,7 @@ describe("Magic and Resonance", () => {
       const { getByLabelText, getByText } = setup("3")
 
       await waitFor(() => {
-        getByLabelText("Mundane")
+        expect(getByLabelText("Mundane")).toBeInTheDocument()
       })
       getByLabelText("Mundane").click()
 
@@ -403,9 +403,7 @@ describe("Magic and Resonance", () => {
       })
       getByLabelText("Technomancer").click()
 
-      await waitFor(() => {
-        expect(queryByText("Adept Powers")).not.toBeInTheDocument()
-      })
+      expect(queryByText("Adept Powers")).not.toBeInTheDocument()
 
       getByLabelText("Mystic Adept").click()
 

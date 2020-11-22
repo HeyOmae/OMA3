@@ -2,17 +2,17 @@ import { DisplayPoints, Props } from "./"
 import { render, searchRegexInNodes } from "../../../../test/testUtils"
 import { mockedRunners } from "../../../../test/mocks"
 describe("DisplayPoints", () => {
-  const setup = (props: Props = { runner: mockedRunners[2] }) =>
+  const setup = (props: Props = { runner: mockedRunners[1] }) =>
     render(<DisplayPoints {...props} />)
   it("should display the number of adjustment points and attribute points to spend", async () => {
     const { getByText } = setup()
 
     expect(
-      getByText(searchRegexInNodes(/Adjustment Points4/)),
+      getByText(searchRegexInNodes(/Adjustment Points1/)),
     ).toBeInTheDocument()
 
     expect(
-      getByText(searchRegexInNodes(/Attribute Points12/)),
+      getByText(searchRegexInNodes(/Attribute Points10/)),
     ).toBeInTheDocument()
   })
 

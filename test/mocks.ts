@@ -16,6 +16,7 @@ export const mockedRunners: Runner[] = [
       attributes: "B",
       "mag/res": "A",
     },
+    metatype: "Human",
     attributes: {
       Body: { adjustment: 0, points: 0 },
       Agility: { adjustment: 0, points: 0 },
@@ -64,7 +65,6 @@ export const mockedRunners: Runner[] = [
       "mag/res": "E",
       resources: "A",
     },
-    attributes: initRunnerAttributes,
   },
   {
     id: 4,
@@ -74,6 +74,8 @@ export const mockedRunners: Runner[] = [
     priority: {
       metatype: "D",
     },
+    metatype: "Elf",
+    attributes: initRunnerAttributes,
   },
   {
     id: 5,

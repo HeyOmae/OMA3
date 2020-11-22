@@ -164,7 +164,7 @@ export const MagRes = () => {
     return <PriorityWarning requirement="metatype" />
   } else if (!runner.priority["mag/res"]) {
     return <PriorityWarning requirement="mag/res" />
-  } else if (!runner.attributes) {
+  } else if (!runner.attributes && runner.priority["mag/res"] !== "E") {
     return <PriorityWarning requirement="attributes" />
   }
   const priority = priorityData["mag/res"][
