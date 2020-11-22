@@ -96,24 +96,28 @@ export const Metatype = () => {
             ))}
           </RadioGroup>
         </FormControl>
-        <h1>Attributes</h1>
-        {runner.priority.attributes ? (
+        {runner.attributes && (
           <>
-            <DisplayPoints runner={runner} />
-            <SpendingPointsToggle
-              isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
-              toggleSpending={() =>
-                setIsSpendingAdjustmentPoints(!isSpendingAdjustmentPoints)
-              }
-            />
-            <AttributeSelection
-              runner={runner}
-              dispatch={dispatch}
-              isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
-            />
+            <h1>Attributes</h1>
+            {runner.priority.attributes ? (
+              <>
+                <DisplayPoints runner={runner} />
+                <SpendingPointsToggle
+                  isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
+                  toggleSpending={() =>
+                    setIsSpendingAdjustmentPoints(!isSpendingAdjustmentPoints)
+                  }
+                />
+                <AttributeSelection
+                  runner={runner}
+                  dispatch={dispatch}
+                  isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
+                />
+              </>
+            ) : (
+              <PriorityWarning requirement="attributes" />
+            )}
           </>
-        ) : (
-          <PriorityWarning requirement="attributes" />
         )}
       </FormGroup>
     ) : (

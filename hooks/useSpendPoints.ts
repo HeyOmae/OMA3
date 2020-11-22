@@ -4,8 +4,8 @@ import { RunnerAttributes } from "../types/RunnerAttributes"
 export const useSpendPoints = (
   adjustmentPoints: number,
   attributePoints: number,
-  attributes?: RunnerAttributes,
-) =>
+  attributes: RunnerAttributes,
+): [adjustmentPointsLeft: number, attributePointsLeft: number] =>
   useMemo<[number, number]>(
     () =>
       Object.values(attributes).reduce(
