@@ -25,7 +25,7 @@ export const RemainingSpells: FC<Props> = ({
           (total, spellsInCategory) => total + spellsInCategory.length,
           rituals.length,
         ),
-      [rituals],
+      [spells, rituals],
     ),
     remainingNumberOfSpells = totalSpells - numberOfKnownSpells
 

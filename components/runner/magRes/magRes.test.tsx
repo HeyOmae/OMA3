@@ -260,14 +260,16 @@ describe("Magic and Resonance", () => {
       })
 
       it("should remove a spell", async () => {
-        const { getByLabelText } = setup("5")
+        const { getByLabelText, getByText } = setup("5")
         expect(runnerFromDB(4).spells.Combat.length).toEqual(3)
         expect(runnerFromDB(4).spells.Combat[1].name).toEqual("Fireball")
 
         await waitFor(() => {
           expect(getByLabelText("Remove Fireball")).toBeInTheDocument()
         })
+        expect(getByText("0/8")).toBeInTheDocument()
         getByLabelText("Remove Fireball").click()
+        expect(getByText("1/8")).toBeInTheDocument()
 
         await waitFor(() => {
           expect(runnerFromDB(4).spells.Combat.length).toEqual(2)
