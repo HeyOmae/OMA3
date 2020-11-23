@@ -22,6 +22,7 @@ import { RunnerRituals } from "./Rituals/RunnerRituals"
 import { AccordionWrapper } from "../../common/Accordion"
 import { AdeptPowers } from "./AdeptPowers"
 import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
+import { ComplexForms } from "./ComplexForms"
 
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
@@ -224,6 +225,12 @@ export const MagRes = () => {
                   <AccordionWrapper label="adept-powers">
                     <h2>Adept Powers</h2>
                     <AdeptPowers dispatch={dispatch} />
+                  </AccordionWrapper>
+                )}
+                {runner.magres === "Technomancer" && (
+                  <AccordionWrapper label="complex-forms">
+                    <h2>Complex Forms</h2>
+                    <ComplexForms />
                   </AccordionWrapper>
                 )}
               </Grid>
