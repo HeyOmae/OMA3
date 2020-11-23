@@ -11,6 +11,7 @@ import spellData from "../../../data/spells.json"
 import ritualData from "../../../data/rituals.json"
 import { mockedRunners } from "../../../test/mocks"
 import PowersData from "../../../data/adeptPowers.json"
+import complexFormData from "../../../data/complexForm.json"
 
 describe("Magic and Resonance", () => {
   const setup = (id = "2") =>
@@ -493,6 +494,28 @@ describe("Magic and Resonance", () => {
 
       await waitFor(() => {
         expect(runnerFromDB(7).powers[attributeBoostIndex].level).toBe(6)
+      })
+    })
+  })
+
+  describe("Comeplx froms", () => {
+    it("should display the complex forms", async () => {
+      const { getByText, queryByText } = setup()
+
+      await waitFor(() => {
+        expect(getByText("Technomancer")).toBeInTheDocument()
+      })
+      expect(queryByText("Complex Forms")).not.toBeInTheDocument()
+      getByText("Technomancer").click()
+      expect(queryByText("Complex Forms")).toBeInTheDocument()
+
+      complexFormData.forEach(({ name }) => {
+        expect(getByText(name)).not.toBeVisible()
+      })
+      getByText("Complex Forms").click()
+
+      complexFormData.forEach(({ name }) => {
+        expect(getByText(name)).toBeVisible()
       })
     })
   })
