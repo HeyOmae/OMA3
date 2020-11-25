@@ -8,7 +8,7 @@
     "name": "Diffusion",
     "duration": "Sustained",
     "fade": 4,
-    "choice": "MATRIX_ATTRIBUTE",
+    "choice": "MATRIX ATTRIBUTE",
     "multiple": true
   },
   {
@@ -27,16 +27,16 @@
     "name": "Infusion",
     "duration": "Sustained",
     "fade": 4,
-    "choice": "MATRIX_ATTRIBUTE",
+    "choice": "MATRIX ATTRIBUTE",
     "multiple": true
   },
   {
-    "name": "Mirrored_persona",
+    "name": "Mirrored Persona",
     "duration": "Sustained",
     "fade": 3
   },
   {
-    "name": "Pulse_storm",
+    "name": "Pulse Storm",
     "duration": "Immediate",
     "fade": 3
   },
@@ -46,27 +46,27 @@
     "fade": 5
   },
   {
-    "name": "Resonance_channel",
+    "name": "Resonance Channel",
     "duration": "Sustained",
     "fade": 2
   },
   {
-    "name": "Resonance_spike",
+    "name": "Resonance Spike",
     "duration": "Immediate",
     "fade": 4
   },
   {
-    "name": "Resonance_veil",
+    "name": "Resonance Veil",
     "duration": "Sustained",
     "fade": 4
   },
   {
-    "name": "Static_bomb",
+    "name": "Static Bomb",
     "duration": "Immediate",
     "fade": 6
   },
   {
-    "name": "Static_veil",
+    "name": "Static Veil",
     "duration": "Sustained",
     "fade": 3
   },

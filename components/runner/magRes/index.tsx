@@ -2,6 +2,7 @@ import { CircularProgress, Grid } from "@material-ui/core"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import {
   AdeptPower,
+  ComplexForm,
   MagRes as MagicResonance,
   Ritual,
   Spell,
@@ -24,6 +25,7 @@ import { AdeptPowers } from "./AdeptPowers"
 import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
 import { ComplexForms } from "./ComplexForms"
 
+// The complexity in this component is a code smell. Refactor things out in to smaller files
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
 export const SET_RESONANCE = Symbol("SET_RESONANCE")
@@ -34,6 +36,7 @@ export const REMOVE_RITUAL = Symbol("REMOVE_RITUAL")
 export const SET_POWER = Symbol("SET_POWER")
 export const REMOVE_POWER = Symbol("REMOVE_POWER")
 export const CHANGE_POWER_LEVEL = Symbol("CHANGE_POWER_LEVEL")
+export const SET_COMPLEX_FORM = Symbol("SET_COMPLEX_FORM")
 
 export interface Payload {
   magres?: MagicResonance
@@ -51,6 +54,7 @@ export interface Payload {
     powerIndex: number
     level: number
   }
+  complexForm?: ComplexForm
 }
 
 export const MagRes = () => {
@@ -154,6 +158,11 @@ export const MagRes = () => {
             ],
           }
         }
+        case SET_COMPLEX_FORM:
+          return {
+            ...runner,
+            complexForms: [...(runner.complexForms ?? []), payload.complexForm],
+          }
       }
     },
   )
@@ -230,7 +239,7 @@ export const MagRes = () => {
                 {runner.magres === "Technomancer" && (
                   <AccordionWrapper label="complex-forms">
                     <h2>Complex Forms</h2>
-                    <ComplexForms />
+                    <ComplexForms dispatch={dispatch} />
                   </AccordionWrapper>
                 )}
               </Grid>

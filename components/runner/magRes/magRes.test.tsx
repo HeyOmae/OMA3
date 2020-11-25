@@ -518,5 +518,25 @@ describe("Magic and Resonance", () => {
         expect(getByText(name)).toBeVisible()
       })
     })
+
+    it("should add a complex form to a runner", async () => {
+      const { getByText, getByLabelText } = setup()
+
+      await waitFor(() => {
+        expect(getByText("Technomancer")).toBeInTheDocument()
+      })
+
+      getByText("Technomancer").click()
+
+      expect(runnerFromDB(1).complexForms).toBeUndefined()
+
+      const complexFormToAdd = complexFormData[0]
+
+      getByLabelText(`Add ${complexFormToAdd.name}`).click()
+
+      await waitFor(() => {
+        expect(runnerFromDB(1).complexForms[0]).toEqual(complexFormToAdd)
+      })
+    })
   })
 })
