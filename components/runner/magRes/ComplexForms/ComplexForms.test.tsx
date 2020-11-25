@@ -1,4 +1,5 @@
-import { ComplexForms, Props } from "."
+import { Props } from "."
+import { ComplexForms } from "./"
 import { render } from "../../../../test/testUtils"
 import complexFormData from "../../../../data/complexForm.json"
 import { SET_COMPLEX_FORM } from ".."
