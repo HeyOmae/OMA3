@@ -99,3 +99,11 @@ export type AdeptPower = {
     }
   }
 }
+
+export interface ComplexForm {
+  name: string
+  duration: "Immediate" | "Sustained" | "Permanent"
+  fade: number
+  choice?: "MATRIX ATTRIBUTE" | "PROGRAM"
+  multiple?: true
+}
