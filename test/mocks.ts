@@ -289,6 +289,44 @@ export const mockedRunners: Runner[] = [
       },
     ],
   },
+  {
+    id: 9,
+    name: "Netcat",
+    description:
+      "Netcat is a female Elven Technomancer and founding member of Jackpoint. After she admitted her powers on the VPN, Clockwork tried to sell her to corporate interests.",
+    priority: {
+      metatype: "D",
+      skills: "B",
+      attributes: "C",
+      "mag/res": "A",
+      resources: "E",
+    },
+    metatype: "Elf",
+    attributes: initRunnerAttributes,
+    magres: "Technomancer",
+    complexForms: [
+      {
+        name: "Resonance Spike",
+        duration: "Immediate",
+        fade: 4,
+      },
+      {
+        name: "Editor",
+        duration: "Permanent",
+        fade: 3,
+      },
+      {
+        name: "Pulse Storm",
+        duration: "Immediate",
+        fade: 3,
+      },
+      {
+        name: "Puppeteer",
+        duration: "Sustained",
+        fade: 5,
+      },
+    ],
+  },
 ]
 
 export const orkRunner: Runner = {

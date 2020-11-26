@@ -11,11 +11,12 @@ import { Payload } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { ComplexForm } from "../../../../types/MagRes"
 import { AddComplexFormButton } from "./AddComplexFormButton"
+import { RemoveComplexFormButton } from "./RunnerComplexForms/RemoveComplexFormButton"
 
 export interface Props {
   dispatch: DispatchAction<symbol, Payload>
   complexForms: ComplexForm[]
-  ActionButton: typeof AddComplexFormButton
+  ActionButton: typeof AddComplexFormButton | typeof RemoveComplexFormButton
 }
 
 export const ComplexFormTable: FC<Props> = ({
@@ -34,12 +35,16 @@ export const ComplexFormTable: FC<Props> = ({
         </TableRow>
       </TableHead>
       <TableBody>
-        {complexForms.map((complexForm) => {
+        {complexForms.map((complexForm, index) => {
           const { name, fade, duration } = complexForm
           return (
             <TableRow key={name}>
               <TableCell>
-                <ActionButton dispatch={dispatch} complexForm={complexForm} />
+                <ActionButton
+                  dispatch={dispatch}
+                  complexForm={complexForm}
+                  index={index}
+                />
               </TableCell>
               <TableCell>{name}</TableCell>
               <TableCell>{fade}</TableCell>
