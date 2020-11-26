@@ -1,6 +1,7 @@
 import { render } from "../../../../../test/testUtils"
 import { RunnerComplexForms, Props } from "./index"
 import { mockedRunners } from "../../../../../test/mocks"
+import { REMOVE_COMPLEX_FORM } from "../.."
 
 describe("<RunnerComplexForms", () => {
   const setup = () => {
@@ -18,10 +19,14 @@ describe("<RunnerComplexForms", () => {
     })
   })
 
-  // TODO: finish this test
   it("should dispatch the remove complex form action", () => {
-    const { getByLabelText } = setup()
+    const { getByLabelText, props } = setup()
 
     getByLabelText("Remove Pulse Storm").click()
+
+    expect(props.dispatch).toHaveBeenCalledWith({
+      type: REMOVE_COMPLEX_FORM,
+      payload: { removeComplexForm: 2 },
+    })
   })
 })

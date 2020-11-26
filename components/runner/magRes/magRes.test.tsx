@@ -538,5 +538,31 @@ describe("Magic and Resonance", () => {
         expect(runnerFromDB(1).complexForms[0]).toEqual(complexFormToAdd)
       })
     })
+
+    it("should remove a complex form from a runner", async () => {
+      const { getByLabelText, getByText, queryByLabelText } = setup("9")
+
+      expect(runnerFromDB(8).complexForms).toHaveLength(4)
+
+      await waitFor(() => {
+        expect(getByText("Known Complex Forms")).toBeInTheDocument()
+      })
+      mockedRunners[8].complexForms.forEach(({ name }) => {
+        expect(getByLabelText(`Remove ${name}`)).toBeInTheDocument()
+      })
+      const removedComplexForm = runnerFromDB(8).complexForms[1],
+        removeComplexFormLabel = `Remove ${removedComplexForm.name}`
+      expect(runnerFromDB(8).complexForms).toContain(removedComplexForm)
+
+      getByLabelText(removeComplexFormLabel).click()
+
+      expect(queryByLabelText(removeComplexFormLabel)).not.toBeInTheDocument()
+
+      await waitFor(() => {
+        expect(runnerFromDB(8).complexForms).toHaveLength(3)
+      })
+
+      expect(runnerFromDB(8).complexForms).not.toContain(removedComplexForm)
+    })
   })
 })
