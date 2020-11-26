@@ -24,6 +24,7 @@ import { AccordionWrapper } from "../../common/Accordion"
 import { AdeptPowers } from "./AdeptPowers"
 import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
 import { ComplexForms } from "./ComplexForms"
+import { RunnerComplexForms } from "./ComplexForms/RunnerComplexForms"
 
 // The complexity in this component is a code smell. Refactor things out in to smaller files
 export const SET_MAGRES = Symbol("SET_MAGRES")
@@ -37,6 +38,7 @@ export const SET_POWER = Symbol("SET_POWER")
 export const REMOVE_POWER = Symbol("REMOVE_POWER")
 export const CHANGE_POWER_LEVEL = Symbol("CHANGE_POWER_LEVEL")
 export const SET_COMPLEX_FORM = Symbol("SET_COMPLEX_FORM")
+export const REMOVE_COMPLEX_FORM = Symbol("REMOVE_COMPLEX_FORM")
 
 export interface Payload {
   magres?: MagicResonance
@@ -55,6 +57,7 @@ export interface Payload {
     level: number
   }
   complexForm?: ComplexForm
+  removeComplexForm?: number
 }
 
 export const MagRes = () => {
@@ -163,6 +166,14 @@ export const MagRes = () => {
             ...runner,
             complexForms: [...(runner.complexForms ?? []), payload.complexForm],
           }
+        case REMOVE_COMPLEX_FORM:
+          return {
+            ...runner,
+            complexForms: [
+              ...runner.complexForms.slice(0, payload.removeComplexForm),
+              ...runner.complexForms.slice(payload.removeComplexForm + 1),
+            ],
+          }
       }
     },
   )
@@ -264,6 +275,15 @@ export const MagRes = () => {
                     <h2>Known Adept Powers</h2>
                     <RunnerAdeptPowers
                       powers={runner.powers}
+                      dispatch={dispatch}
+                    />
+                  </>
+                )}
+                {runner.complexForms && (
+                  <>
+                    <h2>Known Complex Forms</h2>
+                    <RunnerComplexForms
+                      complexForms={runner.complexForms}
                       dispatch={dispatch}
                     />
                   </>
