@@ -498,7 +498,7 @@ describe("Magic and Resonance", () => {
     })
   })
 
-  describe("Comeplx froms", () => {
+  describe("Complex forms", () => {
     it("should display the complex forms", async () => {
       const { getByText, queryByText } = setup()
 
@@ -508,6 +508,7 @@ describe("Magic and Resonance", () => {
       expect(queryByText("Complex Forms")).not.toBeInTheDocument()
       getByText("Technomancer").click()
       expect(queryByText("Complex Forms")).toBeInTheDocument()
+      expect(getByText("8/8")).toBeInTheDocument()
 
       complexFormData.forEach(({ name }) => {
         expect(getByText(name)).not.toBeVisible()
@@ -527,12 +528,15 @@ describe("Magic and Resonance", () => {
       })
 
       getByText("Technomancer").click()
+      expect(getByText("8/8")).toBeInTheDocument()
 
       expect(runnerFromDB(1).complexForms).toBeUndefined()
 
       const complexFormToAdd = complexFormData[0]
 
       getByLabelText(`Add ${complexFormToAdd.name}`).click()
+
+      expect(getByText("7/8")).toBeInTheDocument()
 
       await waitFor(() => {
         expect(runnerFromDB(1).complexForms[0]).toEqual(complexFormToAdd)
@@ -553,9 +557,11 @@ describe("Magic and Resonance", () => {
       const removedComplexForm = runnerFromDB(8).complexForms[1],
         removeComplexFormLabel = `Remove ${removedComplexForm.name}`
       expect(runnerFromDB(8).complexForms).toContain(removedComplexForm)
+      expect(getByText("4/8")).toBeInTheDocument()
 
       getByLabelText(removeComplexFormLabel).click()
 
+      expect(getByText("5/8")).toBeInTheDocument()
       expect(queryByLabelText(removeComplexFormLabel)).not.toBeInTheDocument()
 
       await waitFor(() => {

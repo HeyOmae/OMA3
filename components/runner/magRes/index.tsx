@@ -224,6 +224,7 @@ export const MagRes = () => {
                   spells={runner.spells}
                   rituals={runner.rituals}
                   powers={runner.powers}
+                  complexForms={runner.complexForms}
                 />
               </Grid>
               <Grid item sm={12} md={6} className={styles.scrollGrid}>
