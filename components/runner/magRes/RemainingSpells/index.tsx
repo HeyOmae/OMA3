@@ -1,5 +1,11 @@
 import { FC, useMemo } from "react"
-import { AdeptPower, MagRes, Ritual, Spells } from "../../../../types/MagRes"
+import {
+  AdeptPower,
+  ComplexForm,
+  MagRes,
+  Ritual,
+  Spells,
+} from "../../../../types/MagRes"
 
 export interface Props {
   magRes: MagRes
@@ -8,7 +14,10 @@ export interface Props {
   spells?: Partial<Spells>
   rituals?: Ritual[]
   powers?: AdeptPower[]
+  complexForms?: ComplexForm[]
 }
+
+const magResWithSpells = ["Mystic Adept", "Full", "Aspected"]
 
 export const RemainingSpells: FC<Props> = ({
   magRes,
@@ -17,6 +26,7 @@ export const RemainingSpells: FC<Props> = ({
   spells = {},
   rituals = [],
   powers = [],
+  complexForms = [],
 }) => {
   const totalSpells = rating * 2,
     numberOfKnownSpells = useMemo(
@@ -46,7 +56,7 @@ export const RemainingSpells: FC<Props> = ({
 
   return (
     <dl>
-      {magRes !== "Adept" && (
+      {magResWithSpells.includes(magRes) && (
         <>
           <dt>Spells Remaining</dt>
           <dd className={remainingNumberOfSpells < 0 ? "bad-stuff" : ""}>
@@ -59,6 +69,16 @@ export const RemainingSpells: FC<Props> = ({
           <dt>Power Points Left</dt>
           <dd className={remainingPowerPoints < 0 ? "bad-stuff" : ""}>
             {remainingPowerPoints}/{powerPointsTotal}
+          </dd>
+        </>
+      )}
+      {magRes === "Technomancer" && (
+        <>
+          <dt>Complex Forms Remaining</dt>
+          <dd
+            className={totalSpells - complexForms.length < 0 ? "bad-stuff" : ""}
+          >
+            {totalSpells - complexForms.length}/{totalSpells}
           </dd>
         </>
       )}

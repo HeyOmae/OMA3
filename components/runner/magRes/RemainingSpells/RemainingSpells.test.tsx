@@ -1,6 +1,8 @@
 import { RemainingSpells, Props } from "."
 import { mockedRunners } from "../../../../test/mocks"
 import { render } from "../../../../test/testUtils"
+import complexFormData from "../../../../data/complexForm.json"
+import { ComplexForm } from "../../../../types/MagRes"
 
 describe("<RemainingSpell/>", () => {
   const setup = ({
@@ -9,6 +11,7 @@ describe("<RemainingSpell/>", () => {
     spells,
     rituals,
     powers,
+    complexForms,
     magRes = "Full",
   }: Partial<Props> = {}) =>
     render(
@@ -19,6 +22,7 @@ describe("<RemainingSpell/>", () => {
         rituals={rituals}
         powers={powers}
         magRes={magRes}
+        complexForms={complexForms}
       />,
     )
   it("should display the number of spells a runner can know", () => {
@@ -101,5 +105,27 @@ describe("<RemainingSpell/>", () => {
 
     expect(getByText("-3/8")).toHaveClass("bad-stuff")
     expect(getByText("-2/0")).toHaveClass("bad-stuff")
+  })
+
+  it("should display how many complex forms are left to learn", () => {
+    const { getByText, queryByText } = setup({
+      magRes: "Technomancer",
+      complexForms: mockedRunners[8].complexForms,
+    })
+
+    expect(queryByText("Spells Remaining")).not.toBeInTheDocument()
+    expect(queryByText("Power Points Left")).not.toBeInTheDocument()
+
+    expect(getByText("Complex Forms Remaining")).toBeInTheDocument()
+    expect(getByText("4/8")).toBeInTheDocument()
+  })
+
+  it("should style the remaining complex forms with bad-stuff when negative", () => {
+    const { getByText } = setup({
+      magRes: "Technomancer",
+      complexForms: complexFormData.splice(0, 9) as ComplexForm[],
+    })
+
+    expect(getByText("-1/8")).toHaveClass("bad-stuff")
   })
 })
