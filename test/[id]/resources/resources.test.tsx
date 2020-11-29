@@ -1,5 +1,5 @@
-import { render, withTestRouter } from "../testUtils"
-import ResourcePage from "../../pages/[id]/resources"
+import { render, withTestRouter } from "../../testUtils"
+import ResourcePage from "../../../pages/[id]/resources"
 import { waitFor } from "@testing-library/react"
 
 describe("Resource Page", () => {
@@ -17,10 +17,11 @@ describe("Resource Page", () => {
     await waitFor(() => {
       expect(getByText("Resources")).toBeInTheDocument()
     })
+    expect(getByText("Weapons")).toBeInTheDocument()
 
-    expect(getByText("weapons").closest("a")).toHaveAttribute(
+    expect(getByText("melee").closest("a")).toHaveAttribute(
       "href",
-      "/1/resources/weapons",
+      "/1/resources/melee",
     )
   })
 })

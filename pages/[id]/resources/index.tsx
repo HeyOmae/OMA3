@@ -8,13 +8,14 @@ export const ResourcePage = (): JSX.Element => {
   return (
     <RunnerLayout>
       <h1>Resources</h1>
+      <h2>Weapons</h2>
       <NextLink
         href="./resources/[category]"
-        as={`/${query.id}/resources/weapons`}
+        as={`/${query.id}/resources/melee`}
         passHref
       >
         <Button variant="contained" color="primary">
-          weapons
+          melee
         </Button>
       </NextLink>
     </RunnerLayout>
