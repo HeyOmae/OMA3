@@ -19,7 +19,7 @@
     ],
     "weapon": {
       "dv": "5P",
-      "ar": [9, 0, 0, 0],
+      "ar": [9, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -36,7 +36,7 @@
     ],
     "weapon": {
       "dv": "3P",
-      "ar": [8, 2, 0, 0],
+      "ar": [8, 2, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -53,7 +53,7 @@
     ],
     "weapon": {
       "dv": "3P",
-      "ar": [8, 2, 0, 0],
+      "ar": [8, 2, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -70,7 +70,7 @@
     ],
     "weapon": {
       "dv": "3P",
-      "ar": [6, 0, 0, 0],
+      "ar": [6, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -95,7 +95,7 @@
     ],
     "weapon": {
       "dv": "2P",
-      "ar": [6, 1, 0, 0],
+      "ar": [6, 1, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -120,7 +120,7 @@
     ],
     "weapon": {
       "dv": "4P",
-      "ar": [10, 0, 0, 0],
+      "ar": [10, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -137,7 +137,7 @@
     ],
     "weapon": {
       "dv": "4P",
-      "ar": [8, 0, 0, 0],
+      "ar": [8, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -162,7 +162,7 @@
     ],
     "weapon": {
       "dv": "3P",
-      "ar": [9, 0, 0, 0],
+      "ar": [9, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Blades"
     }
@@ -179,7 +179,7 @@
     ],
     "weapon": {
       "dv": "3S",
-      "ar": [6, 0, 0, 0],
+      "ar": [6, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Clubs"
     }
@@ -196,7 +196,7 @@
     ],
     "weapon": {
       "dv": "2S",
-      "ar": [5, 0, 0, 0],
+      "ar": [5, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Clubs"
     }
@@ -213,7 +213,7 @@
     ],
     "weapon": {
       "dv": "2S",
-      "ar": [6, 0, 0, 0],
+      "ar": [6, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Clubs"
     }
@@ -230,7 +230,7 @@
     ],
     "weapon": {
       "dv": "4S",
-      "ar": [8, 0, 0, 0],
+      "ar": [8, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Clubs"
     }
@@ -255,7 +255,7 @@
     ],
     "weapon": {
       "dv": "5S(e)",
-      "ar": [6, 0, 0, 0],
+      "ar": [6, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Clubs"
     }
@@ -272,7 +272,7 @@
     ],
     "weapon": {
       "dv": "4S",
-      "ar": [8, 0, 0, 0],
+      "ar": [8, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Clubs"
     }
@@ -289,7 +289,7 @@
     ],
     "weapon": {
       "dv": "2S",
-      "ar": [5, 0, 0, 0],
+      "ar": [5, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Unarmed"
     }
@@ -306,7 +306,7 @@
     ],
     "weapon": {
       "dv": "1P",
-      "ar": [6, 0, 0, 0],
+      "ar": [6, 0, 0, 0, 0],
       "skill": "Exotic Weapons"
     }
   },
@@ -322,7 +322,7 @@
     ],
     "weapon": {
       "dv": "3P",
-      "ar": [5, 0, 0, 0],
+      "ar": [5, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Unarmed"
     }
@@ -339,7 +339,7 @@
     ],
     "weapon": {
       "dv": "4S(e)",
-      "ar": [5, 0, 0, 0],
+      "ar": [5, 0, 0, 0, 0],
       "skill": "Close Combat",
       "specialization": "Unarmed"
     }
@@ -364,7 +364,7 @@
     ],
     "weapon": {
       "dv": "6P",
-      "ar": [14, 0, 0, 0],
+      "ar": [14, 0, 0, 0, 0],
       "skill": "Exotic Weapons"
     }
   }

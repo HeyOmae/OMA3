@@ -3,30 +3,30 @@
     "name": "bow1",
     "availability": "1L",
     "cost": "110",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "1P",
-      "ar": "1,1,,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [1, 1, , 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "1"
+        "attribute": "STRENGTH",
+        "value": "1"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -34,30 +34,30 @@
     "name": "bow2",
     "availability": "1L",
     "cost": "120",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "1P",
-      "ar": "1,2,1,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [1, 2, 1, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "2"
+        "attribute": "STRENGTH",
+        "value": "2"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -65,30 +65,30 @@
     "name": "bow3",
     "availability": "1L",
     "cost": "130",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "2P",
-      "ar": "2,3,1,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [2, 3, 1, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "3"
+        "attribute": "STRENGTH",
+        "value": "3"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -96,30 +96,30 @@
     "name": "bow4",
     "availability": "1L",
     "cost": "140",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "2P",
-      "ar": "2,4,1,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [2, 4, 1, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "4"
+        "attribute": "STRENGTH",
+        "value": "4"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -127,30 +127,30 @@
     "name": "bow5",
     "availability": "2L",
     "cost": "150",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "3P",
-      "ar": "3,5,1,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [3, 5, 1, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "5"
+        "attribute": "STRENGTH",
+        "value": "5"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -158,30 +158,30 @@
     "name": "bow6",
     "availability": "2L",
     "cost": "160",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "3P",
-      "ar": "3,6,2,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [3, 6, 2, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "6"
+        "attribute": "STRENGTH",
+        "value": "6"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -189,30 +189,30 @@
     "name": "bow7",
     "availability": "2L",
     "cost": "170",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "4P",
-      "ar": "4,7,2,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [4, 7, 2, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "7"
+        "attribute": "STRENGTH",
+        "value": "7"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -220,30 +220,30 @@
     "name": "bow8",
     "availability": "3L",
     "cost": "180",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "4P",
-      "ar": "4,8,2,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [4, 8, 2, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "8"
+        "attribute": "STRENGTH",
+        "value": "8"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -251,30 +251,30 @@
     "name": "bow9",
     "availability": "3L",
     "cost": "190",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "5P",
-      "ar": "5,9,2,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [5, 9, 2, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "9"
+        "attribute": "STRENGTH",
+        "value": "9"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -282,30 +282,30 @@
     "name": "bow10",
     "availability": "3L",
     "cost": "200",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "5P",
-      "ar": "5,10,3,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [5, 10, 3, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "10"
+        "attribute": "STRENGTH",
+        "value": "10"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -313,30 +313,30 @@
     "name": "bow11",
     "availability": "4L",
     "cost": "210",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "6P",
-      "ar": "6,11,3,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [6, 11, 3, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "11"
+        "attribute": "STRENGTH",
+        "value": "11"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -344,30 +344,30 @@
     "name": "bow12",
     "availability": "4L",
     "cost": "220",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "6P",
-      "ar": "6,11,3,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [6, 11, 3, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "12"
+        "attribute": "STRENGTH",
+        "value": "12"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -375,30 +375,30 @@
     "name": "bow13",
     "availability": "4L",
     "cost": "230",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "7P",
-      "ar": "7,13,3,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [7, 13, 3, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "13"
+        "attribute": "STRENGTH",
+        "value": "13"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -406,30 +406,30 @@
     "name": "bow14",
     "availability": "5L",
     "cost": "240",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "BOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "7P",
-      "ar": "7,14,4,,",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [7, 14, 4, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
-        "@attr": "STRENGTH",
-        "@val": "14"
+        "attribute": "STRENGTH",
+        "value": "14"
       }
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -437,26 +437,26 @@
     "name": "crossbow_light",
     "availability": "3",
     "cost": "150",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "CROSSBOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "CROSSBOWS"
       }
     ],
     "weapon": {
       "dv": "2P",
-      "ar": "6,8,2,,",
-      "@ammo": "4(m)",
-      "@mode": "SS",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [6, 8, 2, 0, 0],
+      "ammo": "4(m)",
+      "mode": "SS",
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -464,26 +464,26 @@
     "name": "crossbow_standard",
     "availability": "3L",
     "cost": "290",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "CROSSBOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "CROSSBOWS"
       }
     ],
     "weapon": {
       "dv": "3P",
-      "ar": "2,10,4,2,",
-      "@ammo": "4(m)",
-      "@mode": "SS",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [2, 10, 4, 20, 0],
+      "ammo": "4(m)",
+      "mode": "SS",
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -491,26 +491,26 @@
     "name": "crossbow_heavy",
     "availability": "4L",
     "cost": "425",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "CROSSBOWS"
+        "type": "WEAPON_RANGED",
+        "subtype": "CROSSBOWS"
       }
     ],
     "weapon": {
       "dv": "4P",
-      "ar": "2,8,6,4,",
-      "@ammo": "4(m)",
-      "@mode": "SS",
-      "skill": "athletics",
-      "specilization": "athletics/archery"
+      "ar": [2, 8, 6, 40, 0],
+      "ammo": "4(m)",
+      "mode": "SS",
+      "skill": "Athletics",
+      "specilization": "Archery"
     },
     "modifications": [
       {
-        "@hook": "TOP"
+        "hook": "TOP"
       },
       {
-        "@hook": "UNDER"
+        "hook": "UNDER"
       }
     ]
   },
@@ -518,34 +518,34 @@
     "name": "throwing_knives",
     "availability": "2",
     "cost": "155",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "THROWING"
+        "type": "WEAPON_RANGED",
+        "subtype": "THROWING"
       }
     ],
     "weapon": {
       "dv": "2P",
-      "ar": "10,9,3,,",
-      "skill": "athletics",
-      "specilization": "athletics/throwing"
+      "ar": [10, 9, 3, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Throwing"
     }
   },
   {
     "name": "throwing_stars",
     "availability": "2",
     "cost": "160",
-    "useas": [
+    "useAs": [
       {
-        "@type": "WEAPON_RANGED",
-        "@subtype": "THROWING"
+        "type": "WEAPON_RANGED",
+        "subtype": "THROWING"
       }
     ],
     "weapon": {
       "dv": "2P",
-      "ar": "9,11,4,,",
-      "skill": "athletics",
-      "specilization": "athletics/throwing"
+      "ar": [9, 11, 4, 0, 0],
+      "skill": "Athletics",
+      "specilization": "Throwing"
     }
   }
 ]
