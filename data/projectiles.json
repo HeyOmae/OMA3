@@ -1,24 +1,24 @@
 [
   {
-    "name": "bow1",
+    "name": "Bow1",
     "availability": "1L",
-    "cost": "110",
+    "cost": 110,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
     "weapon": {
       "dv": "1P",
-      "ar": [1, 1, , 0, 0],
+      "ar": [1, 1, 0, 0, 0],
       "skill": "Athletics",
       "specilization": "Archery"
     },
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "1"
+        "value": 1
       }
     },
     "modifications": [
@@ -31,12 +31,12 @@
     ]
   },
   {
-    "name": "bow2",
+    "name": "Bow2",
     "availability": "1L",
-    "cost": "120",
+    "cost": 120,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -49,7 +49,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "2"
+        "value": 2
       }
     },
     "modifications": [
@@ -62,12 +62,12 @@
     ]
   },
   {
-    "name": "bow3",
+    "name": "Bow3",
     "availability": "1L",
-    "cost": "130",
+    "cost": 130,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -80,7 +80,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "3"
+        "value": 3
       }
     },
     "modifications": [
@@ -93,12 +93,12 @@
     ]
   },
   {
-    "name": "bow4",
+    "name": "Bow4",
     "availability": "1L",
-    "cost": "140",
+    "cost": 140,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -111,7 +111,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "4"
+        "value": 4
       }
     },
     "modifications": [
@@ -124,12 +124,12 @@
     ]
   },
   {
-    "name": "bow5",
+    "name": "Bow5",
     "availability": "2L",
-    "cost": "150",
+    "cost": 150,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -142,7 +142,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "5"
+        "value": 5
       }
     },
     "modifications": [
@@ -155,12 +155,12 @@
     ]
   },
   {
-    "name": "bow6",
+    "name": "Bow6",
     "availability": "2L",
-    "cost": "160",
+    "cost": 160,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -173,7 +173,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "6"
+        "value": 6
       }
     },
     "modifications": [
@@ -186,12 +186,12 @@
     ]
   },
   {
-    "name": "bow7",
+    "name": "Bow7",
     "availability": "2L",
-    "cost": "170",
+    "cost": 170,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -204,7 +204,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "7"
+        "value": 7
       }
     },
     "modifications": [
@@ -217,12 +217,12 @@
     ]
   },
   {
-    "name": "bow8",
+    "name": "Bow8",
     "availability": "3L",
-    "cost": "180",
+    "cost": 180,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -235,7 +235,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "8"
+        "value": 8
       }
     },
     "modifications": [
@@ -248,12 +248,12 @@
     ]
   },
   {
-    "name": "bow9",
+    "name": "Bow9",
     "availability": "3L",
-    "cost": "190",
+    "cost": 190,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -266,7 +266,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "9"
+        "value": 9
       }
     },
     "modifications": [
@@ -279,12 +279,12 @@
     ]
   },
   {
-    "name": "bow10",
+    "name": "Bow10",
     "availability": "3L",
-    "cost": "200",
+    "cost": 200,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -297,7 +297,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "10"
+        "value": 10
       }
     },
     "modifications": [
@@ -310,12 +310,12 @@
     ]
   },
   {
-    "name": "bow11",
+    "name": "Bow11",
     "availability": "4L",
-    "cost": "210",
+    "cost": 210,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -328,7 +328,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "11"
+        "value": 11
       }
     },
     "modifications": [
@@ -341,12 +341,12 @@
     ]
   },
   {
-    "name": "bow12",
+    "name": "Bow12",
     "availability": "4L",
-    "cost": "220",
+    "cost": 220,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -359,7 +359,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "12"
+        "value": 12
       }
     },
     "modifications": [
@@ -372,12 +372,12 @@
     ]
   },
   {
-    "name": "bow13",
+    "name": "Bow13",
     "availability": "4L",
-    "cost": "230",
+    "cost": 230,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -390,7 +390,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "13"
+        "value": 13
       }
     },
     "modifications": [
@@ -403,12 +403,12 @@
     ]
   },
   {
-    "name": "bow14",
+    "name": "Bow14",
     "availability": "5L",
-    "cost": "240",
+    "cost": 240,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "BOWS"
       }
     ],
@@ -421,7 +421,7 @@
     "requires": {
       "attrreq": {
         "attribute": "STRENGTH",
-        "value": "14"
+        "value": 14
       }
     },
     "modifications": [
@@ -434,12 +434,12 @@
     ]
   },
   {
-    "name": "crossbow_light",
+    "name": "Crossbow Light",
     "availability": "3",
-    "cost": "150",
+    "cost": 150,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "CROSSBOWS"
       }
     ],
@@ -461,12 +461,12 @@
     ]
   },
   {
-    "name": "crossbow_standard",
+    "name": "Crossbow Standard",
     "availability": "3L",
-    "cost": "290",
+    "cost": 290,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "CROSSBOWS"
       }
     ],
@@ -488,12 +488,12 @@
     ]
   },
   {
-    "name": "crossbow_heavy",
+    "name": "Crossbow Heavy",
     "availability": "4L",
-    "cost": "425",
+    "cost": 425,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "CROSSBOWS"
       }
     ],
@@ -515,12 +515,12 @@
     ]
   },
   {
-    "name": "throwing_knives",
+    "name": "Throwing Knives",
     "availability": "2",
-    "cost": "155",
+    "cost": 155,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "THROWING"
       }
     ],
@@ -532,12 +532,12 @@
     }
   },
   {
-    "name": "throwing_stars",
+    "name": "Throwing Stars",
     "availability": "2",
-    "cost": "160",
+    "cost": 160,
     "useAs": [
       {
-        "type": "WEAPON_RANGED",
+        "type": "WEAPON RANGED",
         "subtype": "THROWING"
       }
     ],

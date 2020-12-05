@@ -2,7 +2,7 @@
   {
     "name": "Combat Axe",
     "availability": "4",
-    "cost": "500",
+    "cost": 500,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -12,9 +12,9 @@
         "type": "ACCESSORY",
         "subtype": "INSTRUMENT WEAPON",
         "slot": "INSTRUMENT WEAPON",
-        "capacity": "1",
+        "capacity": 1,
         "availability": "6",
-        "cost": "500"
+        "cost": 500
       }
     ],
     "weapon": {
@@ -27,7 +27,7 @@
   {
     "name": "Combat Knife",
     "availability": "2",
-    "cost": "220",
+    "cost": 220,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -44,7 +44,7 @@
   {
     "name": "Survival Knife",
     "availability": "2",
-    "cost": "220",
+    "cost": 220,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -61,7 +61,7 @@
   {
     "name": "Forearm Snap Blades",
     "availability": "3",
-    "cost": "185",
+    "cost": 185,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -78,7 +78,7 @@
   {
     "name": "Knife",
     "availability": "1",
-    "cost": "20",
+    "cost": 20,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -88,9 +88,9 @@
         "type": "ACCESSORY",
         "subtype": "INSTRUMENT WEAPON",
         "slot": "INSTRUMENT WEAPON",
-        "capacity": "1",
+        "capacity": 1,
         "availability": "3",
-        "cost": "20"
+        "cost": 20
       }
     ],
     "weapon": {
@@ -103,7 +103,7 @@
   {
     "name": "Katana",
     "availability": "3",
-    "cost": "350",
+    "cost": 350,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -113,9 +113,9 @@
         "type": "ACCESSORY",
         "subtype": "INSTRUMENT WEAPON",
         "slot": "INSTRUMENT WEAPON",
-        "capacity": "1",
+        "capacity": 1,
         "availability": "5",
-        "cost": "350"
+        "cost": 350
       }
     ],
     "weapon": {
@@ -128,7 +128,7 @@
   {
     "name": "Polearm",
     "availability": "2",
-    "cost": "210",
+    "cost": 210,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -145,7 +145,7 @@
   {
     "name": "Sword",
     "availability": "3",
-    "cost": "320",
+    "cost": 320,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -155,9 +155,9 @@
         "type": "ACCESSORY",
         "subtype": "INSTRUMENT WEAPON",
         "slot": "INSTRUMENT WEAPON",
-        "capacity": "1",
+        "capacity": 1,
         "availability": "5",
-        "cost": "320"
+        "cost": 320
       }
     ],
     "weapon": {
@@ -170,7 +170,7 @@
   {
     "name": "Club",
     "availability": "1",
-    "cost": "65",
+    "cost": 65,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -187,7 +187,7 @@
   {
     "name": "Extendable Baton",
     "availability": "2",
-    "cost": "50",
+    "cost": 50,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -204,7 +204,7 @@
   {
     "name": "Sab",
     "availability": "1",
-    "cost": "75",
+    "cost": 75,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -221,7 +221,7 @@
   {
     "name": "Staff",
     "availability": "1",
-    "cost": "150",
+    "cost": 150,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -238,7 +238,7 @@
   {
     "name": "Stun Baton",
     "availability": "2",
-    "cost": "600",
+    "cost": 600,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -248,9 +248,9 @@
         "type": "ACCESSORY",
         "subtype": "INSTRUMENT WEAPON",
         "slot": "INSTRUMENT WEAPON",
-        "capacity": "1",
+        "capacity": 1,
         "availability": "4",
-        "cost": "600"
+        "cost": 600
       }
     ],
     "weapon": {
@@ -263,7 +263,7 @@
   {
     "name": "Telescopic Staff",
     "availability": "2",
-    "cost": "250",
+    "cost": 250,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -280,7 +280,7 @@
   {
     "name": "Bike Chain",
     "availability": "1",
-    "cost": "15",
+    "cost": 15,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -297,7 +297,7 @@
   {
     "name": "Bullwhip",
     "availability": "4",
-    "cost": "255",
+    "cost": 255,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -313,7 +313,7 @@
   {
     "name": "Knucks",
     "availability": "1",
-    "cost": "100",
+    "cost": 100,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -330,7 +330,7 @@
   {
     "name": "Shock Gloves",
     "availability": "4",
-    "cost": "790",
+    "cost": 790,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -347,7 +347,7 @@
   {
     "name": "Monofilament Whip",
     "availability": "6I",
-    "cost": "1300",
+    "cost": 1300,
     "useAs": [
       {
         "type": "WEAPON CLOSE COMBAT",
@@ -357,9 +357,9 @@
         "type": "ACCESSORY",
         "subtype": "INSTRUMENT WEAPON",
         "slot": "INSTRUMENT WEAPON",
-        "capacity": "1",
+        "capacity": 1,
         "availability": "8I",
-        "cost": "1300"
+        "cost": 1300
       }
     ],
     "weapon": {
