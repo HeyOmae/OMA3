@@ -30,40 +30,48 @@ const NEON = "var(--neon)"
 const NEON2 = "var(--neon2)"
 
 const oma3Style = createMuiTheme({
-  overrides: {
+  components: {
     MuiInputLabel: {
-      root: { color: "white" },
+      styleOverrides: { root: { color: "white" } },
     },
     MuiInputBase: {
-      root: { color: "white" },
+      styleOverrides: { root: { color: "white" } },
     },
     MuiAppBar: {
-      positionFixed: {
-        top: "auto",
-        bottom: 0,
+      styleOverrides: {
+        positionFixed: {
+          top: "auto",
+          bottom: 0,
+        },
       },
     },
     MuiTableCell: {
-      head: {
-        color: "white",
-      },
-      stickyHeader: {
-        backgroundColor: "black",
-        background: "var(--cyberGrad)",
-      },
-      body: {
-        color: NEON,
+      styleOverrides: {
+        head: {
+          color: "white",
+        },
+        stickyHeader: {
+          backgroundColor: "black",
+          background: "var(--cyberGrad)",
+        },
+        body: {
+          color: NEON,
+        },
       },
     },
     MuiAccordion: {
-      root: {
-        background: "none",
-        boxShadow: "none",
+      styleOverrides: {
+        root: {
+          background: "none",
+          boxShadow: "none",
+        },
       },
     },
     MuiAccordionSummary: {
-      expandIcon: {
-        color: NEON2,
+      styleOverrides: {
+        expandIconWrapper: {
+          color: NEON2,
+        },
       },
     },
   },

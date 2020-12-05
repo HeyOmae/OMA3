@@ -17,7 +17,7 @@ import {
   CHANGE_SPECIALIZATION,
   REMOVE_SKILL,
 } from ".."
-import { Autocomplete } from "@material-ui/lab"
+import { Autocomplete } from "@material-ui/core"
 import skillData from "../../../../data/skills.json"
 import { RemoveButton } from "../../../common"
 
