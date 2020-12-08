@@ -1,5 +1,5 @@
 import { render } from "../../../../test/testUtils"
-import meleeData from "../../../../data/melee.json"
+import meleeData from "../../../../data/melee"
 import { MeleeWeapons } from "./index"
 
 describe("<MeleeWeapons/>", () => {
