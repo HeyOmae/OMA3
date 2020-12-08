@@ -1,6 +1,6 @@
 export interface Gear {
   name: string
-  availability: number
+  availability: string
   cost: number
 }
 
@@ -14,7 +14,7 @@ interface BaseWeapon {
     extreme: number,
   ]
   skill: string
-  specialization: string
+  specialization?: string
 }
 
 interface FireArm extends BaseWeapon {
@@ -23,20 +23,28 @@ interface FireArm extends BaseWeapon {
   nowifi?: true
 }
 
+interface AsWeapon {
+  type: string
+  subtype: string
+}
+
+interface AsAccessory extends AsWeapon {
+  slot: string
+  capacity: number
+  availability: string
+  cost: number
+}
+
+interface AsVehicleAccessory {
+  subtype: string
+  slot: string
+}
+
 export interface GearWeaponMelee extends Gear {
   useAs: [
-    asWeapon: {
-      type: string
-      subtype: string
-    },
-    asAccessory?: {
-      type: string
-      subtype: string
-      slot: string
-      capacity: number
-      availability: number
-      cost: number
-    },
+    asWeapon: AsWeapon,
+    asAccessory?: AsAccessory | AsVehicleAccessory | AsWeapon,
+    asVehicleAccessory?: AsVehicleAccessory,
   ]
   weapon: BaseWeapon
 }
@@ -54,6 +62,12 @@ interface WeaponModHooks {
   hook: string
 }
 
+interface AccessoryMod extends WeaponModHooks {
+  item: string
+  included?: true
+  rating?: number
+}
+
 export interface GearWeaponFireArms extends GearWeaponMelee {
   modonly?: true
   requires?: {
@@ -61,13 +75,9 @@ export interface GearWeaponFireArms extends GearWeaponMelee {
       item: string
     }
   }
-  modifictions?: {
+  modifications?: {
     itemhookmod: WeaponModHooks[]
-    accessorymod?: {
-      hook: string
-      item: string
-      include: boolean
-    }
+    accessorymod?: AccessoryMod[]
     moditemmod?: {
       ref: string
     }
