@@ -1,6 +1,35 @@
 import meleeData from "../../../../data/melee"
-import { WeaponTable } from "../WeaponTable"
+import { useRunnerAccess } from "../../../../hooks/useRunnerAccess"
+import { GearWeaponMelee } from "../../../../types/Resources"
+import { MeleeWeaponTable } from "./MeleeWeaponTable"
+import { AddMeleeWeaponButton } from "./MeleeWeaponTable/AddMeleeWeaponButton"
+import { CircularProgress } from "@material-ui/core"
+
+export const BUY_MELEE_WEAPON = Symbol("BUY_MELEE_WEAPON")
+
+export type Payload = GearWeaponMelee
 
 export const MeleeWeapons = () => {
-  return <WeaponTable weapons={meleeData} />
+  const [runner, dispatch] = useRunnerAccess<symbol, Payload>(
+    (runner, { payload }) => {
+      return {
+        ...runner,
+        resources: {
+          ...runner.resources,
+          melee: [...(runner.resources?.melee ?? []), payload],
+        },
+      }
+    },
+  )
+  return runner ? (
+    <MeleeWeaponTable
+      weapons={meleeData}
+      dispatch={dispatch}
+      ActionButton={AddMeleeWeaponButton}
+    />
+  ) : (
+    <CircularProgress />
+  )
 }
+
+export default MeleeWeapons

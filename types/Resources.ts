@@ -1,3 +1,9 @@
+export interface Resources {
+  melee: GearWeaponMelee[]
+  projectile: GearWeaponsBows[]
+  firearms: GearWeaponFireArms[]
+}
+
 export interface Gear {
   name: string
   availability: string
