@@ -1,5 +1,12 @@
 import { RunnerLayout } from "../../../components/layout"
-import { MeleeWeapons } from "../../../components/runner/resources/MeleeWeapons"
+import dynamic from "next/dynamic"
+
+const MeleeWeapons = dynamic(
+  () => import("../../../components/runner/resources/MeleeWeapons"),
+  {
+    ssr: false,
+  },
+)
 
 const MeleePage = () => (
   <RunnerLayout>
