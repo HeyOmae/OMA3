@@ -25,15 +25,17 @@ describe("<MeleeWeapons/>", () => {
   })
 
   it("purchase melee weapon", async () => {
-    const { getByLabelText } = setup()
+    const { getByLabelText, getByText } = setup()
 
     await waitFor(() => {
       expect(getByLabelText("Add Katana")).toBeInTheDocument()
     })
+    expect(getByText("8000/8000")).toBeInTheDocument()
 
     expect(runnerFromDB(7).resources).toBeUndefined()
 
     getByLabelText("Add Katana").click()
+    expect(getByText("7650/8000")).toBeInTheDocument()
 
     await waitFor(() => {
       expect(runnerFromDB(7).resources.melee).toEqual([
