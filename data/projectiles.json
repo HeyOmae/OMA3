@@ -13,7 +13,7 @@
       "dv": "1P",
       "ar": [1, 1, 0, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -44,7 +44,7 @@
       "dv": "1P",
       "ar": [1, 2, 1, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -75,7 +75,7 @@
       "dv": "2P",
       "ar": [2, 3, 1, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -106,7 +106,7 @@
       "dv": "2P",
       "ar": [2, 4, 1, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -137,7 +137,7 @@
       "dv": "3P",
       "ar": [3, 5, 1, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -168,7 +168,7 @@
       "dv": "3P",
       "ar": [3, 6, 2, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -199,7 +199,7 @@
       "dv": "4P",
       "ar": [4, 7, 2, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -230,7 +230,7 @@
       "dv": "4P",
       "ar": [4, 8, 2, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -261,7 +261,7 @@
       "dv": "5P",
       "ar": [5, 9, 2, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -292,7 +292,7 @@
       "dv": "5P",
       "ar": [5, 10, 3, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -323,7 +323,7 @@
       "dv": "6P",
       "ar": [6, 11, 3, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -354,7 +354,7 @@
       "dv": "6P",
       "ar": [6, 11, 3, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -385,7 +385,7 @@
       "dv": "7P",
       "ar": [7, 13, 3, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -416,7 +416,7 @@
       "dv": "7P",
       "ar": [7, 14, 4, 0, 0],
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "requires": {
       "attrreq": {
@@ -449,7 +449,7 @@
       "ammo": "4(m)",
       "mode": "SS",
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "modifications": [
       {
@@ -476,7 +476,7 @@
       "ammo": "4(m)",
       "mode": "SS",
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "modifications": [
       {
@@ -503,7 +503,7 @@
       "ammo": "4(m)",
       "mode": "SS",
       "skill": "Athletics",
-      "specilization": "Archery"
+      "specialization": "Archery"
     },
     "modifications": [
       {
@@ -528,7 +528,7 @@
       "dv": "2P",
       "ar": [10, 9, 3, 0, 0],
       "skill": "Athletics",
-      "specilization": "Throwing"
+      "specialization": "Throwing"
     }
   },
   {
@@ -545,7 +545,7 @@
       "dv": "2P",
       "ar": [9, 11, 4, 0, 0],
       "skill": "Athletics",
-      "specilization": "Throwing"
+      "specialization": "Throwing"
     }
   }
 ]

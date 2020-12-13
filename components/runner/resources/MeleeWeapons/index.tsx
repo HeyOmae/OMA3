@@ -4,6 +4,7 @@ import { GearWeaponMelee } from "../../../../types/Resources"
 import { MeleeWeaponTable } from "./MeleeWeaponTable"
 import { AddMeleeWeaponButton } from "./MeleeWeaponTable/AddMeleeWeaponButton"
 import { CircularProgress } from "@material-ui/core"
+import { RemainingNuyen } from "../RemainingNuyen"
 
 export const BUY_MELEE_WEAPON = Symbol("BUY_MELEE_WEAPON")
 
@@ -22,11 +23,14 @@ export const MeleeWeapons = () => {
     },
   )
   return runner ? (
-    <MeleeWeaponTable
-      weapons={meleeData}
-      dispatch={dispatch}
-      ActionButton={AddMeleeWeaponButton}
-    />
+    <>
+      <RemainingNuyen runner={runner} />
+      <MeleeWeaponTable
+        weapons={meleeData}
+        dispatch={dispatch}
+        ActionButton={AddMeleeWeaponButton}
+      />
+    </>
   ) : (
     <CircularProgress />
   )

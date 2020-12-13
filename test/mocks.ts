@@ -327,6 +327,100 @@ export const mockedRunners: Runner[] = [
       },
     ],
   },
+  {
+    id: 10,
+    name: "Cayman",
+    description: "Human Street Samurai, not to be confused with Canray",
+    priority: {
+      metatype: "D",
+      skills: "C",
+      attributes: "A",
+      "mag/res": "E",
+      resources: "B",
+    },
+    metatype: "Human",
+    attributes: initRunnerAttributes,
+    magres: "Mundane",
+    resources: {
+      melee: [
+        {
+          name: "Katana",
+          availability: "3",
+          cost: 350,
+          useAs: [
+            {
+              type: "WEAPON CLOSE COMBAT",
+              subtype: "BLADES",
+            },
+            {
+              type: "ACCESSORY",
+              subtype: "INSTRUMENT WEAPON",
+              slot: "INSTRUMENT WEAPON",
+              capacity: 1,
+              availability: "5",
+              cost: 350,
+            },
+          ],
+          weapon: {
+            dv: "4P",
+            ar: [10, 0, 0, 0, 0],
+            skill: "Close Combat",
+            specialization: "Blades",
+          },
+        },
+        {
+          name: "Combat Knife",
+          availability: "2",
+          cost: 220,
+          useAs: [
+            {
+              type: "WEAPON CLOSE COMBAT",
+              subtype: "BLADES",
+            },
+          ],
+          weapon: {
+            dv: "3P",
+            ar: [8, 2, 0, 0, 0],
+            skill: "Close Combat",
+            specialization: "Blades",
+          },
+        },
+      ],
+      projectile: [
+        {
+          name: "Bow10",
+          availability: "3L",
+          cost: 200,
+          useAs: [
+            {
+              type: "WEAPON RANGED",
+              subtype: "BOWS",
+            },
+          ],
+          weapon: {
+            dv: "5P",
+            ar: [5, 10, 3, 0, 0],
+            skill: "Athletics",
+            specialization: "Archery",
+          },
+          requires: {
+            attrreq: {
+              attribute: "STRENGTH",
+              value: 10,
+            },
+          },
+          modifications: [
+            {
+              hook: "TOP",
+            },
+            {
+              hook: "UNDER",
+            },
+          ],
+        },
+      ],
+    },
+  },
 ]
 
 export const orkRunner: Runner = {
