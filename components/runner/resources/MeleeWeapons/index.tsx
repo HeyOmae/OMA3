@@ -5,6 +5,7 @@ import { MeleeWeaponTable } from "./MeleeWeaponTable"
 import { AddMeleeWeaponButton } from "./MeleeWeaponTable/AddMeleeWeaponButton"
 import { CircularProgress } from "@material-ui/core"
 import { RemainingNuyen } from "../RemainingNuyen"
+import { ResourceBreadCrumbs } from "../ResourceBreadCrumbs"
 
 export const BUY_MELEE_WEAPON = Symbol("BUY_MELEE_WEAPON")
 
@@ -24,6 +25,7 @@ export const MeleeWeapons = () => {
   )
   return runner ? (
     <>
+      <ResourceBreadCrumbs activePage="Melee Weapons" />
       <RemainingNuyen runner={runner} />
       <MeleeWeaponTable
         weapons={meleeData}
