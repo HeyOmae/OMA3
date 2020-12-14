@@ -14,6 +14,15 @@ describe("<MeleeWeapons/>", () => {
     return render(withTestRouter(<MeleeWeapons />, { query: { id: "8" } }))
   }
 
+  it("should have breadcrumbs", async () => {
+    const { getByText } = setup()
+
+    await waitFor(() => {
+      expect(getByText("Melee Weapons")).toBeInTheDocument()
+    })
+    expect(getByText("Resources")).toHaveAttribute("href", "/")
+  })
+
   it("should display the melee weapons", async () => {
     const { getByText } = setup()
     await waitFor(() => {
