@@ -10,8 +10,10 @@ import { MeleeWeapons } from "./index"
 
 describe("<MeleeWeapons/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = () => {
-    return render(withTestRouter(<MeleeWeapons />, { query: { id: "8" } }))
+  const setup = (id = 8) => {
+    return render(
+      withTestRouter(<MeleeWeapons />, { query: { id: id.toString() } }),
+    )
   }
 
   it("should have breadcrumbs", async () => {
@@ -74,6 +76,21 @@ describe("<MeleeWeapons/>", () => {
           },
         },
       ])
+    })
+  })
+
+  it("should display runner melee weapons", async () => {
+    const { getByLabelText, getByText } = setup(10)
+
+    await waitFor(() => {
+      expect(getByText("Purchased Melee Weapons")).toBeInTheDocument()
+    })
+    expect(runnerFromDB(9).resources.melee).toHaveLength(2)
+
+    getByLabelText("Remove Katana").click()
+
+    await waitFor(() => {
+      expect(runnerFromDB(9).resources.melee).toHaveLength(1)
     })
   })
 })
