@@ -6,19 +6,31 @@ import { AddMeleeWeaponButton } from "./MeleeWeaponTable/AddMeleeWeaponButton"
 import { CircularProgress } from "@material-ui/core"
 import { RemainingNuyen } from "../RemainingNuyen"
 import { ResourceBreadCrumbs } from "../ResourceBreadCrumbs"
+import { RemoveMeleeWeaponButton } from "./MeleeWeaponTable/RemoveMeleeWeaponButton"
 
-export const BUY_MELEE_WEAPON = Symbol("BUY_MELEE_WEAPON")
-
-export type Payload = GearWeaponMelee
+export type Payload = GearWeaponMelee | number
 
 export const MeleeWeapons = () => {
-  const [runner, dispatch] = useRunnerAccess<symbol, Payload>(
+  const [runner, dispatch] = useRunnerAccess<undefined, Payload>(
     (runner, { payload }) => {
+      if (typeof payload !== "number") {
+        return {
+          ...runner,
+          resources: {
+            ...runner.resources,
+            melee: [...(runner.resources?.melee ?? []), payload],
+          },
+        }
+      }
+
       return {
         ...runner,
         resources: {
           ...runner.resources,
-          melee: [...(runner.resources?.melee ?? []), payload],
+          melee: [
+            ...runner.resources.melee.slice(0, payload),
+            ...runner.resources.melee.slice(payload + 1),
+          ],
         },
       }
     },
@@ -32,6 +44,16 @@ export const MeleeWeapons = () => {
         dispatch={dispatch}
         ActionButton={AddMeleeWeaponButton}
       />
+      {runner.resources?.melee && (
+        <>
+          <h2>Purchased Melee Weapons</h2>
+          <MeleeWeaponTable
+            weapons={runner.resources.melee}
+            dispatch={dispatch}
+            ActionButton={RemoveMeleeWeaponButton}
+          />
+        </>
+      )}
     </>
   ) : (
     <CircularProgress />

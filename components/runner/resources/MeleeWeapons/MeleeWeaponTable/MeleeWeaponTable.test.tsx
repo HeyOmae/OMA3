@@ -1,7 +1,7 @@
 import { MeleeWeaponTable, Props } from "."
-import { BUY_MELEE_WEAPON } from ".."
 import { render } from "../../../../../test/testUtils"
 import { AddMeleeWeaponButton } from "./AddMeleeWeaponButton"
+import { RemoveMeleeWeaponButton } from "./RemoveMeleeWeaponButton"
 
 describe("<WeaponTable/>", () => {
   const setup = ({
@@ -32,11 +32,12 @@ describe("<WeaponTable/>", () => {
         },
       },
     ],
+    ActionButton = AddMeleeWeaponButton,
   }: Partial<Props> = {}) => {
     const props: Props = {
       weapons,
       dispatch: jest.fn(),
-      ActionButton: AddMeleeWeaponButton,
+      ActionButton,
     }
     return { ...render(<MeleeWeaponTable {...props} />), props }
   }
@@ -56,8 +57,21 @@ describe("<WeaponTable/>", () => {
     getByLabelText("Add Combat Axe").click()
 
     expect(props.dispatch).toHaveBeenCalledWith({
-      type: BUY_MELEE_WEAPON,
+      type: undefined,
       payload: props.weapons[0],
+    })
+  })
+
+  it("should dispatch the remove action", () => {
+    const { getByLabelText, props } = setup({
+      ActionButton: RemoveMeleeWeaponButton,
+    })
+
+    getByLabelText("Remove Combat Axe").click()
+
+    expect(props.dispatch).toHaveBeenCalledWith({
+      type: undefined,
+      payload: 0,
     })
   })
 })

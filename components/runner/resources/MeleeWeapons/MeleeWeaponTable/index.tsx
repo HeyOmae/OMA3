@@ -10,11 +10,12 @@ import {
 import { GearWeaponMelee } from "../../../../../types/Resources"
 import { DispatchAction } from "../../../../../hooks/useRunnerAccess"
 import { AddMeleeWeaponButton } from "./AddMeleeWeaponButton"
+import { RemoveMeleeWeaponButton } from "./RemoveMeleeWeaponButton"
 
 export interface Props {
-  ActionButton: typeof AddMeleeWeaponButton
+  ActionButton: typeof AddMeleeWeaponButton | typeof RemoveMeleeWeaponButton
   weapons: GearWeaponMelee[]
-  dispatch: DispatchAction<symbol, GearWeaponMelee>
+  dispatch: DispatchAction<undefined, GearWeaponMelee>
 }
 
 export const MeleeWeaponTable: FC<Props> = ({
@@ -36,7 +37,7 @@ export const MeleeWeaponTable: FC<Props> = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {weapons.map((meleeWeapon) => {
+          {weapons.map((meleeWeapon, index) => {
             const {
               name,
               availability,
@@ -46,7 +47,11 @@ export const MeleeWeaponTable: FC<Props> = ({
             return (
               <TableRow key={name}>
                 <TableCell>
-                  <ActionButton dispatch={dispatch} meleeWeapon={meleeWeapon} />
+                  <ActionButton
+                    dispatch={dispatch}
+                    meleeWeapon={meleeWeapon}
+                    index={index}
+                  />
                 </TableCell>
                 <TableCell>{name}</TableCell>
                 <TableCell>{dv}</TableCell>

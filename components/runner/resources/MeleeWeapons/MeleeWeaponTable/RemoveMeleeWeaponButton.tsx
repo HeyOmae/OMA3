@@ -2,20 +2,25 @@ import { FC } from "react"
 import { Payload } from ".."
 import { DispatchAction } from "../../../../../hooks/useRunnerAccess"
 import { GearWeaponMelee } from "../../../../../types/Resources"
-import { AddButton } from "../../../../common"
+import { RemoveButton } from "../../../../common"
 
 interface Props {
   meleeWeapon: GearWeaponMelee
+  index: number
   dispatch: DispatchAction<undefined, Payload>
 }
 
-export const AddMeleeWeaponButton: FC<Props> = ({ meleeWeapon, dispatch }) => (
-  <AddButton
-    aria-label={`Add ${meleeWeapon.name}`}
+export const RemoveMeleeWeaponButton: FC<Props> = ({
+  dispatch,
+  meleeWeapon: { name },
+  index,
+}) => (
+  <RemoveButton
+    aria-label={`Remove ${name}`}
     onClick={() =>
       dispatch({
         type: undefined,
-        payload: meleeWeapon,
+        payload: index,
       })
     }
   />
