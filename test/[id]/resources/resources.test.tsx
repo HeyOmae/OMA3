@@ -19,9 +19,13 @@ describe("Resource Page", () => {
     })
     expect(getByText("Weapons")).toBeInTheDocument()
 
-    expect(getByText("melee").closest("a")).toHaveAttribute(
+    expect(getByText("Melee Weapons").closest("a")).toHaveAttribute(
       "href",
       "/1/resources/melee",
+    )
+    expect(getByText("Projectile Weapons").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/projectile",
     )
   })
 })
