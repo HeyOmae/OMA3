@@ -1,6 +1,6 @@
 export interface Resources {
   melee?: GearWeaponMelee[]
-  projectile?: GearWeaponsBows[]
+  projectile?: GearWeaponsProjectile[]
   firearms?: GearWeaponFireArms[]
 }
 
@@ -55,13 +55,14 @@ export interface GearWeaponMelee extends Gear {
   weapon: BaseWeapon
 }
 
-export interface GearWeaponsBows extends GearWeaponMelee {
-  requires: {
+export interface GearWeaponsProjectile extends GearWeaponMelee {
+  requires?: {
     attrreq: {
       attribute: string
       value: number
     }
   }
+  weapon: BaseWeapon | FireArm
   modifications?: WeaponModHooks[]
 }
 
