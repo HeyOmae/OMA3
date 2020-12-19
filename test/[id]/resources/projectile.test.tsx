@@ -1,5 +1,6 @@
 import ProjectilePage from "../../../pages/[id]/resources/projectile"
 import { render, setupIndexedDB, withTestRouter } from "../../testUtils"
+import ProjectileData from "../../../data/projectiles"
 
 describe("Projectile Page", () => {
   beforeAll(setupIndexedDB)
@@ -11,5 +12,9 @@ describe("Projectile Page", () => {
     const { getByText } = setup()
 
     expect(getByText("Projectile Weapons")).toBeInTheDocument()
+
+    ProjectileData.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument()
+    })
   })
 })
