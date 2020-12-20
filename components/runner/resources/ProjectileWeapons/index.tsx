@@ -1,55 +1,37 @@
-import {
-  Table,
-  TableCell,
-  TableContainer,
-  TableRow,
-  TableHead,
-  TableBody,
-} from "@material-ui/core"
-import { FC } from "react"
+import { CircularProgress } from "@material-ui/core"
 import ProjectileData from "../../../../data/projectiles"
+import {
+  DispatchAction,
+  useRunnerAccess,
+} from "../../../../hooks/useRunnerAccess"
 import { GearWeaponsProjectile } from "../../../../types/Resources"
+import { ProjectileTable } from "./ProjectileTable"
+import { AddProjectileButton } from "./ProjectileTable/AddProjectileButton"
 
-export interface RowProps {
-  projectile: GearWeaponsProjectile
+export type Payload = GearWeaponsProjectile
+export type ProjectileDispatch = DispatchAction<undefined, Payload>
+
+export default () => {
+  const [runner, dispatch] = useRunnerAccess<undefined, Payload>(
+    (runner, { payload }) => {
+      return {
+        ...runner,
+        resources: {
+          ...runner.resources,
+          projectile: [...(runner.resources?.projectile ?? []), payload],
+        },
+      }
+    },
+  )
+  return runner ? (
+    <>
+      <ProjectileTable
+        ActionButton={AddProjectileButton}
+        dispatch={dispatch}
+        weapons={ProjectileData}
+      />
+    </>
+  ) : (
+    <CircularProgress />
+  )
 }
-
-export const ProjectileRow: FC<RowProps> = ({
-  projectile: {
-    name,
-    availability,
-    cost,
-    weapon: { ar },
-  },
-}) => (
-  <TableRow>
-    <TableCell>+</TableCell>
-    <TableCell>{name}</TableCell>
-    <TableCell>{ar.join("/")}</TableCell>
-    <TableCell>{availability}</TableCell>
-    <TableCell>{cost}&yen;</TableCell>
-  </TableRow>
-)
-
-const ProjectileWeapons: FC = () => (
-  <TableContainer>
-    <Table stickyHeader>
-      <TableHead>
-        <TableRow>
-          <TableCell>Buy</TableCell>
-          <TableCell>Name</TableCell>
-          <TableCell>Attack Ratings</TableCell>
-          <TableCell>Avail</TableCell>
-          <TableCell>Cost</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {ProjectileData.map((weapon) => (
-          <ProjectileRow key={weapon.name} projectile={weapon} />
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-)
-
-export default ProjectileWeapons
