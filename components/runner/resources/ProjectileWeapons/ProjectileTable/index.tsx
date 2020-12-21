@@ -8,8 +8,10 @@ import {
 } from "@material-ui/core"
 import { FC } from "react"
 import { ProjectileDispatch } from ".."
+import { LabelActionButtonType } from "../../../../../types/generalTypes"
 import { GearWeaponsProjectile } from "../../../../../types/Resources"
 import { AddProjectileButton } from "./AddProjectileButton"
+import { RemoveProjectileButton } from "./RemoveProjectileButton"
 
 export interface RowProps {
   projectile: GearWeaponsProjectile
@@ -35,21 +37,23 @@ export const ProjectileRow: FC<RowProps> = ({
 )
 
 export interface Props {
+  labelActionButton?: LabelActionButtonType
   weapons: GearWeaponsProjectile[]
   dispatch: ProjectileDispatch
-  ActionButton: typeof AddProjectileButton
+  ActionButton: typeof AddProjectileButton | typeof RemoveProjectileButton
 }
 
 export const ProjectileTable: FC<Props> = ({
   weapons,
   ActionButton,
   dispatch,
+  labelActionButton = "Buy",
 }) => (
   <TableContainer>
     <Table stickyHeader>
       <TableHead>
         <TableRow>
-          <TableCell>Buy</TableCell>
+          <TableCell>{labelActionButton}</TableCell>
           <TableCell>Name</TableCell>
           <TableCell>Attack Ratings</TableCell>
           <TableCell>Avail</TableCell>
@@ -57,9 +61,9 @@ export const ProjectileTable: FC<Props> = ({
         </TableRow>
       </TableHead>
       <TableBody>
-        {weapons.map((weapon) => (
+        {weapons.map((weapon, index) => (
           <ProjectileRow key={weapon.name} projectile={weapon}>
-            <ActionButton dispatch={dispatch} weapon={weapon} />
+            <ActionButton dispatch={dispatch} weapon={weapon} index={index} />
           </ProjectileRow>
         ))}
       </TableBody>

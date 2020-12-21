@@ -2,14 +2,19 @@ import { ProjectileTable, ProjectileRow, RowProps, Props } from "."
 import ProjectileData from "../../../../../data/projectiles"
 import { render } from "../../../../../test/testUtils"
 import { AddProjectileButton } from "./AddProjectileButton"
+import { RemoveProjectileButton } from "./RemoveProjectileButton"
 
 describe("<ProjectileTable/>", () => {
   describe("table", () => {
-    const setup = () => {
+    const setup = ({
+      ActionButton = AddProjectileButton,
+      labelActionButton,
+    }: Partial<Props> = {}) => {
       const props: Props = {
         dispatch: jest.fn(),
         weapons: ProjectileData,
-        ActionButton: AddProjectileButton,
+        ActionButton,
+        labelActionButton,
       }
       return { ...render(<ProjectileTable {...props} />), props }
     }
@@ -29,6 +34,21 @@ describe("<ProjectileTable/>", () => {
       expect(props.dispatch).toHaveBeenCalledWith({
         type: undefined,
         payload: ProjectileData[0],
+      })
+    })
+
+    it("should dispatch the remove projectile action", () => {
+      const { getByLabelText, getByText, props } = setup({
+        ActionButton: RemoveProjectileButton,
+        labelActionButton: "Sell",
+      })
+
+      expect(getByText("Sell")).toBeInTheDocument()
+      getByLabelText("Remove Bow2").click()
+
+      expect(props.dispatch).toHaveBeenCalledWith({
+        type: undefined,
+        payload: 1,
       })
     })
   })
