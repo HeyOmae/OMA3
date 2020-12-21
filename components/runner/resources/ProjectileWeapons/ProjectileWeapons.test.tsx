@@ -9,8 +9,8 @@ import {
 
 describe("<ProjectileWeapons/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = () =>
-    render(withTestRouter(<ProjectileWeapons />, { query: { id: "9" } }))
+  const setup = (id = "9") =>
+    render(withTestRouter(<ProjectileWeapons />, { query: { id } }))
 
   it("should add a weapon to weapon to the runner", async () => {
     const { getByLabelText } = setup()
@@ -24,6 +24,21 @@ describe("<ProjectileWeapons/>", () => {
 
     await waitFor(() => {
       expect(runnerFromDB(8).resources.projectile).toHaveLength(1)
+    })
+  })
+
+  it("should remove projectile weapons", async () => {
+    const { getByLabelText, getByText } = setup("10")
+
+    expect(runnerFromDB(9).resources.projectile).toHaveLength(1)
+    await waitFor(() => {
+      expect(getByText("Purchased Projectile Weapons")).toBeInTheDocument()
+    })
+
+    getByLabelText("Remove Bow10").click()
+
+    await waitFor(() => {
+      expect(runnerFromDB(9).resources.projectile).toHaveLength(0)
     })
   })
 })

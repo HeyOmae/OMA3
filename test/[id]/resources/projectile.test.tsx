@@ -14,7 +14,7 @@ describe("Projectile Page", () => {
     render(withTestRouter(<ProjectilePage />, { query: { id: "10" } }))
 
   it("should display projectile weapons that are not firearms", async () => {
-    const { getByText } = setup()
+    const { getByText, getByLabelText } = setup()
 
     expect(getByText("Projectile Weapons")).toBeInTheDocument()
 
@@ -22,7 +22,7 @@ describe("Projectile Page", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
     ProjectileData.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(getByLabelText(`Add ${name}`)).toBeInTheDocument()
     })
   })
 })
