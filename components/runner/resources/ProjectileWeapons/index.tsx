@@ -5,9 +5,11 @@ import {
   useRunnerAccess,
 } from "../../../../hooks/useRunnerAccess"
 import { GearWeaponsProjectile } from "../../../../types/Resources"
+import { ResourceBreadCrumbs } from "../ResourceBreadCrumbs"
 import { ProjectileTable } from "./ProjectileTable"
 import { AddProjectileButton } from "./ProjectileTable/AddProjectileButton"
 import { RemoveProjectileButton } from "./ProjectileTable/RemoveProjectileButton"
+import { RemainingNuyen } from "../RemainingNuyen"
 
 export type Payload = GearWeaponsProjectile | number
 export type ProjectileDispatch = DispatchAction<undefined, Payload>
@@ -38,6 +40,8 @@ export default () => {
   )
   return runner ? (
     <>
+      <ResourceBreadCrumbs activePage="Projectiles" />
+      <RemainingNuyen runner={runner} />
       <ProjectileTable
         ActionButton={AddProjectileButton}
         dispatch={dispatch}

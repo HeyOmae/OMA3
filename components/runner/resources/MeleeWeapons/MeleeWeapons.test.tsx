@@ -22,7 +22,7 @@ describe("<MeleeWeapons/>", () => {
     await waitFor(() => {
       expect(getByText("Melee Weapons")).toBeInTheDocument()
     })
-    expect(getByText("Resources")).toHaveAttribute("href", "/")
+    expect(getByText("Resources")).toHaveAttribute("href", "/8/resources")
   })
 
   it("should display the melee weapons", async () => {
@@ -41,12 +41,12 @@ describe("<MeleeWeapons/>", () => {
     await waitFor(() => {
       expect(getByLabelText("Add Katana")).toBeInTheDocument()
     })
-    expect(getByText("8000/8000")).toBeInTheDocument()
+    expect(getByText("8000¥/8000¥")).toBeInTheDocument()
 
     expect(runnerFromDB(7).resources).toBeUndefined()
 
     getByLabelText("Add Katana").click()
-    expect(getByText("7650/8000")).toBeInTheDocument()
+    expect(getByText("7650¥/8000¥")).toBeInTheDocument()
 
     await waitFor(() => {
       expect(runnerFromDB(7).resources.melee).toEqual([

@@ -25,7 +25,7 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
     <dl>
       <dt>Nuyen:</dt>
       <dd>
-        {remainingNuyen}/{totalNuyen}
+        {remainingNuyen}&yen;/{totalNuyen}&yen;
       </dd>
     </dl>
   )
