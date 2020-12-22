@@ -12,13 +12,13 @@ describe("<RemainingNuyen/>", () => {
 
   it("should display the max nuyen if there are not resources purchased yet", () => {
     const { getByText } = setup({ runner: mockedRunners[8] })
-    expect(getByText("8000/8000")).toBeInTheDocument()
+    expect(getByText("8000¥/8000¥")).toBeInTheDocument()
   })
 
   it("should display total nuyen and remaining nuyen", () => {
     const { getByText } = setup()
 
     expect(getByText("Nuyen:")).toBeInTheDocument()
-    expect(getByText("274230/275000")).toBeInTheDocument()
+    expect(getByText("274230¥/275000¥")).toBeInTheDocument()
   })
 })
