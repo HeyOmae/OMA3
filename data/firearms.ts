@@ -514,7 +514,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "2L",
     cost: 750,
-    name: "Ares Predator Vi",
+    name: "Ares Predator VI",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -941,7 +941,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "3L",
     cost: 750,
-    name: "Ingram Smartgun Xi",
+    name: "Ingram Smartgun XI",
     useAs: [
       {
         type: "WEAPON FIREARMS",

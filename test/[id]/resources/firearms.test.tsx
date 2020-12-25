@@ -1,5 +1,10 @@
 import FirearmsPage from "../../../pages/[id]/resources/firearms"
-import { render, setupIndexedDB, withTestRouter } from "../../testUtils"
+import {
+  render,
+  setupIndexedDB,
+  waitFor,
+  withTestRouter,
+} from "../../testUtils"
 import FirearmsData from "../../../data/firearms"
 
 describe("Firearms Page", () => {
@@ -13,6 +18,9 @@ describe("Firearms Page", () => {
 
     expect(getByText("Firearms")).toBeInTheDocument()
 
+    await waitFor(() => {
+      expect(getByText("Buy")).toBeInTheDocument()
+    })
     FirearmsData.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument()
     })
