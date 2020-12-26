@@ -2,14 +2,20 @@ import { FirearmsRow, FirearmsTable, Props } from "."
 import { render } from "../../../../../test/testUtils"
 import FirearmsData from "../../../../../data/firearms"
 import { AddFirearmsButton } from "./AddFirearmsButton"
+import { RemoveFirearmsButton } from "./RemoveFirearmsButton"
+import { LabelActionButtonType } from "../../../../../types/generalTypes"
 
 describe("<FirearmsTable/>", () => {
   describe("table", () => {
-    const setup = () => {
+    const setup = (
+      ActionButton = AddFirearmsButton,
+      actionLabel?: LabelActionButtonType,
+    ) => {
       const props: Props = {
         weapons: FirearmsData,
         dispatch: jest.fn(),
-        ActionButton: AddFirearmsButton,
+        ActionButton,
+        actionLabel,
       }
       return { ...render(<FirearmsTable {...props} />), props }
     }
@@ -60,6 +66,23 @@ describe("<FirearmsTable/>", () => {
             specialization: "pistols",
           },
         },
+      })
+    })
+
+    it("should dispatch the remove firearm action", () => {
+      const gunIndex = 15,
+        gun = FirearmsData[gunIndex]
+      const { getByText, getByLabelText, props } = setup(
+        RemoveFirearmsButton,
+        "Sell",
+      )
+
+      expect(getByText("Sell")).toBeInTheDocument()
+      getByLabelText(`Remove ${gun.name}`).click()
+
+      expect(props.dispatch).toHaveBeenCalledWith({
+        type: undefined,
+        payload: gunIndex,
       })
     })
   })

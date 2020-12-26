@@ -4,14 +4,16 @@ import {
   setupIndexedDB,
   waitFor,
   withTestRouter,
+  getByText as getTextIn,
 } from "../../../../test/testUtils"
 import FirearmsWeapons from "./"
 import FirearmsData from "../../../../data/firearms"
+import { mockedRunners } from "../../../../test/mocks"
 
 describe("<FirearmsWeapon />", () => {
   beforeAll(setupIndexedDB)
-  const setup = () =>
-    render(withTestRouter(<FirearmsWeapons />, { query: { id: "9" } }))
+  const setup = (id = "9") =>
+    render(withTestRouter(<FirearmsWeapons />, { query: { id } }))
   it("should render the guns", async () => {
     const { getByText } = setup()
 
@@ -19,8 +21,10 @@ describe("<FirearmsWeapon />", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
 
+    const buyTable = getByText("Buy").closest("table")
+
     FirearmsData.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(getTextIn(buyTable, name)).toBeInTheDocument()
     })
   })
 
@@ -81,5 +85,25 @@ describe("<FirearmsWeapon />", () => {
         },
       ])
     })
+  })
+
+  it("should remove a weapon", async () => {
+    const { getByLabelText, getByText } = setup("10")
+
+    expect(runnerFromDB(9).resources.firearms).toHaveLength(
+      mockedRunners[9].resources.firearms.length,
+    )
+    await waitFor(() => {
+      expect(getByText("272230¥/275000¥")).toBeInTheDocument()
+    })
+
+    getByLabelText("Remove Browning Ultra Power").click()
+
+    await waitFor(() => {
+      expect(runnerFromDB(9).resources.firearms).toHaveLength(
+        mockedRunners[9].resources.firearms.length - 1,
+      )
+    })
+    expect(getByText("272870¥/275000¥")).toBeInTheDocument()
   })
 })
