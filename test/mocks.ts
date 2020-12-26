@@ -419,6 +419,161 @@ export const mockedRunners: Runner[] = [
           ],
         },
       ],
+      firearms: [
+        {
+          name: "Yamaha Pulsar 1",
+          availability: "1",
+          cost: 325,
+          useAs: [
+            {
+              type: "WEAPON FIREARMS",
+              subtype: "TASERS",
+            },
+          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "TOP",
+              },
+            ],
+          },
+          weapon: {
+            dv: "4S(e)",
+            ar: [9, 9, 0, 0, 0],
+            mode: "SS",
+            ammo: "4(m)",
+            skill: "Firearms",
+            specialization: "pistols",
+          },
+        },
+        {
+          name: "Streetline Special",
+          availability: "2",
+          cost: 325,
+          useAs: [
+            {
+              type: "WEAPON FIREARMS",
+              subtype: "HOLDOUTS",
+            },
+          ],
+          weapon: {
+            dv: "2P",
+            ar: [8, 8, 0, 0, 0],
+            mode: "SS",
+            ammo: "6(c)",
+            skill: "Firearms",
+            specialization: "pistols",
+          },
+        },
+        {
+          availability: "2L",
+          cost: 260,
+          name: "Beretta 101T",
+          useAs: [
+            {
+              type: "WEAPON FIREARMS",
+              subtype: "PISTOLS LIGHT",
+            },
+          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "BARREL",
+              },
+              {
+                hook: "TOP",
+              },
+            ],
+          },
+          weapon: {
+            ammo: "21(c)",
+            dv: "2P",
+            ar: [9, 8, 6, 0, 0],
+            mode: "SA",
+            skill: "Firearms",
+            specialization: "pistols",
+          },
+        },
+        {
+          availability: "2L",
+          cost: 640,
+          name: "Browning Ultra Power",
+          useAs: [
+            {
+              type: "WEAPON FIREARMS",
+              subtype: "PISTOLS HEAVY",
+            },
+          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "BARREL",
+              },
+              {
+                hook: "TOP",
+              },
+            ],
+            accessorymod: [
+              {
+                hook: "TOP",
+                item: "Laser Sight",
+                included: true,
+              },
+            ],
+          },
+          weapon: {
+            ar: [10, 9, 6, 0, 0],
+            ammo: "10(c)",
+            dv: "3P",
+            mode: "SA",
+            skill: "Firearms",
+            specialization: "pistols",
+          },
+        },
+        {
+          availability: "2L",
+          cost: 450,
+          name: "Uzi Iv",
+          useAs: [
+            {
+              type: "WEAPON FIREARMS",
+              subtype: "SUBMACHINE GUNS",
+            },
+          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "BARREL",
+              },
+              {
+                hook: "STOCK",
+              },
+              {
+                hook: "TOP",
+              },
+            ],
+            accessorymod: [
+              {
+                hook: "STOCK",
+                item: "Folding Stock",
+              },
+              {
+                hook: "TOP",
+                item: "Laser Sight",
+                included: true,
+              },
+            ],
+          },
+          weapon: {
+            ar: [8, 8, 7, 0, 0],
+            ammo: "24(c)",
+            dv: "3P",
+            mode: "SA/BF/FA",
+            skill: "Firearms",
+            specialization: "automatics",
+          },
+        },
+      ],
     },
   },
 ]

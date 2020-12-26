@@ -19,6 +19,6 @@ describe("<RemainingNuyen/>", () => {
     const { getByText } = setup()
 
     expect(getByText("Nuyen:")).toBeInTheDocument()
-    expect(getByText("274230¥/275000¥")).toBeInTheDocument()
+    expect(getByText("272230¥/275000¥")).toBeInTheDocument()
   })
 })

@@ -11,7 +11,7 @@ describe("Firearms Page", () => {
   beforeAll(setupIndexedDB)
 
   const setup = () =>
-    render(withTestRouter(<FirearmsPage />, { query: { id: "1" } }))
+    render(withTestRouter(<FirearmsPage />, { query: { id: "8" } }))
 
   it("should display firearms", async () => {
     const { getByText } = setup()

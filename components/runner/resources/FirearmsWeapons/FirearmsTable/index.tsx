@@ -10,23 +10,27 @@ import {
 import { GearWeaponFireArms } from "../../../../../types/Resources"
 import { FirearmDispatch } from ".."
 import { AddFirearmsButton } from "./AddFirearmsButton"
+import { RemoveFirearmsButton } from "./RemoveFirearmsButton"
+import { LabelActionButtonType } from "../../../../../types/generalTypes"
 
 export interface Props {
   weapons: GearWeaponFireArms[]
   dispatch: FirearmDispatch
-  ActionButton: typeof AddFirearmsButton
+  ActionButton: typeof AddFirearmsButton | typeof RemoveFirearmsButton
+  actionLabel?: LabelActionButtonType
 }
 
 export const FirearmsTable: FC<Props> = ({
   weapons,
   ActionButton,
   dispatch,
+  actionLabel = "Buy",
 }) => (
   <TableContainer>
     <Table stickyHeader>
       <TableHead>
         <TableRow>
-          <TableCell>Buy</TableCell>
+          <TableCell>{actionLabel}</TableCell>
           <TableCell>Name</TableCell>
           <TableCell>DV</TableCell>
           <TableCell>Mode</TableCell>
@@ -37,9 +41,9 @@ export const FirearmsTable: FC<Props> = ({
         </TableRow>
       </TableHead>
       <TableBody>
-        {weapons.map((weapon) => (
+        {weapons.map((weapon, index) => (
           <FirearmsRow key={weapon.name} weapon={weapon}>
-            <ActionButton dispatch={dispatch} weapon={weapon} />
+            <ActionButton dispatch={dispatch} weapon={weapon} index={index} />
           </FirearmsRow>
         ))}
       </TableBody>
