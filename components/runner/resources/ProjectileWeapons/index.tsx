@@ -10,33 +10,14 @@ import { ProjectileTable } from "./ProjectileTable"
 import { AddProjectileButton } from "./ProjectileTable/AddProjectileButton"
 import { RemoveProjectileButton } from "./ProjectileTable/RemoveProjectileButton"
 import { RemainingNuyen } from "../RemainingNuyen"
+import { gearPageReducerGenerator } from "../ulti"
 
 export type Payload = GearWeaponsProjectile | number
 export type ProjectileDispatch = DispatchAction<undefined, Payload>
 
 export default () => {
   const [runner, dispatch] = useRunnerAccess<undefined, Payload>(
-    (runner, { payload }) => {
-      if (typeof payload === "number") {
-        return {
-          ...runner,
-          resources: {
-            ...runner.resources,
-            projectile: [
-              ...runner.resources.projectile.slice(0, payload),
-              ...runner.resources.projectile.slice(payload + 1),
-            ],
-          },
-        }
-      }
-      return {
-        ...runner,
-        resources: {
-          ...runner.resources,
-          projectile: [...(runner.resources?.projectile ?? []), payload],
-        },
-      }
-    },
+    gearPageReducerGenerator("projectile"),
   )
   return runner ? (
     <>

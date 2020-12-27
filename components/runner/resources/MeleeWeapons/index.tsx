@@ -7,33 +7,13 @@ import { CircularProgress } from "@material-ui/core"
 import { RemainingNuyen } from "../RemainingNuyen"
 import { ResourceBreadCrumbs } from "../ResourceBreadCrumbs"
 import { RemoveMeleeWeaponButton } from "./MeleeWeaponTable/RemoveMeleeWeaponButton"
+import { gearPageReducerGenerator } from "../ulti"
 
 export type Payload = GearWeaponMelee | number
 
 export const MeleeWeapons = () => {
   const [runner, dispatch] = useRunnerAccess<undefined, Payload>(
-    (runner, { payload }) => {
-      if (typeof payload !== "number") {
-        return {
-          ...runner,
-          resources: {
-            ...runner.resources,
-            melee: [...(runner.resources?.melee ?? []), payload],
-          },
-        }
-      }
-
-      return {
-        ...runner,
-        resources: {
-          ...runner.resources,
-          melee: [
-            ...runner.resources.melee.slice(0, payload),
-            ...runner.resources.melee.slice(payload + 1),
-          ],
-        },
-      }
-    },
+    gearPageReducerGenerator("melee"),
   )
   return runner ? (
     <>

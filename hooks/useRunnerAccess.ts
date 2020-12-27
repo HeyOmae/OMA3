@@ -14,7 +14,7 @@ interface ActionDoneLoading {
 }
 
 type LoadRunnerReducer<T, P> = Reducer<Runner, ActionDoneLoading | Action<T, P>>
-type RunnerReducer<T, P> = Reducer<Runner, Action<T, P>>
+export type RunnerReducer<T, P> = Reducer<Runner, Action<T, P>>
 
 export type DispatchAction<T, P> = (action: Action<T, P>) => void
 
