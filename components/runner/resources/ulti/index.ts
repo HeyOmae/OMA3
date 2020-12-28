@@ -1,4 +1,8 @@
-import { RunnerReducer } from "../../../../hooks/useRunnerAccess"
+import { createContext } from "react"
+import {
+  DispatchAction,
+  RunnerReducer,
+} from "../../../../hooks/useRunnerAccess"
 import { Gear } from "../../../../types/Resources"
 
 export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
@@ -8,12 +12,23 @@ export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
   return [...list, payload]
 }
 
+type GearPayload = Gear | number
+
 export const gearPageReducerGenerator = (
   gearKey: string,
-): RunnerReducer<undefined, Gear | number> => (runner, { payload }) => ({
+): RunnerReducer<undefined, GearPayload> => (runner, { payload }) => ({
   ...runner,
   resources: {
     ...runner.resources,
     [gearKey]: updateGearList(runner.resources?.[gearKey], payload),
   },
 })
+
+export const DispatchContext = createContext<
+  DispatchAction<undefined, GearPayload>
+>(null)
+
+export interface GearTableProps<G = Gear> {
+  listOfGear: G[]
+  isForSelling?: true
+}

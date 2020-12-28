@@ -1,11 +1,10 @@
 import { MeleeWeaponTable, Props } from "."
 import { render } from "../../../../../test/testUtils"
-import { AddMeleeWeaponButton } from "./AddMeleeWeaponButton"
-import { RemoveMeleeWeaponButton } from "./RemoveMeleeWeaponButton"
+import { DispatchContext } from "../../ulti"
 
 describe("<WeaponTable/>", () => {
   const setup = ({
-    weapons = [
+    listOfGear = [
       {
         name: "Combat Axe",
         availability: "4",
@@ -32,14 +31,22 @@ describe("<WeaponTable/>", () => {
         },
       },
     ],
-    ActionButton = AddMeleeWeaponButton,
+    isForSelling,
   }: Partial<Props> = {}) => {
     const props: Props = {
-      weapons,
-      dispatch: jest.fn(),
-      ActionButton,
+        listOfGear,
+        isForSelling,
+      },
+      dispatch = jest.fn()
+    return {
+      ...render(
+        <DispatchContext.Provider value={dispatch}>
+          <MeleeWeaponTable {...props} />
+        </DispatchContext.Provider>,
+      ),
+      props,
+      dispatch,
     }
-    return { ...render(<MeleeWeaponTable {...props} />), props }
   }
   it("should render melee weapon stats", () => {
     const { getByText } = setup()
@@ -52,24 +59,24 @@ describe("<WeaponTable/>", () => {
   })
 
   it("should dispatch the add action", () => {
-    const { getByLabelText, props } = setup()
+    const { getByLabelText, props, dispatch } = setup()
 
     getByLabelText("Add Combat Axe").click()
 
-    expect(props.dispatch).toHaveBeenCalledWith({
+    expect(dispatch).toHaveBeenCalledWith({
       type: undefined,
-      payload: props.weapons[0],
+      payload: props.listOfGear[0],
     })
   })
 
   it("should dispatch the remove action", () => {
-    const { getByLabelText, props } = setup({
-      ActionButton: RemoveMeleeWeaponButton,
+    const { getByLabelText, dispatch } = setup({
+      isForSelling: true,
     })
 
     getByLabelText("Remove Combat Axe").click()
 
-    expect(props.dispatch).toHaveBeenCalledWith({
+    expect(dispatch).toHaveBeenCalledWith({
       type: undefined,
       payload: 0,
     })
