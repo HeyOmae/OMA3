@@ -1,22 +1,23 @@
-import { FC } from "react"
-import { Payload } from ".."
-import { DispatchAction } from "../../../../../hooks/useRunnerAccess"
+import { FC, useContext } from "react"
 import { GearWeaponMelee } from "../../../../../types/Resources"
 import { AddButton } from "../../../../common"
+import { DispatchContext } from "../../ulti"
 
 interface Props {
   meleeWeapon: GearWeaponMelee
-  dispatch: DispatchAction<undefined, Payload>
 }
 
-export const AddMeleeWeaponButton: FC<Props> = ({ meleeWeapon, dispatch }) => (
-  <AddButton
-    aria-label={`Add ${meleeWeapon.name}`}
-    onClick={() =>
-      dispatch({
-        type: undefined,
-        payload: meleeWeapon,
-      })
-    }
-  />
-)
+export const AddMeleeWeaponButton: FC<Props> = ({ meleeWeapon }) => {
+  const dispatch = useContext(DispatchContext)
+  return (
+    <AddButton
+      aria-label={`Add ${meleeWeapon.name}`}
+      onClick={() =>
+        dispatch({
+          type: undefined,
+          payload: meleeWeapon,
+        })
+      }
+    />
+  )
+}

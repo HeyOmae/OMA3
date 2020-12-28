@@ -8,27 +8,22 @@ import {
   TableRow,
 } from "@material-ui/core"
 import { GearWeaponMelee } from "../../../../../types/Resources"
-import { DispatchAction } from "../../../../../hooks/useRunnerAccess"
 import { AddMeleeWeaponButton } from "./AddMeleeWeaponButton"
 import { RemoveMeleeWeaponButton } from "./RemoveMeleeWeaponButton"
+import { GearTableProps } from "../../ulti"
 
-export interface Props {
-  ActionButton: typeof AddMeleeWeaponButton | typeof RemoveMeleeWeaponButton
-  weapons: GearWeaponMelee[]
-  dispatch: DispatchAction<undefined, GearWeaponMelee>
-}
+export type Props = GearTableProps<GearWeaponMelee>
 
 export const MeleeWeaponTable: FC<Props> = ({
-  weapons,
-  ActionButton,
-  dispatch,
+  listOfGear: weapons,
+  isForSelling,
 }) => {
   return (
     <TableContainer>
       <Table stickyHeader>
         <TableHead>
           <TableRow>
-            <TableCell>Buy</TableCell>
+            <TableCell>{isForSelling ? "Sell" : "Buy"}</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>DV</TableCell>
             <TableCell>Attack Rating</TableCell>
@@ -47,11 +42,14 @@ export const MeleeWeaponTable: FC<Props> = ({
             return (
               <TableRow key={name}>
                 <TableCell>
-                  <ActionButton
-                    dispatch={dispatch}
-                    meleeWeapon={meleeWeapon}
-                    index={index}
-                  />
+                  {isForSelling ? (
+                    <RemoveMeleeWeaponButton
+                      meleeWeapon={meleeWeapon}
+                      index={index}
+                    />
+                  ) : (
+                    <AddMeleeWeaponButton meleeWeapon={meleeWeapon} />
+                  )}
                 </TableCell>
                 <TableCell>{name}</TableCell>
                 <TableCell>{dv}</TableCell>
