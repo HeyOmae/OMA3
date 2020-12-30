@@ -1,29 +1,18 @@
 import { GearWeaponMelee } from "../../../../../types/Resources"
 import { AddMeleeWeaponButton } from "./AddMeleeWeaponButton"
 import { RemoveMeleeWeaponButton } from "./RemoveMeleeWeaponButton"
-import { Columns } from "../../GearTable"
+import {
+  Columns,
+  gearTableConfigOptions,
+  gearMeleeTableConfigOption,
+} from "../../GearTable"
 
-const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
-  {
-    display: (weapon) => weapon.name,
-    label: "Name",
-  },
-  {
-    display: (weapon) => weapon.weapon.dv,
-    label: "DV",
-  },
-  {
-    display: (weapon) => weapon.weapon.ar.join("/"),
-    label: "AR",
-  },
-  {
-    display: (weapon) => weapon.availability,
-    label: "Avail",
-  },
-  {
-    display: (weapon) => `${weapon.cost}¥`,
-    label: "Cost",
-  },
+export const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
+  gearTableConfigOptions.name,
+  gearMeleeTableConfigOption.dv,
+  gearMeleeTableConfigOption.ar,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
 ]
 
 export const addMeleeTableConfig: Columns<GearWeaponMelee>[] = [
