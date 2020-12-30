@@ -1,11 +1,12 @@
 import meleeData from "../../../../data/melee"
 import { useRunnerAccess } from "../../../../hooks/useRunnerAccess"
 import { GearWeaponMelee } from "../../../../types/Resources"
-import { MeleeWeaponTable } from "./MeleeWeaponTable"
+import { addMeleeTableConfig, removeMeleeTableConfig } from "./MeleeWeaponTable"
 import { CircularProgress } from "@material-ui/core"
 import { RemainingNuyen } from "../RemainingNuyen"
 import { ResourceBreadCrumbs } from "../ResourceBreadCrumbs"
 import { gearPageReducerGenerator, DispatchContext } from "../ulti"
+import { GearTable } from "../GearTable"
 
 export type Payload = GearWeaponMelee | number
 
@@ -18,13 +19,16 @@ export const MeleeWeapons = () => {
       <ResourceBreadCrumbs activePage="Melee Weapons" />
       <RemainingNuyen runner={runner} />
       <DispatchContext.Provider value={dispatch}>
-        <MeleeWeaponTable listOfGear={meleeData} />
+        <GearTable<GearWeaponMelee>
+          cols={addMeleeTableConfig}
+          listOfGear={meleeData}
+        />
         {runner.resources?.melee && (
           <>
             <h2>Purchased Melee Weapons</h2>
-            <MeleeWeaponTable
+            <GearTable<GearWeaponMelee>
+              cols={removeMeleeTableConfig}
               listOfGear={runner.resources.melee}
-              isForSelling
             />
           </>
         )}

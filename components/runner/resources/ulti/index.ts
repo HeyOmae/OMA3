@@ -32,3 +32,11 @@ export interface GearTableProps<G = Gear> {
   listOfGear: G[]
   isForSelling?: true
 }
+
+export interface AddGearButtonProps {
+  gear: Gear
+}
+
+export interface RemoveGearButtonProps extends AddGearButtonProps {
+  index: number
+}
