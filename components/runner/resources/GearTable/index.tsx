@@ -46,3 +46,5 @@ export function GearTable<G extends Gear>({
     </TableContainer>
   )
 }
+
+export * from "./configOptions"

@@ -6,11 +6,13 @@ import {
 } from "../../../../hooks/useRunnerAccess"
 import { GearWeaponsProjectile } from "../../../../types/Resources"
 import { ResourceBreadCrumbs } from "../ResourceBreadCrumbs"
-import { ProjectileTable } from "./ProjectileTable"
-import { AddProjectileButton } from "./ProjectileTable/AddProjectileButton"
-import { RemoveProjectileButton } from "./ProjectileTable/RemoveProjectileButton"
+import {
+  addProjectileTableConfig,
+  removeProjectileTableConfig,
+} from "./ProjectileTable"
 import { RemainingNuyen } from "../RemainingNuyen"
-import { gearPageReducerGenerator } from "../ulti"
+import { DispatchContext, gearPageReducerGenerator } from "../ulti"
+import { GearTable } from "../GearTable"
 
 export type Payload = GearWeaponsProjectile | number
 export type ProjectileDispatch = DispatchAction<undefined, Payload>
@@ -23,22 +25,21 @@ export default () => {
     <>
       <ResourceBreadCrumbs activePage="Projectiles" />
       <RemainingNuyen runner={runner} />
-      <ProjectileTable
-        ActionButton={AddProjectileButton}
-        dispatch={dispatch}
-        weapons={ProjectileData}
-        labelActionButton="Sell"
-      />
-      {runner.resources?.projectile && (
-        <>
-          <h2>Purchased Projectile Weapons</h2>
-          <ProjectileTable
-            ActionButton={RemoveProjectileButton}
-            dispatch={dispatch}
-            weapons={runner.resources.projectile}
-          />
-        </>
-      )}
+      <DispatchContext.Provider value={dispatch}>
+        <GearTable
+          listOfGear={ProjectileData}
+          cols={addProjectileTableConfig}
+        />
+        {runner.resources?.projectile && (
+          <>
+            <h2>Purchased Projectile Weapons</h2>
+            <GearTable
+              cols={removeProjectileTableConfig}
+              listOfGear={runner.resources.projectile}
+            />
+          </>
+        )}
+      </DispatchContext.Provider>
     </>
   ) : (
     <CircularProgress />
