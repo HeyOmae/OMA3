@@ -1,66 +1,44 @@
-import { FC } from "react"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@material-ui/core"
 import { GearWeaponMelee } from "../../../../../types/Resources"
 import { AddMeleeWeaponButton } from "./AddMeleeWeaponButton"
 import { RemoveMeleeWeaponButton } from "./RemoveMeleeWeaponButton"
-import { GearTableProps } from "../../ulti"
+import { Columns } from "../../GearTable"
 
-export type Props = GearTableProps<GearWeaponMelee>
+const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
+  {
+    display: (weapon) => weapon.name,
+    label: "Name",
+  },
+  {
+    display: (weapon) => weapon.weapon.dv,
+    label: "DV",
+  },
+  {
+    display: (weapon) => weapon.weapon.ar.join("/"),
+    label: "AR",
+  },
+  {
+    display: (weapon) => weapon.availability,
+    label: "Avail",
+  },
+  {
+    display: (weapon) => `${weapon.cost}¥`,
+    label: "Cost",
+  },
+]
 
-export const MeleeWeaponTable: FC<Props> = ({
-  listOfGear: weapons,
-  isForSelling,
-}) => {
-  return (
-    <TableContainer>
-      <Table stickyHeader>
-        <TableHead>
-          <TableRow>
-            <TableCell>{isForSelling ? "Sell" : "Buy"}</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>DV</TableCell>
-            <TableCell>Attack Rating</TableCell>
-            <TableCell>Avail</TableCell>
-            <TableCell>Cost</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {weapons.map((meleeWeapon, index) => {
-            const {
-              name,
-              availability,
-              cost,
-              weapon: { dv, ar },
-            } = meleeWeapon
-            return (
-              <TableRow key={name}>
-                <TableCell>
-                  {isForSelling ? (
-                    <RemoveMeleeWeaponButton
-                      meleeWeapon={meleeWeapon}
-                      index={index}
-                    />
-                  ) : (
-                    <AddMeleeWeaponButton meleeWeapon={meleeWeapon} />
-                  )}
-                </TableCell>
-                <TableCell>{name}</TableCell>
-                <TableCell>{dv}</TableCell>
-                <TableCell>{ar.join("/")}</TableCell>
-                <TableCell>{availability}</TableCell>
-                <TableCell>{cost}&yen;</TableCell>
-              </TableRow>
-            )
-          })}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  )
-}
+export const addMeleeTableConfig: Columns<GearWeaponMelee>[] = [
+  {
+    display: (weapon) => <AddMeleeWeaponButton gear={weapon} />,
+    label: "Buy",
+  },
+  ...baseMeleeTableConfig,
+]
+export const removeMeleeTableConfig: Columns<GearWeaponMelee>[] = [
+  {
+    display: (weapon, index) => (
+      <RemoveMeleeWeaponButton gear={weapon} index={index} />
+    ),
+    label: "Sell",
+  },
+  ...baseMeleeTableConfig,
+]

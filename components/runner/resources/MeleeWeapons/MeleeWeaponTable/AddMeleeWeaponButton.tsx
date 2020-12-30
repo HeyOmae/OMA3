@@ -1,13 +1,10 @@
 import { FC, useContext } from "react"
-import { GearWeaponMelee } from "../../../../../types/Resources"
 import { AddButton } from "../../../../common"
-import { DispatchContext } from "../../ulti"
+import { AddGearButtonProps, DispatchContext } from "../../ulti"
 
-interface Props {
-  meleeWeapon: GearWeaponMelee
-}
-
-export const AddMeleeWeaponButton: FC<Props> = ({ meleeWeapon }) => {
+export const AddMeleeWeaponButton: FC<AddGearButtonProps> = ({
+  gear: meleeWeapon,
+}) => {
   const dispatch = useContext(DispatchContext)
   return (
     <AddButton
