@@ -1,70 +1,42 @@
-import { FC } from "react"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@material-ui/core"
 import { GearWeaponFireArms } from "../../../../../types/Resources"
-import { FirearmDispatch } from ".."
 import { AddFirearmsButton } from "./AddFirearmsButton"
 import { RemoveFirearmsButton } from "./RemoveFirearmsButton"
-import { LabelActionButtonType } from "../../../../../types/generalTypes"
+import {
+  Columns,
+  gearMeleeTableConfigOption,
+  gearTableConfigOptions,
+} from "../../GearTable"
 
-export interface Props {
-  weapons: GearWeaponFireArms[]
-  dispatch: FirearmDispatch
-  ActionButton: typeof AddFirearmsButton | typeof RemoveFirearmsButton
-  actionLabel?: LabelActionButtonType
-}
+const baseFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
+  gearTableConfigOptions.name,
+  gearMeleeTableConfigOption.dv,
+  {
+    label: "Modes",
+    display: ({ weapon }) => weapon.mode,
+  },
+  gearMeleeTableConfigOption.ar,
+  {
+    label: "Ammo",
+    display: ({ weapon }) => weapon.ammo,
+  },
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
 
-export const FirearmsTable: FC<Props> = ({
-  weapons,
-  ActionButton,
-  dispatch,
-  actionLabel = "Buy",
-}) => (
-  <TableContainer>
-    <Table stickyHeader>
-      <TableHead>
-        <TableRow>
-          <TableCell>{actionLabel}</TableCell>
-          <TableCell>Name</TableCell>
-          <TableCell>DV</TableCell>
-          <TableCell>Mode</TableCell>
-          <TableCell>AR</TableCell>
-          <TableCell>Ammo</TableCell>
-          <TableCell>Avail</TableCell>
-          <TableCell>Cost</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {weapons.map((weapon, index) => (
-          <FirearmsRow key={weapon.name} weapon={weapon}>
-            <ActionButton dispatch={dispatch} weapon={weapon} index={index} />
-          </FirearmsRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-)
+export const addFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
+  {
+    label: "Buy",
+    display: (weapon) => <AddFirearmsButton gear={weapon} />,
+  },
+  ...baseFirearmsTableConfig,
+]
 
-interface RowProps {
-  weapon: GearWeaponFireArms
-  children: JSX.Element
-}
-
-export const FirearmsRow: FC<RowProps> = ({ weapon, children }) => (
-  <TableRow>
-    <TableCell>{children}</TableCell>
-    <TableCell>{weapon.name}</TableCell>
-    <TableCell>{weapon.weapon.dv}</TableCell>
-    <TableCell>{weapon.weapon.mode}</TableCell>
-    <TableCell>{weapon.weapon.ar.join("/")}</TableCell>
-    <TableCell>{weapon.weapon.ammo}</TableCell>
-    <TableCell>{weapon.availability}</TableCell>
-    <TableCell>{weapon.cost}&yen;</TableCell>
-  </TableRow>
-)
+export const removeFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
+  {
+    label: "Sell",
+    display: (weapon, index) => (
+      <RemoveFirearmsButton gear={weapon} index={index} />
+    ),
+  },
+  ...baseFirearmsTableConfig,
+]

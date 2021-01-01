@@ -1,16 +1,13 @@
-import { FC } from "react"
-import { FirearmDispatch } from ".."
-import { GearWeaponFireArms } from "../../../../../types/Resources"
+import { FC, useContext } from "react"
 import { AddButton } from "../../../../common"
+import { AddGearButtonProps, DispatchContext } from "../../ulti"
 
-interface Props {
-  dispatch: FirearmDispatch
-  weapon: GearWeaponFireArms
+export const AddFirearmsButton: FC<AddGearButtonProps> = ({ gear }) => {
+  const dispatch = useContext(DispatchContext)
+  return (
+    <AddButton
+      aria-label={`Add ${gear.name}`}
+      onClick={() => dispatch({ type: undefined, payload: gear })}
+    />
+  )
 }
-
-export const AddFirearmsButton: FC<Props> = ({ dispatch, weapon }) => (
-  <AddButton
-    aria-label={`Add ${weapon.name}`}
-    onClick={() => dispatch({ type: undefined, payload: weapon })}
-  />
-)

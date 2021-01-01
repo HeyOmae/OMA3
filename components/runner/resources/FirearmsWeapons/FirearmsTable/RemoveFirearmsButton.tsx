@@ -1,26 +1,21 @@
-import { FC } from "react"
-import { FirearmDispatch } from ".."
-import { GearWeaponFireArms } from "../../../../../types/Resources"
+import { FC, useContext } from "react"
 import { RemoveButton } from "../../../../common"
+import { DispatchContext, RemoveGearButtonProps } from "../../ulti"
 
-interface Props {
-  weapon: GearWeaponFireArms
-  index: number
-  dispatch: FirearmDispatch
-}
-
-export const RemoveFirearmsButton: FC<Props> = ({
-  weapon: { name },
-  dispatch,
+export const RemoveFirearmsButton: FC<RemoveGearButtonProps> = ({
+  gear: { name },
   index,
-}) => (
-  <RemoveButton
-    aria-label={`Remove ${name}`}
-    onClick={() =>
-      dispatch({
-        type: undefined,
-        payload: index,
-      })
-    }
-  />
-)
+}) => {
+  const dispatch = useContext(DispatchContext)
+  return (
+    <RemoveButton
+      aria-label={`Remove ${name}`}
+      onClick={() =>
+        dispatch({
+          type: undefined,
+          payload: index,
+        })
+      }
+    />
+  )
+}
