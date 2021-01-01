@@ -1,15 +1,17 @@
-import { FirearmsTable } from "./FirearmsTable"
 import FirearmsData from "../../../../data/firearms"
 import { GearWeaponFireArms } from "../../../../types/Resources"
 import {
   DispatchAction,
   useRunnerAccess,
 } from "../../../../hooks/useRunnerAccess"
-import { AddFirearmsButton } from "./FirearmsTable/AddFirearmsButton"
 import { CircularProgress } from "@material-ui/core"
 import { RemainingNuyen } from "../RemainingNuyen"
-import { RemoveFirearmsButton } from "./FirearmsTable/RemoveFirearmsButton"
-import { gearPageReducerGenerator } from "../ulti"
+import { DispatchContext, gearPageReducerGenerator } from "../ulti"
+import { GearTable } from "../GearTable"
+import {
+  addFirearmsTableConfig,
+  removeFirearmsTableConfig,
+} from "./FirearmsTable"
 
 export type Payload = GearWeaponFireArms | number
 
@@ -22,22 +24,18 @@ const FirearmsWeapons = () => {
   return runner ? (
     <>
       <RemainingNuyen runner={runner} />
-      <FirearmsTable
-        weapons={FirearmsData}
-        ActionButton={AddFirearmsButton}
-        dispatch={dispatch}
-      />
-      {runner.resources?.firearms && (
-        <>
-          <h2>Purchased Firearms</h2>
-          <FirearmsTable
-            weapons={runner.resources.firearms}
-            ActionButton={RemoveFirearmsButton}
-            actionLabel="Sell"
-            dispatch={dispatch}
-          />
-        </>
-      )}
+      <DispatchContext.Provider value={dispatch}>
+        <GearTable listOfGear={FirearmsData} cols={addFirearmsTableConfig} />
+        {runner.resources?.firearms && (
+          <>
+            <h2>Purchased Firearms</h2>
+            <GearTable
+              listOfGear={runner.resources.firearms}
+              cols={removeFirearmsTableConfig}
+            />
+          </>
+        )}
+      </DispatchContext.Provider>
     </>
   ) : (
     <CircularProgress />
