@@ -476,7 +476,7 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
-    name: "Steyr Tmp",
+    name: "Steyr TMP",
     availability: "3L",
     cost: 690,
     useAs: [
@@ -721,7 +721,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "2L",
     cost: 730,
-    name: "Colt Cobra Tz100",
+    name: "Colt Cobra TZ-100",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -759,7 +759,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "2L",
     cost: 785,
-    name: "Colt Cobra Tz110",
+    name: "Colt Cobra TZ-110",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -802,7 +802,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "3L",
     cost: 840,
-    name: "Colt Cobra Tz120",
+    name: "Colt Cobra TZ-120",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -850,7 +850,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "4L",
     cost: 925,
-    name: "Fn P93 Praetor",
+    name: "FN P93 Praetor",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -880,7 +880,7 @@ const firearms: GearWeaponFireArms[] = [
         },
         {
           hook: "UNDER",
-          item: "Fn P93 Flashlight",
+          item: "FN P93 Flashlight",
         },
       ],
     },
@@ -896,7 +896,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "3L",
     cost: 825,
-    name: "Hk 227",
+    name: "HK-227",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -984,7 +984,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "3L",
     cost: 725,
-    name: "Sck Model 100",
+    name: "SCK Model 100",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1025,7 +1025,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "2L",
     cost: 450,
-    name: "Uzi Iv",
+    name: "Uzi IV",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1068,7 +1068,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "2L",
     cost: 330,
-    name: "Defiance T250",
+    name: "Defiance T-250",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1103,7 +1103,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "2L",
     cost: 330,
-    name: "Defiance T250 Shortbarrel",
+    name: "Defiance T-250 Shortbarrel",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1138,7 +1138,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "4L",
     cost: 700,
-    name: "Mossberg Cmdt",
+    name: "Mossberg CMDT",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1180,7 +1180,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "5L",
     cost: 825,
-    name: "Pjss Model 55",
+    name: "PJSS Model 55",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1453,7 +1453,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "3L",
     cost: 2100,
-    name: "Fn Har",
+    name: "FN Har",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1642,7 +1642,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "5I",
     cost: 13200,
-    name: "Ranger Arms Sm6",
+    name: "Ranger Arms SM-6",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1825,7 +1825,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "5L",
     cost: 8000,
-    name: "Rpk Hmg",
+    name: "RPK HMG",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1870,7 +1870,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "6I",
     cost: 10000,
-    name: "Panther Xxl",
+    name: "Panther XXL",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1940,7 +1940,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "2",
     cost: 510,
-    name: "Parashield Dart Pistol",
+    name: "Parashield DART Pistol",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1969,7 +1969,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "3",
     cost: 710,
-    name: "Parashield Dart Rifle",
+    name: "Parashield DART Rifle",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2041,7 +2041,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "4I",
     cost: 1800,
-    name: "Armtech Mgl6",
+    name: "Armtech MGL6",
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2073,7 +2073,7 @@ const firearms: GearWeaponFireArms[] = [
   {
     availability: "4I",
     cost: 5000,
-    name: "Armtech Mgl12",
+    name: "Armtech MGL12",
     useAs: [
       {
         type: "WEAPON FIREARMS",

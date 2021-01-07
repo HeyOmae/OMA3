@@ -6,7 +6,7 @@ import {
   withTestRouter,
 } from "../../../../test/testUtils"
 import meleeData from "../../../../data/melee"
-import { MeleeWeapons } from "./index"
+import MeleeWeapons from "./index"
 
 describe("<MeleeWeapons/>", () => {
   beforeAll(setupIndexedDB)
