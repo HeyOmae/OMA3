@@ -59,6 +59,10 @@ describe("<RunnerLayout />", () => {
         "href",
         "/1/magres",
       )
+      expect(getByText("Resources").closest("a")).toHaveAttribute(
+        "href",
+        "/1/resources",
+      )
       expect(getByText("Delete").closest("a")).toHaveAttribute(
         "href",
         "/1/delete",
