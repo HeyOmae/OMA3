@@ -10,6 +10,22 @@ export interface Gear {
   cost: number
 }
 
+interface BaseArmor {
+  rating: number
+  social?: number
+  add?: true
+}
+
+export interface GearArmor extends Gear, Partial<GearTypes> {
+  armor: BaseArmor
+  useAs?: GearTypes
+  modifications: {
+    itemhookmod: GearModHooks
+    itemmod?: ItemAccessory
+  }
+  modonly?: true
+}
+
 interface BaseWeapon {
   dv: string
   ar: [
@@ -29,12 +45,12 @@ interface FireArm extends BaseWeapon {
   nowifi?: true
 }
 
-interface AsWeapon {
+interface GearTypes {
   type: string
   subtype: string
 }
 
-interface AsAccessory extends AsWeapon {
+interface AsAccessory extends GearTypes {
   slot: string
   capacity: number
   availability: string
@@ -48,8 +64,8 @@ interface AsVehicleAccessory {
 
 export interface GearWeaponMelee extends Gear {
   useAs: [
-    asWeapon: AsWeapon,
-    asAccessory?: AsAccessory | AsVehicleAccessory | AsWeapon,
+    asWeapon: GearTypes,
+    asAccessory?: AsAccessory | AsVehicleAccessory | GearTypes,
     asVehicleAccessory?: AsVehicleAccessory,
   ]
   weapon: BaseWeapon
@@ -63,15 +79,19 @@ export interface GearWeaponsProjectile extends GearWeaponMelee {
     }
   }
   weapon: BaseWeapon | FireArm
-  modifications?: WeaponModHooks[]
+  modifications?: GearModHooks[]
 }
 
-interface WeaponModHooks {
+interface GearModHooks {
+  capacity?: number
   hook: string
 }
 
-interface AccessoryMod extends WeaponModHooks {
+interface ItemAccessory {
   item: string
+}
+
+interface AccessoryMod extends GearModHooks, ItemAccessory {
   included?: true
   rating?: number
 }
@@ -84,7 +104,7 @@ export interface GearWeaponFireArms extends GearWeaponMelee {
     }
   }
   modifications?: {
-    itemhookmod: WeaponModHooks[]
+    itemhookmod: GearModHooks[]
     accessorymod?: AccessoryMod[]
     moditemmod?: {
       ref: string
