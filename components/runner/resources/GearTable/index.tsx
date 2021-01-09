@@ -24,7 +24,7 @@ export function GearTable<G extends Gear>({
   cols,
 }: Props<G>): ReactElement {
   return (
-    <TableContainer>
+    <TableContainer className="table-container">
       <Table stickyHeader>
         <TableHead>
           <TableRow>

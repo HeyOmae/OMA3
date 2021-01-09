@@ -1,5 +1,5 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { CircularProgress } from "@material-ui/core"
+import { CircularProgress, Grid } from "@material-ui/core"
 import { ReactElement } from "react"
 import { Gear } from "types/Resources"
 import { Columns, GearTable } from "../GearTable"
@@ -31,18 +31,22 @@ export function GearPageTemplate<G extends Gear>({
     <>
       <ResourceBreadCrumbs activePage={gearLabel} />
       <RemainingNuyen runner={runner} />
-      <DispatchContext.Provider value={dispatch}>
-        <GearTable<G> cols={addGearTableConfig} listOfGear={listOfGear} />
-        {runner.resources?.[resourceKey] && (
-          <>
-            <h2>Purchased {gearLabel}</h2>
-            <GearTable<G>
-              cols={removeGearTableConfig}
-              listOfGear={runner.resources[resourceKey]}
-            />
-          </>
-        )}
-      </DispatchContext.Provider>
+      <Grid container spacing={3}>
+        <DispatchContext.Provider value={dispatch}>
+          <Grid item md={6}>
+            <GearTable<G> cols={addGearTableConfig} listOfGear={listOfGear} />
+          </Grid>
+          {runner.resources?.[resourceKey] && (
+            <Grid item md={6}>
+              <h2>Purchased {gearLabel}</h2>
+              <GearTable<G>
+                cols={removeGearTableConfig}
+                listOfGear={runner.resources[resourceKey]}
+              />
+            </Grid>
+          )}
+        </DispatchContext.Provider>
+      </Grid>
     </>
   ) : (
     <CircularProgress />
