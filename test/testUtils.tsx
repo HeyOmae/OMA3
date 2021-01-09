@@ -114,6 +114,7 @@ export const withTestRouter = (
       beforePopState,
       isFallback,
       events,
+      isReady: true,
     }}
   >
     {tree}
