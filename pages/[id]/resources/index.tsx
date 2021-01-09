@@ -10,7 +10,7 @@ export const ResourcePage = (): JSX.Element => {
       <h1>Resources</h1>
       <h2>Weapons</h2>
       <NextLink
-        href="/[id]/resources/[category]"
+        href="/[id]/resources/melee"
         as={`/${query.id}/resources/melee`}
         passHref
       >
@@ -19,7 +19,7 @@ export const ResourcePage = (): JSX.Element => {
         </Button>
       </NextLink>
       <NextLink
-        href="/[id]/resources/[category]"
+        href="/[id]/resources/projectile"
         as={`/${query.id}/resources/projectile`}
         passHref
       >
@@ -28,7 +28,7 @@ export const ResourcePage = (): JSX.Element => {
         </Button>
       </NextLink>
       <NextLink
-        href="/[id]/resources/[category]"
+        href="/[id]/resources/firearms"
         as={`/${query.id}/resources/firearms`}
         passHref
       >
