@@ -1,5 +1,6 @@
 import { Columns } from "."
-import { Gear, GearWeaponMelee } from "../../../../types/Resources"
+import { Gear, GearWeaponMelee } from "@/types/Resources"
+import { AddResourceButton, RemoveResourceButton } from "./ResourceButtons"
 
 export const gearTableConfigOptions: Record<string, Columns<Gear>> = {
   name: {
@@ -13,6 +14,16 @@ export const gearTableConfigOptions: Record<string, Columns<Gear>> = {
   cost: {
     display: (gear) => `${gear.cost}¥`,
     label: "Cost",
+  },
+  buy: {
+    display: (gear) => <AddResourceButton gear={gear} />,
+    label: "Buy",
+  },
+  sell: {
+    display: (gear, index) => (
+      <RemoveResourceButton gear={gear} index={index} />
+    ),
+    label: "Sell",
   },
 }
 

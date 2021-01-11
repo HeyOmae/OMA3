@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/common/*": ["components/common/*"],
       "@/runner/*": ["components/runner/*"],
       "@/test/*": ["test/*"],
       "@/hooks/*": ["hooks/*"],
