@@ -31,5 +31,9 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/firearms",
     )
+    expect(getByText("Armors").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/armor",
+    )
   })
 })

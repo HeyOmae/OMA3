@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
+      "@/pages/*": ["pages/*"],
       "@/runner/*": ["components/runner/*"],
       "@/test/*": ["test/*"],
       "@/hooks/*": ["hooks/*"],
