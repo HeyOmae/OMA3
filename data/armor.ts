@@ -4,8 +4,8 @@ const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 10,
-    name: "clothing_street",
-    subtype: "ARMOR_CLOTHES",
+    name: "Clothing Street",
+    subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     modonly: true,
     armor: {
@@ -21,8 +21,8 @@ const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 10,
-    name: "clothing_squatter",
-    subtype: "ARMOR_CLOTHES",
+    name: "Clothing Squatter",
+    subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
       rating: 0,
@@ -37,8 +37,8 @@ const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 100,
-    name: "clothing_low",
-    subtype: "ARMOR_CLOTHES",
+    name: "Clothing Low",
+    subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
       rating: 0,
@@ -53,8 +53,8 @@ const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 1000,
-    name: "clothing_middle",
-    subtype: "ARMOR_CLOTHES",
+    name: "Clothing Middle",
+    subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
       rating: 0,
@@ -69,8 +69,8 @@ const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 5000,
-    name: "clothing_high",
-    subtype: "ARMOR_CLOTHES",
+    name: "Clothing High",
+    subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
       rating: 0,
@@ -85,8 +85,8 @@ const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 10000,
-    name: "clothing_luxury",
-    subtype: "ARMOR_CLOTHES",
+    name: "Clothing Luxury",
+    subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
       rating: 0,
@@ -99,12 +99,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "synthleather_jacket",
+    name: "Synthleather Jacket",
     availability: "1",
     cost: 300,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_BODY",
+      subtype: "ARMOR BODY",
     },
     armor: {
       rating: 1,
@@ -118,12 +118,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "actioneer_business",
+    name: "Actioneer Business",
     availability: "2",
     cost: 1500,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_SOCIAL",
+      subtype: "ARMOR SOCIAL",
     },
     armor: {
       rating: 2,
@@ -137,12 +137,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "armor_clothing",
+    name: "Armor Clothing",
     availability: "2",
     cost: 500,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_SOCIAL",
+      subtype: "ARMOR SOCIAL",
     },
     armor: {
       rating: 2,
@@ -156,12 +156,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "armor_jacket",
+    name: "Armor Jacket",
     availability: "2",
     cost: 1000,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_BODY",
+      subtype: "ARMOR BODY",
     },
     armor: {
       rating: 4,
@@ -175,12 +175,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "armor_vest",
+    name: "Armor Vest",
     availability: "4",
     cost: 750,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_BODY",
+      subtype: "ARMOR BODY",
     },
     armor: {
       rating: 3,
@@ -194,12 +194,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "chameleon_suit",
+    name: "Chameleon Suit",
     availability: "4I",
     cost: 2000,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_BODY",
+      subtype: "ARMOR BODY",
     },
     armor: {
       rating: 2,
@@ -213,12 +213,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "full_body_armor",
+    name: "Full Body Armor",
     availability: "4L",
     cost: 2000,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_BODY",
+      subtype: "ARMOR BODY",
     },
     armor: {
       rating: 5,
@@ -232,12 +232,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "full_body_armor_helmet",
+    name: "Full Body Armor Helmet",
     availability: "0",
     cost: 500,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_HELMET",
+      subtype: "ARMOR HELMET",
     },
     armor: {
       rating: 2,
@@ -246,17 +246,17 @@ const armorData: GearArmor[] = [
     modifications: {
       itemhookmod: {
         capacity: 6,
-        hook: "HELMET_ACCESSORY",
+        hook: "HELMET ACCESSORY",
       },
     },
   },
   {
-    name: "lined_coat",
+    name: "Lined Coat",
     availability: "4",
     cost: 900,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_BODY",
+      subtype: "ARMOR BODY",
     },
     armor: {
       rating: 3,
@@ -270,12 +270,12 @@ const armorData: GearArmor[] = [
     },
   },
   {
-    name: "urban_explorer_jumpsuit",
+    name: "Urban Explorer Jumpsuit",
     availability: "2",
     cost: 800,
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_BODY",
+      subtype: "ARMOR BODY",
     },
     armor: {
       rating: 3,
@@ -291,10 +291,10 @@ const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 200,
-    name: "helmet",
+    name: "Helmet",
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_HELMET",
+      subtype: "ARMOR HELMET",
     },
     armor: {
       rating: 1,
@@ -304,17 +304,17 @@ const armorData: GearArmor[] = [
     modifications: {
       itemhookmod: {
         capacity: 4,
-        hook: "HELMET_ACCESSORY",
+        hook: "HELMET ACCESSORY",
       },
     },
   },
   {
     availability: "4",
     cost: 900,
-    name: "ballistic_shield",
+    name: "Ballistic Shield",
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_SHIELD",
+      subtype: "ARMOR SHIELD",
     },
     armor: {
       rating: 2,
@@ -325,17 +325,17 @@ const armorData: GearArmor[] = [
         hook: "ARMOR",
       },
       itemmod: {
-        item: "ballistic_shield_weapon",
+        item: "Ballistic Shield Weapon",
       },
     },
   },
   {
     availability: "4",
     cost: 1200,
-    name: "riot_shield",
+    name: "Riot Shield",
     useAs: {
       type: "ARMOR",
-      subtype: "ARMOR_SHIELD",
+      subtype: "ARMOR SHIELD",
     },
     armor: {
       rating: 2,
@@ -346,7 +346,7 @@ const armorData: GearArmor[] = [
         hook: "ARMOR",
       },
       itemmod: {
-        item: "riot_shield_weapon",
+        item: "Riot Shield Weapon",
       },
     },
   },
