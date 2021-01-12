@@ -1,11 +1,9 @@
-import { GearWeaponMelee } from "../../../../../types/Resources"
-import { AddMeleeWeaponButton } from "./AddMeleeWeaponButton"
-import { RemoveMeleeWeaponButton } from "./RemoveMeleeWeaponButton"
+import { GearWeaponMelee } from "@/types/Resources"
 import {
   Columns,
   gearTableConfigOptions,
   gearMeleeTableConfigOption,
-} from "../../GearTable"
+} from "../GearTable"
 
 export const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
   gearTableConfigOptions.name,
@@ -16,18 +14,10 @@ export const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
 ]
 
 export const addMeleeTableConfig: Columns<GearWeaponMelee>[] = [
-  {
-    display: (weapon) => <AddMeleeWeaponButton gear={weapon} />,
-    label: "Buy",
-  },
+  gearTableConfigOptions.buy,
   ...baseMeleeTableConfig,
 ]
 export const removeMeleeTableConfig: Columns<GearWeaponMelee>[] = [
-  {
-    display: (weapon, index) => (
-      <RemoveMeleeWeaponButton gear={weapon} index={index} />
-    ),
-    label: "Sell",
-  },
+  gearTableConfigOptions.sell,
   ...baseMeleeTableConfig,
 ]

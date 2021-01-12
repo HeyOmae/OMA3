@@ -11,7 +11,7 @@ import { GearWeaponMelee } from "types/Resources"
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,
-} from "../MeleeWeapons/MeleeWeaponTable"
+} from "../MeleeWeapons/meleeTableConfig"
 
 describe("<GearPageTemplate/>", () => {
   describe("<MeleeWeapons/>", () => {

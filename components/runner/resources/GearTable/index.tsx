@@ -7,7 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core"
-import { Gear } from "../../../../types/Resources"
+import { Gear } from "@/types/Resources"
 
 export interface Columns<G> {
   display: (gear: G, index: number) => ReactNode

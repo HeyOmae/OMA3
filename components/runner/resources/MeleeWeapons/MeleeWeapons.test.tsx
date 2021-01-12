@@ -4,8 +4,8 @@ import {
   waitFor,
   setupIndexedDB,
   withTestRouter,
-} from "../../../../test/testUtils"
-import meleeData from "../../../../data/melee"
+} from "@/test/testUtils"
+import meleeData from "@/data/melee"
 import MeleeWeapons from "./index"
 
 describe("<MeleeWeapons/>", () => {
