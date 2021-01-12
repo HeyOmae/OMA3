@@ -36,6 +36,15 @@ export const ResourcePage = (): JSX.Element => {
           Firearms
         </Button>
       </NextLink>
+      <NextLink
+        href="/[id]/resources/armor"
+        as={`/${query.id}/resources/armor`}
+        passHref
+      >
+        <Button variant="contained" color="primary">
+          Armors
+        </Button>
+      </NextLink>
     </RunnerLayout>
   )
 }

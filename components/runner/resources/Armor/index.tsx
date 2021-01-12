@@ -33,3 +33,5 @@ export const Armor = () => (
     removeGearTableConfig={sellArmorCols}
   />
 )
+
+export default Armor
