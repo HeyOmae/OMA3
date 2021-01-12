@@ -1,5 +1,9 @@
+import dynamic from "next/dynamic"
 import { RunnerLayout } from "@/components/layout"
-import Armor from "@/components/runner/resources/Armor"
+
+const Armor = dynamic(() => import("@/components/runner/resources/Armor"), {
+  ssr: false,
+})
 
 export default () => (
   <RunnerLayout>
