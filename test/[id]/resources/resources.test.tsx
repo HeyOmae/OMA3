@@ -1,5 +1,5 @@
 import { render, withTestRouter } from "../../testUtils"
-import ResourcePage from "../../../pages/[id]/resources"
+import ResourcePage from "@/pages/[id]/resources"
 import { waitFor } from "@testing-library/react"
 
 describe("Resource Page", () => {

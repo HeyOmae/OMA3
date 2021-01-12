@@ -1,11 +1,9 @@
-import { GearWeaponFireArms } from "../../../../../types/Resources"
-import { AddFirearmsButton } from "./AddFirearmsButton"
-import { RemoveFirearmsButton } from "./RemoveFirearmsButton"
+import { GearWeaponFireArms } from "@/types/Resources"
 import {
   Columns,
   gearMeleeTableConfigOption,
   gearTableConfigOptions,
-} from "../../GearTable"
+} from "../GearTable"
 
 const baseFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
   gearTableConfigOptions.name,
@@ -24,19 +22,11 @@ const baseFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
 ]
 
 export const addFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
-  {
-    label: "Buy",
-    display: (weapon) => <AddFirearmsButton gear={weapon} />,
-  },
+  gearTableConfigOptions.buy,
   ...baseFirearmsTableConfig,
 ]
 
 export const removeFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
-  {
-    label: "Sell",
-    display: (weapon, index) => (
-      <RemoveFirearmsButton gear={weapon} index={index} />
-    ),
-  },
+  gearTableConfigOptions.sell,
   ...baseFirearmsTableConfig,
 ]

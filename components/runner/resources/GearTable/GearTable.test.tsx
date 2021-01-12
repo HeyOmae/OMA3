@@ -1,9 +1,9 @@
-import { render } from "../../../../test/testUtils"
-import { GearWeaponMelee } from "../../../../types/Resources"
+import { render } from "@/test/testUtils"
+import { GearWeaponMelee } from "@/types/Resources"
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,
-} from "../MeleeWeapons/MeleeWeaponTable"
+} from "../MeleeWeapons/meleeTableConfig"
 import { DispatchContext } from "../ulti"
 import { GearTable, Props } from "./"
 

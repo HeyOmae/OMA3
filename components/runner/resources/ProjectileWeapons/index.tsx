@@ -1,9 +1,9 @@
-import ProjectileData from "../../../../data/projectiles"
-import { GearWeaponsProjectile } from "../../../../types/Resources"
+import ProjectileData from "@/data/projectiles"
+import { GearWeaponsProjectile } from "@/types/Resources"
 import {
   addProjectileTableConfig,
   removeProjectileTableConfig,
-} from "./ProjectileTable"
+} from "./projectileTableConfig"
 import { GearPageTemplate } from "../GearPageTemplate"
 
 export default () => (

@@ -3,7 +3,7 @@ import { GearWeaponFireArms } from "@/types/Resources"
 import {
   addFirearmsTableConfig,
   removeFirearmsTableConfig,
-} from "./FirearmsTable"
+} from "./firearmTableConfig"
 import { GearPageTemplate } from "../GearPageTemplate"
 
 export default () => (
