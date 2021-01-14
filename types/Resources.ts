@@ -10,6 +10,48 @@ export interface Gear {
   cost: number
 }
 
+interface MatrixAttributesCommlinks {
+  dataProcessing: number
+  firewall: number
+  programs: number
+}
+
+interface MatrixAttributesCyberdeck {
+  attack: number
+  sleaze: number
+  programs: number
+}
+
+export interface GearTyped extends Gear, GearTypes {
+  maxRating?: number
+  rating?: true
+  rateMultiplier?: "cost"
+}
+
+export interface GearElectronic extends GearTyped {
+  deviceRating: number
+}
+
+export interface GearMatrixGear extends GearElectronic {
+  useAs?: (AsAccessory | GearTypes)[]
+  modifications: GearModHooks[]
+  matrixAttributes: MatrixAttributesCommlinks | MatrixAttributesCyberdeck
+}
+
+interface AsElectronicAccessory extends GearTypes {
+  slot: string
+  capacity?: number
+}
+
+export interface GearElectronicAccessory extends GearElectronic {
+  requires: {
+    slotreq: {
+      slot: string
+    }
+  }
+  useAs?: AsElectronicAccessory[]
+}
+
 interface BaseArmor {
   rating: number
   social?: number
@@ -53,7 +95,8 @@ interface GearTypes {
 interface AsAccessory extends GearTypes {
   slot: string
   capacity: number
-  availability: string
+  essence?: number
+  availability?: string
   cost: number
 }
 
