@@ -1,4 +1,4 @@
-import { render, withTestRouter } from "../../../../test/testUtils"
+import { render, withTestRouter } from "@/test/testUtils"
 import { ResourceBreadCrumbs, Props } from "."
 
 describe("<ResourceBreadCrumbs/>", () => {

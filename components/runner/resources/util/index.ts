@@ -40,3 +40,6 @@ export interface AddGearButtonProps {
 export interface RemoveGearButtonProps extends AddGearButtonProps {
   index: number
 }
+
+export * from "./Columns"
+export * from "./configOptions"

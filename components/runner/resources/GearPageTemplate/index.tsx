@@ -2,10 +2,10 @@ import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { CircularProgress, Grid } from "@material-ui/core"
 import { ReactElement } from "react"
 import { Gear } from "types/Resources"
-import { Columns, GearTable } from "../GearTable"
-import { RemainingNuyen } from "../RemainingNuyen"
-import { ResourceBreadCrumbs } from "../ResourceBreadCrumbs"
-import { DispatchContext, gearPageReducerGenerator } from "../ulti"
+import { GearTable } from "./GearTable"
+import { RemainingNuyen } from "./RemainingNuyen"
+import { ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
+import { DispatchContext, gearPageReducerGenerator, Columns } from "../util"
 
 export interface Props<G> {
   gearLabel: string
