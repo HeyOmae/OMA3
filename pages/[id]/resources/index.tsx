@@ -14,36 +14,37 @@ export const ResourcePage = (): JSX.Element => {
         as={`/${query.id}/resources/melee`}
         passHref
       >
-        <Button variant="contained" color="primary">
-          Melee Weapons
-        </Button>
+        <Button variant="contained">Melee Weapons</Button>
       </NextLink>
       <NextLink
         href="/[id]/resources/projectile"
         as={`/${query.id}/resources/projectile`}
         passHref
       >
-        <Button variant="contained" color="primary">
-          Projectile Weapons
-        </Button>
+        <Button variant="contained">Projectile Weapons</Button>
       </NextLink>
       <NextLink
         href="/[id]/resources/firearms"
         as={`/${query.id}/resources/firearms`}
         passHref
       >
-        <Button variant="contained" color="primary">
-          Firearms
-        </Button>
+        <Button variant="contained">Firearms</Button>
       </NextLink>
+      <h2>Armor</h2>
       <NextLink
         href="/[id]/resources/armor"
         as={`/${query.id}/resources/armor`}
         passHref
       >
-        <Button variant="contained" color="primary">
-          Armors
-        </Button>
+        <Button variant="contained">Armors</Button>
+      </NextLink>
+      <h2>Electronics</h2>
+      <NextLink
+        href="/[id]/resources/commlink"
+        as={`/${query.id}/resources/commlink`}
+        passHref
+      >
+        <Button variant="contained">Commlinks</Button>
       </NextLink>
     </RunnerLayout>
   )

@@ -10,16 +10,18 @@ export interface Gear {
   cost: number
 }
 
-interface MatrixAttributesCommlinks {
-  dataProcessing: number
-  firewall: number
+interface MatrixAttributes {
   programs: number
 }
 
-interface MatrixAttributesCyberdeck {
+interface MatrixAttributesCommlinks extends MatrixAttributes {
+  dataProcessing: number
+  firewall: number
+}
+
+interface MatrixAttributesCyberdeck extends MatrixAttributes {
   attack: number
   sleaze: number
-  programs: number
 }
 
 export interface GearTyped extends Gear, GearTypes {
@@ -36,6 +38,14 @@ export interface GearMatrixGear extends GearElectronic {
   useAs?: (AsAccessory | GearTypes)[]
   modifications: GearModHooks[]
   matrixAttributes: MatrixAttributesCommlinks | MatrixAttributesCyberdeck
+}
+
+export interface GearMatrixCommlink extends GearMatrixGear {
+  matrixAttributes: MatrixAttributesCommlinks
+}
+
+export interface GearMatrixCyberdeck extends GearMatrixGear {
+  matrixAttributes: MatrixAttributesCyberdeck
 }
 
 interface AsElectronicAccessory extends GearTypes {
