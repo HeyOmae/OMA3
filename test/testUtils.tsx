@@ -1,10 +1,11 @@
-import React from "react"
+import React, { FC } from "react"
 import { NextRouter } from "next/router"
 import { RouterContext } from "next/dist/next-server/lib/router-context"
-import { fireEvent, render } from "@testing-library/react"
+import { fireEvent, render, waitFor } from "@testing-library/react"
 import { initDB } from "react-indexed-db"
 import { mockedRunners } from "./mocks"
 import { Runner } from "../types/runner"
+import { Gear } from "@/types/Resources"
 // import { ThemeProvider } from "my-ui-lib"
 // import { TranslationProvider } from "my-i18n-lib"
 // import defaultStrings from "i18n/en-x-default"
@@ -167,3 +168,37 @@ export const searchRegexInNodes = (regex: RegExp) => (
 export const runnerFromDB = (id = 0): Runner =>
   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
     .records[id].value
+
+export const testBuyAndSellGear = (
+  GearPage: FC,
+  gearData: Gear[],
+) => async () => {
+  const { getByLabelText, getByText } = customRender(
+      withTestRouter(<GearPage />, { query: { id: "10" } }),
+    ),
+    currentNuyen = 272230,
+    totalNuyen = 275000,
+    gearA = gearData[0],
+    gearB = gearData[Math.round(gearData.length / 2)],
+    gearC = gearData[gearData.length - 1]
+
+  await waitFor(() => {
+    expect(getByText(`${currentNuyen}¥/${totalNuyen}¥`)).toBeInTheDocument()
+  })
+
+  getByLabelText(`Add ${gearA.name}`).click()
+  getByLabelText(`Add ${gearB.name}`).click()
+  getByLabelText(`Add ${gearC.name}`).click()
+
+  expect(
+    getByText(
+      `${currentNuyen - gearA.cost - gearB.cost - gearC.cost}¥/${totalNuyen}¥`,
+    ),
+  ).toBeInTheDocument()
+
+  getByLabelText(`Remove ${gearB.name}`).click()
+
+  expect(
+    getByText(`${currentNuyen - gearA.cost - gearC.cost}¥/${totalNuyen}¥`),
+  ).toBeInTheDocument()
+}

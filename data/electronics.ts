@@ -1,11 +1,12 @@
 import {
   GearElectronic,
   GearElectronicAccessory,
-  GearMatrixGear,
+  GearMatrixCommlink,
+  GearMatrixCyberdeck,
   GearTyped,
 } from "@/types/Resources"
 
-export const commlinkData: GearMatrixGear[] = [
+export const commlinkData: GearMatrixCommlink[] = [
   {
     availability: "2",
     cost: 100,
@@ -254,7 +255,7 @@ export const commlinkData: GearMatrixGear[] = [
   },
 ]
 
-export const cyberdeckData: GearMatrixGear[] = [
+export const cyberdeckData: GearMatrixCyberdeck[] = [
   {
     availability: "3I",
     cost: 24750,
@@ -503,7 +504,7 @@ export const cyberdeckData: GearMatrixGear[] = [
   },
 ]
 
-export const riggerConsoleData: GearMatrixGear[] = [
+export const riggerConsoleData: GearMatrixCommlink[] = [
   {
     availability: "1L",
     cost: 1400,
@@ -806,7 +807,7 @@ export const riggerConsoleData: GearMatrixGear[] = [
   },
 ]
 
-export const electronicAccessories: GearElectronicAccessory[] = [
+export const electronicAccessoriesData: GearElectronicAccessory[] = [
   {
     availability: "2",
     cost: 100,
@@ -965,7 +966,7 @@ export const electronicAccessories: GearElectronicAccessory[] = [
   },
 ]
 
-export const tags: GearElectronic[] = [
+export const tagsData: GearElectronic[] = [
   {
     availability: "1",
     cost: 1,
@@ -1008,7 +1009,7 @@ export const tags: GearElectronic[] = [
   },
 ]
 
-export const commAndCounter: GearTyped[] = [
+export const commAndCounterData: GearTyped[] = [
   {
     availability: "3",
     cost: 200,
