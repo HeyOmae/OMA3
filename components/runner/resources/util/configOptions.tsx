@@ -1,6 +1,9 @@
-import { Columns } from "."
+import { Columns } from "../util"
 import { Gear, GearWeaponMelee } from "@/types/Resources"
-import { AddResourceButton, RemoveResourceButton } from "./ResourceButtons"
+import {
+  AddResourceButton,
+  RemoveResourceButton,
+} from "../GearPageTemplate/GearTable/ResourceButtons"
 
 export const gearTableConfigOptions: Record<string, Columns<Gear>> = {
   name: {

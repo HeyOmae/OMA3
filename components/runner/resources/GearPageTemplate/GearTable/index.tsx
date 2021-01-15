@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react"
+import { ReactElement } from "react"
 import {
   Table,
   TableBody,
@@ -8,11 +8,7 @@ import {
   TableRow,
 } from "@material-ui/core"
 import { Gear } from "@/types/Resources"
-
-export interface Columns<G> {
-  display: (gear: G, index: number) => ReactNode
-  label: string
-}
+import { Columns } from "../../util"
 
 export interface Props<G> {
   listOfGear: G[]
@@ -46,5 +42,3 @@ export function GearTable<G extends Gear>({
     </TableContainer>
   )
 }
-
-export * from "./configOptions"

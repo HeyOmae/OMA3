@@ -1,7 +1,7 @@
 import armorData from "@/data/armor"
 import { GearArmor } from "@/types/Resources"
 import { GearPageTemplate } from "../GearPageTemplate"
-import { Columns, gearTableConfigOptions } from "../GearTable"
+import { gearTableConfigOptions, Columns } from "../util"
 
 const baseCols: Columns<GearArmor>[] = [
   gearTableConfigOptions.name,

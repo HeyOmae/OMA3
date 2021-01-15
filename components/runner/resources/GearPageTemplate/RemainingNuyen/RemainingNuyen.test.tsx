@@ -1,6 +1,6 @@
-import { RemainingNuyen, Props } from "./"
-import { render } from "../../../../test/testUtils"
-import { mockedRunners } from "../../../../test/mocks"
+import { RemainingNuyen, Props } from "."
+import { render } from "@/test/testUtils"
+import { mockedRunners } from "@/test/mocks"
 
 describe("<RemainingNuyen/>", () => {
   const setup = ({ runner = mockedRunners[9] }: Partial<Props> = {}) => {

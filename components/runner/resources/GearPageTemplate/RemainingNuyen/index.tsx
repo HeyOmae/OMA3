@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react"
-import { Runner } from "../../../../types/runner"
-import { resources } from "../../../../data/priorityTable.json"
-import { Gear } from "../../../../types/Resources"
+import { Runner } from "@/types/runner"
+import { resources } from "@/data/priorityTable.json"
+import { Gear } from "@/types/Resources"
 
 export interface Props {
   runner: Runner

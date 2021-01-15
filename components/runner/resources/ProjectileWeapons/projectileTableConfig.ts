@@ -1,5 +1,5 @@
-import { GearWeaponsProjectile } from "../../../../types/Resources"
-import { Columns, gearTableConfigOptions } from "../GearTable"
+import { GearWeaponsProjectile } from "@/types/Resources"
+import { gearTableConfigOptions, Columns } from "../util"
 import { baseMeleeTableConfig } from "../MeleeWeapons/meleeTableConfig"
 
 const baseProjectileTableConfig = baseMeleeTableConfig

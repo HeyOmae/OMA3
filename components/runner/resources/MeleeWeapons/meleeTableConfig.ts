@@ -1,9 +1,9 @@
 import { GearWeaponMelee } from "@/types/Resources"
 import {
-  Columns,
   gearTableConfigOptions,
   gearMeleeTableConfigOption,
-} from "../GearTable"
+  Columns,
+} from "../util"
 
 export const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
   gearTableConfigOptions.name,

@@ -1,11 +1,11 @@
-import FirearmsPage from "../../../pages/[id]/resources/firearms"
+import FirearmsPage from "@/pages/[id]/resources/firearms"
 import {
   render,
   setupIndexedDB,
   waitFor,
   withTestRouter,
 } from "../../testUtils"
-import FirearmsData from "../../../data/firearms"
+import FirearmsData from "@/data/firearms"
 
 describe("Firearms Page", () => {
   beforeAll(setupIndexedDB)

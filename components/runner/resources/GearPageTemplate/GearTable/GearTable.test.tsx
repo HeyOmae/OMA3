@@ -3,9 +3,9 @@ import { GearWeaponMelee } from "@/types/Resources"
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,
-} from "../MeleeWeapons/meleeTableConfig"
-import { DispatchContext } from "../ulti"
-import { GearTable, Props } from "./"
+} from "../../MeleeWeapons/meleeTableConfig"
+import { DispatchContext } from "../../util"
+import { GearTable, Props } from "."
 
 describe("<GearTable />", () => {
   describe("<WeaponTable/>", () => {

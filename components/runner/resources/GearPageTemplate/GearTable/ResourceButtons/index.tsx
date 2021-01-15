@@ -4,7 +4,7 @@ import {
   AddGearButtonProps,
   DispatchContext,
   RemoveGearButtonProps,
-} from "../../ulti"
+} from "../../../util"
 
 export const AddResourceButton: FC<AddGearButtonProps> = ({ gear }) => {
   const dispatch = useContext(DispatchContext)
