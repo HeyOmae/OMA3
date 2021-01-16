@@ -43,5 +43,9 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/cyberdecks",
     )
+    expect(getByText("Rigger Consoles").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/consoles",
+    )
   })
 })
