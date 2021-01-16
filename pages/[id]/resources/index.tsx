@@ -40,8 +40,8 @@ export const ResourcePage = (): JSX.Element => {
       </NextLink>
       <h2>Electronics</h2>
       <NextLink
-        href="/[id]/resources/commlink"
-        as={`/${query.id}/resources/commlink`}
+        href="/[id]/resources/commlinks"
+        as={`/${query.id}/resources/commlinks`}
         passHref
       >
         <Button variant="contained">Commlinks</Button>
