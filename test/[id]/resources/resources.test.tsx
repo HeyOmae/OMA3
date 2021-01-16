@@ -37,7 +37,7 @@ describe("Resource Page", () => {
     )
     expect(getByText("Commlinks").closest("a")).toHaveAttribute(
       "href",
-      "/1/resources/commlink",
+      "/1/resources/commlinks",
     )
   })
 })
