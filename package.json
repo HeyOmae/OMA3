@@ -1,8 +1,8 @@
 {
   "name": "oma3",
-  "author": "@erikdstock",
+  "author": "@dethstrobe",
   "license": "GNU 3.0",
-  "version": "3.3.7",
+  "version": "3.3.8",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",

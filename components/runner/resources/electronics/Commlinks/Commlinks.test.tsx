@@ -29,7 +29,6 @@ describe("<Commlinks/>", () => {
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
     // Stats of a commlink
-
     const commlink = commlinkData[0],
       commlinkRow = getByLabelText(`Add ${commlink.name}`).closest("tr")
 

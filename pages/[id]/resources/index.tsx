@@ -46,6 +46,13 @@ export const ResourcePage = (): JSX.Element => {
       >
         <Button variant="contained">Commlinks</Button>
       </NextLink>
+      <NextLink
+        href="/[id]/resources/cyberdecks"
+        as={`/${query.id}/resources/cyberdecks`}
+        passHref
+      >
+        <Button variant="contained">Cyberdecks</Button>
+      </NextLink>
     </RunnerLayout>
   )
 }

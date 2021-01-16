@@ -1,14 +1,14 @@
 import { RunnerLayout } from "@/components/layout"
 import dynamic from "next/dynamic"
 
-const Commlink = dynamic(
-  () => import("@/components/runner/resources/electronics/Commlinks"),
+const Cyberdecks = dynamic(
+  () => import("@/components/runner/resources/electronics/Cyberdecks"),
   { ssr: false },
 )
 
 export default () => (
   <RunnerLayout>
-    <h1>Commlinks</h1>
-    <Commlink />
+    <h1>Cyberdecks</h1>
+    <Cyberdecks />
   </RunnerLayout>
 )
