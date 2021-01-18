@@ -2,6 +2,10 @@ export interface Resources {
   melee?: GearWeaponMelee[]
   projectile?: GearWeaponsProjectile[]
   firearms?: GearWeaponFireArms[]
+  armor?: GearArmor[]
+  commlink?: GearMatrixCommlink[]
+  cyberdeck?: GearMatrixCyberdeck[]
+  riggerConsole?: GearMatrixCommlink[]
 }
 
 export interface Gear {
