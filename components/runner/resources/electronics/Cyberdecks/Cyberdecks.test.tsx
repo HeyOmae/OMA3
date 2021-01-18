@@ -26,7 +26,7 @@ describe("<Cyberdecks/>", () => {
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-    // Stats of a commlink
+    // Stats of a cyberdeck
     const cyberdeck = cyberdeckData[0],
       cyberdeckRow = getByLabelText(`Add ${cyberdeck.name}`).closest("tr")
 
