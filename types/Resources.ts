@@ -7,6 +7,7 @@ export interface Resources {
   cyberdeck?: GearMatrixCyberdeck[]
   riggerConsole?: GearMatrixCommlink[]
   electronicAccessories?: GearElectronicAccessory[]
+  tags?: GearElectronic[]
 }
 
 export interface Gear {
