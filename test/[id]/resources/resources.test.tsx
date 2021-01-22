@@ -51,5 +51,9 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/eaccessories",
     )
+    expect(getByText("RFID Tags").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/tags",
+    )
   })
 })

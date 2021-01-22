@@ -4,7 +4,7 @@ import {
   withTestRouter,
   getByText as getTextInContainer,
 } from "@/test/testUtils"
-import { GearMatrixCommlink } from "@/types/Resources"
+import { GearElectronic, GearMatrixCommlink } from "@/types/Resources"
 import { FC } from "react"
 import { Columns, gearTableConfigOptions } from "../util"
 
@@ -39,6 +39,24 @@ export const buyCommlinkCols: CommlinkCols = [
 export const sellCommlinkCols: CommlinkCols = [
   gearTableConfigOptions.sell,
   ...baseCols,
+]
+
+type electronicCols = Columns<GearElectronic>[]
+
+const baseElectronicCols: electronicCols = [
+  gearTableConfigOptions.name,
+  gearMatrixTableConfigOptions.deviceRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const buyElectronicCol: electronicCols = [
+  gearTableConfigOptions.buy,
+  ...baseElectronicCols,
+]
+export const sellElectronicCol: electronicCols = [
+  gearTableConfigOptions.sell,
+  ...baseElectronicCols,
 ]
 
 export const TestMatrixDeviceTable = (
