@@ -1,5 +1,5 @@
 import { Columns } from "../util"
-import { Gear, GearWeaponMelee } from "@/types/Resources"
+import { Gear, GearTyped, GearWeaponMelee } from "@/types/Resources"
 import {
   AddResourceButton,
   RemoveResourceButton,
@@ -27,6 +27,21 @@ export const gearTableConfigOptions: Record<string, Columns<Gear>> = {
       <RemoveResourceButton gear={gear} index={index} />
     ),
     label: "Sell",
+  },
+}
+
+export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
+  category: {
+    display: (gear) => gear.subtype,
+    label: "Category",
+  },
+  setRating: {
+    display: (gear) => (gear.rating ? gear.currentRating ?? 1 : "N/A"),
+    label: "Rating",
+  },
+  displayRating: {
+    display: (gear) => (gear.rating ? gear.currentRating : "N/A"),
+    label: "Rating",
   },
 }
 

@@ -12,22 +12,22 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 100,
     deviceRating: 1,
     name: "Meta Link",
-    subtype: "COMMLINK",
+    subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
       },
       {
         type: "CYBERWARE",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         essence: 0.2,
         cost: 2000,
       },
       {
         type: "ACCESSORY",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         capacity: 2,
         slot: "HEADWARE IMPLANT",
         cost: 2000,
@@ -53,22 +53,22 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 700,
     deviceRating: 2,
     name: "Sony Emporer",
-    subtype: "COMMLINK",
+    subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
       },
       {
         type: "CYBERWARE",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         essence: 0.2,
         cost: 2000,
       },
       {
         type: "ACCESSORY",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         capacity: 2,
         slot: "HEADWARE IMPLANT",
         cost: 2000,
@@ -94,22 +94,22 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 1000,
     deviceRating: 3,
     name: "Renraku Sensei",
-    subtype: "COMMLINK",
+    subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
       },
       {
         type: "CYBERWARE",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         essence: 0.2,
         cost: 2000,
       },
       {
         type: "ACCESSORY",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         capacity: 2,
         slot: "HEADWARE IMPLANT",
         cost: 2000,
@@ -135,22 +135,22 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 2500,
     deviceRating: 4,
     name: "Erika Elite",
-    subtype: "COMMLINK",
+    subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
       },
       {
         type: "CYBERWARE",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         essence: 0.2,
         cost: 2000,
       },
       {
         type: "ACCESSORY",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         capacity: 2,
         slot: "HEADWARE IMPLANT",
         cost: 2000,
@@ -176,22 +176,22 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 5000,
     deviceRating: 5,
     name: "Hermes Ikon",
-    subtype: "COMMLINK",
+    subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
       },
       {
         type: "CYBERWARE",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         essence: 0.2,
         cost: 2000,
       },
       {
         type: "ACCESSORY",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         capacity: 2,
         slot: "HEADWARE IMPLANT",
         cost: 2000,
@@ -217,22 +217,22 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 8000,
     deviceRating: 6,
     name: "Transys Avalon",
-    subtype: "COMMLINK",
+    subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
       },
       {
         type: "CYBERWARE",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         essence: 0.2,
         cost: 2000,
       },
       {
         type: "ACCESSORY",
-        subtype: "COMMLINK",
+        subtype: "Commlink",
         capacity: 2,
         slot: "HEADWARE IMPLANT",
         cost: 2000,
@@ -261,22 +261,22 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
     cost: 24750,
     deviceRating: 1,
     name: "Erika Mcd6",
-    subtype: "CYBERDECK",
+    subtype: "Cyberdeck",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         essence: 0.4,
         cost: 5000,
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         capacity: 4,
         slot: "HEADWARE IMPLANT",
         cost: 5000,
@@ -302,22 +302,22 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
     cost: 61500,
     deviceRating: 2,
     name: "Spinrad Falcon",
-    subtype: "CYBERDECK",
+    subtype: "Cyberdeck",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         essence: 0.4,
         cost: 5000,
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         capacity: 4,
         slot: "HEADWARE IMPLANT",
         cost: 5000,
@@ -343,22 +343,22 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
     cost: 95000,
     deviceRating: 3,
     name: "Mct 360",
-    subtype: "CYBERDECK",
+    subtype: "Cyberdeck",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         essence: 0.4,
         cost: 5000,
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         capacity: 4,
         slot: "HEADWARE IMPLANT",
         cost: 5000,
@@ -384,22 +384,22 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
     cost: 107000,
     deviceRating: 4,
     name: "Renraku Kitsune",
-    subtype: "CYBERDECK",
+    subtype: "Cyberdeck",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         essence: 0.4,
         cost: 5000,
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         capacity: 4,
         slot: "HEADWARE IMPLANT",
         cost: 5000,
@@ -425,22 +425,22 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
     cost: 172500,
     deviceRating: 5,
     name: "Shiawase Cyber6",
-    subtype: "CYBERDECK",
+    subtype: "Cyberdeck",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         essence: 0.4,
         cost: 5000,
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         capacity: 4,
         slot: "HEADWARE IMPLANT",
         cost: 5000,
@@ -466,22 +466,22 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
     cost: 410600,
     deviceRating: 6,
     name: "Fairlight Excalibur",
-    subtype: "CYBERDECK",
+    subtype: "Cyberdeck",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         essence: 0.4,
         cost: 5000,
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBERDECK",
+        subtype: "Cyberdeck",
         capacity: 4,
         slot: "HEADWARE IMPLANT",
         cost: 5000,
@@ -510,7 +510,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 1400,
     deviceRating: 1,
     name: "Scratch Built Junk",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -540,7 +540,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 8000,
     deviceRating: 2,
     name: "Allegiance Control Center",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -570,7 +570,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 16000,
     deviceRating: 3,
     name: "Essy Motors Drone Master",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -600,7 +600,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 32000,
     deviceRating: 4,
     name: "Horizons Overseer",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -630,7 +630,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 34000,
     deviceRating: 4,
     name: "Maersk Spider",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -660,7 +660,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 66000,
     deviceRating: 5,
     name: "Vulcan Liegelord",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -690,7 +690,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 68000,
     deviceRating: 5,
     name: "Proteus Poseidon",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -720,7 +720,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 75000,
     deviceRating: 6,
     name: "Transys Eidolon",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -750,7 +750,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 95000,
     deviceRating: 6,
     name: "Ares Red Dog Series",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -780,7 +780,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     cost: 140000,
     deviceRating: 6,
     name: "Aztechnology Tlaloc",
-    subtype: "RIGGER CONSOLE",
+    subtype: "Rigger console",
     type: "ELECTRONICS",
     modifications: [
       {
@@ -813,7 +813,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 100,
     deviceRating: 3,
     name: "Sim Module",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ACCESSORY",
     requires: {
       slotreq: {
@@ -826,7 +826,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 250,
     deviceRating: 3,
     name: "Sim Module Hot",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ACCESSORY",
     requires: {
       slotreq: {
@@ -839,7 +839,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 150,
     deviceRating: 3,
     name: "Ar Gloves",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ACCESSORY",
     requires: {
       slotreq: {
@@ -852,7 +852,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 200,
     deviceRating: 3,
     name: "Biometric Reader",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ACCESSORY",
     requires: {
       slotreq: {
@@ -865,7 +865,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 5,
     deviceRating: 1,
     name: "Electronic Paper",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ELECTRONICS",
     requires: {
       slotreq: {
@@ -878,7 +878,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 25,
     deviceRating: 3,
     name: "Printer",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ELECTRONICS",
     requires: {
       slotreq: {
@@ -891,7 +891,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 500,
     deviceRating: 4,
     name: "Satellite Link",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ELECTRONICS",
     requires: {
       slotreq: {
@@ -904,7 +904,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 1000,
     deviceRating: 3,
     name: "Simrig",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ELECTRONICS",
     requires: {
       slotreq: {
@@ -917,7 +917,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 200,
     deviceRating: 3,
     name: "Trid Projector",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ELECTRONICS",
     requires: {
       slotreq: {
@@ -930,7 +930,7 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 50,
     deviceRating: 3,
     name: "Subvocal Microphone",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ELECTRONICS",
     requires: {
       slotreq: {
@@ -943,17 +943,17 @@ export const electronicAccessoriesData: GearElectronicAccessory[] = [
     cost: 70,
     deviceRating: 3,
     name: "Trodes",
-    subtype: "ELECTRONIC ACCESSORIES",
+    subtype: "Electronic accessories",
     type: "ELECTRONICS",
     useAs: [
       {
         type: "ELECTRONICS",
-        subtype: "ELECTRONIC ACCESSORIES",
+        subtype: "Electronic accessories",
         slot: "ELECTRONIC ACCESSORY",
       },
       {
         type: "ACCESSORY",
-        subtype: "ELECTRONIC ACCESSORIES",
+        subtype: "Electronic accessories",
         slot: "HELMET ACCESSORY",
         capacity: 0,
       },
@@ -972,7 +972,7 @@ export const tagsData: GearElectronic[] = [
     cost: 1,
     deviceRating: 1,
     name: "Standard Tag",
-    subtype: "RFID",
+    subtype: "Rfid",
     type: "ELECTRONICS",
   },
   {
@@ -980,7 +980,7 @@ export const tagsData: GearElectronic[] = [
     cost: 5,
     deviceRating: 1,
     name: "Datachip",
-    subtype: "RFID",
+    subtype: "Rfid",
     type: "ELECTRONICS",
   },
   {
@@ -988,7 +988,7 @@ export const tagsData: GearElectronic[] = [
     cost: 10,
     deviceRating: 3,
     name: "Security Tag",
-    subtype: "RFID",
+    subtype: "Rfid",
     type: "ELECTRONICS",
   },
   {
@@ -996,7 +996,7 @@ export const tagsData: GearElectronic[] = [
     cost: 10,
     deviceRating: 3,
     name: "Stealth Tag",
-    subtype: "RFID",
+    subtype: "Rfid",
     type: "ELECTRONICS",
   },
   {
@@ -1004,24 +1004,24 @@ export const tagsData: GearElectronic[] = [
     cost: 40,
     deviceRating: 2,
     name: "Sensor Tag",
-    subtype: "RFID",
+    subtype: "Rfid",
     type: "ELECTRONICS",
   },
 ]
 
-export const commAndCounterData: GearTyped[] = [
+export const otherElectronics: GearTyped[] = [
   {
     availability: "3",
     cost: 200,
     name: "Bug Scanner",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
     availability: "2",
     cost: 300,
     name: "Data Tap",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
@@ -1031,7 +1031,7 @@ export const commAndCounterData: GearTyped[] = [
     maxRating: 6,
     rating: true,
     rateMultiplier: "cost",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
@@ -1041,7 +1041,7 @@ export const commAndCounterData: GearTyped[] = [
     maxRating: 6,
     rating: true,
     rateMultiplier: "cost",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
@@ -1051,21 +1051,21 @@ export const commAndCounterData: GearTyped[] = [
     maxRating: 6,
     rating: true,
     rateMultiplier: "cost",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
     availability: "1",
     cost: 100,
     name: "Micro-transceiver",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
     availability: "3",
     cost: 450,
     name: "Tag Eraser",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
@@ -1075,42 +1075,42 @@ export const commAndCounterData: GearTyped[] = [
     maxRating: 6,
     rating: true,
     rateMultiplier: "cost",
-    subtype: "COMMUNICATION",
+    subtype: "Communication",
     type: "ELECTRONICS",
   },
   {
     availability: "1",
     cost: 5,
     name: "Credstick Standard",
-    subtype: "ID CREDIT",
+    subtype: "Id credit",
     type: "ELECTRONICS",
   },
   {
     availability: "1",
     cost: 20,
     name: "Credstick Silver",
-    subtype: "ID CREDIT",
+    subtype: "Id credit",
     type: "ELECTRONICS",
   },
   {
     availability: "2",
     cost: 100,
     name: "Credstick Gold",
-    subtype: "ID CREDIT",
+    subtype: "Id credit",
     type: "ELECTRONICS",
   },
   {
     availability: "3",
     cost: 500,
     name: "Credstick Platin",
-    subtype: "ID CREDIT",
+    subtype: "Id credit",
     type: "ELECTRONICS",
   },
   {
     availability: "5",
     cost: 1000,
     name: "Credstick Ebony",
-    subtype: "ID CREDIT",
+    subtype: "Id credit",
     type: "ELECTRONICS",
   },
 ]
