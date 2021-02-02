@@ -74,6 +74,13 @@ export const ResourcePage = (): JSX.Element => {
       >
         <Button variant="contained">RFID Tags</Button>
       </NextLink>
+      <NextLink
+        href="/[id]/resources/other-electronics"
+        as={`/${query.id}/resources/other-electronics`}
+        passHref
+      >
+        <Button variant="contained">Other Electronics</Button>
+      </NextLink>
     </RunnerLayout>
   )
 }

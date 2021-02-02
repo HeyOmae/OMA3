@@ -8,6 +8,7 @@ export interface Resources {
   riggerConsole?: GearMatrixCommlink[]
   electronicAccessories?: GearElectronicAccessory[]
   tags?: GearElectronic[]
+  "other-electronics"?: GearTyped[]
 }
 
 export interface Gear {
@@ -33,6 +34,7 @@ interface MatrixAttributesCyberdeck extends MatrixAttributes {
 export interface GearTyped extends Gear, GearTypes {
   maxRating?: number
   rating?: true
+  currentRating?: number
   rateMultiplier?: "cost"
 }
 
