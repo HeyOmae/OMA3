@@ -33,3 +33,5 @@ export const RemoveResourceButton: FC<RemoveGearButtonProps> = ({
     />
   )
 }
+
+export * from "./SettingRating"
