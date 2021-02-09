@@ -2,7 +2,7 @@
   "name": "oma3",
   "author": "@dethstrobe",
   "license": "GNU 3.0",
-  "version": "3.3.11",
+  "version": "3.3.12",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
@@ -31,7 +31,7 @@
     "@material-ui/core": "^5.0.0-alpha.24",
     "@material-ui/icons": "^5.0.0-alpha.24",
     "@material-ui/lab": "^5.0.0-alpha.24",
-    "next": "^10.0.6",
+    "next": "^10.0.5",
     "next-pwa": "^5.0.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

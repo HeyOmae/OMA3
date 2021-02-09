@@ -8,7 +8,7 @@ export interface Resources {
   riggerConsole?: GearMatrixCommlink[]
   electronicAccessories?: GearElectronicAccessory[]
   tags?: GearElectronic[]
-  "other-electronics"?: GearTyped[]
+  otherElectronics?: GearTyped[]
 }
 
 export interface Gear {

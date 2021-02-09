@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core"
 import { Gear } from "@/types/Resources"
 import { Columns } from "../../util"
+import { StandardDisplayRow, RatingRow } from "./Row"
 
 export interface Props<G> {
   listOfGear: G[]
@@ -30,13 +31,13 @@ export function GearTable<G extends Gear>({
           </TableRow>
         </TableHead>
         <TableBody>
-          {listOfGear.map((gear, index) => (
-            <TableRow key={gear.name}>
-              {cols.map(({ display, label }) => (
-                <TableCell key={label}>{display(gear, index)}</TableCell>
-              ))}
-            </TableRow>
-          ))}
+          {listOfGear.map((gear, index) => {
+            const Row =
+              "rating" in gear && cols[0].label === "Buy"
+                ? RatingRow
+                : StandardDisplayRow
+            return <Row key={gear.name} cols={cols} gear={gear} index={index} />
+          })}
         </TableBody>
       </Table>
     </TableContainer>

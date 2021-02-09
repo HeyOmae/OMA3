@@ -3,6 +3,7 @@ import { Gear, GearTyped, GearWeaponMelee } from "@/types/Resources"
 import {
   AddResourceButton,
   RemoveResourceButton,
+  SettingRating,
 } from "../GearPageTemplate/GearTable/ResourceButtons"
 
 export const gearTableConfigOptions: Record<string, Columns<Gear>> = {
@@ -36,7 +37,8 @@ export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
     label: "Category",
   },
   setRating: {
-    display: (gear) => (gear.rating ? gear.currentRating ?? 1 : "N/A"),
+    display: (gear, index, setRating) =>
+      gear.rating ? <SettingRating gear={gear} setRating={setRating} /> : "N/A",
     label: "Rating",
   },
   displayRating: {

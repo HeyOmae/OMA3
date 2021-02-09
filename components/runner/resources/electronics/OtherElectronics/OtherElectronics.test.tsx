@@ -4,6 +4,8 @@ import {
   getByText as getTextInContainer,
   waitFor,
   render,
+  SliderHelper,
+  runnerFromDB,
 } from "@/test/testUtils"
 import OtherElectronics from "./"
 
@@ -43,5 +45,35 @@ describe("<OtherElectronics/>", () => {
     expect(getTextInContainer(jammerRow, "1")).toBeInTheDocument()
     expect(getTextInContainer(jammerRow, "4L")).toBeInTheDocument()
     expect(getTextInContainer(jammerRow, "200¥")).toBeInTheDocument()
+  })
+
+  it("should save rated gear", async () => {
+    const { getByTestId, getByLabelText, getByText } = setup()
+    await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
+
+    SliderHelper.change(getByTestId("White Noise Generator-rating"), 4, 1, 6)
+
+    getByLabelText("Add White Noise Generator").click()
+
+    await waitFor(() => {
+      expect(runnerFromDB(9).resources?.otherElectronics[0].name).toEqual(
+        "White Noise Generator",
+      )
+    })
+    expect(runnerFromDB(9).resources.otherElectronics[0].currentRating).toEqual(
+      4,
+    )
+    const purchasedRow = getByLabelText("Remove White Noise Generator").closest(
+      "tr",
+    )
+    expect(
+      getTextInContainer(purchasedRow, "White Noise Generator"),
+    ).toBeInTheDocument()
+    expect(
+      getTextInContainer(purchasedRow, "Communication"),
+    ).toBeInTheDocument()
+    expect(getTextInContainer(purchasedRow, "4")).toBeInTheDocument()
+    expect(getTextInContainer(purchasedRow, "3")).toBeInTheDocument()
+    expect(getTextInContainer(purchasedRow, "200¥")).toBeInTheDocument()
   })
 })

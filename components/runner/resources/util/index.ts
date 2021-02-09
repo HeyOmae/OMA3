@@ -1,9 +1,6 @@
 import { createContext } from "react"
-import {
-  DispatchAction,
-  RunnerReducer,
-} from "../../../../hooks/useRunnerAccess"
-import { Gear } from "../../../../types/Resources"
+import { DispatchAction, RunnerReducer } from "@/hooks/useRunnerAccess"
+import { Gear } from "@/types/Resources"
 
 export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
   if (typeof payload === "number") {
