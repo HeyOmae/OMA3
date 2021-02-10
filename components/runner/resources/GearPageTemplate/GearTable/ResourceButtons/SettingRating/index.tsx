@@ -9,7 +9,7 @@ export interface Props {
 
 export const SettingRating: FC<Props> = ({
   setRating,
-  gear: { name, maxRating = 6, currentRating = 1 },
+  gear: { name, maxRating, currentRating = 1 },
 }) => (
   <Slider
     data-testid={`${name}-rating`}
