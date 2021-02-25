@@ -12,7 +12,7 @@ describe("<ProjectileWeapons/>", () => {
   const setup = (id = "9") =>
     render(withTestRouter(<ProjectileWeapons />, { query: { id } }))
 
-  it("should add a weapon to weapon to the runner", async () => {
+  it("should add a weapon to the runner", async () => {
     const { getByLabelText, getByText } = setup()
 
     expect(runnerFromDB(8).resources).toBeUndefined()

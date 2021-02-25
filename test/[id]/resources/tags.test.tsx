@@ -5,7 +5,7 @@ import { tagsData } from "@/data/electronics"
 describe("RFID Tags page", () => {
   beforeAll(setupIndexedDB)
   it(
-    "should by able to buy and sell RFIDs",
+    "should be able to buy and sell RFIDs",
     testBuyAndSellGear(TagPage, tagsData),
   )
 })
