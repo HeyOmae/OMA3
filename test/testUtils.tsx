@@ -179,7 +179,7 @@ export const testBuyAndSellGear = (
     currentNuyen = 272230,
     totalNuyen = 275000,
     gearA = gearData[0],
-    gearB = gearData[Math.round(gearData.length / 2)],
+    gearB = gearData[Math.floor(gearData.length / 2)],
     gearC = gearData[gearData.length - 1]
 
   await waitFor(() => {

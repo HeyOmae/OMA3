@@ -17,6 +17,11 @@ export interface Gear {
   cost: number
 }
 
+export interface GearTools extends Gear {
+  useAs: GearTypes[]
+  choice: "SKILL"
+}
+
 interface MatrixAttributes {
   programs: number
 }

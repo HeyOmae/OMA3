@@ -1,4 +1,6 @@
-export const tools = [
+import { GearTools } from "@/types/Resources"
+
+export const tools: GearTools[] = [
   {
     useAs: [
       {
