@@ -1,9 +1,12 @@
 import { RunnerLayout } from "@/components/layout"
 import dynamic from "next/dynamic"
 
-const PriorityTable = dynamic(() => import("@/runner/priorityTable"), {
-  ssr: false,
-})
+const PriorityTable = dynamic(
+  () => import("../../components/runner/priorityTable"),
+  {
+    ssr: false,
+  },
+)
 
 export const PriorityPage = () => (
   <RunnerLayout>
