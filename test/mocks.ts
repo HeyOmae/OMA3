@@ -576,6 +576,18 @@ export const mockedRunners: Runner[] = [
       ],
     },
   },
+  {
+    id: 11,
+    name: "Street Rage",
+    description: "Troll Street Samurai",
+    priority: {
+      metatype: "A",
+      skills: "C",
+      attributes: "B",
+      "mag/res": "E",
+      resources: "D",
+    },
+  },
 ]
 
 export const orkRunner: Runner = {
