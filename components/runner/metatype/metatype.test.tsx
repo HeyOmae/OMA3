@@ -1,5 +1,5 @@
 import {
-  getByLabelText,
+  getByLabelText as getContentByLabelText,
   render,
   setupIndexedDB,
   waitFor,
@@ -16,28 +16,52 @@ describe("<Metatype/>", () => {
   const setup = (id = "3") =>
     render(withTestRouter(<Metatype />, { query: { id } }))
 
-  it("should have a radio buttons with the metatypes", async () => {
-    const { getByRole, queryByText } = setup()
+  describe("select metatype radio buttons", () => {
+    it("should have display a radio buttons for each metatype", async () => {
+      const { getByRole, queryByText } = setup()
 
-    await waitFor(() => {
-      const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
+      await waitFor(() => {
+        const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
 
-      expect(getByLabelText(metatypeRadio, "Human")).toBeInTheDocument()
-      expect(getByLabelText(metatypeRadio, "Dwarf")).toBeInTheDocument()
-      expect(getByLabelText(metatypeRadio, "Elf")).toBeInTheDocument()
-      expect(getByLabelText(metatypeRadio, "Ork")).toBeInTheDocument()
-      expect(getByLabelText(metatypeRadio, "Troll")).toBeInTheDocument()
+        expect(
+          getContentByLabelText(metatypeRadio, "Human"),
+        ).toBeInTheDocument()
+        expect(
+          getContentByLabelText(metatypeRadio, "Dwarf"),
+        ).toBeInTheDocument()
+        expect(getContentByLabelText(metatypeRadio, "Elf")).toBeInTheDocument()
+        expect(getContentByLabelText(metatypeRadio, "Ork")).toBeInTheDocument()
+        expect(
+          getContentByLabelText(metatypeRadio, "Troll"),
+        ).toBeInTheDocument()
 
-      // if metatype is not selected attributes should not display
-      expect(queryByText("Body")).not.toBeInTheDocument()
-      expect(queryByText("Agility")).not.toBeInTheDocument()
-      expect(queryByText("Reaction")).not.toBeInTheDocument()
-      expect(queryByText("Strength")).not.toBeInTheDocument()
-      expect(queryByText("Willpower")).not.toBeInTheDocument()
-      expect(queryByText("Logic")).not.toBeInTheDocument()
-      expect(queryByText("Intuition")).not.toBeInTheDocument()
-      expect(queryByText("Charisma")).not.toBeInTheDocument()
-      expect(queryByText("Edge")).not.toBeInTheDocument()
+        // if metatype is not selected attributes should not display
+        expect(queryByText("Body")).not.toBeInTheDocument()
+        expect(queryByText("Agility")).not.toBeInTheDocument()
+        expect(queryByText("Reaction")).not.toBeInTheDocument()
+        expect(queryByText("Strength")).not.toBeInTheDocument()
+        expect(queryByText("Willpower")).not.toBeInTheDocument()
+        expect(queryByText("Logic")).not.toBeInTheDocument()
+        expect(queryByText("Intuition")).not.toBeInTheDocument()
+        expect(queryByText("Charisma")).not.toBeInTheDocument()
+        expect(queryByText("Edge")).not.toBeInTheDocument()
+      })
+    })
+
+    it("should disable human and elf at metatype priority A", async () => {
+      const { getByRole, getByLabelText } = setup("11")
+
+      await waitFor(() => {
+        expect(
+          getByRole("radiogroup", { name: "metatypes" }),
+        ).toBeInTheDocument()
+      })
+
+      expect(getByLabelText("Human")).toBeDisabled()
+      expect(getByLabelText("Elf")).toBeDisabled()
+      expect(getByLabelText("Dwarf")).not.toBeDisabled()
+      expect(getByLabelText("Ork")).not.toBeDisabled()
+      expect(getByLabelText("Troll")).not.toBeDisabled()
     })
   })
 
@@ -48,7 +72,7 @@ describe("<Metatype/>", () => {
 
     await waitFor(() => {
       const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
-      getByLabelText(metatypeRadio, "Ork").click()
+      getContentByLabelText(metatypeRadio, "Ork").click()
     })
 
     await waitFor(() => {
@@ -57,7 +81,8 @@ describe("<Metatype/>", () => {
 
       const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
       expect(
-        (getByLabelText(metatypeRadio, "Ork") as HTMLInputElement).checked,
+        (getContentByLabelText(metatypeRadio, "Ork") as HTMLInputElement)
+          .checked,
       ).toBe(true)
     })
   })

@@ -8,10 +8,11 @@ import {
   RadioGroup,
 } from "@material-ui/core"
 import { useState } from "react"
-import metatypeData from "../../../data/metatype.json"
-import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import { initRunnerAttributes, Metatypes } from "../../../types/runner"
-import { Attributes } from "../../../types/RunnerAttributes"
+import metatypeData from "@/data/metatype.json"
+import priorityData from "@/data/priorityTable.json"
+import { useRunnerAccess } from "@/hooks/useRunnerAccess"
+import { initRunnerAttributes, Metatypes } from "@/types/runner"
+import { Attributes } from "@/types/RunnerAttributes"
 import { DisplayPoints } from "./DisplayPoints"
 import { AttributeSelection } from "./AttributeSelection"
 import { SpendingPointsToggle } from "./SpendingPointsToggle"
@@ -73,6 +74,9 @@ export const Metatype = () => {
     true,
   )
 
+  const availibleMetatypes =
+    priorityData.metatypes[runner?.priority?.metatype]?.supportedMetatypes
+
   return runner ? (
     runner.priority?.metatype ? (
       <FormGroup>
@@ -88,6 +92,7 @@ export const Metatype = () => {
           >
             {Object.keys(metatypeData).map((metatypeName) => (
               <FormControlLabel
+                disabled={!availibleMetatypes.includes(metatypeName)}
                 key={metatypeName}
                 value={metatypeName}
                 control={<Radio />}
