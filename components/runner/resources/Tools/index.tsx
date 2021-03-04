@@ -1,11 +1,16 @@
 import { tools } from "@/data/tools"
 import { GearTools } from "@/types/Resources"
 import { GearPageTemplate } from "../GearPageTemplate"
-import { Columns, gearTableConfigOptions } from "../util"
+import {
+  Columns,
+  gearTableConfigOptions,
+  gearToolsConfigOptionSetSkill,
+} from "../util"
 
 const buyCols: Columns<GearTools>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
+  gearToolsConfigOptionSetSkill,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
 ]
@@ -17,7 +22,7 @@ const sellCols: Columns<GearTools>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export default () => (
+const Tools = () => (
   <GearPageTemplate
     gearLabel="Tools"
     resourceKey="tools"
@@ -26,3 +31,4 @@ export default () => (
     removeGearTableConfig={sellCols}
   />
 )
+export default Tools

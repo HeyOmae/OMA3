@@ -2,12 +2,12 @@ import { GearTyped } from "@/types/Resources"
 import { Slider } from "@material-ui/core"
 import { FC } from "react"
 
-export interface Props {
+export interface SettingRatingProps {
   setRating: (rating: number) => void
   gear: GearTyped
 }
 
-export const SettingRating: FC<Props> = ({
+export const SettingRating: FC<SettingRatingProps> = ({
   setRating,
   gear: { name, maxRating, currentRating = 1 },
 }) => (

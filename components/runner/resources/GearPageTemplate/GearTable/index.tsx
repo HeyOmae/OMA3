@@ -1,4 +1,4 @@
-import { ReactElement } from "react"
+import { FC, ReactElement } from "react"
 import {
   Table,
   TableBody,
@@ -9,11 +9,23 @@ import {
 } from "@material-ui/core"
 import { Gear } from "@/types/Resources"
 import { Columns } from "../../util"
-import { StandardDisplayRow, RatingRow } from "./Row"
+import { StandardDisplayRow, RatingRow, SelectSkillRow } from "./Row"
 
 export interface Props<G> {
   listOfGear: G[]
   cols: Columns<G>[]
+}
+
+function displayRow(gear: Gear, colLabel: string) {
+  if (colLabel === "Buy") {
+    if ("rating" in gear) {
+      return RatingRow
+    } else if ("choice" in gear) {
+      return SelectSkillRow
+    }
+  }
+
+  return StandardDisplayRow
 }
 
 export function GearTable<G extends Gear>({
@@ -32,10 +44,7 @@ export function GearTable<G extends Gear>({
         </TableHead>
         <TableBody>
           {listOfGear.map((gear, index) => {
-            const Row =
-              "rating" in gear && cols[0].label === "Buy"
-                ? RatingRow
-                : StandardDisplayRow
+            const Row = displayRow(gear, cols[0].label)
             return <Row key={gear.name} cols={cols} gear={gear} index={index} />
           })}
         </TableBody>
