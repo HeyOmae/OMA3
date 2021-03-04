@@ -59,5 +59,9 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/other-electronics",
     )
+    expect(getByText("Tools").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/tools",
+    )
   })
 })

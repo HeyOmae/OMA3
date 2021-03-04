@@ -2,9 +2,10 @@ import { FC, useMemo, useState } from "react"
 import { Gear, GearTyped } from "@/types/Resources"
 import { TableCell, TableRow } from "@material-ui/core"
 import { Columns } from "../../../util"
+import skillData from "@/data/skills.json"
 
 export interface Props {
-  cols: Columns<Gear>[]
+  cols: Columns<Gear, unknown>[]
   gear: Gear
   index: number
 }
@@ -38,6 +39,31 @@ export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
       {cols.map(({ display, label }) => (
         <TableCell key={label}>
           {display(gearWithRating, index, setRating)}
+        </TableCell>
+      ))}
+    </TableRow>
+  )
+}
+
+export interface SelectSkillProps extends Props {
+  cols: Columns<Gear, string>[]
+}
+
+export const SelectSkillRow: FC<SelectSkillProps> = ({ cols, gear, index }) => {
+  const [selectedSkill, setSkill] = useState(skillData[0].name)
+  const gearWithSkillName = useMemo(
+    () => ({
+      ...gear,
+      name: `${selectedSkill} ${gear.name}`,
+    }),
+    [selectedSkill],
+  )
+
+  return (
+    <TableRow>
+      {cols.map(({ display, label }) => (
+        <TableCell key={label}>
+          {display(gearWithSkillName, index, setSkill, selectedSkill)}
         </TableCell>
       ))}
     </TableRow>

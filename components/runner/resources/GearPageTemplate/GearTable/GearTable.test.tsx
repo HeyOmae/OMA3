@@ -1,5 +1,5 @@
-import { render, SliderHelper } from "@/test/testUtils"
-import { GearTyped, GearWeaponMelee } from "@/types/Resources"
+import { render, SliderHelper, fireEvent } from "@/test/testUtils"
+import { GearTools, GearTyped, GearWeaponMelee } from "@/types/Resources"
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,
@@ -8,9 +8,11 @@ import {
   DispatchContext,
   gearRatingTableConfigOption,
   gearTableConfigOptions,
+  gearToolsConfigOptionSetSkill,
 } from "../../util"
 import { GearTable, Props } from "."
 import { otherElectronics } from "@/data/electronics"
+import { tools } from "@/data/tools"
 
 describe("<GearTable />", () => {
   describe("<WeaponTable/>", () => {
@@ -145,6 +147,51 @@ describe("<GearTable />", () => {
       expect(dispatch).toHaveBeenCalledWith({
         type: undefined,
         payload: bugScanner,
+      })
+    })
+  })
+
+  describe("tools", () => {
+    const setup = () => {
+      const props: Props<GearTools> = {
+          listOfGear: tools,
+          cols: [
+            gearTableConfigOptions.buy,
+            gearTableConfigOptions.name,
+            gearToolsConfigOptionSetSkill,
+          ],
+        },
+        dispatch = jest.fn()
+      return {
+        ...render(
+          <DispatchContext.Provider value={dispatch}>
+            <GearTable<GearTools> {...props} />
+          </DispatchContext.Provider>,
+        ),
+        props,
+        dispatch,
+      }
+    }
+
+    it("should display a skill name in the tool's name", () => {
+      const {
+        getByText,
+        getAllByText,
+        getByLabelText,
+        props,
+        dispatch,
+      } = setup()
+
+      fireEvent.mouseDown(getAllByText("Astral")[1])
+      getByText("Engineering").click()
+      getByLabelText("Add Engineering Shop").click()
+
+      expect(dispatch).toBeCalledWith({
+        type: undefined,
+        payload: {
+          ...props.listOfGear[1],
+          name: "Engineering Shop",
+        },
       })
     })
   })

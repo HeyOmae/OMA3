@@ -1,12 +1,13 @@
 import { Columns } from "../util"
-import { Gear, GearTyped, GearWeaponMelee } from "@/types/Resources"
+import { Gear, GearTools, GearTyped, GearWeaponMelee } from "@/types/Resources"
 import {
   AddResourceButton,
   RemoveResourceButton,
   SettingRating,
+  SkillSelect,
 } from "../GearPageTemplate/GearTable/ResourceButtons"
 
-export const gearTableConfigOptions: Record<string, Columns<Gear>> = {
+export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
   name: {
     display: (gear) => gear.name,
     label: "Name",
@@ -45,6 +46,13 @@ export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
     display: (gear) => (gear.rating ? gear.currentRating : "N/A"),
     label: "Rating",
   },
+}
+
+export const gearToolsConfigOptionSetSkill: Columns<GearTools, string> = {
+  display: (gear, index, setSkill, selectedSkill) => (
+    <SkillSelect selectedSkill={selectedSkill} setSkill={setSkill} />
+  ),
+  label: "Select Skill",
 }
 
 export const gearMeleeTableConfigOption: Record<

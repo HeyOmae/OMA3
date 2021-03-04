@@ -27,9 +27,11 @@ describe("<Tools />", () => {
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
     const tool = tools[2],
-      toolRow = getByLabelText(`Add ${tool.name}`).closest("tr")
+      toolRow = getByLabelText(`Add Astral ${tool.name}`).closest("tr")
 
-    expect(getTextInContainer(toolRow, tool.name)).toBeInTheDocument()
+    expect(
+      getTextInContainer(toolRow, `Astral ${tool.name}`),
+    ).toBeInTheDocument()
     expect(getTextInContainer(toolRow, tool.availability)).toBeInTheDocument()
     expect(getTextInContainer(toolRow, `${tool.cost}¥`)).toBeInTheDocument()
   })
