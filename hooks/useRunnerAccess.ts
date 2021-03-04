@@ -45,7 +45,9 @@ export const useRunnerAccess: UseRunnerAccess = <T, P>(reducer) => {
       }
     })
 
-    return () => (isMounted = false)
+    return () => {
+      isMounted = false
+    }
   }, [id])
 
   useEffect(() => {

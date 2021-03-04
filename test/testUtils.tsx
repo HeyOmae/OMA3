@@ -102,6 +102,7 @@ export const withTestRouter = (
 ) => (
   <RouterContext.Provider
     value={{
+      isLocaleDomain: true,
       basePath: "",
       route,
       pathname,
