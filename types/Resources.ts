@@ -40,7 +40,14 @@ export interface GearTyped extends Gear, GearTypes {
   maxRating?: number
   rating?: true
   currentRating?: number
-  rateMultiplier?: "cost"
+  rateMultiplier?: "cost" | "capacity cost"
+}
+
+export interface GearModRated extends GearTyped {
+  modifications: {
+    itemhookmod: GearModHooks
+  }
+  useAs?: GearTypes[]
 }
 
 export interface GearElectronic extends GearTyped {

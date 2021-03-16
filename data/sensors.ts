@@ -1,74 +1,9 @@
 export const sensors = [
   {
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "1",
-    _cost: "50",
-    _id: "binoculars",
-    _maxrat: "3",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-    _subtype: "IMAGING",
-    _type: "ELECTRONICS",
-  },
-  {
     _avail: "1",
     _cost: "50",
     _id: "binoculars_optical",
     _subtype: "OPTICAL",
-    _type: "ELECTRONICS",
-  },
-  {
-    useas: [
-      {
-        _type: "ELECTRONICS",
-        _subtype: "IMAGING",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "1",
-    _cost: "100",
-    _id: "camera",
-    _maxrat: "6",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-  },
-  {
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "1",
-    _cost: "100",
-    _id: "microcamera",
-    _subtype: "IMAGING",
-    _type: "ELECTRONICS",
-  },
-  {
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "2",
-    _cost: "200",
-    _id: "contacts",
-    _maxrat: "3",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-    _subtype: "IMAGING",
     _type: "ELECTRONICS",
   },
   {
@@ -79,75 +14,10 @@ export const sensors = [
     _type: "ELECTRONICS",
   },
   {
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "1",
-    _cost: "100",
-    _id: "glasses",
-    _maxrat: "4",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-    _subtype: "IMAGING",
-    _type: "ELECTRONICS",
-  },
-  {
-    useas: [
-      {
-        _type: "ELECTRONICS",
-        _subtype: "IMAGING",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "1",
-    _cost: "50",
-    _id: "goggles",
-    _maxrat: "6",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-  },
-  {
-    modifications: {
-      itemhookmod: {
-        _capacity: "3",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "1",
-    _cost: "350",
-    _id: "imaging_scope_single",
-    _subtype: "IMAGING",
-    _type: "ELECTRONICS",
-  },
-  {
     _avail: "5",
     _cost: "3000",
     _id: "mage-sight-goggles",
     _subtype: "OPTICAL",
-    _type: "ELECTRONICS",
-  },
-  {
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _avail: "1",
-    _cost: "120",
-    _id: "monocle",
-    _maxrat: "4",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-    _subtype: "IMAGING",
     _type: "ELECTRONICS",
   },
   {
