@@ -88,6 +88,13 @@ export const ResourcePage = (): JSX.Element => {
       >
         <Button variant="contained">Tools</Button>
       </NextLink>
+      <NextLink
+        href="/[id]/resources/imaging"
+        as={`/${query.id}/resources/imaging`}
+        passHref
+      >
+        <Button variant="contained">Imaging Devices</Button>
+      </NextLink>
     </RunnerLayout>
   )
 }

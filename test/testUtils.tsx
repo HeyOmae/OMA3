@@ -117,6 +117,7 @@ export const withTestRouter = (
       isFallback,
       events,
       isReady: true,
+      isPreview: false,
     }}
   >
     {tree}
