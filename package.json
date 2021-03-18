@@ -60,6 +60,6 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3",
-    "webpack": "^5.26.0"
+    "webpack": "^5.26.3"
   }
 }
