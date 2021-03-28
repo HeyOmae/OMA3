@@ -1,0 +1,265 @@
+import { GearMod } from "@/types/Resources"
+
+export const imagingMods: GearMod[] = [
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 1,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER_EYEWARE",
+        capacity: 1,
+        slot: "CYBEREYE_IMPLANT",
+        cost: 750,
+        availability: "2",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EYEWARE",
+        essense: 0.1,
+        cost: 750,
+        availability: "2",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 1,
+      },
+    ],
+    availability: "1",
+    cost: 250,
+    name: "flare_compensation",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 1,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER_EYEWARE",
+        capacity: 1,
+        slot: "CYBEREYE_IMPLANT",
+        cost: 775,
+        availability: "2",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EYEWARE",
+        essense: 0.1,
+        cost: 775,
+        availability: "2",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 1,
+      },
+    ],
+    availability: "1",
+    cost: 25,
+    name: "image_link",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 1,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER_EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE_IMPLANT",
+        cost: 1000,
+        availability: "2",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EYEWARE",
+        essense: 0.1,
+        cost: 1000,
+        availability: "2",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 1,
+      },
+    ],
+    availability: "2",
+    cost: 500,
+    name: "low_light_vision",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 2,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER_EYEWARE",
+        capacity: 3,
+        slot: "CYBEREYE_IMPLANT",
+        cost: 2000,
+        availability: "3L",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EYEWARE",
+        essense: 0.2,
+        cost: 2000,
+        availability: "3L",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 1,
+      },
+    ],
+    availability: "2",
+    cost: 2000,
+    name: "smartlink",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 1,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER_EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE_IMPLANT",
+        cost: 1500,
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EYEWARE",
+        essense: 0.1,
+        cost: 1500,
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 1,
+      },
+    ],
+    availability: "2",
+    cost: 500,
+    name: "thermographic_vision",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 1,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 1,
+      },
+    ],
+    availability: "1",
+    cost: 300,
+    name: "ultrasound_link",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 2,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER_EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE_IMPLANT",
+        cost: 3500,
+        availability: "3",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EYEWARE",
+        essense: 0.1,
+        cost: 3500,
+        availability: "3",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 2,
+      },
+    ],
+    availability: "1",
+    cost: 500,
+    name: "vision_enhancement",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        capacity: 1,
+        slot: "OPTICAL",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER_EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE_IMPLANT",
+        cost: 1750,
+        availability: "3",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EYEWARE",
+        essense: 0.1,
+        cost: 1750,
+        availability: "3",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "OPTICAL",
+        slot: "HELMET_ACCESSORY",
+        capacity: 1,
+      },
+    ],
+    modifications: {
+      attrmod: {
+        attribute: "ATTACK_RATING",
+        attackRating: [0, 0, 2, 2, 2],
+      },
+    },
+    availability: "1",
+    cost: 250,
+    name: "vision_magnification",
+  },
+]
