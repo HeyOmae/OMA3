@@ -17,6 +17,22 @@ export interface Gear {
   cost: number
 }
 
+export interface GearMod extends Gear {
+  useAs: (AsModAccessory | AsCyberwareInstall)[]
+  modifications: {
+    attrmod: {
+      attribute: string
+      attackRating: attackRating
+    }
+  }
+}
+
+interface AsModAccessory extends AsElectronicAccessory, Partial<Gear> {}
+
+interface AsCyberwareInstall extends Omit<AsModAccessory, "slot"> {
+  essense?: number
+}
+
 export interface GearTools extends Gear {
   useAs: GearTypes[]
   choice: "SKILL"
@@ -98,15 +114,17 @@ export interface GearArmor extends Gear, Partial<GearTypes> {
   modonly?: true
 }
 
+type attackRating = [
+  close: number,
+  near: number,
+  medium: number,
+  far: number,
+  extreme: number,
+]
+
 interface BaseWeapon {
   dv: string
-  ar: [
-    close: number,
-    near: number,
-    medium: number,
-    far: number,
-    extreme: number,
-  ]
+  ar: attackRating
   skill: string
   specialization?: string
 }
