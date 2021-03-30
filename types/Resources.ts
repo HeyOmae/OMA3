@@ -19,7 +19,7 @@ export interface Gear {
 
 export interface GearMod extends Gear {
   useAs: (AsModAccessory | AsCyberwareInstall)[]
-  modifications: {
+  modifications?: {
     attrmod: {
       attribute: string
       attackRating: attackRating
