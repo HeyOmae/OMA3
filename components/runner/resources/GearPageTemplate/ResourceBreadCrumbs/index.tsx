@@ -5,15 +5,27 @@ import { FC } from "react"
 
 export interface Props {
   activePage: string
+  previousPage?: { label: string; categoryPath: string }
 }
 
-export const ResourceBreadCrumbs: FC<Props> = ({ activePage }) => {
+export const ResourceBreadCrumbs: FC<Props> = ({
+  activePage,
+  previousPage,
+}) => {
   const { query } = useRouter()
   return (
     <Breadcrumbs>
-      <NextLink href="/[id]/resources" as={`/${query.id}/resources`} passHref>
+      <NextLink href={`/${query.id}/resources`} passHref>
         <Link>Resources</Link>
       </NextLink>
+      {previousPage && (
+        <NextLink
+          href={`/${query.id}/resources/${previousPage.categoryPath}`}
+          passHref
+        >
+          <Link>{previousPage.label}</Link>
+        </NextLink>
+      )}
       <Typography>{activePage}</Typography>
     </Breadcrumbs>
   )

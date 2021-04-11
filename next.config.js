@@ -8,4 +8,5 @@ module.exports = withPWA({
   future: {
     webpack5: true,
   },
+  trailingSlash: true,
 })
