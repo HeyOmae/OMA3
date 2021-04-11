@@ -15,4 +15,19 @@ describe("<ResourceBreadCrumbs/>", () => {
     expect(getByText("Resources")).toHaveAttribute("href", "/1/resources")
     expect(getByText("Melee Weapons")).toBeInTheDocument()
   })
+
+  describe("nested resource pages", () => {
+    it("should have a link to the previous resource page", () => {
+      const { getByText } = setup({
+        activePage: "Katana (1)",
+        previousPage: { label: "Melee Weapons", categoryPath: "melee" },
+      })
+
+      expect(getByText("Melee Weapons")).toHaveAttribute(
+        "href",
+        "/1/resources/melee",
+      )
+      expect(getByText("Katana (1)")).toBeInTheDocument()
+    })
+  })
 })

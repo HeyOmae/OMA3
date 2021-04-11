@@ -3,7 +3,7 @@ import { GearWeaponMelee } from "@/types/Resources"
 import { addMeleeTableConfig, removeMeleeTableConfig } from "./meleeTableConfig"
 import { GearPageTemplate } from "../GearPageTemplate"
 
-export default () => (
+const MeleeWeapons = () => (
   <GearPageTemplate<GearWeaponMelee>
     gearLabel="Melee Weapons"
     resourceKey="melee"
@@ -12,3 +12,5 @@ export default () => (
     removeGearTableConfig={removeMeleeTableConfig}
   />
 )
+
+export default MeleeWeapons
