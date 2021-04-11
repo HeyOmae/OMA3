@@ -1,18 +1,12 @@
 import { CombatSpells } from "./CombatSpells"
 import { SpellsTable } from "./SpellsTable"
-import {
-  Combat,
-  Detection,
-  Health,
-  Illusion,
-  Manipulation,
-} from "../../../../data/spells.json"
-import { GeneralSpell, CombatSpell, Spell } from "../../../../types/MagRes"
+import SpellsData from "@/data/spells.json"
+import { GeneralSpell, CombatSpell, Spell } from "@/types/MagRes"
 import { Payload, SET_SPELL } from ".."
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
+import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { FC } from "react"
-import { AddButton } from "../../../common"
-import { AccordionWrapper } from "../../../common/Accordion"
+import { AddButton } from "@/components/common"
+import { AccordionWrapper } from "@/components/common/Accordion"
 
 export interface Props {
   dispatch: DispatchAction<symbol, Payload>
@@ -25,6 +19,8 @@ export interface AddSpellButtonProps {
   dispatch: DispatchAction<symbol, Payload>
   actionLabel: ActionLabel
 }
+
+const { Combat, Detection, Health, Illusion, Manipulation } = SpellsData
 
 const AddSpellButton: FC<AddSpellButtonProps> = ({
   spell,
