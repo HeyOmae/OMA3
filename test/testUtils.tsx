@@ -171,21 +171,24 @@ export const runnerFromDB = (id = 0): Runner =>
   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
     .records[id].value
 
+export const caymansCurrentlySpentNuyen = 272130
+
 export const testBuyAndSellGear = (
   GearPage: FC,
   gearData: Gear[],
 ) => async () => {
-  const { getByLabelText, getByText } = customRender(
+  const { getByLabelText, getAllByLabelText, getByText } = customRender(
       withTestRouter(<GearPage />, { query: { id: "10" } }),
     ),
-    currentNuyen = 272230,
     totalNuyen = 275000,
     gearA = gearData[0],
     gearB = gearData[Math.floor(gearData.length / 2)],
     gearC = gearData[gearData.length - 1]
 
   await waitFor(() => {
-    expect(getByText(`${currentNuyen}¥/${totalNuyen}¥`)).toBeInTheDocument()
+    expect(
+      getByText(`${caymansCurrentlySpentNuyen}¥/${totalNuyen}¥`),
+    ).toBeInTheDocument()
   })
 
   getByLabelText(`Add ${gearA.name}`).click()
@@ -194,13 +197,18 @@ export const testBuyAndSellGear = (
 
   expect(
     getByText(
-      `${currentNuyen - gearA.cost - gearB.cost - gearC.cost}¥/${totalNuyen}¥`,
+      `${
+        caymansCurrentlySpentNuyen - gearA.cost - gearB.cost - gearC.cost
+      }¥/${totalNuyen}¥`,
     ),
   ).toBeInTheDocument()
 
-  getByLabelText(`Remove ${gearB.name}`).click()
+  // TODO: kill past me for doing this nonsense
+  getAllByLabelText(`Remove ${gearB.name}`)[0].click()
 
   expect(
-    getByText(`${currentNuyen - gearA.cost - gearC.cost}¥/${totalNuyen}¥`),
+    getByText(
+      `${caymansCurrentlySpentNuyen - gearA.cost - gearC.cost}¥/${totalNuyen}¥`,
+    ),
   ).toBeInTheDocument()
 }

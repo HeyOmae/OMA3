@@ -9,6 +9,7 @@ export interface Resources {
   electronicAccessories?: GearElectronicAccessory[]
   tags?: GearElectronic[]
   otherElectronics?: GearTyped[]
+  imaging: GearModRated[]
 }
 
 export interface Gear {
@@ -59,7 +60,11 @@ export interface GearTyped extends Gear, GearTypes {
   rateMultiplier?: "cost" | "capacity cost"
 }
 
-export interface GearModRated extends GearTyped {
+interface ModifiableGear {
+  mods?: GearMod[]
+}
+
+export interface GearModRated extends GearTyped, ModifiableGear {
   modifications: {
     itemhookmod: GearModHooks
   }

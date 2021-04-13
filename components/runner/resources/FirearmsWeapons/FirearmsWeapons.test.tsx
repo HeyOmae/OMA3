@@ -5,10 +5,11 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextIn,
-} from "../../../../test/testUtils"
+  caymansCurrentlySpentNuyen,
+} from "@/test/testUtils"
 import FirearmsWeapons from "./"
-import FirearmsData from "../../../../data/firearms"
-import { mockedRunners } from "../../../../test/mocks"
+import FirearmsData from "@/data/firearms"
+import { mockedRunners } from "@/test/mocks"
 
 describe("<FirearmsWeapon />", () => {
   beforeAll(setupIndexedDB)
@@ -93,17 +94,22 @@ describe("<FirearmsWeapon />", () => {
     expect(runnerFromDB(9).resources.firearms).toHaveLength(
       mockedRunners[9].resources.firearms.length,
     )
+    const gunToBeRemoved = runnerFromDB(9).resources.firearms[2]
     await waitFor(() => {
-      expect(getByText("272230¥/275000¥")).toBeInTheDocument()
+      expect(
+        getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
+      ).toBeInTheDocument()
     })
 
-    getByLabelText("Remove Browning Ultra Power").click()
+    getByLabelText(`Remove ${gunToBeRemoved.name}`).click()
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.firearms).toHaveLength(
         mockedRunners[9].resources.firearms.length - 1,
       )
     })
-    expect(getByText("272870¥/275000¥")).toBeInTheDocument()
+    expect(
+      getByText(`${caymansCurrentlySpentNuyen + gunToBeRemoved.cost}¥/275000¥`),
+    ).toBeInTheDocument()
   })
 })

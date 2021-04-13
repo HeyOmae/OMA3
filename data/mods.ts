@@ -11,15 +11,15 @@ export const imagingMods: GearMod[] = [
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         capacity: 1,
-        slot: "CYBEREYE_IMPLANT",
+        slot: "CYBEREYE IMPLANT",
         cost: 750,
         availability: "2",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         essense: 0.1,
         cost: 750,
         availability: "2",
@@ -27,13 +27,13 @@ export const imagingMods: GearMod[] = [
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 1,
       },
     ],
     availability: "1",
     cost: 250,
-    name: "flare_compensation",
+    name: "Flare Compensation",
   },
   {
     useAs: [
@@ -45,15 +45,15 @@ export const imagingMods: GearMod[] = [
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         capacity: 1,
-        slot: "CYBEREYE_IMPLANT",
+        slot: "CYBEREYE IMPLANT",
         cost: 775,
         availability: "2",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         essense: 0.1,
         cost: 775,
         availability: "2",
@@ -61,13 +61,13 @@ export const imagingMods: GearMod[] = [
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 1,
       },
     ],
     availability: "1",
     cost: 25,
-    name: "image_link",
+    name: "Image Link",
   },
   {
     useAs: [
@@ -79,15 +79,15 @@ export const imagingMods: GearMod[] = [
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         capacity: 2,
-        slot: "CYBEREYE_IMPLANT",
+        slot: "CYBEREYE IMPLANT",
         cost: 1000,
         availability: "2",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         essense: 0.1,
         cost: 1000,
         availability: "2",
@@ -95,13 +95,13 @@ export const imagingMods: GearMod[] = [
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 1,
       },
     ],
     availability: "2",
     cost: 500,
-    name: "low_light_vision",
+    name: "Low Light Vision",
   },
   {
     useAs: [
@@ -113,15 +113,15 @@ export const imagingMods: GearMod[] = [
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         capacity: 3,
-        slot: "CYBEREYE_IMPLANT",
+        slot: "CYBEREYE IMPLANT",
         cost: 2000,
         availability: "3L",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         essense: 0.2,
         cost: 2000,
         availability: "3L",
@@ -129,13 +129,13 @@ export const imagingMods: GearMod[] = [
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 1,
       },
     ],
     availability: "2",
     cost: 2000,
-    name: "smartlink",
+    name: "Smartlink",
   },
   {
     useAs: [
@@ -147,27 +147,27 @@ export const imagingMods: GearMod[] = [
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         capacity: 2,
-        slot: "CYBEREYE_IMPLANT",
+        slot: "CYBEREYE IMPLANT",
         cost: 1500,
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         essense: 0.1,
         cost: 1500,
       },
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 1,
       },
     ],
     availability: "2",
     cost: 500,
-    name: "thermographic_vision",
+    name: "Thermographic Vision",
   },
   {
     useAs: [
@@ -180,13 +180,13 @@ export const imagingMods: GearMod[] = [
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 1,
       },
     ],
     availability: "1",
     cost: 300,
-    name: "ultrasound_link",
+    name: "Ultrasound Link",
   },
   {
     useAs: [
@@ -198,15 +198,15 @@ export const imagingMods: GearMod[] = [
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         capacity: 2,
-        slot: "CYBEREYE_IMPLANT",
+        slot: "CYBEREYE IMPLANT",
         cost: 3500,
         availability: "3",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         essense: 0.1,
         cost: 3500,
         availability: "3",
@@ -214,13 +214,13 @@ export const imagingMods: GearMod[] = [
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 2,
       },
     ],
     availability: "1",
     cost: 500,
-    name: "vision_enhancement",
+    name: "Vision Enhancement",
   },
   {
     useAs: [
@@ -232,15 +232,15 @@ export const imagingMods: GearMod[] = [
       },
       {
         type: "ACCESSORY",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         capacity: 2,
-        slot: "CYBEREYE_IMPLANT",
+        slot: "CYBEREYE IMPLANT",
         cost: 1750,
         availability: "3",
       },
       {
         type: "CYBERWARE",
-        subtype: "CYBER_EYEWARE",
+        subtype: "CYBER EYEWARE",
         essense: 0.1,
         cost: 1750,
         availability: "3",
@@ -248,18 +248,18 @@ export const imagingMods: GearMod[] = [
       {
         type: "ACCESSORY",
         subtype: "OPTICAL",
-        slot: "HELMET_ACCESSORY",
+        slot: "HELMET ACCESSORY",
         capacity: 1,
       },
     ],
     modifications: {
       attrmod: {
-        attribute: "ATTACK_RATING",
+        attribute: "ATTACK RATING",
         attackRating: [0, 0, 2, 2, 2],
       },
     },
     availability: "1",
     cost: 250,
-    name: "vision_magnification",
+    name: "Vision Magnification",
   },
 ]

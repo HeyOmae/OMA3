@@ -16,8 +16,8 @@ export interface Props<G> {
   cols: Columns<G>[]
 }
 
-function displayRow(gear: Gear, colLabel: string) {
-  if (colLabel === "Buy") {
+function displayRow(gear: Gear, isPurchasing: boolean) {
+  if (isPurchasing) {
     if ("rating" in gear) {
       return RatingRow
     } else if ("choice" in gear) {
@@ -44,8 +44,16 @@ export function GearTable<G extends Gear>({
         </TableHead>
         <TableBody>
           {listOfGear.map((gear, index) => {
-            const Row = displayRow(gear, cols[0].label)
-            return <Row key={gear.name} cols={cols} gear={gear} index={index} />
+            const isPurchasing = cols[0].label === "Buy"
+            const Row = displayRow(gear, isPurchasing)
+            return (
+              <Row
+                key={isPurchasing ? gear.name : index}
+                cols={cols}
+                gear={gear}
+                index={index}
+              />
+            )
           })}
         </TableBody>
       </Table>

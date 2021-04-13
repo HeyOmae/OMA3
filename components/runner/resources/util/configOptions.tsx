@@ -1,5 +1,11 @@
 import { Columns } from "../util"
-import { Gear, GearTools, GearTyped, GearWeaponMelee } from "@/types/Resources"
+import {
+  Gear,
+  GearMod,
+  GearTools,
+  GearTyped,
+  GearWeaponMelee,
+} from "@/types/Resources"
 import {
   AddResourceButton,
   RemoveResourceButton,
@@ -53,6 +59,11 @@ export const gearToolsConfigOptionSetSkill: Columns<GearTools, string> = {
     <SkillSelect selectedSkill={selectedSkill} setSkill={setSkill} />
   ),
   label: "Select Skill",
+}
+
+export const gearCapacityConfigOption: Columns<GearMod> = {
+  display: (gear) => `[${gear.useAs[0].capacity}]`,
+  label: "Capacity",
 }
 
 export const gearMeleeTableConfigOption: Record<
