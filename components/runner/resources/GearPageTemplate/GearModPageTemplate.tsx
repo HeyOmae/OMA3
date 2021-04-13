@@ -1,13 +1,15 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { Gear, GearMod } from "@/types/Resources"
+import { GearMod, GearModRated } from "@/types/Resources"
 import { CircularProgress, Grid } from "@material-ui/core"
 import React from "react"
 import { DispatchContext } from "../util"
-import { Props } from "./"
+import { Props as GearPageProps } from "./"
 import { GearTable } from "./GearTable"
+import { RemainingCapacity } from "./RemainingCapacity"
+import { RemainingNuyen } from "./RemainingNuyen"
 import { BreadCrumpOption, ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
 
-interface GearModPageProps<G> extends Props<G> {
+interface GearModPageProps<G> extends GearPageProps<G> {
   previousPath: BreadCrumpOption
   gearIndex: number
 }
@@ -24,22 +26,27 @@ export function GearModPageTemplate<G extends GearMod>({
     (runner) => runner,
   )
   if (runner) {
-    const gearBeingModded: Gear = runner.resources[resourceKey][gearIndex]
+    const gearBeingModded: GearModRated =
+      runner.resources[resourceKey][gearIndex]
     const gearName = `${gearBeingModded.name} (${gearIndex})`
-    const modsOnGear: G[] = runner.resources?.[resourceKey]?.[gearIndex].mods
+    const modsOnGear = gearBeingModded.mods
     return (
       <>
         <ResourceBreadCrumbs
           activePage={gearName}
           previousPage={previousPath}
         />
+        <RemainingNuyen runner={runner} />
+        <RemainingCapacity gear={gearBeingModded} />
         <DispatchContext.Provider value={dispatch}>
-          <GearTable listOfGear={listOfGear} cols={addGearTableConfig} />
+          <Grid item md={6}>
+            <GearTable listOfGear={listOfGear} cols={addGearTableConfig} />
+          </Grid>
 
           {modsOnGear && (
             <Grid item md={6}>
               <h2>Mods on {gearName}</h2>
-              <GearTable<G>
+              <GearTable<GearMod>
                 cols={removeGearTableConfig}
                 listOfGear={modsOnGear}
               />
