@@ -1,5 +1,5 @@
 import { RemainingNuyen, Props } from "."
-import { render } from "@/test/testUtils"
+import { caymansCurrentlySpentNuyen, render } from "@/test/testUtils"
 import { mockedRunners } from "@/test/mocks"
 
 describe("<RemainingNuyen/>", () => {
@@ -19,6 +19,8 @@ describe("<RemainingNuyen/>", () => {
     const { getByText } = setup()
 
     expect(getByText("Nuyen:")).toBeInTheDocument()
-    expect(getByText("272230¥/275000¥")).toBeInTheDocument()
+    expect(
+      getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
+    ).toBeInTheDocument()
   })
 })

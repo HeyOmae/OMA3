@@ -7,6 +7,7 @@ import {
   withTestRouter,
   fireEvent,
   waitForElementToBeRemoved,
+  caymansCurrentlySpentNuyen,
 } from "@/test/testUtils"
 
 describe("Tools page", () => {
@@ -15,7 +16,7 @@ describe("Tools page", () => {
     const { getByLabelText, getByText, getAllByText } = render(
         withTestRouter(<ToolsPage />, { query: { id: "10" } }),
       ),
-      currentNuyen = 272230,
+      currentNuyen = caymansCurrentlySpentNuyen,
       totalNuyen = 275000,
       gearA = tools[0],
       gearB = tools[Math.floor(tools.length / 2)],

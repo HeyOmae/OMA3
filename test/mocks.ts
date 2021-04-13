@@ -574,6 +574,61 @@ export const mockedRunners: Runner[] = [
           },
         },
       ],
+      imaging: [
+        {
+          modifications: {
+            itemhookmod: {
+              capacity: 1,
+              hook: "OPTICAL",
+            },
+          },
+          availability: "1",
+          cost: 100,
+          name: "Glasses",
+          maxRating: 4,
+          rating: true,
+          rateMultiplier: "capacity cost",
+          subtype: "IMAGING",
+          type: "ELECTRONICS",
+          currentRating: 4,
+          mods: [
+            {
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "OPTICAL",
+                  capacity: 1,
+                  slot: "OPTICAL",
+                },
+                {
+                  type: "ACCESSORY",
+                  subtype: "CYBER EYEWARE",
+                  capacity: 1,
+                  slot: "CYBEREYE IMPLANT",
+                  cost: 775,
+                  availability: "2",
+                },
+                {
+                  type: "CYBERWARE",
+                  subtype: "CYBER EYEWARE",
+                  essense: 0.1,
+                  cost: 775,
+                  availability: "2",
+                },
+                {
+                  type: "ACCESSORY",
+                  subtype: "OPTICAL",
+                  slot: "HELMET ACCESSORY",
+                  capacity: 1,
+                },
+              ],
+              availability: "1",
+              cost: 25,
+              name: "Image Link",
+            },
+          ],
+        },
+      ],
     },
   },
   {
@@ -586,6 +641,27 @@ export const mockedRunners: Runner[] = [
       attributes: "B",
       "mag/res": "E",
       resources: "D",
+    },
+    resources: {
+      imaging: [
+        {
+          modifications: {
+            itemhookmod: {
+              capacity: 1,
+              hook: "OPTICAL",
+            },
+          },
+          availability: "1",
+          cost: 120,
+          name: "Monocle",
+          maxRating: 4,
+          rating: true,
+          rateMultiplier: "capacity cost",
+          subtype: "IMAGING",
+          type: "ELECTRONICS",
+          currentRating: 4,
+        },
+      ],
     },
   },
 ]

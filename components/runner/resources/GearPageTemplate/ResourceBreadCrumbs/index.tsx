@@ -3,9 +3,11 @@ import NextLink from "next/link"
 import { useRouter } from "next/router"
 import { FC } from "react"
 
+export type BreadCrumpOption = { label: string; categoryPath: string }
+
 export interface Props {
   activePage: string
-  previousPage?: { label: string; categoryPath: string }
+  previousPage?: BreadCrumpOption
 }
 
 export const ResourceBreadCrumbs: FC<Props> = ({
