@@ -582,15 +582,15 @@ export const mockedRunners: Runner[] = [
               hook: "OPTICAL",
             },
           },
-          availability: "1",
-          cost: 100,
-          name: "Glasses",
-          maxRating: 4,
+          availability: "2",
+          cost: 600,
+          name: "Contacts",
+          maxRating: 3,
           rating: true,
           rateMultiplier: "capacity cost",
           subtype: "IMAGING",
           type: "ELECTRONICS",
-          currentRating: 4,
+          currentRating: 3,
           mods: [
             {
               useAs: [

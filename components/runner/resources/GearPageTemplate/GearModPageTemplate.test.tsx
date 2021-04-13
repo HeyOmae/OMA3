@@ -4,6 +4,7 @@ import {
   waitFor,
   withTestRouter,
   getByText as getByTextInContainer,
+  caymansCurrentlySpentNuyen,
 } from "@/test/testUtils"
 import { GearMod } from "@/types/Resources"
 import { GearModPageTemplate } from "./GearModPageTemplate"
@@ -39,7 +40,23 @@ describe("GearModPageTemplate", () => {
       "href",
       "/10/resources/imaging",
     )
-    expect(getByText("Glasses (0)")).toBeInTheDocument()
+    expect(getByText("Contacts (0)")).toBeInTheDocument()
+  })
+
+  it("should display remaining nuyen", async () => {
+    const { getByText } = setup()
+
+    await waitFor(() =>
+      expect(
+        getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
+      ).toBeInTheDocument(),
+    )
+  })
+
+  it("should display remaining capacity", async () => {
+    const { getByText } = setup()
+
+    await waitFor(() => expect(getByText("1/3")).toBeInTheDocument())
   })
 
   it("should display a list of mods for a piece of gear", async () => {
