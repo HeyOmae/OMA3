@@ -1,6 +1,7 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { GearMod, GearModRated } from "@/types/Resources"
 import { CircularProgress, Grid } from "@material-ui/core"
+import { useRouter } from "next/router"
 import React from "react"
 import { DispatchContext } from "../util"
 import { Props as GearPageProps } from "./"
@@ -11,19 +12,46 @@ import { BreadCrumpOption, ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
 
 interface GearModPageProps<G> extends GearPageProps<G> {
   previousPath: BreadCrumpOption
-  gearIndex: number
 }
 
 export function GearModPageTemplate<G extends GearMod>({
   previousPath,
-  gearIndex,
   resourceKey,
   listOfGear,
   addGearTableConfig,
   removeGearTableConfig,
 }: GearModPageProps<G>) {
-  const [runner, dispatch] = useRunnerAccess<undefined, undefined>(
-    (runner) => runner,
+  const {
+    query: { gearIndex },
+  } = useRouter()
+  const [runner, dispatch] = useRunnerAccess<undefined, GearMod>(
+    (runner, { payload }) => {
+      return {
+        ...runner,
+        resources: {
+          ...runner.resources,
+          [resourceKey]: [
+            ...runner.resources[resourceKey].slice(0, gearIndex),
+            {
+              ...runner.resources[resourceKey][gearIndex],
+              mods:
+                typeof payload === "number"
+                  ? [
+                      ...runner.resources[resourceKey][gearIndex].mods.slice(
+                        0,
+                        payload,
+                      ),
+                      ...runner.resources[resourceKey][gearIndex].mods.slice(
+                        payload + 1,
+                      ),
+                    ]
+                  : [...runner.resources[resourceKey][gearIndex].mods, payload],
+            },
+            ...runner.resources[resourceKey].slice(+gearIndex + 1),
+          ],
+        },
+      }
+    },
   )
   if (runner) {
     const gearBeingModded: GearModRated =

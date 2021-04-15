@@ -17,7 +17,6 @@ describe("GearModPageTemplate", () => {
     return render(
       withTestRouter(
         <GearModPageTemplate<GearMod>
-          gearIndex={0}
           resourceKey="imaging"
           previousPath={{ label: "Imaging", categoryPath: "imaging" }}
           gearLabel="Imaging Mods"
@@ -25,7 +24,7 @@ describe("GearModPageTemplate", () => {
           addGearTableConfig={buyCols}
           removeGearTableConfig={sellCols}
         />,
-        { query: { id: id.toString() } },
+        { query: { id: id.toString(), gearIndex: "0" } },
       ),
     )
   }
@@ -95,16 +94,5 @@ describe("GearModPageTemplate", () => {
     await waitFor(() => expect(queryByText("Buy")).toBeInTheDocument())
 
     expect(queryByText("Sell")).not.toBeInTheDocument()
-  })
-
-  it("should buy or sell stuff...I don't know. I'll figure it out later", async () => {
-    const { getByLabelText } = setup()
-
-    await waitFor(() =>
-      expect(getByLabelText("Add Flare Compensation")).toBeInTheDocument(),
-    )
-
-    getByLabelText("Add Flare Compensation").click()
-    getByLabelText("Remove Image Link").click()
   })
 })
