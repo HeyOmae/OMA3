@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react"
 import { Runner } from "@/types/runner"
 import priorityTableData from "@/data/priorityTable.json"
-import { Gear, GearModRated } from "@/types/Resources"
+import { Gear, GearModdableRated } from "@/types/Resources"
 
 export interface Props {
   runner: Runner
@@ -13,7 +13,7 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
   const totalNuyen = resources[runner.priority.resources],
     remainingNuyen: number = useMemo(() => {
       return Object.values(runner?.resources ?? {}).reduce(
-        (nuyenLeft: number, categoryOfGear: (Gear & GearModRated)[]) =>
+        (nuyenLeft: number, categoryOfGear: (Gear & GearModdableRated)[]) =>
           nuyenLeft -
           categoryOfGear.reduce((totalNuyenForThisCategory, { cost, mods }) => {
             if (mods) {

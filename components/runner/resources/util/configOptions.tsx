@@ -8,6 +8,7 @@ import {
 } from "@/types/Resources"
 import {
   AddResourceButton,
+  ModLinkButton,
   RemoveResourceButton,
   SettingRating,
   SkillSelect,
@@ -35,6 +36,10 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
       <RemoveResourceButton gear={gear} index={index} />
     ),
     label: "Sell",
+  },
+  mod: {
+    display: (gear, index) => <ModLinkButton gear={gear} index={index} />,
+    label: "Mod",
   },
 }
 

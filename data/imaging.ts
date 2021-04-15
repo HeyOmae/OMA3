@@ -1,6 +1,6 @@
-import { GearModRated } from "@/types/Resources"
+import { GearModdableRated } from "@/types/Resources"
 
-export const imaging: GearModRated[] = [
+export const imaging: GearModdableRated[] = [
   {
     modifications: {
       itemhookmod: {

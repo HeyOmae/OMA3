@@ -1,5 +1,5 @@
 import { imaging } from "@/data/imaging"
-import { GearModRated } from "@/types/Resources"
+import { GearModdableRated } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import {
   Columns,
@@ -7,7 +7,7 @@ import {
   gearTableConfigOptions,
 } from "../../util"
 
-type ImagingCols = Columns<GearModRated>[]
+type ImagingCols = Columns<GearModdableRated>[]
 
 const buyCols: ImagingCols = [
   gearTableConfigOptions.buy,
@@ -23,10 +23,11 @@ const sellCols: ImagingCols = [
   gearRatingTableConfigOption.displayRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.mod,
 ]
 
 const Imaging = () => (
-  <GearPageTemplate<GearModRated>
+  <GearPageTemplate<GearModdableRated>
     gearLabel="Imaging"
     resourceKey="imaging"
     listOfGear={imaging}
