@@ -45,7 +45,10 @@ export function GearModPageTemplate<G extends GearMod>({
                         payload + 1,
                       ),
                     ]
-                  : [...runner.resources[resourceKey][gearIndex].mods, payload],
+                  : [
+                      ...(runner.resources[resourceKey][gearIndex]?.mods ?? []),
+                      payload,
+                    ],
             },
             ...runner.resources[resourceKey].slice(+gearIndex + 1),
           ],
