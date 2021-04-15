@@ -1,5 +1,5 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { GearMod, GearModRated } from "@/types/Resources"
+import { GearMod, GearModdableRated } from "@/types/Resources"
 import { CircularProgress, Grid } from "@material-ui/core"
 import { useRouter } from "next/router"
 import React from "react"
@@ -57,7 +57,7 @@ export function GearModPageTemplate<G extends GearMod>({
     },
   )
   if (runner) {
-    const gearBeingModded: GearModRated =
+    const gearBeingModded: GearModdableRated =
       runner.resources[resourceKey][gearIndex]
     const gearName = `${gearBeingModded.name} (${gearIndex})`
     const modsOnGear = gearBeingModded.mods

@@ -10,7 +10,12 @@ import Imaging from "./"
 describe("<Imaging/>", () => {
   beforeAll(setupIndexedDB)
   const setup = () =>
-    render(withTestRouter(<Imaging />, { query: { id: "10" } }))
+    render(
+      withTestRouter(<Imaging />, {
+        query: { id: "10" },
+        asPath: "/10/resources/imaging/",
+      }),
+    )
   it("should display the stats for imaging devices", async () => {
     const { getByText, getByLabelText } = setup()
 
@@ -29,5 +34,19 @@ describe("<Imaging/>", () => {
     expect(getTextInContainer(contactsRow, "1")).toBeInTheDocument()
     expect(getTextInContainer(contactsRow, "2")).toBeInTheDocument()
     expect(getTextInContainer(contactsRow, "200¥")).toBeInTheDocument()
+  })
+
+  describe("purchased imaging device", () => {
+    it("should have a link to the imaging mod page", async () => {
+      const { getByText, getByLabelText } = setup()
+
+      await waitFor(() => expect(getByText("Sell")).toBeInTheDocument())
+
+      expect(getByText("Mod")).toBeInTheDocument()
+      expect(getByLabelText("Mod Contacts (0)").closest("a")).toHaveAttribute(
+        "href",
+        "/10/resources/imaging/0",
+      )
+    })
   })
 })

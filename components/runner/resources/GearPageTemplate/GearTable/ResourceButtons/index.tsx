@@ -5,6 +5,11 @@ import {
   DispatchContext,
   RemoveGearButtonProps,
 } from "../../../util"
+import { IconButton } from "@material-ui/core"
+import { Extension } from "@material-ui/icons"
+import NextLink from "next/link"
+import { Gear } from "@/types/Resources"
+import { useRouter } from "next/router"
 
 export const AddResourceButton: FC<AddGearButtonProps> = ({ gear }) => {
   const dispatch = useContext(DispatchContext)
@@ -31,6 +36,20 @@ export const RemoveResourceButton: FC<RemoveGearButtonProps> = ({
         })
       }
     />
+  )
+}
+
+export const ModLinkButton: FC<{ gear: Gear; index: number }> = ({
+  gear: { name },
+  index,
+}) => {
+  const { asPath } = useRouter()
+  return (
+    <NextLink href={`${asPath}${index}`} passHref>
+      <IconButton aria-label={`Mod ${name} (${index})`} color="secondary">
+        <Extension />
+      </IconButton>
+    </NextLink>
   )
 }
 
