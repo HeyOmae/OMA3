@@ -178,7 +178,7 @@ export const testBuyAndSellGear = (
   gearData: Gear[],
 ) => async () => {
   const { getByLabelText, getAllByLabelText, getByText } = customRender(
-      withTestRouter(<GearPage />, { query: { id: "10" } }),
+      withTestRouter(<GearPage />, { query: { id: "10", gearIndex: "0" } }),
     ),
     totalNuyen = 275000,
     gearA = gearData[0],
