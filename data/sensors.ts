@@ -1,26 +1,5 @@
 export const sensors = [
   {
-    _avail: "1",
-    _cost: "50",
-    _id: "binoculars_optical",
-    _subtype: "OPTICAL",
-    _type: "ELECTRONICS",
-  },
-  {
-    _avail: "3",
-    _cost: "250",
-    _id: "endoscope",
-    _subtype: "OPTICAL",
-    _type: "ELECTRONICS",
-  },
-  {
-    _avail: "5",
-    _cost: "3000",
-    _id: "mage-sight-goggles",
-    _subtype: "OPTICAL",
-    _type: "ELECTRONICS",
-  },
-  {
     useas: [
       {
         _type: "ELECTRONICS",
