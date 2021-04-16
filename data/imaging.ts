@@ -1,4 +1,4 @@
-import { GearModdableRated } from "@/types/Resources"
+import { GearModdableRated, GearTyped } from "@/types/Resources"
 
 export const imaging: GearModdableRated[] = [
   {
@@ -133,6 +133,30 @@ export const imaging: GearModdableRated[] = [
     rating: true,
     rateMultiplier: "capacity cost",
     subtype: "IMAGING",
+    type: "ELECTRONICS",
+  },
+]
+
+export const imagingNoMod: GearTyped[] = [
+  {
+    availability: "1",
+    cost: 50,
+    name: "Binoculars Optical",
+    subtype: "OPTICAL",
+    type: "ELECTRONICS",
+  },
+  {
+    availability: "3",
+    cost: 250,
+    name: "Endoscope",
+    subtype: "OPTICAL",
+    type: "ELECTRONICS",
+  },
+  {
+    availability: "5",
+    cost: 3000,
+    name: "Mage-sight-goggles",
+    subtype: "OPTICAL",
     type: "ELECTRONICS",
   },
 ]
