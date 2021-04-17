@@ -4,7 +4,7 @@ import { Button } from "@material-ui/core"
 import { useRouter } from "next/router"
 
 export const ResourcePage = (): JSX.Element => {
-  const { query } = useRouter()
+  const { query, asPath } = useRouter()
   return (
     <RunnerLayout>
       <h1>Resources</h1>
@@ -94,6 +94,9 @@ export const ResourcePage = (): JSX.Element => {
         passHref
       >
         <Button variant="contained">Imaging Devices</Button>
+      </NextLink>
+      <NextLink href={`${asPath}audio`} passHref>
+        <Button variant="contained">Audio Devices</Button>
       </NextLink>
     </RunnerLayout>
   )

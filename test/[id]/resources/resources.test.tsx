@@ -7,7 +7,8 @@ describe("Resource Page", () => {
     render(
       withTestRouter(<ResourcePage />, {
         query: { id: "1" },
-        pathname: "/1/resources",
+        pathname: "/[id]/resources",
+        asPath: "/1/resources/",
       }),
     )
 
@@ -66,6 +67,10 @@ describe("Resource Page", () => {
     expect(getByText("Imaging Devices").closest("a")).toHaveAttribute(
       "href",
       "/1/resources/imaging",
+    )
+    expect(getByText("Audio Devices").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/audio",
     )
   })
 })
