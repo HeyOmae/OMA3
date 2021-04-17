@@ -1,15 +1,16 @@
 export interface Resources {
-  melee?: GearWeaponMelee[]
-  projectile?: GearWeaponsProjectile[]
-  firearms?: GearWeaponFireArms[]
-  armor?: GearArmor[]
-  commlink?: GearMatrixCommlink[]
-  cyberdeck?: GearMatrixCyberdeck[]
-  riggerConsole?: GearMatrixCommlink[]
-  electronicAccessories?: GearElectronicAccessory[]
-  tags?: GearElectronic[]
-  otherElectronics?: GearTyped[]
+  melee: GearWeaponMelee[]
+  projectile: GearWeaponsProjectile[]
+  firearms: GearWeaponFireArms[]
+  armor: GearArmor[]
+  commlink: GearMatrixCommlink[]
+  cyberdeck: GearMatrixCyberdeck[]
+  riggerConsole: GearMatrixCommlink[]
+  electronicAccessories: GearElectronicAccessory[]
+  tags: GearElectronic[]
+  otherElectronics: GearTyped[]
   imaging: (GearModdableRated & GearTyped)[]
+  audio: GearModdableRated[]
 }
 
 export interface Gear {

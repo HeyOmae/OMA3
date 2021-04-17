@@ -19,7 +19,7 @@ export interface Runner {
   rituals?: Ritual[]
   powers?: AdeptPower[]
   complexForms?: ComplexForm[]
-  resources?: Resources
+  resources?: Partial<Resources>
 }
 
 export const initRunner: Runner = {

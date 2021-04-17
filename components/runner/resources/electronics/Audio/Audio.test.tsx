@@ -1,20 +1,20 @@
 import {
   render,
   setupIndexedDB,
-  withTestRouter,
-  getByText as getTextInContainer,
-  getAllByText as getAllTextInContainer,
   waitFor,
+  withTestRouter,
+  getAllByText as getAllTextInContainer,
+  getByText as getTextInContainer,
 } from "@/test/testUtils"
-import Imaging from "./"
+import Audio from "./index"
 
-describe("<Imaging/>", () => {
+describe("<Audio />", () => {
   beforeAll(setupIndexedDB)
   const setup = () =>
     render(
-      withTestRouter(<Imaging />, {
+      withTestRouter(<Audio />, {
         query: { id: "10" },
-        asPath: "/10/resources/imaging/",
+        asPath: "/10/resources/audio/",
       }),
     )
   it("should display the stats for imaging devices", async () => {
@@ -29,28 +29,29 @@ describe("<Imaging/>", () => {
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-    const contactsRow = getByLabelText("Add Contacts").closest("tr")
+    const laserMicRow = getByLabelText("Add Laser Microphone").closest("tr")
 
-    expect(getTextInContainer(contactsRow, "Contacts")).toBeInTheDocument()
-    expect(getTextInContainer(contactsRow, "1")).toBeInTheDocument()
-    expect(getTextInContainer(contactsRow, "2")).toBeInTheDocument()
-    expect(getTextInContainer(contactsRow, "200¥")).toBeInTheDocument()
+    expect(
+      getTextInContainer(laserMicRow, "Laser Microphone"),
+    ).toBeInTheDocument()
+    expect(getTextInContainer(laserMicRow, "1")).toBeInTheDocument()
+    expect(getTextInContainer(laserMicRow, "2")).toBeInTheDocument()
+    expect(getTextInContainer(laserMicRow, "100¥")).toBeInTheDocument()
   })
-
-  describe("purchased imaging device", () => {
-    it("should have a link to the imaging mod page", async () => {
+  describe("purchased audio device", () => {
+    xit("should have a link to the audio mod page", async () => {
       const { getByText, getByLabelText } = setup()
 
       await waitFor(() => expect(getByText("Sell")).toBeInTheDocument())
 
       expect(getByText("Mod")).toBeInTheDocument()
-      expect(getByLabelText("Mod Contacts (0)").closest("a")).toHaveAttribute(
+      expect(getByLabelText("Mod Earbuds (0)").closest("a")).toHaveAttribute(
         "href",
         "/10/resources/imaging/0",
       )
     })
 
-    it("should not have a link to imaging mod page if the device in unmodifiable", async () => {
+    xit("should not have a link to imaging mod page if the device in unmodifiable", async () => {
       const { getByText, getByLabelText } = setup()
 
       await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())

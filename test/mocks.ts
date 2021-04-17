@@ -629,6 +629,26 @@ export const mockedRunners: Runner[] = [
           ],
         },
       ],
+      audio: [
+        {
+          type: "ELECTRONICS",
+          subtype: "AUDIO",
+
+          modifications: {
+            itemhookmod: {
+              capacity: 1,
+              hook: "AUDIO",
+            },
+          },
+          availability: "1",
+          cost: 50,
+          name: "Earbuds",
+          maxRating: 3,
+          currentRating: 3,
+          rating: true,
+          rateMultiplier: "capacity cost",
+        },
+      ],
     },
   },
   {
