@@ -3,6 +3,7 @@ import {
   setupIndexedDB,
   withTestRouter,
   getByText as getTextInContainer,
+  getAllByText as getAllTextInContainer,
   waitFor,
 } from "@/test/testUtils"
 import Imaging from "./"
@@ -47,6 +48,19 @@ describe("<Imaging/>", () => {
         "href",
         "/10/resources/imaging/0",
       )
+    })
+
+    it("should not have a link to imaging mod page if the device in unmodifiable", async () => {
+      const { getByText, getByLabelText } = setup()
+
+      await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
+
+      getByLabelText("Add Mage-sight-goggles").click()
+      const mageSightRow = getByLabelText("Remove Mage-sight-goggles").closest(
+        "tr",
+      )
+
+      expect(getAllTextInContainer(mageSightRow, "N/A")).toHaveLength(2)
     })
   })
 })

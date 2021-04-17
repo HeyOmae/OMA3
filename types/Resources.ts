@@ -9,7 +9,7 @@ export interface Resources {
   electronicAccessories?: GearElectronicAccessory[]
   tags?: GearElectronic[]
   otherElectronics?: GearTyped[]
-  imaging: GearModdableRated[]
+  imaging: (GearModdableRated | GearTyped)[]
 }
 
 export interface Gear {

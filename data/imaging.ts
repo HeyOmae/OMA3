@@ -1,6 +1,8 @@
 import { GearModdableRated, GearTyped } from "@/types/Resources"
 
-export const imaging: GearModdableRated[] = [
+export type ImagingGear = GearModdableRated | GearTyped
+
+export const imaging: ImagingGear[] = [
   {
     modifications: {
       itemhookmod: {
@@ -135,9 +137,6 @@ export const imaging: GearModdableRated[] = [
     subtype: "IMAGING",
     type: "ELECTRONICS",
   },
-]
-
-export const imagingNoMod: GearTyped[] = [
   {
     availability: "1",
     cost: 50,
