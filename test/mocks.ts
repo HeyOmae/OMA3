@@ -682,6 +682,58 @@ export const mockedRunners: Runner[] = [
           currentRating: 4,
         },
       ],
+      audio: [
+        {
+          type: "ELECTRONICS",
+          subtype: "AUDIO",
+
+          modifications: {
+            itemhookmod: {
+              capacity: 1,
+              hook: "AUDIO",
+            },
+          },
+          availability: "1",
+          cost: 150,
+          name: "Headphones",
+          maxRating: 6,
+          currentRating: 3,
+          rating: true,
+          rateMultiplier: "capacity cost",
+          mods: [
+            {
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "AUDIO ENHANCEMENT",
+                  capacity: 2,
+                  slot: "AUDIO",
+                },
+                {
+                  type: "ACCESSORY",
+                  subtype: "CYBER EARWARE",
+                  capacity: 2,
+                  slot: "CYBEREAR IMPLANT",
+                  cost: 3000,
+                  availability: "2",
+                },
+                {
+                  type: "CYBERWARE",
+                  subtype: "CYBER EARWARE",
+                  essense: 0.1,
+                  cost: 3000,
+                  availability: "2",
+                },
+              ],
+              availability: "2",
+              cost: 1000,
+              name: "Spatial Recognizer",
+              subtype: "AUDIO ENHANCEMENT",
+              type: "ACCESSORY",
+            },
+          ],
+        },
+      ],
     },
   },
 ]

@@ -29,10 +29,13 @@ export interface GearMod extends Gear {
   }
 }
 
+export interface GearModRated extends GearMod, GearTyped {}
+
 interface AsModAccessory extends AsElectronicAccessory, Partial<Gear> {}
 
 interface AsCyberwareInstall extends Omit<AsModAccessory, "slot"> {
   essense?: number
+  maxRating?: number
 }
 
 export interface GearTools extends Gear {
@@ -62,7 +65,8 @@ export interface GearTyped extends Gear, GearTypes {
 }
 
 interface ModifiableGear {
-  mods?: GearMod[]
+  // TODO: Stop being a typescript hack
+  mods?: (GearMod & Partial<GearModRated>)[]
 }
 
 export interface GearModdableRated extends GearTyped, ModifiableGear {

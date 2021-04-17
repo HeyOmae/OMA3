@@ -39,7 +39,11 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
   },
   mod: {
     display: (gear, index) =>
-      "mods" in gear ? <ModLinkButton gear={gear} index={index} /> : "N/A",
+      "modifications" in gear ? (
+        <ModLinkButton gear={gear} index={index} />
+      ) : (
+        "N/A"
+      ),
     label: "Mod",
   },
 }

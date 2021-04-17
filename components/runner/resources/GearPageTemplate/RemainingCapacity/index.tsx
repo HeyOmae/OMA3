@@ -10,8 +10,8 @@ export const RemainingCapacity: FC<Props> = ({ gear }) => {
     useMemo(
       () =>
         gear.mods?.reduce(
-          (currentCapacity, { useAs: [{ capacity }] }) =>
-            capacity + currentCapacity,
+          (currentCapacity, { useAs: [{ capacity }], currentRating }) =>
+            (currentRating ?? capacity) + currentCapacity,
           0,
         ),
       [gear],

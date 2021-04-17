@@ -3,7 +3,6 @@ import {
   setupIndexedDB,
   waitFor,
   withTestRouter,
-  getAllByText as getAllTextInContainer,
   getByText as getTextInContainer,
 } from "@/test/testUtils"
 import Audio from "./index"
@@ -39,7 +38,7 @@ describe("<Audio />", () => {
     expect(getTextInContainer(laserMicRow, "100¥")).toBeInTheDocument()
   })
   describe("purchased audio device", () => {
-    xit("should have a link to the audio mod page", async () => {
+    it("should have a link to the audio mod page", async () => {
       const { getByText, getByLabelText } = setup()
 
       await waitFor(() => expect(getByText("Sell")).toBeInTheDocument())
@@ -47,22 +46,8 @@ describe("<Audio />", () => {
       expect(getByText("Mod")).toBeInTheDocument()
       expect(getByLabelText("Mod Earbuds (0)").closest("a")).toHaveAttribute(
         "href",
-        "/10/resources/imaging/0",
+        "/10/resources/audio/0",
       )
-    })
-
-    xit("should not have a link to imaging mod page if the device in unmodifiable", async () => {
-      const { getByText, getByLabelText } = setup()
-
-      await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
-
-      getByLabelText("Add Mage-sight-goggles").click()
-      const mageSightRow = getByLabelText("Remove Mage-sight-goggles").closest(
-        "tr",
-      )
-
-      // No rating and no mods
-      expect(getAllTextInContainer(mageSightRow, "N/A")).toHaveLength(2)
     })
   })
 })
