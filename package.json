@@ -11,13 +11,8 @@
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
-    "test-all": "npm run lint && npm run type-check && npm test -- --coverage"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run type-check"
-    }
+    "test-all": "npm run lint && npm run type-check && npm test -- --coverage",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
