@@ -15,8 +15,6 @@ export interface Props<G> {
   removeGearTableConfig: Columns<G>[]
 }
 
-type Payload<G> = G | number
-
 export function GearPageTemplate<G extends Gear>({
   gearLabel,
   resourceKey,
@@ -24,7 +22,7 @@ export function GearPageTemplate<G extends Gear>({
   removeGearTableConfig,
   listOfGear,
 }: Props<G>): ReactElement {
-  const [runner, dispatch] = useRunnerAccess<undefined, Payload<G>>(
+  const [runner, dispatch] = useRunnerAccess<undefined, G | number>(
     gearPageReducerGenerator(resourceKey),
   )
   return runner ? (

@@ -1,4 +1,4 @@
-import { imaging } from "@/data/imaging"
+import { imaging, ImagingGear } from "@/data/imaging"
 import { GearModdableRated } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import {
@@ -27,7 +27,7 @@ const sellCols: ImagingCols = [
 ]
 
 const Imaging = () => (
-  <GearPageTemplate<GearModdableRated>
+  <GearPageTemplate<ImagingGear>
     gearLabel="Imaging"
     resourceKey="imaging"
     listOfGear={imaging}
