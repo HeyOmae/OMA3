@@ -20,4 +20,51 @@ describe("<RemainingCapacity />", () => {
 
     expect(getByText("0/4")).toBeInTheDocument()
   })
+
+  it("should use the rating of a mod instead of the capacity", () => {
+    const { getByText } = setup({
+      gear: {
+        ...mockedRunners[10].resources.audio[0],
+        mods: [
+          {
+            useAs: [
+              {
+                type: "ACCESSORY",
+                subtype: "AUDIO ENHANCEMENT",
+                capacity: 1,
+                slot: "AUDIO",
+              },
+              {
+                type: "ACCESSORY",
+                subtype: "CYBER EARWARE",
+                capacity: 1,
+                slot: "CYBEREAR IMPLANT",
+                cost: 3250,
+                availability: "4",
+                maxRating: 6,
+              },
+              {
+                type: "CYBERWARE",
+                subtype: "CYBER EARWARE",
+                essense: 0.1,
+                cost: 3250,
+                availability: "4",
+              },
+            ],
+            availability: "3",
+            cost: 250,
+            name: "Select Sound Filter",
+            maxRating: 3,
+            currentRating: 3,
+            rating: true,
+            rateMultiplier: "capacity cost",
+            type: "typescript",
+            subtype: "is dumb",
+          },
+        ],
+      },
+    })
+
+    expect(getByText("3/3")).toBeInTheDocument()
+  })
 })

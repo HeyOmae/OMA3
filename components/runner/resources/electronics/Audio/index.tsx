@@ -22,7 +22,7 @@ const sellCols: Columns<GearModdableRated>[] = [
   gearRatingTableConfigOption.displayRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
-  // gearTableConfigOptions.mod,
+  gearTableConfigOptions.mod,
 ]
 
 const Audio: FC = () => (

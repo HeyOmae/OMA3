@@ -1,4 +1,4 @@
-import { GearMod } from "@/types/Resources"
+import { GearMod, GearModRated } from "@/types/Resources"
 
 export const imagingMods: GearMod[] = [
   {
@@ -261,5 +261,98 @@ export const imagingMods: GearMod[] = [
     availability: "1",
     cost: 250,
     name: "Vision Magnification",
+  },
+]
+
+export const audioMods: (GearMod | GearModRated)[] = [
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUDIO ENHANCEMENT",
+        capacity: 1,
+        slot: "AUDIO",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EARWARE",
+        capacity: 1,
+        slot: "CYBEREAR IMPLANT",
+        cost: 3500,
+        availability: "2",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EARWARE",
+        essense: 0.1,
+        cost: 3500,
+        availability: "2",
+      },
+    ],
+    availability: "1",
+    cost: 500,
+    name: "Audio Enhancement",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUDIO ENHANCEMENT",
+        capacity: 1,
+        slot: "AUDIO",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EARWARE",
+        capacity: 1,
+        slot: "CYBEREAR IMPLANT",
+        cost: 3250,
+        availability: "4",
+        maxRating: 6,
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EARWARE",
+        essense: 0.1,
+        cost: 3250,
+        availability: "4",
+      },
+    ],
+    availability: "3",
+    cost: 250,
+    name: "Select Sound Filter",
+    maxRating: 3,
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUDIO ENHANCEMENT",
+        capacity: 2,
+        slot: "AUDIO",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EARWARE",
+        capacity: 2,
+        slot: "CYBEREAR IMPLANT",
+        cost: 3000,
+        availability: "2",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EARWARE",
+        essense: 0.1,
+        cost: 3000,
+        availability: "2",
+      },
+    ],
+    availability: "2",
+    cost: 1000,
+    name: "Spatial Recognizer",
+    subtype: "AUDIO ENHANCEMENT",
+    type: "ACCESSORY",
   },
 ]
