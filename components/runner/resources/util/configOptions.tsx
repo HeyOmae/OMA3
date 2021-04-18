@@ -2,6 +2,7 @@ import { Columns } from "../util"
 import {
   Gear,
   GearMod,
+  GearModRated,
   GearTools,
   GearTyped,
   GearWeaponMelee,
@@ -71,8 +72,8 @@ export const gearToolsConfigOptionSetSkill: Columns<GearTools, string> = {
   label: "Select Skill",
 }
 
-export const gearCapacityConfigOption: Columns<GearMod> = {
-  display: (gear) => `[${gear.useAs[0].capacity}]`,
+export const gearCapacityConfigOption: Columns<GearMod & GearModRated> = {
+  display: (gear) => `[${gear.currentRating ?? gear.useAs[0].capacity}]`,
   label: "Capacity",
 }
 

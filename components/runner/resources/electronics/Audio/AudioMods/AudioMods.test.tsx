@@ -5,6 +5,7 @@ import {
   SliderHelper,
   waitFor,
   withTestRouter,
+  getByText as getTextInContainer,
 } from "@/test/testUtils"
 import { audioMods } from "@/data/mods"
 import AudioMods from "."
@@ -60,7 +61,7 @@ describe("AudioMods", () => {
     )
   })
 
-  it("should create the mods for an unmodified piece of gear", async () => {
+  it("should create the mods for an unmodified piece of gear and allow rating to be set for a mod", async () => {
     const { getByText, getByLabelText, getByTestId } = setup("10")
 
     expect(runnerFromDB(9).resources.audio[0].mods).toBeUndefined()
@@ -73,7 +74,15 @@ describe("AudioMods", () => {
 
     getByLabelText("Add Select Sound Filter").click()
 
+    // Should use up all the capacity
     expect(getByText("3/3")).toBeInTheDocument()
+    // Should display the capacity of the sound filter
+    expect(
+      getTextInContainer(
+        getByLabelText("Remove Select Sound Filter").closest("tr"),
+        "[3]",
+      ),
+    ).toBeInTheDocument()
 
     await waitFor(() =>
       expect(runnerFromDB(9).resources.audio[0].mods[0].name).toBe(
