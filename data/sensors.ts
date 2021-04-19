@@ -1,258 +1,85 @@
-export const sensors = [
+import { GearModdableRated } from "@/types/Resources"
+
+export const sensors: GearModdableRated[] = [
   {
-    useas: [
+    type: "ELECTRONICS",
+    subtype: "SENSOR HOUSING",
+    modifications: {
+      itemhookmod: {
+        capacity: 1,
+        hook: "SENSOR HOUSING",
+      },
+    },
+    availability: "1",
+    cost: 100,
+    name: "Handheld Housing",
+    maxRating: 3,
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    type: "ELECTRONICS",
+    subtype: "SENSOR HOUSING",
+    modifications: {
+      itemhookmod: {
+        capacity: 1,
+        hook: "SENSOR HOUSING",
+      },
+    },
+    availability: "1",
+    cost: 250,
+    name: "Wall-mounted Housing",
+    maxRating: 6,
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    useAs: [
       {
-        _type: "ELECTRONICS",
-        _subtype: "SENSOR_HOUSING",
+        type: "ACCESSORY",
+        subtype: "SENSOR",
+        slot: "SENSOR HOUSING",
+        capacity: 1,
       },
     ],
     modifications: {
       itemhookmod: {
-        _capacity: "1",
-        _hook: "SENSOR_HOUSING",
+        capacity: 1,
+        hook: "SENSOR FUNCTION",
       },
     },
-    _avail: "1",
-    _cost: "100",
-    _id: "handheld_housing",
-    _maxrat: "3",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-    _sensrat: "3",
+    availability: "3",
+    cost: 1000,
+    name: "Sensor Array",
+    minRating: 2,
+    maxRating: 8,
+    rating: true,
+    rateMultiplier: "capacity cost",
+    type: "ELECTRONICS",
+    subtype: "SENSOR HOUSING",
   },
   {
-    useas: [
+    useAs: [
       {
-        _type: "ELECTRONICS",
-        _subtype: "SENSOR_HOUSING",
+        type: "ACCESSORY",
+        subtype: "SENSOR",
+        slot: "SENSOR HOUSING",
+        capacity: 1,
       },
     ],
     modifications: {
       itemhookmod: {
-        _capacity: "1",
-        _hook: "SENSOR_HOUSING",
+        capacity: 1,
+        hook: "SENSOR FUNCTION",
       },
     },
-    _avail: "1",
-    _cost: "250",
-    _id: "wall-mounted_housing",
-    _maxrat: "6",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-    _sensrat: "4",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_HOUSING",
-        _cap: "1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "SENSOR_FUNCTION",
-      },
-    },
-    _avail: "3",
-    _cost: "1000",
-    _id: "sensor_array",
-    _minrat: "2",
-    _maxrat: "8",
-    _rate: "true",
-    _ratemul: "CAPACITY PRICE",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_HOUSING",
-        _cap: "1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "SENSOR_FUNCTION",
-      },
-    },
-    _avail: "2",
-    _cost: "100",
-    _id: "single_sensor",
-    _maxrat: "8",
-    _rate: "true",
-    _ratemul: "PRICE",
-    _multi: "true",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "atmosphere_sensor",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "OPTICAL",
-      },
-    },
-    _id: "camera_function",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "cyberware_scanner",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "AUDIO",
-      },
-    },
-    _id: "directional_microphone_function",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "geiger_counter",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "AUDIO",
-      },
-    },
-    _id: "laser_microphone_function",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "laser_range_finder",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "mad_scanner",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "motion_sensor",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "olfactory_sensor",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        _capacity: "1",
-        _hook: "AUDIO",
-      },
-    },
-    _id: "omnidirectional_microphone_function",
-    _cost: "0",
-  },
-  {
-    useas: [
-      {
-        _type: "ACCESSORY",
-        _subtype: "SENSOR",
-        _slot: "SENSOR_FUNCTION",
-        _cap: "1",
-      },
-    ],
-    _id: "ultrasound_sensor_function",
-    _cost: "0",
+    availability: "2",
+    cost: 100,
+    name: "Single Sensor",
+    maxRating: 8,
+    rating: true,
+    rateMultiplier: "cost",
+    type: "ELECTRONICS",
+    subtype: "SENSOR HOUSING",
   },
 ]

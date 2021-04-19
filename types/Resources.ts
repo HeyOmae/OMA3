@@ -58,6 +58,7 @@ interface MatrixAttributesCyberdeck extends MatrixAttributes {
 }
 
 export interface GearTyped extends Gear, GearTypes {
+  minRating?: number
   maxRating?: number
   rating?: true
   currentRating?: number
@@ -73,7 +74,7 @@ export interface GearModdableRated extends GearTyped, ModifiableGear {
   modifications: {
     itemhookmod: GearModHooks
   }
-  useAs?: GearTypes[]
+  useAs?: Partial<AsElectronicAccessory>[] // TODO: I really need to untangle all these types
 }
 
 export interface GearElectronic extends GearTyped {
