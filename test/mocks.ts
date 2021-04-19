@@ -649,6 +649,25 @@ export const mockedRunners: Runner[] = [
           rateMultiplier: "capacity cost",
         },
       ],
+      sensor: [
+        {
+          type: "ELECTRONICS",
+          subtype: "SENSOR HOUSING",
+          modifications: {
+            itemhookmod: {
+              capacity: 1,
+              hook: "SENSOR HOUSING",
+            },
+          },
+          availability: "1",
+          cost: 1500,
+          name: "Wall-mounted Housing",
+          maxRating: 6,
+          currentRating: 6,
+          rating: true,
+          rateMultiplier: "capacity cost",
+        },
+      ],
     },
   },
   {

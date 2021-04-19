@@ -171,7 +171,7 @@ export const runnerFromDB = (id = 0): Runner =>
   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
     .records[id].value
 
-export const caymansCurrentlySpentNuyen = 271_555
+export const caymansCurrentlySpentNuyen = 270_055
 
 export const testBuyAndSellGear = (
   GearPage: FC,
@@ -180,7 +180,7 @@ export const testBuyAndSellGear = (
   const { getByLabelText, getAllByLabelText, getByText } = customRender(
       withTestRouter(<GearPage />, { query: { id: "10", gearIndex: "0" } }),
     ),
-    totalNuyen = 275000,
+    totalNuyen = 275_000,
     gearA = gearData[0],
     gearB = gearData[Math.floor(gearData.length / 2)],
     gearC = gearData[gearData.length - 1]
