@@ -356,3 +356,174 @@ export const audioMods: (GearMod | GearModRated)[] = [
     type: "ACCESSORY",
   },
 ]
+
+export const sensorMods = [
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "atmosphere_sensor",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    modifications: {
+      itemhookmod: {
+        _capacity: "1",
+        _hook: "OPTICAL",
+      },
+    },
+    _id: "camera_function",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "cyberware_scanner",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    modifications: {
+      itemhookmod: {
+        _capacity: "1",
+        _hook: "AUDIO",
+      },
+    },
+    _id: "directional_microphone_function",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "geiger_counter",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    modifications: {
+      itemhookmod: {
+        _capacity: "1",
+        _hook: "AUDIO",
+      },
+    },
+    _id: "laser_microphone_function",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "laser_range_finder",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "mad_scanner",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "motion_sensor",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "olfactory_sensor",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    modifications: {
+      itemhookmod: {
+        _capacity: "1",
+        _hook: "AUDIO",
+      },
+    },
+    _id: "omnidirectional_microphone_function",
+    _cost: "0",
+  },
+  {
+    useas: [
+      {
+        _type: "ACCESSORY",
+        _subtype: "SENSOR",
+        _slot: "SENSOR_FUNCTION",
+        _cap: "1",
+      },
+    ],
+    _id: "ultrasound_sensor_function",
+    _cost: "0",
+  },
+]
