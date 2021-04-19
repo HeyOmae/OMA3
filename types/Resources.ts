@@ -11,6 +11,7 @@ export interface Resources {
   otherElectronics: GearTyped[]
   imaging: (GearModdableRated & GearTyped)[]
   audio: GearModdableRated[]
+  sensor: GearModdableRated[]
 }
 
 export interface Gear {

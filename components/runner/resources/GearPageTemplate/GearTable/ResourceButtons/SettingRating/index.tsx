@@ -9,7 +9,7 @@ export interface SettingRatingProps {
 
 export const SettingRating: FC<SettingRatingProps> = ({
   setRating,
-  gear: { name, maxRating, currentRating = 1 },
+  gear: { name, minRating = 1, maxRating, currentRating = minRating },
 }) => (
   <Slider
     data-testid={`${name}-rating`}
@@ -20,7 +20,7 @@ export const SettingRating: FC<SettingRatingProps> = ({
     valueLabelDisplay="auto"
     step={1}
     marks
-    min={1}
+    min={minRating}
     max={maxRating}
     value={currentRating}
   />

@@ -4,9 +4,17 @@ import {
   withTestRouter,
   getByText as getTextInContainer,
 } from "@/test/testUtils"
-import { GearElectronic, GearMatrixCommlink } from "@/types/Resources"
+import {
+  GearElectronic,
+  GearMatrixCommlink,
+  GearModdableRated,
+} from "@/types/Resources"
 import { FC } from "react"
-import { Columns, gearTableConfigOptions } from "../util"
+import {
+  Columns,
+  gearRatingTableConfigOption,
+  gearTableConfigOptions,
+} from "../util"
 
 export type CommlinkCols = Columns<GearMatrixCommlink>[]
 
@@ -57,6 +65,25 @@ export const buyElectronicCol: electronicCols = [
 export const sellElectronicCol: electronicCols = [
   gearTableConfigOptions.sell,
   ...baseElectronicCols,
+]
+
+type SensorDeviceCols = Columns<GearModdableRated>[]
+
+export const buySensorCols: SensorDeviceCols = [
+  gearTableConfigOptions.buy,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.setRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const sellSensorCols: SensorDeviceCols = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.displayRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+  gearTableConfigOptions.mod,
 ]
 
 export const TestMatrixDeviceTable = (

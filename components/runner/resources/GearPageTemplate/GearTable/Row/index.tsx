@@ -24,7 +24,7 @@ interface RatingRowProps extends Props {
 }
 
 export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
-  const [currentRating, setRating] = useState(1)
+  const [currentRating, setRating] = useState(gear.minRating ?? 1)
   const gearWithRating = useMemo(
     () => ({
       ...gear,
