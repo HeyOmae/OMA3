@@ -20,7 +20,10 @@ export const RemainingCapacity: FC<Props> = ({ gear }) => {
     <dl>
       <dt>Capacity:</dt>
       <dd>
-        {usedCapacity}/{gear.currentRating}
+        {usedCapacity}/
+        {gear.rateMultiplier === "capacity cost"
+          ? gear.currentRating
+          : gear.useAs[0].capacity}
       </dd>
     </dl>
   )

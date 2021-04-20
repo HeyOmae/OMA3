@@ -666,6 +666,40 @@ export const mockedRunners: Runner[] = [
           currentRating: 6,
           rating: true,
           rateMultiplier: "capacity cost",
+          mods: [
+            {
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "SENSOR",
+                  slot: "SENSOR FUNCTION",
+                  capacity: 1,
+                },
+              ],
+              name: "Laser Range Finder",
+              cost: 0,
+              availability: "0",
+            },
+            {
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "SENSOR",
+                  slot: "SENSOR FUNCTION",
+                  capacity: 1,
+                },
+              ],
+              name: "Camera Function",
+              cost: 0,
+              availability: "0",
+              type: "ACCESSORY",
+              subtype: "SENSOR",
+              rating: true,
+              maxRating: 6,
+              rateMultiplier: "capacity cost",
+              currentRating: 3,
+            },
+          ],
         },
       ],
     },
@@ -751,6 +785,33 @@ export const mockedRunners: Runner[] = [
               type: "ACCESSORY",
             },
           ],
+        },
+      ],
+      sensor: [
+        {
+          useAs: [
+            {
+              type: "ACCESSORY",
+              subtype: "SENSOR",
+              slot: "SENSOR HOUSING",
+              capacity: 1,
+            },
+          ],
+          modifications: {
+            itemhookmod: {
+              capacity: 1,
+              hook: "SENSOR FUNCTION",
+            },
+          },
+          availability: "2",
+          cost: 100,
+          name: "Single Sensor",
+          maxRating: 8,
+          rating: true,
+          rateMultiplier: "cost",
+          type: "ELECTRONICS",
+          subtype: "SENSOR HOUSING",
+          currentRating: 6,
         },
       ],
     },

@@ -72,5 +72,9 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/audio",
     )
+    expect(getByText("Sensor Devices").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/sensor",
+    )
   })
 })
