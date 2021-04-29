@@ -64,6 +64,7 @@ export interface GearTyped extends Gear, GearTypes {
   rating?: true
   currentRating?: number
   rateMultiplier?: "cost" | "capacity cost"
+  count?: true
 }
 
 interface ModifiableGear {
