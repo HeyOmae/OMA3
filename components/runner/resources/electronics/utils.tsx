@@ -3,11 +3,13 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextInContainer,
+  getByTestId as getTestIdInContainer,
 } from "@/test/testUtils"
 import {
   GearElectronic,
   GearMatrixCommlink,
   GearModdableRated,
+  GearTyped,
 } from "@/types/Resources"
 import { FC } from "react"
 import {
@@ -67,6 +69,24 @@ export const sellElectronicCol: electronicCols = [
   ...baseElectronicCols,
 ]
 
+type gearWithRatingCols = Columns<GearTyped>[]
+
+export const buyGearWithRatingCol: gearWithRatingCols = [
+  gearTableConfigOptions.buy,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.setRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const sellGearWithRatingCol: gearWithRatingCols = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.displayRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
 type SensorDeviceCols = Columns<GearModdableRated>[]
 
 export const buySensorCols: SensorDeviceCols = [
@@ -124,4 +144,33 @@ export const TestMatrixDeviceTable = (
   ).toBeInTheDocument()
   expect(getTextInContainer(deviceRow, device.availability)).toBeInTheDocument()
   expect(getTextInContainer(deviceRow, `${device.cost}¥`)).toBeInTheDocument()
+}
+
+export const TestGeneralGearWithRating = (
+  GearComponent: FC,
+  listOfGear: GearTyped[],
+) => async () => {
+  const { getByText, getByLabelText } = render(
+    withTestRouter(<GearComponent />, { query: { id: "10" } }),
+  )
+
+  await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
+
+  const buyHeader = getByText("Buy").closest("tr")
+
+  expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
+  expect(getTextInContainer(buyHeader, "Rating")).toBeInTheDocument()
+  expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
+  expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
+
+  //stats
+  const gear = listOfGear[0],
+    gearRow = getByLabelText(`Add ${gear.name}`).closest("tr")
+
+  expect(getTextInContainer(gearRow, gear.name)).toBeInTheDocument()
+  expect(
+    getTestIdInContainer(gearRow, `${gear.name}-rating`),
+  ).toBeInTheDocument()
+  expect(getTextInContainer(gearRow, gear.availability)).toBeInTheDocument()
+  expect(getTextInContainer(gearRow, `${gear.cost}¥`)).toBeInTheDocument()
 }
