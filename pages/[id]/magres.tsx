@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
-import { RunnerLayout } from "../../components/layout"
+import { RunnerLayout } from "@/components/layout"
 
-const MagRes = dynamic(() => import("../../components/runner/magRes"), {
+const MagRes = dynamic(() => import("@/components/runner/magRes"), {
   ssr: false,
 })
 
