@@ -76,5 +76,9 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/sensor",
     )
+    expect(getByText("Locks").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/locks",
+    )
   })
 })

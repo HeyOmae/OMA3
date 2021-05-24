@@ -154,18 +154,16 @@ export class SliderHelper {
   }
 }
 
-export const searchRegexInNodes = (regex: RegExp) => (
-  content: string,
-  node: HTMLElement,
-) => {
-  const hasText = (node) => regex.test(node.textContent)
-  const nodeHasText = hasText(node)
-  const childrenDontHaveText = Array.from(node.children).every(
-    (child) => !hasText(child),
-  )
+export const searchRegexInNodes =
+  (regex: RegExp) => (content: string, node: HTMLElement) => {
+    const hasText = (node) => regex.test(node.textContent)
+    const nodeHasText = hasText(node)
+    const childrenDontHaveText = Array.from(node.children).every(
+      (child) => !hasText(child),
+    )
 
-  return nodeHasText && childrenDontHaveText
-}
+    return nodeHasText && childrenDontHaveText
+  }
 
 export const runnerFromDB = (id = 0): Runner =>
   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
@@ -173,42 +171,42 @@ export const runnerFromDB = (id = 0): Runner =>
 
 export const caymansCurrentlySpentNuyen = 270_055
 
-export const testBuyAndSellGear = (
-  GearPage: FC,
-  gearData: Gear[],
-) => async () => {
-  const { getByLabelText, getAllByLabelText, getByText } = customRender(
-      withTestRouter(<GearPage />, { query: { id: "10", gearIndex: "0" } }),
-    ),
-    totalNuyen = 275_000,
-    gearA = gearData[0],
-    gearB = gearData[Math.floor(gearData.length / 2)],
-    gearC = gearData[gearData.length - 1]
+export const testBuyAndSellGear =
+  (GearPage: FC, gearData: Gear[]) => async () => {
+    const { getByLabelText, getAllByLabelText, getByText } = customRender(
+        withTestRouter(<GearPage />, { query: { id: "10", gearIndex: "0" } }),
+      ),
+      totalNuyen = 275_000,
+      gearA = gearData[0],
+      gearB = gearData[Math.floor(gearData.length / 2)],
+      gearC = gearData[gearData.length - 1]
 
-  await waitFor(() => {
+    await waitFor(() => {
+      expect(
+        getByText(`${caymansCurrentlySpentNuyen}¥/${totalNuyen}¥`),
+      ).toBeInTheDocument()
+    })
+
+    getByLabelText(`Add ${gearA.name}`).click()
+    getByLabelText(`Add ${gearB.name}`).click()
+    getByLabelText(`Add ${gearC.name}`).click()
+
     expect(
-      getByText(`${caymansCurrentlySpentNuyen}¥/${totalNuyen}¥`),
+      getByText(
+        `${
+          caymansCurrentlySpentNuyen - gearA.cost - gearB.cost - gearC.cost
+        }¥/${totalNuyen}¥`,
+      ),
     ).toBeInTheDocument()
-  })
 
-  getByLabelText(`Add ${gearA.name}`).click()
-  getByLabelText(`Add ${gearB.name}`).click()
-  getByLabelText(`Add ${gearC.name}`).click()
+    // TODO: kill past me for doing this nonsense
+    getAllByLabelText(`Remove ${gearB.name}`)[0].click()
 
-  expect(
-    getByText(
-      `${
-        caymansCurrentlySpentNuyen - gearA.cost - gearB.cost - gearC.cost
-      }¥/${totalNuyen}¥`,
-    ),
-  ).toBeInTheDocument()
-
-  // TODO: kill past me for doing this nonsense
-  getAllByLabelText(`Remove ${gearB.name}`)[0].click()
-
-  expect(
-    getByText(
-      `${caymansCurrentlySpentNuyen - gearA.cost - gearC.cost}¥/${totalNuyen}¥`,
-    ),
-  ).toBeInTheDocument()
-}
+    expect(
+      getByText(
+        `${
+          caymansCurrentlySpentNuyen - gearA.cost - gearC.cost
+        }¥/${totalNuyen}¥`,
+      ),
+    ).toBeInTheDocument()
+  }

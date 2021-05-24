@@ -3,7 +3,7 @@ import { GearTyped } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import { buyGearWithRatingCol, sellGearWithRatingCol } from "../utils"
 
-export default () => (
+const Locks = () => (
   <GearPageTemplate<GearTyped>
     gearLabel="Locks"
     resourceKey="locks"
@@ -12,3 +12,5 @@ export default () => (
     removeGearTableConfig={sellGearWithRatingCol}
   />
 )
+
+export default Locks
