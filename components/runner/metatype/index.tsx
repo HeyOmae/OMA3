@@ -70,9 +70,8 @@ export const Metatype = () => {
     },
   )
 
-  const [isSpendingAdjustmentPoints, setIsSpendingAdjustmentPoints] = useState(
-    true,
-  )
+  const [isSpendingAdjustmentPoints, setIsSpendingAdjustmentPoints] =
+    useState(true)
 
   const availibleMetatypes =
     priorityData.metatypes[runner?.priority?.metatype]?.supportedMetatypes

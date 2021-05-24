@@ -106,71 +106,71 @@ export const sellSensorCols: SensorDeviceCols = [
   gearTableConfigOptions.mod,
 ]
 
-export const TestMatrixDeviceTable = (
-  MatrixComponent: FC,
-  ListOfMatrixGear: GearMatrixCommlink[],
-) => async () => {
-  const { getByText, getByLabelText } = render(
-    withTestRouter(<MatrixComponent />, { query: { id: "10" } }),
-  )
-  await waitFor(() => {
-    expect(getByText("Buy")).toBeInTheDocument()
-  })
+export const TestMatrixDeviceTable =
+  (MatrixComponent: FC, ListOfMatrixGear: GearMatrixCommlink[]) => async () => {
+    const { getByText, getByLabelText } = render(
+      withTestRouter(<MatrixComponent />, { query: { id: "10" } }),
+    )
+    await waitFor(() => {
+      expect(getByText("Buy")).toBeInTheDocument()
+    })
 
-  // Header
-  const buyHeader = getByText("Buy").closest("thead")
+    // Header
+    const buyHeader = getByText("Buy").closest("thead")
 
-  expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "D/F")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "Slots")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "D/F")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Slots")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-  // Stats of a commlink
-  const device = ListOfMatrixGear[0],
-    deviceRow = getByLabelText(`Add ${device.name}`).closest("tr")
+    // Stats of a commlink
+    const device = ListOfMatrixGear[0],
+      deviceRow = getByLabelText(`Add ${device.name}`).closest("tr")
 
-  expect(getTextInContainer(deviceRow, device.name)).toBeInTheDocument()
-  expect(getTextInContainer(deviceRow, device.deviceRating)).toBeInTheDocument()
-  expect(
-    getTextInContainer(
-      deviceRow,
-      `${device.matrixAttributes.dataProcessing}/${device.matrixAttributes.firewall}`,
-    ),
-  ).toBeInTheDocument()
-  expect(
-    getTextInContainer(deviceRow, device.matrixAttributes.programs),
-  ).toBeInTheDocument()
-  expect(getTextInContainer(deviceRow, device.availability)).toBeInTheDocument()
-  expect(getTextInContainer(deviceRow, `${device.cost}¥`)).toBeInTheDocument()
-}
+    expect(getTextInContainer(deviceRow, device.name)).toBeInTheDocument()
+    expect(
+      getTextInContainer(deviceRow, device.deviceRating),
+    ).toBeInTheDocument()
+    expect(
+      getTextInContainer(
+        deviceRow,
+        `${device.matrixAttributes.dataProcessing}/${device.matrixAttributes.firewall}`,
+      ),
+    ).toBeInTheDocument()
+    expect(
+      getTextInContainer(deviceRow, device.matrixAttributes.programs),
+    ).toBeInTheDocument()
+    expect(
+      getTextInContainer(deviceRow, device.availability),
+    ).toBeInTheDocument()
+    expect(getTextInContainer(deviceRow, `${device.cost}¥`)).toBeInTheDocument()
+  }
 
-export const TestGeneralGearWithRating = (
-  GearComponent: FC,
-  listOfGear: GearTyped[],
-) => async () => {
-  const { getByText, getByLabelText } = render(
-    withTestRouter(<GearComponent />, { query: { id: "10" } }),
-  )
+export const TestGeneralGearWithRating =
+  (GearComponent: FC, listOfGear: GearTyped[]) => async () => {
+    const { getByText, getByLabelText } = render(
+      withTestRouter(<GearComponent />, { query: { id: "10" } }),
+    )
 
-  await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
+    await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-  const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = getByText("Buy").closest("tr")
 
-  expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "Rating")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
-  expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Rating")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-  //stats
-  const gear = listOfGear[0],
-    gearRow = getByLabelText(`Add ${gear.name}`).closest("tr")
+    //stats
+    const gear = listOfGear[0],
+      gearRow = getByLabelText(`Add ${gear.name}`).closest("tr")
 
-  expect(getTextInContainer(gearRow, gear.name)).toBeInTheDocument()
-  expect(
-    getTestIdInContainer(gearRow, `${gear.name}-rating`),
-  ).toBeInTheDocument()
-  expect(getTextInContainer(gearRow, gear.availability)).toBeInTheDocument()
-  expect(getTextInContainer(gearRow, `${gear.cost}¥`)).toBeInTheDocument()
-}
+    expect(getTextInContainer(gearRow, gear.name)).toBeInTheDocument()
+    expect(
+      getTestIdInContainer(gearRow, `${gear.name}-rating`),
+    ).toBeInTheDocument()
+    expect(getTextInContainer(gearRow, gear.availability)).toBeInTheDocument()
+    expect(getTextInContainer(gearRow, `${gear.cost}¥`)).toBeInTheDocument()
+  }

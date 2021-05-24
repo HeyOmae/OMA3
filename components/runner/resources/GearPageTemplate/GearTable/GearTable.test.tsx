@@ -174,13 +174,8 @@ describe("<GearTable />", () => {
     }
 
     it("should display a skill name in the tool's name", () => {
-      const {
-        getByText,
-        getAllByText,
-        getByLabelText,
-        props,
-        dispatch,
-      } = setup()
+      const { getByText, getAllByText, getByLabelText, props, dispatch } =
+        setup()
 
       fireEvent.mouseDown(getAllByText("Astral")[1])
       getByText("Engineering").click()
