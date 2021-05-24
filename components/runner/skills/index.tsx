@@ -38,10 +38,8 @@ const Skills: FC = () => {
             },
           }
         case REMOVE_SKILL: {
-          const {
-            [payload.skillToRemove]: removedSkill,
-            ...skills
-          } = runner.skills
+          const { [payload.skillToRemove]: removedSkill, ...skills } =
+            runner.skills
           return {
             ...runner,
             skills,

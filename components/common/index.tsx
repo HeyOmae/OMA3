@@ -10,10 +10,9 @@ export const AddButton: FC<Exclude<IconButtonProps, "color" | "children">> = (
   </IconButton>
 )
 
-export const RemoveButton: FC<
-  Exclude<IconButtonProps, "color" | "children">
-> = (props) => (
-  <IconButton color="secondary" {...props}>
-    <Remove />
-  </IconButton>
-)
+export const RemoveButton: FC<Exclude<IconButtonProps, "color" | "children">> =
+  (props) => (
+    <IconButton color="secondary" {...props}>
+      <Remove />
+    </IconButton>
+  )

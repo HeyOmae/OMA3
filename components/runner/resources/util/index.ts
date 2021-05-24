@@ -11,19 +11,18 @@ export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
 
 type GearPayload = Gear | number
 
-export const gearPageReducerGenerator = (
-  gearKey: string,
-): RunnerReducer<undefined, GearPayload> => (runner, { payload }) => ({
-  ...runner,
-  resources: {
-    ...runner.resources,
-    [gearKey]: updateGearList(runner.resources?.[gearKey], payload),
-  },
-})
+export const gearPageReducerGenerator =
+  (gearKey: string): RunnerReducer<undefined, GearPayload> =>
+  (runner, { payload }) => ({
+    ...runner,
+    resources: {
+      ...runner.resources,
+      [gearKey]: updateGearList(runner.resources?.[gearKey], payload),
+    },
+  })
 
-export const DispatchContext = createContext<
-  DispatchAction<undefined, GearPayload>
->(null)
+export const DispatchContext =
+  createContext<DispatchAction<undefined, GearPayload>>(null)
 
 export interface GearTableProps<G = Gear> {
   listOfGear: G[]
