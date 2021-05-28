@@ -39,3 +39,4 @@ export interface RemoveGearButtonProps extends AddGearButtonProps {
 
 export * from "./Columns"
 export * from "./configOptions"
+export * from "./testSuite"
