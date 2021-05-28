@@ -90,3 +90,36 @@ export const gearMeleeTableConfigOption: Record<
     label: "AR",
   },
 }
+
+// extremely specific configs
+type gearWithRatingCols = Columns<GearTyped>[]
+
+export const buyGearWithRatingCol: gearWithRatingCols = [
+  gearTableConfigOptions.buy,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.setRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const sellGearWithRatingCol: gearWithRatingCols = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.displayRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const buyGearWithoutRatingCol: gearWithRatingCols = [
+  gearTableConfigOptions.buy,
+  gearTableConfigOptions.name,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const sellGearWithoutRatingCol: gearWithRatingCols = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]

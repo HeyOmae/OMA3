@@ -1,6 +1,6 @@
 import { locks } from "@/data/security"
 import { setupIndexedDB } from "@/test/testUtils"
-import { TestGeneralGearWithRating } from "../utils"
+import { TestGeneralGearWithRating } from "../../util"
 import Locks from "./index"
 
 describe("<Locks/>", () => {
