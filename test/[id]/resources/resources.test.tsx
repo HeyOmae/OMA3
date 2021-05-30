@@ -80,5 +80,9 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/locks",
     )
+    expect(getByText("Restraints").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/restraints",
+    )
   })
 })
