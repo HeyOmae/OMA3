@@ -76,13 +76,42 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/sensor",
     )
-    expect(getByText("Locks").closest("a")).toHaveAttribute(
+  })
+
+  it("should render links to security devices", () => {
+    const { getByText } = setup()
+
+    expect(getByText("locks").closest("a")).toHaveAttribute(
       "href",
-      "/1/resources/locks",
+      "/1/resources/security/locks",
     )
-    expect(getByText("Restraints").closest("a")).toHaveAttribute(
+    expect(getByText("restraints").closest("a")).toHaveAttribute(
       "href",
-      "/1/resources/restraints",
+      "/1/resources/security/restraints",
+    )
+    expect(getByText("bne").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/security/bne",
+    )
+    expect(getByText("chemicals").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/security/chemicals",
+    )
+    expect(getByText("survival").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/security/survival",
+    )
+    expect(getByText("grappleGun").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/security/grappleGun",
+    )
+    expect(getByText("toxins").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/security/toxins",
+    )
+    expect(getByText("drugs").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/security/drugs",
     )
   })
 })

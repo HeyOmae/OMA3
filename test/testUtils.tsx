@@ -172,9 +172,16 @@ export const runnerFromDB = (id = 0): Runner =>
 export const caymansCurrentlySpentNuyen = 270_055
 
 export const testBuyAndSellGear =
-  (GearPage: FC, gearData: Gear[]) => async () => {
+  (
+    GearPage: FC,
+    gearData: Gear[],
+    queryParam: { [key: string]: string } = {},
+  ) =>
+  async () => {
     const { getByLabelText, getAllByLabelText, getByText } = customRender(
-        withTestRouter(<GearPage />, { query: { id: "10", gearIndex: "0" } }),
+        withTestRouter(<GearPage />, {
+          query: { id: "10", gearIndex: "0", ...queryParam },
+        }),
       ),
       totalNuyen = 275_000,
       gearA = gearData[0],
@@ -209,4 +216,8 @@ export const testBuyAndSellGear =
         }¥/${totalNuyen}¥`,
       ),
     ).toBeInTheDocument()
+
+    // clean up the gear
+    getAllByLabelText(`Remove ${gearA.name}`)[0].click()
+    getAllByLabelText(`Remove ${gearC.name}`)[0].click()
   }

@@ -18,13 +18,16 @@ const BreakingAndEntering: FC = () => {
   }, [securityType])
 
   return (
-    <GearPageTemplate<GearTyped>
-      gearLabel={securityType}
-      resourceKey={securityType}
-      listOfGear={listOfGear}
-      addGearTableConfig={buyGearWithRatingCol}
-      removeGearTableConfig={sellGearWithRatingCol}
-    />
+    <>
+      <h1>{securityType}</h1>
+      <GearPageTemplate<GearTyped>
+        gearLabel={securityType}
+        resourceKey={securityType}
+        listOfGear={listOfGear}
+        addGearTableConfig={buyGearWithRatingCol}
+        removeGearTableConfig={sellGearWithRatingCol}
+      />
+    </>
   )
 }
 
