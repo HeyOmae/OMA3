@@ -63,7 +63,7 @@ export interface GearTyped extends Gear, GearTypes {
   maxRating?: number
   rating?: true
   currentRating?: number
-  rateMultiplier?: "cost" | "capacity cost"
+  rateMultiplier?: "cost" | "capacity cost" | "cost2"
   count?: true
 }
 
