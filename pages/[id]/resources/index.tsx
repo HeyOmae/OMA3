@@ -1,8 +1,9 @@
-import { RunnerLayout } from "../../../components/layout"
+import { RunnerLayout } from "@/components/layout"
 import NextLink from "next/link"
 import { Button } from "@material-ui/core"
 import { useRouter } from "next/router"
-import { SecurityNav } from "@/components/runner/resources/security/SecurityNav"
+import { GearNav } from "@/components/runner/resources/GearNav/GearNav"
+import * as securityData from "@/data/security"
 
 export const ResourcePage = (): JSX.Element => {
   const { query, asPath } = useRouter()
@@ -103,7 +104,7 @@ export const ResourcePage = (): JSX.Element => {
         <Button variant="contained">Sensor Devices</Button>
       </NextLink>
       <h2>Security</h2>
-      <SecurityNav asPath={asPath} />
+      <GearNav pathTo={`${asPath}security/`} gearData={securityData} />
     </RunnerLayout>
   )
 }

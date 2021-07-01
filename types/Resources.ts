@@ -12,6 +12,14 @@ export interface Resources {
   imaging: (GearModdableRated & GearTyped)[]
   audio: GearModdableRated[]
   sensor: GearModdableRated[]
+  locks: GearTyped[]
+  restraints: GearTyped[]
+  bne: GearTyped[]
+  chemicals: GearTyped[]
+  survival: (GearTyped | GearModdableRated)[]
+  grappleGun: GearTyped[]
+  toxins: GearTyped[]
+  drugs: GearTyped[]
 }
 
 export interface Gear {
