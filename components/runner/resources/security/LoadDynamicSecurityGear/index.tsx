@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import { buyGearWithRatingCol, sellGearWithRatingCol } from "../../util"
 
-const BreakingAndEntering: FC = () => {
+const LoadDynamicSecurityGear: FC = () => {
   const router = useRouter()
   const [listOfGear, setListOfGear] = useState<GearTyped[]>()
 
@@ -31,4 +31,4 @@ const BreakingAndEntering: FC = () => {
   )
 }
 
-export default BreakingAndEntering
+export default LoadDynamicSecurityGear
