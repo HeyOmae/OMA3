@@ -20,6 +20,7 @@ export interface Resources {
   grappleGun: GearTyped[]
   toxins: GearTyped[]
   drugs: GearTyped[]
+  biotech: GearTyped[]
 }
 
 export interface Gear {

@@ -13,7 +13,7 @@ describe("Resource Page", () => {
     )
 
   it("should exist", async () => {
-    const { getByText } = setup()
+    const { getByText, getAllByText } = setup()
 
     await waitFor(() => {
       expect(getByText("Resources")).toBeInTheDocument()
@@ -75,6 +75,14 @@ describe("Resource Page", () => {
     expect(getByText("Sensor Devices").closest("a")).toHaveAttribute(
       "href",
       "/1/resources/sensor",
+    )
+
+    // security stuff in other test section
+
+    // I should come up with a smarter way to do this, but I can't right now
+    expect(getAllByText("Biotech")[1].closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/biotech",
     )
   })
 
