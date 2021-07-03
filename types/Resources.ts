@@ -72,8 +72,29 @@ export interface GearTyped extends Gear, GearTypes {
   maxRating?: number
   rating?: true
   currentRating?: number
-  rateMultiplier?: "cost" | "capacity cost" | "cost2"
+  rateMultiplier?: "cost" | "capacity cost" | "cost2" | "cost avail"
   count?: true
+}
+
+interface SkillMod {
+  ref: "enchanting" | "sorcery" | "conjuring"
+  cond?: true
+  condIndex?: number
+  val?: number
+}
+
+interface FocusModifications {
+  skillmod?: SkillMod[]
+  relevancemod?: {
+    topic: string
+  }
+  powermod?: string
+}
+
+export interface GearFocus extends Omit<GearTyped, "type" | "subtype"> {
+  karma: number
+  modifications?: FocusModifications
+  choice?: "ADEPT_POWER" | "SPELL_CATEGORY" | "SPIRIT" | "MELEE_WEAPON"
 }
 
 interface ModifiableGear {
