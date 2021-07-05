@@ -2,8 +2,7 @@ import { RunnerLayout } from "@/components/layout"
 import dynamic from "next/dynamic"
 
 const LoadDynamicSecurityGear = dynamic(
-  () =>
-    import("@/components/runner/resources/security/LoadDynamicSecurityGear"),
+  () => import("@/components/runner/resources/LoadDynamicGear"),
   {
     ssr: false,
   },
@@ -11,7 +10,7 @@ const LoadDynamicSecurityGear = dynamic(
 
 const LocksPage = () => (
   <RunnerLayout>
-    <LoadDynamicSecurityGear />
+    <LoadDynamicSecurityGear importedGear={import(`@/data/security`)} />
   </RunnerLayout>
 )
 
