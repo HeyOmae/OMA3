@@ -7,15 +7,18 @@ import {
   withTestRouter,
   waitFor,
 } from "@/test/testUtils"
-import LoadDynamicSecurityGear from "./"
+import LoadDynamicGear from "."
 
-describe("LoadDynamicSecurityGear Component", () => {
+describe("LoadDynamicGear Component", () => {
   beforeAll(setupIndexedDB)
-  const setup = (securityType: string) =>
+  const setup = (gearType: string) =>
     render(
-      withTestRouter(<LoadDynamicSecurityGear />, {
-        query: { id: "10", securityType },
-      }),
+      withTestRouter(
+        <LoadDynamicGear importedGear={import(`@/data/security`)} />,
+        {
+          query: { id: "10", gearType },
+        },
+      ),
     )
   Object.entries(securityData).forEach(([securityType, securityGearData]) => {
     it(`should render ${securityType} gear`, async () => {

@@ -1,28 +1,30 @@
 import { GearTyped } from "@/types/Resources"
 import { useRouter } from "next/router"
 import { FC, useEffect, useState } from "react"
-import { GearPageTemplate } from "../../GearPageTemplate"
-import { buyGearWithRatingCol, sellGearWithRatingCol } from "../../util"
+import { GearPageTemplate } from "../GearPageTemplate"
+import { buyGearWithRatingCol, sellGearWithRatingCol } from "../util"
 
-const LoadDynamicSecurityGear: FC = () => {
+interface Props {
+  importedGear: Promise<Record<string, GearTyped[]>>
+}
+
+const LoadDynamicSecurityGear: FC<Props> = ({ importedGear }) => {
   const router = useRouter()
   const [listOfGear, setListOfGear] = useState<GearTyped[]>()
 
   // I hate typecasting but I also hate writing pointless defensive code
-  const securityType = router.query.securityType as string
+  const gearType = router.query.gearType as string
 
   useEffect(() => {
-    import("@/data/security").then((securityGear) =>
-      setListOfGear(securityGear[securityType]),
-    )
-  }, [securityType])
+    importedGear.then((securityGear) => setListOfGear(securityGear[gearType]))
+  }, [gearType])
 
   return (
     <>
-      <h1>{securityType}</h1>
+      <h1>{gearType}</h1>
       <GearPageTemplate<GearTyped>
-        gearLabel={securityType}
-        resourceKey={securityType}
+        gearLabel={gearType}
+        resourceKey={gearType}
         listOfGear={listOfGear}
         addGearTableConfig={buyGearWithRatingCol}
         removeGearTableConfig={sellGearWithRatingCol}
