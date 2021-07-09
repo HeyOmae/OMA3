@@ -11,9 +11,7 @@ import { Home } from "../pages/index"
 import { mockedRunners } from "./mocks"
 
 describe("Home page", () => {
-  beforeAll((done) => {
-    setupIndexedDB(done)
-  })
+  beforeAll(setupIndexedDB)
   const setup = () => {
     const push = jest.fn()
 

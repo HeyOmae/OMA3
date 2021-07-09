@@ -40,10 +40,12 @@ describe("LoadDynamicGear Component", () => {
 
       expect(getTextInContainer(gearRow, gear.name)).toBeInTheDocument()
       if (gear.rating) {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(
           getTestIdInContainer(gearRow, `${gear.name}-rating`),
         ).toBeInTheDocument()
       } else {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(getTextInContainer(gearRow, "N/A")).toBeInTheDocument()
       }
       expect(getTextInContainer(gearRow, gear.availability)).toBeInTheDocument()

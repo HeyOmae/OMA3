@@ -11,9 +11,7 @@ import { fireEvent } from "@testing-library/react"
 import { mockedRunners } from "../mocks"
 
 describe("info page", () => {
-  beforeAll((done) => {
-    setupIndexedDB(done)
-  })
+  beforeAll(setupIndexedDB)
   const setup = () => {
     return render(
       withTestRouter(<InfoPage />, {

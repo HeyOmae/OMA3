@@ -8,7 +8,9 @@ describe("<Priority Warning", () => {
     )
   it("should let the user known that the priority needs to be set", () => {
     const { getByText } = setup()
-    expect(getByText("You need to set the metatype priority"))
+    expect(
+      getByText("You need to set the metatype priority"),
+    ).toBeInTheDocument()
   })
 
   it("should have a link to the priority table", () => {

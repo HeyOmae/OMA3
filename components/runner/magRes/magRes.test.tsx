@@ -145,21 +145,27 @@ describe("Magic and Resonance", () => {
       const { getByText } = setup("1")
 
       await waitFor(() => {
-        expect(getByText("You need to set the metatype priority"))
+        expect(
+          getByText("You need to set the metatype priority"),
+        ).toBeInTheDocument()
       })
     })
 
     it("should make sure the mag/res is set", async () => {
       const { getByText } = setup("4")
       await waitFor(() => {
-        expect(getByText("You need to set the mag/res priority"))
+        expect(
+          getByText("You need to set the mag/res priority"),
+        ).toBeInTheDocument()
       })
     })
 
     it("should make sure the attributes are set", async () => {
       const { getByText } = setup("6")
       await waitFor(() => {
-        expect(getByText("You need to set the attributes priority"))
+        expect(
+          getByText("You need to set the attributes priority"),
+        ).toBeInTheDocument()
       })
     })
   })

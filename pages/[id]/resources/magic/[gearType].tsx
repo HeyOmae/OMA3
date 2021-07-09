@@ -8,10 +8,10 @@ const LoadDynamicSecurityGear = dynamic(
   },
 )
 
-const SecurityPages = () => (
+const MagicPages = () => (
   <RunnerLayout>
-    <LoadDynamicSecurityGear importedGear={import(`@/data/security`)} />
+    <LoadDynamicSecurityGear importedGear={import(`@/data/magicGear`)} />
   </RunnerLayout>
 )
 
-export default SecurityPages
+export default MagicPages

@@ -178,11 +178,12 @@ export const testBuyAndSellGear =
     queryParam: { [key: string]: string } = {},
   ) =>
   async () => {
-    const { getByLabelText, getAllByLabelText, getByText } = customRender(
-        withTestRouter(<GearPage />, {
-          query: { id: "10", gearIndex: "0", ...queryParam },
-        }),
-      ),
+    const { getByLabelText, getAllByLabelText, getByText, debug } =
+        customRender(
+          withTestRouter(<GearPage />, {
+            query: { id: "10", gearIndex: "0", ...queryParam },
+          }),
+        ),
       totalNuyen = 275_000,
       gearA = gearData[0],
       gearB = gearData[Math.floor(gearData.length / 2)],
@@ -193,6 +194,8 @@ export const testBuyAndSellGear =
         getByText(`${caymansCurrentlySpentNuyen}¥/${totalNuyen}¥`),
       ).toBeInTheDocument()
     })
+
+    debug(getByLabelText(`Add ${gearB.name}`))
 
     getByLabelText(`Add ${gearA.name}`).click()
     getByLabelText(`Add ${gearB.name}`).click()

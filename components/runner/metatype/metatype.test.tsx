@@ -7,8 +7,8 @@ import {
   SliderHelper,
   searchRegexInNodes,
   runnerFromDB,
-} from "../../../test/testUtils"
-import { initRunnerAttributes } from "../../../types/runner"
+} from "@/test/testUtils"
+import { initRunnerAttributes } from "@/types/runner"
 import { Metatype } from "./index"
 
 describe("<Metatype/>", () => {
@@ -362,7 +362,9 @@ describe("<Metatype/>", () => {
         expect(queryByText("Charisma")).not.toBeInTheDocument()
         expect(queryByText("Edge")).not.toBeInTheDocument()
 
-        expect(getByText("You need to set the attributes priority"))
+        expect(
+          getByText("You need to set the attributes priority"),
+        ).toBeInTheDocument()
       })
     })
   })
