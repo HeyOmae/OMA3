@@ -171,7 +171,9 @@ describe("<RunnerSkillTable/>", () => {
     it("should display the remaining skill points", async () => {
       const { getByText } = setup()
 
-      expect(getByText(searchRegexInNodes(/Skill Points:4\/20/)))
+      expect(
+        getByText(searchRegexInNodes(/Skill Points:4\/20/)),
+      ).toBeInTheDocument()
     })
 
     it("should alert the user about bad stuff when they've used too many skill points", () => {

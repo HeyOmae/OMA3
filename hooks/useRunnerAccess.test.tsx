@@ -10,9 +10,7 @@ import {
 import { useRunnerAccess } from "./useRunnerAccess"
 
 describe("useRunnerAccess hook", () => {
-  beforeAll((done) => {
-    setupIndexedDB(done)
-  })
+  beforeAll(setupIndexedDB)
   const setup = () => {
     const Test = () => {
       const [runner, dispatch] = useRunnerAccess<string, string>(
