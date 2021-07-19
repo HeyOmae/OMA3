@@ -27,7 +27,7 @@
     "@material-ui/icons": "^5.0.0-beta.1",
     "@material-ui/lab": "^5.0.0-alpha.40",
     "next": "^11.0.1",
-    "next-pwa": "^5.2.23",
+    "next-pwa": "^5.2.24",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-indexed-db": "^1.0.12"
