@@ -171,7 +171,7 @@ export const runnerFromDB = (id = 0): Runner =>
 
 export const caymansCurrentlySpentNuyen = 270_055
 
-export const testBuyAndSellGear =
+export const expectToBuyAndSellGear =
   (
     GearPage: FC,
     gearData: Gear[],

@@ -67,7 +67,7 @@ interface MatrixAttributesCyberdeck extends MatrixAttributes {
   sleaze: number
 }
 
-export interface GearTyped extends Gear, GearTypes {
+export interface GearWithRating extends Gear {
   minRating?: number
   maxRating?: number
   rating?: true
@@ -75,6 +75,8 @@ export interface GearTyped extends Gear, GearTypes {
   rateMultiplier?: "cost" | "capacity cost" | "cost2" | "cost avail"
   count?: true
 }
+
+export interface GearTyped extends GearWithRating, GearTypes {}
 
 interface SkillMod {
   ref: "enchanting" | "sorcery" | "conjuring"
@@ -91,7 +93,7 @@ interface FocusModifications {
   powermod?: string
 }
 
-export interface GearFocus extends Omit<GearTyped, "type" | "subtype"> {
+export interface GearFocus extends GearWithRating {
   karma: number
   modifications?: FocusModifications
   choice?: "ADEPT_POWER" | "SPELL_CATEGORY" | "SPIRIT" | "MELEE_WEAPON"

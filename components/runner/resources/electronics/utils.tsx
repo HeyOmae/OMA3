@@ -86,7 +86,7 @@ export const sellSensorCols: SensorDeviceCols = [
   gearTableConfigOptions.mod,
 ]
 
-export const TestMatrixDeviceTable =
+export const expectGearToDisplayMatrixDeviceTable =
   (MatrixComponent: FC, ListOfMatrixGear: GearMatrixCommlink[]) => async () => {
     const { getByText, getByLabelText } = render(
       withTestRouter(<MatrixComponent />, { query: { id: "10" } }),

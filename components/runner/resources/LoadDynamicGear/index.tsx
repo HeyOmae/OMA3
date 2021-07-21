@@ -2,13 +2,19 @@ import { Gear } from "@/types/Resources"
 import { useRouter } from "next/router"
 import { FC, useEffect, useState } from "react"
 import { GearPageTemplate } from "../GearPageTemplate"
-import { buyGearWithRatingCol, sellGearWithRatingCol } from "../util"
+import { buyGearWithRatingCol, Columns, sellGearWithRatingCol } from "../util"
 
-interface Props {
+export interface Props {
   importedGear: Promise<Record<string, Gear[]>>
+  addGearTableConfig?: Columns<Gear>[]
+  removeGearTableConfig?: Columns<Gear>[]
 }
 
-const LoadDynamicGear: FC<Props> = ({ importedGear }) => {
+const LoadDynamicGear: FC<Props> = ({
+  importedGear,
+  addGearTableConfig = buyGearWithRatingCol,
+  removeGearTableConfig = sellGearWithRatingCol,
+}) => {
   const router = useRouter()
   const [listOfGear, setListOfGear] = useState<Gear[]>()
 
@@ -26,8 +32,8 @@ const LoadDynamicGear: FC<Props> = ({ importedGear }) => {
         gearLabel={gearType}
         resourceKey={gearType}
         listOfGear={listOfGear}
-        addGearTableConfig={buyGearWithRatingCol}
-        removeGearTableConfig={sellGearWithRatingCol}
+        addGearTableConfig={addGearTableConfig}
+        removeGearTableConfig={removeGearTableConfig}
       />
     </>
   )

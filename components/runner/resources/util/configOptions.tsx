@@ -1,6 +1,7 @@
 import { Columns } from "../util"
 import {
   Gear,
+  GearFocus,
   GearMod,
   GearModRated,
   GearTools,
@@ -62,6 +63,22 @@ export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
   displayRating: {
     display: (gear) => (gear.rating ? gear.currentRating : "N/A"),
     label: "Rating",
+  },
+}
+
+export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
+  setRating: {
+    display: (gear, index, setRating) =>
+      gear.rating ? <SettingRating gear={gear} setRating={setRating} /> : "N/A",
+    label: "Rating",
+  },
+  karmaCost: {
+    display: (gear) => gear.currentRating * gear.karma,
+    label: "Karma Cost",
+  },
+  choice: {
+    display: ({ choice }) => (choice ? choice : "N/A"),
+    label: "Choice",
   },
 }
 
