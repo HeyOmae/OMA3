@@ -7,18 +7,20 @@ import {
   withTestRouter,
   waitFor,
 } from "@/test/testUtils"
-import LoadDynamicGear from "."
+import LoadDynamicGear, { Props } from "."
+import { gearMagicConfigOptions, gearTableConfigOptions } from "../util"
 
 describe("LoadDynamicGear Component", () => {
   beforeAll(setupIndexedDB)
-  const setup = (gearType: string) =>
+
+  const setup = (
+    gearType: string,
+    props: Props = { importedGear: import(`@/data/security`) },
+  ) =>
     render(
-      withTestRouter(
-        <LoadDynamicGear importedGear={import(`@/data/security`)} />,
-        {
-          query: { id: "10", gearType },
-        },
-      ),
+      withTestRouter(<LoadDynamicGear {...props} />, {
+        query: { id: "10", gearType },
+      }),
     )
   Object.entries(securityData).forEach(([securityType, securityGearData]) => {
     it(`should render ${securityType} gear`, async () => {
@@ -50,6 +52,36 @@ describe("LoadDynamicGear Component", () => {
       }
       expect(getTextInContainer(gearRow, gear.availability)).toBeInTheDocument()
       expect(getTextInContainer(gearRow, `${gear.cost}¥`)).toBeInTheDocument()
+    })
+  })
+
+  describe("magic gear", () => {
+    describe("foci", () => {
+      it("should render foci stats", async () => {
+        const { getByText } = setup("foci", {
+          importedGear: import("@/data/magicGear"),
+          addGearTableConfig: [
+            gearTableConfigOptions.buy,
+            gearTableConfigOptions.name,
+            gearMagicConfigOptions.choice,
+            gearMagicConfigOptions.setRating,
+            gearMagicConfigOptions.karmaCost,
+            gearTableConfigOptions.avail,
+            gearTableConfigOptions.cost,
+          ],
+        })
+
+        await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
+
+        const buyHeader = getByText("Buy").closest("tr")
+
+        expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
+        expect(getTextInContainer(buyHeader, "Choice")).toBeInTheDocument()
+        expect(getTextInContainer(buyHeader, "Rating")).toBeInTheDocument()
+        expect(getTextInContainer(buyHeader, "Karma Cost")).toBeInTheDocument()
+        expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
+        expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
+      })
     })
   })
 })

@@ -21,6 +21,16 @@
     "node": true
   },
   "rules": {
+    "jest/expect-expect": [
+      2,
+      {
+        "assertFunctionNames": [
+          "expect",
+          "expectToBuyAndSellGear",
+          "expectGearToDisplayMatrixDeviceTable"
+        ]
+      }
+    ],
     "react/react-in-jsx-scope": 0,
     "react/display-name": 0,
     "react/prop-types": 0,

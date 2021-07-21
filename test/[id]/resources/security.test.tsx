@@ -1,4 +1,4 @@
-import { setupIndexedDB, testBuyAndSellGear } from "@/test/testUtils"
+import { setupIndexedDB, expectToBuyAndSellGear } from "@/test/testUtils"
 import SecurityPage from "@/pages/[id]/resources/security/[gearType]"
 import * as securityGear from "@/data/security"
 
@@ -8,7 +8,7 @@ describe("security gear pages", () => {
     describe(`${securityGearName} page`, () => {
       it(
         `should be able to buy and sell ${securityGearName}`,
-        testBuyAndSellGear(SecurityPage, gear, {
+        expectToBuyAndSellGear(SecurityPage, gear, {
           gearType: securityGearName,
         }),
       )
