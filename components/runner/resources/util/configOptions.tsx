@@ -68,8 +68,9 @@ export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
 
 export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
   setRating: {
-    display: (gear, index, setRating) =>
-      gear.rating ? <SettingRating gear={gear} setRating={setRating} /> : "N/A",
+    display: (gear, index, setRating) => (
+      <SettingRating gear={gear} setRating={setRating} />
+    ),
     label: "Rating",
   },
   karmaCost: {
@@ -79,6 +80,14 @@ export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
   choice: {
     display: ({ choice }) => (choice ? choice : "N/A"),
     label: "Choice",
+  },
+  avail: {
+    display: ({ availability, currentRating = 1 }) => {
+      const [availRating, availRestriction] = availability.match(/[\d]+|\D+/g)
+
+      return `${+availRating * currentRating}${availRestriction}`
+    },
+    label: "Avail",
   },
 }
 
