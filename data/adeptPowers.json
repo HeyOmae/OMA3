@@ -120,6 +120,7 @@
     "name": "Improved physical attribute",
     "cost": 1,
     "levels": true,
+    "max": 4,
     "select": "PHYSICAL ATTRIBUTE",
     "activation": "Passive",
     "modifications": {

@@ -15,6 +15,7 @@ import {
   SettingRating,
   SkillSelect,
 } from "../GearPageTemplate/GearTable/ResourceButtons"
+import { ChoiceSelect } from "../GearPageTemplate/GearTable/ResourceButtons/ChoiceSelect"
 
 export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
   name: {
@@ -74,15 +75,15 @@ export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
     label: "Rating",
   },
   karmaCost: {
-    display: (gear) => gear.currentRating * gear.karma,
+    display: ({ currentRating, karma }) => currentRating * karma,
     label: "Karma Cost",
   },
   choice: {
-    display: ({ choice }) => (choice ? choice : "N/A"),
+    display: ({ choice }) => (choice ? <ChoiceSelect /> : "N/A"),
     label: "Choice",
   },
   avail: {
-    display: ({ availability, currentRating = 1 }) => {
+    display: ({ availability, currentRating }) => {
       const [availRating, availRestriction] = availability.match(/[\d]+|\D+/g)
 
       return `${+availRating * currentRating}${availRestriction}`
