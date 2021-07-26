@@ -10,6 +10,7 @@ import {
 import { Gear } from "@/types/Resources"
 import { Columns } from "../../util"
 import { StandardDisplayRow, RatingRow, SelectSkillRow } from "./Row"
+import { ChoiceRatingRow } from "./Row/ChoiceRatingRow"
 
 export interface Props<G> {
   listOfGear: G[]
@@ -18,9 +19,13 @@ export interface Props<G> {
 
 function displayRow(gear: Gear, isPurchasing: boolean) {
   if (isPurchasing) {
-    if ("rating" in gear) {
+    const hasRating = "rating" in gear,
+      hasChoice = "choice" in gear
+    if (hasRating && hasChoice) {
+      return ChoiceRatingRow
+    } else if (hasRating) {
       return RatingRow
-    } else if ("choice" in gear) {
+    } else if (hasChoice) {
       return SelectSkillRow
     }
   }

@@ -5,6 +5,7 @@ import {
   setupIndexedDB,
   withTestRouter,
   SliderHelper,
+  fireEvent,
 } from "@/test/testUtils"
 import Foci from "./index"
 import { foci } from "@/data/focus"
@@ -28,7 +29,7 @@ describe("foci", () => {
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
     foci.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(getByText(new RegExp(name))).toBeInTheDocument()
     })
   })
 
@@ -57,6 +58,52 @@ describe("foci", () => {
       expect(getTextInContainer(focusRow, "30000¥")).toBeInTheDocument()
       // availibility
       expect(getTextInContainer(focusRow, "6L")).toBeInTheDocument()
+    })
+  })
+
+  describe("Qi Focus", () => {
+    it("should select an adept power and increase rating based off the power point cost", async () => {
+      const { getByText, getByTestId } = setup()
+
+      await waitFor(() =>
+        expect(getByText("Adrenaline boost Qi Focus")).toBeInTheDocument(),
+      )
+
+      const focusRow = getByText("Adrenaline boost Qi Focus").closest("tr")
+
+      // current rating
+      expect(
+        getByTestId("Adrenaline boost Qi Focus-rating").querySelector("input"),
+      ).toHaveValue("1")
+      // karma cost
+      expect(getTextInContainer(focusRow, "2")).toBeInTheDocument()
+      // Nuyen cost
+      expect(getTextInContainer(focusRow, "3000¥")).toBeInTheDocument()
+      // availibility
+      expect(getTextInContainer(focusRow, "1L")).toBeInTheDocument()
+
+      fireEvent.mouseDown(getTextInContainer(focusRow, "Adrenaline boost"))
+      getByText("Improved physical attribute").click()
+
+      expect(
+        getByText("Improved physical attribute Qi Focus"),
+      ).toBeInTheDocument()
+
+      // const newFocusRow = getByText(
+      //   "Improved physical attribute Qi Focus",
+      // ).closest("tr")
+      // // current rating
+      // expect(
+      //   getByTestId(
+      //     "Improved physical attribute Qi Focus-rating",
+      //   ).querySelector("input"),
+      // ).toHaveValue("4")
+      // // karma cost
+      // expect(getTextInContainer(newFocusRow, "8")).toBeInTheDocument()
+      // // Nuyen cost
+      // expect(getTextInContainer(newFocusRow, "12000¥")).toBeInTheDocument()
+      // // availibility
+      // expect(getTextInContainer(newFocusRow, "4L")).toBeInTheDocument()
     })
   })
 })
