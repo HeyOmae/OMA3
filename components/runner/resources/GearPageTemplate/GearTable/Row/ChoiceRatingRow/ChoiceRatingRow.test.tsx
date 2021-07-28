@@ -52,4 +52,17 @@ describe("ChoiceRatingRow", () => {
 
     expect(getByText("2")).toBeInTheDocument()
   })
+
+  it("should allow users to select spell category", () => {
+    const { getByText } = setup("Counterspelling Focus")
+
+    expect(getByText("Combat Counterspelling Focus")).toBeInTheDocument()
+
+    expect(getByText("Combat")).toBeInTheDocument()
+
+    fireEvent.mouseDown(getByText("Combat"))
+
+    getByText("Illusion").click()
+    expect(getByText("Illusion Counterspelling Focus")).toBeInTheDocument()
+  })
 })
