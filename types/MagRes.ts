@@ -107,3 +107,5 @@ export interface ComplexForm {
   choice?: "MATRIX ATTRIBUTE" | "PROGRAM"
   multiple?: true
 }
+
+export type SpiritTypes = "Air" | "Beast" | "Earth" | "Fire" | "Kin" | "Water"
