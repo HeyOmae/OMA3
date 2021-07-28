@@ -1,4 +1,4 @@
-import { AdeptPower } from "@/types/MagRes"
+import { AdeptPower, SpellCategory } from "@/types/MagRes"
 import { TableCell, TableRow } from "@material-ui/core"
 import { createContext, useMemo, useState } from "react"
 import { FC } from "react"
@@ -12,7 +12,7 @@ export interface ChoiceRatingRowProps extends Props {
   gear: GearFocus
 }
 
-type ChoiceType = AdeptPower
+type ChoiceType = AdeptPower | { name: SpellCategory }
 
 interface SelectChoiceContext {
   choices: ChoiceType[]
@@ -27,12 +27,27 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
   gear,
   index,
 }) => {
+  const choices: ChoiceType[] = useMemo(() => {
+    switch (gear.choice) {
+      case "SPELL_CATEGORY":
+        return [
+          { name: "Combat" },
+          { name: "Detection" },
+          { name: "Health" },
+          { name: "Illusion" },
+          { name: "Manipulation" },
+        ]
+      case "ADEPT_POWER":
+      default:
+        return powerData as AdeptPower[]
+    }
+  }, [gear])
   const [currentRating, setRating] = useState(gear.minRating ?? 1)
   const [selectedChoiceIndex, setChoiceIndex] = useState<number>(0)
   const gearWithChoice = useMemo(
     () => ({
       ...gear,
-      name: `${powerData[selectedChoiceIndex].name} ${gear.name}`,
+      name: `${choices[selectedChoiceIndex].name} ${gear.name}`,
       currentRating,
     }),
     [selectedChoiceIndex],
@@ -41,7 +56,7 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
   return (
     <ChoiceContext.Provider
       value={{
-        choices: powerData as ChoiceType[],
+        choices,
         setChoiceIndex,
         selectedChoiceIndex,
       }}

@@ -38,10 +38,10 @@ describe("foci", () => {
       const { getByText, getByTestId } = setup()
 
       await waitFor(() =>
-        expect(getByText("Alchemical Focus")).toBeInTheDocument(),
+        expect(getByText(/Alchemical Focus/)).toBeInTheDocument(),
       )
 
-      const focusRow = getByText("Alchemical Focus").closest("tr")
+      const focusRow = getByText(/Alchemical Focus/).closest("tr")
 
       // karma cost
       expect(getTextInContainer(focusRow, "3")).toBeInTheDocument()
@@ -50,7 +50,7 @@ describe("foci", () => {
       // availibility
       expect(getTextInContainer(focusRow, "1L")).toBeInTheDocument()
 
-      SliderHelper.change(getByTestId("Alchemical Focus-rating"), 6, 1, 7)
+      SliderHelper.change(getByTestId(/Alchemical Focus-rating/), 6, 1, 7)
 
       // karma cost
       expect(getTextInContainer(focusRow, "18")).toBeInTheDocument()
@@ -65,9 +65,7 @@ describe("foci", () => {
     it("should select an adept power and increase rating based off the power point cost", async () => {
       const { getByText, getByTestId } = setup()
 
-      await waitFor(() =>
-        expect(getByText("Adrenaline boost Qi Focus")).toBeInTheDocument(),
-      )
+      await waitFor(() => expect(getByText(/Qi Focus/)).toBeInTheDocument())
 
       const focusRow = getByText("Adrenaline boost Qi Focus").closest("tr")
 
@@ -89,6 +87,7 @@ describe("foci", () => {
         getByText("Improved physical attribute Qi Focus"),
       ).toBeInTheDocument()
 
+      // TODO: make qi focus only support ratings based of adept power
       // const newFocusRow = getByText(
       //   "Improved physical attribute Qi Focus",
       // ).closest("tr")
