@@ -1,4 +1,4 @@
-import { AdeptPower, SpellCategory } from "@/types/MagRes"
+import { AdeptPower, SpellCategory, SpiritTypes } from "@/types/MagRes"
 import { TableCell, TableRow } from "@material-ui/core"
 import { createContext, useMemo, useState } from "react"
 import { FC } from "react"
@@ -12,7 +12,7 @@ export interface ChoiceRatingRowProps extends Props {
   gear: GearFocus
 }
 
-type ChoiceType = AdeptPower | { name: SpellCategory }
+type ChoiceType = AdeptPower | { name: SpellCategory | SpiritTypes }
 
 interface SelectChoiceContext {
   choices: ChoiceType[]
@@ -36,6 +36,15 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
           { name: "Health" },
           { name: "Illusion" },
           { name: "Manipulation" },
+        ]
+      case "SPIRIT":
+        return [
+          { name: "Air" },
+          { name: "Beast" },
+          { name: "Earth" },
+          { name: "Fire" },
+          { name: "Kin" },
+          { name: "Water" },
         ]
       case "ADEPT_POWER":
       default:

@@ -65,4 +65,17 @@ describe("ChoiceRatingRow", () => {
     getByText("Illusion").click()
     expect(getByText("Illusion Counterspelling Focus")).toBeInTheDocument()
   })
+
+  it("should allow users to select spirit types", () => {
+    const { getByText } = setup("Summoning Focus")
+
+    expect(getByText("Air Summoning Focus")).toBeInTheDocument()
+
+    expect(getByText("Air")).toBeInTheDocument()
+
+    fireEvent.mouseDown(getByText("Air"))
+
+    getByText("Kin").click()
+    expect(getByText("Kin Summoning Focus")).toBeInTheDocument()
+  })
 })
