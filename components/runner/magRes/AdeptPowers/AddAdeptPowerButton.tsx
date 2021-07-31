@@ -5,7 +5,7 @@ import { AdeptPower } from "../../../../types/MagRes"
 import { AddButton } from "../../../common"
 
 interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   power: AdeptPower
 }
 

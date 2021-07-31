@@ -12,7 +12,7 @@ import { Payload, REMOVE_SPELL } from "../.."
 import { RemoveButton } from "../../../../common"
 
 export interface RemoveSpellButtonProps {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   actionLabel: "Remove"
   spellName: string
   spellCategory: SpellCategory
@@ -40,7 +40,7 @@ export const RemoveSpellButton: FC<RemoveSpellButtonProps> = ({
 
 export interface Props {
   spells: Partial<Spells>
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const RunnerSpells: FC<Props> = ({

@@ -6,7 +6,7 @@ import { AddRitualButton } from "./AddRitualButton"
 import { RitualTable } from "./RitualTable"
 
 export interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const Rituals: FC<Props> = ({ dispatch }) => (

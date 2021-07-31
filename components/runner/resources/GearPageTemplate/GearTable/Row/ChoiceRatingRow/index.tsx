@@ -5,19 +5,26 @@ import { FC } from "react"
 import { Props } from "../index"
 import powerData from "@/data/adeptPowers.json"
 import { Columns } from "@/components/runner/resources/util"
-import { GearFocus } from "@/types/Resources"
+import { GearFocus, GearWeaponMelee } from "@/types/Resources"
+import { useGetRunner } from "@/hooks/useRunnerAccess"
+import { CircularProgress } from "@material-ui/core"
 
 export interface ChoiceRatingRowProps extends Props {
   cols: Columns<GearFocus>[]
   gear: GearFocus
 }
 
-type ChoiceType = AdeptPower | { name: SpellCategory | SpiritTypes }
+type ChoiceType =
+  | AdeptPower
+  | { name: SpellCategory | SpiritTypes }
+  | GearWeaponMelee
 
-interface SelectChoiceContext {
+type SelectedChoiceIndex = number | ""
+
+export interface SelectChoiceContext {
   choices: ChoiceType[]
   setChoiceIndex: (index: number) => void
-  selectedChoiceIndex: number
+  selectedChoiceIndex: SelectedChoiceIndex
 }
 
 export const ChoiceContext = createContext<SelectChoiceContext>(null)
@@ -27,6 +34,7 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
   gear,
   index,
 }) => {
+  const runner = useGetRunner()
   const choices: ChoiceType[] = useMemo(() => {
     switch (gear.choice) {
       case "SPELL_CATEGORY":
@@ -46,20 +54,22 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
           { name: "Kin" },
           { name: "Water" },
         ]
+      case "MELEE_WEAPON":
+        return runner?.resources?.melee ?? []
       case "ADEPT_POWER":
       default:
         return powerData as AdeptPower[]
     }
-  }, [gear])
+  }, [gear, runner])
   const [currentRating, setRating] = useState(gear.minRating ?? 1)
-  const [selectedChoiceIndex, setChoiceIndex] = useState<number>(0)
+  const [selectedChoiceIndex, setChoiceIndex] = useState<SelectedChoiceIndex>(0)
   const gearWithChoice = useMemo(
     () => ({
       ...gear,
-      name: `${choices[selectedChoiceIndex].name} ${gear.name}`,
+      name: `${choices[selectedChoiceIndex]?.name ?? ""} ${gear.name}`,
       currentRating,
     }),
-    [selectedChoiceIndex],
+    [selectedChoiceIndex, choices],
   )
 
   return (
@@ -67,13 +77,17 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
       value={{
         choices,
         setChoiceIndex,
-        selectedChoiceIndex,
+        selectedChoiceIndex: choices.length ? selectedChoiceIndex : "",
       }}
     >
       <TableRow>
         {cols.map(({ display, label }) => (
           <TableCell key={label}>
-            {display(gearWithChoice, index, setRating)}
+            {choices.length ? (
+              display(gearWithChoice, index, setRating)
+            ) : (
+              <CircularProgress />
+            )}
           </TableCell>
         ))}
       </TableRow>

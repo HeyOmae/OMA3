@@ -16,7 +16,7 @@ import { RemoveRitualButton } from "./RunnerRituals/RemoveRitualButton"
 interface Props {
   rituals: Ritual[]
   ActionButton: typeof AddRitualButton | typeof RemoveRitualButton
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const RitualTable: FC<Props> = ({ rituals, ActionButton, dispatch }) => (

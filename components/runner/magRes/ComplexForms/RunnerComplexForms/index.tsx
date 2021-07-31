@@ -6,7 +6,7 @@ import { ComplexFormTable } from "../ComplexFormTable"
 import { RemoveComplexFormButton } from "./RemoveComplexFormButton"
 
 export interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   complexForms: ComplexForm[]
 }
 

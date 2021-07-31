@@ -14,7 +14,7 @@ import { AddComplexFormButton } from "./AddComplexFormButton"
 import { RemoveComplexFormButton } from "./RunnerComplexForms/RemoveComplexFormButton"
 
 export interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   complexForms: ComplexForm[]
   ActionButton: typeof AddComplexFormButton | typeof RemoveComplexFormButton
 }

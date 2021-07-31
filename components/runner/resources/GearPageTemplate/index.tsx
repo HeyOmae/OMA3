@@ -22,7 +22,7 @@ export function GearPageTemplate<G extends Gear>({
   removeGearTableConfig,
   listOfGear,
 }: Props<G>): ReactElement {
-  const [runner, dispatch] = useRunnerAccess<undefined, G | number>(
+  const [runner, dispatch] = useRunnerAccess<G | number>(
     gearPageReducerGenerator(resourceKey),
   )
   return runner ? (

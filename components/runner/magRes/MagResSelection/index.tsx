@@ -9,7 +9,7 @@ import { Payload } from "../"
 export interface Props {
   selected?: MagRes
   priority: MagResPriorityTableOptions
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 type OnChange = (event: ChangeEvent<HTMLInputElement>, value: string) => void

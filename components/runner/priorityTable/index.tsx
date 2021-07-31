@@ -19,7 +19,7 @@ const MAGRES = Symbol("MAGRES")
 const RESOURCES = Symbol("RESOURCES")
 
 export const PriorityTable = () => {
-  const [runner, dispatch] = useRunnerAccess<symbol, PriorityRating>(
+  const [runner, dispatch] = useRunnerAccess<PriorityRating>(
     (runner, { type, payload }) => {
       switch (type) {
         case METATYPE:

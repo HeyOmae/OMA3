@@ -14,7 +14,7 @@ import { AddAdeptPowerButton } from "./AddAdeptPowerButton"
 import PowersData from "../../../../data/adeptPowers.json"
 
 export interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const AdeptPowers: FC<Props> = ({ dispatch }) => (

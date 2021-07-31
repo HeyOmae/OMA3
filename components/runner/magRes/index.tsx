@@ -61,7 +61,7 @@ export interface Payload {
 }
 
 export const MagRes = () => {
-  const [runner, dispatch] = useRunnerAccess<symbol, Payload>(
+  const [runner, dispatch] = useRunnerAccess<Payload>(
     (runner, { type, payload }) => {
       switch (type) {
         case SET_MAGRES:

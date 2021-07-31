@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from "react"
-import { Skills } from "../../../../types/Skill"
+import { Skills } from "@/types/Skill"
 import {
   TableContainer,
   Table,
@@ -10,7 +10,7 @@ import {
   Slider,
   TextField,
 } from "@material-ui/core"
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
+import { DispatchAction } from "@/hooks/useRunnerAccess"
 import {
   ActionPayload,
   CHANGE_SKILL_RATING,
@@ -18,13 +18,13 @@ import {
   REMOVE_SKILL,
 } from ".."
 import { Autocomplete } from "@material-ui/core"
-import skillData from "../../../../data/skills.json"
+import skillData from "@/data/skills.json"
 import { RemoveButton } from "../../../common"
 
 export interface Props {
   skills: Skills
   skillPoints: number
-  dispatch: DispatchAction<symbol, ActionPayload>
+  dispatch: DispatchAction<ActionPayload>
 }
 
 export const RunnerSkillTable: FC<Props> = ({

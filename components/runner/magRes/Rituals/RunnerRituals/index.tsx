@@ -7,7 +7,7 @@ import { RemoveRitualButton } from "./RemoveRitualButton"
 
 export interface Props {
   rituals: Ritual[]
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const RunnerRituals: FC<Props> = ({ dispatch, rituals }) => (

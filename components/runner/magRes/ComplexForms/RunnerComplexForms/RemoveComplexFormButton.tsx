@@ -5,7 +5,7 @@ import { ComplexForm } from "../../../../../types/MagRes"
 import { RemoveButton } from "../../../../common"
 
 interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   complexForm: ComplexForm
   index: number
 }
