@@ -7,7 +7,7 @@ import metatypeData from "../../../../data/metatype.json"
 import { Typography, Slider } from "@material-ui/core"
 
 export interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   runner: Runner
   isSpendingAdjustmentPoints: boolean
 }

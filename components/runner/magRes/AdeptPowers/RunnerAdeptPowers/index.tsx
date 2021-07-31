@@ -15,7 +15,7 @@ import { RemoveButton } from "../../../../common"
 
 export interface Props {
   powers: AdeptPower[]
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const RunnerAdeptPowers: FC<Props> = ({ powers, dispatch }) => {

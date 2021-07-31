@@ -26,7 +26,7 @@ export interface ActionPayload {
 }
 
 const Skills: FC = () => {
-  const [runner, dispatch] = useRunnerAccess<symbol, ActionPayload>(
+  const [runner, dispatch] = useRunnerAccess<ActionPayload>(
     (runner, { type, payload }) => {
       switch (type) {
         case ADD_SKILL:

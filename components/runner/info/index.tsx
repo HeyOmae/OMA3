@@ -1,27 +1,33 @@
 import { useCallback, useRef } from "react"
 import { Grid, TextField } from "@material-ui/core"
-import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
+import { RunnerReducer, useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { CircularProgress } from "@material-ui/core"
-import { Runner } from "../../../types/runner"
+import { Runner } from "@/types/runner"
+
+const UPDATE_NAME = Symbol("updateName"),
+  UPDATE_DESCRIPTION = Symbol("updateDescription")
 
 export const Info = (): JSX.Element => {
-  const reducer = useCallback((state: Runner, { type, payload }) => {
-    switch (type) {
-      case "updateName":
-        return {
-          ...state,
-          name: payload,
-        }
-      case "updateDescription":
-        return {
-          ...state,
-          description: payload,
-        }
-    }
-  }, [])
+  const reducer: RunnerReducer<string> = useCallback(
+    (state: Runner, { type, payload }) => {
+      switch (type) {
+        case UPDATE_NAME:
+          return {
+            ...state,
+            name: payload,
+          }
+        case UPDATE_DESCRIPTION:
+          return {
+            ...state,
+            description: payload,
+          }
+      }
+    },
+    [],
+  )
   const name = useRef<HTMLInputElement>()
   const description = useRef<HTMLInputElement>()
-  const [runner, dispatch] = useRunnerAccess<string, string>(reducer)
+  const [runner, dispatch] = useRunnerAccess<string>(reducer)
 
   return runner ? (
     <form autoComplete="off">
@@ -36,7 +42,7 @@ export const Info = (): JSX.Element => {
             fullWidth
             variant="filled"
             onBlur={() =>
-              dispatch({ type: "updateName", payload: name.current.value })
+              dispatch({ type: UPDATE_NAME, payload: name.current.value })
             }
           />
         </Grid>
@@ -52,7 +58,7 @@ export const Info = (): JSX.Element => {
             variant="filled"
             onBlur={() =>
               dispatch({
-                type: "updateDescription",
+                type: UPDATE_DESCRIPTION,
                 payload: description.current.value,
               })
             }

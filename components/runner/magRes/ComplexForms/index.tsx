@@ -7,7 +7,7 @@ import { ComplexFormTable } from "./ComplexFormTable"
 import { AddComplexFormButton } from "./AddComplexFormButton"
 
 export interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const ComplexForms: FC<Props> = ({ dispatch }) => (

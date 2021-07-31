@@ -8,13 +8,13 @@ import {
   TableBody,
 } from "@material-ui/core"
 import { ADD_SKILL, ActionPayload } from ".."
-import { Attributes } from "../../../../types/RunnerAttributes"
-import skillsData from "../../../../data/skills.json"
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
+import { Attributes } from "@/types/RunnerAttributes"
+import skillsData from "@/data/skills.json"
+import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { AddButton } from "../../../common"
 
 interface Props {
-  dispatch: DispatchAction<symbol, ActionPayload>
+  dispatch: DispatchAction<ActionPayload>
 }
 
 export const SkillTable: FC<Props> = ({ dispatch }) => (

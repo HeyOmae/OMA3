@@ -11,12 +11,13 @@ import { useRunnerAccess } from "./useRunnerAccess"
 
 describe("useRunnerAccess hook", () => {
   beforeAll(setupIndexedDB)
+  const UPDATE_NAME = Symbol("updateName")
   const setup = () => {
     const Test = () => {
-      const [runner, dispatch] = useRunnerAccess<string, string>(
+      const [runner, dispatch] = useRunnerAccess<string>(
         (state, { type, payload }) => {
           switch (type) {
-            case "updateName":
+            case UPDATE_NAME:
               return { ...state, name: payload }
 
             default:
@@ -31,7 +32,7 @@ describe("useRunnerAccess hook", () => {
           <button
             onClick={() =>
               dispatch({
-                type: "updateName",
+                type: UPDATE_NAME,
                 payload: "William “Bull” MacCallister",
               })
             }

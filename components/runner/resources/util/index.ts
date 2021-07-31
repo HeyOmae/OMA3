@@ -12,7 +12,7 @@ export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
 type GearPayload = Gear | number
 
 export const gearPageReducerGenerator =
-  (gearKey: string): RunnerReducer<undefined, GearPayload> =>
+  (gearKey: string): RunnerReducer<GearPayload> =>
   (runner, { payload }) => ({
     ...runner,
     resources: {
@@ -21,8 +21,7 @@ export const gearPageReducerGenerator =
     },
   })
 
-export const DispatchContext =
-  createContext<DispatchAction<undefined, GearPayload>>(null)
+export const DispatchContext = createContext<DispatchAction<GearPayload>>(null)
 
 export interface GearTableProps<G = Gear> {
   listOfGear: G[]

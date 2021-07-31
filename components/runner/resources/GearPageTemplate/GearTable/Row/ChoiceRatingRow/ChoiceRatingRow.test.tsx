@@ -4,10 +4,17 @@ import {
   gearTableConfigOptions,
 } from "@/components/runner/resources/util"
 import { foci } from "@/data/focus"
-import { fireEvent, render } from "@/test/testUtils"
+import {
+  fireEvent,
+  render,
+  setupIndexedDB,
+  waitFor,
+  withTestRouter,
+} from "@/test/testUtils"
 import { ChoiceRatingRow, ChoiceRatingRowProps } from "./index"
 
 describe("ChoiceRatingRow", () => {
+  beforeAll(setupIndexedDB)
   const setup = (focusName = "Qi Focus") => {
     const props: ChoiceRatingRowProps = {
         cols: [
@@ -23,13 +30,16 @@ describe("ChoiceRatingRow", () => {
       dispatch = jest.fn()
     return {
       ...render(
-        <DispatchContext.Provider value={dispatch}>
-          <table>
-            <tbody>
-              <ChoiceRatingRow {...props} />
-            </tbody>
-          </table>
-        </DispatchContext.Provider>,
+        withTestRouter(
+          <DispatchContext.Provider value={dispatch}>
+            <table>
+              <tbody>
+                <ChoiceRatingRow {...props} />
+              </tbody>
+            </table>
+          </DispatchContext.Provider>,
+          { query: { id: "10" } },
+        ),
       ),
       dispatch,
     }
@@ -77,5 +87,20 @@ describe("ChoiceRatingRow", () => {
 
     getByText("Kin").click()
     expect(getByText("Kin Summoning Focus")).toBeInTheDocument()
+  })
+
+  it("should allow users to select melee weapons the user bought", async () => {
+    const { getByText } = setup("Weapon Focus")
+
+    await waitFor(() => {
+      expect(getByText("Katana Weapon Focus")).toBeInTheDocument()
+    })
+
+    expect(getByText("Katana")).toBeInTheDocument()
+
+    fireEvent.mouseDown(getByText("Katana"))
+
+    getByText("Combat Knife").click()
+    expect(getByText("Combat Knife Weapon Focus")).toBeInTheDocument()
   })
 })

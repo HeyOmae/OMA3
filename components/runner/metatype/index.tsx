@@ -29,7 +29,7 @@ export interface Payload {
 }
 
 export const Metatype = () => {
-  const [runner, dispatch] = useRunnerAccess<symbol, Payload>(
+  const [runner, dispatch] = useRunnerAccess<Payload>(
     (runner, { type, payload }) => {
       switch (type) {
         case SET_METATYPE:

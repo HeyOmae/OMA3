@@ -5,7 +5,7 @@ import { Ritual } from "../../../../../types/MagRes"
 import { RemoveButton } from "../../../../common"
 
 interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   ritual: Ritual
   ritualIndex: number
 }

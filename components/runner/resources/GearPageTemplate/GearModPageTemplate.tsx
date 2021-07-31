@@ -24,38 +24,36 @@ export function GearModPageTemplate<G extends GearMod>({
   const {
     query: { gearIndex },
   } = useRouter()
-  const [runner, dispatch] = useRunnerAccess<undefined, GearMod>(
-    (runner, { payload }) => {
-      return {
-        ...runner,
-        resources: {
-          ...runner.resources,
-          [resourceKey]: [
-            ...runner.resources[resourceKey].slice(0, gearIndex),
-            {
-              ...runner.resources[resourceKey][gearIndex],
-              mods:
-                typeof payload === "number"
-                  ? [
-                      ...runner.resources[resourceKey][gearIndex].mods.slice(
-                        0,
-                        payload,
-                      ),
-                      ...runner.resources[resourceKey][gearIndex].mods.slice(
-                        payload + 1,
-                      ),
-                    ]
-                  : [
-                      ...(runner.resources[resourceKey][gearIndex]?.mods ?? []),
+  const [runner, dispatch] = useRunnerAccess<GearMod>((runner, { payload }) => {
+    return {
+      ...runner,
+      resources: {
+        ...runner.resources,
+        [resourceKey]: [
+          ...runner.resources[resourceKey].slice(0, gearIndex),
+          {
+            ...runner.resources[resourceKey][gearIndex],
+            mods:
+              typeof payload === "number"
+                ? [
+                    ...runner.resources[resourceKey][gearIndex].mods.slice(
+                      0,
                       payload,
-                    ],
-            },
-            ...runner.resources[resourceKey].slice(+gearIndex + 1),
-          ],
-        },
-      }
-    },
-  )
+                    ),
+                    ...runner.resources[resourceKey][gearIndex].mods.slice(
+                      payload + 1,
+                    ),
+                  ]
+                : [
+                    ...(runner.resources[resourceKey][gearIndex]?.mods ?? []),
+                    payload,
+                  ],
+          },
+          ...runner.resources[resourceKey].slice(+gearIndex + 1),
+        ],
+      },
+    }
+  })
   if (runner) {
     const gearBeingModded: GearModdableRated =
       runner.resources[resourceKey][gearIndex]

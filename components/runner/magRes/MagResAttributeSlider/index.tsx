@@ -14,7 +14,7 @@ export interface Props {
   attribute: SpecialAttributes
   min: number
   max: number
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export const MagResAttributeSlider: FC<Props> = ({

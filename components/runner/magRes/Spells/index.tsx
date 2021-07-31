@@ -9,14 +9,14 @@ import { AddButton } from "@/components/common"
 import { AccordionWrapper } from "@/components/common/Accordion"
 
 export interface Props {
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
 }
 
 export type ActionLabel = "Learn" | "Remove"
 
 export interface AddSpellButtonProps {
   spell: Spell
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   actionLabel: ActionLabel
 }
 

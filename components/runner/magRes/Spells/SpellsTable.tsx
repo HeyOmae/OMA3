@@ -15,7 +15,7 @@ import { RemoveSpellButtonProps } from "./RunnerSpells"
 
 interface Props {
   spells: GeneralSpell[]
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   actionLabel: "Learn" | "Remove"
   ActionButton: FC<AddSpellButtonProps | RemoveSpellButtonProps>
 }

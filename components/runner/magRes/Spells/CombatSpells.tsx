@@ -15,7 +15,7 @@ import { RemoveSpellButtonProps } from "./RunnerSpells"
 
 interface Props {
   spells: CombatSpell[]
-  dispatch: DispatchAction<symbol, Payload>
+  dispatch: DispatchAction<Payload>
   actionLabel: ActionLabel
   ActionButton: FC<AddSpellButtonProps | RemoveSpellButtonProps>
 }
