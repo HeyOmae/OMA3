@@ -2,7 +2,11 @@ import { foci } from "@/data/focus"
 import { GearFocus } from "@/types/Resources"
 import React, { FC } from "react"
 import { GearPageTemplate } from "../GearPageTemplate"
-import { gearMagicConfigOptions, gearTableConfigOptions } from "../util"
+import {
+  gearMagicConfigOptions,
+  gearRatingTableConfigOption,
+  gearTableConfigOptions,
+} from "../util"
 
 const buyCol = [
   gearTableConfigOptions.buy,
@@ -14,13 +18,22 @@ const buyCol = [
   gearTableConfigOptions.cost,
 ]
 
+const sellCol = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.displayRating,
+  gearMagicConfigOptions.karmaCost,
+  gearMagicConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
 const Foci: FC = () => (
   <GearPageTemplate<GearFocus>
     gearLabel="Foci"
     resourceKey="foci"
     listOfGear={foci}
     addGearTableConfig={buyCol}
-    removeGearTableConfig={[]}
+    removeGearTableConfig={sellCol}
   />
 )
 export default Foci

@@ -194,9 +194,9 @@ export const expectToBuyAndSellGear =
       ).toBeInTheDocument()
     })
 
-    getByLabelText(`Add ${gearA.name}`).click()
-    getByLabelText(`Add ${gearB.name}`).click()
-    getByLabelText(`Add ${gearC.name}`).click()
+    getByLabelText(RegExp(`Add .*${gearA.name}`)).click()
+    getByLabelText(RegExp(`Add .*${gearB.name}`)).click()
+    getByLabelText(RegExp(`Add .*${gearC.name}`)).click()
 
     expect(
       getByText(
@@ -207,7 +207,7 @@ export const expectToBuyAndSellGear =
     ).toBeInTheDocument()
 
     // TODO: kill past me for doing this nonsense
-    getAllByLabelText(`Remove ${gearB.name}`)[0].click()
+    getAllByLabelText(RegExp(`Remove .*${gearB.name}`))[0].click()
 
     expect(
       getByText(
@@ -218,6 +218,6 @@ export const expectToBuyAndSellGear =
     ).toBeInTheDocument()
 
     // clean up the gear
-    getAllByLabelText(`Remove ${gearA.name}`)[0].click()
-    getAllByLabelText(`Remove ${gearC.name}`)[0].click()
+    getAllByLabelText(RegExp(`Remove .*${gearA.name}`))[0].click()
+    getAllByLabelText(RegExp(`Remove .*${gearC.name}`))[0].click()
   }
