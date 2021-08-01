@@ -68,8 +68,9 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
       ...gear,
       name: `${choices[selectedChoiceIndex]?.name ?? ""} ${gear.name}`,
       currentRating,
+      cost: gear.cost * currentRating,
     }),
-    [selectedChoiceIndex, choices],
+    [selectedChoiceIndex, choices, currentRating],
   )
 
   return (

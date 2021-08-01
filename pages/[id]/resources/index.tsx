@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core"
 import { useRouter } from "next/router"
 import { GearNav } from "@/components/runner/resources/GearNav/GearNav"
 import * as securityData from "@/data/security"
+import * as magicGearData from "@/data/magicGear"
 
 export const ResourcePage = (): JSX.Element => {
   const { query, asPath } = useRouter()
@@ -109,6 +110,11 @@ export const ResourcePage = (): JSX.Element => {
       <NextLink href={`${asPath}biotech`} passHref>
         <Button variant="contained">Biotech</Button>
       </NextLink>
+      <h2>Magic Gear</h2>
+      <NextLink href={`${asPath}foci`} passHref>
+        <Button variant="contained">Foci</Button>
+      </NextLink>
+      <GearNav pathTo={`${asPath}magic/`} gearData={magicGearData} />
     </RunnerLayout>
   )
 }

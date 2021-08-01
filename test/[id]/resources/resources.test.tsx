@@ -122,4 +122,28 @@ describe("Resource Page", () => {
       "/1/resources/security/drugs",
     )
   })
+
+  it("should render magical gear", () => {
+    const { getByText } = setup()
+
+    // This one is hard coded
+    expect(getByText("Foci").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/foci",
+    )
+
+    // These ones are read from the MagicGear data file
+    expect(getByText("magicSupplies").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/magic/magicSupplies",
+    )
+    expect(getByText("spellFormula").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/magic/spellFormula",
+    )
+    expect(getByText("focusFormula").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/magic/focusFormula",
+    )
+  })
 })

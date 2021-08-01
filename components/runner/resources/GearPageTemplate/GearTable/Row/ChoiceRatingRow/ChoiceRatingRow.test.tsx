@@ -8,6 +8,7 @@ import {
   fireEvent,
   render,
   setupIndexedDB,
+  SliderHelper,
   waitFor,
   withTestRouter,
 } from "@/test/testUtils"
@@ -23,6 +24,8 @@ describe("ChoiceRatingRow", () => {
           gearMagicConfigOptions.choice,
           gearMagicConfigOptions.setRating,
           gearMagicConfigOptions.karmaCost,
+          gearMagicConfigOptions.avail,
+          gearTableConfigOptions.cost,
         ],
         gear: foci.find(({ name }) => name === focusName),
         index: 0,
@@ -45,9 +48,10 @@ describe("ChoiceRatingRow", () => {
     }
   }
   it("should allow users to select adept powers and select rating", () => {
-    const { getByText } = setup()
+    const { getByText, getByLabelText } = setup()
 
     expect(getByText("Adrenaline boost Qi Focus")).toBeInTheDocument()
+    expect(getByLabelText(RegExp("Add .*Qi Focus"))).toBeInTheDocument()
 
     expect(getByText("Adrenaline boost")).toBeInTheDocument()
 
@@ -55,12 +59,32 @@ describe("ChoiceRatingRow", () => {
 
     getByText("Improved reflexes").click()
     expect(getByText("Improved reflexes Qi Focus")).toBeInTheDocument()
+    expect(getByLabelText("Add Improved reflexes Qi Focus")).toBeInTheDocument()
   })
 
   it("should support changing the rating of the focus", () => {
-    const { getByText } = setup()
+    const { getByText, getByTestId } = setup()
 
+    // Karma cost
     expect(getByText("2")).toBeInTheDocument()
+    // Avail
+    expect(getByText("1L")).toBeInTheDocument()
+    // Cost
+    expect(getByText("3000¥")).toBeInTheDocument()
+
+    SliderHelper.change(
+      getByTestId("Adrenaline boost Qi Focus-rating"),
+      4,
+      1,
+      7,
+    )
+
+    // Karma cost
+    expect(getByText("8")).toBeInTheDocument()
+    // Avail
+    expect(getByText("4L")).toBeInTheDocument()
+    // Cost
+    expect(getByText("12000¥")).toBeInTheDocument()
   })
 
   it("should allow users to select spell category", () => {
