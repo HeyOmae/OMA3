@@ -114,22 +114,14 @@ describe("<RunnerSkillTable/>", () => {
     })
 
     it("should allow free form specialization", () => {
-      const { getByLabelText, props, debug } = setup()
+      const { getByLabelText, props } = setup()
 
-      debug(getByLabelText("Conjuring specialization", { selector: "input" }))
-      fireEvent.change(
-        getByLabelText("Conjuring specialization", { selector: "input" }),
-        {
-          target: { value: "wild" },
-        },
-      )
-      debug(getByLabelText("Conjuring specialization", { selector: "input" }))
-      fireEvent.keyDown(
-        getByLabelText("Conjuring specialization", { selector: "input" }),
-        {
-          key: "Enter",
-        },
-      )
+      fireEvent.change(getByLabelText("Conjuring specialization"), {
+        target: { value: "wild" },
+      })
+      fireEvent.keyDown(getByLabelText("Conjuring specialization"), {
+        key: "Enter",
+      })
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,
