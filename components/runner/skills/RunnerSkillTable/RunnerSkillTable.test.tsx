@@ -6,9 +6,8 @@ import {
   fireEvent,
   getByText as globalGetByText,
   searchRegexInNodes,
-  getByRole as getRoleFromContainer,
-} from "@/test/testUtils"
-import { mockedRunners } from "@/test/mocks"
+} from "../../../../test/testUtils"
+import { mockedRunners } from "../../../../test/mocks"
 import { CHANGE_SKILL_RATING, CHANGE_SPECIALIZATION, REMOVE_SKILL } from ".."
 
 describe("<RunnerSkillTable/>", () => {
@@ -115,27 +114,18 @@ describe("<RunnerSkillTable/>", () => {
     })
 
     it("should allow free form specialization", () => {
-      const { getByLabelText, props } = setup()
+      const { getByLabelText, props, debug } = setup()
 
+      debug(getByLabelText("Conjuring specialization", { selector: "input" }))
       fireEvent.change(
-        getRoleFromContainer(
-          getByLabelText("Conjuring specialization", {
-            selector: "input",
-          }).closest("tr"),
-          "textbox",
-        ),
+        getByLabelText("Conjuring specialization", { selector: "input" }),
         {
           target: { value: "wild" },
         },
       )
-
+      debug(getByLabelText("Conjuring specialization", { selector: "input" }))
       fireEvent.keyDown(
-        getRoleFromContainer(
-          getByLabelText("Conjuring specialization", {
-            selector: "input",
-          }).closest("tr"),
-          "textbox",
-        ),
+        getByLabelText("Conjuring specialization", { selector: "input" }),
         {
           key: "Enter",
         },
