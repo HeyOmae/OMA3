@@ -9,14 +9,15 @@
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint": "next lint",
+    "stage-lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "npm run lint && npm run type-check && npm test -- --coverage",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "npm run lint -- ",
+      "npm run stage-lint -- ",
       "npm run format -- "
     ]
   },
@@ -26,13 +27,14 @@
     "@material-ui/core": "^5.0.0-beta.1",
     "@material-ui/icons": "^5.0.0-beta.1",
     "@material-ui/lab": "^5.0.0-alpha.42",
-    "next": "^11.0.1",
+    "next": "^11.1.0",
     "next-pwa": "^5.2.24",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-indexed-db": "^1.0.12"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^11.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^27.0.1",
