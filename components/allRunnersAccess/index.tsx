@@ -17,6 +17,7 @@ export const AllRunnersAccess: FC<Props> = ({ children }) => {
   const [runners, setRunners] = useState<Runner[]>()
   useEffect(() => {
     getAll<Runner>().then((loadedRunners) => setRunners(loadedRunners))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return runners ? <>{children({ runners, add })}</> : <CircularProgress />
 }

@@ -3,7 +3,7 @@ import { GearElectronic } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import { buyElectronicCol, sellElectronicCol } from "../utils"
 
-export default () => (
+const Tags = () => (
   <GearPageTemplate<GearElectronic>
     gearLabel="RFID Tags"
     resourceKey="tags"
@@ -12,3 +12,5 @@ export default () => (
     removeGearTableConfig={sellElectronicCol}
   />
 )
+
+export default Tags

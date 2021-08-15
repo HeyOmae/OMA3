@@ -23,7 +23,7 @@ const LoadDynamicGear: FC<Props> = ({
 
   useEffect(() => {
     importedGear.then((gear) => setListOfGear(gear[gearType]))
-  }, [gearType])
+  }, [gearType, importedGear])
 
   return (
     <>
