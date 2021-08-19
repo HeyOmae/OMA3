@@ -1,4 +1,4 @@
-import { SkillPage } from "../../pages/[id]/skills"
+import { SkillPage } from "@/pages/[id]/skills"
 import { render, withTestRouter, setupIndexedDB, waitFor } from "../testUtils"
 
 describe("Skill Page", () => {

@@ -6,10 +6,10 @@ import {
   setupIndexedDB,
   waitFor,
   SliderHelper,
-  fireEvent,
   searchRegexInNodes,
   runnerFromDB,
-} from "../../../test/testUtils"
+  userEvent,
+} from "@/test/testUtils"
 
 describe("<Skills/>", () => {
   beforeAll(setupIndexedDB)
@@ -156,8 +156,8 @@ describe("<Skills/>", () => {
 
       const specInput = getByLabelText("Close combat specialization")
 
-      fireEvent.change(specInput, { target: { value: "Blades" } })
-      fireEvent.keyDown(specInput, { key: "Enter" })
+      userEvent.click(specInput)
+      userEvent.keyboard("Blades{enter}")
 
       await waitFor(() => {
         expect(runnerFromDB(2).skills["Close combat"].specialization).toEqual(
