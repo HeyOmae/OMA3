@@ -21,6 +21,7 @@ export interface Resources {
   toxins: GearTyped[]
   drugs: GearTyped[]
   biotech: GearTyped[]
+  drones: GearDrones[]
 }
 
 export interface Gear {
@@ -35,6 +36,30 @@ export interface GearMod extends Gear {
     attrmod: {
       attribute: string
       attackRating: attackRating
+    }
+  }
+}
+
+export interface GearDrones extends Gear, GearTypes {
+  vehicle: {
+    handling: string
+    acceleration: number
+    speedInterval: number
+    topSpeed: number
+    body: number
+    armor: number
+    pilot: number
+    sensor: number
+  }
+  modifications?: {
+    itemattrmod?: {
+      Attr: "CAPACITY"
+      Slot: "VEHICLEBODY"
+      Val: number
+    }
+    accessorymod?: {
+      Item: "Weapon Mount Standard"
+      Hook: "VEHICLEBODY"
     }
   }
 }
