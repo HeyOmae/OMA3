@@ -8,17 +8,10 @@ import {
   TableCell,
   TableBody,
   Slider,
-  TextField,
 } from "@material-ui/core"
+import { SpecializationSelector } from "./SpecializationSelector"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
-import {
-  ActionPayload,
-  CHANGE_SKILL_RATING,
-  CHANGE_SPECIALIZATION,
-  REMOVE_SKILL,
-} from ".."
-import { Autocomplete } from "@material-ui/core"
-import skillData from "@/data/skills.json"
+import { ActionPayload, CHANGE_SKILL_RATING, REMOVE_SKILL } from ".."
 import { RemoveButton } from "../../../common"
 
 export interface Props {
@@ -110,34 +103,11 @@ export const RunnerSkillTable: FC<Props> = ({
                     attribute.secondary ? `/${attribute.secondary}` : ""
                   }`}</TableCell>
                   <TableCell width="30%">
-                    <Autocomplete
-                      freeSolo
-                      value={specialization ?? ""}
-                      id={`${skillNameHyphen}-specializations`}
-                      options={(
-                        skillData.find(({ name }) => name === skillName)
-                          ?.specializations ?? []
-                      ).map(({ name }) => name)}
-                      onChange={(event, spec) =>
-                        dispatch({
-                          type: CHANGE_SPECIALIZATION,
-                          payload: {
-                            specializationChange: {
-                              name: skillName,
-                              specialization: spec,
-                            },
-                          },
-                        })
-                      }
-                      renderInput={(params) => {
-                        return (
-                          <TextField
-                            {...params}
-                            label={`${skillName} specialization`}
-                            variant="filled"
-                          />
-                        )
-                      }}
+                    <SpecializationSelector
+                      skillName={skillName}
+                      id={skillNameHyphen}
+                      specialization={specialization}
+                      dispatch={dispatch}
                     />
                   </TableCell>
                 </TableRow>

@@ -3,11 +3,12 @@ import {
   render,
   within,
   SliderHelper,
-  fireEvent,
+  getByLabelText as containerGetByLabelText,
   getByText as globalGetByText,
   searchRegexInNodes,
-} from "../../../../test/testUtils"
-import { mockedRunners } from "../../../../test/mocks"
+  userEvent,
+} from "@/test/testUtils"
+import { mockedRunners } from "@/test/mocks"
 import { CHANGE_SKILL_RATING, CHANGE_SPECIALIZATION, REMOVE_SKILL } from ".."
 
 describe("<RunnerSkillTable/>", () => {
@@ -96,11 +97,11 @@ describe("<RunnerSkillTable/>", () => {
 
       expect(queryByRole("listbox")).not.toBeInTheDocument()
 
-      fireEvent.mouseDown(specInput)
+      userEvent.click(specInput)
 
       expect(queryByRole("listbox")).toBeInTheDocument()
 
-      fireEvent.click(globalGetByText(queryByRole("listbox"), "Summoning"))
+      userEvent.click(globalGetByText(queryByRole("listbox"), "Summoning"))
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,
@@ -116,12 +117,13 @@ describe("<RunnerSkillTable/>", () => {
     it("should allow free form specialization", () => {
       const { getByLabelText, props } = setup()
 
-      fireEvent.change(getByLabelText("Conjuring specialization"), {
-        target: { value: "wild" },
-      })
-      fireEvent.keyDown(getByLabelText("Conjuring specialization"), {
-        key: "Enter",
-      })
+      const specInput = getByLabelText("Conjuring specialization")
+      userEvent.click(specInput)
+      userEvent.click(
+        containerGetByLabelText(specInput.closest("div"), "Clear"),
+      )
+      userEvent.click(specInput)
+      userEvent.keyboard("wild{enter}")
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,
@@ -148,12 +150,8 @@ describe("<RunnerSkillTable/>", () => {
 
       expect(getByLabelText("cooking specialization")).toBeInTheDocument()
 
-      fireEvent.change(getByLabelText("cooking specialization"), {
-        target: { value: "japanese cuisine" },
-      })
-      fireEvent.keyDown(getByLabelText("cooking specialization"), {
-        key: "Enter",
-      })
+      userEvent.click(getByLabelText("cooking specialization"))
+      userEvent.keyboard("japanese cuisine{enter}")
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,

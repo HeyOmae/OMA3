@@ -1,5 +1,5 @@
 import { AppProps } from "next/app"
-import { CssBaseline, ThemeProvider, createMuiTheme } from "@material-ui/core"
+import { CssBaseline, ThemeProvider, createTheme } from "@material-ui/core"
 
 import "./styles.css"
 
@@ -29,7 +29,7 @@ if (typeof window !== "undefined") {
 const NEON = "var(--neon)"
 const NEON2 = "var(--neon2)"
 
-const oma3Style = createMuiTheme({
+const oma3Style = createTheme({
   components: {
     MuiInputLabel: {
       styleOverrides: { root: { color: "white" } },

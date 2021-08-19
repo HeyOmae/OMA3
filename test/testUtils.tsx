@@ -6,6 +6,7 @@ import { initDB } from "react-indexed-db"
 import { mockedRunners } from "./mocks"
 import { Runner } from "../types/runner"
 import { Gear } from "@/types/Resources"
+import userEvent from "@testing-library/user-event"
 
 const Providers = ({ children }) => {
   return children
@@ -18,7 +19,7 @@ const customRender = (ui: JSX.Element, options = {}) =>
 export * from "@testing-library/react"
 
 // override render method
-export { customRender as render }
+export { customRender as render, userEvent }
 
 export interface DbSetupConfig {
   payload?: any[]
