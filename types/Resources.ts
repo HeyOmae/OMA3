@@ -50,6 +50,7 @@ export interface GearDrones extends Gear, GearTypes {
     armor: number
     pilot: number
     sensor: number
+    seat?: number
   }
   modifications?: {
     itemattrmod?: {
