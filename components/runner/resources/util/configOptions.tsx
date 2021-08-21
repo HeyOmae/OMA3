@@ -53,6 +53,10 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
 }
 
 export const gearDroneTableConfigOptions = {
+  type: {
+    display: (gear: GearDrones) => gear.type,
+    label: "Type",
+  },
   handling: {
     display: (gear: GearDrones) => gear.vehicle.handling,
     label: "Hand",

@@ -15,8 +15,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 450,
     name: "GMC Micromachine",
-    type: "DRONE MICRO",
-    subtype: "GROUND",
+    type: "Drone Micro",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -32,8 +32,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 900,
     name: "Shiawase Kanmushi",
-    type: "DRONE MICRO",
-    subtype: "GROUND",
+    type: "Drone Micro",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -49,8 +49,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 850,
     name: "MCT-Sikorsky-Bell Microskimmer XXS",
-    type: "DRONE MICRO",
-    subtype: "AIR",
+    type: "Drone Micro",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -66,8 +66,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 800,
     name: "MCT Gnat",
-    type: "DRONE MICRO",
-    subtype: "AIR",
+    type: "Drone Micro",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -83,8 +83,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 1000,
     name: "GM-Nissan Flip Flop",
-    type: "DRONE MINI",
-    subtype: "GROUND",
+    type: "Drone Mini",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -100,8 +100,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 1100,
     name: "Shiawase Inu",
-    type: "DRONE MINI",
-    subtype: "GROUND",
+    type: "Drone Mini",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -117,8 +117,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 1600,
     name: "Shiawase Inu Better Suit",
-    type: "DRONE MINI",
-    subtype: "GROUND",
+    type: "Drone Mini",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -134,8 +134,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 2000,
     name: "Horizon Flying Eye",
-    type: "DRONE MINI",
-    subtype: "AIR",
+    type: "Drone Mini",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -151,8 +151,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 2500,
     name: "Horizon Flying Eye Extra",
-    type: "DRONE MINI",
-    subtype: "AIR",
+    type: "Drone Mini",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -168,8 +168,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 2100,
     name: "MCT Hornet",
-    type: "DRONE MINI",
-    subtype: "AIR",
+    type: "Drone Mini",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -185,8 +185,8 @@ export const drones: GearDrones[] = [
     availability: "3",
     cost: 11000,
     name: "Chrysler-Nissan Pursuit V",
-    type: "DRONE SMALL",
-    subtype: "GROUND",
+    type: "Drone Small",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -202,8 +202,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 4500,
     name: "Aztechnology Crawler",
-    type: "DRONE SMALL",
-    subtype: "GROUND",
+    type: "Drone Small",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -226,8 +226,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 5000,
     name: "Cyberspace Designs Quadrotor",
-    type: "DRONE SMALL",
-    subtype: "AIR",
+    type: "Drone Small",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -243,8 +243,8 @@ export const drones: GearDrones[] = [
     availability: "3",
     cost: 18000,
     name: "Lockheed Optic X2",
-    type: "DRONE SMALL",
-    subtype: "AIR",
+    type: "Drone Small",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -266,8 +266,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 6500,
     name: "GM-Nissan Dobermann",
-    type: "DRONE MEDIUM",
-    subtype: "GROUND",
+    type: "Drone Medium",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -283,8 +283,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 4500,
     name: "Nissan Samurai",
-    type: "DRONE MEDIUM",
-    subtype: "ANTHRO",
+    type: "Drone Medium",
+    subtype: "Anthro",
   },
   {
     vehicle: {
@@ -307,8 +307,8 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 5000,
     name: "MCT-Nissan Roto Drone",
-    type: "DRONE MEDIUM",
-    subtype: "AIR",
+    type: "Drone Medium",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -324,8 +324,8 @@ export const drones: GearDrones[] = [
     availability: "3",
     cost: 8000,
     name: "Federated-Boeing Blackhawk",
-    type: "DRONE MEDIUM",
-    subtype: "AIR",
+    type: "Drone Medium",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -341,8 +341,8 @@ export const drones: GearDrones[] = [
     availability: "4",
     cost: 25000,
     name: "Steel Lynx Combat Drone",
-    type: "DRONE LARGE",
-    subtype: "GROUND",
+    type: "Drone Large",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -358,8 +358,8 @@ export const drones: GearDrones[] = [
     availability: "3",
     cost: 10000,
     name: "Ares Packmule",
-    type: "DRONE LARGE",
-    subtype: "GROUND",
+    type: "Drone Large",
+    subtype: "Ground",
   },
   {
     vehicle: {
@@ -375,8 +375,8 @@ export const drones: GearDrones[] = [
     availability: "3",
     cost: 10000,
     name: "Cyberspace Designs Dalmatian",
-    type: "DRONE LARGE",
-    subtype: "AIR",
+    type: "Drone Large",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -392,8 +392,8 @@ export const drones: GearDrones[] = [
     availability: "5",
     cost: 43000,
     name: "Ares Black Sky",
-    type: "DRONE LARGE",
-    subtype: "AIR",
+    type: "Drone Large",
+    subtype: "Air",
   },
   {
     vehicle: {
@@ -410,7 +410,7 @@ export const drones: GearDrones[] = [
     availability: "2",
     cost: 6700,
     name: "Nissan Oni",
-    type: "DRONE LARGE",
-    subtype: "ANTHRO",
+    type: "Drone Large",
+    subtype: "Anthro",
   },
 ]
