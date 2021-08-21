@@ -1,6 +1,7 @@
 import { Columns } from "../util"
 import {
   Gear,
+  GearDrones,
   GearFocus,
   GearMod,
   GearModRated,
@@ -49,6 +50,45 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
       ),
     label: "Mod",
   },
+}
+
+export const gearDroneTableConfigOptions = {
+  handling: {
+    display: (gear: GearDrones) => gear.vehicle.handling,
+    label: "Hand",
+  },
+  accel: {
+    display: (gear: GearDrones) => gear.vehicle.acceleration,
+    label: "Accel",
+  },
+  speedInt: {
+    display: (gear: GearDrones) => gear.vehicle.speedInterval,
+    label: "Speed Int",
+  },
+  topSpeed: {
+    display: (gear: GearDrones) => gear.vehicle.topSpeed,
+    label: "Top Speed",
+  },
+  body: {
+    display: (gear: GearDrones) => gear.vehicle.body,
+    label: "Body",
+  },
+  armor: {
+    display: (gear: GearDrones) => gear.vehicle.armor,
+    label: "Armor",
+  },
+  pilot: {
+    display: (gear: GearDrones) => gear.vehicle.pilot,
+    label: "Pilot",
+  },
+  sensor: {
+    display: (gear: GearDrones) => gear.vehicle.sensor,
+    label: "Sensor",
+  },
+  // seat: {
+  //   display: (gear: GearDrones) => gear.vehicle.seat ?? 0,
+  //   label: 'Seat',
+  // },
 }
 
 export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
