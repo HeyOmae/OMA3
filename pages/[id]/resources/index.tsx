@@ -115,6 +115,10 @@ export const ResourcePage = (): JSX.Element => {
         <Button variant="contained">Foci</Button>
       </NextLink>
       <GearNav pathTo={`${asPath}magic/`} gearData={magicGearData} />
+      <h2>Rigger Gear</h2>
+      <NextLink href={`${asPath}drones`} passHref>
+        <Button variant="contained">Drones</Button>
+      </NextLink>
     </RunnerLayout>
   )
 }

@@ -84,6 +84,12 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/biotech",
     )
+
+    // Rigger stuff
+    expect(getByText("Drones").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/drones",
+    )
   })
 
   it("should render links to security devices", () => {

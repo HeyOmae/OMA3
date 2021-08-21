@@ -24,6 +24,7 @@ describe("<Drones/>", () => {
     const buyHeader = getByText("Buy").closest("tr")
 
     expect(getByTextInContainer(buyHeader, "Name")).toBeInTheDocument()
+    expect(getByTextInContainer(buyHeader, "Type")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Hand")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Accel")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Speed Int")).toBeInTheDocument()
@@ -40,6 +41,7 @@ describe("<Drones/>", () => {
       droneRow = getByLabelText(`Add ${drone.name}`).closest("tr")
 
     expect(getByTextInContainer(droneRow, drone.name)).toBeInTheDocument()
+    expect(getByTextInContainer(droneRow, drone.type)).toBeInTheDocument()
     expect(
       getAllByTextInContainer(droneRow, drone.vehicle.handling).length,
     ).toBeGreaterThanOrEqual(1)

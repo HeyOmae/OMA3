@@ -10,6 +10,7 @@ import {
 const buyCols: Columns<GearDrones>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
+  gearDroneTableConfigOptions.type,
   gearDroneTableConfigOptions.handling,
   gearDroneTableConfigOptions.accel,
   gearDroneTableConfigOptions.speedInt,
@@ -25,6 +26,7 @@ const buyCols: Columns<GearDrones>[] = [
 const sellCols: Columns<GearDrones>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
+  gearDroneTableConfigOptions.type,
   gearDroneTableConfigOptions.handling,
   gearDroneTableConfigOptions.accel,
   gearDroneTableConfigOptions.speedInt,
@@ -33,7 +35,6 @@ const sellCols: Columns<GearDrones>[] = [
   gearDroneTableConfigOptions.armor,
   gearDroneTableConfigOptions.pilot,
   gearDroneTableConfigOptions.sensor,
-  gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
 ]
 
