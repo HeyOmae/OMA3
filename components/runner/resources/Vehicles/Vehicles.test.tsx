@@ -1,4 +1,4 @@
-import { drones } from "@/data/drones"
+import { vehicles } from "@/data/vehicles"
 import {
   render,
   setupIndexedDB,
@@ -7,13 +7,14 @@ import {
   getByText as getByTextInContainer,
   getAllByText as getAllByTextInContainer,
 } from "@/test/testUtils"
-import Drones from "./index"
+import Vehicles from "./index"
 
-describe("<Drones/>", () => {
+describe("<Vehicles/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = () => render(withTestRouter(<Drones />, { query: { id: "9" } }))
+  const setup = () =>
+    render(withTestRouter(<Vehicles />, { query: { id: "9" } }))
 
-  it("should display drone stats", async () => {
+  it("should display vehicle stats", async () => {
     const { getByText, getByLabelText } = setup()
 
     await waitFor(() => {
@@ -32,38 +33,46 @@ describe("<Drones/>", () => {
     expect(getByTextInContainer(buyHeader, "Armor")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Pilot")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Sensor")).toBeInTheDocument()
+    expect(getByTextInContainer(buyHeader, "Seat")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-    const drone = drones[2],
-      droneRow = getByLabelText(`Add ${drone.name}`).closest("tr")
+    const vehcile = vehicles[2],
+      vehicleRow = getByLabelText(`Add ${vehcile.name}`).closest("tr")
 
-    expect(getByTextInContainer(droneRow, drone.name)).toBeInTheDocument()
-    expect(getByTextInContainer(droneRow, drone.type)).toBeInTheDocument()
+    expect(getByTextInContainer(vehicleRow, vehcile.name)).toBeInTheDocument()
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.handling).length,
+      getByTextInContainer(vehicleRow, vehcile.subtype),
+    ).toBeInTheDocument()
+    expect(
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.handling).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.acceleration).length,
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.acceleration).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.speedInterval).length,
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.speedInterval).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.topSpeed).length,
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.topSpeed).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.body).length,
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.body).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.armor).length,
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.armor).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.pilot).length,
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.pilot).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(droneRow, drone.vehicle.sensor).length,
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.sensor).length,
     ).toBeGreaterThanOrEqual(1)
-    expect(getByTextInContainer(droneRow, `${drone.cost}¥`)).toBeInTheDocument()
+    expect(
+      getAllByTextInContainer(vehicleRow, vehcile.vehicle.seat).length,
+    ).toBeGreaterThanOrEqual(1)
+    expect(
+      getByTextInContainer(vehicleRow, `${vehcile.cost}¥`),
+    ).toBeInTheDocument()
   })
 })
