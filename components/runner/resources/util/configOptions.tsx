@@ -57,6 +57,10 @@ export const gearDroneTableConfigOptions = {
     display: (gear: GearDrones) => gear.type,
     label: "Type",
   },
+  subtype: {
+    display: (gear: GearDrones) => gear.subtype,
+    label: "Type",
+  },
   handling: {
     display: (gear: GearDrones) => gear.vehicle.handling,
     label: "Hand",
@@ -89,10 +93,10 @@ export const gearDroneTableConfigOptions = {
     display: (gear: GearDrones) => gear.vehicle.sensor,
     label: "Sensor",
   },
-  // seat: {
-  //   display: (gear: GearDrones) => gear.vehicle.seat ?? 0,
-  //   label: 'Seat',
-  // },
+  seat: {
+    display: (gear: GearDrones) => gear.vehicle.seat,
+    label: "Seat",
+  },
 }
 
 export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
@@ -192,5 +196,53 @@ export const sellGearWithoutRatingCol: gearWithRatingCols = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
   gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+const baseDroneStatsConfigOptions: Columns<GearDrones>[] = [
+  gearDroneTableConfigOptions.handling,
+  gearDroneTableConfigOptions.accel,
+  gearDroneTableConfigOptions.speedInt,
+  gearDroneTableConfigOptions.topSpeed,
+  gearDroneTableConfigOptions.body,
+  gearDroneTableConfigOptions.armor,
+  gearDroneTableConfigOptions.pilot,
+  gearDroneTableConfigOptions.sensor,
+]
+
+export const buyGearDronesCols: Columns<GearDrones>[] = [
+  gearTableConfigOptions.buy,
+  gearTableConfigOptions.name,
+  gearDroneTableConfigOptions.type,
+  ...baseDroneStatsConfigOptions,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const sellGearDronesCols: Columns<GearDrones>[] = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearDroneTableConfigOptions.type,
+  ...baseDroneStatsConfigOptions,
+  gearTableConfigOptions.cost,
+]
+
+export const buyGearVehiclesCols: Columns<GearDrones>[] = [
+  gearTableConfigOptions.buy,
+  gearTableConfigOptions.name,
+  gearDroneTableConfigOptions.subtype,
+
+  ...baseDroneStatsConfigOptions,
+  gearDroneTableConfigOptions.seat,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const sellGearVehiclesCols: Columns<GearDrones>[] = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearDroneTableConfigOptions.subtype,
+  ...baseDroneStatsConfigOptions,
+  gearDroneTableConfigOptions.seat,
   gearTableConfigOptions.cost,
 ]

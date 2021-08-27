@@ -16,7 +16,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 3000,
     name: "Dodge Scoot",
-    subtype: "BIKES",
+    subtype: "Bikes",
     type: "VEHICLES",
   },
   {
@@ -34,7 +34,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 14000,
     name: "Harley-Davidson Scorpion",
-    subtype: "BIKES",
+    subtype: "Bikes",
     type: "VEHICLES",
   },
   {
@@ -52,7 +52,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 8000,
     name: "Yamaha Growler",
-    subtype: "BIKES",
+    subtype: "Bikes",
     type: "VEHICLES",
   },
   {
@@ -70,7 +70,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 12000,
     name: "Suzuki Mirage",
-    subtype: "BIKES",
+    subtype: "Bikes",
     type: "VEHICLES",
   },
   {
@@ -88,7 +88,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 11000,
     name: "Chrysler-Nissan Jackrabbit",
-    subtype: "CARS",
+    subtype: "Cars",
     type: "VEHICLES",
   },
   {
@@ -106,7 +106,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 13000,
     name: "Honda Spirit",
-    subtype: "CARS",
+    subtype: "Cars",
     type: "VEHICLES",
   },
   {
@@ -124,7 +124,7 @@ export const vehicles: GearDrones[] = [
     availability: "3",
     cost: 115000,
     name: "Eurocar Westwind X80",
-    subtype: "CARS",
+    subtype: "Cars",
     type: "VEHICLES",
   },
   {
@@ -142,7 +142,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 20000,
     name: "Hyundai Shin-Hyung",
-    subtype: "CARS",
+    subtype: "Cars",
     type: "VEHICLES",
   },
   {
@@ -160,7 +160,7 @@ export const vehicles: GearDrones[] = [
     availability: "2",
     cost: 16000,
     name: "Ford Americar",
-    subtype: "CARS",
+    subtype: "Cars",
     type: "VEHICLES",
   },
   {
@@ -178,7 +178,7 @@ export const vehicles: GearDrones[] = [
     availability: "3",
     cost: 65000,
     name: "Saeder-Krupp-Bentley Concordat",
-    subtype: "CARS",
+    subtype: "Cars",
     type: "VEHICLES",
   },
   {
@@ -196,7 +196,7 @@ export const vehicles: GearDrones[] = [
     availability: "3",
     cost: 259000,
     name: "Mitsubishi Nightsky",
-    subtype: "CARS",
+    subtype: "Cars",
     type: "VEHICLES",
   },
   {
@@ -215,7 +215,7 @@ export const vehicles: GearDrones[] = [
     cost: 25000,
     name: "Toyota Gopher",
     type: "VEHICLES",
-    subtype: "TRUCKS",
+    subtype: "Trucks",
   },
   {
     vehicle: {
@@ -233,7 +233,7 @@ export const vehicles: GearDrones[] = [
     cost: 35000,
     name: "GMC Bulldog",
     type: "VEHICLES",
-    subtype: "VANS",
+    subtype: "Vans",
   },
   {
     vehicle: {
@@ -251,7 +251,7 @@ export const vehicles: GearDrones[] = [
     cost: 73000,
     name: "Range Rover Model 2080",
     type: "VEHICLES",
-    subtype: "VANS",
+    subtype: "Vans",
   },
   {
     vehicle: {
@@ -269,7 +269,7 @@ export const vehicles: GearDrones[] = [
     cost: 68000,
     name: "Ares Roadmaster",
     type: "VEHICLES",
-    subtype: "VANS",
+    subtype: "Vans",
   },
   {
     vehicle: {
@@ -287,7 +287,7 @@ export const vehicles: GearDrones[] = [
     cost: 25000,
     name: "Samuvani Criscraft Otter",
     type: "VEHICLES",
-    subtype: "BOATS",
+    subtype: "Boats",
   },
   {
     vehicle: {
@@ -305,7 +305,7 @@ export const vehicles: GearDrones[] = [
     cost: 39000,
     name: "Aztechnology Sunrunner Nightrunner",
     type: "VEHICLES",
-    subtype: "BOATS",
+    subtype: "Boats",
   },
   {
     vehicle: {
@@ -323,7 +323,7 @@ export const vehicles: GearDrones[] = [
     cost: 113000,
     name: "GMC Riverrine",
     type: "VEHICLES",
-    subtype: "BOATS",
+    subtype: "Boats",
   },
   {
     vehicle: {
@@ -341,7 +341,7 @@ export const vehicles: GearDrones[] = [
     cost: 15000,
     name: "Proteus Lamprey",
     type: "VEHICLES",
-    subtype: "SUBMARINES",
+    subtype: "Submarines",
   },
   {
     vehicle: {
@@ -359,7 +359,7 @@ export const vehicles: GearDrones[] = [
     cost: 110000,
     name: "YNT Delfin",
     type: "VEHICLES",
-    subtype: "SUBMARINES",
+    subtype: "Submarines",
   },
   {
     vehicle: {
@@ -377,7 +377,7 @@ export const vehicles: GearDrones[] = [
     cost: 20000,
     name: "Artemis Industries Nightwing",
     type: "VEHICLES",
-    subtype: "FIXED WING",
+    subtype: "Fixed Wing",
   },
   {
     vehicle: {
@@ -395,7 +395,7 @@ export const vehicles: GearDrones[] = [
     cost: 150000,
     name: "Cessna C750",
     type: "VEHICLES",
-    subtype: "FIXED WING",
+    subtype: "Fixed Wing",
   },
   {
     vehicle: {
@@ -413,7 +413,7 @@ export const vehicles: GearDrones[] = [
     cost: 300000,
     name: "MCT-Sikorsky-Bellseathawk",
     type: "VEHICLES",
-    subtype: "FIXED WING",
+    subtype: "Fixed Wing",
   },
   {
     vehicle: {
@@ -431,7 +431,7 @@ export const vehicles: GearDrones[] = [
     cost: 360000,
     name: "Ares Dragon",
     type: "VEHICLES",
-    subtype: "ROTORCRAFT",
+    subtype: "Rotorcraft",
   },
   {
     vehicle: {
@@ -449,7 +449,7 @@ export const vehicles: GearDrones[] = [
     cost: 423000,
     name: "MCT-Sikorsky-Bell Wolfhound",
     type: "VEHICLES",
-    subtype: "ROTORCRAFT",
+    subtype: "Rotorcraft",
   },
   {
     vehicle: {
@@ -467,7 +467,7 @@ export const vehicles: GearDrones[] = [
     cost: 93000,
     name: "Northrup Wasp",
     type: "VEHICLES",
-    subtype: "ROTORCRAFT",
+    subtype: "Rotorcraft",
   },
   {
     vehicle: {
@@ -485,7 +485,7 @@ export const vehicles: GearDrones[] = [
     cost: 350000,
     name: "Federated Boeing Commuter",
     type: "VEHICLES",
-    subtype: "VTOL",
+    subtype: "Vtol",
   },
   {
     vehicle: {
@@ -503,7 +503,7 @@ export const vehicles: GearDrones[] = [
     cost: 800000,
     name: "Federated Boeing Osprey X",
     type: "VEHICLES",
-    subtype: "VTOL",
+    subtype: "Vtol",
   },
   {
     vehicle: {
@@ -521,7 +521,7 @@ export const vehicles: GearDrones[] = [
     cost: 400000,
     name: "Ares Venture",
     type: "VEHICLES",
-    subtype: "LAV",
+    subtype: "Lav",
   },
   {
     vehicle: {
@@ -539,7 +539,7 @@ export const vehicles: GearDrones[] = [
     cost: 1300000,
     name: "GMC Banshee",
     type: "VEHICLES",
-    subtype: "LAV",
+    subtype: "Lav",
   },
 ]
 
@@ -555,7 +555,7 @@ export const mods = [
     cost: 1000,
     name: "Rigger Interface",
     type: "MOD ELEC",
-    subtype: "MOD MISC",
+    subtype: "Mod Misc",
     Multi: "yes",
   },
   {
@@ -575,7 +575,7 @@ export const mods = [
     cost: 2500,
     name: "Weapon Mount Standard",
     type: "MOD HARD",
-    subtype: "MOD MOUNT",
+    subtype: "Mod Mount",
     Multi: "yes",
   },
   {
@@ -595,7 +595,7 @@ export const mods = [
     cost: 3000,
     name: "Weapon Mount Standard Manual",
     type: "MOD HARD",
-    subtype: "MOD MOUNT",
+    subtype: "Mod Mount",
     Multi: "yes",
   },
   {
@@ -615,7 +615,7 @@ export const mods = [
     cost: 5000,
     name: "Weapon Mount Heavy",
     type: "MOD HARD",
-    subtype: "MOD MOUNT",
+    subtype: "Mod Mount",
     Multi: "yes",
   },
   {
@@ -635,7 +635,7 @@ export const mods = [
     cost: 5500,
     name: "Weapon Mount Heavy Manual",
     type: "MOD ELEC",
-    subtype: "MOD MISC",
+    subtype: "Mod Misc",
     Multi: "yes",
   },
   {
@@ -662,6 +662,6 @@ export const mods = [
     cost: 290,
     name: "Weapon Mount Crossbow",
     type: "MOD ELEC",
-    subtype: "MOD MISC",
+    subtype: "Mod Misc",
   },
 ]

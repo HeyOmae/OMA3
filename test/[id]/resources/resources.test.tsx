@@ -90,6 +90,10 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/drones",
     )
+    expect(getByText("Vehicles").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/vehicles",
+    )
   })
 
   it("should render links to security devices", () => {
