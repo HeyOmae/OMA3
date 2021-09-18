@@ -702,6 +702,26 @@ export const mockedRunners: Runner[] = [
           ],
         },
       ],
+      vehicles: [
+        {
+          vehicle: {
+            handling: "3/5",
+            acceleration: 16,
+            speedInterval: 30,
+            topSpeed: 200,
+            body: 7,
+            armor: 6,
+            pilot: 1,
+            sensor: 1,
+            seat: 2,
+          },
+          availability: "2",
+          cost: 14000,
+          name: "Harley-Davidson Scorpion",
+          subtype: "Bikes",
+          type: "VEHICLES",
+        },
+      ],
     },
   },
   {

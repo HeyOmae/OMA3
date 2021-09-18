@@ -1,4 +1,4 @@
-import { GearDrones } from "@/types/Resources"
+import { GearDroneMod, GearDrones } from "@/types/Resources"
 
 export const vehicles: GearDrones[] = [
   {
@@ -543,12 +543,12 @@ export const vehicles: GearDrones[] = [
   },
 ]
 
-export const mods = [
+export const mods: GearDroneMod[] = [
   {
     requires: {
       slotreq: {
-        Capacity: "0",
-        Slot: "VEHICLE ELECTRONICS",
+        capacity: 0,
+        slot: "VEHICLE ELECTRONICS",
       },
     },
     availability: "2",
@@ -556,19 +556,19 @@ export const mods = [
     name: "Rigger Interface",
     type: "MOD ELEC",
     subtype: "Mod Misc",
-    Multi: "yes",
+    multi: true,
   },
   {
     requires: {
       slotreq: {
-        Capacity: "1",
-        Slot: "VEHICLEbodyY",
+        capacity: 1,
+        slot: "VEHICLEBODY",
       },
     },
     modifications: {
       itemhookmod: {
-        Capacity: "1",
-        Hook: "VEHICLE WEAPON",
+        capacity: 1,
+        hook: "VEHICLE WEAPON",
       },
     },
     availability: "4I",
@@ -576,19 +576,19 @@ export const mods = [
     name: "Weapon Mount Standard",
     type: "MOD HARD",
     subtype: "Mod Mount",
-    Multi: "yes",
+    multi: true,
   },
   {
     requires: {
       slotreq: {
-        Capacity: "1",
-        Slot: "VEHICLEbodyY",
+        capacity: 1,
+        slot: "VEHICLEBODY",
       },
     },
     modifications: {
       itemhookmod: {
-        Capacity: "1",
-        Hook: "VEHICLE WEAPON",
+        capacity: 1,
+        hook: "VEHICLE WEAPON",
       },
     },
     availability: "5I",
@@ -596,19 +596,19 @@ export const mods = [
     name: "Weapon Mount Standard Manual",
     type: "MOD HARD",
     subtype: "Mod Mount",
-    Multi: "yes",
+    multi: true,
   },
   {
     requires: {
       slotreq: {
-        Capacity: "2",
-        Slot: "VEHICLEbodyY",
+        capacity: 2,
+        slot: "VEHICLEBODY",
       },
     },
     modifications: {
       itemhookmod: {
-        Hook: "VEHICLE WEAPON LARGE",
-        Capacity: "1",
+        hook: "VEHICLE WEAPON LARGE",
+        capacity: 1,
       },
     },
     availability: "5I",
@@ -616,19 +616,19 @@ export const mods = [
     name: "Weapon Mount Heavy",
     type: "MOD HARD",
     subtype: "Mod Mount",
-    Multi: "yes",
+    multi: true,
   },
   {
     requires: {
       slotreq: {
-        Capacity: "2",
-        Slot: "VEHICLEbodyY",
+        capacity: 2,
+        slot: "VEHICLEBODY",
       },
     },
     modifications: {
       itemhookmod: {
-        Hook: "VEHICLE WEAPON LARGE",
-        Capacity: "1",
+        hook: "VEHICLE WEAPON LARGE",
+        capacity: 1,
       },
     },
     availability: "6I",
@@ -636,26 +636,26 @@ export const mods = [
     name: "Weapon Mount Heavy Manual",
     type: "MOD ELEC",
     subtype: "Mod Misc",
-    Multi: "yes",
+    multi: true,
   },
   {
     requires: {
       slotreq: {
-        Capacity: "0",
-        Slot: "VEHICLEbodyY",
+        capacity: 0,
+        slot: "VEHICLEBODY",
       },
       itemreq: {
-        Item: "cyberspace Designs Quadrotor",
+        item: "cyberspace Designs Quadrotor",
       },
     },
     modifications: {
       itemhookmod: {
-        Hook: "VEHICLE WEAPON SMALL",
-        Capacity: "1",
+        hook: "VEHICLE WEAPON SMALL",
+        capacity: 1,
       },
       accessorymod: {
-        Hook: "VEHICLE WEAPON SMALL",
-        Item: "cyberspace Designs Quadrotor Crossbow",
+        hook: "VEHICLE WEAPON SMALL",
+        item: "cyberspace Designs Quadrotor Crossbow",
       },
     },
     availability: "4L",

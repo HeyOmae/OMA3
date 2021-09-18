@@ -1,5 +1,5 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { GearMod, GearModdableRated } from "@/types/Resources"
+import { GearDroneMod, GearMod, GearModdableRated } from "@/types/Resources"
 import { CircularProgress, Grid } from "@material-ui/core"
 import { useRouter } from "next/router"
 import React from "react"
@@ -12,48 +12,54 @@ import { BreadCrumpOption, ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
 
 interface GearModPageProps<G> extends GearPageProps<G> {
   previousPath: BreadCrumpOption
+  hasCapacity?: boolean
 }
 
-export function GearModPageTemplate<G extends GearMod>({
+type ModsType = GearMod | GearDroneMod
+
+export function GearModPageTemplate<G extends ModsType>({
   previousPath,
   resourceKey,
   listOfGear,
   addGearTableConfig,
   removeGearTableConfig,
+  hasCapacity = true,
 }: GearModPageProps<G>) {
   const {
     query: { gearIndex },
   } = useRouter()
-  const [runner, dispatch] = useRunnerAccess<GearMod>((runner, { payload }) => {
-    return {
-      ...runner,
-      resources: {
-        ...runner.resources,
-        [resourceKey]: [
-          ...runner.resources[resourceKey].slice(0, gearIndex),
-          {
-            ...runner.resources[resourceKey][gearIndex],
-            mods:
-              typeof payload === "number"
-                ? [
-                    ...runner.resources[resourceKey][gearIndex].mods.slice(
-                      0,
+  const [runner, dispatch] = useRunnerAccess<ModsType>(
+    (runner, { payload }) => {
+      return {
+        ...runner,
+        resources: {
+          ...runner.resources,
+          [resourceKey]: [
+            ...runner.resources[resourceKey].slice(0, gearIndex),
+            {
+              ...runner.resources[resourceKey][gearIndex],
+              mods:
+                typeof payload === "number"
+                  ? [
+                      ...runner.resources[resourceKey][gearIndex].mods.slice(
+                        0,
+                        payload,
+                      ),
+                      ...runner.resources[resourceKey][gearIndex].mods.slice(
+                        payload + 1,
+                      ),
+                    ]
+                  : [
+                      ...(runner.resources[resourceKey][gearIndex]?.mods ?? []),
                       payload,
-                    ),
-                    ...runner.resources[resourceKey][gearIndex].mods.slice(
-                      payload + 1,
-                    ),
-                  ]
-                : [
-                    ...(runner.resources[resourceKey][gearIndex]?.mods ?? []),
-                    payload,
-                  ],
-          },
-          ...runner.resources[resourceKey].slice(+gearIndex + 1),
-        ],
-      },
-    }
-  })
+                    ],
+            },
+            ...runner.resources[resourceKey].slice(+gearIndex + 1),
+          ],
+        },
+      }
+    },
+  )
   if (runner) {
     const gearBeingModded: GearModdableRated =
       runner.resources[resourceKey][gearIndex]
@@ -66,7 +72,7 @@ export function GearModPageTemplate<G extends GearMod>({
           previousPage={previousPath}
         />
         <RemainingNuyen runner={runner} />
-        <RemainingCapacity gear={gearBeingModded} />
+        {hasCapacity && <RemainingCapacity gear={gearBeingModded} />}
         <DispatchContext.Provider value={dispatch}>
           <Grid item md={6}>
             <GearTable listOfGear={listOfGear} cols={addGearTableConfig} />
@@ -75,7 +81,7 @@ export function GearModPageTemplate<G extends GearMod>({
           {modsOnGear && (
             <Grid item md={6}>
               <h2>Mods on {gearName}</h2>
-              <GearTable<GearMod>
+              <GearTable<ModsType>
                 cols={removeGearTableConfig}
                 listOfGear={modsOnGear}
               />
