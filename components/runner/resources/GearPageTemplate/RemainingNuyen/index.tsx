@@ -11,8 +11,9 @@ const { resources } = priorityTableData
 
 export const RemainingNuyen: FC<Props> = ({ runner }) => {
   const totalNuyen = resources[runner.priority.resources],
+    { resources: runnerResouces } = runner,
     remainingNuyen: number = useMemo(() => {
-      return Object.values(runner?.resources ?? {}).reduce(
+      return Object.values(runnerResouces ?? {}).reduce(
         (nuyenLeft: number, categoryOfGear: (Gear & GearModdableRated)[]) =>
           nuyenLeft -
           categoryOfGear.reduce((totalNuyenForThisCategory, { cost, mods }) => {
@@ -27,7 +28,7 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
           }, 0),
         totalNuyen,
       )
-    }, [runner])
+    }, [runnerResouces, totalNuyen])
   return (
     <dl>
       <dt>Nuyen:</dt>

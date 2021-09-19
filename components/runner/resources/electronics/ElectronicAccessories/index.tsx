@@ -3,7 +3,7 @@ import { GearElectronicAccessory } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import { buyElectronicCol, sellElectronicCol } from "../utils"
 
-export default () => (
+const ElectronicAccessories = () => (
   <GearPageTemplate<GearElectronicAccessory>
     gearLabel="Electronic Accessories"
     resourceKey="electronicAccessories"
@@ -12,3 +12,4 @@ export default () => (
     removeGearTableConfig={sellElectronicCol}
   />
 )
+export default ElectronicAccessories

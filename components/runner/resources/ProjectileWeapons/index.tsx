@@ -6,7 +6,7 @@ import {
 } from "./projectileTableConfig"
 import { GearPageTemplate } from "../GearPageTemplate"
 
-export default () => (
+const ProjectileWeapons = () => (
   <GearPageTemplate<GearWeaponsProjectile>
     gearLabel="Projectile Weapons"
     resourceKey="projectile"
@@ -15,3 +15,4 @@ export default () => (
     removeGearTableConfig={removeProjectileTableConfig}
   />
 )
+export default ProjectileWeapons
