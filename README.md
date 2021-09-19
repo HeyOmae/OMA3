@@ -33,7 +33,8 @@ I'm currently attempting to have 100% code coverage, which might get relaxed lat
 
 ### Start locally
 
-The quickest way to start the app from this repo is to run this command
+The _quickest_ way to start the app from this repo is to run this command.
+However, this is also becoming slower and slower as the project has grown.
 
 ```
 npm run dev
@@ -62,6 +63,9 @@ This will run all the unit tests in watch mode and should rerun again if you mak
 ```
 npm test -- --watch
 ```
+
+But since there are becoming more and more tests, running them all is becoming less ideal.
+You can run a smaller subset after starting the tests. Hitting any key should stop the test runner, then you can press `p` and type in a string to filter out what you want to run. Type ahead should show you which tests will run.
 
 Also, to check that coverage is still at 100% you can
 

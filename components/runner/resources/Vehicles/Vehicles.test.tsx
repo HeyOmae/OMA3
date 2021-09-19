@@ -11,8 +11,13 @@ import Vehicles from "./index"
 
 describe("<Vehicles/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = () =>
-    render(withTestRouter(<Vehicles />, { query: { id: "9" } }))
+  const setup = (id = "9") =>
+    render(
+      withTestRouter(<Vehicles />, {
+        query: { id },
+        asPath: "/10/resources/vehicles/",
+      }),
+    )
 
   it("should display vehicle stats", async () => {
     const { getByText, getByLabelText } = setup()
@@ -74,5 +79,18 @@ describe("<Vehicles/>", () => {
     expect(
       getByTextInContainer(vehicleRow, `${vehcile.cost}¥`),
     ).toBeInTheDocument()
+  })
+
+  describe("purchased vehicle", () => {
+    it("should have a link to the vehicle mod page", async () => {
+      const { getByText, getByLabelText } = setup("10")
+
+      await waitFor(() => expect(getByText("Sell")).toBeInTheDocument())
+
+      expect(getByText("Mod")).toBeInTheDocument()
+      expect(
+        getByLabelText("Mod Harley-Davidson Scorpion (0)").closest("a"),
+      ).toHaveAttribute("href", "/10/resources/vehicles/0")
+    })
   })
 })

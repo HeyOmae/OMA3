@@ -50,6 +50,10 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
       ),
     label: "Mod",
   },
+  alwaysMod: {
+    display: (gear, index) => <ModLinkButton gear={gear} index={index} />,
+    label: "Mod",
+  },
 }
 
 export const gearDroneTableConfigOptions = {
@@ -245,4 +249,5 @@ export const sellGearVehiclesCols: Columns<GearDrones>[] = [
   ...baseDroneStatsConfigOptions,
   gearDroneTableConfigOptions.seat,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.alwaysMod,
 ]

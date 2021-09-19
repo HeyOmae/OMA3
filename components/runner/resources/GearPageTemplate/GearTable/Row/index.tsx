@@ -31,7 +31,7 @@ export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
       currentRating,
       cost: gear.cost * currentRating,
     }),
-    [currentRating],
+    [currentRating, gear],
   )
 
   return (
@@ -56,7 +56,7 @@ export const SelectSkillRow: FC<SelectSkillProps> = ({ cols, gear, index }) => {
       ...gear,
       name: `${selectedSkill} ${gear.name}`,
     }),
-    [selectedSkill],
+    [gear, selectedSkill],
   )
 
   return (
