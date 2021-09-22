@@ -10,7 +10,7 @@ OMA3 is leveraging the (currently as of 2020) latest in modern web standards and
 
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
-- [Material-UI](https://material-ui.com/)
+- [MUI](https://mui.com/)
 - [Typescript](https://www.typescriptlang.org/)
 - Linting with [ESLint](https://eslint.org/)
 - Formatting with [Prettier](https://prettier.io/)
