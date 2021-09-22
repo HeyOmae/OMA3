@@ -1,4 +1,4 @@
-import { Breadcrumbs, Link, Typography } from "@material-ui/core"
+import { Breadcrumbs, Link, Typography } from "@mui/material"
 import NextLink from "next/link"
 import { useRouter } from "next/router"
 import { FC } from "react"

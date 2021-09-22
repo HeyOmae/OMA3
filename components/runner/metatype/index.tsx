@@ -6,7 +6,7 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
-} from "@material-ui/core"
+} from "@mui/material"
 import { useState } from "react"
 import metatypeData from "@/data/metatype.json"
 import priorityData from "@/data/priorityTable.json"

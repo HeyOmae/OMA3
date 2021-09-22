@@ -6,7 +6,7 @@ import {
   TableRow,
   TableCell,
   TableBody,
-} from "@material-ui/core"
+} from "@mui/material"
 import { ADD_SKILL, ActionPayload } from ".."
 import { Attributes } from "@/types/RunnerAttributes"
 import skillsData from "@/data/skills.json"

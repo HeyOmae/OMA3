@@ -7,7 +7,7 @@ import {
   Drawer,
   Button,
   AppBar,
-} from "@material-ui/core"
+} from "@mui/material"
 import {
   Delete,
   Home,
@@ -18,7 +18,7 @@ import {
   DirectionsRun,
   FlashOn,
   Payment,
-} from "@material-ui/icons"
+} from "@mui/icons-material"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 import styles from "./layout.module.css"

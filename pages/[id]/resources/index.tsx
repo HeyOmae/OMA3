@@ -1,6 +1,6 @@
 import { RunnerLayout } from "@/components/layout"
 import NextLink from "next/link"
-import { Button } from "@material-ui/core"
+import { Button } from "@mui/material"
 import { useRouter } from "next/router"
 import { GearNav } from "@/components/runner/resources/GearNav/GearNav"
 import * as securityData from "@/data/security"

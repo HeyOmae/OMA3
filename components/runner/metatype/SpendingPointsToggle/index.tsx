@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { FormControlLabel, Typography, Grid, Switch } from "@material-ui/core"
+import { FormControlLabel, Typography, Grid, Switch } from "@mui/material"
 import styles from "./SpendingPointsToggle.module.css"
 
 export interface Props {

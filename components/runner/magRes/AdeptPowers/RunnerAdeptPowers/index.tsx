@@ -6,7 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-} from "@material-ui/core"
+} from "@mui/material"
 import { FC } from "react"
 import { CHANGE_POWER_LEVEL, Payload, REMOVE_POWER } from "../.."
 import { DispatchAction } from "../../../../../hooks/useRunnerAccess"

@@ -1,5 +1,5 @@
-import { IconButton, IconButtonProps } from "@material-ui/core"
-import { Add, Remove } from "@material-ui/icons"
+import { IconButton, IconButtonProps } from "@mui/material"
+import { Add, Remove } from "@mui/icons-material"
 import { FC } from "react"
 
 export const AddButton: FC<Exclude<IconButtonProps, "color" | "children">> = (

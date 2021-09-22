@@ -4,7 +4,7 @@ import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { Runner } from "../../../../types/runner"
 import { Attributes } from "../../../../types/RunnerAttributes"
 import metatypeData from "../../../../data/metatype.json"
-import { Typography, Slider } from "@material-ui/core"
+import { Typography, Slider } from "@mui/material"
 
 export interface Props {
   dispatch: DispatchAction<Payload>

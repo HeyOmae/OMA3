@@ -1,6 +1,6 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { GearDroneMod, GearMod, GearModdableRated } from "@/types/Resources"
-import { CircularProgress, Grid } from "@material-ui/core"
+import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
 import React from "react"
 import { DispatchContext } from "../util"

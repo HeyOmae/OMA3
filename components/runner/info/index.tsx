@@ -1,7 +1,6 @@
 import { useCallback, useRef } from "react"
-import { Grid, TextField } from "@material-ui/core"
+import { CircularProgress, Grid, TextField } from "@mui/material"
 import { RunnerReducer, useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { CircularProgress } from "@material-ui/core"
 import { Runner } from "@/types/runner"
 
 const UPDATE_NAME = Symbol("updateName"),

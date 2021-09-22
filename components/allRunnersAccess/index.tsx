@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react"
 import { useIndexedDB } from "react-indexed-db"
-import { CircularProgress } from "@material-ui/core"
+import { CircularProgress } from "@mui/material"
 import { Runner } from "../../types/runner"
 
 interface RenderProps {

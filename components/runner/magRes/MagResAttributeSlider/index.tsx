@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { Slider } from "@material-ui/core"
+import { Slider } from "@mui/material"
 import { Payload, SET_MAGIC, SET_RESONANCE } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import {

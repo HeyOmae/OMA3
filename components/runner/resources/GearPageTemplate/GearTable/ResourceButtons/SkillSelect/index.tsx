@@ -1,4 +1,4 @@
-import { MenuItem, Select } from "@material-ui/core"
+import { MenuItem, Select } from "@mui/material"
 import { FC } from "react"
 import skillData from "@/data/skills.json"
 

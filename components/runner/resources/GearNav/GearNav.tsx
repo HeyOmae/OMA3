@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core"
+import { Button } from "@mui/material"
 import React, { FC } from "react"
 import NextLink from "next/link"
 import { Gear } from "@/types/Resources"

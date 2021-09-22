@@ -6,7 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-} from "@material-ui/core"
+} from "@mui/material"
 import { Payload } from ".."
 import { CombatSpell } from "../../../../types/MagRes"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
