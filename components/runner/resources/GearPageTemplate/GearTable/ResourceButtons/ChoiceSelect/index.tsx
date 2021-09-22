@@ -1,4 +1,4 @@
-import { MenuItem, Select } from "@material-ui/core"
+import { MenuItem, Select } from "@mui/material"
 import { useContext } from "react"
 import { ChoiceContext } from "../../Row/ChoiceRatingRow"
 

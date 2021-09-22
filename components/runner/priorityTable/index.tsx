@@ -5,7 +5,7 @@ import {
   FormControlLabel,
   Radio,
   CircularProgress,
-} from "@material-ui/core"
+} from "@mui/material"
 import priorityData from "../../../data/priorityTable.json"
 import { PriorityRating } from "../../../types/PriorityRating"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"

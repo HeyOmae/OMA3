@@ -1,12 +1,12 @@
 import { FC } from "react"
 import Head from "next/head"
 import { Layout } from "@/components/layout"
-import { Button, IconButton, Link } from "@material-ui/core"
+import { Button, IconButton, Link } from "@mui/material"
 import dynamic from "next/dynamic"
 import { initRunner } from "@/types/runner"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
-import { GitHub } from "@material-ui/icons"
+import { GitHub } from "@mui/icons-material"
 
 const AllRunnersAccess = dynamic(
   () => import("@/components/allRunnersAccess"),

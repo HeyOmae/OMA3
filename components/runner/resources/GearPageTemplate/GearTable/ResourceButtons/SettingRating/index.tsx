@@ -1,5 +1,5 @@
 import { GearWithRating } from "@/types/Resources"
-import { Slider } from "@material-ui/core"
+import { Slider } from "@mui/material"
 import { FC } from "react"
 
 export interface SettingRatingProps {

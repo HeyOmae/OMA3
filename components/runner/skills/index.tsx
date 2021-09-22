@@ -1,6 +1,6 @@
 import { FC, useMemo } from "react"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
-import { CircularProgress, Grid } from "@material-ui/core"
+import { CircularProgress, Grid } from "@mui/material"
 import { Skills as SkillsType } from "../../../types/Skill"
 import { SkillTable } from "./SkillTable"
 import { RunnerSkillTable } from "./RunnerSkillTable"

@@ -1,5 +1,5 @@
 import { useCallback, FC, ChangeEvent } from "react"
-import { FormControlLabel, Radio, RadioGroup, Grid } from "@material-ui/core"
+import { FormControlLabel, Radio, RadioGroup, Grid } from "@mui/material"
 import { SET_MAGRES } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { MagRes } from "../../../../types/MagRes"

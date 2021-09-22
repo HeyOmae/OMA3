@@ -1,4 +1,4 @@
-import { CircularProgress, Grid } from "@material-ui/core"
+import { CircularProgress, Grid } from "@mui/material"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import {
   AdeptPower,

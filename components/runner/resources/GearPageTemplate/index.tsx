@@ -1,5 +1,5 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { CircularProgress, Grid } from "@material-ui/core"
+import { CircularProgress, Grid } from "@mui/material"
 import { ReactElement } from "react"
 import { Gear } from "types/Resources"
 import { GearTable } from "./GearTable"

@@ -1,6 +1,6 @@
 import { FC, useMemo, useState } from "react"
 import { Gear, GearTyped } from "@/types/Resources"
-import { TableCell, TableRow } from "@material-ui/core"
+import { TableCell, TableRow } from "@mui/material"
 import { Columns } from "../../../util"
 import skillData from "@/data/skills.json"
 

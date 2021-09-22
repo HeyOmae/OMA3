@@ -6,7 +6,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-} from "@material-ui/core"
+} from "@mui/material"
 import { Gear } from "@/types/Resources"
 import { Columns } from "../../util"
 import { StandardDisplayRow, RatingRow, SelectSkillRow } from "./Row"

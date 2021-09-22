@@ -8,7 +8,7 @@ import {
   TableCell,
   TableBody,
   Slider,
-} from "@material-ui/core"
+} from "@mui/material"
 import { SpecializationSelector } from "./SpecializationSelector"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { ActionPayload, CHANGE_SKILL_RATING, REMOVE_SKILL } from ".."

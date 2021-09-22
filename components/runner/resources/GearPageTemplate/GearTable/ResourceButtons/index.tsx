@@ -5,8 +5,8 @@ import {
   DispatchContext,
   RemoveGearButtonProps,
 } from "../../../util"
-import { IconButton } from "@material-ui/core"
-import { Extension } from "@material-ui/icons"
+import { IconButton } from "@mui/material"
+import { Extension } from "@mui/icons-material"
 import NextLink from "next/link"
 import { Gear } from "@/types/Resources"
 import { useRouter } from "next/router"

@@ -2,7 +2,7 @@ import { FC } from "react"
 import skillData from "@/data/skills.json"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { ActionPayload, CHANGE_SPECIALIZATION } from "../.."
-import { Autocomplete, TextField } from "@material-ui/core"
+import { Autocomplete, TextField } from "@mui/material"
 
 export interface Props {
   skillName: string

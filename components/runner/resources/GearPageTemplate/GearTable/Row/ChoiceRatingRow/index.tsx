@@ -1,5 +1,5 @@
 import { AdeptPower, SpellCategory, SpiritTypes } from "@/types/MagRes"
-import { TableCell, TableRow } from "@material-ui/core"
+import { TableCell, TableRow } from "@mui/material"
 import { createContext, useMemo, useState } from "react"
 import { FC } from "react"
 import { Props } from "../index"
@@ -7,7 +7,7 @@ import powerData from "@/data/adeptPowers.json"
 import { Columns } from "@/components/runner/resources/util"
 import { GearFocus, GearWeaponMelee } from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"
-import { CircularProgress } from "@material-ui/core"
+import { CircularProgress } from "@mui/material"
 
 export interface ChoiceRatingRowProps extends Props {
   cols: Columns<GearFocus>[]

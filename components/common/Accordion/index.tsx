@@ -1,9 +1,5 @@
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@material-ui/core"
-import { ExpandMore } from "@material-ui/icons"
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
+import { ExpandMore } from "@mui/icons-material"
 import { FC, ReactNode } from "react"
 
 interface Props {
