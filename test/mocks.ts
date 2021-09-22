@@ -834,6 +834,32 @@ export const mockedRunners: Runner[] = [
           currentRating: 6,
         },
       ],
+      drones: [
+        {
+          vehicle: {
+            handling: "3",
+            acceleration: 20,
+            speedInterval: 30,
+            topSpeed: 160,
+            body: 5,
+            armor: 6,
+            pilot: 3,
+            sensor: 2,
+          },
+          modifications: {
+            itemattrmod: {
+              Attr: "CAPACITY",
+              Val: 1,
+              Slot: "VEHICLEBODY",
+            },
+          },
+          availability: "2",
+          cost: 5000,
+          name: "MCT-Nissan Roto Drone",
+          type: "Drone Medium",
+          subtype: "Air",
+        },
+      ],
     },
   },
 ]

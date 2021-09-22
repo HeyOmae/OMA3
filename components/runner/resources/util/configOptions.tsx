@@ -1,6 +1,7 @@
 import { Columns } from "../util"
 import {
   Gear,
+  GearDroneMod,
   GearDrones,
   GearFocus,
   GearMod,
@@ -250,4 +251,19 @@ export const sellGearVehiclesCols: Columns<GearDrones>[] = [
   gearDroneTableConfigOptions.seat,
   gearTableConfigOptions.cost,
   gearTableConfigOptions.alwaysMod,
+]
+
+type VehicleModCols = Columns<GearDroneMod>
+const baseCols: VehicleModCols[] = [
+  gearTableConfigOptions.name,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+export const buyDroneModCols: VehicleModCols[] = [
+  gearTableConfigOptions.buy,
+  ...baseCols,
+]
+export const sellDroneModCols: VehicleModCols[] = [
+  gearTableConfigOptions.sell,
+  ...baseCols,
 ]
