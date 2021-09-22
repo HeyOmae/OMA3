@@ -3,12 +3,12 @@ import { GearDroneMod } from "@/types/Resources"
 import { GearModPageTemplate } from "../../GearPageTemplate/GearModPageTemplate"
 import { buyDroneModCols, sellDroneModCols } from "../../util"
 
-const previousPath = { categoryPath: "vehicles", label: "Vehicles" }
+const previousPath = { categoryPath: "drones", label: "Drones" }
 
-const VehicleMods = () => (
+const DroneMods = () => (
   <GearModPageTemplate<GearDroneMod>
-    gearLabel="Vehicle Mods"
-    resourceKey="vehicles"
+    gearLabel="Drone Mods"
+    resourceKey="drones"
     previousPath={previousPath}
     listOfGear={mods}
     addGearTableConfig={buyDroneModCols}
@@ -17,4 +17,4 @@ const VehicleMods = () => (
   />
 )
 
-export default VehicleMods
+export default DroneMods
