@@ -230,6 +230,7 @@ export const sellGearDronesCols: Columns<GearDrones>[] = [
   gearDroneTableConfigOptions.type,
   ...baseDroneStatsConfigOptions,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.alwaysMod,
 ]
 
 export const buyGearVehiclesCols: Columns<GearDrones>[] = [

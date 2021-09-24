@@ -11,7 +11,8 @@ import Drones from "./index"
 
 describe("<Drones/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = () => render(withTestRouter(<Drones />, { query: { id: "9" } }))
+  const setup = (id = "9") =>
+    render(withTestRouter(<Drones />, { query: { id } }))
 
   it("should display drone stats", async () => {
     const { getByText, getByLabelText } = setup()
@@ -65,5 +66,15 @@ describe("<Drones/>", () => {
       getAllByTextInContainer(droneRow, drone.vehicle.sensor).length,
     ).toBeGreaterThanOrEqual(1)
     expect(getByTextInContainer(droneRow, `${drone.cost}¥`)).toBeInTheDocument()
+  })
+
+  it("should have a mod button", async () => {
+    const { getByLabelText } = setup("11")
+
+    await waitFor(() => {
+      expect(
+        getByLabelText("Mod MCT-Nissan Roto Drone (0)"),
+      ).toBeInTheDocument()
+    })
   })
 })
