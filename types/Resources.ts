@@ -31,14 +31,53 @@ export interface Gear {
   cost: number
 }
 
+interface ItemAttributeMod {
+  attr: string
+  val?: number
+  objVal?: string
+  cond?: true
+  condindex?: number
+}
+
 export interface GearMod extends Gear {
   useAs: (AsModAccessory | AsCyberwareInstall)[]
   modifications?: {
-    attrmod: {
+    attrmod?: {
       attribute: string
       attackRating: attackRating
     }
+    itemattrmod?: ItemAttributeMod[]
+    itemhookmod?: {
+      capacity: number
+      hook: string
+    }
+    accessorymod?: AccessoryMod[]
   }
+}
+
+interface ItemRequired {
+  item: string
+}
+
+type WeaponSlot = "TOP" | "BARREL" | "UNDER" | "STOCK"
+
+export interface FirearmMod extends GearMod, Partial<GearTypes> {
+  requires?: {
+    itemsubtypereq?: {
+      type: string
+    }
+    itemtypereq?: {
+      type: string
+    }
+    itemreq?: ItemRequired[]
+    slotreq?: {
+      slot: WeaponSlot
+    }
+  }
+  slotreq?: {
+    slot: WeaponSlot
+  }
+  multi?: true
 }
 
 export interface GearDroneMod extends GearTyped {
@@ -89,7 +128,9 @@ export interface GearDrones extends Gear, GearTypes {
 
 export interface GearModRated extends GearMod, GearTyped {}
 
-interface AsModAccessory extends AsElectronicAccessory, Partial<Gear> {}
+interface AsModAccessory extends AsElectronicAccessory, Partial<Gear> {
+  cap?: number
+}
 
 interface AsCyberwareInstall extends Omit<AsModAccessory, "slot"> {
   essense?: number
@@ -293,6 +334,7 @@ export interface GearWeaponFireArms extends GearWeaponMelee {
     moditemmod?: {
       ref: string
     }
+    itemattrmod?: ItemAttributeMod[]
   }
   weapon: FireArm
 }

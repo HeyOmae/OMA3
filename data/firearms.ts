@@ -1,4 +1,4 @@
-import { GearWeaponFireArms } from "../types/Resources"
+import { FirearmMod, GearWeaponFireArms } from "../types/Resources"
 
 const firearms: GearWeaponFireArms[] = [
   {
@@ -2212,3 +2212,422 @@ const firearms: GearWeaponFireArms[] = [
 ]
 
 export default firearms
+
+export const mods: FirearmMod[] = [
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "UNDER",
+      },
+    ],
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Attack rating",
+          val: 2,
+        },
+      ],
+    },
+    availability: "1",
+    cost: 200,
+    name: "Bipod",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "FIREARMS EXTERNAL",
+      },
+    ],
+    requires: {
+      itemsubtypereq: {
+        type: "TASERS,HOLDOUTS,PISTOLS LIGHT,PISTOLS HEAVY,MACHINE PISTOLS",
+      },
+    },
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Concealability",
+          val: 1,
+        },
+      ],
+    },
+    availability: "1",
+    cost: 150,
+    name: "Concealable Holster",
+    type: "ACCESSORY",
+    subtype: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "BARREL",
+      },
+    ],
+    availability: "3",
+    cost: 500,
+    name: "Gas-Vent System",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "UNDER",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER LIMB ACCESSORY",
+        cap: 8,
+        slot: "CYBERLIMB IMPLANT",
+      },
+    ],
+    availability: "3",
+    cost: 1400,
+    name: "Gyro Mount",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "FIREARMS EXTERNAL",
+      },
+    ],
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Concealability",
+          val: 1,
+        },
+      ],
+    },
+    requires: {
+      itemsubtypereq: {
+        type: "TASERS,HOLDOUTS,PISTOLS LIGHT",
+      },
+    },
+    availability: "2",
+    cost: 350,
+    name: "Hidden Arm Slide",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "TOP",
+      },
+    ],
+    modifications: {
+      itemhookmod: {
+        capacity: 3,
+        hook: "OPTICAL",
+      },
+      accessorymod: [
+        {
+          hook: "OPTICAL",
+          item: "vision magnification",
+          included: true,
+        },
+        {
+          hook: "OPTICAL",
+          item: "camera",
+          included: true,
+        },
+      ],
+    },
+    availability: "1",
+    cost: 350,
+    name: "Imaging Scope",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "TOP",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "UNDER",
+      },
+    ],
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Attack rating",
+          objVal: "1,1,1,1,1",
+        },
+      ],
+    },
+    availability: "1",
+    cost: 125,
+    name: "Laser Sight",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "TOP",
+      },
+    ],
+    requires: {
+      slotreq: {
+        slot: "TOP",
+      },
+    },
+    availability: "3",
+    cost: 70,
+    name: "Periscope",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "FIREARMS EXTERNAL",
+      },
+    ],
+    requires: {
+      itemsubtypereq: {
+        type: "TASERS,HOLDOUTS,PISTOLS LIGHT,PISTOLS HEAVY,MACHINE PISTOLS",
+      },
+    },
+    availability: "2",
+    cost: 175,
+    name: "Quick Draw Holster",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "STOCK",
+      },
+    ],
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Attack rating",
+          val: 1,
+          cond: true,
+          condindex: 1,
+        },
+      ],
+    },
+    requires: {
+      itemsubtypereq: {
+        type: "SUBMACHINE GUNS,RIFLE ASSAULT,RIFLE HUNTING,RIFLE SNIPER,SHOTGUNS,LMG,MMG,HMG,ASSAULT CANNON",
+      },
+    },
+    availability: "2",
+    cost: 50,
+    name: "Shock Pad",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "BARREL",
+      },
+    ],
+    requires: {
+      itemsubtypereq: {
+        type: "TASERS,HOLDOUTS,PISTOLS LIGHT,PISTOLS HEAVY,MACHINE PISTOLS,SUBMACHINE GUNS,LMG,MMG,HMG,ASSAULT CANNON,RIFLE ASSAULT,RIFLE HUNTING,RIFLE SNIPER",
+      },
+      slotreq: {
+        slot: "BARREL",
+      },
+    },
+    availability: "4",
+    cost: 500,
+    name: "Silencer",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "UNDER",
+      },
+    ],
+    requires: {
+      slotreq: {
+        slot: "UNDER",
+      },
+    },
+    availability: "5",
+    cost: 2500,
+    name: "Smart Firing Platform",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+      },
+    ],
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Attack rating",
+          val: 2,
+          cond: true,
+          condindex: 1,
+        },
+        {
+          attr: "Attack rating",
+          val: 1,
+          cond: true,
+          condindex: 2,
+        },
+      ],
+      itemhookmod: {
+        capacity: 1,
+        hook: "OPTICAL",
+      },
+    },
+    availability: "1L",
+    cost: 500,
+    name: "Smartgun System",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "TOP",
+      },
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "UNDER",
+      },
+    ],
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Attack rating",
+          val: 2,
+          cond: true,
+          condindex: 1,
+        },
+        {
+          attr: "Attack rating",
+          val: 1,
+          cond: true,
+          condindex: 2,
+        },
+      ],
+      itemhookmod: {
+        capacity: 1,
+        hook: "OPTICAL",
+      },
+    },
+    availability: "2L",
+    cost: 200,
+    name: "Smartgun System External",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "FIREARMS EXTERNAL",
+      },
+    ],
+    requires: {
+      itemtypereq: {
+        type: "WEAPON FIREARMS",
+      },
+    },
+    availability: "2",
+    cost: 5,
+    name: "Spare Clip",
+    type: "ACCESSORY",
+    multi: true,
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "FIREARMS EXTERNAL",
+      },
+    ],
+    requires: {
+      itemtypereq: {
+        type: "WEAPON FIREARMS",
+      },
+    },
+    availability: "1",
+    cost: 25,
+    name: "Speed Loader",
+    type: "ACCESSORY",
+    multi: true,
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "STOCK",
+      },
+    ],
+    modifications: {
+      itemattrmod: [
+        {
+          attr: "Concealability",
+          val: 1,
+        },
+      ],
+    },
+    availability: "2",
+    cost: 30,
+    name: "Folding Stock",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "UNDER",
+      },
+    ],
+    availability: "2",
+    cost: 500,
+    name: "Tripod",
+    type: "ACCESSORY",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "FIREARMS ACCESSORY",
+        slot: "STOCK",
+      },
+    ],
+    availability: "0",
+    cost: 0,
+    name: "Removable Stock",
+    type: "ACCESSORY",
+  },
+]
