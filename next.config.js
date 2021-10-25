@@ -7,4 +7,10 @@ module.exports = withPWA({
   },
   trailingSlash: true,
   experimental: { esmExternals: true },
+  webpack(config, { dev }) {
+    if (dev) {
+      config.devtool = "cheap-module-source-map"
+    }
+    return config
+  },
 })
