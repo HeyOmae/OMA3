@@ -33,7 +33,10 @@ yarn-error.log*
 # vercel
 .vercel
 
-#pointless map
+# pointless map
 public/sw.js
 public/sw.js.map
 public/workbox-*
+
+# typescript noisy files
+tsconfig.tsbuildinfo
