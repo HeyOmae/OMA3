@@ -2,13 +2,15 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "next": {
+      "rootDir": "."
     }
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
-    "plugin:@next/next/recommended",
-    "next/core-web-vitals",
+    "next",
     "eslint:recommended",
     "plugin:jest/recommended",
     "plugin:react/recommended",

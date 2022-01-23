@@ -6,9 +6,11 @@ const Commlink = dynamic(
   { ssr: false },
 )
 
-export default () => (
+const CommlinkPage = () => (
   <RunnerLayout>
     <h1>Commlinks</h1>
     <Commlink />
   </RunnerLayout>
 )
+
+export default CommlinkPage

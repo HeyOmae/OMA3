@@ -6,9 +6,10 @@ const Tags = dynamic(
   { ssr: false },
 )
 
-export default () => (
+const TagsPage = () => (
   <RunnerLayout>
     <h1>RFID Tags</h1>
     <Tags />
   </RunnerLayout>
 )
+export default TagsPage
