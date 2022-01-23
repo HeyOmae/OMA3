@@ -5,9 +5,11 @@ const Armor = dynamic(() => import("@/components/runner/resources/Armor"), {
   ssr: false,
 })
 
-export default () => (
+const ArmorPage = () => (
   <RunnerLayout>
     <h1>Armors</h1>
     <Armor />
   </RunnerLayout>
 )
+
+export default ArmorPage

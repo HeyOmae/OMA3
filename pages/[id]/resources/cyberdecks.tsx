@@ -6,9 +6,11 @@ const Cyberdecks = dynamic(
   { ssr: false },
 )
 
-export default () => (
+const CyberdeckPage = () => (
   <RunnerLayout>
     <h1>Cyberdecks</h1>
     <Cyberdecks />
   </RunnerLayout>
 )
+
+export default CyberdeckPage

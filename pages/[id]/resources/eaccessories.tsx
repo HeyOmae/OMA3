@@ -7,9 +7,10 @@ const ElectronicAccessories = dynamic(
   { ssr: false },
 )
 
-export default () => (
+const EccessoryPage = () => (
   <RunnerLayout>
     <h1>Electronic Accessories</h1>
     <ElectronicAccessories />
   </RunnerLayout>
 )
+export default EccessoryPage

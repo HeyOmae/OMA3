@@ -5,9 +5,11 @@ const Tools = dynamic(() => import("@/components/runner/resources/Tools"), {
   ssr: false,
 })
 
-export default () => (
+const ToolsPage = () => (
   <RunnerLayout>
     <h1>Tools</h1>
     <Tools />
   </RunnerLayout>
 )
+
+export default ToolsPage

@@ -6,9 +6,11 @@ const RiggerConsoles = dynamic(
   { ssr: false },
 )
 
-export default () => (
+const RiggerConsolePage = () => (
   <RunnerLayout>
     <h1>Rigger Consoles</h1>
     <RiggerConsoles />
   </RunnerLayout>
 )
+
+export default RiggerConsolePage

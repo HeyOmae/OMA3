@@ -6,9 +6,11 @@ const OtherElectronics = dynamic(
   { ssr: false },
 )
 
-export default () => (
+const OtherEPage = () => (
   <RunnerLayout>
     <h1>Other Electronics</h1>
     <OtherElectronics />
   </RunnerLayout>
 )
+
+export default OtherEPage
