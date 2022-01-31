@@ -337,4 +337,5 @@ export interface GearWeaponFireArms extends GearWeaponMelee {
     itemattrmod?: ItemAttributeMod[]
   }
   weapon: FireArm
+  mods?: FirearmMod[]
 }

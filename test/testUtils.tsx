@@ -160,7 +160,7 @@ export const runnerFromDB = (id = 0): Runner =>
   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
     .records[id].value
 
-export const caymansCurrentlySpentNuyen = 256_055
+export const caymansCurrentlySpentNuyen = 253_955
 
 export const expectToBuyAndSellGear =
   (
