@@ -573,6 +573,53 @@ export const mockedRunners: Runner[] = [
             specialization: "automatics",
           },
         },
+        {
+          availability: "3L",
+          cost: 2100,
+          name: "FN Har",
+          useAs: [
+            {
+              type: "WEAPON FIREARMS",
+              subtype: "RIFLE ASSAULT",
+            },
+          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "BARREL",
+              },
+              {
+                hook: "TOP",
+              },
+              {
+                hook: "UNDER",
+              },
+              {
+                hook: "STOCK",
+              },
+            ],
+            accessorymod: [
+              {
+                hook: "BARREL",
+                item: "Gas-vent System",
+                rating: 2,
+              },
+              {
+                hook: "TOP",
+                item: "Laser Sight",
+                included: true,
+              },
+            ],
+          },
+          weapon: {
+            ar: [3, 11, 10, 6, 1],
+            ammo: "35(c)",
+            dv: "5P",
+            mode: "SA/BF/FA",
+            skill: "Firearms",
+            specialization: "rifles",
+          },
+        },
       ],
       imaging: [
         {
