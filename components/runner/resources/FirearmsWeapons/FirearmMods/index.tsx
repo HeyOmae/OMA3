@@ -7,6 +7,11 @@ import { Columns, gearTableConfigOptions } from "../../util"
 const buyModCol: Columns<FirearmMod>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
+  {
+    display: (gear) =>
+      gear.useAs.map(({ slot }) => slot || "INTEGRAL").join(", "),
+    label: "Slot",
+  },
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
 ]

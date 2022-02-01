@@ -21,8 +21,11 @@ describe("<FirearmMods />", () => {
 
     const buyTable = getByText("Buy").closest("table")
 
-    mods.forEach(({ name }) => {
+    mods.forEach(({ name, useAs }) => {
       expect(getTextIn(buyTable, name)).toBeInTheDocument()
+      const row = getTextIn(buyTable, name).closest("tr")
+      const slots = useAs.map(({ slot }) => slot ?? "INTEGRAL")
+      expect(getTextIn(row, slots.join(", "))).toBeInTheDocument()
     })
   })
 })
