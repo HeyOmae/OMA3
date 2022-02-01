@@ -39,8 +39,9 @@ interface ItemAttributeMod {
   condindex?: number
 }
 
-export interface GearMod extends Gear {
-  useAs: (AsModAccessory | AsCyberwareInstall)[]
+export interface GearMod<UseAs = AsModAccessory | AsCyberwareInstall>
+  extends Gear {
+  useAs: UseAs[]
   modifications?: {
     attrmod?: {
       attribute: string
@@ -59,9 +60,22 @@ interface ItemRequired {
   item: string
 }
 
-type WeaponSlot = "TOP" | "BARREL" | "UNDER" | "STOCK"
+type WeaponSlot =
+  | "TOP"
+  | "BARREL"
+  | "UNDER"
+  | "STOCK"
+  | "FIREARMS EXTERNAL"
+  | "CYBERLIMB IMPLANT"
 
-export interface FirearmMod extends GearMod, Partial<GearTypes> {
+interface FirearmModUseAs extends GearTypes {
+  slot?: WeaponSlot
+  cap?: number
+}
+
+export interface FirearmMod
+  extends GearMod<FirearmModUseAs>,
+    Partial<GearTypes> {
   requires?: {
     itemsubtypereq?: {
       type: string
@@ -73,9 +87,6 @@ export interface FirearmMod extends GearMod, Partial<GearTypes> {
     slotreq?: {
       slot: WeaponSlot
     }
-  }
-  slotreq?: {
-    slot: WeaponSlot
   }
   multi?: true
 }
