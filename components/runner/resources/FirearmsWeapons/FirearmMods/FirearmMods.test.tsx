@@ -28,4 +28,18 @@ describe("<FirearmMods />", () => {
       expect(getTextIn(row, slots.join(", "))).toBeInTheDocument()
     })
   })
+
+  it("should render bread crumbs", async () => {
+    const { getByText } = setup()
+
+    await waitFor(() => {
+      expect(getByText("Resources")).toBeInTheDocument()
+    })
+    expect(getByText("Resources")).toHaveAttribute("href", "/10/resources")
+    expect(getByText("Firearms")).toHaveAttribute(
+      "href",
+      "/10/resources/firearms",
+    )
+    expect(getByText("FN Har (5)")).toBeInTheDocument()
+  })
 })
