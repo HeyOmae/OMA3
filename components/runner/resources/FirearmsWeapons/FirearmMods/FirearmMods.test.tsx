@@ -4,6 +4,7 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextIn,
+  runnerFromDB,
 } from "@/test/testUtils"
 import { FirearmMods } from "./index"
 import { mods } from "@/data/firearms"
@@ -41,5 +42,23 @@ describe("<FirearmMods />", () => {
       "/10/resources/firearms",
     )
     expect(getByText("FN Har (5)")).toBeInTheDocument()
+  })
+
+  it("should add purchased mods to the gun", async () => {
+    const { getByText, getByLabelText } = setup()
+
+    await waitFor(() => {
+      expect(getByText("Buy")).toBeInTheDocument()
+    })
+
+    getByLabelText("Add Laser Sight").click()
+
+    await waitFor(() => {
+      expect(runnerFromDB(9).resources.firearms[5].mods).toHaveLength(1)
+    })
+
+    expect(runnerFromDB(9).resources.firearms[5].mods[0].name).toEqual(
+      "Laser Sight",
+    )
   })
 })
