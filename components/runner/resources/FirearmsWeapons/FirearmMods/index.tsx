@@ -5,7 +5,7 @@ import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
 import { GearTable } from "../../GearPageTemplate/GearTable"
 import { ResourceBreadCrumbs } from "../../GearPageTemplate/ResourceBreadCrumbs"
-import { Columns, gearTableConfigOptions } from "../../util"
+import { Columns, DispatchContext, gearTableConfigOptions } from "../../util"
 
 const buyModCol: Columns<FirearmMod>[] = [
   gearTableConfigOptions.buy,
@@ -20,24 +20,39 @@ const buyModCol: Columns<FirearmMod>[] = [
 ]
 
 export const FirearmMods = () => {
-  const {
-    query: { gearIndex },
-  } = useRouter()
-  const [runner] = useRunnerAccess<FirearmMod>((runner) => runner)
+  const { query } = useRouter(),
+    gearIndex = +query.gearIndex,
+    [runner, dispatch] = useRunnerAccess<FirearmMod>((runner, { payload }) => ({
+      ...runner,
+      resources: {
+        ...runner.resources,
+        firearms: [
+          ...runner.resources.firearms.slice(0, gearIndex),
+          {
+            ...runner.resources.firearms[gearIndex],
+            mods: [
+              ...(runner.resources.firearms[gearIndex].mods ?? []),
+              payload,
+            ],
+          },
+          ...runner.resources.firearms.slice(gearIndex + 1),
+        ],
+      },
+    }))
   return runner ? (
     <>
       <ResourceBreadCrumbs
-        activePage={`${
-          runner.resources.firearms[+gearIndex].name
-        } (${gearIndex})`}
+        activePage={`${runner.resources.firearms[gearIndex].name} (${gearIndex})`}
         previousPage={{
           label: "Firearms",
           categoryPath: "firearms",
         }}
       />
-      <Grid item md={6}>
-        <GearTable listOfGear={mods} cols={buyModCol} />
-      </Grid>
+      <DispatchContext.Provider value={dispatch}>
+        <Grid item md={6}>
+          <GearTable listOfGear={mods} cols={buyModCol} />
+        </Grid>
+      </DispatchContext.Provider>
     </>
   ) : (
     <CircularProgress />
