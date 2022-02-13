@@ -45,7 +45,7 @@ describe("<FirearmMods />", () => {
   })
 
   it("should add purchased mods to the gun", async () => {
-    const { getByText, getByLabelText } = setup()
+    const { getByText, getByLabelText, debug } = setup()
 
     await waitFor(() => {
       expect(getByText("Buy")).toBeInTheDocument()
@@ -60,5 +60,7 @@ describe("<FirearmMods />", () => {
     expect(runnerFromDB(9).resources.firearms[5].mods[0].name).toEqual(
       "Laser Sight",
     )
+    debug(getByText("Sell").closest("table"))
+    expect(getByLabelText("Remove Laser Sight")).toBeInTheDocument()
   })
 })
