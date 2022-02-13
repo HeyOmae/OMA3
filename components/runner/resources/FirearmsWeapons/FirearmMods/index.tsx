@@ -7,14 +7,23 @@ import { GearTable } from "../../GearPageTemplate/GearTable"
 import { ResourceBreadCrumbs } from "../../GearPageTemplate/ResourceBreadCrumbs"
 import { Columns, DispatchContext, gearTableConfigOptions } from "../../util"
 
+const slotColumn: Columns<FirearmMod> = {
+  display: (gear) =>
+    gear.useAs.map(({ slot }) => slot || "INTEGRAL").join(", "),
+  label: "Slot",
+}
+
 const buyModCol: Columns<FirearmMod>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
-  {
-    display: (gear) =>
-      gear.useAs.map(({ slot }) => slot || "INTEGRAL").join(", "),
-    label: "Slot",
-  },
+  slotColumn,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+const sellModCol: Columns<FirearmMod>[] = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  slotColumn,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
 ]
@@ -39,22 +48,36 @@ export const FirearmMods = () => {
         ],
       },
     }))
-  return runner ? (
-    <>
-      <ResourceBreadCrumbs
-        activePage={`${runner.resources.firearms[gearIndex].name} (${gearIndex})`}
-        previousPage={{
-          label: "Firearms",
-          categoryPath: "firearms",
-        }}
-      />
-      <DispatchContext.Provider value={dispatch}>
-        <Grid item md={6}>
-          <GearTable listOfGear={mods} cols={buyModCol} />
-        </Grid>
-      </DispatchContext.Provider>
-    </>
-  ) : (
-    <CircularProgress />
-  )
+
+  if (runner) {
+    const firearm = runner.resources.firearms[gearIndex]
+    const gearName = `${firearm.name} (${gearIndex})`
+    return (
+      <>
+        <ResourceBreadCrumbs
+          activePage={gearName}
+          previousPage={{
+            label: "Firearms",
+            categoryPath: "firearms",
+          }}
+        />
+        <DispatchContext.Provider value={dispatch}>
+          <Grid item md={6}>
+            <GearTable<FirearmMod> listOfGear={mods} cols={buyModCol} />
+          </Grid>
+
+          {firearm.mods && (
+            <Grid item md={6}>
+              <h2>Mods on {gearName}</h2>
+              <GearTable<FirearmMod>
+                cols={sellModCol}
+                listOfGear={firearm.mods}
+              />
+            </Grid>
+          )}
+        </DispatchContext.Provider>
+      </>
+    )
+  }
+  return <CircularProgress />
 }
