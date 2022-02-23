@@ -6,7 +6,7 @@ import {
   getByText as getTextIn,
   runnerFromDB,
 } from "@/test/testUtils"
-import { FirearmMods } from "./index"
+import FirearmMods from "./index"
 import { mods } from "@/data/firearms"
 
 describe("<FirearmMods />", () => {
@@ -45,7 +45,7 @@ describe("<FirearmMods />", () => {
   })
 
   it("should add purchased mods to the gun", async () => {
-    const { getByText, getByLabelText, debug } = setup()
+    const { getByText, getByLabelText } = setup()
 
     await waitFor(() => {
       expect(getByText("Buy")).toBeInTheDocument()
@@ -60,7 +60,6 @@ describe("<FirearmMods />", () => {
     expect(runnerFromDB(9).resources.firearms[5].mods[0].name).toEqual(
       "Laser Sight",
     )
-    debug(getByText("Sell").closest("table"))
     expect(getByLabelText("Remove Laser Sight")).toBeInTheDocument()
   })
 })

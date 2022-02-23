@@ -112,4 +112,17 @@ describe("<FirearmsWeapon />", () => {
       getByText(`${caymansCurrentlySpentNuyen + gunToBeRemoved.cost}¥/275000¥`),
     ).toBeInTheDocument()
   })
+
+  it("should link to the firearm mod page", async () => {
+    const { getByLabelText, getByText } = setup("10")
+
+    await waitFor(() => {
+      expect(getByText("Sell")).toBeInTheDocument()
+    })
+    expect(getByLabelText("Mod Yamaha Pulsar 1 (0)")).toBeInTheDocument()
+    expect(getByLabelText("Mod Streetline Special (1)")).toBeInTheDocument()
+    expect(getByLabelText("Mod Browning Ultra Power (2)")).toBeInTheDocument()
+    expect(getByLabelText("Mod Uzi Iv (3)")).toBeInTheDocument()
+    expect(getByLabelText("Mod FN Har (4)")).toBeInTheDocument()
+  })
 })

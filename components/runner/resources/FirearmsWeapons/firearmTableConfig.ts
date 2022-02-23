@@ -29,4 +29,5 @@ export const addFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
 export const removeFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
   gearTableConfigOptions.sell,
   ...baseFirearmsTableConfig,
+  gearTableConfigOptions.alwaysMod,
 ]

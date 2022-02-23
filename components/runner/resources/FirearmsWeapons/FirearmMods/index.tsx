@@ -4,6 +4,7 @@ import { FirearmMod } from "@/types/Resources"
 import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
 import { GearTable } from "../../GearPageTemplate/GearTable"
+import { RemainingNuyen } from "../../GearPageTemplate/RemainingNuyen"
 import { ResourceBreadCrumbs } from "../../GearPageTemplate/ResourceBreadCrumbs"
 import { Columns, DispatchContext, gearTableConfigOptions } from "../../util"
 
@@ -28,7 +29,7 @@ const sellModCol: Columns<FirearmMod>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export const FirearmMods = () => {
+const FirearmMods = () => {
   const { query } = useRouter(),
     gearIndex = +query.gearIndex,
     [runner, dispatch] = useRunnerAccess<FirearmMod>((runner, { payload }) => ({
@@ -39,10 +40,21 @@ export const FirearmMods = () => {
           ...runner.resources.firearms.slice(0, gearIndex),
           {
             ...runner.resources.firearms[gearIndex],
-            mods: [
-              ...(runner.resources.firearms[gearIndex].mods ?? []),
-              payload,
-            ],
+            mods:
+              typeof payload === "number"
+                ? [
+                    ...runner.resources.firearms[gearIndex].mods.slice(
+                      0,
+                      payload,
+                    ),
+                    ...runner.resources.firearms[gearIndex].mods.slice(
+                      payload + 1,
+                    ),
+                  ]
+                : [
+                    ...(runner.resources.firearms[gearIndex]?.mods ?? []),
+                    payload,
+                  ],
           },
           ...runner.resources.firearms.slice(gearIndex + 1),
         ],
@@ -61,6 +73,7 @@ export const FirearmMods = () => {
             categoryPath: "firearms",
           }}
         />
+        <RemainingNuyen runner={runner} />
         <DispatchContext.Provider value={dispatch}>
           <Grid item md={6}>
             <GearTable<FirearmMod> listOfGear={mods} cols={buyModCol} />
@@ -81,3 +94,5 @@ export const FirearmMods = () => {
   }
   return <CircularProgress />
 }
+
+export default FirearmMods
