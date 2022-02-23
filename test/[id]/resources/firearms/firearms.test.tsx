@@ -4,7 +4,7 @@ import {
   setupIndexedDB,
   waitFor,
   withTestRouter,
-} from "../../testUtils"
+} from "../../../testUtils"
 import FirearmsData from "@/data/firearms"
 
 describe("Firearms Page", () => {
