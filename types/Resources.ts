@@ -68,14 +68,19 @@ type WeaponSlot =
   | "FIREARMS EXTERNAL"
   | "CYBERLIMB IMPLANT"
 
-interface FirearmModUseAs extends GearTypes {
-  slot?: WeaponSlot
+interface GearModUseAs<S = WeaponSlot> extends GearTypes {
+  slot?: S
   cap?: number
 }
 
-export interface FirearmMod
-  extends GearMod<FirearmModUseAs>,
-    Partial<GearTypes> {
+export interface ArmorMod extends GearWithRating {
+  useAs: GearModUseAs<"ARMOR">
+  requires?: {
+    itemreq: ItemRequirement
+  }
+}
+
+export interface FirearmMod extends GearMod<GearModUseAs>, Partial<GearTypes> {
   requires?: {
     itemsubtypereq?: {
       type: string
@@ -90,6 +95,9 @@ export interface FirearmMod
   }
   multi?: true
 }
+interface ItemRequirement {
+  item: string
+}
 
 export interface GearDroneMod extends GearTyped {
   requires: {
@@ -97,9 +105,7 @@ export interface GearDroneMod extends GearTyped {
       capacity: number
       slot: string
     }
-    itemreq?: {
-      item: string
-    }
+    itemreq?: ItemRequirement
   }
   modifications?: {
     itemhookmod: GearModHooks
@@ -257,6 +263,7 @@ export interface GearArmor extends Gear, Partial<GearTypes> {
     itemmod?: ItemAccessory
   }
   modonly?: true
+  mods?: ArmorMod[]
 }
 
 type attackRating = [

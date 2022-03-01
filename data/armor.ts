@@ -1,4 +1,4 @@
-import { GearArmor } from "@/types/Resources"
+import { ArmorMod, GearArmor } from "@/types/Resources"
 
 const armorData: GearArmor[] = [
   {
@@ -349,6 +349,99 @@ const armorData: GearArmor[] = [
         item: "Riot Shield Weapon",
       },
     },
+  },
+]
+
+export const armorMods: ArmorMod[] = [
+  {
+    useAs: {
+      type: "ACCESSORY",
+      subtype: "ARMOR_BODY",
+      slot: "ARMOR",
+      cap: 1,
+    },
+    availability: "3",
+    cost: 250,
+    name: "chemical_protection",
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    useAs: {
+      type: "ACCESSORY",
+      subtype: "ARMOR_BODY",
+      slot: "ARMOR",
+      cap: 6,
+    },
+    requires: {
+      itemreq: {
+        item: "full_body_armor_with_helmet",
+      },
+    },
+    availability: "5",
+    cost: 3000,
+    name: "chemical_seal",
+  },
+  {
+    useAs: {
+      type: "ACCESSORY",
+      subtype: "ARMOR_BODY",
+      slot: "ARMOR",
+      cap: 1,
+    },
+    availability: "3",
+    cost: 250,
+    name: "cold_resistance",
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    useAs: {
+      type: "ACCESSORY",
+      subtype: "ARMOR_BODY",
+      slot: "ARMOR",
+      cap: 1,
+    },
+    availability: "3",
+    cost: 250,
+    name: "fire_resistance",
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    useAs: {
+      type: "ACCESSORY",
+      subtype: "ARMOR_BODY",
+      slot: "ARMOR",
+      cap: 1,
+    },
+    availability: "3",
+    cost: 250,
+    name: "electricity_resistance",
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    useAs: {
+      type: "ACCESSORY",
+      subtype: "ARMOR_BODY",
+      slot: "ARMOR",
+      cap: 0,
+    },
+    availability: "1",
+    cost: 75,
+    name: "electrochromic_feature",
+  },
+  {
+    useAs: {
+      type: "ACCESSORY",
+      subtype: "ARMOR_BODY",
+      slot: "ARMOR",
+      cap: 0,
+    },
+    availability: "2",
+    cost: 150,
+    name: "feedback_feature",
   },
 ]
 
