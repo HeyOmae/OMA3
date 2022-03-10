@@ -769,6 +769,95 @@ export const mockedRunners: Runner[] = [
           type: "VEHICLES",
         },
       ],
+      armor: [
+        {
+          name: "Full Body Armor",
+          availability: "4L",
+          cost: 2000,
+          useAs: {
+            type: "ARMOR",
+            subtype: "ARMOR BODY",
+          },
+          armor: {
+            rating: 5,
+            social: -5,
+          },
+          modifications: {
+            itemhookmod: {
+              capacity: 10,
+              hook: "ARMOR",
+            },
+          },
+        },
+        {
+          name: "Full Body Armor Helmet",
+          availability: "0",
+          cost: 500,
+          useAs: {
+            type: "ARMOR",
+            subtype: "ARMOR HELMET",
+          },
+          armor: {
+            rating: 2,
+            social: -4,
+          },
+          modifications: {
+            itemhookmod: {
+              capacity: 6,
+              hook: "HELMET ACCESSORY",
+            },
+          },
+        },
+        {
+          name: "Lined Coat",
+          availability: "4",
+          cost: 900,
+          useAs: {
+            type: "ARMOR",
+            subtype: "ARMOR BODY",
+          },
+          armor: {
+            rating: 3,
+            social: -2,
+          },
+          modifications: {
+            itemhookmod: {
+              capacity: 7,
+              hook: "ARMOR",
+            },
+          },
+          mods: [
+            {
+              useAs: {
+                type: "ACCESSORY",
+                subtype: "ARMOR BODY",
+                slot: "ARMOR",
+                cap: 1,
+              },
+              availability: "3",
+              cost: 250,
+              name: "Cold Resistance",
+              rating: true,
+              rateMultiplier: "capacity cost",
+              currentRating: 3,
+            },
+            {
+              useAs: {
+                type: "ACCESSORY",
+                subtype: "ARMOR BODY",
+                slot: "ARMOR",
+                cap: 1,
+              },
+              availability: "3",
+              cost: 250,
+              name: "Fire Resistance",
+              rating: true,
+              rateMultiplier: "capacity cost",
+              currentRating: 2,
+            },
+          ],
+        },
+      ],
     },
   },
   {
