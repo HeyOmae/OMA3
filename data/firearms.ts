@@ -2284,7 +2284,7 @@ export const mods: FirearmMod[] = [
       {
         type: "ACCESSORY",
         subtype: "CYBER LIMB ACCESSORY",
-        cap: 8,
+        capacity: 8,
         slot: "CYBERLIMB IMPLANT",
       },
     ],

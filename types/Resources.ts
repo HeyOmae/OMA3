@@ -48,10 +48,7 @@ export interface GearMod<UseAs = AsModAccessory | AsCyberwareInstall>
       attackRating: attackRating
     }
     itemattrmod?: ItemAttributeMod[]
-    itemhookmod?: {
-      capacity: number
-      hook: string
-    }
+    itemhookmod?: GearModHooks
     accessorymod?: AccessoryMod[]
   }
 }
@@ -68,9 +65,9 @@ type WeaponSlot =
   | "FIREARMS EXTERNAL"
   | "CYBERLIMB IMPLANT"
 
-interface GearModUseAs<S = WeaponSlot> extends GearTypes {
-  slot?: S
-  cap?: number
+interface GearModUseAs<SlotType = string> extends GearTypes {
+  slot?: SlotType
+  capacity?: number
 }
 
 export interface ArmorMod extends GearWithRating {
@@ -80,7 +77,9 @@ export interface ArmorMod extends GearWithRating {
   }
 }
 
-export interface FirearmMod extends GearMod<GearModUseAs>, Partial<GearTypes> {
+export interface FirearmMod
+  extends GearMod<GearModUseAs<WeaponSlot>>,
+    Partial<GearTypes> {
   requires?: {
     itemsubtypereq?: {
       type: string
@@ -101,10 +100,7 @@ interface ItemRequirement {
 
 export interface GearDroneMod extends GearTyped {
   requires: {
-    slotreq: {
-      capacity: number
-      slot: string
-    }
+    slotreq: GearModUseAs
     itemreq?: ItemRequirement
   }
   modifications?: {
@@ -235,18 +231,13 @@ export interface GearMatrixCyberdeck extends GearMatrixGear {
   matrixAttributes: MatrixAttributesCyberdeck
 }
 
-interface AsElectronicAccessory extends GearTypes {
-  slot: string
-  capacity?: number
-}
-
 export interface GearElectronicAccessory extends GearElectronic {
   requires: {
     slotreq: {
       slot: string
     }
   }
-  useAs?: AsElectronicAccessory[]
+  useAs?: GearModUseAs[]
 }
 
 interface BaseArmor {
@@ -292,9 +283,7 @@ interface GearTypes {
   subtype: string
 }
 
-interface AsAccessory extends GearTypes {
-  slot: string
-  capacity: number
+interface AsAccessory extends GearModUseAs {
   essence?: number
   availability?: string
   cost: number
