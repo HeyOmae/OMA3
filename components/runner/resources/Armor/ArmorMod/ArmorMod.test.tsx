@@ -5,6 +5,7 @@ import {
   withTestRouter,
   getByText as getTextIn,
   runnerFromDB,
+  SliderHelper,
 } from "@/test/testUtils"
 import ArmorMod from "./index"
 import { mods } from "@/data/armor"
@@ -38,6 +39,14 @@ describe("<ArmorMod />", () => {
     expect(getByText("Full Body Armor (0)")).toBeInTheDocument()
   })
 
+  it("should render capacity", async () => {
+    const { getByText } = setup()
+
+    await waitFor(() => {
+      expect(getByText("0/10")).toBeInTheDocument()
+    })
+  })
+
   it("should add purchased mods to armor", async () => {
     const { getByText, getByLabelText } = setup()
 
@@ -55,5 +64,27 @@ describe("<ArmorMod />", () => {
       "Chemical Seal",
     )
     expect(getByLabelText("Remove Chemical Seal")).toBeInTheDocument()
+    expect(getByText("6/10")).toBeInTheDocument()
+  })
+
+  it("should have a rating slider to set the rating of the mod", async () => {
+    const { getByText, getByLabelText, getByTestId } = setup()
+
+    await waitFor(() => {
+      expect(getByText("Buy")).toBeInTheDocument()
+    })
+
+    SliderHelper.change(getByTestId("Fire Resistance-rating"), 4, 1, 10)
+    getByLabelText("Add Fire Resistance").click()
+
+    await waitFor(() => {
+      expect(runnerFromDB(9).resources.armor[0].mods).toHaveLength(2)
+    })
+
+    expect(runnerFromDB(9).resources.armor[0].mods[1].name).toEqual(
+      "Fire Resistance",
+    )
+    expect(getByLabelText("Remove Fire Resistance")).toBeInTheDocument()
+    expect(getByText("10/10")).toBeInTheDocument()
   })
 })

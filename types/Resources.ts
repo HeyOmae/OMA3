@@ -65,13 +65,13 @@ type WeaponSlot =
   | "FIREARMS EXTERNAL"
   | "CYBERLIMB IMPLANT"
 
-interface GearModUseAs<SlotType = string> extends GearTypes {
+interface GearModUseAs<SlotType = string> extends Partial<GearTypes> {
   slot?: SlotType
   capacity?: number
 }
 
 export interface ArmorMod extends GearWithRating {
-  useAs: GearModUseAs<"ARMOR">
+  useAs: [GearModUseAs<"ARMOR">]
   requires?: {
     itemreq: ItemRequirement
   }
@@ -141,9 +141,7 @@ export interface GearDrones extends Gear, GearTypes {
 
 export interface GearModRated extends GearMod, GearTyped {}
 
-interface AsModAccessory extends AsElectronicAccessory, Partial<Gear> {
-  cap?: number
-}
+interface AsModAccessory extends GearModUseAs, Partial<Gear> {}
 
 interface AsCyberwareInstall extends Omit<AsModAccessory, "slot"> {
   essense?: number
@@ -210,7 +208,7 @@ export interface GearModdableRated extends GearTyped, ModifiableGear {
   modifications: {
     itemhookmod: GearModHooks
   }
-  useAs?: Partial<AsElectronicAccessory>[] // TODO: I really need to untangle all these types
+  useAs?: Partial<GearModUseAs>[]
 }
 
 export interface GearElectronic extends GearTyped {

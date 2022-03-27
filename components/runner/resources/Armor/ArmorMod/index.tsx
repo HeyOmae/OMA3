@@ -3,20 +3,32 @@ import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { ArmorMod } from "@/types/Resources"
 import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
+import { useMemo } from "react"
 import { GearTable } from "../../GearPageTemplate/GearTable"
 import { RemainingNuyen } from "../../GearPageTemplate/RemainingNuyen"
 import { ResourceBreadCrumbs } from "../../GearPageTemplate/ResourceBreadCrumbs"
-import { Columns, DispatchContext, gearTableConfigOptions } from "../../util"
+import {
+  Columns,
+  DispatchContext,
+  gearCapacityConfigOption,
+  gearRatingTableConfigOption,
+  gearTableConfigOptions,
+} from "../../util"
+import { RemainingArmorCapacity } from "./RemainingArmorCapacity"
 
 const buyModCol: Columns<ArmorMod>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
+  gearRatingTableConfigOption.setRating,
+  gearCapacityConfigOption,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
 ]
 const sellModCol: Columns<ArmorMod>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
+  gearRatingTableConfigOption.displayRating,
+  gearCapacityConfigOption,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
 ]
@@ -47,6 +59,19 @@ const ArmorMods = () => {
       },
     }))
 
+  const modsWithMaxRating = useMemo(() => {
+    const armor = runner?.resources.armor[gearIndex]
+
+    if (armor) {
+      return mods.map((mod) => ({
+        ...mod,
+        maxRating: armor.modifications.itemhookmod.capacity,
+      }))
+    }
+
+    return mods
+  }, [gearIndex, runner?.resources.armor])
+
   if (runner) {
     const armor = runner.resources.armor[gearIndex]
     const gearName = `${armor.name} (${gearIndex})`
@@ -59,10 +84,14 @@ const ArmorMods = () => {
             categoryPath: "armor",
           }}
         />
+        <RemainingArmorCapacity armor={armor} />
         <RemainingNuyen runner={runner} />
         <DispatchContext.Provider value={dispatch}>
           <Grid item md={6}>
-            <GearTable<ArmorMod> listOfGear={mods} cols={buyModCol} />
+            <GearTable<ArmorMod>
+              listOfGear={modsWithMaxRating}
+              cols={buyModCol}
+            />
           </Grid>
 
           {armor.mods && (
