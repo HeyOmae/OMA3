@@ -354,12 +354,14 @@ const armorData: GearArmor[] = [
 
 export const mods: ArmorMod[] = [
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "ARMOR BODY",
-      slot: "ARMOR",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "ARMOR BODY",
+        slot: "ARMOR",
+        capacity: 1,
+      },
+    ],
     availability: "3",
     cost: 250,
     name: "Chemical Protection",
@@ -367,12 +369,14 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "ARMOR BODY",
-      slot: "ARMOR",
-      capacity: 6,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "ARMOR BODY",
+        slot: "ARMOR",
+        capacity: 6,
+      },
+    ],
     requires: {
       itemreq: {
         item: "full body armor with helmet",
@@ -383,12 +387,14 @@ export const mods: ArmorMod[] = [
     name: "Chemical Seal",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "ARMOR BODY",
-      slot: "ARMOR",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "ARMOR BODY",
+        slot: "ARMOR",
+        capacity: 1,
+      },
+    ],
     availability: "3",
     cost: 250,
     name: "Cold Resistance",
@@ -396,12 +402,14 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "ARMOR BODY",
-      slot: "ARMOR",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "ARMOR BODY",
+        slot: "ARMOR",
+        capacity: 1,
+      },
+    ],
     availability: "3",
     cost: 250,
     name: "Fire Resistance",
@@ -409,12 +417,14 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "ARMOR BODY",
-      slot: "ARMOR",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "ARMOR BODY",
+        slot: "ARMOR",
+        capacity: 1,
+      },
+    ],
     availability: "3",
     cost: 250,
     name: "Electricity Resistance",
@@ -422,23 +432,27 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "ARMOR BODY",
-      slot: "ARMOR",
-      capacity: 0,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "ARMOR BODY",
+        slot: "ARMOR",
+        capacity: 0,
+      },
+    ],
     availability: "1",
     cost: 75,
     name: "Electrochromic Feature",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "ARMOR BODY",
-      slot: "ARMOR",
-      capacity: 0,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "ARMOR BODY",
+        slot: "ARMOR",
+        capacity: 0,
+      },
+    ],
     availability: "2",
     cost: 150,
     name: "Feedback Feature",

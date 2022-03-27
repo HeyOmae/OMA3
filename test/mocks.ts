@@ -828,12 +828,14 @@ export const mockedRunners: Runner[] = [
           },
           mods: [
             {
-              useAs: {
-                type: "ACCESSORY",
-                subtype: "ARMOR BODY",
-                slot: "ARMOR",
-                capacity: 1,
-              },
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "ARMOR BODY",
+                  slot: "ARMOR",
+                  capacity: 1,
+                },
+              ],
               availability: "3",
               cost: 250,
               name: "Cold Resistance",
@@ -842,12 +844,14 @@ export const mockedRunners: Runner[] = [
               currentRating: 3,
             },
             {
-              useAs: {
-                type: "ACCESSORY",
-                subtype: "ARMOR BODY",
-                slot: "ARMOR",
-                capacity: 1,
-              },
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "ARMOR BODY",
+                  slot: "ARMOR",
+                  capacity: 1,
+                },
+              ],
               availability: "3",
               cost: 250,
               name: "Fire Resistance",

@@ -38,4 +38,12 @@ describe("<Armor />", () => {
       expect(getByLabelText(`Add ${name}`)).toBeInTheDocument()
     })
   })
+
+  it("should display a link to the mod page", async () => {
+    const { getByLabelText } = setup()
+
+    await waitFor(() => {
+      expect(getByLabelText("Mod Full Body Armor (0)")).toBeInTheDocument()
+    })
+  })
 })
