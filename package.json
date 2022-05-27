@@ -24,7 +24,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.5.1",
+    "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.5.3",
     "next": "^12.1.0",
     "next-pwa": "^5.4.5",
@@ -43,7 +43,7 @@
     "@types/react": "^17.0.43",
     "@types/testing-library__react": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.18.0",
+    "@typescript-eslint/parser": "^5.26.0",
     "babel-jest": "^28.1.0",
     "eslint": "^8.16.0",
     "eslint-config-next": "^12.1.4",
