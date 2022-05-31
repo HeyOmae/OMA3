@@ -39,14 +39,16 @@ interface ItemAttributeMod {
   condindex?: number
 }
 
+interface AttackRatingModifier {
+  attribute: string
+  attackRating: attackRating
+}
+
 export interface GearMod<UseAs = AsModAccessory | AsCyberwareInstall>
   extends Gear {
   useAs: UseAs[]
   modifications?: {
-    attrmod?: {
-      attribute: string
-      attackRating: attackRating
-    }
+    attrmod?: AttackRatingModifier
     itemattrmod?: ItemAttributeMod[]
     itemhookmod?: GearModHooks
     accessorymod?: AccessoryMod[]
@@ -172,14 +174,23 @@ export interface GearWithRating extends Gear {
   maxRating?: number
   rating?: true
   currentRating?: number
-  rateMultiplier?: "cost" | "capacity cost" | "cost2" | "cost avail"
+  rateMultiplier?:
+    | "cost"
+    | "capacity cost"
+    | "cost2"
+    | "cost avail"
+    | "essence cost"
+    | "essence cost2"
+    | "essence capacity cost"
+    | "essence cost modifier"
+    | "cost avail capacity modifier"
   count?: true
 }
 
 export interface GearTyped extends GearWithRating, GearTypes {}
 
 interface SkillMod {
-  ref: "enchanting" | "sorcery" | "conjuring"
+  ref: string
   cond?: true
   condIndex?: number
   val?: number
@@ -209,6 +220,42 @@ export interface GearModdableRated extends GearTyped, ModifiableGear {
     itemhookmod: GearModHooks
   }
   useAs?: Partial<GearModUseAs>[]
+}
+
+interface GearCyberwareUseAs extends GearTypes {
+  essence: string
+}
+
+interface EdgeMod {
+  type: "BONUS"
+  skill: string
+}
+
+export interface GearCyberware extends GearWithRating, Partial<GearTypes> {
+  useAs: Array<GearCyberwareUseAs | GearModUseAs>
+  modifications?: {
+    edgemod?: EdgeMod[]
+    attrmod?: {
+      attribute: string
+      value: number
+      type?: string
+      modType?: string
+      cyber?: true
+    }[]
+    itemhookmod?: GearModHooks
+    accessorymod?: AccessoryMod[]
+    skillmod?: SkillMod[]
+    itemmod?: ItemAccessory[]
+    dmgtypemod?: { type: "PHYSICAL" | "STUN" }
+    itemattrmod?: AttackRatingModifier
+  }
+  language?: "fr" | "de" | "en"
+  modOnly?: true
+  cyberdeck?: {
+    dataProcessing: number
+    firewall: number
+    initative: number
+  }
 }
 
 export interface GearElectronic extends GearTyped {
@@ -319,6 +366,8 @@ interface GearModHooks {
 
 interface ItemAccessory {
   item: string
+  rating?: number
+  remove?: true
 }
 
 interface AccessoryMod extends GearModHooks, ItemAccessory {
