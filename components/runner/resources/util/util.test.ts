@@ -1,6 +1,6 @@
 import { updateGearList, gearPageReducerGenerator } from "."
-import meleeWeapons from "../../../../data/melee"
-import { mockedRunners } from "../../../../test/mocks"
+import meleeWeapons from "@/data/melee"
+import { mockedRunners } from "@/test/mocks"
 
 const [ax, combatKnife, survivalKnife, katana] = meleeWeapons
 describe("updateGearList", () => {

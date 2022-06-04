@@ -1,11 +1,11 @@
-import { RunnerLayout } from "./layout"
+import { RunnerLayout } from "."
 import {
   render,
   waitFor,
   withTestRouter,
   waitForElementToBeRemoved,
   fireEvent,
-} from "../test/testUtils"
+} from "@/test/testUtils"
 
 describe("<RunnerLayout />", () => {
   const setup = () => {
