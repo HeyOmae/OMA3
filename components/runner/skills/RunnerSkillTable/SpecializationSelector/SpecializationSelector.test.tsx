@@ -18,19 +18,19 @@ describe("<SpecializationSelect/>", () => {
       ...props,
     }
   }
-  it("should allow selecting a specializtion", () => {
+  it("should allow selecting a specializtion", async () => {
     const { getByLabelText, getByText, dispatch } = setup()
 
     const input = getByLabelText("Firearms specialization")
 
-    userEvent.click(input)
+    await userEvent.click(input)
 
     firearmsSkill.specializations.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument()
     })
 
     const specToSelect = firearmsSkill.specializations[0].name
-    userEvent.click(getByText(specToSelect))
+    await userEvent.click(getByText(specToSelect))
 
     expect(dispatch).toHaveBeenCalledWith({
       type: CHANGE_SPECIALIZATION,
@@ -43,13 +43,13 @@ describe("<SpecializationSelect/>", () => {
     })
   })
 
-  it("should accept free form text as a specialization", () => {
+  it("should accept free form text as a specialization", async () => {
     const { getByLabelText, dispatch } = setup()
 
     const input = getByLabelText("Firearms specialization")
 
-    userEvent.click(input)
-    userEvent.keyboard("pea shooters{enter}")
+    await userEvent.click(input)
+    await userEvent.keyboard("pea shooters{enter}")
 
     expect(dispatch).toHaveBeenCalledWith({
       type: CHANGE_SPECIALIZATION,

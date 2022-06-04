@@ -97,12 +97,17 @@ describe("<RunnerSkillTable/>", () => {
 
       expect(queryByRole("listbox")).not.toBeInTheDocument()
 
-      userEvent.click(specInput)
+      await userEvent.click(specInput)
 
       expect(queryByRole("listbox")).toBeInTheDocument()
 
-      userEvent.click(globalGetByText(queryByRole("listbox"), "Summoning"))
+      await userEvent.click(
+        globalGetByText(queryByRole("listbox"), "Summoning"),
+      )
 
+      expect(getByLabelText("Conjuring specialization")).toHaveValue(
+        "Summoning",
+      )
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,
         payload: {
@@ -114,17 +119,18 @@ describe("<RunnerSkillTable/>", () => {
       })
     })
 
-    it("should allow free form specialization", () => {
+    it("should allow free form specialization", async () => {
       const { getByLabelText, props } = setup()
 
       const specInput = getByLabelText("Conjuring specialization")
-      userEvent.click(specInput)
-      userEvent.click(
+      await userEvent.click(specInput)
+      await userEvent.click(
         containerGetByLabelText(specInput.closest("div"), "Clear"),
       )
-      userEvent.click(specInput)
-      userEvent.keyboard("wild{enter}")
+      await userEvent.click(specInput)
+      await userEvent.keyboard("wild{enter}")
 
+      expect(getByLabelText("Conjuring specialization")).toHaveValue("wild")
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,
         payload: {
@@ -136,7 +142,7 @@ describe("<RunnerSkillTable/>", () => {
       })
     })
 
-    it("should not error out when a skill is not listed in the skills.json", () => {
+    it("should not error out when a skill is not listed in the skills.json", async () => {
       const { getByLabelText, props } = setup({
         skills: {
           cooking: {
@@ -150,9 +156,12 @@ describe("<RunnerSkillTable/>", () => {
 
       expect(getByLabelText("cooking specialization")).toBeInTheDocument()
 
-      userEvent.click(getByLabelText("cooking specialization"))
-      userEvent.keyboard("japanese cuisine{enter}")
+      await userEvent.click(getByLabelText("cooking specialization"))
+      await userEvent.keyboard("japanese cuisine{enter}")
 
+      expect(getByLabelText("cooking specialization")).toHaveValue(
+        "japanese cuisine",
+      )
       expect(props.dispatch).toHaveBeenCalledWith({
         type: CHANGE_SPECIALIZATION,
         payload: {

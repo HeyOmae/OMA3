@@ -13,14 +13,14 @@ describe("<ThemeSelector />", () => {
       ),
     }
   }
-  it("should display a select with different theme names", () => {
+  it("should display a select with different theme names", async () => {
     const { getByText, mockUpdater } = setup()
     const selectButton = getByText("CyberTerminal 3.0")
     expect(selectButton).toBeInTheDocument()
-    userEvent.click(selectButton)
+    await userEvent.click(selectButton)
 
     const selection = getByText("Mundane")
-    userEvent.click(selection)
+    await userEvent.click(selection)
 
     expect(mockUpdater).toHaveBeenCalledWith("mundane")
   })
