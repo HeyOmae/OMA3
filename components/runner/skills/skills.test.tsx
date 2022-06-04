@@ -156,7 +156,7 @@ describe("<Skills/>", () => {
 
       const specInput = getByLabelText("Close combat specialization")
 
-      userEvent.click(specInput)
+      await userEvent.click(specInput)
       userEvent.keyboard("Blades{enter}")
 
       await waitFor(() => {
