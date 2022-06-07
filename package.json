@@ -27,7 +27,7 @@
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
     "next": "^12.1.6",
-    "next-pwa": "^5.5.2",
+    "next-pwa": "^5.5.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-indexed-db": "^1.0.12"
@@ -60,6 +60,6 @@
     "jest-watch-typeahead": "^1.1.0",
     "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.3"
   }
 }
