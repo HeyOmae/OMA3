@@ -21,16 +21,23 @@ import {
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 import styles from "./layout.module.css"
+import { SELECTED_THEME_KEY, ThemeSelector } from "./themeSelector"
 
 interface Props {
   className?: string
 }
 
-export const Layout: FC<Props> = ({ children, className }) => (
-  <Container>
-    <main className={className}>{children}</main>
-  </Container>
-)
+export const Layout: FC<Props> = ({ children, className }) => {
+  useEffect(() => {
+    document.body.className =
+      localStorage.getItem(SELECTED_THEME_KEY) ?? "cyberterminal3"
+  }, [])
+  return (
+    <Container>
+      <main className={className}>{children}</main>
+    </Container>
+  )
+}
 
 export const RunnerLayout: FC = ({ children }) => {
   const { push, query } = useRouter()
@@ -63,6 +70,7 @@ export const RunnerLayout: FC = ({ children }) => {
         open={nav === 1}
         onClose={() => setNav(undefined)}
       >
+        <ThemeSelector />
         <NextLink href="/[id]/info" as={`/${query.id}/info`} passHref>
           <Button
             variant="contained"

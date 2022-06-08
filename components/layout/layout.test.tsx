@@ -5,6 +5,7 @@ import {
   withTestRouter,
   waitForElementToBeRemoved,
   fireEvent,
+  userEvent,
 } from "@/test/testUtils"
 
 describe("<RunnerLayout />", () => {
@@ -85,5 +86,32 @@ describe("<RunnerLayout />", () => {
 
     expect(push).not.toHaveBeenCalled()
     await waitForElementToBeRemoved(() => queryByText("Info"))
+  })
+
+  describe("theme selector", () => {
+    it("should in the drawer when open", async () => {
+      const { getByLabelText, getByText } = setup()
+
+      getByText("Menu").click()
+
+      await waitFor(() => {
+        expect(getByLabelText("Theme")).toBeInTheDocument()
+      })
+      expect(document.body).toHaveClass("cyberterminal3")
+    })
+
+    it("should change the class on body", async () => {
+      const { findByLabelText, getByText, getByLabelText } = setup()
+      expect(document.body).toHaveClass("cyberterminal3")
+
+      await userEvent.click(getByText("Menu"))
+
+      expect(await findByLabelText("Theme")).toBeInTheDocument()
+
+      await userEvent.click(getByLabelText("Theme"))
+      await userEvent.click(getByText("Mundane"))
+
+      expect(document.body).toHaveClass("mundane")
+    })
   })
 })

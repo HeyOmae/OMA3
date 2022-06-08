@@ -20,6 +20,36 @@
   --large: 1280px;
   --extra-large: 1920px;
 }
+
+html {
+  min-height: 100%;
+}
+
+main {
+  overflow: auto;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 0;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.bad-stuff {
+  color: red;
+}
+
+.table-container {
+  max-height: calc(100vh - 192px);
+}
+
+/* CyberTerminal 3.0 */
 @keyframes scanning {
   from {
     background: linear-gradient(
@@ -41,11 +71,7 @@
   }
 }
 
-html {
-  min-height: 100%;
-}
-
-body {
+body.cyberterminal3 {
   min-height: 100%;
   background: linear-gradient(
     to bottom,
@@ -59,15 +85,9 @@ body {
   animation-duration: 1s;
 }
 
-main {
+.cyberterminal3 main {
   color: var(--neon);
-  overflow: auto;
-}
-
-main {
-  margin: 1rem 0;
   border: 1px var(--neon) solid;
-  padding: 1rem;
   background: var(--cyberGrad);
   border-radius: 1rem 0 1rem 0;
 }
@@ -78,13 +98,11 @@ main {
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin-top: 0;
-  padding: 0.5rem 1rem;
+.cyberterminal3 h1,
+.cyberterminal3 h2,
+.cyberterminal3 h3,
+.cyberterminal3 h4,
+.cyberterminal3 h5 {
   color: white;
   text-shadow: var(--neon2) var(--shadowdistance) var(--shadowdistance) 0;
   animation: glow 0.7s infinite alternate;
@@ -92,19 +110,23 @@ h5 {
   border-bottom: 1px var(--neon) solid;
   border-top-left-radius: 1rem;
   border-radius: 1rem;
-  width: 100%;
 }
 
-input {
-  background-color: white;
+.cyberterminal3 a {
+  color: white;
 }
 
-.bad-stuff {
-  color: red;
+.cyberterminal3 input,
+.cyberterminal3 textarea {
+  color: white;
+}
+.cyberterminal3 label,
+.cyberterminal3 legend {
+  color: var(--neon);
+  /* background-color: white; */
+}
+
+.cyberterminal3 .bad-stuff {
   text-shadow: black var(--shadowdistance) var(--shadowdistance) 0;
   animation: glow 0.7s infinite alternate;
-}
-
-.table-container {
-  max-height: calc(100vh - 192px);
 }
