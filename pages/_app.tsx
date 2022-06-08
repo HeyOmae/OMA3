@@ -31,12 +31,6 @@ const NEON2 = "var(--neon2)"
 
 const oma3Style = createTheme({
   components: {
-    MuiInputLabel: {
-      styleOverrides: { root: { color: "white" } },
-    },
-    MuiInputBase: {
-      styleOverrides: { root: { color: "white" } },
-    },
     MuiAppBar: {
       styleOverrides: {
         positionFixed: {

@@ -1,20 +1,11 @@
 import { render, userEvent } from "@/test/testUtils"
-import { ThemeSelector, ThemeingContext } from "."
+import { SELECTED_THEME_KEY, ThemeSelector } from "."
 
 describe("<ThemeSelector />", () => {
-  const setup = (mockState?: string) => {
-    const mockUpdater = jest.fn()
-    return {
-      mockUpdater,
-      ...render(
-        <ThemeingContext.Provider value={[mockState, mockUpdater]}>
-          <ThemeSelector />
-        </ThemeingContext.Provider>,
-      ),
-    }
-  }
+  const setup = () => render(<ThemeSelector />)
+
   it("should display a select with different theme names", async () => {
-    const { getByText, mockUpdater } = setup("cyberterminal3")
+    const { getByText } = setup()
     const selectButton = getByText("CyberTerminal 3.0")
     expect(selectButton).toBeInTheDocument()
     await userEvent.click(selectButton)
@@ -22,11 +13,12 @@ describe("<ThemeSelector />", () => {
     const selection = getByText("Mundane")
     await userEvent.click(selection)
 
-    expect(mockUpdater).toHaveBeenCalledWith("mundane")
+    expect(localStorage.getItem(SELECTED_THEME_KEY)).toEqual("mundane")
   })
 
-  it("should default to cyberterminal3 if no theme is provided", () => {
+  it("should set the valued of the selector based off of localstorage", () => {
+    localStorage.setItem(SELECTED_THEME_KEY, "mundane")
     const { getByText } = setup()
-    expect(getByText("CyberTerminal 3.0")).toBeInTheDocument()
+    expect(getByText("Mundane")).toBeInTheDocument()
   })
 })
