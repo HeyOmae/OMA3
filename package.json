@@ -24,7 +24,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "^5.8.3",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.3",
     "next": "^12.1.6",
     "next-pwa": "^5.5.4",
