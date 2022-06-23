@@ -145,7 +145,7 @@ describe("<Metatype/>", () => {
         // Test to see if you spend adjustment first and then attribute points
         await waitFor(() => {
           expect(getByLabelText("Dwarf")).toBeInTheDocument()
-          expect(getByLabelText("Spend Points")).toBeInTheDocument()
+          expect(getByText("Select Points to Use")).toBeInTheDocument()
         })
 
         getByLabelText("Dwarf").click()
@@ -157,7 +157,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Spend Points").click()
+        getByLabelText("Adjustment").click()
 
         SliderHelper.change(getByTestId("Willpower-slider"), 7, 1, 7)
 
@@ -167,7 +167,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Spend Points").click()
+        getByLabelText("Attribute").click()
 
         SliderHelper.change(getByTestId("Willpower-slider"), 1, 1, 7)
 
@@ -190,11 +190,11 @@ describe("<Metatype/>", () => {
 
         await waitFor(() => {
           expect(getByLabelText("Troll")).toBeInTheDocument()
-          expect(getByLabelText("Spend Points")).toBeInTheDocument()
+          expect(getByText("Select Points to Use")).toBeInTheDocument()
         })
 
         getByLabelText("Troll").click()
-        getByLabelText("Spend Points").click()
+        getByLabelText("Adjustment").click()
 
         await waitFor(() => {
           expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
@@ -228,10 +228,10 @@ describe("<Metatype/>", () => {
         // Test to see if you spend adjustment first and then attribute points
         await waitFor(() => {
           expect(getByLabelText("Elf")).toBeInTheDocument()
-          expect(getByLabelText("Spend Points")).toBeInTheDocument()
+          expect(getByText("Select Points to Use")).toBeInTheDocument()
         })
 
-        getByLabelText("Spend Points").click()
+        getByLabelText("Adjustment").click()
         getByLabelText("Elf").click()
         SliderHelper.change(getByTestId("Agility-slider"), 4, 1, 7)
 
@@ -241,7 +241,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Spend Points").click()
+        getByLabelText("Attribute").click()
         SliderHelper.change(getByTestId("Agility-slider"), 7, 1, 7)
 
         await waitFor(() => {
@@ -250,7 +250,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Spend Points").click()
+        getByLabelText("Adjustment").click()
 
         SliderHelper.change(getByTestId("Agility-slider"), 1, 1, 7)
 
@@ -273,7 +273,7 @@ describe("<Metatype/>", () => {
       // Test to see if you spend adjustment first and then attribute points
       await waitFor(() => {
         expect(getByLabelText("Elf")).toBeInTheDocument()
-        expect(getByLabelText("Spend Points")).toBeInTheDocument()
+        expect(getByText("Select Points to Use")).toBeInTheDocument()
       })
 
       getByLabelText("Elf").click()
@@ -286,7 +286,7 @@ describe("<Metatype/>", () => {
         ).toBeInTheDocument()
       })
 
-      getByLabelText("Spend Points").click()
+      getByLabelText("Adjustment").click()
 
       SliderHelper.change(getByTestId("Agility-slider"), 7, 1, 7)
 
@@ -305,7 +305,7 @@ describe("<Metatype/>", () => {
 
       // Test to see if you spend attribute first and then adjustment
       SliderHelper.change(getByTestId("Charisma-slider"), 2, 1, 8)
-      getByLabelText("Spend Points").click()
+      getByLabelText("Attribute").click()
 
       await waitFor(() => {
         expect(

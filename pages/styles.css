@@ -125,6 +125,17 @@ body.cyberterminal3 {
   color: var(--neon);
   /* background-color: white; */
 }
+.cyberterminal3 th {
+  background-color: black;
+  background: var(--cyberGrad);
+  color: white;
+}
+.cyberterminal3 tbody td {
+  color: var(--neon);
+}
+.cyberterminal3 .MuiSvgIcon-root {
+  color: var(--neon2);
+}
 
 .cyberterminal3 .bad-stuff {
   text-shadow: black var(--shadowdistance) var(--shadowdistance) 0;

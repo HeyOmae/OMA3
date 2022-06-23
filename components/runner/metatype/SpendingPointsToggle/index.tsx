@@ -1,38 +1,54 @@
 import { FC } from "react"
-import { FormControlLabel, Typography, Grid, Switch } from "@mui/material"
-import styles from "./SpendingPointsToggle.module.css"
+import {
+  FormControlLabel,
+  Typography,
+  Grid,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  Radio,
+} from "@mui/material"
 
 export interface Props {
-  toggleSpending: () => void
+  toggleSpending: (isAdjustmentPointsSelected: boolean) => void
   isSpendingAdjustmentPoints: boolean
 }
+
+const ATTRIBUTE = "Attribute"
+const ADJUSTMENT = "Adjustment"
 
 export const SpendingPointsToggle: FC<Props> = ({
   isSpendingAdjustmentPoints,
   toggleSpending,
 }) => (
   <Typography component="div">
-    <Grid component="label" container alignItems="center" spacing={1}>
-      <Grid item className={!isSpendingAdjustmentPoints ? styles.active : ""}>
-        Attribute
-      </Grid>
-      <Grid item>
-        <FormControlLabel
-          value="Spend Points"
-          control={
-            <Switch
-              checked={isSpendingAdjustmentPoints}
-              onChange={toggleSpending}
-              color="primary"
+    <FormControl component="fieldset">
+      <FormLabel component="legend">Select Points to Use</FormLabel>
+      <RadioGroup
+        aria-label="select-points"
+        name="select-points"
+        value={isSpendingAdjustmentPoints ? ATTRIBUTE : ADJUSTMENT}
+        onChange={(event, pointsToSpend) =>
+          toggleSpending(pointsToSpend === ATTRIBUTE)
+        }
+      >
+        <Grid container alignItems="center" spacing={1}>
+          <Grid item>
+            <FormControlLabel
+              value={ATTRIBUTE}
+              control={<Radio />}
+              label={ATTRIBUTE}
             />
-          }
-          label="Spend Points"
-          labelPlacement="top"
-        />
-      </Grid>
-      <Grid item className={isSpendingAdjustmentPoints ? styles.active : ""}>
-        Adjustment
-      </Grid>
-    </Grid>
+          </Grid>
+          <Grid item>
+            <FormControlLabel
+              value={ADJUSTMENT}
+              control={<Radio />}
+              label={ADJUSTMENT}
+            />
+          </Grid>
+        </Grid>
+      </RadioGroup>
+    </FormControl>
   </Typography>
 )
