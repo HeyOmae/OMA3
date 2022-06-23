@@ -1,5 +1,5 @@
 import { SpendingPointsToggle, Props } from "."
-import { render } from "@testing-library/react"
+import { render, userEvent } from "@/test/testUtils"
 
 describe("SpendingPointsToggle", () => {
   const setup = ({
@@ -11,22 +11,27 @@ describe("SpendingPointsToggle", () => {
     }
     return { ...render(<SpendingPointsToggle {...props} />), props }
   }
-  it("should call the toggleSpending callback when clicked", () => {
-    const { getByLabelText, props } = setup()
+  it("should call the toggleSpending with false callback when switching to spend attribute", async () => {
+    const { getByLabelText, props } = setup({
+      isSpendingAdjustmentPoints: false,
+    })
 
-    const switchEl = getByLabelText("Spend Points") as HTMLInputElement
+    const selectAttribute = getByLabelText("Attribute")
 
-    expect(switchEl.checked).toBe(true)
+    await userEvent.click(selectAttribute)
 
-    switchEl.click()
-
-    expect(props.toggleSpending).toHaveBeenCalled()
+    expect(props.toggleSpending).toHaveBeenCalledWith(true)
   })
-  it("should be unchecked if isSpendingAdjustmentPoints is false", () => {
-    const { getByLabelText } = setup({ isSpendingAdjustmentPoints: false })
 
-    expect((getByLabelText("Spend Points") as HTMLInputElement).checked).toBe(
-      false,
-    )
+  it("should be unchecked if isSpendingAdjustmentPoints is false", async () => {
+    const { getByLabelText, props } = setup({
+      isSpendingAdjustmentPoints: true,
+    })
+
+    const selectAdjustment = getByLabelText("Adjustment")
+
+    await userEvent.click(selectAdjustment)
+
+    expect(props.toggleSpending).toHaveBeenCalledWith(false)
   })
 })

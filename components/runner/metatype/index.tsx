@@ -108,9 +108,7 @@ export const Metatype = () => {
                 <DisplayPoints runner={runner} />
                 <SpendingPointsToggle
                   isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
-                  toggleSpending={() =>
-                    setIsSpendingAdjustmentPoints(!isSpendingAdjustmentPoints)
-                  }
+                  toggleSpending={setIsSpendingAdjustmentPoints}
                 />
                 <AttributeSelection
                   runner={runner}

@@ -26,9 +26,6 @@ if (typeof window !== "undefined") {
   })
 }
 
-const NEON = "var(--neon)"
-const NEON2 = "var(--neon2)"
-
 const oma3Style = createTheme({
   components: {
     MuiAppBar: {
@@ -39,32 +36,11 @@ const oma3Style = createTheme({
         },
       },
     },
-    MuiTableCell: {
-      styleOverrides: {
-        head: {
-          color: "white",
-        },
-        stickyHeader: {
-          backgroundColor: "black",
-          background: "var(--cyberGrad)",
-        },
-        body: {
-          color: NEON,
-        },
-      },
-    },
     MuiAccordion: {
       styleOverrides: {
         root: {
           background: "none",
           boxShadow: "none",
-        },
-      },
-    },
-    MuiAccordionSummary: {
-      styleOverrides: {
-        expandIconWrapper: {
-          color: NEON2,
         },
       },
     },
