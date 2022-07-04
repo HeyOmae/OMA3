@@ -28,6 +28,11 @@ describe("foci", () => {
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
+    // Need to wait to get weapons from indexed db
+    await waitFor(() => {
+      expect(getByText(/Weapon Focus/)).toBeInTheDocument()
+    })
+
     foci.forEach(({ name }) => {
       expect(getByText(new RegExp(name))).toBeInTheDocument()
     })
