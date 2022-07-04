@@ -187,8 +187,12 @@ export const expectToBuyAndSellGear =
 
     getByLabelText(RegExp(`Add .*${gearA.name}$`)).click()
     getByLabelText(RegExp(`Add .*${gearB.name}$`)).click()
-    getByLabelText(RegExp(`Add .*${gearC.name}$`)).click()
+    await waitFor(() => {
+      // When this tests foci, weapon focus needs to get data from indexedDB
+      getByLabelText(RegExp(`Add .*${gearC.name}$`)).click()
+    })
 
+    // eslint-disable-next-line jest/no-standalone-expect
     expect(
       getByText(
         `${
@@ -200,6 +204,7 @@ export const expectToBuyAndSellGear =
     // TODO: kill past me for doing this nonsense
     getAllByLabelText(RegExp(`Remove .*${gearB.name}$`))[0].click()
 
+    // eslint-disable-next-line jest/no-standalone-expect
     expect(
       getByText(
         `${
