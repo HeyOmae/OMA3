@@ -45,6 +45,19 @@ h5 {
   color: red;
 }
 
+.MuiButton-root {
+  margin: 0.125em 0.25em;
+}
+
+.app-nav .MuiDrawer-paper {
+  max-width: 500px;
+  margin: auto;
+}
+
+.app-nav label {
+  top: 0.5em;
+}
+
 .table-container {
   max-height: calc(100vh - 192px);
 }
@@ -134,6 +147,13 @@ body.cyberterminal3 {
   color: var(--neon);
 }
 .cyberterminal3 .MuiSvgIcon-root {
+  color: var(--neon2);
+}
+.cyberterminal3 .MuiSelect-select {
+  color: white;
+}
+
+.cyberterminal3 .app-nav .MuiSelect-select {
   color: var(--neon2);
 }
 

@@ -66,6 +66,7 @@ export const RunnerLayout: FC = ({ children }) => {
         </BottomNavigation>
       </AppBar>
       <Drawer
+        className="app-nav"
         anchor="bottom"
         open={nav === 1}
         onClose={() => setNav(undefined)}
