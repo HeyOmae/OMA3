@@ -161,3 +161,43 @@ body.cyberterminal3 {
   text-shadow: black var(--shadowdistance) var(--shadowdistance) 0;
   animation: glow 0.7s infinite alternate;
 }
+
+.nightwatch {
+  background: #222;
+  color: lightgray;
+}
+
+.nightwatch a {
+  color: lightskyblue;
+}
+
+.nightwatch td,
+.nightwatch th,
+.nightwatch legend,
+.nightwatch label,
+.nightwatch .MuiBreadcrumbs-ol,
+.nightwatch .MuiSelect-select,
+.nightwatch .MuiButton-root,
+.nightwatch input,
+.nightwatch textarea {
+  color: lightgray;
+}
+
+.nightwatch th {
+  background: #222;
+}
+
+.nightwatch .MuiOutlinedInput-notchedOutline {
+  border-color: lightgray;
+}
+.nightwatch .MuiOutlinedInput-notchedOutline:hover {
+  border-color: gray;
+}
+
+.nightwatch .MuiTypography-root.Mui-disabled {
+  color: gray;
+}
+
+.nightwatch .MuiRadio-root {
+  color: #aaa;
+}

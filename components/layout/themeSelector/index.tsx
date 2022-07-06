@@ -21,6 +21,7 @@ export const ThemeSelector: FC = () => {
       >
         <MenuItem value="cyberterminal3">CyberTerminal 3.0</MenuItem>
         <MenuItem value="mundane">Mundane</MenuItem>
+        <MenuItem value="nightwatch">Nightwatch</MenuItem>
       </Select>
     </FormControl>
   )
