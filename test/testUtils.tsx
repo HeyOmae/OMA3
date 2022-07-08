@@ -161,6 +161,8 @@ export const runnerFromDB = (id = 0): Runner =>
     .records[id].value
 
 export const caymansCurrentlySpentNuyen = 250_055
+const totalNuyen = 275_000
+export const caymansNuyen = `${caymansCurrentlySpentNuyen}¥/${totalNuyen}¥`
 
 export const expectToBuyAndSellGear =
   (
@@ -174,15 +176,12 @@ export const expectToBuyAndSellGear =
           query: { id: "10", gearIndex: "0", ...queryParam },
         }),
       ),
-      totalNuyen = 275_000,
       gearA = gearData[0],
       gearB = gearData[Math.floor(gearData.length / 2)],
       gearC = gearData[gearData.length - 1]
 
     await waitFor(() => {
-      expect(
-        getByText(`${caymansCurrentlySpentNuyen}¥/${totalNuyen}¥`),
-      ).toBeInTheDocument()
+      expect(getByText(caymansNuyen)).toBeInTheDocument()
     })
 
     getByLabelText(RegExp(`Add .*${gearA.name}$`)).click()

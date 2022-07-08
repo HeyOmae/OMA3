@@ -290,38 +290,38 @@ export const cyberware: GearCyberware[] = [
     currentRating: 5,
     rating: true,
   },
-  {
-    useAs: [
-      {
-        type: "CYBERWARE",
-        subtype: "CYBER HEADWARE",
-        essence: "2.6",
-      },
-    ],
-    cyberdeck: {
-      dataProcessing: 8,
-      firewall: 7,
-      initative: 3,
-    },
-    modifications: {
-      attrmod: [
-        {
-          attribute: "INITIATIVE MATRIX VR COLD",
-          value: 3,
-        },
-        {
-          attribute: "INITIATIVE MATRIX VR HOT",
-          value: 3,
-        },
-      ],
-    },
-    availability: "5L",
-    cost: 140000,
-    name: "Cyberjack5",
-    language: "de",
-    currentRating: 6,
-    rating: true,
-  },
+  // {
+  //   useAs: [
+  //     {
+  //       type: "CYBERWARE",
+  //       subtype: "CYBER HEADWARE",
+  //       essence: "2.6",
+  //     },
+  //   ],
+  //   cyberdeck: {
+  //     dataProcessing: 8,
+  //     firewall: 7,
+  //     initative: 3,
+  //   },
+  //   modifications: {
+  //     attrmod: [
+  //       {
+  //         attribute: "INITIATIVE MATRIX VR COLD",
+  //         value: 3,
+  //       },
+  //       {
+  //         attribute: "INITIATIVE MATRIX VR HOT",
+  //         value: 3,
+  //       },
+  //     ],
+  //   },
+  //   availability: "5L",
+  //   cost: 140000,
+  //   name: "Cyberjack5",
+  //   language: "de",
+  //   currentRating: 6,
+  //   rating: true,
+  // },
   {
     useAs: [
       {
@@ -353,36 +353,36 @@ export const cyberware: GearCyberware[] = [
     currentRating: 6,
     rating: true,
   },
-  {
-    useAs: [
-      {
-        type: "CYBERWARE",
-        subtype: "CYBER HEADWARE",
-        essence: "3",
-      },
-    ],
-    cyberdeck: {
-      dataProcessing: 9,
-      firewall: 8,
-      initative: 3,
-    },
-    modifications: {
-      attrmod: [
-        {
-          attribute: "INITIATIVE MATRIX VR COLD",
-          value: 3,
-        },
-        {
-          attribute: "INITIATIVE MATRIX VR HOT",
-          value: 3,
-        },
-      ],
-    },
-    availability: "6L",
-    cost: 210000,
-    name: "Cyberjack6",
-    language: "de",
-  },
+  // {
+  //   useAs: [
+  //     {
+  //       type: "CYBERWARE",
+  //       subtype: "CYBER HEADWARE",
+  //       essence: "3",
+  //     },
+  //   ],
+  //   cyberdeck: {
+  //     dataProcessing: 9,
+  //     firewall: 8,
+  //     initative: 3,
+  //   },
+  //   modifications: {
+  //     attrmod: [
+  //       {
+  //         attribute: "INITIATIVE MATRIX VR COLD",
+  //         value: 3,
+  //       },
+  //       {
+  //         attribute: "INITIATIVE MATRIX VR HOT",
+  //         value: 3,
+  //       },
+  //     ],
+  //   },
+  //   availability: "6L",
+  //   cost: 210000,
+  //   name: "Cyberjack6",
+  //   language: "de",
+  // },
   {
     useAs: [
       {
@@ -437,27 +437,27 @@ export const cyberware: GearCyberware[] = [
     cost: 4000,
     name: "Simrig",
   },
-  {
-    useAs: [
-      {
-        type: "CYBERWARE",
-        subtype: "CYBER HEADWARE",
-        essence: "0.1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        hook: "SKILLJACK",
-        capacity: 4,
-      },
-    },
-    availability: "4",
-    cost: 1000,
-    name: "Skilljack",
-    maxRating: 6,
-    rating: true,
-    rateMultiplier: "capacity cost",
-  },
+  // {
+  //   useAs: [
+  //     {
+  //       type: "CYBERWARE",
+  //       subtype: "CYBER HEADWARE",
+  //       essence: "0.1",
+  //     },
+  //   ],
+  //   modifications: {
+  //     itemhookmod: {
+  //       hook: "SKILLJACK",
+  //       capacity: 4,
+  //     },
+  //   },
+  //   availability: "4",
+  //   cost: 1000,
+  //   name: "Skilljack",
+  //   maxRating: 6,
+  //   rating: true,
+  //   rateMultiplier: "capacity cost",
+  // },
   {
     useAs: [
       {
