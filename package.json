@@ -27,7 +27,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.1",
     "next": "^12.2.3",
-    "next-pwa": "^5.5.4",
+    "next-pwa": "^5.5.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-indexed-db": "^1.0.12"
