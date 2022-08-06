@@ -1,6 +1,6 @@
 import React from "react"
 import { AllRunnersAccess } from "./index"
-import { render, screen } from "@testing-library/react"
+import { render, screen, waitFor } from "@testing-library/react"
 import { initRunner } from "../../types/runner"
 import { mockedRunners } from "../../test/mocks"
 
@@ -33,7 +33,9 @@ describe("<AllRunnersAccess/>", () => {
   it("should return a list of runners", async () => {
     const { getByText } = setup()
 
-    expect(await screen.findByText("Bull")).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText("Bull")).toBeInTheDocument()
+    })
 
     mockedRunners.forEach(({ name }) => {
       getByText(name)
@@ -43,7 +45,9 @@ describe("<AllRunnersAccess/>", () => {
   it("should be able to add a new runner", async () => {
     const { getByText } = setup()
 
-    expect(await screen.findByText("Bull")).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText("Bull")).toBeInTheDocument()
+    })
 
     getByText("Add Runner").click()
 

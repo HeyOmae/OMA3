@@ -25,39 +25,35 @@ describe("<RunnerSkillTable/>", () => {
 
     const conjuringRow = within(getByText("Conjuring").closest("tr"))
     // rating
-    const conjuringRating = await conjuringRow.findByTestId("Conjuring-rating")
+    const conjuringRating = conjuringRow.getByTestId("Conjuring-rating")
     expect(conjuringRating.querySelector("input")).toHaveValue("6")
     // attribute
-    expect(await conjuringRow.findByText("Magic")).toBeInTheDocument()
+    expect(conjuringRow.getByText("Magic")).toBeInTheDocument()
     // specialization
     expect(
-      await conjuringRow.findByLabelText("Conjuring specialization"),
+      conjuringRow.getByLabelText("Conjuring specialization"),
     ).toHaveDisplayValue("Banishing")
 
     const sorceryRow = within(getByText("Sorcery").closest("tr"))
     // rating
-    const sorceryRating = await sorceryRow.findByTestId("Sorcery-rating")
+    const sorceryRating = sorceryRow.getByTestId("Sorcery-rating")
     expect(sorceryRating.querySelector("input")).toHaveValue("5")
     // attribute
-    expect(await sorceryRow.findByText("Magic")).toBeInTheDocument()
+    expect(sorceryRow.getByText("Magic")).toBeInTheDocument()
     // specialization
     expect(
-      await sorceryRow.findByLabelText("Sorcery specialization"),
+      sorceryRow.getByLabelText("Sorcery specialization"),
     ).toHaveDisplayValue("")
 
     const perceptionRow = within(getByText("Perception").closest("tr"))
     // rating
-    const perceptionRating = await perceptionRow.findByTestId(
-      "Perception-rating",
-    )
+    const perceptionRating = perceptionRow.getByTestId("Perception-rating")
     expect(perceptionRating.querySelector("input")).toHaveValue("4")
     // attribute
-    expect(
-      await perceptionRow.findByText("Intuition/Logic"),
-    ).toBeInTheDocument()
+    expect(perceptionRow.getByText("Intuition/Logic")).toBeInTheDocument()
     // specialization
     expect(
-      await perceptionRow.findByLabelText("Perception specialization"),
+      perceptionRow.getByLabelText("Perception specialization"),
     ).toHaveDisplayValue("")
   })
 
