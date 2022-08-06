@@ -101,12 +101,14 @@ describe("<RunnerLayout />", () => {
     })
 
     it("should change the class on body", async () => {
-      const { findByLabelText, getByText, getByLabelText } = setup()
+      const { getByText, getByLabelText } = setup()
       expect(document.body).toHaveClass("cyberterminal3")
 
       await userEvent.click(getByText("Menu"))
 
-      expect(await findByLabelText("Theme")).toBeInTheDocument()
+      await waitFor(() => {
+        expect(getByLabelText("Theme")).toBeInTheDocument()
+      })
 
       await userEvent.click(getByLabelText("Theme"))
       await userEvent.click(getByText("Mundane"))

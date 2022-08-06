@@ -50,7 +50,9 @@ describe("useRunnerAccess hook", () => {
   it("should get the runner data from indexedDb", async () => {
     setup()
 
-    expect(await screen.findByText("Bull")).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText("Bull")).toBeInTheDocument()
+    })
   })
 
   it("should not do bad stuff if component is unmounted while getting runner from indexedDB", () => {

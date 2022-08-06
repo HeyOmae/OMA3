@@ -26,7 +26,9 @@ describe("Home page", () => {
   it("should load a list of runners", async () => {
     const { getByText } = setup()
 
-    expect(await screen.findByText("Bull")).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText("Bull")).toBeInTheDocument()
+    })
 
     mockedRunners.forEach(({ name, id }) => {
       expect(getByText(name)).toHaveAttribute("href", `/${id}/info`)
@@ -36,7 +38,9 @@ describe("Home page", () => {
   it("should add a new runner to the indexed db", async () => {
     const { getByText, push } = setup()
 
-    expect(await screen.findByText("Create Runner")).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByText("Create Runner")).toBeInTheDocument()
+    })
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
