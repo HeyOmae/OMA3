@@ -20,7 +20,7 @@ export const imagingMods: GearMod[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 750,
         availability: "2",
       },
@@ -54,7 +54,7 @@ export const imagingMods: GearMod[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 775,
         availability: "2",
       },
@@ -88,7 +88,7 @@ export const imagingMods: GearMod[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 1000,
         availability: "2",
       },
@@ -122,7 +122,7 @@ export const imagingMods: GearMod[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essense: 0.2,
+        essence: 0.2,
         cost: 2000,
         availability: "3L",
       },
@@ -155,7 +155,7 @@ export const imagingMods: GearMod[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 1500,
       },
       {
@@ -207,7 +207,7 @@ export const imagingMods: GearMod[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 3500,
         availability: "3",
       },
@@ -241,7 +241,7 @@ export const imagingMods: GearMod[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 1750,
         availability: "3",
       },
@@ -284,7 +284,7 @@ export const audioMods: (GearMod | GearModRated)[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EARWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 3500,
         availability: "2",
       },
@@ -313,7 +313,7 @@ export const audioMods: (GearMod | GearModRated)[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EARWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 3250,
         availability: "4",
       },
@@ -344,7 +344,7 @@ export const audioMods: (GearMod | GearModRated)[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EARWARE",
-        essense: 0.1,
+        essence: 0.1,
         cost: 3000,
         availability: "2",
       },

@@ -46,7 +46,7 @@ describe("<RemainingCapacity />", () => {
               {
                 type: "CYBERWARE",
                 subtype: "CYBER EARWARE",
-                essense: 0.1,
+                essence: 0.1,
                 cost: 3250,
                 availability: "4",
               },

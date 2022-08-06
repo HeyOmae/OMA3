@@ -658,7 +658,7 @@ export const mockedRunners: Runner[] = [
                 {
                   type: "CYBERWARE",
                   subtype: "CYBER EYEWARE",
-                  essense: 0.1,
+                  essence: 0.1,
                   cost: 775,
                   availability: "2",
                 },
@@ -862,6 +862,94 @@ export const mockedRunners: Runner[] = [
           ],
         },
       ],
+      cyberware: [
+        {
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER EYEWARE",
+              essence: "0.3",
+            },
+          ],
+          modifications: {
+            itemhookmod: {
+              capacity: 8,
+              hook: "CYBEREYE IMPLANT",
+            },
+            accessorymod: [
+              {
+                hook: "CYBEREYE IMPLANT",
+                item: "image link",
+                included: true,
+              },
+              {
+                hook: "CYBEREYE IMPLANT",
+                item: "camera",
+                included: true,
+              },
+            ],
+          },
+          availability: "3",
+          cost: 6000,
+          name: "Cybereye3",
+        },
+        {
+          modifications: {
+            attrmod: [
+              {
+                attribute: "REACTION",
+                type: "AUGMENTED",
+                value: 2,
+              },
+              {
+                attribute: "INITIATIVE DICE PHYSICAL",
+                type: "AUGMENTED",
+                value: 2,
+              },
+            ],
+          },
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER BODYWARE",
+              essence: "2.0",
+            },
+          ],
+          availability: "3L",
+          cost: 150000,
+          name: "Wired Reflexes 2",
+        },
+        {
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER BODYWARE",
+              essence: "0.7",
+            },
+          ],
+          modifications: {
+            attrmod: [
+              {
+                attribute: "AGILITY",
+                type: "AUGMENTED",
+                value: 1,
+              },
+              {
+                attribute: "STRENGTH",
+                type: "AUGMENTED",
+                value: 1,
+              },
+            ],
+          },
+          availability: "3L",
+          cost: 60000,
+          name: "Muscle Replacement",
+          maxRating: 4,
+          rating: true,
+          rateMultiplier: "essence cost modifier",
+          currentRating: 2,
+        },
+      ],
     },
   },
   {
@@ -933,7 +1021,7 @@ export const mockedRunners: Runner[] = [
                 {
                   type: "CYBERWARE",
                   subtype: "CYBER EARWARE",
-                  essense: 0.1,
+                  essence: 0.1,
                   cost: 3000,
                   availability: "2",
                 },

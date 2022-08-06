@@ -34,6 +34,8 @@ export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
     [currentRating, gear],
   )
 
+  // Cols live at /components/runner/resources/util/configOptions.tsx
+  // Or with the gear using this row
   return (
     <TableRow>
       {cols.map(({ display, label }) => (
