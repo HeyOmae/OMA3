@@ -496,7 +496,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "4",
     cost: 20000,
-    name: "Skilljack Us",
+    name: "Skilljack US",
     maxRating: 6,
     rating: true,
     rateMultiplier: "essence capacity cost",
@@ -1164,7 +1164,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "3L",
     cost: 40000,
-    name: "Wiredreflexes1",
+    name: "Wired Reflexes 1",
   },
   {
     modifications: {
@@ -1190,7 +1190,7 @@ export const cyberware: GearCyberware[] = [
     ],
     availability: "3L",
     cost: 150000,
-    name: "Wiredreflexes2",
+    name: "Wired Reflexes 2",
   },
   {
     modifications: {
@@ -1216,7 +1216,7 @@ export const cyberware: GearCyberware[] = [
     ],
     availability: "4I",
     cost: 250000,
-    name: "Wiredreflexes3",
+    name: "Wired Reflexes 3",
   },
   {
     useAs: [
@@ -1242,7 +1242,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "6I",
     cost: 450000,
-    name: "Wiredreflexes4",
+    name: "Wired Reflexes 4",
   },
   {
     useAs: [

@@ -23,6 +23,7 @@ export interface Resources {
   biotech: GearTyped[]
   drones: GearDrones[]
   vehicles: GearDrones[]
+  cyberware: GearCyberware[]
 }
 
 export interface Gear {
@@ -146,7 +147,7 @@ export interface GearModRated extends GearMod, GearTyped {}
 interface AsModAccessory extends GearModUseAs, Partial<Gear> {}
 
 interface AsCyberwareInstall extends Omit<AsModAccessory, "slot"> {
-  essense?: number
+  essence?: number
   maxRating?: number
 }
 
@@ -222,7 +223,7 @@ export interface GearModdableRated extends GearTyped, ModifiableGear {
   useAs?: Partial<GearModUseAs>[]
 }
 
-interface GearCyberwareUseAs extends GearTypes {
+export interface GearCyberwareUseAs extends GearTypes {
   essence: string
 }
 

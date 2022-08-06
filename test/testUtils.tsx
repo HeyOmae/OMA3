@@ -160,7 +160,7 @@ export const runnerFromDB = (id = 0): Runner =>
   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
     .records[id].value
 
-export const caymansCurrentlySpentNuyen = 250_055
+export const caymansCurrentlySpentNuyen = 34_055
 const totalNuyen = 275_000
 export const caymansNuyen = `${caymansCurrentlySpentNuyen}¥/${totalNuyen}¥`
 

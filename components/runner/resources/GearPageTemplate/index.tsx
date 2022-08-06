@@ -6,6 +6,7 @@ import { GearTable } from "./GearTable"
 import { RemainingNuyen } from "./RemainingNuyen"
 import { ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
 import { DispatchContext, gearPageReducerGenerator, Columns } from "../util"
+import { RemainingEssence } from "./RemainingEssence"
 
 export interface Props<G> {
   gearLabel: string
@@ -13,6 +14,7 @@ export interface Props<G> {
   listOfGear: G[]
   addGearTableConfig: Columns<G>[]
   removeGearTableConfig: Columns<G>[]
+  displayEssence?: boolean
 }
 
 export function GearPageTemplate<G extends Gear>({
@@ -21,6 +23,7 @@ export function GearPageTemplate<G extends Gear>({
   addGearTableConfig,
   removeGearTableConfig,
   listOfGear,
+  displayEssence,
 }: Props<G>): ReactElement {
   const [runner, dispatch] = useRunnerAccess<G | number>(
     gearPageReducerGenerator(resourceKey),
@@ -29,6 +32,7 @@ export function GearPageTemplate<G extends Gear>({
     <>
       <ResourceBreadCrumbs activePage={gearLabel} />
       <RemainingNuyen runner={runner} />
+      {displayEssence && <RemainingEssence runner={runner} />}
       <Grid container spacing={3}>
         <DispatchContext.Provider value={dispatch}>
           <Grid item md={6}>

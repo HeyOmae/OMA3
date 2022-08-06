@@ -6,7 +6,7 @@ import {
   runnerFromDB,
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
-import { GearPageTemplate } from "."
+import { GearPageTemplate, Props } from "."
 import { GearWeaponMelee } from "types/Resources"
 import {
   addMeleeTableConfig,
@@ -16,7 +16,10 @@ import {
 describe("<GearPageTemplate/>", () => {
   describe("<MeleeWeapons/>", () => {
     beforeAll(setupIndexedDB)
-    const setup = (id = 8) => {
+    const setup = (
+      id = 8,
+      { displayEssence }: Partial<Props<GearWeaponMelee>> = {},
+    ) => {
       return render(
         withTestRouter(
           <GearPageTemplate<GearWeaponMelee>
@@ -25,6 +28,7 @@ describe("<GearPageTemplate/>", () => {
             addGearTableConfig={addMeleeTableConfig}
             listOfGear={meleeData}
             removeGearTableConfig={removeMeleeTableConfig}
+            displayEssence={displayEssence}
           />,
           { query: { id: id.toString() } },
         ),
@@ -106,6 +110,27 @@ describe("<GearPageTemplate/>", () => {
 
       await waitFor(() => {
         expect(runnerFromDB(9).resources.melee).toHaveLength(1)
+      })
+    })
+
+    describe("displayEssence", () => {
+      it("should display remaining essence if set to true", async () => {
+        const { getByText } = setup(10, { displayEssence: true })
+
+        await waitFor(() => {
+          expect(getByText("Purchased Melee Weapons")).toBeInTheDocument()
+        })
+        expect(getByText("Essence")).toBeInTheDocument()
+        expect(getByText("2.3")).toBeInTheDocument()
+      })
+
+      it("should not display essence if not set", async () => {
+        const { queryByText } = setup(10)
+
+        await waitFor(() => {
+          expect(queryByText("Purchased Melee Weapons")).toBeInTheDocument()
+        })
+        expect(queryByText("Essnece")).not.toBeInTheDocument()
       })
     })
   })

@@ -29,6 +29,7 @@ const Cyberware = () => (
     listOfGear={cyberware}
     addGearTableConfig={buyCyberwareCol}
     removeGearTableConfig={sellCyberwareCol}
+    displayEssence
   />
 )
 
