@@ -162,9 +162,8 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "3L",
     cost: 45000,
-    name: "Cyberjack1",
+    name: "Cyberjack 1",
     currentRating: 1,
-    rating: true,
   },
   {
     useAs: [
@@ -193,9 +192,8 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "3L",
     cost: 65000,
-    name: "Cyberjack2",
+    name: "Cyberjack 2",
     currentRating: 2,
-    rating: true,
   },
   {
     useAs: [
@@ -224,9 +222,8 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "3L",
     cost: 80000,
-    name: "Cyberjack3",
+    name: "Cyberjack 3",
     currentRating: 3,
-    rating: true,
   },
   {
     useAs: [
@@ -255,9 +252,8 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "4L",
     cost: 95000,
-    name: "Cyberjack4",
+    name: "Cyberjack 4",
     currentRating: 4,
-    rating: true,
   },
   {
     useAs: [
@@ -286,9 +282,8 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "5L",
     cost: 140000,
-    name: "Cyberjack5",
+    name: "Cyberjack 5",
     currentRating: 5,
-    rating: true,
   },
   // {
   //   useAs: [
@@ -349,9 +344,8 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "6L",
     cost: 210000,
-    name: "Cyberjack6",
+    name: "Cyberjack 6",
     currentRating: 6,
-    rating: true,
   },
   // {
   //   useAs: [
@@ -606,7 +600,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "2",
     cost: 1000,
-    name: "Cybereye1",
+    name: "Cybereye 1",
   },
   {
     useAs: [
@@ -636,7 +630,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "2",
     cost: 4000,
-    name: "Cybereye2",
+    name: "Cybereye 2",
   },
   {
     useAs: [
@@ -666,7 +660,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "3",
     cost: 6000,
-    name: "Cybereye3",
+    name: "Cybereye 3",
   },
   {
     useAs: [
@@ -696,7 +690,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "3",
     cost: 10000,
-    name: "Cybereye4",
+    name: "Cybereye 4",
   },
   {
     useAs: [
@@ -726,7 +720,7 @@ export const cyberware: GearCyberware[] = [
     },
     availability: "3",
     cost: 16000,
-    name: "Cybereye5",
+    name: "Cybereye 5",
   },
   {
     useAs: [

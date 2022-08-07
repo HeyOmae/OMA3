@@ -9,7 +9,7 @@ interface Props {
 export const RemainingEssence: FC<Props> = ({ runner }) => {
   const Essence = useMemo(() => {
     const calculatedEss =
-      runner.resources?.cyberware.reduce(
+      runner.resources?.cyberware?.reduce(
         (ess, { useAs, currentRating = 1 }) => {
           const useage = useAs.find((mod) => "essence" in mod)
           const modifier = currentRating
