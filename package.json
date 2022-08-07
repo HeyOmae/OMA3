@@ -2,7 +2,7 @@
   "name": "oma3",
   "author": "@dethstrobe",
   "license": "GNU 3.0",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",

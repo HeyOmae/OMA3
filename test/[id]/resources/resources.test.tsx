@@ -94,6 +94,12 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/vehicles",
     )
+
+    // Augmentations
+    expect(getByText("Cyberware").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/cyberware",
+    )
   })
 
   it("should render links to security devices", () => {
