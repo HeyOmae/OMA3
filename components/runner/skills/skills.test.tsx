@@ -62,7 +62,7 @@ describe("<Skills/>", () => {
       expect(getByLabelText("add Firearms skill")).toBeInTheDocument()
     })
 
-    getByLabelText("add Firearms skill").click()
+    await userEvent.click(getByLabelText("add Firearms skill"))
 
     await waitFor(() => {
       expect(runnerFromDB(2).skills.Firearms).toEqual({
@@ -81,7 +81,7 @@ describe("<Skills/>", () => {
       expect(getByLabelText("add Con skill")).toBeInTheDocument()
     })
 
-    getByLabelText("add Con skill").click()
+    await userEvent.click(getByLabelText("add Con skill"))
 
     await waitFor(() => {
       expect(getByLabelText("remove Con skill")).toBeInTheDocument()
@@ -93,7 +93,7 @@ describe("<Skills/>", () => {
       })
     })
 
-    getByLabelText("remove Con skill").click()
+    await userEvent.click(getByLabelText("remove Con skill"))
 
     await waitFor(() => {
       expect(queryByLabelText("remove Con skill")).not.toBeInTheDocument()
@@ -109,7 +109,7 @@ describe("<Skills/>", () => {
         expect(getByLabelText("add Cracking skill")).toBeInTheDocument()
       })
 
-      getByLabelText("add Cracking skill").click()
+      await userEvent.click(getByLabelText("add Cracking skill"))
 
       await waitFor(() => {
         expect(getByTestId("Cracking-rating")).toBeInTheDocument()
@@ -142,7 +142,7 @@ describe("<Skills/>", () => {
         expect(getByLabelText("add Close combat skill")).toBeInTheDocument()
       })
 
-      getByLabelText("add Close combat skill").click()
+      await userEvent.click(getByLabelText("add Close combat skill"))
 
       await waitFor(() => {
         expect(getByTestId("Close-combat-rating")).toBeInTheDocument()

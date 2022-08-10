@@ -52,7 +52,7 @@ export const RunnerLayout: FC = ({ children }) => {
       default:
         break
     }
-  }, [nav])
+  }, [nav, push])
   return (
     <>
       <Layout className={styles["with-app-bar"]}>{children}</Layout>
