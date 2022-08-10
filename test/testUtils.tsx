@@ -184,12 +184,16 @@ export const expectToBuyAndSellGear =
       expect(getByText(caymansNuyen)).toBeInTheDocument()
     })
 
-    getByLabelText(RegExp(`Add .*${gearA.name}$`)).click()
-    getByLabelText(RegExp(`Add .*${gearB.name}$`)).click()
-    await waitFor(() => {
+    await userEvent.click(getByLabelText(RegExp(`Add .*${gearA.name}$`)))
+    await userEvent.click(getByLabelText(RegExp(`Add .*${gearB.name}$`)))
+
+    await waitFor(async () =>
       // When this tests foci, weapon focus needs to get data from indexedDB
-      getByLabelText(RegExp(`Add .*${gearC.name}$`)).click()
-    })
+      expect(
+        getByLabelText(RegExp(`Add .*${gearC.name}$`)),
+      ).toBeInTheDocument(),
+    )
+    await userEvent.click(getByLabelText(RegExp(`Add .*${gearC.name}$`)))
 
     // eslint-disable-next-line jest/no-standalone-expect
     expect(
