@@ -1,5 +1,5 @@
 import { Runner } from "@/types/runner"
-import { GearCyberwareUseAs } from "@/types/Resources"
+import { GearAugmentationUseAs } from "@/types/Resources"
 import { FC, useMemo } from "react"
 
 interface Props {
@@ -13,7 +13,7 @@ export const RemainingEssence: FC<Props> = ({ runner }) => {
         (ess, { useAs, currentRating = 1 }) => {
           const useage = useAs.find((mod) => "essence" in mod)
           const modifier = currentRating
-          return ess - +(useage as GearCyberwareUseAs).essence * modifier
+          return ess - +(useage as GearAugmentationUseAs).essence * modifier
         },
         6,
       ) ?? 6

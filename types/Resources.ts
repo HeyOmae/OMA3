@@ -184,6 +184,7 @@ export interface GearWithRating extends Gear {
     | "essence cost2"
     | "essence capacity cost"
     | "essence cost modifier"
+    | "essence cost defenseRating"
     | "cost avail capacity modifier"
   count?: true
 }
@@ -197,11 +198,13 @@ interface SkillMod {
   val?: number
 }
 
+interface RelevanceMod {
+  topic: string
+}
+
 interface FocusModifications {
   skillmod?: SkillMod[]
-  relevancemod?: {
-    topic: string
-  }
+  relevancemod?: RelevanceMod
   powermod?: string
 }
 
@@ -223,7 +226,7 @@ export interface GearModdableRated extends GearTyped, ModifiableGear {
   useAs?: Partial<GearModUseAs>[]
 }
 
-export interface GearCyberwareUseAs extends GearTypes {
+export interface GearAugmentationUseAs extends GearTypes {
   essence: string
 }
 
@@ -231,9 +234,7 @@ interface EdgeMod {
   type: "BONUS"
   skill: string
 }
-
-export interface GearCyberware extends GearWithRating, Partial<GearTypes> {
-  useAs: Array<GearCyberwareUseAs | GearModUseAs>
+interface GearAugmentation extends GearWithRating, Partial<GearTypes> {
   modifications?: {
     edgemod?: EdgeMod[]
     attrmod?: {
@@ -242,6 +243,8 @@ export interface GearCyberware extends GearWithRating, Partial<GearTypes> {
       type?: string
       modType?: string
       cyber?: true
+      cond?: true
+      condIndex?: number
     }[]
     itemhookmod?: GearModHooks
     accessorymod?: AccessoryMod[]
@@ -249,7 +252,18 @@ export interface GearCyberware extends GearWithRating, Partial<GearTypes> {
     itemmod?: ItemAccessory[]
     dmgtypemod?: { type: "PHYSICAL" | "STUN" }
     itemattrmod?: AttackRatingModifier
+    qualitymod?: {
+      ref: string
+    }
+    lifecostmod?: {
+      percent: number
+    }
+    relevancemod?: RelevanceMod
   }
+}
+
+export interface GearCyberware extends GearAugmentation {
+  useAs: Array<GearAugmentationUseAs | GearModUseAs>
   language?: "fr" | "de" | "en"
   modOnly?: true
   cyberdeck?: {
@@ -257,6 +271,11 @@ export interface GearCyberware extends GearWithRating, Partial<GearTypes> {
     firewall: number
     initative: number
   }
+}
+
+export interface GearBioware extends GearAugmentation {
+  useAs: GearAugmentationUseAs
+  choice?: "PHYSICAL SKILL"
 }
 
 export interface GearElectronic extends GearTyped {
