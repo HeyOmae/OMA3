@@ -100,6 +100,10 @@ describe("Resource Page", () => {
       "href",
       "/1/resources/cyberware",
     )
+    expect(getByText("Bioware").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources/bioware",
+    )
   })
 
   it("should render links to security devices", () => {

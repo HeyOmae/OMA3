@@ -126,6 +126,9 @@ export const ResourcePage = (): JSX.Element => {
       <NextLink href={`${asPath}cyberware`} passHref>
         <Button variant="contained">Cyberware</Button>
       </NextLink>
+      <NextLink href={`${asPath}bioware`} passHref>
+        <Button variant="contained">Bioware</Button>
+      </NextLink>
     </RunnerLayout>
   )
 }

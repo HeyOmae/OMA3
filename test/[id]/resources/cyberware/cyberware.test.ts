@@ -5,7 +5,7 @@ import { cyberware as cyberwareData } from "@/data/cyberware"
 describe("cyberware page", () => {
   beforeAll(setupIndexedDB)
   it(
-    "should be able to buy and sell cyberware devices",
+    "should be able to buy and sell cyberware",
     expectToBuyAndSellGear(CyberwarePage, cyberwareData),
   )
 })

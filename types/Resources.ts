@@ -24,6 +24,7 @@ export interface Resources {
   drones: GearDrones[]
   vehicles: GearDrones[]
   cyberware: GearCyberware[]
+  bioware: GearBioware[]
 }
 
 export interface Gear {
@@ -234,7 +235,7 @@ interface EdgeMod {
   type: "BONUS"
   skill: string
 }
-interface GearAugmentation extends GearWithRating, Partial<GearTypes> {
+export interface GearAugmentation extends GearWithRating, Partial<GearTypes> {
   modifications?: {
     edgemod?: EdgeMod[]
     attrmod?: {

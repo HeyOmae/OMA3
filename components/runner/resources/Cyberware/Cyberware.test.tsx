@@ -14,15 +14,22 @@ describe("<Cyberware />", () => {
   const setup = (id = "9") =>
     render(withTestRouter(<Cyberware />, { query: { id } }))
 
-  it("should display cyberware", async () => {
-    const { getByText } = setup()
+  it("should display cyberware that has essence cost", async () => {
+    const { queryByText } = setup()
 
     await waitFor(() => {
-      return expect(getByText("Buy")).toBeInTheDocument()
+      return expect(queryByText("Buy")).toBeInTheDocument()
     })
 
-    cyberware.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+    cyberware.forEach(({ name, useAs }) => {
+      // I'm a terrible programmer for doing this in my test
+      if (useAs.some((useage) => "essence" in useage)) {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(queryByText(name)).toBeInTheDocument()
+      } else {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(queryByText(name)).not.toBeInTheDocument()
+      }
     })
   })
 
