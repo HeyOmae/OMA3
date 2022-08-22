@@ -1088,6 +1088,143 @@ export const mockedRunners: Runner[] = [
           subtype: "Air",
         },
       ],
+      bioware: [
+        {
+          useAs: {
+            type: "BIOWARE",
+            subtype: "BIOWARE STANDARD",
+            essence: "0.2",
+          },
+          modifications: {
+            attrmod: [
+              {
+                attribute: "STRENGTH",
+                value: 1,
+              },
+            ],
+          },
+          name: "Muscle Augmentation",
+          availability: "4L",
+          cost: 31000,
+          maxRating: 4,
+          rating: true,
+          rateMultiplier: "essence cost modifier",
+          currentRating: 3,
+        },
+        {
+          useAs: {
+            type: "BIOWARE",
+            subtype: "BIOWARE STANDARD",
+            essence: "0.1",
+          },
+          modifications: {
+            qualitymod: {
+              ref: "low-light vision",
+            },
+          },
+          name: "Cats Eyes",
+          availability: "3",
+          cost: 4000,
+        },
+        {
+          useAs: {
+            type: "BIOWARE",
+            subtype: "BIOWARE STANDARD",
+            essence: "0.9",
+          },
+          modifications: {
+            attrmod: [
+              {
+                attribute: "DAMAGE RESISTANCE",
+                value: 3,
+              },
+              {
+                attribute: "MELEE DAMAGE",
+                value: 2,
+              },
+              {
+                attribute: "ATTACK RATING",
+                value: 2,
+              },
+            ],
+            dmgtypemod: {
+              type: "PHYSICAL",
+            },
+          },
+          name: "Bone Density Augmentation 3",
+          availability: "4L",
+          cost: 15000,
+        },
+      ],
+      cyberware: [
+        {
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER BODYWARE",
+              essence: "0.3",
+            },
+          ],
+          modifications: {
+            itemmod: [
+              {
+                item: "dermal deposits armor",
+                remove: true,
+              },
+              {
+                item: "dermal plating armor",
+                rating: 1,
+              },
+            ],
+          },
+          availability: "4L",
+          cost: 4000,
+          name: "Dermal Plating",
+          rating: true,
+          maxRating: 4,
+          rateMultiplier: "essence cost modifier",
+          currentRating: 2,
+        },
+        {
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER LIMBS",
+              essence: "1.0",
+            },
+          ],
+          modifications: {
+            itemhookmod: {
+              capacity: 15,
+              hook: "CYBERLIMB IMPLANT",
+            },
+            attrmod: [
+              {
+                attribute: "AGILITY",
+                type: "ALTERNATE",
+                value: 2,
+                cyber: true,
+                modType: "ABSOLUTE",
+              },
+              {
+                attribute: "STRENGTH",
+                type: "ALTERNATE",
+                value: 2,
+                cyber: true,
+                modType: "ABSOLUTE",
+              },
+              {
+                attribute: "PHYSICAL MONITOR",
+                type: "AUGMENTED",
+                value: 1,
+              },
+            ],
+          },
+          availability: "4",
+          cost: 15000,
+          name: "Cyberarm Obvious",
+        },
+      ],
     },
   },
 ]

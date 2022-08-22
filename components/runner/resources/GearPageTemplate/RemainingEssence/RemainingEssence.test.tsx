@@ -21,4 +21,11 @@ describe("<RemainingEssence />", () => {
     expect(getByText("Essence")).toBeInTheDocument()
     expect(getByText(2.3)).toBeInTheDocument()
   })
+
+  it("should display a runner's Essence when they have cyberware and bioware", () => {
+    const { getByText } = setup(mockedRunners[10])
+
+    expect(getByText("Essence")).toBeInTheDocument()
+    expect(getByText(2.8)).toBeInTheDocument()
+  })
 })

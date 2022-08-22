@@ -1,6 +1,10 @@
 import { Columns } from "../util"
 import {
   Gear,
+  GearAugmentation,
+  GearAugmentationUseAs,
+  GearBioware,
+  GearCyberware,
   GearDroneMod,
   GearDrones,
   GearFocus,
@@ -267,4 +271,33 @@ export const buyDroneModCols: VehicleModCols[] = [
 export const sellDroneModCols: VehicleModCols[] = [
   gearTableConfigOptions.sell,
   ...baseCols,
+]
+
+const essenceConfigOption: Columns<GearCyberware | GearBioware> = {
+  display: (gear) => {
+    if ("essence" in gear.useAs) {
+      return gear.useAs.essence
+    }
+    return (
+      gear.useAs.find((useAs) => "essence" in useAs) as GearAugmentationUseAs
+    )?.essence
+  },
+  label: "Ess",
+}
+
+export const buyAugmentationCols: Columns<GearAugmentation>[] = [
+  gearTableConfigOptions.buy,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.setRating,
+  essenceConfigOption,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]
+
+export const sellAugmentationCols: Columns<GearAugmentation>[] = [
+  gearTableConfigOptions.sell,
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.displayRating,
+  essenceConfigOption,
+  gearTableConfigOptions.cost,
 ]

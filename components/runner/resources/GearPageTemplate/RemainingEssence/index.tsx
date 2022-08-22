@@ -5,25 +5,32 @@ import { FC, useMemo } from "react"
 interface Props {
   runner: Runner
 }
+const startingEss = 6
 
 export const RemainingEssence: FC<Props> = ({ runner }) => {
-  const Essence = useMemo(() => {
-    const calculatedEss =
+  const essence = useMemo(() => {
+    const usedEssFromCyber =
       runner.resources?.cyberware?.reduce(
         (ess, { useAs, currentRating = 1 }) => {
           const useage = useAs.find((mod) => "essence" in mod)
           const modifier = currentRating
           return ess - +(useage as GearAugmentationUseAs).essence * modifier
         },
-        6,
-      ) ?? 6
+        startingEss,
+      ) ?? startingEss
+    const remainingEss =
+      runner.resources?.bioware?.reduce(
+        (ess, { useAs: { essence }, currentRating = 1 }) =>
+          ess - +essence * currentRating,
+        usedEssFromCyber,
+      ) ?? usedEssFromCyber
     // rounds the essence value to the nearist hundredth
-    return Math.round((calculatedEss + Number.EPSILON) * 100) / 100
+    return Math.round((remainingEss + Number.EPSILON) * 100) / 100
   }, [runner])
   return (
     <dl>
       <dt>Essence</dt>
-      <dd>{Essence}</dd>
+      <dd>{essence}</dd>
     </dl>
   )
 }

@@ -474,28 +474,28 @@ export const cyberware: GearCyberware[] = [
     rating: true,
     rateMultiplier: "essence capacity cost",
   },
-  {
-    useAs: [
-      {
-        type: "CYBERWARE",
-        subtype: "CYBER HEADWARE",
-        essence: "0.1",
-      },
-    ],
-    modifications: {
-      itemhookmod: {
-        hook: "SKILLJACK",
-        capacity: 4,
-      },
-    },
-    availability: "4",
-    cost: 20000,
-    name: "Skilljack US",
-    maxRating: 6,
-    rating: true,
-    rateMultiplier: "essence capacity cost",
-    modOnly: true,
-  },
+  // {
+  //   useAs: [
+  //     {
+  //       type: "CYBERWARE",
+  //       subtype: "CYBER HEADWARE",
+  //       essence: "0.1",
+  //     },
+  //   ],
+  //   modifications: {
+  //     itemhookmod: {
+  //       hook: "SKILLJACK",
+  //       capacity: 4,
+  //     },
+  //   },
+  //   availability: "4",
+  //   cost: 20000,
+  //   name: "Skilljack US",
+  //   maxRating: 6,
+  //   rating: true,
+  //   rateMultiplier: "essence capacity cost",
+  //   modOnly: true,
+  // },
   {
     useAs: [
       {
@@ -697,7 +697,7 @@ export const cyberware: GearCyberware[] = [
       {
         type: "CYBERWARE",
         subtype: "CYBER EYEWARE",
-        essence: "0.4",
+        essence: "0.5",
       },
     ],
     modifications: {
