@@ -3,6 +3,7 @@ import {
   gearMeleeTableConfigOption,
   gearTableConfigOptions,
   Columns,
+  gearModableTableConfigOptions,
 } from "../util"
 
 const baseFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
@@ -29,5 +30,5 @@ export const addFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
 export const removeFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
   gearTableConfigOptions.sell,
   ...baseFirearmsTableConfig,
-  gearTableConfigOptions.alwaysMod,
+  gearModableTableConfigOptions.alwaysMod,
 ]

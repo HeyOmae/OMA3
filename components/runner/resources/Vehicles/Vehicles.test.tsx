@@ -15,7 +15,7 @@ describe("<Vehicles/>", () => {
     render(
       withTestRouter(<Vehicles />, {
         query: { id },
-        asPath: "/10/resources/vehicles/",
+        asPath: "/10/resources/vehicles",
       }),
     )
 

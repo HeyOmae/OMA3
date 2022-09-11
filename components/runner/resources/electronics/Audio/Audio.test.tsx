@@ -13,7 +13,7 @@ describe("<Audio />", () => {
     render(
       withTestRouter(<Audio />, {
         query: { id: "10" },
-        asPath: "/10/resources/audio/",
+        asPath: "/10/resources/audio",
       }),
     )
   it("should display the stats for imaging devices", async () => {

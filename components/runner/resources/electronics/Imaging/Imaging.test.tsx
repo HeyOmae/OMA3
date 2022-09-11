@@ -14,7 +14,7 @@ describe("<Imaging/>", () => {
     render(
       withTestRouter(<Imaging />, {
         query: { id: "10" },
-        asPath: "/10/resources/imaging/",
+        asPath: "/10/resources/imaging",
       }),
     )
   it("should display the stats for imaging devices", async () => {

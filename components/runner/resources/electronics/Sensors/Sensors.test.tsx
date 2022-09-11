@@ -13,7 +13,7 @@ describe("<Sensors/>", () => {
     render(
       withTestRouter(<Sensors />, {
         query: { id: "10" },
-        asPath: "/10/resources/sensor/",
+        asPath: "/10/resources/sensor",
       }),
     )
   it("should display the stats for sensor devices", async () => {

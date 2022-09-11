@@ -1,7 +1,6 @@
 import { Columns } from "../util"
 import {
   Gear,
-  GearAugmentation,
   GearAugmentationUseAs,
   GearBioware,
   GearCyberware,
@@ -46,9 +45,12 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
     ),
     label: "Sell",
   },
+}
+
+export const gearModableTableConfigOptions = {
   mod: {
-    display: (gear, index) =>
-      "modifications" in gear ? (
+    display: (gear: GearMod, index) =>
+      gear?.modifications?.itemhookmod?.capacity > 0 ? (
         <ModLinkButton gear={gear} index={index} />
       ) : (
         "N/A"
@@ -56,7 +58,9 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
     label: "Mod",
   },
   alwaysMod: {
-    display: (gear, index) => <ModLinkButton gear={gear} index={index} />,
+    display: (gear: GearMod, index) => (
+      <ModLinkButton gear={gear} index={index} />
+    ),
     label: "Mod",
   },
 }
@@ -234,14 +238,13 @@ export const sellGearDronesCols: Columns<GearDrones>[] = [
   gearDroneTableConfigOptions.type,
   ...baseDroneStatsConfigOptions,
   gearTableConfigOptions.cost,
-  gearTableConfigOptions.alwaysMod,
+  gearModableTableConfigOptions.alwaysMod,
 ]
 
 export const buyGearVehiclesCols: Columns<GearDrones>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
   gearDroneTableConfigOptions.subtype,
-
   ...baseDroneStatsConfigOptions,
   gearDroneTableConfigOptions.seat,
   gearTableConfigOptions.avail,
@@ -255,7 +258,7 @@ export const sellGearVehiclesCols: Columns<GearDrones>[] = [
   ...baseDroneStatsConfigOptions,
   gearDroneTableConfigOptions.seat,
   gearTableConfigOptions.cost,
-  gearTableConfigOptions.alwaysMod,
+  gearModableTableConfigOptions.alwaysMod,
 ]
 
 type VehicleModCols = Columns<GearDroneMod>
@@ -285,7 +288,7 @@ const essenceConfigOption: Columns<GearCyberware | GearBioware> = {
   label: "Ess",
 }
 
-export const buyAugmentationCols: Columns<GearAugmentation>[] = [
+export const buyAugmentationCols: Columns<GearCyberware | GearBioware>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
   gearRatingTableConfigOption.setRating,
@@ -294,10 +297,11 @@ export const buyAugmentationCols: Columns<GearAugmentation>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export const sellAugmentationCols: Columns<GearAugmentation>[] = [
+export const sellAugmentationCols: Columns<GearCyberware | GearBioware>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
   gearRatingTableConfigOption.displayRating,
   essenceConfigOption,
   gearTableConfigOptions.cost,
+  gearModableTableConfigOptions.mod,
 ]

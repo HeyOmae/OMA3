@@ -2324,3 +2324,7 @@ export const cyberware: GearCyberware[] = [
     name: "Spurs Retractable Augment",
   },
 ]
+
+export const mods = cyberware.filter(({ useAs }) =>
+  useAs.some((useage) => "capacity" in useage),
+)

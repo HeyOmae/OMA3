@@ -891,7 +891,7 @@ export const mockedRunners: Runner[] = [
           },
           availability: "3",
           cost: 6000,
-          name: "Cybereye3",
+          name: "Cybereye 3",
         },
         {
           modifications: {

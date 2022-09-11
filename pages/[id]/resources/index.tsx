@@ -98,35 +98,35 @@ export const ResourcePage = (): JSX.Element => {
       >
         <Button variant="contained">Imaging Devices</Button>
       </NextLink>
-      <NextLink href={`${asPath}audio`} passHref>
+      <NextLink href={`${asPath}/audio`} passHref>
         <Button variant="contained">Audio Devices</Button>
       </NextLink>
-      <NextLink href={`${asPath}sensor`} passHref>
+      <NextLink href={`${asPath}/sensor`} passHref>
         <Button variant="contained">Sensor Devices</Button>
       </NextLink>
       <h2>Security</h2>
-      <GearNav pathTo={`${asPath}security/`} gearData={securityData} />
+      <GearNav pathTo={`${asPath}/security/`} gearData={securityData} />
       <h2>Biotech</h2>
-      <NextLink href={`${asPath}biotech`} passHref>
+      <NextLink href={`${asPath}/biotech`} passHref>
         <Button variant="contained">Biotech</Button>
       </NextLink>
       <h2>Magic Gear</h2>
-      <NextLink href={`${asPath}foci`} passHref>
+      <NextLink href={`${asPath}/foci`} passHref>
         <Button variant="contained">Foci</Button>
       </NextLink>
-      <GearNav pathTo={`${asPath}magic/`} gearData={magicGearData} />
+      <GearNav pathTo={`${asPath}/magic/`} gearData={magicGearData} />
       <h2>Rigger Gear</h2>
-      <NextLink href={`${asPath}drones`} passHref>
+      <NextLink href={`${asPath}/drones`} passHref>
         <Button variant="contained">Drones</Button>
       </NextLink>
-      <NextLink href={`${asPath}vehicles`} passHref>
+      <NextLink href={`${asPath}/vehicles`} passHref>
         <Button variant="contained">Vehicles</Button>
       </NextLink>
       <h2>Augmentations</h2>
-      <NextLink href={`${asPath}cyberware`} passHref>
+      <NextLink href={`${asPath}/cyberware`} passHref>
         <Button variant="contained">Cyberware</Button>
       </NextLink>
-      <NextLink href={`${asPath}bioware`} passHref>
+      <NextLink href={`${asPath}/bioware`} passHref>
         <Button variant="contained">Bioware</Button>
       </NextLink>
     </RunnerLayout>
