@@ -8,7 +8,7 @@ describe("Resource Page", () => {
       withTestRouter(<ResourcePage />, {
         query: { id: "1" },
         pathname: "/[id]/resources",
-        asPath: "/1/resources/",
+        asPath: "/1/resources",
       }),
     )
 

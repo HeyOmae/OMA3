@@ -43,17 +43,34 @@ interface ItemAttributeMod {
 
 interface AttackRatingModifier {
   attribute: string
-  attackRating: attackRating
+  attackRating?: attackRating
+  value?: number
+  type?: string
+  modType?: string
+  cyber?: true
+  cond?: true
+  condIndex?: number
 }
 
-export interface GearMod<UseAs = AsModAccessory | AsCyberwareInstall>
+export interface GearMod<UseAs = (AsModAccessory | AsCyberwareInstall)[]>
   extends Gear {
-  useAs: UseAs[]
+  useAs: UseAs
   modifications?: {
-    attrmod?: AttackRatingModifier
-    itemattrmod?: ItemAttributeMod[]
+    attrmod?: AttackRatingModifier | AttackRatingModifier[]
+    itemattrmod?: ItemAttributeMod[] | AttackRatingModifier
     itemhookmod?: GearModHooks
     accessorymod?: AccessoryMod[]
+    edgemod?: EdgeMod[]
+    skillmod?: SkillMod[]
+    itemmod?: ItemAccessory[]
+    dmgtypemod?: { type: "PHYSICAL" | "STUN" }
+    qualitymod?: {
+      ref: string
+    }
+    lifecostmod?: {
+      percent: number
+    }
+    relevancemod?: RelevanceMod
   }
 }
 
@@ -82,7 +99,7 @@ export interface ArmorMod extends GearWithRating {
 }
 
 export interface FirearmMod
-  extends GearMod<GearModUseAs<WeaponSlot>>,
+  extends GearMod<GearModUseAs<WeaponSlot>[]>,
     Partial<GearTypes> {
   requires?: {
     itemsubtypereq?: {
@@ -235,36 +252,13 @@ interface EdgeMod {
   type: "BONUS"
   skill: string
 }
-export interface GearAugmentation extends GearWithRating, Partial<GearTypes> {
-  modifications?: {
-    edgemod?: EdgeMod[]
-    attrmod?: {
-      attribute: string
-      value: number
-      type?: string
-      modType?: string
-      cyber?: true
-      cond?: true
-      condIndex?: number
-    }[]
-    itemhookmod?: GearModHooks
-    accessorymod?: AccessoryMod[]
-    skillmod?: SkillMod[]
-    itemmod?: ItemAccessory[]
-    dmgtypemod?: { type: "PHYSICAL" | "STUN" }
-    itemattrmod?: AttackRatingModifier
-    qualitymod?: {
-      ref: string
-    }
-    lifecostmod?: {
-      percent: number
-    }
-    relevancemod?: RelevanceMod
-  }
-}
+export interface GearAugmentation<UseAs = GearAugmentationUseAs>
+  extends GearMod<UseAs>,
+    GearWithRating,
+    Partial<GearTypes> {}
 
-export interface GearCyberware extends GearAugmentation {
-  useAs: Array<GearAugmentationUseAs | GearModUseAs>
+export interface GearCyberware
+  extends GearAugmentation<Array<GearAugmentationUseAs | GearModUseAs>> {
   language?: "fr" | "de" | "en"
   modOnly?: true
   cyberdeck?: {
@@ -275,7 +269,6 @@ export interface GearCyberware extends GearAugmentation {
 }
 
 export interface GearBioware extends GearAugmentation {
-  useAs: GearAugmentationUseAs
   choice?: "PHYSICAL SKILL"
 }
 

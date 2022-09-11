@@ -1,7 +1,11 @@
 import armorData from "@/data/armor"
 import { GearArmor } from "@/types/Resources"
 import { GearPageTemplate } from "../GearPageTemplate"
-import { gearTableConfigOptions, Columns } from "../util"
+import {
+  gearTableConfigOptions,
+  Columns,
+  gearModableTableConfigOptions,
+} from "../util"
 
 const baseCols: Columns<GearArmor>[] = [
   gearTableConfigOptions.name,
@@ -22,7 +26,7 @@ const buyArmorCols: Columns<GearArmor>[] = [
 const sellArmorCols: Columns<GearArmor>[] = [
   gearTableConfigOptions.sell,
   ...baseCols,
-  gearTableConfigOptions.mod,
+  gearModableTableConfigOptions.mod,
 ]
 
 export const Armor = () => (

@@ -45,7 +45,7 @@ export const ModLinkButton: FC<{ gear: Gear; index: number }> = ({
 }) => {
   const { asPath } = useRouter()
   return (
-    <NextLink href={`${asPath}${index}`} passHref>
+    <NextLink href={`${asPath}/${index}`} passHref>
       <IconButton aria-label={`Mod ${name} (${index})`} color="secondary">
         <Extension />
       </IconButton>

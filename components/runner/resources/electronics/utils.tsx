@@ -12,6 +12,7 @@ import {
 import { FC } from "react"
 import {
   Columns,
+  gearModableTableConfigOptions,
   gearRatingTableConfigOption,
   gearTableConfigOptions,
 } from "../util"
@@ -83,7 +84,7 @@ export const sellSensorCols: SensorDeviceCols = [
   gearRatingTableConfigOption.displayRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
-  gearTableConfigOptions.mod,
+  gearModableTableConfigOptions.mod,
 ]
 
 export const expectGearToDisplayMatrixDeviceTable =
