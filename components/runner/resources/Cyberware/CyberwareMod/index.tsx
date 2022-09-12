@@ -1,6 +1,7 @@
 import { mods } from "@/data/cyberware"
 import { GearCyberware } from "@/types/Resources"
 import { GearModPageTemplate } from "../../GearPageTemplate/GearModPageTemplate"
+import { RemainingCapacityCyberware } from "../../GearPageTemplate/RemainingCapacity/RemainingCapacityCyberware"
 import {
   Columns,
   gearCapacityConfigOption,
@@ -36,6 +37,7 @@ const CyberwareMods = () => {
       listOfGear={mods}
       addGearTableConfig={buyCyberwareModCols}
       removeGearTableConfig={sellCyberwareModCols}
+      CapacityDisplay={RemainingCapacityCyberware}
     />
   )
 }
