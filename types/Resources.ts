@@ -54,7 +54,7 @@ interface AttackRatingModifier {
 
 export interface GearMod<UseAs = (AsModAccessory | AsCyberwareInstall)[]>
   extends Gear {
-  useAs: UseAs
+  useAs?: UseAs
   modifications?: {
     attrmod?: AttackRatingModifier | AttackRatingModifier[]
     itemattrmod?: ItemAttributeMod[] | AttackRatingModifier
@@ -86,7 +86,7 @@ type WeaponSlot =
   | "FIREARMS EXTERNAL"
   | "CYBERLIMB IMPLANT"
 
-interface GearModUseAs<SlotType = string> extends Partial<GearTypes> {
+export interface GearModUseAs<SlotType = string> extends Partial<GearTypes> {
   slot?: SlotType
   capacity?: number
 }
@@ -232,17 +232,15 @@ export interface GearFocus extends GearWithRating {
   choice?: "ADEPT_POWER" | "SPELL_CATEGORY" | "SPIRIT" | "MELEE_WEAPON"
 }
 
-interface ModifiableGear {
+export interface ModifiableGear<M = (GearMod & Partial<GearModRated>)[]> {
   // TODO: Stop being a typescript hack
-  mods?: (GearMod & Partial<GearModRated>)[]
+  mods?: M
 }
 
-export interface GearModdableRated extends GearTyped, ModifiableGear {
-  modifications: {
-    itemhookmod: GearModHooks
-  }
-  useAs?: Partial<GearModUseAs>[]
-}
+export interface GearModdableRated
+  extends GearTyped,
+    ModifiableGear,
+    GearMod<Partial<GearModUseAs>[]> {}
 
 export interface GearAugmentationUseAs extends GearTypes {
   essence: string
@@ -258,7 +256,8 @@ export interface GearAugmentation<UseAs = GearAugmentationUseAs>
     Partial<GearTypes> {}
 
 export interface GearCyberware
-  extends GearAugmentation<Array<GearAugmentationUseAs | GearModUseAs>> {
+  extends GearAugmentation<Array<GearAugmentationUseAs | GearModUseAs>>,
+    ModifiableGear<GearCyberware[]> {
   language?: "fr" | "de" | "en"
   modOnly?: true
   cyberdeck?: {

@@ -161,7 +161,11 @@ export const gearToolsConfigOptionSetSkill: Columns<GearTools, string> = {
 }
 
 export const gearCapacityConfigOption: Columns<GearMod & GearModRated> = {
-  display: (gear) => `[${gear.currentRating ?? gear.useAs[0].capacity}]`,
+  display: (gear) =>
+    `[${
+      gear.currentRating ??
+      gear.useAs.find((useage) => "capacity" in useage).capacity
+    }]`,
   label: "Capacity",
 }
 

@@ -1223,6 +1223,96 @@ export const mockedRunners: Runner[] = [
           availability: "4",
           cost: 15000,
           name: "Cyberarm Obvious",
+          mods: [
+            {
+              useAs: [
+                {
+                  type: "CYBERWARE",
+                  subtype: "CYBER BODYWARE",
+                  essence: "0.1",
+                },
+                {
+                  type: "ACCESSORY",
+                  subtype: "CYBER BODYWARE",
+                  capacity: 1,
+                  slot: "CYBERLIMB IMPLANT",
+                },
+              ],
+              availability: "2",
+              cost: 3000,
+              name: "Fingertip Compartment",
+            },
+            {
+              useAs: [
+                {
+                  type: "CYBERWARE",
+                  subtype: "CYBER BODYWARE",
+                  essence: "0.5",
+                },
+                {
+                  type: "ACCESSORY",
+                  subtype: "CYBER BODYWARE",
+                  capacity: 4,
+                  slot: "CYBERLIMB IMPLANT",
+                },
+              ],
+              modifications: {
+                itemmod: [
+                  {
+                    item: "grapple gun",
+                  },
+                ],
+              },
+              availability: "3",
+              cost: 3000,
+              name: "Grapple Gun Augment",
+            },
+            {
+              useAs: [
+                {
+                  type: "CYBERWARE",
+                  subtype: "CYBER BODYWARE",
+                  essence: "0.2",
+                },
+                {
+                  type: "ACCESSORY",
+                  subtype: "CYBER LIMB ACCESSORY",
+                  capacity: 2,
+                  slot: "CYBERLIMB IMPLANT",
+                },
+              ],
+              availability: "3",
+              cost: 7500,
+              name: "Smuggling Compartment",
+            },
+            {
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "CYBER LIMB ENHANCEMENT",
+                  capacity: 1,
+                  slot: "CYBERLIMB IMPLANT",
+                },
+              ],
+              modifications: {
+                attrmod: [
+                  {
+                    attribute: "AGILITY",
+                    type: "ALTERNATE",
+                    value: 1,
+                    cyber: true,
+                  },
+                ],
+              },
+              availability: "1",
+              cost: 5000,
+              name: "Attribute Increase Agility",
+              maxRating: 8,
+              rating: true,
+              rateMultiplier: "cost avail capacity modifier",
+              currentRating: 4,
+            },
+          ],
         },
       ],
     },

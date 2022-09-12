@@ -13,7 +13,7 @@ const DroneMods = () => (
     listOfGear={mods}
     addGearTableConfig={buyDroneModCols}
     removeGearTableConfig={sellDroneModCols}
-    hasCapacity={false}
+    CapacityDisplay={false}
   />
 )
 

@@ -2,17 +2,21 @@ import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { GearDroneMod, GearMod, GearModdableRated } from "@/types/Resources"
 import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
-import React from "react"
 import { DispatchContext } from "../util"
 import { Props as GearPageProps } from "./"
 import { GearTable } from "./GearTable"
 import { RemainingCapacity } from "./RemainingCapacity"
+import { RemainingCapacityCyberware } from "./RemainingCapacity/RemainingCapacityCyberware"
 import { RemainingNuyen } from "./RemainingNuyen"
 import { BreadCrumpOption, ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
 
+type DisplayCapacity =
+  | typeof RemainingCapacity
+  | typeof RemainingCapacityCyberware
+
 interface GearModPageProps<G> extends GearPageProps<G> {
   previousPath: BreadCrumpOption
-  hasCapacity?: boolean
+  CapacityDisplay?: false | DisplayCapacity
 }
 
 type ModsType = GearMod | GearDroneMod
@@ -23,7 +27,7 @@ export function GearModPageTemplate<G extends ModsType>({
   listOfGear,
   addGearTableConfig,
   removeGearTableConfig,
-  hasCapacity = true,
+  CapacityDisplay = RemainingCapacity,
 }: GearModPageProps<G>) {
   const {
     query: { gearIndex },
@@ -72,7 +76,7 @@ export function GearModPageTemplate<G extends ModsType>({
           previousPage={previousPath}
         />
         <RemainingNuyen runner={runner} />
-        {hasCapacity && <RemainingCapacity gear={gearBeingModded} />}
+        {CapacityDisplay && <CapacityDisplay gear={gearBeingModded} />}
         <DispatchContext.Provider value={dispatch}>
           <Grid item md={6}>
             <GearTable listOfGear={listOfGear} cols={addGearTableConfig} />
