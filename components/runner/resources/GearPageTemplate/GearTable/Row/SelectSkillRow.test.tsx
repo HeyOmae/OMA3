@@ -45,7 +45,7 @@ describe("<SelectSkillRow/>", () => {
 
     getByLabelText("Add Engineering Kit").click()
 
-    expect(dispatch).toBeCalledWith({
+    expect(dispatch).toHaveBeenCalledWith({
       type: undefined,
       payload: { ...tools[0], name: "Engineering Kit" },
     })
