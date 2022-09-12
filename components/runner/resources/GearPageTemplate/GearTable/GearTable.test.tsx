@@ -181,7 +181,7 @@ describe("<GearTable />", () => {
       getByText("Engineering").click()
       getByLabelText("Add Engineering Shop").click()
 
-      expect(dispatch).toBeCalledWith({
+      expect(dispatch).toHaveBeenCalledWith({
         type: undefined,
         payload: {
           ...props.listOfGear[1],

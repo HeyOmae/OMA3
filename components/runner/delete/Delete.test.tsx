@@ -38,7 +38,7 @@ describe("<Delete/>", () => {
     })
 
     await waitFor(() => {
-      expect(push).toBeCalledWith("/")
+      expect(push).toHaveBeenCalledWith("/")
     })
   })
 })
