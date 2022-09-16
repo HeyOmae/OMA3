@@ -1,6 +1,191 @@
 import { GearCyberware } from "@/types/Resources"
 
-export const cyberware: GearCyberware[] = [
+const cyberwareAll: GearCyberware[] = [
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EYEWARE",
+        capacity: 1,
+        slot: "CYBEREYE IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EYEWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "2",
+    cost: 750,
+    name: "Flare Compensation",
+  },
+  {
+    useAs: [
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EYEWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "2",
+    cost: 775,
+    name: "Image Link",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EYEWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "2",
+    cost: 1000,
+    name: "Low Light Vision",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EYEWARE",
+        capacity: 3,
+        slot: "CYBEREYE IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EYEWARE",
+        essence: "0.2",
+      },
+    ],
+    availability: "3L",
+    cost: 2000,
+    name: "Smartlink",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EYEWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "2",
+    cost: 1500,
+    name: "Thermographic Vision",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EYEWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "3",
+    cost: 3500,
+    name: "Vision Enhancement",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EYEWARE",
+        capacity: 2,
+        slot: "CYBEREYE IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EYEWARE",
+        essence: "0.1",
+      },
+    ],
+    modifications: {
+      attrmod: {
+        attribute: "ATTACK RATING",
+        attackRating: [0, 0, 2, 2, 2],
+      },
+    },
+    availability: "3",
+    cost: 1750,
+    name: "Vision Magnification",
+  },
+
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EARWARE",
+        capacity: 1,
+        slot: "CYBEREAR IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EARWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "2",
+    cost: 3500,
+    name: "Audio Enhancement",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EARWARE",
+        capacity: 1,
+        slot: "CYBEREAR IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EARWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "4",
+    cost: 3250,
+    name: "Select Sound Filter",
+    maxRating: 6,
+    rating: true,
+    rateMultiplier: "capacity cost",
+  },
+  {
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "CYBER EARWARE",
+        capacity: 2,
+        slot: "CYBEREAR IMPLANT",
+      },
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER EARWARE",
+        essence: "0.1",
+      },
+    ],
+    availability: "2",
+    cost: 3000,
+    name: "Spatial Recognizer",
+  },
+
   {
     useAs: [
       {
@@ -2324,6 +2509,10 @@ export const cyberware: GearCyberware[] = [
     name: "Spurs Retractable Augment",
   },
 ]
+
+export const cyberware = cyberwareAll.filter(({ useAs }) =>
+  useAs.some((useage) => "essence" in useage),
+)
 
 export const mods = cyberware.filter(({ useAs }) =>
   useAs.some((useage) => "capacity" in useage),
