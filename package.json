@@ -52,7 +52,7 @@
     "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^27.1.1",
-    "eslint-plugin-react": "^7.31.9",
+    "eslint-plugin-react": "^7.31.10",
     "fake-indexeddb": "^4.0.0",
     "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
