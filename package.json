@@ -45,7 +45,7 @@
     "@types/testing-library__react": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "babel-jest": "^29.1.2",
+    "babel-jest": "^29.2.1",
     "eslint": "^8.25.0",
     "eslint-config-next": "^12.3.1",
     "eslint-config-prettier": "^8.5.0",
