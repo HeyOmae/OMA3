@@ -34,7 +34,7 @@
     "react-indexed-db": "^1.0.12"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.0.4",
+    "@next/eslint-plugin-next": "^13.0.5",
     "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
