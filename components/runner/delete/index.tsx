@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { useRouter } from "next/router"
 import React, { FC } from "react"
-import { useIndexedDB } from "react-indexed-db"
+import { useIndexedDB } from "react-indexed-db-hook"
 
 export const Delete: FC = () => {
   const { deleteRecord } = useIndexedDB("runners")

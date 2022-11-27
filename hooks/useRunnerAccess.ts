@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { useEffect, Reducer, useReducer, useState } from "react"
-import { useIndexedDB } from "react-indexed-db"
+import { useIndexedDB } from "react-indexed-db-hook"
 import { Runner } from "../types/runner"
 
 export const useGetRunner = () => {

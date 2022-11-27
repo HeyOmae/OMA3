@@ -6,7 +6,7 @@ import { mockedRunners } from "../../test/mocks"
 
 const mockAddToIDB = jest.fn()
 
-jest.mock("react-indexed-db", () => ({
+jest.mock("react-indexed-db-hook", () => ({
   useIndexedDB: () => ({
     add: mockAddToIDB,
     getAll: () => Promise.resolve(mockedRunners),
