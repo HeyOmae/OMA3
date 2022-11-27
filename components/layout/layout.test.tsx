@@ -27,7 +27,7 @@ describe("<RunnerLayout />", () => {
   it("have a home button that goes back to the root", async () => {
     const { getByText, push } = setup()
 
-    getByText("Home").click()
+    await userEvent.click(getByText("Home"))
 
     await waitFor(() => {
       expect(push).toHaveBeenCalledWith("/")
@@ -40,7 +40,7 @@ describe("<RunnerLayout />", () => {
     expect(queryByText("Info")).not.toBeInTheDocument()
     expect(queryByText("Delete")).not.toBeInTheDocument()
 
-    getByText("Menu").click()
+    await userEvent.click(getByText("Menu"))
 
     await waitFor(() => {
       expect(getByText("Info").closest("a")).toHaveAttribute("href", "/1/info")
@@ -76,7 +76,7 @@ describe("<RunnerLayout />", () => {
 
     expect(queryByText("Info")).not.toBeInTheDocument()
 
-    getByText("Menu").click()
+    await userEvent.click(getByText("Menu"))
 
     expect(queryByText("Info")).toBeInTheDocument()
 
@@ -92,7 +92,7 @@ describe("<RunnerLayout />", () => {
     it("should in the drawer when open", async () => {
       const { getByLabelText, getByText } = setup()
 
-      getByText("Menu").click()
+      await userEvent.click(getByText("Menu"))
 
       await waitFor(() => {
         expect(getByLabelText("Theme")).toBeInTheDocument()

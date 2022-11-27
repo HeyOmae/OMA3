@@ -1,4 +1,4 @@
-import { render, waitFor } from "../../../test/testUtils"
+import { render, waitFor, userEvent } from "@/test/testUtils"
 import { AccordionWrapper } from "./index"
 
 describe("<Accordion/>", () => {
@@ -16,11 +16,11 @@ describe("<Accordion/>", () => {
 
     expect(getByText("I am some child content")).not.toBeVisible()
 
-    getByText("The Button").click()
+    await userEvent.click(getByText("The Button"))
 
     expect(getByText("I am some child content")).toBeVisible()
 
-    getByText("The Button").click()
+    await userEvent.click(getByText("The Button"))
 
     await waitFor(() => {
       expect(getByText("I am some child content")).not.toBeVisible()
