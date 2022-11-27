@@ -1,8 +1,8 @@
 import React from "react"
 import { AllRunnersAccess } from "./index"
 import { render, screen, waitFor } from "@testing-library/react"
-import { initRunner } from "../../types/runner"
-import { mockedRunners } from "../../test/mocks"
+import { initRunner } from "@/types/runner"
+import { mockedRunners } from "@/test/mocks"
 
 const mockAddToIDB = jest.fn()
 
