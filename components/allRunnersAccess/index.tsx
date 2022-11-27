@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react"
-import { useIndexedDB } from "react-indexed-db"
+import { useIndexedDB } from "react-indexed-db-hook"
 import { CircularProgress } from "@mui/material"
 import { Runner } from "../../types/runner"
 

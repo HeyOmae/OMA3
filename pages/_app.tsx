@@ -5,7 +5,7 @@ import "./styles.css"
 import Head from "next/head"
 
 if (typeof window !== "undefined") {
-  import("react-indexed-db").then(({ initDB }) => {
+  import("react-indexed-db-hook").then(({ initDB }) => {
     initDB({
       name: "omae",
       version: 1,
