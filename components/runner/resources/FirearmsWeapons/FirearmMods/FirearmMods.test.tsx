@@ -5,6 +5,7 @@ import {
   withTestRouter,
   getByText as getTextIn,
   runnerFromDB,
+  userEvent,
 } from "@/test/testUtils"
 import FirearmMods from "./index"
 import { mods } from "@/data/firearms"
@@ -51,7 +52,7 @@ describe("<FirearmMods />", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
 
-    getByLabelText("Add Laser Sight").click()
+    await userEvent.click(getByLabelText("Add Laser Sight"))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.firearms[5].mods).toHaveLength(1)

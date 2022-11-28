@@ -5,7 +5,7 @@ import {
   setupIndexedDB,
   withTestRouter,
   SliderHelper,
-  fireEvent,
+  userEvent,
 } from "@/test/testUtils"
 import Foci from "./index"
 import { foci } from "@/data/focus"
@@ -85,8 +85,8 @@ describe("foci", () => {
       // availibility
       expect(getTextInContainer(focusRow, "1L")).toBeInTheDocument()
 
-      fireEvent.mouseDown(getTextInContainer(focusRow, "Adrenaline boost"))
-      getByText("Improved physical attribute").click()
+      await userEvent.click(getTextInContainer(focusRow, "Adrenaline boost"))
+      await userEvent.click(getByText("Improved physical attribute"))
 
       expect(
         getByText("Improved physical attribute Qi Focus"),

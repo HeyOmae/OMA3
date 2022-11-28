@@ -5,7 +5,7 @@ import {
   setupIndexedDB,
   waitFor,
   withTestRouter,
-  fireEvent,
+  userEvent,
   waitForElementToBeRemoved,
   caymansCurrentlySpentNuyen,
 } from "@/test/testUtils"
@@ -26,23 +26,23 @@ describe("Tools page", () => {
       expect(getByText(`${currentNuyen}¥/${totalNuyen}¥`)).toBeInTheDocument()
     })
 
-    fireEvent.mouseDown(getAllByText("Astral")[0])
-    fireEvent.click(getByText("Outdoors"))
+    await userEvent.click(getAllByText("Astral")[0])
+    await userEvent.click(getByText("Outdoors"))
 
     await waitForElementToBeRemoved(
       // Need to use this because material ui also has a select element with role listbox
       document.body.querySelector("ul[role=listbox]"),
     )
 
-    fireEvent.mouseDown(getAllByText("Astral")[0])
-    fireEvent.click(getByText("Stealth"))
+    await userEvent.click(getAllByText("Astral")[0])
+    await userEvent.click(getByText("Stealth"))
     await waitForElementToBeRemoved(
       document.body.querySelector("ul[role=listbox]"),
     )
 
-    getByLabelText(`Add Outdoors ${gearA.name}`).click()
-    getByLabelText(`Add Stealth ${gearB.name}`).click()
-    getByLabelText(`Add Astral ${gearC.name}`).click()
+    await userEvent.click(getByLabelText(`Add Outdoors ${gearA.name}`))
+    await userEvent.click(getByLabelText(`Add Stealth ${gearB.name}`))
+    await userEvent.click(getByLabelText(`Add Astral ${gearC.name}`))
 
     expect(
       getByText(
@@ -52,7 +52,7 @@ describe("Tools page", () => {
       ),
     ).toBeInTheDocument()
 
-    getByLabelText(`Remove Stealth ${gearB.name}`).click()
+    await userEvent.click(getByLabelText(`Remove Stealth ${gearB.name}`))
 
     expect(
       getByText(`${currentNuyen - gearA.cost - gearC.cost}¥/${totalNuyen}¥`),

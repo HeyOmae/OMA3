@@ -4,6 +4,7 @@ import {
   waitFor,
   setupIndexedDB,
   withTestRouter,
+  userEvent,
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import MeleeWeapons from "./index"
@@ -45,7 +46,7 @@ describe("<MeleeWeapons/>", () => {
 
     expect(runnerFromDB(7).resources).toBeUndefined()
 
-    getByLabelText("Add Katana").click()
+    await userEvent.click(getByLabelText("Add Katana"))
     expect(getByText("7650¥/8000¥")).toBeInTheDocument()
 
     await waitFor(() => {
@@ -87,7 +88,7 @@ describe("<MeleeWeapons/>", () => {
     })
     expect(runnerFromDB(9).resources.melee).toHaveLength(2)
 
-    getByLabelText("Remove Katana").click()
+    await userEvent.click(getByLabelText("Remove Katana"))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.melee).toHaveLength(1)

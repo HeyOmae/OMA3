@@ -6,6 +6,7 @@ import {
   render,
   SliderHelper,
   runnerFromDB,
+  userEvent,
 } from "@/test/testUtils"
 import OtherElectronics from "./"
 
@@ -53,7 +54,7 @@ describe("<OtherElectronics/>", () => {
 
     SliderHelper.change(getByTestId("White Noise Generator-rating"), 4, 1, 6)
 
-    getByLabelText("Add White Noise Generator").click()
+    await userEvent.click(getByLabelText("Add White Noise Generator"))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources?.otherElectronics[0].name).toEqual(

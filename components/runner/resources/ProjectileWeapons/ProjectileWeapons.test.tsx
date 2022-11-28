@@ -3,6 +3,7 @@ import {
   render,
   runnerFromDB,
   setupIndexedDB,
+  userEvent,
   waitFor,
   withTestRouter,
 } from "../../../../test/testUtils"
@@ -21,7 +22,7 @@ describe("<ProjectileWeapons/>", () => {
       expect(getByText("Resources")).toHaveAttribute("href", "/9/resources")
     })
     expect(getByText("8000¥/8000¥")).toBeInTheDocument()
-    getByLabelText("Add Crossbow Light").click()
+    await userEvent.click(getByLabelText("Add Crossbow Light"))
     expect(getByText("7850¥/8000¥")).toBeInTheDocument()
 
     await waitFor(() => {
@@ -37,7 +38,7 @@ describe("<ProjectileWeapons/>", () => {
       expect(getByText("Purchased Projectile Weapons")).toBeInTheDocument()
     })
 
-    getByLabelText("Remove Bow10").click()
+    await userEvent.click(getByLabelText("Remove Bow10"))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.projectile).toHaveLength(0)

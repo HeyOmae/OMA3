@@ -7,6 +7,7 @@ import {
   SliderHelper,
   searchRegexInNodes,
   runnerFromDB,
+  userEvent,
 } from "@/test/testUtils"
 import { initRunnerAttributes } from "@/types/runner"
 import { Metatype } from "./index"
@@ -71,9 +72,14 @@ describe("<Metatype/>", () => {
     expect(runnerFromDB(2).metatype).toBeUndefined()
 
     await waitFor(() => {
-      const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
-      getContentByLabelText(metatypeRadio, "Ork").click()
+      getByRole("radiogroup", { name: "metatypes" })
     })
+    await userEvent.click(
+      getContentByLabelText(
+        getByRole("radiogroup", { name: "metatypes" }),
+        "Ork",
+      ),
+    )
 
     await waitFor(() => {
       expect(runnerFromDB(2).metatype).toEqual("Ork")
@@ -91,8 +97,9 @@ describe("<Metatype/>", () => {
     it("should be visible if metatype is selected", async () => {
       const { getByLabelText, getByText } = setup()
       await waitFor(() => {
-        getByLabelText("Ork").click()
+        getByLabelText("Ork")
       })
+      await userEvent.click(getByLabelText("Ork"))
 
       await waitFor(() => {
         expect(runnerFromDB(2).metatype).toEqual("Ork")
@@ -148,7 +155,7 @@ describe("<Metatype/>", () => {
           expect(getByText("Select Points to Use")).toBeInTheDocument()
         })
 
-        getByLabelText("Dwarf").click()
+        await userEvent.click(getByLabelText("Dwarf"))
         SliderHelper.change(getByTestId("Willpower-slider"), 4, 1, 7)
 
         await waitFor(() => {
@@ -157,7 +164,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Adjustment").click()
+        await userEvent.click(getByLabelText("Adjustment"))
 
         SliderHelper.change(getByTestId("Willpower-slider"), 7, 1, 7)
 
@@ -167,7 +174,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Attribute").click()
+        await userEvent.click(getByLabelText("Attribute"))
 
         SliderHelper.change(getByTestId("Willpower-slider"), 1, 1, 7)
 
@@ -193,8 +200,8 @@ describe("<Metatype/>", () => {
           expect(getByText("Select Points to Use")).toBeInTheDocument()
         })
 
-        getByLabelText("Troll").click()
-        getByLabelText("Adjustment").click()
+        await userEvent.click(getByLabelText("Troll"))
+        await userEvent.click(getByLabelText("Adjustment"))
 
         await waitFor(() => {
           expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
@@ -231,8 +238,8 @@ describe("<Metatype/>", () => {
           expect(getByText("Select Points to Use")).toBeInTheDocument()
         })
 
-        getByLabelText("Adjustment").click()
-        getByLabelText("Elf").click()
+        await userEvent.click(getByLabelText("Adjustment"))
+        await userEvent.click(getByLabelText("Elf"))
         SliderHelper.change(getByTestId("Agility-slider"), 4, 1, 7)
 
         await waitFor(() => {
@@ -241,7 +248,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Attribute").click()
+        await userEvent.click(getByLabelText("Attribute"))
         SliderHelper.change(getByTestId("Agility-slider"), 7, 1, 7)
 
         await waitFor(() => {
@@ -250,7 +257,7 @@ describe("<Metatype/>", () => {
           ).toBeInTheDocument()
         })
 
-        getByLabelText("Adjustment").click()
+        await userEvent.click(getByLabelText("Adjustment"))
 
         SliderHelper.change(getByTestId("Agility-slider"), 1, 1, 7)
 
@@ -276,7 +283,7 @@ describe("<Metatype/>", () => {
         expect(getByText("Select Points to Use")).toBeInTheDocument()
       })
 
-      getByLabelText("Elf").click()
+      await userEvent.click(getByLabelText("Elf"))
 
       SliderHelper.change(getByTestId("Agility-slider"), 3, 1, 7)
 
@@ -286,7 +293,7 @@ describe("<Metatype/>", () => {
         ).toBeInTheDocument()
       })
 
-      getByLabelText("Adjustment").click()
+      await userEvent.click(getByLabelText("Adjustment"))
 
       SliderHelper.change(getByTestId("Agility-slider"), 7, 1, 7)
 
@@ -305,7 +312,7 @@ describe("<Metatype/>", () => {
 
       // Test to see if you spend attribute first and then adjustment
       SliderHelper.change(getByTestId("Charisma-slider"), 2, 1, 8)
-      getByLabelText("Attribute").click()
+      await userEvent.click(getByLabelText("Attribute"))
 
       await waitFor(() => {
         expect(

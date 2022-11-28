@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@/test/testUtils"
+import { render, fireEvent, userEvent } from "@/test/testUtils"
 import powerData from "@/data/adeptPowers.json"
 import { ChoiceSelect } from "./index"
 import { ChoiceContext } from "../../Row/ChoiceRatingRow"
@@ -32,14 +32,14 @@ describe("ChoiceSelect", () => {
     })
   })
 
-  it("should set the index of the chosen power", () => {
+  it("should set the index of the chosen power", async () => {
     const selectedPowerIndex = 5
 
     const { getByText } = setup()
 
     fireEvent.mouseDown(getByText(powerData[0].name))
 
-    getByText(powerData[selectedPowerIndex].name).click()
+    await userEvent.click(getByText(powerData[selectedPowerIndex].name))
     expect(setChoiceIndex).toHaveBeenCalledWith(selectedPowerIndex)
   })
 

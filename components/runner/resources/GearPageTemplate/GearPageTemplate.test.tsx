@@ -4,6 +4,7 @@ import {
   withTestRouter,
   waitFor,
   runnerFromDB,
+  userEvent,
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import { GearPageTemplate, Props } from "."
@@ -64,7 +65,7 @@ describe("<GearPageTemplate/>", () => {
 
       expect(runnerFromDB(7).resources).toBeUndefined()
 
-      getByLabelText("Add Katana").click()
+      await userEvent.click(getByLabelText("Add Katana"))
       expect(getByText("7650¥/8000¥")).toBeInTheDocument()
 
       await waitFor(() => {
@@ -106,7 +107,7 @@ describe("<GearPageTemplate/>", () => {
       })
       expect(runnerFromDB(9).resources.melee).toHaveLength(2)
 
-      getByLabelText("Remove Katana").click()
+      await userEvent.click(getByLabelText("Remove Katana"))
 
       await waitFor(() => {
         expect(runnerFromDB(9).resources.melee).toHaveLength(1)
