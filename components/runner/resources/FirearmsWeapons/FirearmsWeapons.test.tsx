@@ -6,6 +6,7 @@ import {
   withTestRouter,
   getByText as getTextIn,
   caymansCurrentlySpentNuyen,
+  userEvent,
 } from "@/test/testUtils"
 import FirearmsWeapons from "./"
 import FirearmsData from "@/data/firearms"
@@ -37,7 +38,7 @@ describe("<FirearmsWeapon />", () => {
       expect(getByLabelText("Add Ingram Smartgun XI")).toBeInTheDocument()
     })
 
-    getByLabelText("Add Ingram Smartgun XI").click()
+    await userEvent.click(getByLabelText("Add Ingram Smartgun XI"))
 
     await waitFor(() => {
       expect(runnerFromDB(8).resources.firearms).toEqual([
@@ -101,7 +102,7 @@ describe("<FirearmsWeapon />", () => {
       ).toBeInTheDocument()
     })
 
-    getByLabelText(`Remove ${gunToBeRemoved.name}`).click()
+    await userEvent.click(getByLabelText(`Remove ${gunToBeRemoved.name}`))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.firearms).toHaveLength(

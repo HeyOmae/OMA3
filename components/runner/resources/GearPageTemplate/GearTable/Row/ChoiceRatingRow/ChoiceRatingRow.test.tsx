@@ -5,10 +5,10 @@ import {
 } from "@/components/runner/resources/util"
 import { foci } from "@/data/focus"
 import {
-  fireEvent,
   render,
   setupIndexedDB,
   SliderHelper,
+  userEvent,
   waitFor,
   withTestRouter,
 } from "@/test/testUtils"
@@ -47,7 +47,7 @@ describe("ChoiceRatingRow", () => {
       dispatch,
     }
   }
-  it("should allow users to select adept powers and select rating", () => {
+  it("should allow users to select adept powers and select rating", async () => {
     const { getByText, getByLabelText } = setup()
 
     expect(getByText("Adrenaline boost Qi Focus")).toBeInTheDocument()
@@ -55,9 +55,9 @@ describe("ChoiceRatingRow", () => {
 
     expect(getByText("Adrenaline boost")).toBeInTheDocument()
 
-    fireEvent.mouseDown(getByText("Adrenaline boost"))
+    await userEvent.click(getByText("Adrenaline boost"))
 
-    getByText("Improved reflexes").click()
+    await userEvent.click(getByText("Improved reflexes"))
     expect(getByText("Improved reflexes Qi Focus")).toBeInTheDocument()
     expect(getByLabelText("Add Improved reflexes Qi Focus")).toBeInTheDocument()
   })
@@ -87,29 +87,29 @@ describe("ChoiceRatingRow", () => {
     expect(getByText("12000¥")).toBeInTheDocument()
   })
 
-  it("should allow users to select spell category", () => {
+  it("should allow users to select spell category", async () => {
     const { getByText } = setup("Counterspelling Focus")
 
     expect(getByText("Combat Counterspelling Focus")).toBeInTheDocument()
 
     expect(getByText("Combat")).toBeInTheDocument()
 
-    fireEvent.mouseDown(getByText("Combat"))
+    await userEvent.click(getByText("Combat"))
 
-    getByText("Illusion").click()
+    await userEvent.click(getByText("Illusion"))
     expect(getByText("Illusion Counterspelling Focus")).toBeInTheDocument()
   })
 
-  it("should allow users to select spirit types", () => {
+  it("should allow users to select spirit types", async () => {
     const { getByText } = setup("Summoning Focus")
 
     expect(getByText("Air Summoning Focus")).toBeInTheDocument()
 
     expect(getByText("Air")).toBeInTheDocument()
 
-    fireEvent.mouseDown(getByText("Air"))
+    await userEvent.click(getByText("Air"))
 
-    getByText("Kin").click()
+    await userEvent.click(getByText("Kin"))
     expect(getByText("Kin Summoning Focus")).toBeInTheDocument()
   })
 
@@ -122,9 +122,9 @@ describe("ChoiceRatingRow", () => {
 
     expect(getByText("Katana")).toBeInTheDocument()
 
-    fireEvent.mouseDown(getByText("Katana"))
+    await userEvent.click(getByText("Katana"))
 
-    getByText("Combat Knife").click()
+    await userEvent.click(getByText("Combat Knife"))
     expect(getByText("Combat Knife Weapon Focus")).toBeInTheDocument()
   })
 })

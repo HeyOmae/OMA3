@@ -2,6 +2,7 @@ import {
   render,
   runnerFromDB,
   setupIndexedDB,
+  userEvent,
   waitFor,
   withTestRouter,
 } from "@/test/testUtils"
@@ -31,7 +32,7 @@ describe("ImagingMods", () => {
     expect(getByText("1/3")).toBeInTheDocument()
     expect(runnerFromDB(9).resources.imaging[0].mods).toHaveLength(1)
 
-    getByLabelText("Add Smartlink").click()
+    await userEvent.click(getByLabelText("Add Smartlink"))
 
     await waitFor(() =>
       expect(getByLabelText("Remove Smartlink")).toBeInTheDocument(),
@@ -50,7 +51,7 @@ describe("ImagingMods", () => {
     expect(getByText("3/3")).toBeInTheDocument()
     expect(runnerFromDB(9).resources.imaging[0].mods).toHaveLength(2)
 
-    getByLabelText("Remove Image Link").click()
+    await userEvent.click(getByLabelText("Remove Image Link"))
 
     expect(queryByLabelText("Remove Image Link")).not.toBeInTheDocument()
 
@@ -69,7 +70,7 @@ describe("ImagingMods", () => {
       expect(getByLabelText("Add Low Light Vision")).toBeInTheDocument(),
     )
 
-    getByLabelText("Add Low Light Vision").click()
+    await userEvent.click(getByLabelText("Add Low Light Vision"))
 
     await waitFor(() =>
       expect(runnerFromDB(10).resources.imaging[0].mods[0].name).toBe(

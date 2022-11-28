@@ -6,6 +6,7 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextInContainer,
+  userEvent,
 } from "@/test/testUtils"
 import { audioMods } from "@/data/mods"
 import AudioMods from "."
@@ -33,7 +34,7 @@ describe("AudioMods", () => {
     expect(getByText("2/3")).toBeInTheDocument()
     expect(runnerFromDB(10).resources.audio[0].mods).toHaveLength(1)
 
-    getByLabelText("Add Audio Enhancement").click()
+    await userEvent.click(getByLabelText("Add Audio Enhancement"))
 
     expect(getByText("3/3")).toBeInTheDocument()
     await waitFor(() =>
@@ -49,7 +50,7 @@ describe("AudioMods", () => {
     expect(getByText("3/3")).toBeInTheDocument()
     expect(runnerFromDB(10).resources.audio[0].mods).toHaveLength(2)
 
-    getByLabelText("Remove Spatial Recognizer").click()
+    await userEvent.click(getByLabelText("Remove Spatial Recognizer"))
 
     expect(
       queryByLabelText("Remove Spatial Recognizer"),
@@ -72,7 +73,7 @@ describe("AudioMods", () => {
 
     SliderHelper.change(getByTestId("Select Sound Filter-rating"), 3, 1, 3)
 
-    getByLabelText("Add Select Sound Filter").click()
+    await userEvent.click(getByLabelText("Add Select Sound Filter"))
 
     // Should use up all the capacity
     expect(getByText("3/3")).toBeInTheDocument()

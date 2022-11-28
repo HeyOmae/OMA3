@@ -3,8 +3,8 @@ import {
   render,
   getByText as contentGetByText,
   SliderHelper,
-} from "../../../../../test/testUtils"
-import { mockedRunners } from "../../../../../test/mocks"
+} from "@/test/testUtils"
+import { mockedRunners } from "@/test/mocks"
 import { CHANGE_POWER_LEVEL, REMOVE_POWER } from "../.."
 
 describe("<RunnerAdeptPowers/>", () => {

@@ -6,12 +6,13 @@ import {
   withTestRouter,
   runnerFromDB,
   SliderHelper,
-} from "../../../test/testUtils"
-import spellData from "../../../data/spells.json"
-import ritualData from "../../../data/rituals.json"
-import { mockedRunners } from "../../../test/mocks"
-import PowersData from "../../../data/adeptPowers.json"
-import complexFormData from "../../../data/complexForm.json"
+  userEvent,
+} from "@/test/testUtils"
+import spellData from "@/data/spells.json"
+import ritualData from "@/data/rituals.json"
+import { mockedRunners } from "@/test/mocks"
+import PowersData from "@/data/adeptPowers.json"
+import complexFormData from "@/data/complexForm.json"
 
 describe("Magic and Resonance", () => {
   const setup = (id = "2") =>
@@ -41,7 +42,7 @@ describe("Magic and Resonance", () => {
     })
 
     expect(queryByTestId("Magic-attribute=slider")).not.toBeInTheDocument()
-    getByLabelText("Full Mage").click()
+    await userEvent.click(getByLabelText("Full Mage"))
 
     await waitFor(() => {
       expect(getByLabelText("Full Mage")).toBeChecked()
@@ -57,7 +58,7 @@ describe("Magic and Resonance", () => {
     expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
 
     await waitFor(() => getByLabelText("Aspected"))
-    getByLabelText("Aspected").click()
+    await userEvent.click(getByLabelText("Aspected"))
     expect(getByText("1/1")).toBeInTheDocument()
     await waitFor(() => getByTestId("Magic-attribute-slider"))
     SliderHelper.change(getByTestId("Magic-attribute-slider"), 6, 5, 6)
@@ -68,7 +69,7 @@ describe("Magic and Resonance", () => {
       expect(getByText("0/1")).toBeInTheDocument()
     })
 
-    getByLabelText("Technomancer").click()
+    await userEvent.click(getByLabelText("Technomancer"))
 
     await waitFor(() => {
       getByTestId("Resonance-attribute-slider")
@@ -85,7 +86,7 @@ describe("Magic and Resonance", () => {
       expect(getByText("0/1")).toBeInTheDocument()
     })
 
-    getByLabelText("Mystic Adept").click()
+    await userEvent.click(getByLabelText("Mystic Adept"))
 
     await waitFor(() => {
       expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
@@ -100,7 +101,7 @@ describe("Magic and Resonance", () => {
       const { getByTestId, getByLabelText, getByText } = setup()
 
       await waitFor(() => getByLabelText("Adept"))
-      getByLabelText("Adept").click()
+      await userEvent.click(getByLabelText("Adept"))
       expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
 
       await waitFor(() => getByTestId("Magic-attribute-slider"))
@@ -116,7 +117,7 @@ describe("Magic and Resonance", () => {
       expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
 
       await waitFor(() => getByLabelText("Technomancer"))
-      getByLabelText("Technomancer").click()
+      await userEvent.click(getByLabelText("Technomancer"))
 
       await waitFor(() => getByTestId("Resonance-attribute-slider"))
       SliderHelper.change(getByTestId("Resonance-attribute-slider"), 6, 4, 6)
@@ -132,7 +133,7 @@ describe("Magic and Resonance", () => {
       await waitFor(() => {
         expect(getByLabelText("Mundane")).toBeInTheDocument()
       })
-      getByLabelText("Mundane").click()
+      await userEvent.click(getByLabelText("Mundane"))
 
       await waitFor(() => {
         expect(getByText("Nothing Special Here...")).toBeInTheDocument()
@@ -174,7 +175,7 @@ describe("Magic and Resonance", () => {
     it("should display spells for mages", async () => {
       const { getByLabelText, getByText } = setup()
       await waitFor(() => getByLabelText("Full Mage"))
-      getByLabelText("Full Mage").click()
+      await userEvent.click(getByLabelText("Full Mage"))
 
       await waitFor(() => {
         expect(getByText("Combat Spells")).toBeInTheDocument()
@@ -184,7 +185,7 @@ describe("Magic and Resonance", () => {
     it("should display spells for aspected mages", async () => {
       const { getByLabelText, getByText } = setup()
       await waitFor(() => getByLabelText("Aspected"))
-      getByLabelText("Aspected").click()
+      await userEvent.click(getByLabelText("Aspected"))
 
       await waitFor(() => {
         expect(getByText("Detection Spells")).toBeInTheDocument()
@@ -194,7 +195,7 @@ describe("Magic and Resonance", () => {
     it("should display spells for mystic adepts", async () => {
       const { getByLabelText, getByText } = setup()
       await waitFor(() => getByLabelText("Mystic Adept"))
-      getByLabelText("Mystic Adept").click()
+      await userEvent.click(getByLabelText("Mystic Adept"))
 
       await waitFor(() => {
         expect(getByText("Health Spells")).toBeInTheDocument()
@@ -204,13 +205,13 @@ describe("Magic and Resonance", () => {
     it("should add spells to the runner", async () => {
       const { getByLabelText } = setup()
       await waitFor(() => getByLabelText("Mystic Adept"))
-      getByLabelText("Mystic Adept").click()
+      await userEvent.click(getByLabelText("Mystic Adept"))
 
       await waitFor(() => {
         expect(getByLabelText("Learn Fireball")).toBeInTheDocument()
       })
 
-      getByLabelText("Learn Fireball").click()
+      await userEvent.click(getByLabelText("Learn Fireball"))
 
       await waitFor(() => {
         expect(runnerFromDB(1).spells).toBeDefined()
@@ -225,7 +226,7 @@ describe("Magic and Resonance", () => {
         ({ name }) => name === "Manabolt",
       )
 
-      getByLabelText("Learn Manabolt").click()
+      await userEvent.click(getByLabelText("Learn Manabolt"))
       await waitFor(() => {
         expect(runnerFromDB(1).spells.Combat).toEqual([
           fireballSpell,
@@ -236,7 +237,7 @@ describe("Magic and Resonance", () => {
       const manaBarrierSpell = spellData.Manipulation.find(
         ({ name }) => name === "Mana barrier",
       )
-      getByLabelText("Learn Mana barrier").click()
+      await userEvent.click(getByLabelText("Learn Mana barrier"))
       await waitFor(() => {
         expect(runnerFromDB(1).spells.Combat).toEqual([
           fireballSpell,
@@ -275,7 +276,7 @@ describe("Magic and Resonance", () => {
           expect(getByLabelText("Remove Fireball")).toBeInTheDocument()
         })
         expect(getByText("0/8")).toBeInTheDocument()
-        getByLabelText("Remove Fireball").click()
+        await userEvent.click(getByLabelText("Remove Fireball"))
         expect(getByText("1/8")).toBeInTheDocument()
 
         await waitFor(() => {
@@ -287,7 +288,7 @@ describe("Magic and Resonance", () => {
         expect(runnerFromDB(4).spells.Manipulation[2].name).toEqual(
           "Mana barrier",
         )
-        getByLabelText("Remove Mana barrier").click()
+        await userEvent.click(getByLabelText("Remove Mana barrier"))
 
         await waitFor(() => {
           expect(runnerFromDB(4).spells.Manipulation.length).toEqual(3)
@@ -311,7 +312,7 @@ describe("Magic and Resonance", () => {
         expect(getByText(name)).not.toBeVisible()
       })
 
-      getByText("Rituals").click()
+      await userEvent.click(getByText("Rituals"))
 
       await waitFor(() => {
         ritualData.forEach(({ name }) => {
@@ -327,7 +328,7 @@ describe("Magic and Resonance", () => {
         expect(getByText("Rituals")).toBeInTheDocument()
       })
 
-      getByLabelText("Add Ward").click()
+      await userEvent.click(getByLabelText("Add Ward"))
 
       await waitFor(() => {
         expect(runnerFromDB(4).rituals).toEqual([
@@ -367,7 +368,7 @@ describe("Magic and Resonance", () => {
 
       expect(getByText("5/8")).toBeInTheDocument()
 
-      getByLabelText("Remove Ward").click()
+      await userEvent.click(getByLabelText("Remove Ward"))
 
       expect(queryByLabelText("Remove Ward")).not.toBeInTheDocument()
 
@@ -408,11 +409,11 @@ describe("Magic and Resonance", () => {
       await waitFor(() => {
         expect(getByLabelText("Technomancer")).toBeInTheDocument()
       })
-      getByLabelText("Technomancer").click()
+      await userEvent.click(getByLabelText("Technomancer"))
 
       expect(queryByText("Adept Powers")).not.toBeInTheDocument()
 
-      getByLabelText("Mystic Adept").click()
+      await userEvent.click(getByLabelText("Mystic Adept"))
 
       await waitFor(() => {
         expect(getByText("Adept Powers")).toBeInTheDocument()
@@ -420,12 +421,12 @@ describe("Magic and Resonance", () => {
 
       expect(getByText("Spells")).toBeInTheDocument()
 
-      getByLabelText("Adept").click()
+      await userEvent.click(getByLabelText("Adept"))
 
       expect(queryByText("Spells")).not.toBeInTheDocument()
       expect(getByText("Adept Powers")).toBeInTheDocument()
 
-      getByLabelText("Full Mage").click()
+      await userEvent.click(getByLabelText("Full Mage"))
 
       expect(queryByText("Adept Powers")).not.toBeInTheDocument()
     })
@@ -435,11 +436,11 @@ describe("Magic and Resonance", () => {
       await waitFor(() => {
         expect(getByLabelText("Adept")).toBeInTheDocument()
       })
-      getByLabelText("Adept").click()
+      await userEvent.click(getByLabelText("Adept"))
 
       expect(getByText("Combat sense")).not.toBeVisible()
 
-      getByText("Adept Powers").click()
+      await userEvent.click(getByText("Adept Powers"))
 
       expect(getByText("Combat sense")).toBeVisible()
     })
@@ -451,13 +452,13 @@ describe("Magic and Resonance", () => {
         expect(getByLabelText("Adept")).toBeInTheDocument()
       })
 
-      getByLabelText("Adept").click()
+      await userEvent.click(getByLabelText("Adept"))
 
       expect(runnerFromDB(1).powers).toBeUndefined()
       expect(queryByText("Known Adept Powers")).not.toBeInTheDocument()
       expect(queryByText("4/4")).toBeInTheDocument()
 
-      getByLabelText("Add Astral perception").click()
+      await userEvent.click(getByLabelText("Add Astral perception"))
 
       expect(queryByText("Known Adept Powers")).toBeInTheDocument()
       expect(queryByText("3/4")).toBeInTheDocument()
@@ -477,7 +478,7 @@ describe("Magic and Resonance", () => {
       })
       expect(getByText("2/4")).toBeInTheDocument()
 
-      getByLabelText("Remove Improved reflexes").click()
+      await userEvent.click(getByLabelText("Remove Improved reflexes"))
       expect(getByText("3/4")).toBeInTheDocument()
 
       await waitFor(() => {
@@ -512,14 +513,14 @@ describe("Magic and Resonance", () => {
         expect(getByText("Technomancer")).toBeInTheDocument()
       })
       expect(queryByText("Complex Forms")).not.toBeInTheDocument()
-      getByText("Technomancer").click()
+      await userEvent.click(getByText("Technomancer"))
       expect(queryByText("Complex Forms")).toBeInTheDocument()
       expect(getByText("8/8")).toBeInTheDocument()
 
       complexFormData.forEach(({ name }) => {
         expect(getByText(name)).not.toBeVisible()
       })
-      getByText("Complex Forms").click()
+      await userEvent.click(getByText("Complex Forms"))
 
       complexFormData.forEach(({ name }) => {
         expect(getByText(name)).toBeVisible()
@@ -533,14 +534,14 @@ describe("Magic and Resonance", () => {
         expect(getByText("Technomancer")).toBeInTheDocument()
       })
 
-      getByText("Technomancer").click()
+      await userEvent.click(getByText("Technomancer"))
       expect(getByText("8/8")).toBeInTheDocument()
 
       expect(runnerFromDB(1).complexForms).toBeUndefined()
 
       const complexFormToAdd = complexFormData[0]
 
-      getByLabelText(`Add ${complexFormToAdd.name}`).click()
+      await userEvent.click(getByLabelText(`Add ${complexFormToAdd.name}`))
 
       expect(getByText("7/8")).toBeInTheDocument()
 
@@ -565,7 +566,7 @@ describe("Magic and Resonance", () => {
       expect(runnerFromDB(8).complexForms).toContain(removedComplexForm)
       expect(getByText("4/8")).toBeInTheDocument()
 
-      getByLabelText(removeComplexFormLabel).click()
+      await userEvent.click(getByLabelText(removeComplexFormLabel))
 
       expect(getByText("5/8")).toBeInTheDocument()
       expect(queryByLabelText(removeComplexFormLabel)).not.toBeInTheDocument()

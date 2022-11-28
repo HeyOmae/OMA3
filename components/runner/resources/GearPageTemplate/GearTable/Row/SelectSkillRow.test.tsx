@@ -1,5 +1,5 @@
 import { tools } from "@/data/tools"
-import { render, fireEvent } from "@/test/testUtils"
+import { render, userEvent } from "@/test/testUtils"
 import { SelectSkillRow, SelectSkillProps } from "."
 import {
   DispatchContext,
@@ -33,17 +33,17 @@ describe("<SelectSkillRow/>", () => {
     }
   }
 
-  it("should add the selected skill to the tools name", () => {
+  it("should add the selected skill to the tools name", async () => {
     const { getByText, getByLabelText, dispatch } = setup()
 
     expect(getByText("Astral Kit")).toBeInTheDocument()
 
-    fireEvent.mouseDown(getByText("Astral"))
-    getByText("Engineering").click()
+    await userEvent.click(getByText("Astral"))
+    await userEvent.click(getByText("Engineering"))
 
     expect(getByText("Engineering Kit")).toBeInTheDocument()
 
-    getByLabelText("Add Engineering Kit").click()
+    await userEvent.click(getByLabelText("Add Engineering Kit"))
 
     expect(dispatch).toHaveBeenCalledWith({
       type: undefined,

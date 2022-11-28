@@ -1,6 +1,6 @@
 import { Spells, Props } from "./index"
 import spellsData from "../../../../data/spells.json"
-import { render } from "../../../../test/testUtils"
+import { render, userEvent } from "../../../../test/testUtils"
 import { SET_SPELL } from ".."
 
 describe("<Spells/>", () => {
@@ -13,7 +13,7 @@ describe("<Spells/>", () => {
       props,
     }
   }
-  it("should display combat spells", () => {
+  it("should display combat spells", async () => {
     const { getByText } = setup()
     spellsData.Combat.forEach(
       ({ name, category, spellfeature: [{ ref }, area] }) => {
@@ -25,7 +25,7 @@ describe("<Spells/>", () => {
       },
     )
 
-    getByText("Combat Spells").click()
+    await userEvent.click(getByText("Combat Spells"))
 
     spellsData.Combat.forEach(
       ({ name, category, spellfeature: [{ ref }, area] }) => {
@@ -38,56 +38,56 @@ describe("<Spells/>", () => {
     )
   })
 
-  it("should display detection spells", () => {
+  it("should display detection spells", async () => {
     const { getByText } = setup()
 
     spellsData.Detection.forEach(({ name }) => {
       expect(getByText(name)).not.toBeVisible()
     })
 
-    getByText("Detection Spells").click()
+    await userEvent.click(getByText("Detection Spells"))
 
     spellsData.Detection.forEach(({ name }) => {
       expect(getByText(name)).toBeVisible()
     })
   })
 
-  it("should display health spells", () => {
+  it("should display health spells", async () => {
     const { getByText } = setup()
 
     spellsData.Health.forEach(({ name }) => {
       expect(getByText(name)).not.toBeVisible()
     })
 
-    getByText("Health Spells").click()
+    await userEvent.click(getByText("Health Spells"))
 
     spellsData.Health.forEach(({ name }) => {
       expect(getByText(name)).toBeVisible()
     })
   })
 
-  it("should display illusion spells", () => {
+  it("should display illusion spells", async () => {
     const { getByText } = setup()
 
     spellsData.Illusion.forEach(({ name }) => {
       expect(getByText(name)).not.toBeVisible()
     })
 
-    getByText("Illusion Spells").click()
+    await userEvent.click(getByText("Illusion Spells"))
 
     spellsData.Illusion.forEach(({ name }) => {
       expect(getByText(name)).toBeVisible()
     })
   })
 
-  it("should display Manipulation spells", () => {
+  it("should display Manipulation spells", async () => {
     const { getByText } = setup()
 
     spellsData.Manipulation.forEach(({ name }) => {
       expect(getByText(name)).not.toBeVisible()
     })
 
-    getByText("Manipulation Spells").click()
+    await userEvent.click(getByText("Manipulation Spells"))
 
     spellsData.Manipulation.forEach(({ name }) => {
       expect(getByText(name)).toBeVisible()
@@ -95,10 +95,10 @@ describe("<Spells/>", () => {
   })
 
   describe("learning", () => {
-    it("should dispatch adding combat spell", () => {
+    it("should dispatch adding combat spell", async () => {
       const { getByLabelText, props } = setup()
 
-      getByLabelText("Learn Lightning bolt").click()
+      await userEvent.click(getByLabelText("Learn Lightning bolt"))
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: SET_SPELL,
@@ -110,10 +110,10 @@ describe("<Spells/>", () => {
       })
     })
 
-    it("should dispatch adding other spells", () => {
+    it("should dispatch adding other spells", async () => {
       const { getByLabelText, props } = setup()
 
-      getByLabelText("Learn Analyze truth").click()
+      await userEvent.click(getByLabelText("Learn Analyze truth"))
 
       expect(props.dispatch).toHaveBeenCalledWith({
         type: SET_SPELL,

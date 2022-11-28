@@ -3,6 +3,7 @@ import {
   runnerFromDB,
   setupIndexedDB,
   SliderHelper,
+  userEvent,
   waitFor,
   withTestRouter,
 } from "@/test/testUtils"
@@ -39,7 +40,9 @@ describe("SensorMods", () => {
       6,
     )
 
-    getByLabelText("Add Omnidirectional Microphone Function").click()
+    await userEvent.click(
+      getByLabelText("Add Omnidirectional Microphone Function"),
+    )
 
     expect(getByText("6/6")).toBeInTheDocument()
     await waitFor(() =>
@@ -55,7 +58,7 @@ describe("SensorMods", () => {
     expect(getByText("6/6")).toBeInTheDocument()
     expect(runnerFromDB(9).resources.sensor[0].mods).toHaveLength(3)
 
-    getByLabelText("Remove Camera Function").click()
+    await userEvent.click(getByLabelText("Remove Camera Function"))
 
     expect(queryByLabelText("Remove Camera Function")).not.toBeInTheDocument()
 
@@ -75,7 +78,7 @@ describe("SensorMods", () => {
     )
     expect(getByText("0/1")).toBeInTheDocument()
 
-    getByLabelText("Add OlFactory Sensor").click()
+    await userEvent.click(getByLabelText("Add OlFactory Sensor"))
 
     // Should use up all the capacity
     expect(getByText("1/1")).toBeInTheDocument()

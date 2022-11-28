@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@/test/testUtils"
+import { render, fireEvent, userEvent } from "@/test/testUtils"
 import skillData from "@/data/skills.json"
 import { SkillSelect, SkillSelectProps } from "./index"
 
@@ -19,12 +19,12 @@ describe("<SkillSelect/>", () => {
     })
   })
 
-  it("should pass the skillName to setSkill function", () => {
+  it("should pass the skillName to setSkill function", async () => {
     const { getByText, props } = setup()
     const electronics = skillData[7].name
     fireEvent.mouseDown(getByText(skillData[0].name))
 
-    getByText(electronics).click()
+    await userEvent.click(getByText(electronics))
 
     expect(props.setSkill).toHaveBeenCalledWith(electronics)
   })

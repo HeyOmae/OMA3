@@ -3,6 +3,7 @@ import {
   caymansCurrentlySpentNuyen,
   render,
   setupIndexedDB,
+  userEvent,
   waitFor,
   withTestRouter,
 } from "@/test/testUtils"
@@ -27,9 +28,9 @@ describe("sensor page", () => {
       ).toBeInTheDocument()
     })
 
-    getByLabelText(`Add ${gearA.name}`).click()
-    getByLabelText(`Add ${gearB.name}`).click()
-    getByLabelText(`Add ${gearC.name}`).click()
+    await userEvent.click(getByLabelText(`Add ${gearA.name}`))
+    await userEvent.click(getByLabelText(`Add ${gearB.name}`))
+    await userEvent.click(getByLabelText(`Add ${gearC.name}`))
 
     expect(
       getByText(
@@ -42,7 +43,7 @@ describe("sensor page", () => {
       ),
     ).toBeInTheDocument()
 
-    getAllByLabelText(`Remove ${gearB.name}`)[0].click()
+    await userEvent.click(getAllByLabelText(`Remove ${gearB.name}`)[0])
 
     expect(
       getByText(

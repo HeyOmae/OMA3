@@ -204,8 +204,10 @@ export const expectToBuyAndSellGear =
       ),
     ).toBeInTheDocument()
 
-    // TODO: kill past me for doing this nonsense
-    getAllByLabelText(RegExp(`Remove .*${gearB.name}$`))[0].click()
+    // This nonsense is here incase there are duplicate gear with the same name
+    await userEvent.click(
+      getAllByLabelText(RegExp(`Remove .*${gearB.name}$`))[0],
+    )
 
     // eslint-disable-next-line jest/no-standalone-expect
     expect(
@@ -217,6 +219,10 @@ export const expectToBuyAndSellGear =
     ).toBeInTheDocument()
 
     // clean up the gear
-    getAllByLabelText(RegExp(`Remove .*${gearA.name}$`))[0].click()
-    getAllByLabelText(RegExp(`Remove .*${gearC.name}$`))[0].click()
+    await userEvent.click(
+      getAllByLabelText(RegExp(`Remove .*${gearA.name}$`))[0],
+    )
+    await userEvent.click(
+      getAllByLabelText(RegExp(`Remove .*${gearC.name}$`))[0],
+    )
   }

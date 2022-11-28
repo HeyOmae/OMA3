@@ -6,6 +6,7 @@ import {
   screen,
   waitFor,
   runnerFromDB,
+  userEvent,
 } from "../test/testUtils"
 import { useRunnerAccess } from "./useRunnerAccess"
 
@@ -74,7 +75,7 @@ describe("useRunnerAccess hook", () => {
         .records.length,
     ).toBe(mockedRunners.length)
 
-    getByText("update name").click()
+    await userEvent.click(getByText("update name"))
 
     await waitFor(() => {
       expect(getByText("William “Bull” MacCallister")).toBeInTheDocument()

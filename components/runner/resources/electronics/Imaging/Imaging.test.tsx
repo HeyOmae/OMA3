@@ -5,6 +5,7 @@ import {
   getByText as getTextInContainer,
   getAllByText as getAllTextInContainer,
   waitFor,
+  userEvent,
 } from "@/test/testUtils"
 import Imaging from "./"
 
@@ -55,7 +56,7 @@ describe("<Imaging/>", () => {
 
       await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-      getByLabelText("Add Mage-sight-goggles").click()
+      await userEvent.click(getByLabelText("Add Mage-sight-goggles"))
       const mageSightRow = getByLabelText("Remove Mage-sight-goggles").closest(
         "tr",
       )

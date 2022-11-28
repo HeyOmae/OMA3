@@ -1,4 +1,4 @@
-import { render, SliderHelper, fireEvent } from "@/test/testUtils"
+import { render, SliderHelper, userEvent } from "@/test/testUtils"
 import { GearTools, GearTyped, GearWeaponMelee } from "@/types/Resources"
 import {
   addMeleeTableConfig,
@@ -81,10 +81,10 @@ describe("<GearTable />", () => {
       expect(getByText("500¥")).toBeInTheDocument()
     })
 
-    it("should dispatch the add action", () => {
+    it("should dispatch the add action", async () => {
       const { getByLabelText, props, dispatch } = setup()
 
-      getByLabelText("Add Combat Axe").click()
+      await userEvent.click(getByLabelText("Add Combat Axe"))
 
       expect(dispatch).toHaveBeenCalledWith({
         type: undefined,
@@ -92,12 +92,12 @@ describe("<GearTable />", () => {
       })
     })
 
-    it("should dispatch the remove action", () => {
+    it("should dispatch the remove action", async () => {
       const { getByLabelText, dispatch } = setup({
         cols: removeMeleeTableConfig,
       })
 
-      getByLabelText("Remove Combat Axe").click()
+      await userEvent.click(getByLabelText("Remove Combat Axe"))
 
       expect(dispatch).toHaveBeenCalledWith({
         type: undefined,
@@ -128,14 +128,14 @@ describe("<GearTable />", () => {
         props,
       }
     }
-    it("should display a slider for gear with rating and while buying", () => {
+    it("should display a slider for gear with rating and while buying", async () => {
       const { getByLabelText, queryByTestId, dispatch } = setup()
 
       expect(getByLabelText("Add Headjammer")).toBeInTheDocument()
       expect(queryByTestId("Headjammer-rating")).toBeInTheDocument()
 
       SliderHelper.change(queryByTestId("Headjammer-rating"), 6, 1, 6)
-      getByLabelText("Add Headjammer").click()
+      await userEvent.click(getByLabelText("Add Headjammer"))
       expect(dispatch).toHaveBeenCalledWith({
         type: undefined,
         payload: { ...headJammer, currentRating: 6, cost: 900 },
@@ -143,7 +143,7 @@ describe("<GearTable />", () => {
 
       expect(getByLabelText("Add Bug Scanner")).toBeInTheDocument()
       expect(queryByTestId("Bug Scanner-rating")).not.toBeInTheDocument()
-      getByLabelText("Add Bug Scanner").click()
+      await userEvent.click(getByLabelText("Add Bug Scanner"))
       expect(dispatch).toHaveBeenCalledWith({
         type: undefined,
         payload: bugScanner,
@@ -173,13 +173,13 @@ describe("<GearTable />", () => {
       }
     }
 
-    it("should display a skill name in the tool's name", () => {
+    it("should display a skill name in the tool's name", async () => {
       const { getByText, getAllByText, getByLabelText, props, dispatch } =
         setup()
 
-      fireEvent.mouseDown(getAllByText("Astral")[1])
-      getByText("Engineering").click()
-      getByLabelText("Add Engineering Shop").click()
+      await userEvent.click(getAllByText("Astral")[1])
+      await userEvent.click(getByText("Engineering"))
+      await userEvent.click(getByLabelText("Add Engineering Shop"))
 
       expect(dispatch).toHaveBeenCalledWith({
         type: undefined,

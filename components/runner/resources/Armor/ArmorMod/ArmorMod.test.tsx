@@ -6,6 +6,7 @@ import {
   getByText as getTextIn,
   runnerFromDB,
   SliderHelper,
+  userEvent,
 } from "@/test/testUtils"
 import ArmorMod from "./index"
 import { mods } from "@/data/armor"
@@ -54,7 +55,7 @@ describe("<ArmorMod />", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
 
-    getByLabelText("Add Chemical Seal").click()
+    await userEvent.click(getByLabelText("Add Chemical Seal"))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.armor[0].mods).toHaveLength(1)
@@ -75,7 +76,7 @@ describe("<ArmorMod />", () => {
     })
 
     SliderHelper.change(getByTestId("Fire Resistance-rating"), 4, 1, 10)
-    getByLabelText("Add Fire Resistance").click()
+    await userEvent.click(getByLabelText("Add Fire Resistance"))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.armor[0].mods).toHaveLength(2)
