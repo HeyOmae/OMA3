@@ -103,6 +103,7 @@ export const withTestRouter = (
       replace,
       reload,
       back,
+      forward: () => undefined,
       prefetch,
       beforePopState,
       isFallback,
