@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react"
+import { FC, useState, useEffect, PropsWithChildren } from "react"
 import {
   Container,
   BottomNavigation,
@@ -23,7 +23,7 @@ import NextLink from "next/link"
 import styles from "./layout.module.css"
 import { SELECTED_THEME_KEY, ThemeSelector } from "./themeSelector"
 
-interface Props {
+interface Props extends PropsWithChildren {
   className?: string
 }
 
@@ -39,7 +39,7 @@ export const Layout: FC<Props> = ({ children, className }) => {
   )
 }
 
-export const RunnerLayout: FC = ({ children }) => {
+export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
   const { push, query } = useRouter()
   const [nav, setNav] = useState<number>()
 

@@ -304,13 +304,11 @@ interface BaseArmor {
   add?: true
 }
 
-export interface GearArmor extends Gear, Partial<GearTypes> {
+export interface GearArmor
+  extends Gear,
+    Partial<GearTypes>,
+    GearMod<GearTypes> {
   armor: BaseArmor
-  useAs?: GearTypes
-  modifications: {
-    itemhookmod: GearModHooks
-    itemmod?: ItemAccessory
-  }
   modonly?: true
   mods?: ArmorMod[]
 }

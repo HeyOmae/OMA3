@@ -324,9 +324,11 @@ const armorData: GearArmor[] = [
         capacity: 2,
         hook: "ARMOR",
       },
-      itemmod: {
-        item: "Ballistic Shield Weapon",
-      },
+      itemmod: [
+        {
+          item: "Ballistic Shield Weapon",
+        },
+      ],
     },
   },
   {
@@ -345,9 +347,11 @@ const armorData: GearArmor[] = [
         capacity: 2,
         hook: "ARMOR",
       },
-      itemmod: {
-        item: "Riot Shield Weapon",
-      },
+      itemmod: [
+        {
+          item: "Riot Shield Weapon",
+        },
+      ],
     },
   },
 ]
