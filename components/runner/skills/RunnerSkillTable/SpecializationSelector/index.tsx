@@ -18,7 +18,7 @@ export const SpecializationSelector: FC<Props> = ({
   dispatch,
 }) => {
   return (
-    <Autocomplete
+    <Autocomplete<string, false, false, true>
       freeSolo
       value={specialization ?? ""}
       id={id}
