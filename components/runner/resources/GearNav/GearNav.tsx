@@ -11,9 +11,14 @@ interface Props {
 export const GearNav: FC<Props> = ({ pathTo, gearData }) => (
   <>
     {Object.keys(gearData).map((gearName) => (
-      <NextLink key={gearName} href={`${pathTo}${gearName}`} passHref>
-        <Button variant="contained">{gearName}</Button>
-      </NextLink>
+      <Button
+        key={gearName}
+        href={`${pathTo}${gearName}`}
+        component={NextLink}
+        variant="contained"
+      >
+        {gearName}
+      </Button>
     ))}
   </>
 )

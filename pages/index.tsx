@@ -1,7 +1,7 @@
 import { FC } from "react"
 import Head from "next/head"
 import { Layout } from "@/components/layout"
-import { Button, IconButton, Link } from "@mui/material"
+import { Button, IconButton } from "@mui/material"
 import dynamic from "next/dynamic"
 import { initRunner } from "@/types/runner"
 import { useRouter } from "next/router"
@@ -49,7 +49,7 @@ export const Home: FC = () => {
                 return (
                   <li key={id}>
                     <NextLink href="[id]/info" as={href} passHref>
-                      <Link>{name || id}</Link>
+                      {name || id}
                     </NextLink>
                   </li>
                 )

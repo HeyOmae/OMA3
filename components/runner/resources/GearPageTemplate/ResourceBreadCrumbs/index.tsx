@@ -1,4 +1,4 @@
-import { Breadcrumbs, Link, Typography } from "@mui/material"
+import { Breadcrumbs, Typography } from "@mui/material"
 import NextLink from "next/link"
 import { useRouter } from "next/router"
 import { FC } from "react"
@@ -18,14 +18,14 @@ export const ResourceBreadCrumbs: FC<Props> = ({
   return (
     <Breadcrumbs>
       <NextLink href={`/${query.id}/resources`} passHref>
-        <Link>Resources</Link>
+        Resources
       </NextLink>
       {previousPage && (
         <NextLink
           href={`/${query.id}/resources/${previousPage.categoryPath}`}
           passHref
         >
-          <Link>{previousPage.label}</Link>
+          {previousPage.label}
         </NextLink>
       )}
       <Typography>{activePage}</Typography>
