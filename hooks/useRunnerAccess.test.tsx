@@ -8,24 +8,27 @@ import {
   runnerFromDB,
   userEvent,
 } from "../test/testUtils"
-import { useRunnerAccess } from "./useRunnerAccess"
+import { RunnerReducer, useRunnerAccess } from "./useRunnerAccess"
 
 describe("useRunnerAccess hook", () => {
   beforeAll(setupIndexedDB)
   const UPDATE_NAME = Symbol("updateName")
-  const setup = () => {
-    const Test = () => {
-      const [runner, dispatch] = useRunnerAccess<string>(
-        (state, { type, payload }) => {
-          switch (type) {
-            case UPDATE_NAME:
-              return { ...state, name: payload }
+  const setup = (
+    reducer: RunnerReducer<string> = (state, { type, payload }) => {
+      switch (type) {
+        case UPDATE_NAME:
+          return { ...state, name: payload }
 
-            default:
-              return state
-          }
-        },
-      )
+        default:
+          return state
+      }
+    },
+  ) => {
+    // Need to test how to unset the reducer, so this is close enough.
+    // Kind of jank, but whatever.
+    const workingReducer = reducer === null ? undefined : reducer
+    const Test = () => {
+      const [runner, dispatch] = useRunnerAccess<string>(workingReducer)
 
       return runner ? (
         <div>
@@ -39,6 +42,16 @@ describe("useRunnerAccess hook", () => {
             }
           >
             update name
+          </button>
+          <button
+            onClick={() =>
+              dispatch({
+                type: UPDATE_NAME,
+                payload: "Bull",
+              })
+            }
+          >
+            reset
           </button>
         </div>
       ) : (
@@ -84,6 +97,25 @@ describe("useRunnerAccess hook", () => {
           .records.length,
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
+    })
+
+    await userEvent.click(getByText("reset"))
+  })
+
+  it("should use a default reducer when none is provided", async () => {
+    const { getByText } = setup(null)
+
+    await waitFor(() => expect(getByText("Bull")).toBeInTheDocument())
+
+    await userEvent.click(getByText("update name"))
+
+    await waitFor(() => {
+      expect(getByText("Bull")).toBeInTheDocument()
+      expect(
+        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
+          .records.length,
+      ).toBe(mockedRunners.length)
+      expect(runnerFromDB().name).toEqual("Bull")
     })
   })
 })
