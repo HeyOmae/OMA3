@@ -40,18 +40,18 @@ type UseRunnerAccess = <P>(
   reducer: RunnerReducer<P>,
 ) => [runner: Runner, dispatch: DispatchAction<P>]
 
-export const useRunnerAccess: UseRunnerAccess = <P>(
-  reducer: RunnerReducer<P>,
+export const useRunnerAccess: UseRunnerAccess = <Payload>(
+  reducer: RunnerReducer<Payload>,
 ) => {
   const { getByID, update } = useIndexedDB("runners")
   const router = useRouter()
   const [runner, dispatch] = useReducer(
-    (state: Runner, action: Action<Runner | P>) => {
+    (state: Runner, action: Action<Runner | Payload>) => {
       if (action.type === DONE_LOADING) {
         // TODO: figure out how to remove this type casting
         return action.payload as Runner
       }
-      return reducer(state, action as Action<P>)
+      return reducer(state, action as Action<Payload>)
     },
     undefined,
   )

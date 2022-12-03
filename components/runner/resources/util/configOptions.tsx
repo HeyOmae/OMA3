@@ -309,3 +309,10 @@ export const sellAugmentationCols: Columns<GearCyberware | GearBioware>[] = [
   gearTableConfigOptions.cost,
   gearModableTableConfigOptions.mod,
 ]
+
+export const gearSummaryCols: Columns<Gear>[] = [
+  gearTableConfigOptions.name,
+  gearRatingTableConfigOption.displayRating,
+  gearTableConfigOptions.avail,
+  gearTableConfigOptions.cost,
+]

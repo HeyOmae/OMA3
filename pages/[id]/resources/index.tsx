@@ -5,6 +5,14 @@ import { useRouter } from "next/router"
 import { GearNav } from "@/components/runner/resources/GearNav/GearNav"
 import * as securityData from "@/data/security"
 import * as magicGearData from "@/data/magicGear"
+import dynamic from "next/dynamic"
+
+const ResourceSummary = dynamic(
+  () => import("@/components/runner/resources/ResourceSummary"),
+  {
+    ssr: false,
+  },
+)
 
 export const ResourcePage = (): JSX.Element => {
   const { query, asPath } = useRouter()
@@ -129,6 +137,7 @@ export const ResourcePage = (): JSX.Element => {
       <NextLink href={`${asPath}/bioware`} passHref>
         <Button variant="contained">Bioware</Button>
       </NextLink>
+      <ResourceSummary />
     </RunnerLayout>
   )
 }
