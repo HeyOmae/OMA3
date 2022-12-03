@@ -1,11 +1,11 @@
-import ProjectilePage from "../../../pages/[id]/resources/projectile"
+import ProjectilePage from "@/pages/[id]/resources/projectile"
 import {
   render,
   setupIndexedDB,
   withTestRouter,
   waitFor,
 } from "../../testUtils"
-import ProjectileData from "../../../data/projectiles"
+import ProjectileData from "@/data/projectiles"
 
 describe("Projectile Page", () => {
   beforeAll(setupIndexedDB)
