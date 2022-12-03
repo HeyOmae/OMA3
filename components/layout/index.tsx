@@ -40,7 +40,10 @@ export const Layout: FC<Props> = ({ children, className }) => {
 }
 
 export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
-  const { push, query } = useRouter()
+  const {
+    push,
+    query: { id },
+  } = useRouter()
   const [nav, setNav] = useState<number>()
 
   useEffect(() => {
@@ -72,57 +75,72 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
         onClose={() => setNav(undefined)}
       >
         <ThemeSelector />
-        <NextLink href="/[id]/info" as={`/${query.id}/info`} passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AccountBox />}
-          >
-            Info
-          </Button>
-        </NextLink>
-        <NextLink href="/[id]/priority" as={`/${query.id}/priority`} passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<TableChart />}
-          >
-            Priority
-          </Button>
-        </NextLink>
-        <NextLink href="/[id]/metatype" as={`/${query.id}/metatype`} passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AccessibilityNew />}
-          >
-            Metatype & Attributes
-          </Button>
-        </NextLink>
-        <NextLink href="/[id]/skills" as={`/${query.id}/skills`} passHref>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<DirectionsRun />}
-          >
-            Skills
-          </Button>
-        </NextLink>
-        <NextLink href="/[id]/magres" as={`/${query.id}/magres`} passHref>
-          <Button variant="contained" color="primary" startIcon={<FlashOn />}>
-            Magic & Resonance
-          </Button>
-        </NextLink>
-        <NextLink href="/[id]/resources" as={`/${query.id}/resources`} passHref>
-          <Button variant="contained" color="primary" startIcon={<Payment />}>
-            Resources
-          </Button>
-        </NextLink>
-        <NextLink href="/[id]/delete" as={`/${query.id}/delete`} passHref>
-          <Button variant="contained" color="primary" startIcon={<Delete />}>
-            Delete
-          </Button>
-        </NextLink>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<AccountBox />}
+          component={NextLink}
+          href={`/${id}/info`}
+        >
+          Info
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<TableChart />}
+          component={NextLink}
+          href={`/${id}/priority`}
+        >
+          Priority
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<AccessibilityNew />}
+          component={NextLink}
+          href={`/${id}/metatype`}
+        >
+          Metatype & Attributes
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<DirectionsRun />}
+          component={NextLink}
+          href={`/${id}/skills`}
+        >
+          Skills
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<FlashOn />}
+          component={NextLink}
+          href={`/${id}/magres`}
+        >
+          Magic & Resonance
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<Payment />}
+          component={NextLink}
+          href={`/${id}/resources`}
+        >
+          Resources
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<Delete />}
+          component={NextLink}
+          href={`/${id}/delete`}
+        >
+          Delete
+        </Button>
       </Drawer>
     </>
   )
