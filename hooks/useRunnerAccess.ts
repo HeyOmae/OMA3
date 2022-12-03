@@ -21,7 +21,7 @@ export const useGetRunner = () => {
     return () => {
       isMounted = false
     }
-  }, [id])
+  }, [getByID, id])
 
   return runner
 }
@@ -69,11 +69,11 @@ export const useRunnerAccess: UseRunnerAccess = <P>(
     return () => {
       isMounted = false
     }
-  }, [id])
+  }, [getByID, id])
 
   useEffect(() => {
     if (runner) update(runner)
-  }, [runner])
+  }, [runner, update])
 
   return [runner, dispatch]
 }
