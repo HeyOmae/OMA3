@@ -37,11 +37,11 @@ export type RunnerReducer<P> = Reducer<Runner, Action<P>>
 export type DispatchAction<P> = (action: Action<P>) => void
 
 type UseRunnerAccess = <P>(
-  reducer: RunnerReducer<P>,
+  reducer?: RunnerReducer<P>,
 ) => [runner: Runner, dispatch: DispatchAction<P>]
 
 export const useRunnerAccess: UseRunnerAccess = <Payload>(
-  reducer: RunnerReducer<Payload>,
+  reducer: RunnerReducer<Payload> = (runner) => runner,
 ) => {
   const { getByID, update } = useIndexedDB("runners")
   const router = useRouter()

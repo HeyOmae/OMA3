@@ -8,7 +8,7 @@ import NextLink from "next/link"
 import { useRouter } from "next/router"
 
 const ResourceSummary: FC = () => {
-  const [runner] = useRunnerAccess((state) => state)
+  const [runner] = useRunnerAccess()
   const { asPath } = useRouter()
 
   return runner ? (
