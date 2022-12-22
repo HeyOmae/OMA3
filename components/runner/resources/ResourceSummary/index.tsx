@@ -6,6 +6,7 @@ import { GearTable } from "../GearPageTemplate/GearTable"
 import { gearSummaryCols } from "../util"
 import NextLink from "next/link"
 import { useRouter } from "next/router"
+import styles from "./ResourceSummary.module.css"
 
 const ResourceSummary: FC = () => {
   const [runner] = useRunnerAccess()
@@ -14,18 +15,20 @@ const ResourceSummary: FC = () => {
   return runner ? (
     <>
       <h1>Gear Summary</h1>
-      {Object.entries(runner?.resources ?? {}).map(
-        ([resourceKey, gearArray]) => (
-          <Fragment key={resourceKey}>
-            <h2>
-              <NextLink href={`${asPath}/${resourceKey}`}>
-                {resourceKey}
-              </NextLink>
-            </h2>
-            <GearTable<Gear> cols={gearSummaryCols} listOfGear={gearArray} />
-          </Fragment>
-        ),
-      )}
+      <div className={styles.gearSummary}>
+        {Object.entries(runner?.resources ?? {}).map(
+          ([resourceKey, gearArray]) => (
+            <Fragment key={resourceKey}>
+              <h2>
+                <NextLink href={`${asPath}/${resourceKey}`}>
+                  {resourceKey}
+                </NextLink>
+              </h2>
+              <GearTable<Gear> cols={gearSummaryCols} listOfGear={gearArray} />
+            </Fragment>
+          ),
+        )}
+      </div>
     </>
   ) : (
     <CircularProgress />

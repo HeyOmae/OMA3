@@ -1,5 +1,5 @@
 import { CircularProgress, Grid } from "@mui/material"
-import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
+import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import {
   AdeptPower,
   ComplexForm,
@@ -7,12 +7,12 @@ import {
   Ritual,
   Spell,
   SpellCategory,
-} from "../../../types/MagRes"
+} from "@/types/MagRes"
 import { MagResSelection } from "./MagResSelection"
-import priorityData from "../../../data/priorityTable.json"
-import { MagResPriorityTableOptions } from "../../../types/PriorityRating"
+import priorityData from "@/data/priorityTable.json"
+import { MagResPriorityTableOptions } from "@/types/PriorityRating"
 import { MagResAttributeSlider } from "./MagResAttributeSlider"
-import { initRunnerAttribute } from "../../../types/runner"
+import { initRunnerAttribute } from "@/types/runner"
 import { PriorityWarning } from "../../priorityWarning"
 import { Spells } from "./Spells"
 import { RunnerSpells } from "./Spells/RunnerSpells"
@@ -26,7 +26,7 @@ import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
 import { ComplexForms } from "./ComplexForms"
 import { RunnerComplexForms } from "./ComplexForms/RunnerComplexForms"
 
-// The complexity in this component is a code smell. Refactor things out in to smaller files
+// TODO: The complexity in this component is a code smell. Refactor things out in to smaller files
 export const SET_MAGRES = Symbol("SET_MAGRES")
 export const SET_MAGIC = Symbol("SET_MAGIC")
 export const SET_RESONANCE = Symbol("SET_RESONANCE")
