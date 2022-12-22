@@ -1,0 +1,17 @@
+.gearSummary td {
+  width: 10%;
+}
+
+.gearSummary td:first-child {
+  width: auto;
+}
+
+@media (min-width: 600px) {
+  .gearSummary td {
+    width: 20%;
+  }
+
+  .gearSummary td:first-child {
+    width: auto;
+  }
+}
