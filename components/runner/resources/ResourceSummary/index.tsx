@@ -8,8 +8,16 @@ import NextLink from "next/link"
 import { useRouter } from "next/router"
 import styles from "./ResourceSummary.module.css"
 import * as securityDevices from "@/data/security"
+import * as magicGear from "@/data/magicGear"
 
-const securityCatelogies = Object.keys(securityDevices)
+function getResourceSubpath(resourceKey: string): string {
+  if (resourceKey in securityDevices) {
+    return "security/"
+  } else if (resourceKey in magicGear) {
+    return "magic/"
+  }
+  return ""
+}
 
 const ResourceSummary: FC = () => {
   const [runner] = useRunnerAccess()
@@ -24,9 +32,9 @@ const ResourceSummary: FC = () => {
             <Fragment key={resourceKey}>
               <h2>
                 <NextLink
-                  href={`${asPath}/${
-                    securityCatelogies.includes(resourceKey) ? "security/" : ""
-                  }${resourceKey}`}
+                  href={`${asPath}/${getResourceSubpath(
+                    resourceKey,
+                  )}${resourceKey}`}
                 >
                   {resourceKey}
                 </NextLink>
