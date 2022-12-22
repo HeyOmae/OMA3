@@ -7,6 +7,9 @@ import { gearSummaryCols } from "../util"
 import NextLink from "next/link"
 import { useRouter } from "next/router"
 import styles from "./ResourceSummary.module.css"
+import * as securityDevices from "@/data/security"
+
+const securityCatelogies = Object.keys(securityDevices)
 
 const ResourceSummary: FC = () => {
   const [runner] = useRunnerAccess()
@@ -20,7 +23,11 @@ const ResourceSummary: FC = () => {
           ([resourceKey, gearArray]) => (
             <Fragment key={resourceKey}>
               <h2>
-                <NextLink href={`${asPath}/${resourceKey}`}>
+                <NextLink
+                  href={`${asPath}/${
+                    securityCatelogies.includes(resourceKey) ? "security/" : ""
+                  }${resourceKey}`}
+                >
                   {resourceKey}
                 </NextLink>
               </h2>

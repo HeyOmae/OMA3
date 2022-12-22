@@ -326,6 +326,17 @@ export const mockedRunners: Runner[] = [
         fade: 5,
       },
     ],
+    resources: {
+      bne: [
+        {
+          availability: "4L",
+          cost: 500,
+          name: "Autopicker",
+          subtype: "BREAKING",
+          type: "ELECTRONICS",
+        },
+      ],
+    },
   },
   {
     id: 10,
