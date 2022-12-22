@@ -108,6 +108,11 @@ describe("Resource Page", () => {
       "href",
       "/10/resources/bioware",
     )
+
+    expect(getByText("Lifestyles").closest("a")).toHaveAttribute(
+      "href",
+      "/10/resources/lifestyle",
+    )
   })
 
   it("should render links to security devices", async () => {
