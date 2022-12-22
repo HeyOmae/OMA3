@@ -240,6 +240,29 @@ export const mockedRunners: Runner[] = [
         ],
       },
     ],
+    resources: {
+      bne: [
+        {
+          availability: "4L",
+          cost: 500,
+          name: "Autopicker",
+          subtype: "BREAKING",
+          type: "ELECTRONICS",
+        },
+      ],
+      focusFormula: [
+        {
+          name: "Weapon focus formula",
+          availability: "3L",
+          cost: 1750,
+          type: "formula",
+          subtype: "focus formula",
+          rating: true,
+          rateMultiplier: "cost avail",
+          currentRating: 6,
+        },
+      ],
+    },
   },
   {
     id: 8,
@@ -326,17 +349,6 @@ export const mockedRunners: Runner[] = [
         fade: 5,
       },
     ],
-    resources: {
-      bne: [
-        {
-          availability: "4L",
-          cost: 500,
-          name: "Autopicker",
-          subtype: "BREAKING",
-          type: "ELECTRONICS",
-        },
-      ],
-    },
   },
   {
     id: 10,

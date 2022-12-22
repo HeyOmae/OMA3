@@ -47,15 +47,28 @@ describe("<ResourceSummary />", () => {
     await waitFor(() => expect(getByText("Gear Summary")).toBeInTheDocument())
   })
 
-  it("security devices should have a path securtiy added to their url routes", async () => {
-    const { getByText, gear } = setup(8)
+  describe("resources with dedicated sub-path", () => {
+    it("security devices should have a securtiy path added to their url routes", async () => {
+      const { getByText, gear } = setup(6)
 
-    // Grab the first category and make sure it appears
-    await waitFor(() => getByText(gear[0][0]))
+      // Grab the first category and make sure it appears
+      await waitFor(() => getByText(gear[0][0]))
 
-    expect(getByText("bne").closest("a")).toHaveAttribute(
-      "href",
-      "/9/resources/security/bne",
-    )
+      expect(getByText("bne").closest("a")).toHaveAttribute(
+        "href",
+        "/7/resources/security/bne",
+      )
+    })
+    it("some magic stuff should have a magic path added to their url routes", async () => {
+      const { getByText, gear } = setup(6)
+
+      // Grab the first category and make sure it appears
+      await waitFor(() => getByText(gear[0][0]))
+
+      expect(getByText("focusFormula").closest("a")).toHaveAttribute(
+        "href",
+        "/7/resources/magic/focusFormula",
+      )
+    })
   })
 })

@@ -25,6 +25,10 @@ export interface Resources {
   vehicles: GearDrones[]
   cyberware: GearCyberware[]
   bioware: GearBioware[]
+  focusFormula: GearTyped[]
+  spellFormula: Gear[]
+  magicSupplies: GearTyped[]
+  lifestyle: Gear[]
 }
 
 export interface Gear {
