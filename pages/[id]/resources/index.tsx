@@ -137,6 +137,10 @@ export const ResourcePage = (): JSX.Element => {
       <NextLink href={`${asPath}/bioware`} passHref>
         <Button variant="contained">Bioware</Button>
       </NextLink>
+      <h2>Lifestyle</h2>
+      <NextLink href={`${asPath}/lifestyle`} passHref>
+        <Button variant="contained">Lifestyles</Button>
+      </NextLink>
       <ResourceSummary />
     </RunnerLayout>
   )
