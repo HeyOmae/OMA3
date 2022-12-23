@@ -32,10 +32,10 @@ const ReleaseNotes = () => {
         <TableBody>
           {notes
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map(({ tag_name: version, url, name }) => (
+            .map(({ tag_name: version, html_url, name }) => (
               <TableRow key={version}>
                 <TableCell>
-                  <a href={url}>{version}</a>
+                  <a href={html_url}>{version}</a>
                 </TableCell>
                 <TableCell>{name}</TableCell>
               </TableRow>

@@ -23,7 +23,7 @@ describe("<ReleaseNotes/>", () => {
     expect(getByText("Add Lifestyles")).toBeInTheDocument()
     expect(getByText("3.6.1").closest("a")).toHaveAttribute(
       "href",
-      "https://api.github.com/repos/HeyOmae/OMA3/releases/86888694",
+      "https://github.com/HeyOmae/OMA3/releases/tag/3.6.1",
     )
   })
 
