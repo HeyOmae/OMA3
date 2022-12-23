@@ -7,6 +7,7 @@ import { initRunner } from "@/types/runner"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 import { GitHub } from "@mui/icons-material"
+import ReleaseNotes from "@/components/ReleaseNotes"
 
 const AllRunnersAccess = dynamic(
   () => import("@/components/allRunnersAccess"),
@@ -74,7 +75,9 @@ export const Home: FC = () => {
         <h2>Contribute</h2>
         <p>
           Looking for something to help with. Check out the{" "}
-          <a href="https://github.com/HeyOmae/OMA3/projects">project board.</a>
+          <a href="https://github.com/HeyOmae/OMA3/projects?type=classic">
+            project board.
+          </a>
         </p>
         <p>
           Notice a bug?{" "}
@@ -83,6 +86,10 @@ export const Home: FC = () => {
         <IconButton href="https://github.com/HeyOmae/OMA3">
           <GitHub />
         </IconButton>
+      </section>
+      <section>
+        <h2>Release Notes</h2>
+        <ReleaseNotes />
       </section>
     </Layout>
   )
