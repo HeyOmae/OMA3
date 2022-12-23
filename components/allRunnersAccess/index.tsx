@@ -5,7 +5,7 @@ import { Runner } from "../../types/runner"
 
 interface RenderProps {
   runners: Runner[]
-  add: (value: Runner) => Promise<any>
+  add: (value: Runner) => Promise<number>
 }
 
 interface Props {
