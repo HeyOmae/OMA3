@@ -974,6 +974,11 @@ export const mockedRunners: Runner[] = [
         },
       ],
     },
+    knowledge: [
+      "Craft Beers",
+      "Weapons Manufacturers",
+      "Law Enforcement Corps",
+    ],
   },
   {
     id: 11,

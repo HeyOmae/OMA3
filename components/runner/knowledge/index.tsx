@@ -1,6 +1,16 @@
-import { AddButton } from "@/components/common"
+import { AddButton, RemoveButton } from "@/components/common"
+import { removeItemFromArray } from "@/components/util"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { Autocomplete, CircularProgress, TextField } from "@mui/material"
+import {
+  Autocomplete,
+  CircularProgress,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+} from "@mui/material"
 import { useRef } from "react"
 
 const exampleKnowledgeSkills = [
@@ -29,16 +39,23 @@ const exampleKnowledgeSkills = [
   "Troll Thrash Rock",
   "Urban Brawl",
   "Virtual Nightclubs",
-  "Weapons Manufacturers]",
+  "Weapons Manufacturers",
 ]
 
 const ADD_KNOWLEDGE = Symbol()
+const REMOVE_KNOWLEDGE = Symbol()
 
 const KnowledgeSkills = () => {
   const skillRef = useRef<HTMLInputElement>()
-  const [runner, dispatch] = useRunnerAccess<string>((runner, { payload }) => ({
+  const [runner, dispatch] = useRunnerAccess<{
+    knowledge?: string
+    removeIndex?: number
+  }>((runner, { type, payload: { knowledge, removeIndex } }) => ({
     ...runner,
-    knowledge: [...(runner?.knowledge ?? []), payload],
+    knowledge:
+      type === ADD_KNOWLEDGE
+        ? [...(runner?.knowledge ?? []), knowledge]
+        : removeItemFromArray<string>(runner.knowledge, removeIndex),
   }))
   return runner ? (
     <>
@@ -46,7 +63,10 @@ const KnowledgeSkills = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          dispatch({ type: ADD_KNOWLEDGE, payload: skillRef.current.value })
+          dispatch({
+            type: ADD_KNOWLEDGE,
+            payload: { knowledge: skillRef.current.value },
+          })
         }}
       >
         <Autocomplete<string, false, false, true>
@@ -63,11 +83,32 @@ const KnowledgeSkills = () => {
         <AddButton type="submit" aria-label="submit" />
       </form>
       <h2>{runner.name ?? "Runner"}&apos;s Knowledge Skills</h2>
-      <ul>
-        {runner.knowledge?.map((skill) => (
-          <li key={skill}>{skill}</li>
-        ))}
-      </ul>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Forget</TableCell>
+            <TableCell>Knowledge Name</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {runner.knowledge?.map((skill, index) => (
+            <TableRow key={skill}>
+              <TableCell>
+                <RemoveButton
+                  aria-label={`Remove ${skill}`}
+                  onClick={() => {
+                    dispatch({
+                      type: REMOVE_KNOWLEDGE,
+                      payload: { removeIndex: index },
+                    })
+                  }}
+                />
+              </TableCell>
+              <TableCell>{skill}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </>
   ) : (
     <CircularProgress />
