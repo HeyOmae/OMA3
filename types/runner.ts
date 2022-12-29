@@ -20,6 +20,7 @@ export interface Runner {
   powers?: AdeptPower[]
   complexForms?: ComplexForm[]
   resources?: Partial<Resources>
+  knowledge?: string[]
 }
 
 export const initRunner: Runner = {
