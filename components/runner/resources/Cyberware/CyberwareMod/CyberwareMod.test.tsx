@@ -55,4 +55,6 @@ describe("<CyberwareMod />", () => {
       getByTextInElement(smugglingCompartmentRow, "[2]"),
     ).toBeInTheDocument()
   })
+
+  // TODO, missing attirubte increase mods, take a look in to fixing later
 })
