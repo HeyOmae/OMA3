@@ -2,7 +2,9 @@ import { CircularProgress, Grid } from "@mui/material"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import {
   AdeptPower,
+  CombatSpell,
   ComplexForm,
+  GeneralSpell,
   MagRes as MagicResonance,
   Ritual,
   Spell,
@@ -25,6 +27,7 @@ import { AdeptPowers } from "./AdeptPowers"
 import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
 import { ComplexForms } from "./ComplexForms"
 import { RunnerComplexForms } from "./ComplexForms/RunnerComplexForms"
+import { removeItemFromArray } from "@/components/util"
 
 // TODO: The complexity in this component is a code smell. Refactor things out in to smaller files
 export const SET_MAGRES = Symbol("SET_MAGRES")
@@ -116,10 +119,10 @@ export const MagRes = () => {
             ...runner,
             spells: {
               ...runner.spells,
-              [spellCategory]: [
-                ...runner.spells[spellCategory].slice(0, spellIndex),
-                ...runner.spells[spellCategory].slice(spellIndex + 1),
-              ],
+              [spellCategory]: removeItemFromArray<GeneralSpell | CombatSpell>(
+                runner.spells[spellCategory],
+                spellIndex,
+              ),
             },
           }
         }
