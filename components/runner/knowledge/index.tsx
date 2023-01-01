@@ -82,33 +82,37 @@ const KnowledgeSkills = () => {
         />
         <AddButton type="submit" aria-label="submit" />
       </form>
-      <h2>{runner.name ?? "Runner"}&apos;s Knowledge Skills</h2>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Forget</TableCell>
-            <TableCell>Knowledge Name</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {runner.knowledge?.map((skill, index) => (
-            <TableRow key={skill}>
-              <TableCell>
-                <RemoveButton
-                  aria-label={`Remove ${skill}`}
-                  onClick={() => {
-                    dispatch({
-                      type: REMOVE_KNOWLEDGE,
-                      payload: { removeIndex: index },
-                    })
-                  }}
-                />
-              </TableCell>
-              <TableCell>{skill}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      {runner.knowledge?.length > 0 && (
+        <>
+          <h2>{runner.name || "Runner"}&apos;s Knowledge Skills</h2>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Forget</TableCell>
+                <TableCell>Knowledge Name</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {runner.knowledge?.map((skill, index) => (
+                <TableRow key={skill}>
+                  <TableCell>
+                    <RemoveButton
+                      aria-label={`Remove ${skill}`}
+                      onClick={() => {
+                        dispatch({
+                          type: REMOVE_KNOWLEDGE,
+                          payload: { removeIndex: index },
+                        })
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell>{skill}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </>
+      )}
     </>
   ) : (
     <CircularProgress />

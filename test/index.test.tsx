@@ -1,11 +1,11 @@
 import React from "react"
 import {
   render,
-  fireEvent,
   screen,
   setupIndexedDB,
   withTestRouter,
   waitFor,
+  userEvent,
 } from "./testUtils"
 import { Home } from "../pages/index"
 import { mockedRunners } from "./mocks"
@@ -31,7 +31,7 @@ describe("Home page", () => {
     })
 
     mockedRunners.forEach(({ name, id }) => {
-      expect(getByText(name)).toHaveAttribute("href", `/${id}/info`)
+      expect(getByText(name || id)).toHaveAttribute("href", `/${id}/info`)
     })
   })
 
@@ -47,7 +47,7 @@ describe("Home page", () => {
         .records.length,
     ).toEqual(mockedRunners.length)
 
-    fireEvent.click(getByText("Create Runner"))
+    await userEvent.click(getByText("Create Runner"))
 
     await waitFor(() =>
       expect(push).toHaveBeenCalledWith(
