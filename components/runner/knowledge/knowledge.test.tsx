@@ -54,7 +54,14 @@ describe("knowledge", () => {
   })
 
   it("should fall back to say 'Runner' if the name isn't set", async () => {
-    const { getByText } = setup("12")
+    const { getByText, getByLabelText } = setup("12")
+
+    await waitFor(() => {
+      expect(getByLabelText("input knowledge skill")).toBeInTheDocument()
+    })
+
+    await userEvent.click(getByLabelText("input knowledge skill"))
+    await userEvent.keyboard("Tacos{enter}")
 
     await waitFor(() => {
       expect(getByText("Runner's Knowledge Skills")).toBeInTheDocument()
