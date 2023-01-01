@@ -1,15 +1,13 @@
 import { render, waitFor, userEvent } from "@/test/testUtils"
 import ReleaseNotes from "./index"
-import { rest } from "msw"
 import { githubApiResponse } from "./githubApi.mock"
+import { rest } from "msw"
 
 describe("<ReleaseNotes/>", () => {
   const setup = () => {
     rest.get(
       "https://api.github.com/repos/HeyOmae/OMA3/releases",
-      (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json(githubApiResponse))
-      },
+      (req, res, ctx) => res(ctx.status(200), ctx.json(githubApiResponse)),
     )
     return render(<ReleaseNotes />)
   }

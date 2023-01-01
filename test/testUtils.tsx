@@ -27,47 +27,46 @@ export interface DbSetupConfig {
   tableName?: string
 }
 
-export const setupIndexedDB = (
-  done: jest.DoneCallback,
-  {
-    dbName = "omae",
-    tableName = "runners",
-    payload = mockedRunners,
-  }: DbSetupConfig = {},
-) => {
-  initDB({
-    name: "omae",
-    version: 1,
-    objectStoresMeta: [
-      {
-        store: "runners",
-        storeConfig: { keyPath: "id", autoIncrement: true },
-        storeSchema: [
-          { name: "name", keypath: "name", options: { unique: true } },
-          {
-            name: "description",
-            keypath: "description",
-            options: { unique: false },
-          },
-        ],
-      },
-    ],
-  })
-  const request = indexedDB.open(dbName, 1)
-  request.onsuccess = () => {
-    const db = request.result
-    const transaction = db.transaction([tableName], "readwrite")
-    const objectStore = transaction.objectStore(tableName)
-    const itemsLeftToAdd = payload.length - 1
-
-    payload.forEach((stuff, index) => {
-      objectStore.add(stuff).onsuccess = () => {
-        if (itemsLeftToAdd == index) {
-          done()
-        }
-      }
+export const setupIndexedDB = ({
+  dbName = "omae",
+  tableName = "runners",
+  payload = mockedRunners,
+}: DbSetupConfig = {}) => {
+  return new Promise<void>((resolve) => {
+    initDB({
+      name: "omae",
+      version: 1,
+      objectStoresMeta: [
+        {
+          store: "runners",
+          storeConfig: { keyPath: "id", autoIncrement: true },
+          storeSchema: [
+            { name: "name", keypath: "name", options: { unique: true } },
+            {
+              name: "description",
+              keypath: "description",
+              options: { unique: false },
+            },
+          ],
+        },
+      ],
     })
-  }
+    const request = indexedDB.open(dbName, 1)
+    request.onsuccess = () => {
+      const db = request.result
+      const transaction = db.transaction([tableName], "readwrite")
+      const objectStore = transaction.objectStore(tableName)
+      const itemsLeftToAdd = payload.length - 1
+
+      payload.forEach((stuff, index) => {
+        objectStore.add(stuff).onsuccess = () => {
+          if (itemsLeftToAdd == index) {
+            resolve()
+          }
+        }
+      })
+    }
+  })
 }
 
 export const withTestRouter = (

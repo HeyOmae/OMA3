@@ -20,7 +20,7 @@ describe("<AllRunnersAccess/>", () => {
         {({ runners, add }) => (
           <ul>
             {runners.map(({ name, id }) => (
-              <li key={id}>{name}</li>
+              <li key={id}>{name || id}</li>
             ))}
             <li>
               <button onClick={() => add(initRunner)}>Add Runner</button>
@@ -37,8 +37,8 @@ describe("<AllRunnersAccess/>", () => {
       expect(screen.getByText("Bull")).toBeInTheDocument()
     })
 
-    mockedRunners.forEach(({ name }) => {
-      getByText(name)
+    mockedRunners.forEach(({ name, id }) => {
+      expect(getByText(name || id)).toBeInTheDocument()
     })
   })
 

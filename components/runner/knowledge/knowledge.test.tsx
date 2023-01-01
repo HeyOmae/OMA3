@@ -1,3 +1,4 @@
+import { mockedRunners } from "@/test/mocks"
 import {
   withTestRouter,
   render,
@@ -8,7 +9,11 @@ import {
 import KnowledgeSkills from "./index"
 
 describe("knowledge", () => {
-  beforeAll(setupIndexedDB)
+  beforeAll(() =>
+    setupIndexedDB({
+      payload: [...mockedRunners, { id: 12, name: "", describe: "" }],
+    }),
+  )
   const setup = (id = "7") =>
     render(withTestRouter(<KnowledgeSkills />, { query: { id } }))
   it("should be able to add a knowledge skills", async () => {
@@ -46,5 +51,13 @@ describe("knowledge", () => {
     expect(queryByText("Weapons Manufacturers")).not.toBeInTheDocument()
     expect(queryByText("Craft Beers")).toBeInTheDocument()
     expect(queryByText("Law Enforcement Corps")).toBeInTheDocument()
+  })
+
+  it("should fall back to say 'Runner' if the name isn't set", async () => {
+    const { getByText } = setup("12")
+
+    await waitFor(() => {
+      expect(getByText("Runner's Knowledge Skills")).toBeInTheDocument()
+    })
   })
 })
