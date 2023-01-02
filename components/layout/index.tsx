@@ -17,6 +17,7 @@ import {
   DirectionsRun,
   FlashOn,
   Payment,
+  School,
 } from "@mui/icons-material"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
@@ -109,7 +110,16 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
           component={NextLink}
           href={`/${id}/skills`}
         >
-          Skills
+          Active Skills
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<School />}
+          component={NextLink}
+          href={`/${id}/knowledge`}
+        >
+          Knowledge Skills
         </Button>
 
         <Button
