@@ -44,31 +44,35 @@ describe("<RunnerLayout />", () => {
 
     await waitFor(() => {
       expect(getByText("Info").closest("a")).toHaveAttribute("href", "/1/info")
-      expect(getByText("Priority").closest("a")).toHaveAttribute(
-        "href",
-        "/1/priority",
-      )
-      expect(getByText("Metatype & Attributes").closest("a")).toHaveAttribute(
-        "href",
-        "/1/metatype",
-      )
-      expect(getByText("Skills").closest("a")).toHaveAttribute(
-        "href",
-        "/1/skills",
-      )
-      expect(getByText("Magic & Resonance").closest("a")).toHaveAttribute(
-        "href",
-        "/1/magres",
-      )
-      expect(getByText("Resources").closest("a")).toHaveAttribute(
-        "href",
-        "/1/resources",
-      )
-      expect(getByText("Delete").closest("a")).toHaveAttribute(
-        "href",
-        "/1/delete",
-      )
     })
+    expect(getByText("Priority").closest("a")).toHaveAttribute(
+      "href",
+      "/1/priority",
+    )
+    expect(getByText("Metatype & Attributes").closest("a")).toHaveAttribute(
+      "href",
+      "/1/metatype",
+    )
+    expect(getByText("Active Skills").closest("a")).toHaveAttribute(
+      "href",
+      "/1/skills",
+    )
+    expect(getByText("Knowledge Skills").closest("a")).toHaveAttribute(
+      "href",
+      "/1/knowledge",
+    )
+    expect(getByText("Magic & Resonance").closest("a")).toHaveAttribute(
+      "href",
+      "/1/magres",
+    )
+    expect(getByText("Resources").closest("a")).toHaveAttribute(
+      "href",
+      "/1/resources",
+    )
+    expect(getByText("Delete").closest("a")).toHaveAttribute(
+      "href",
+      "/1/delete",
+    )
   })
 
   it("should close the drawer when clicking outside of it", async () => {

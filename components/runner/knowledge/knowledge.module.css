@@ -1,0 +1,14 @@
+.knowledgeForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  width: 100%;
+}
+
+.points {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 1em;
+}

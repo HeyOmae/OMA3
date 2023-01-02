@@ -206,7 +206,19 @@ export const mockedRunners: Runner[] = [
       "mag/res": "A",
       resources: "E",
     },
-    attributes: initRunnerAttributes,
+    attributes: {
+      Body: { adjustment: 0, points: 0 },
+      Agility: { adjustment: 0, points: 0 },
+      Reaction: { adjustment: 0, points: 0 },
+      Strength: { adjustment: 0, points: 0 },
+      Willpower: { adjustment: 0, points: 0 },
+      Logic: { adjustment: 1, points: 2 }, // Breaking the rules to make sure adjustment points are taken into account for calculating knowledge skill points
+      Intuition: { adjustment: 0, points: 2 },
+      Charisma: { adjustment: 0, points: 0 },
+      Edge: { adjustment: 2, points: 0 },
+      Magic: { adjustment: 0, points: 0 },
+      Resonance: { adjustment: 0, points: 0 },
+    },
     magres: "Full",
     rituals: [
       {
