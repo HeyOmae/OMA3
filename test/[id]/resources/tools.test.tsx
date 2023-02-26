@@ -6,56 +6,55 @@ import {
   waitFor,
   withTestRouter,
   userEvent,
-  waitForElementToBeRemoved,
   caymansCurrentlySpentNuyen,
+  screen,
 } from "@/test/testUtils"
 
 describe("Tools page", () => {
   beforeAll(setupIndexedDB)
   it("should be able to buy and sell Tools", async () => {
-    const { getByLabelText, getByText, getAllByText } = render(
-        withTestRouter(<ToolsPage />, { query: { id: "10" } }),
-      ),
-      currentNuyen = caymansCurrentlySpentNuyen,
+    render(withTestRouter(<ToolsPage />, { query: { id: "10" } }))
+
+    const currentNuyen = caymansCurrentlySpentNuyen,
       totalNuyen = 275000,
       gearA = tools[0],
       gearB = tools[Math.floor(tools.length / 2)],
       gearC = tools[tools.length - 1]
 
     await waitFor(() => {
-      expect(getByText(`${currentNuyen}¥/${totalNuyen}¥`)).toBeInTheDocument()
+      expect(
+        screen.getByText(`${currentNuyen}¥/${totalNuyen}¥`),
+      ).toBeInTheDocument()
     })
 
-    await userEvent.click(getAllByText("Astral")[0])
-    await userEvent.click(getByText("Outdoors"))
+    await userEvent.click(screen.getAllByText("Astral")[0])
+    expect(screen.queryByRole("listbox")).toBeInTheDocument()
+    await userEvent.click(screen.getByText("Outdoors"))
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
 
-    await waitForElementToBeRemoved(
-      // Need to use this because material ui also has a select element with role listbox
-      document.body.querySelector("ul[role=listbox]"),
-    )
+    await userEvent.click(screen.getAllByText("Astral")[0])
+    expect(screen.queryByRole("listbox")).toBeInTheDocument()
+    await userEvent.click(screen.getByText("Stealth"))
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
 
-    await userEvent.click(getAllByText("Astral")[0])
-    await userEvent.click(getByText("Stealth"))
-    await waitForElementToBeRemoved(
-      document.body.querySelector("ul[role=listbox]"),
-    )
-
-    await userEvent.click(getByLabelText(`Add Outdoors ${gearA.name}`))
-    await userEvent.click(getByLabelText(`Add Stealth ${gearB.name}`))
-    await userEvent.click(getByLabelText(`Add Astral ${gearC.name}`))
+    await userEvent.click(screen.getByLabelText(`Add Outdoors ${gearA.name}`))
+    await userEvent.click(screen.getByLabelText(`Add Stealth ${gearB.name}`))
+    await userEvent.click(screen.getByLabelText(`Add Astral ${gearC.name}`))
 
     expect(
-      getByText(
+      screen.getByText(
         `${
           currentNuyen - gearA.cost - gearB.cost - gearC.cost
         }¥/${totalNuyen}¥`,
       ),
     ).toBeInTheDocument()
 
-    await userEvent.click(getByLabelText(`Remove Stealth ${gearB.name}`))
+    await userEvent.click(screen.getByLabelText(`Remove Stealth ${gearB.name}`))
 
     expect(
-      getByText(`${currentNuyen - gearA.cost - gearC.cost}¥/${totalNuyen}¥`),
+      screen.getByText(
+        `${currentNuyen - gearA.cost - gearC.cost}¥/${totalNuyen}¥`,
+      ),
     ).toBeInTheDocument()
   })
 })
