@@ -1,5 +1,6 @@
 import { AddButton, RemoveButton } from "@/components/common"
 import { Runner } from "@/types/runner"
+import { LanguageSkill } from "@/types/Skill"
 import {
   Autocomplete,
   Table,
@@ -11,6 +12,7 @@ import {
 } from "@mui/material"
 import { FC, useRef } from "react"
 import styles from "./knowledge.module.css"
+import { RemainingKnowledgePoints } from "./RemainingKnowledgePoints"
 
 interface SkillSectionProps {
   runner: Runner
@@ -18,7 +20,6 @@ interface SkillSectionProps {
   removeSkill: (removeIndex: number) => void
   exampleOptions: string[]
   skillKey: "knowledge" | "language"
-  remainingKnowledgePoints: JSX.Element
 }
 
 export const SkillSection: FC<SkillSectionProps> = ({
@@ -27,7 +28,6 @@ export const SkillSection: FC<SkillSectionProps> = ({
   removeSkill,
   exampleOptions,
   skillKey,
-  remainingKnowledgePoints,
 }) => {
   const skillName = skillKey.charAt(0).toUpperCase() + skillKey.slice(1)
   const skillInputRef = useRef<HTMLInputElement>()
@@ -43,7 +43,7 @@ export const SkillSection: FC<SkillSectionProps> = ({
           addSkill(skillInputRef.current.value)
         }}
       >
-        <AddButton type="submit" aria-label="submit" />
+        <AddButton type="submit" aria-label={`submit ${skillKey} skill`} />
         <Autocomplete<string, false, false, true>
           className={styles.input}
           freeSolo
@@ -57,7 +57,7 @@ export const SkillSection: FC<SkillSectionProps> = ({
           )}
         />
       </form>
-      {remainingKnowledgePoints}
+      <RemainingKnowledgePoints runner={runner} />
       {runner[skillKey]?.length > 0 && (
         <>
           <h2>
@@ -71,17 +71,23 @@ export const SkillSection: FC<SkillSectionProps> = ({
               </TableRow>
             </TableHead>
             <TableBody>
-              {runner[skillKey]?.map((skill: string, index: number) => (
-                <TableRow key={skill}>
-                  <TableCell>
-                    <RemoveButton
-                      aria-label={`Remove ${skill}`}
-                      onClick={() => removeSkill(index)}
-                    />
-                  </TableCell>
-                  <TableCell>{skill}</TableCell>
-                </TableRow>
-              ))}
+              {runner[skillKey]?.map(
+                (skill: LanguageSkill | string, index: number) => {
+                  const name: string =
+                    typeof skill === "string" ? skill : skill.name
+                  return (
+                    <TableRow key={name}>
+                      <TableCell>
+                        <RemoveButton
+                          aria-label={`Remove ${name}`}
+                          onClick={() => removeSkill(index)}
+                        />
+                      </TableCell>
+                      <TableCell>{name}</TableCell>
+                    </TableRow>
+                  )
+                },
+              )}
             </TableBody>
           </Table>
         </>

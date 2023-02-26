@@ -5,6 +5,8 @@ import {
   userEvent,
   waitFor,
   setupIndexedDB,
+  screen,
+  getByText as getByTextIn,
 } from "@/test/testUtils"
 import { initRunnerAttributes } from "@/types/runner"
 import KnowledgeSkills from "./index"
@@ -29,32 +31,36 @@ describe("knowledge", () => {
       expect(getByLabelText("input knowledge skill")).toBeInTheDocument(),
     )
 
-    expect(getByText("Knowledge Points")).toBeInTheDocument()
-    expect(getByText("4")).toBeInTheDocument()
+    const pointsElement = screen
+      .getAllByText("Knowledge Points")[0]
+      .closest("dl")
+    expect(getByTextIn(pointsElement, "4")).toBeInTheDocument()
 
     const input = getByLabelText("input knowledge skill")
 
     await userEvent.click(input)
     await userEvent.keyboard(knowledgeSkill + "{enter}")
 
-    expect(getByText("3")).toBeInTheDocument()
+    expect(getByTextIn(pointsElement, "3")).toBeInTheDocument()
+
     expect(getByText(knowledgeSkill)).toBeInTheDocument()
 
     const knowledgeSkill2 = "Magical Traditions"
     await userEvent.click(input)
     await userEvent.click(getByText(knowledgeSkill2))
-    await userEvent.click(getByLabelText("submit"))
+    await userEvent.click(screen.getByLabelText("submit knowledge skill"))
 
-    expect(getByText("2")).toBeInTheDocument()
+    expect(getByTextIn(pointsElement, "2")).toBeInTheDocument()
+
     expect(getByText(knowledgeSkill2)).toBeInTheDocument()
 
     // TODO: figure out how to reset the input without needing to click the clear button
     await userEvent.click(getByLabelText("Clear"))
     await userEvent.click(input)
     await userEvent.keyboard("Pizza")
-    await userEvent.click(getByLabelText("submit"))
+    await userEvent.click(screen.getByLabelText("submit knowledge skill"))
 
-    expect(getByText("1")).toBeInTheDocument()
+    expect(getByTextIn(pointsElement, "1")).toBeInTheDocument()
     expect(getByText("Pizza")).toBeInTheDocument()
   })
 
