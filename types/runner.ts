@@ -2,7 +2,7 @@ import { AdeptPower, ComplexForm, MagRes, Ritual, Spells } from "./MagRes"
 import { Priority } from "./PriorityRating"
 import { Resources } from "./Resources"
 import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
-import { Skills } from "./Skill"
+import { LanguageSkill, Skills } from "./Skill"
 
 export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
 
@@ -21,6 +21,7 @@ export interface Runner {
   complexForms?: ComplexForm[]
   resources?: Partial<Resources>
   knowledge?: string[]
+  language?: LanguageSkill[]
 }
 
 export const initRunner: Runner = {

@@ -1,8 +1,8 @@
 import { PriorityWarning } from "@/components/priorityWarning"
 import { removeItemFromArray } from "@/components/util"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
+import { LanguageSkill } from "@/types/Skill"
 import { CircularProgress } from "@mui/material"
-import { RemainingKnowledgePoints } from "./RemainingKnowledgePoints"
 import { SkillSection } from "./SkillSection"
 
 const exampleKnowledgeSkills = [
@@ -34,52 +34,84 @@ const exampleKnowledgeSkills = [
   "Weapons Manufacturers",
 ]
 
+const exampleLanguageSkills = []
+
 const ADD_KNOWLEDGE = Symbol()
 const REMOVE_KNOWLEDGE = Symbol()
+const ADD_LANGUAGE = Symbol()
+const REMOVE_LANGUAGE = Symbol()
 
 interface ReducerPayload {
-  skill?: string
+  skill?: string | LanguageSkill
   removeIndex?: number
 }
 
 const KnowledgeSkills = () => {
   const [runner, dispatch] = useRunnerAccess<ReducerPayload>(
-    (runner, { type, payload: { skill, removeIndex } }) => ({
-      ...runner,
-      knowledge:
-        type === ADD_KNOWLEDGE
-          ? [...(runner?.knowledge ?? []), skill]
-          : removeItemFromArray<string>(runner.knowledge, removeIndex),
-    }),
+    (runner, { type, payload: { skill, removeIndex } }) => {
+      if (typeof skill === "string") {
+        return {
+          ...runner,
+          knowledge: [...(runner?.knowledge ?? []), skill],
+        }
+      } else if (type === REMOVE_KNOWLEDGE) {
+        return {
+          ...runner,
+          knowledge: removeItemFromArray<string>(runner.knowledge, removeIndex),
+        }
+      }
+
+      return {
+        ...runner,
+        language:
+          type === ADD_LANGUAGE
+            ? [...(runner?.language ?? []), skill]
+            : removeItemFromArray<LanguageSkill>(runner.language, removeIndex),
+      }
+    },
   )
   if (!runner) {
     return <CircularProgress />
   } else if (!runner.attributes?.Logic) {
     return <PriorityWarning requirement="attributes" />
   } else {
-    const remainingKnowledgePoints = (
-      <RemainingKnowledgePoints runner={runner} />
-    )
-
     return (
-      <SkillSection
-        runner={runner}
-        addSkill={(skill: string) =>
-          dispatch({
-            type: ADD_KNOWLEDGE,
-            payload: { skill },
-          })
-        }
-        removeSkill={(removeIndex: number) =>
-          dispatch({
-            type: REMOVE_KNOWLEDGE,
-            payload: { removeIndex },
-          })
-        }
-        exampleOptions={exampleKnowledgeSkills}
-        skillKey="knowledge"
-        remainingKnowledgePoints={remainingKnowledgePoints}
-      />
+      <>
+        <SkillSection
+          runner={runner}
+          addSkill={(skill: string) =>
+            dispatch({
+              type: ADD_KNOWLEDGE,
+              payload: { skill },
+            })
+          }
+          removeSkill={(removeIndex: number) =>
+            dispatch({
+              type: REMOVE_KNOWLEDGE,
+              payload: { removeIndex },
+            })
+          }
+          exampleOptions={exampleKnowledgeSkills}
+          skillKey="knowledge"
+        />
+        <SkillSection
+          runner={runner}
+          addSkill={(skill: string) =>
+            dispatch({
+              type: ADD_LANGUAGE,
+              payload: { skill: { name: skill, rating: 1 } },
+            })
+          }
+          removeSkill={(removeIndex: number) =>
+            dispatch({
+              type: REMOVE_LANGUAGE,
+              payload: { removeIndex },
+            })
+          }
+          exampleOptions={exampleLanguageSkills}
+          skillKey="language"
+        />
+      </>
     )
   }
 }

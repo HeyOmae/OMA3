@@ -13,3 +13,8 @@ interface Skill {
 export type Skills = {
   [skillName: string]: Skill
 }
+
+export interface LanguageSkill {
+  name: string
+  rating: "Native" | 1 | 2 | 3 | 4
+}

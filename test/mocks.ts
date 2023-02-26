@@ -288,7 +288,10 @@ export const mockedRunners: Runner[] = [
       "mag/res": "A",
       resources: "E",
     },
-    attributes: initRunnerAttributes,
+    attributes: {
+      ...initRunnerAttributes,
+      Logic: { adjustment: 0, points: 4 },
+    },
     magres: "Adept",
     powers: [
       {
@@ -322,6 +325,10 @@ export const mockedRunners: Runner[] = [
         select: "PHYSICAL ATTRIBUTE",
         activation: "Major action",
       },
+    ],
+    language: [
+      { name: "Mandarin", rating: "Native" },
+      { name: "Japanese", rating: 2 },
     ],
   },
   {
