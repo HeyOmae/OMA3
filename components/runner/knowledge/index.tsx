@@ -34,7 +34,22 @@ const exampleKnowledgeSkills = [
   "Weapons Manufacturers",
 ]
 
-const exampleLanguageSkills = []
+const exampleLanguageSkills = [
+  "Sperethiel",
+  "Or'zet",
+  "English",
+  "Japanese",
+  "Mandarin",
+  "Russian",
+  "French",
+  "Italian",
+  "German",
+  "Aztlaner Spanish",
+  "Spanish",
+  "Lakota",
+  "Dakota",
+  "Diné",
+]
 
 const ADD_KNOWLEDGE = Symbol()
 const REMOVE_KNOWLEDGE = Symbol()
