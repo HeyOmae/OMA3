@@ -13,7 +13,11 @@ export const RemainingKnowledgePoints: FC<Props> = ({ runner }) => (
       {runner.attributes.Logic.adjustment +
         runner.attributes.Logic.points +
         1 -
-        (runner.knowledge?.length ?? 0)}
+        (runner.knowledge?.length ?? 0) -
+        (runner.language?.reduce((points, { rating }) => {
+          if (rating === "Native") return points
+          return points + rating
+        }, 0) ?? 0)}
     </dt>
   </dl>
 )

@@ -19,10 +19,16 @@ describe("language section", () => {
 
     await screen.findByText("Enter Language Skill")
 
+    const pointsElement = screen
+      .getAllByText("Knowledge Points")[0]
+      .closest("dl")
+    expect(pointsElement).toHaveTextContent("4")
+
     await user.click(screen.getByLabelText("input language skill"))
     await user.keyboard("Sperethiel{enter}")
 
     expect(screen.getByText("Sperethiel")).toBeInTheDocument()
+    expect(pointsElement).toHaveTextContent("3")
   })
 
   it("should add language skills for runner's that already have some", async () => {
@@ -30,11 +36,17 @@ describe("language section", () => {
 
     await screen.findByText("Enter Language Skill")
 
+    const pointsElement = screen
+      .getAllByText("Knowledge Points")[0]
+      .closest("dl")
+    expect(pointsElement).toHaveTextContent("3")
+
     await user.click(screen.getByLabelText("input language skill"))
     await user.keyboard("English")
     await user.click(screen.getByLabelText("submit language skill"))
 
     expect(screen.getByText("English")).toBeInTheDocument()
+    expect(pointsElement).toHaveTextContent("2")
   })
 
   it("should remove a lanuage skill", async () => {
@@ -42,8 +54,14 @@ describe("language section", () => {
 
     await screen.findByText("Japanese")
 
+    const pointsElement = screen
+      .getAllByText("Knowledge Points")[0]
+      .closest("dl")
+    expect(pointsElement).toHaveTextContent("2")
+
     await user.click(screen.getByLabelText("Remove Japanese"))
 
     expect(screen.queryByText("Japanese")).not.toBeInTheDocument()
+    expect(pointsElement).toHaveTextContent("4")
   })
 })
