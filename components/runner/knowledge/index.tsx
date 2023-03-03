@@ -55,15 +55,17 @@ const ADD_KNOWLEDGE = Symbol()
 const REMOVE_KNOWLEDGE = Symbol()
 const ADD_LANGUAGE = Symbol()
 const REMOVE_LANGUAGE = Symbol()
+const UPDATE_LANGUAGE_RATING = Symbol()
 
 interface ReducerPayload {
   skill?: string | LanguageSkill
-  removeIndex?: number
+  index?: number
 }
 
 const KnowledgeSkills = () => {
   const [runner, dispatch] = useRunnerAccess<ReducerPayload>(
-    (runner, { type, payload: { skill, removeIndex } }) => {
+    (runner, { type, payload: { skill, index } }) => {
+      // Forgive me future contributor for I have sinned while trying to be cleaver while writing this reducer.
       if (typeof skill === "string") {
         return {
           ...runner,
@@ -72,7 +74,16 @@ const KnowledgeSkills = () => {
       } else if (type === REMOVE_KNOWLEDGE) {
         return {
           ...runner,
-          knowledge: removeItemFromArray<string>(runner.knowledge, removeIndex),
+          knowledge: removeItemFromArray<string>(runner.knowledge, index),
+        }
+      } else if (type === UPDATE_LANGUAGE_RATING) {
+        return {
+          ...runner,
+          language: [
+            ...runner.language.slice(0, index),
+            skill,
+            ...runner.language.slice(index + 1),
+          ],
         }
       }
 
@@ -81,7 +92,7 @@ const KnowledgeSkills = () => {
         language:
           type === ADD_LANGUAGE
             ? [...(runner?.language ?? []), skill]
-            : removeItemFromArray<LanguageSkill>(runner.language, removeIndex),
+            : removeItemFromArray<LanguageSkill>(runner.language, index),
       }
     },
   )
@@ -100,10 +111,10 @@ const KnowledgeSkills = () => {
               payload: { skill },
             })
           }
-          removeSkill={(removeIndex: number) =>
+          removeSkill={(index: number) =>
             dispatch({
               type: REMOVE_KNOWLEDGE,
-              payload: { removeIndex },
+              payload: { index },
             })
           }
           exampleOptions={exampleKnowledgeSkills}
@@ -117,10 +128,16 @@ const KnowledgeSkills = () => {
               payload: { skill: { name: skill, rating: 1 } },
             })
           }
-          removeSkill={(removeIndex: number) =>
+          removeSkill={(index: number) =>
             dispatch({
               type: REMOVE_LANGUAGE,
-              payload: { removeIndex },
+              payload: { index },
+            })
+          }
+          changeRating={(skill, rating, index) =>
+            dispatch({
+              type: UPDATE_LANGUAGE_RATING,
+              payload: { index, skill: { ...skill, rating } },
             })
           }
           exampleOptions={exampleLanguageSkills}

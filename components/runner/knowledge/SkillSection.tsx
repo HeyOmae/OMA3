@@ -1,8 +1,12 @@
 import { AddButton, RemoveButton } from "@/components/common"
 import { Runner } from "@/types/runner"
-import { LanguageSkill } from "@/types/Skill"
+import { LanguageRating, LanguageSkill } from "@/types/Skill"
 import {
   Autocomplete,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -20,6 +24,11 @@ interface SkillSectionProps {
   removeSkill: (removeIndex: number) => void
   exampleOptions: string[]
   skillKey: "knowledge" | "language"
+  changeRating?: (
+    skill: LanguageSkill,
+    rating: LanguageRating,
+    index: number,
+  ) => void
 }
 
 export const SkillSection: FC<SkillSectionProps> = ({
@@ -28,6 +37,7 @@ export const SkillSection: FC<SkillSectionProps> = ({
   removeSkill,
   exampleOptions,
   skillKey,
+  changeRating,
 }) => {
   const skillName = skillKey.charAt(0).toUpperCase() + skillKey.slice(1)
   const skillInputRef = useRef<HTMLInputElement>()
@@ -68,13 +78,14 @@ export const SkillSection: FC<SkillSectionProps> = ({
               <TableRow>
                 <TableCell>Forget</TableCell>
                 <TableCell>{skillName} Name</TableCell>
+                {skillKey === "language" && <TableCell>Rating</TableCell>}
               </TableRow>
             </TableHead>
             <TableBody>
               {runner[skillKey]?.map(
                 (skill: LanguageSkill | string, index: number) => {
-                  const name: string =
-                    typeof skill === "string" ? skill : skill.name
+                  const isLanguage = typeof skill === "object"
+                  const name: string = isLanguage ? skill.name : skill
                   return (
                     <TableRow key={name}>
                       <TableCell>
@@ -84,6 +95,35 @@ export const SkillSection: FC<SkillSectionProps> = ({
                         />
                       </TableCell>
                       <TableCell>{name}</TableCell>
+                      {isLanguage && (
+                        <TableCell>
+                          <FormControl>
+                            <InputLabel id={`${name}-rating-label`}>
+                              {name} Rating
+                            </InputLabel>
+                            <Select
+                              labelId={`${name}-rating-label`}
+                              label={`${name} Rating`}
+                              value={skill.rating}
+                              onChange={({ target }) =>
+                                changeRating(
+                                  skill,
+                                  (target.value === "Native"
+                                    ? target.value
+                                    : +target.value) as LanguageRating,
+                                  index,
+                                )
+                              }
+                            >
+                              <MenuItem value="Native">Native</MenuItem>
+                              <MenuItem value="1">1</MenuItem>
+                              <MenuItem value="2">2</MenuItem>
+                              <MenuItem value="3">3</MenuItem>
+                              <MenuItem value="4">4</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </TableCell>
+                      )}
                     </TableRow>
                   )
                 },
