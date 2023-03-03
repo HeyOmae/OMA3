@@ -64,4 +64,25 @@ describe("language section", () => {
     expect(screen.queryByText("Japanese")).not.toBeInTheDocument()
     expect(pointsElement).toHaveTextContent("4")
   })
+
+  it("should be able to change the rating of a language", async () => {
+    const user = setup("8")
+
+    await screen.findByText("Mandarin")
+
+    const pointsElement = screen
+      .getAllByText("Knowledge Points")[0]
+      .closest("dl")
+    expect(pointsElement).toHaveTextContent("4")
+
+    await user.click(screen.getByLabelText("Mandarin Rating"))
+    await user.click(screen.getByRole("option", { name: /4/i }))
+
+    expect(pointsElement).toHaveTextContent("0")
+
+    await user.click(screen.getByLabelText("Mandarin Rating"))
+    await user.click(screen.getByRole("option", { name: /Native/i }))
+
+    expect(pointsElement).toHaveTextContent("4")
+  })
 })
