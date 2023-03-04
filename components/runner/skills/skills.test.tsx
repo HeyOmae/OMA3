@@ -6,63 +6,57 @@ import {
   setupIndexedDB,
   waitFor,
   SliderHelper,
-  searchRegexInNodes,
   runnerFromDB,
   userEvent,
+  screen,
 } from "@/test/testUtils"
 
 describe("<Skills/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = (id = "3") => {
-    return render(withTestRouter(<Skills />, { query: { id } }))
-  }
+  const setup = (id = "3") =>
+    render(withTestRouter(<Skills />, { query: { id } }))
 
   it("should display a list of skills", async () => {
-    const { getByText } = setup()
+    setup()
 
-    await waitFor(() => {
-      expect(getByText("Astral")).toBeInTheDocument()
-    })
-    expect(getByText("Athletics")).toBeInTheDocument()
-    expect(getByText("Biotech")).toBeInTheDocument()
-    expect(getByText("Close combat")).toBeInTheDocument()
-    expect(getByText("Con")).toBeInTheDocument()
-    expect(getByText("Conjuring")).toBeInTheDocument()
-    expect(getByText("Cracking")).toBeInTheDocument()
-    expect(getByText("Electronics")).toBeInTheDocument()
-    expect(getByText("Enchanting")).toBeInTheDocument()
-    expect(getByText("Engineering")).toBeInTheDocument()
-    expect(getByText("Exotic weapons")).toBeInTheDocument()
-    expect(getByText("Firearms")).toBeInTheDocument()
-    expect(getByText("Influence")).toBeInTheDocument()
-    expect(getByText("Outdoors")).toBeInTheDocument()
-    expect(getByText("Perception")).toBeInTheDocument()
-    expect(getByText("Piloting")).toBeInTheDocument()
-    expect(getByText("Sorcery")).toBeInTheDocument()
-    expect(getByText("Stealth")).toBeInTheDocument()
-    expect(getByText("Tasking")).toBeInTheDocument()
+    await screen.findByText("Astral")
+    expect(screen.getByText("Athletics")).toBeInTheDocument()
+    expect(screen.getByText("Biotech")).toBeInTheDocument()
+    expect(screen.getByText("Close combat")).toBeInTheDocument()
+    expect(screen.getByText("Con")).toBeInTheDocument()
+    expect(screen.getByText("Conjuring")).toBeInTheDocument()
+    expect(screen.getByText("Cracking")).toBeInTheDocument()
+    expect(screen.getByText("Electronics")).toBeInTheDocument()
+    expect(screen.getByText("Enchanting")).toBeInTheDocument()
+    expect(screen.getByText("Engineering")).toBeInTheDocument()
+    expect(screen.getByText("Exotic weapons")).toBeInTheDocument()
+    expect(screen.getByText("Firearms")).toBeInTheDocument()
+    expect(screen.getByText("Influence")).toBeInTheDocument()
+    expect(screen.getByText("Outdoors")).toBeInTheDocument()
+    expect(screen.getByText("Perception")).toBeInTheDocument()
+    expect(screen.getByText("Piloting")).toBeInTheDocument()
+    expect(screen.getByText("Sorcery")).toBeInTheDocument()
+    expect(screen.getByText("Stealth")).toBeInTheDocument()
+    expect(screen.getByText("Tasking")).toBeInTheDocument()
   })
 
   it("should display the remaining skill points", async () => {
-    const { getByText } = setup("2")
+    setup("2")
 
-    await waitFor(() => {
-      expect(
-        getByText(searchRegexInNodes(/Skill Points:4\/20/)),
-      ).toBeInTheDocument()
-    })
+    await screen.findByRole("term")
+    expect(screen.getByRole("definition")).toHaveTextContent("4/20")
   })
 
   it("should add a skill at rating 1 to the runner skills", async () => {
-    const { getByLabelText } = setup()
+    setup()
 
     expect(runnerFromDB(2).skills).toBeUndefined()
 
-    await waitFor(() => {
-      expect(getByLabelText("add Firearms skill")).toBeInTheDocument()
-    })
+    expect(
+      await screen.findByLabelText("add Firearms skill"),
+    ).toBeInTheDocument()
 
-    await userEvent.click(getByLabelText("add Firearms skill"))
+    await userEvent.click(screen.getByLabelText("add Firearms skill"))
 
     await waitFor(() => {
       expect(runnerFromDB(2).skills.Firearms).toEqual({
@@ -75,53 +69,46 @@ describe("<Skills/>", () => {
   })
 
   it("should remove a skill", async () => {
-    const { getByLabelText, queryByLabelText } = setup()
+    setup()
 
-    await waitFor(() => {
-      expect(getByLabelText("add Con skill")).toBeInTheDocument()
+    expect(await screen.findByLabelText("add Con skill")).toBeInTheDocument()
+
+    await userEvent.click(screen.getByLabelText("add Con skill"))
+
+    expect(await screen.findByLabelText("remove Con skill")).toBeInTheDocument()
+
+    expect(runnerFromDB(2).skills.Con).toEqual({
+      rating: 1,
+      attribute: {
+        primary: "Charisma",
+      },
     })
 
-    await userEvent.click(getByLabelText("add Con skill"))
+    await userEvent.click(screen.getByLabelText("remove Con skill"))
 
-    await waitFor(() => {
-      expect(getByLabelText("remove Con skill")).toBeInTheDocument()
-      expect(runnerFromDB(2).skills.Con).toEqual({
-        rating: 1,
-        attribute: {
-          primary: "Charisma",
-        },
-      })
-    })
-
-    await userEvent.click(getByLabelText("remove Con skill"))
-
-    await waitFor(() => {
-      expect(queryByLabelText("remove Con skill")).not.toBeInTheDocument()
-      expect(runnerFromDB(2).skills.Con).toBeUndefined()
-    })
+    expect(screen.queryByLabelText("remove Con skill")).not.toBeInTheDocument()
+    expect(runnerFromDB(2).skills.Con).toBeUndefined()
   })
 
   describe("rating slider", () => {
     it("should update the rating of the skill", async () => {
-      const { getByTestId, getByLabelText } = setup()
+      setup()
 
-      await waitFor(() => {
-        expect(getByLabelText("add Cracking skill")).toBeInTheDocument()
+      expect(
+        await screen.findByLabelText("add Cracking skill"),
+      ).toBeInTheDocument()
+
+      await userEvent.click(screen.getByLabelText("add Cracking skill"))
+
+      expect(screen.getByTestId("Cracking-rating")).toBeInTheDocument()
+      expect(runnerFromDB(2).skills.Cracking).toEqual({
+        rating: 1,
+        attribute: {
+          primary: "Logic",
+        },
       })
 
-      await userEvent.click(getByLabelText("add Cracking skill"))
-
-      await waitFor(() => {
-        expect(getByTestId("Cracking-rating")).toBeInTheDocument()
-        expect(runnerFromDB(2).skills.Cracking).toEqual({
-          rating: 1,
-          attribute: {
-            primary: "Logic",
-          },
-        })
-      })
-
-      SliderHelper.change(getByTestId("Cracking-rating"), 5, 1, 6)
+      SliderHelper.change(screen.getByTestId("Cracking-rating"), 5, 1, 6)
 
       await waitFor(() => {
         expect(runnerFromDB(2).skills.Cracking).toEqual({
@@ -136,44 +123,39 @@ describe("<Skills/>", () => {
 
   describe("specialization", () => {
     it("should set the specialization in indexedDB", async () => {
-      const { getByLabelText, getByTestId } = setup()
+      setup()
 
-      await waitFor(() => {
-        expect(getByLabelText("add Close combat skill")).toBeInTheDocument()
+      expect(
+        await screen.findByLabelText("add Close combat skill"),
+      ).toBeInTheDocument()
+
+      await userEvent.click(screen.getByLabelText("add Close combat skill"))
+
+      expect(screen.getByTestId("Close-combat-rating")).toBeInTheDocument()
+
+      expect(runnerFromDB(2).skills["Close combat"]).toEqual({
+        rating: 1,
+        attribute: {
+          primary: "Agility",
+        },
       })
 
-      await userEvent.click(getByLabelText("add Close combat skill"))
-
-      await waitFor(() => {
-        expect(getByTestId("Close-combat-rating")).toBeInTheDocument()
-        expect(runnerFromDB(2).skills["Close combat"]).toEqual({
-          rating: 1,
-          attribute: {
-            primary: "Agility",
-          },
-        })
-      })
-
-      const specInput = getByLabelText("Close combat specialization")
+      const specInput = screen.getByLabelText("Close combat specialization")
 
       await userEvent.click(specInput)
-      userEvent.keyboard("Blades{enter}")
+      await userEvent.keyboard("Blades{enter}")
 
-      await waitFor(() => {
-        expect(runnerFromDB(2).skills["Close combat"].specialization).toEqual(
-          "Blades",
-        )
-      })
+      expect(runnerFromDB(2).skills["Close combat"].specialization).toEqual(
+        "Blades",
+      )
     })
   })
 
   it("should warn the user if skill priority isn't set", async () => {
-    const { getByText } = setup("1")
+    setup("1")
 
-    await waitFor(() => {
-      expect(
-        getByText("You need to set the skills priority"),
-      ).toBeInTheDocument()
-    })
+    expect(
+      await screen.findByText("You need to set the skills priority"),
+    ).toBeInTheDocument()
   })
 })

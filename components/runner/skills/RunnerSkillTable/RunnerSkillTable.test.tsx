@@ -5,7 +5,6 @@ import {
   SliderHelper,
   getByLabelText as containerGetByLabelText,
   getByText as globalGetByText,
-  searchRegexInNodes,
   userEvent,
 } from "@/test/testUtils"
 import { mockedRunners } from "@/test/mocks"
@@ -172,21 +171,22 @@ describe("<RunnerSkillTable/>", () => {
 
   describe("skill points", () => {
     it("should display the remaining skill points", async () => {
-      const { getByText } = setup()
+      const { getByRole } = setup()
 
-      expect(
-        getByText(searchRegexInNodes(/Skill Points:4\/20/)),
-      ).toBeInTheDocument()
+      expect(getByRole("term")).toHaveTextContent("Skill Points")
+      expect(getByRole("definition")).toHaveTextContent("4/20")
     })
 
     it("should alert the user about bad stuff when they've used too many skill points", () => {
-      const { getByText } = setup({
+      const { getByRole } = setup({
         skills: mockedRunners[1].skills,
         skillPoints: 12,
         dispatch: jest.fn(),
       })
 
-      expect(getByText("-4/12")).toHaveClass("bad-stuff")
+      const pointsRemaining = getByRole("definition")
+      expect(pointsRemaining).toHaveTextContent("-4/12")
+      expect(pointsRemaining).toHaveClass("bad-stuff")
     })
   })
 })
