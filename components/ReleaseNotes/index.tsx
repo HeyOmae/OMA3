@@ -19,7 +19,7 @@ const ReleaseNotes = () => {
     fetch("https://api.github.com/repos/HeyOmae/OMA3/releases")
       .then((res) => res.json())
       .then((res: Releases) => setNotes(res))
-  })
+  }, [])
   return (
     <TableContainer>
       <Table sx={{ minWidth: 500 }} aria-label="release notes">
