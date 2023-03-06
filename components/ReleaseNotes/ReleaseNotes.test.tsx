@@ -1,14 +1,23 @@
-import { render, waitFor, userEvent } from "@/test/testUtils"
+import { render, waitFor, userEvent, screen } from "@/test/testUtils"
 import ReleaseNotes from "./index"
 import { githubApiResponse } from "./githubApi.mock"
 import { rest } from "msw"
+import { setupServer } from "msw/node"
 
 describe("<ReleaseNotes/>", () => {
-  const setup = () => {
+  const server = setupServer(
     rest.get(
       "https://api.github.com/repos/HeyOmae/OMA3/releases",
       (req, res, ctx) => res(ctx.status(200), ctx.json(githubApiResponse)),
-    )
+    ),
+  ) // Establish API mocking before all tests.
+  beforeAll(() => server.listen())
+  // Reset any request handlers that we may add during the tests,
+  // so they don't affect other tests.
+  afterEach(() => server.resetHandlers())
+  // Clean up after the tests are finished.
+  afterAll(() => server.close())
+  const setup = () => {
     return render(<ReleaseNotes />)
   }
   it("should display the version, release name, and link to the release", async () => {
@@ -28,9 +37,7 @@ describe("<ReleaseNotes/>", () => {
   it("should support pagination", async () => {
     const { getByText, queryByText, getByLabelText } = setup()
 
-    await waitFor(() => {
-      expect(getByText("3.6.1")).toBeInTheDocument()
-    })
+    await screen.findByText("3.6.1")
 
     // This make sure we are **NOT** on the second page
     expect(queryByText("3.5.1")).not.toBeInTheDocument()
@@ -43,7 +50,7 @@ describe("<ReleaseNotes/>", () => {
     await userEvent.selectOptions(getByLabelText("rows per page"), "10")
 
     // This should have both page 1 and 2 displayed at the same time now
-    expect(getByText("3.6.1")).toBeInTheDocument()
+    expect(await screen.findByText("3.6.1")).toBeInTheDocument()
     expect(getByText("3.5.1")).toBeInTheDocument()
   })
 })
