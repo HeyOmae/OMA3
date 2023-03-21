@@ -1,4 +1,4 @@
-import { positive } from "@/data/qualities"
+import { negative, positive } from "@/data/qualities"
 import {
   render,
   screen,
@@ -17,6 +17,15 @@ test("displayes poitive qualities", () => {
   setup()
 
   positive.forEach((quality) => {
+    const qualityRow = screen.getByText(quality.name).closest("tr")
+    expect(getByTextInElement(qualityRow, quality.karma)).toBeInTheDocument()
+  })
+})
+
+test("display negative qualities", () => {
+  setup()
+
+  negative.forEach((quality) => {
     const qualityRow = screen.getByText(quality.name).closest("tr")
     expect(getByTextInElement(qualityRow, quality.karma)).toBeInTheDocument()
   })
