@@ -62,7 +62,7 @@
     "jest-watch-typeahead": "^2.2.2",
     "lint-staged": "^13.2.0",
     "msw": "^1.1.1",
-    "prettier": "^2.8.5",
+    "prettier": "^2.8.6",
     "typescript": "^5.0.2",
     "whatwg-fetch": "^3.6.2"
   }
