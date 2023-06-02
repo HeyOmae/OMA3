@@ -115,6 +115,11 @@ export const withTestRouter = (
   </RouterContext.Provider>
 )
 
+export const renderWithTestRouter = (
+  tree: React.ReactElement,
+  nextRouter: Partial<NextRouter>,
+) => render(withTestRouter(tree, nextRouter))
+
 export class SliderHelper {
   private static height = 10
 

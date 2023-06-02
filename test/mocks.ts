@@ -998,6 +998,45 @@ export const mockedRunners: Runner[] = [
       "Weapons Manufacturers",
       "Law Enforcement Corps",
     ],
+    qualities: {
+      positive: [
+        {
+          name: "Guts",
+          karma: 12,
+          type: "POSITIVE",
+        },
+        {
+          modifications: {
+            attrmod: {
+              attr: "DAMAGE OVERFLOW",
+              val: 1,
+            },
+          },
+          name: "Will To Live",
+          karma: 8,
+          type: "POSITIVE",
+          max: 3,
+          currentRating: 2,
+        },
+      ],
+      negative: [
+        {
+          name: "Addiction",
+          karma: 2,
+          type: "NEGATIVE",
+          max: 6,
+          multi: true,
+          select: "NAME",
+          selected: "Kamikaze",
+          currentRating: 3,
+        },
+        {
+          name: "AR Vertigo",
+          karma: 10,
+          type: "NEGATIVE",
+        },
+      ],
+    },
   },
   {
     id: 11,
