@@ -40,7 +40,13 @@ describe("<Qualities />", () => {
     // test buy positive
     await user.click(await screen.findByLabelText("Add Astral Chameleon"))
 
-    expect(screen.getByLabelText("Remove Astral Chameleon")).toBeInTheDocument()
+    expect(
+      await screen.findByText("Frosty's Positive Qualities"),
+    ).toBeInTheDocument()
+
+    expect(
+      await screen.findByLabelText("Remove Astral Chameleon"),
+    ).toBeInTheDocument()
 
     // test buy negative
     await user.click(await screen.findByLabelText("Add AR Vertigo"))

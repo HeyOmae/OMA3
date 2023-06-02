@@ -2,9 +2,9 @@ import { cyberdeckData } from "@/data/electronics"
 import {
   render,
   withTestRouter,
-  waitFor,
   getByText as getTextInContainer,
   setupIndexedDB,
+  screen,
 } from "@/test/testUtils"
 import { Cyberdecks } from "."
 
@@ -13,11 +13,11 @@ describe("<Cyberdecks/>", () => {
   const setup = () =>
     render(withTestRouter(<Cyberdecks />, { query: { id: "10" } }))
   it("should display stats for cyberdecks", async () => {
-    const { getByText, getByLabelText } = setup()
+    setup()
 
-    await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
+    expect(await screen.findByText("Buy")).toBeInTheDocument()
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = screen.getByText("Buy").closest("tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
@@ -28,7 +28,9 @@ describe("<Cyberdecks/>", () => {
 
     // Stats of a cyberdeck
     const cyberdeck = cyberdeckData[0],
-      cyberdeckRow = getByLabelText(`Add ${cyberdeck.name}`).closest("tr")
+      cyberdeckRow = screen
+        .getByLabelText(`Add ${cyberdeck.name}`)
+        .closest("tr")
 
     expect(getTextInContainer(cyberdeckRow, cyberdeck.name)).toBeInTheDocument()
     expect(

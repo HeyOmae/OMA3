@@ -32,7 +32,7 @@ export const setupIndexedDB = ({
   tableName = "runners",
   payload = mockedRunners,
 }: DbSetupConfig = {}) => {
-  return new Promise<void>((resolve) => {
+  return new Promise<void>((resolve, reject) => {
     initDB({
       name: "omae",
       version: 1,
@@ -66,6 +66,7 @@ export const setupIndexedDB = ({
         }
       })
     }
+    request.onerror = reject
   })
 }
 
