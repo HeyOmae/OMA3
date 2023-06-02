@@ -1,8 +1,8 @@
 import {
   render,
-  waitFor,
   withTestRouter,
   getByText as getTextInContainer,
+  screen,
 } from "@/test/testUtils"
 import {
   GearElectronic,
@@ -89,15 +89,12 @@ export const sellSensorCols: SensorDeviceCols = [
 
 export const expectGearToDisplayMatrixDeviceTable =
   (MatrixComponent: FC, ListOfMatrixGear: GearMatrixCommlink[]) => async () => {
-    const { getByText, getByLabelText } = render(
-      withTestRouter(<MatrixComponent />, { query: { id: "10" } }),
-    )
-    await waitFor(() => {
-      expect(getByText("Buy")).toBeInTheDocument()
-    })
+    render(withTestRouter(<MatrixComponent />, { query: { id: "10" } }))
+
+    expect(await screen.findByText("Buy")).toBeInTheDocument()
 
     // Header
-    const buyHeader = getByText("Buy").closest("thead")
+    const buyHeader = screen.getByText("Buy").closest("thead")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
@@ -108,7 +105,7 @@ export const expectGearToDisplayMatrixDeviceTable =
 
     // Stats of a commlink
     const device = ListOfMatrixGear[0],
-      deviceRow = getByLabelText(`Add ${device.name}`).closest("tr")
+      deviceRow = screen.getByLabelText(`Add ${device.name}`).closest("tr")
 
     expect(getTextInContainer(deviceRow, device.name)).toBeInTheDocument()
     expect(
