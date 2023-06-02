@@ -520,7 +520,7 @@ export const negative: Quality[] = [
     select: "NAME",
   },
   {
-    name: "Ar Vertigo",
+    name: "AR Vertigo",
     karma: 10,
     type: "NEGATIVE",
   },

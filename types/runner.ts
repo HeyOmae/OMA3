@@ -1,5 +1,6 @@
 import { AdeptPower, ComplexForm, MagRes, Ritual, Spells } from "./MagRes"
 import { Priority } from "./PriorityRating"
+import { Quality } from "./Qualities"
 import { Resources } from "./Resources"
 import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
 import { LanguageSkill, Skills } from "./Skill"
@@ -22,6 +23,10 @@ export interface Runner {
   resources?: Partial<Resources>
   knowledge?: string[]
   language?: LanguageSkill[]
+  qualities?: {
+    positive?: Quality[]
+    negative?: Quality[]
+  }
 }
 
 export const initRunner: Runner = {

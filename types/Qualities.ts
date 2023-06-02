@@ -52,7 +52,9 @@ export interface Quality {
     | "MENTOR SPIRIT"
     | "SPIRIT"
     | "SPRITE"
+  selected?: string
   max?: number
+  currentRating?: number
   multi?: true
   requires?: Requires
 }
