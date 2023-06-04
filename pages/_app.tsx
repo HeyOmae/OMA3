@@ -1,6 +1,5 @@
 import { AppProps } from "next/app"
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material"
-import { Analytics } from "@vercel/analytics/react"
 
 import "./styles.css"
 import Head from "next/head"
@@ -59,7 +58,6 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => (
     </Head>
     <CssBaseline />
     <Component {...pageProps} />
-    <Analytics />
   </ThemeProvider>
 )
 
