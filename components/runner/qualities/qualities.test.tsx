@@ -3,7 +3,6 @@ import {
   renderWithTestRouter,
   screen,
   userEvent,
-  getByText as getByTextInElement,
   setupIndexedDB,
 } from "@/test/testUtils"
 import Qualities from "."
@@ -16,21 +15,25 @@ describe("<Qualities />", () => {
     return user
   }
 
-  test("displayes poitive qualities", () => {
+  test("displayes poitive qualities", async () => {
     setup()
+
+    expect(await screen.findByText("Positive Qualities")).toBeInTheDocument()
 
     positive.forEach((quality) => {
       const qualityRow = screen.getByText(quality.name).closest("tr")
-      expect(getByTextInElement(qualityRow, quality.karma)).toBeInTheDocument()
+      expect(qualityRow).toHaveTextContent(quality.karma.toString())
     })
   })
 
-  test("display negative qualities", () => {
+  test("display negative qualities", async () => {
     setup()
+
+    expect(await screen.findByText("Negative Qualities")).toBeInTheDocument()
 
     negative.forEach((quality) => {
       const qualityRow = screen.getByText(quality.name).closest("tr")
-      expect(getByTextInElement(qualityRow, quality.karma)).toBeInTheDocument()
+      expect(qualityRow).toHaveTextContent(quality.karma.toString())
     })
   })
 

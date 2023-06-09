@@ -203,7 +203,7 @@ export interface GearWithRating extends Gear {
     | "cost2"
     | "cost avail"
     | "essence cost"
-    | "essence cost2"
+    // | "essence cost2"
     | "essence capacity cost"
     | "essence cost modifier"
     | "essence cost defenseRating"
@@ -257,7 +257,9 @@ interface EdgeMod {
 export interface GearAugmentation<UseAs = GearAugmentationUseAs>
   extends GearMod<UseAs>,
     GearWithRating,
-    Partial<GearTypes> {}
+    Partial<GearTypes> {
+  essence?: number
+}
 
 export interface GearCyberware
   extends GearAugmentation<Array<GearAugmentationUseAs | GearModUseAs>>,

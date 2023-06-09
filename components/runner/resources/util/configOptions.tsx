@@ -1,7 +1,6 @@
-import { Columns } from "../util"
+import { Columns, getEssenceFromGear } from "../util"
 import {
   Gear,
-  GearAugmentationUseAs,
   GearBioware,
   GearCyberware,
   GearDroneMod,
@@ -282,12 +281,9 @@ export const sellDroneModCols: VehicleModCols[] = [
 
 const essenceConfigOption: Columns<GearCyberware | GearBioware> = {
   display: (gear) => {
-    if ("essence" in gear.useAs) {
-      return gear.useAs.essence
-    }
-    return (
-      gear.useAs.find((useAs) => "essence" in useAs) as GearAugmentationUseAs
-    )?.essence
+    const essense = gear.essence ? `${gear.essence}` : getEssenceFromGear(gear)
+
+    return parseFloat((+essense).toFixed(12))
   },
   label: "Ess",
 }

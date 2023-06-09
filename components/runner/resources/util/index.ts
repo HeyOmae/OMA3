@@ -1,6 +1,11 @@
 import { createContext } from "react"
 import { DispatchAction, RunnerReducer } from "@/hooks/useRunnerAccess"
-import { Gear } from "@/types/Resources"
+import {
+  Gear,
+  GearAugmentationUseAs,
+  GearBioware,
+  GearCyberware,
+} from "@/types/Resources"
 
 export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
   if (typeof payload === "number") {
@@ -35,6 +40,12 @@ export interface AddGearButtonProps {
 export interface RemoveGearButtonProps extends AddGearButtonProps {
   index: number
 }
+
+export const getEssenceFromGear = (gear: GearCyberware | GearBioware) =>
+  "essence" in gear.useAs
+    ? gear.useAs.essence
+    : (gear.useAs.find((useAs) => "essence" in useAs) as GearAugmentationUseAs)
+        ?.essence
 
 export * from "./Columns"
 export * from "./configOptions"
