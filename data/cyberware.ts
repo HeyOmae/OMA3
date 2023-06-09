@@ -185,46 +185,45 @@ const cyberwareAll: GearCyberware[] = [
     cost: 3000,
     name: "Spatial Recognizer",
   },
-
-  // {
-  //   useAs: [
-  //     {
-  //       type: "CYBERWARE",
-  //       subtype: "CYBER HEADWARE",
-  //       essence: "1.0",
-  //     },
-  //   ],
-  //   modifications: {
-  //     edgemod: [
-  //       {
-  //         type: "BONUS",
-  //         skill: "perception",
-  //       },
-  //       {
-  //         type: "BONUS",
-  //         skill: "piloting",
-  //       },
-  //       {
-  //         type: "BONUS",
-  //         skill: "stealth",
-  //       },
-  //       {
-  //         type: "BONUS",
-  //         skill: "cracking",
-  //       },
-  //       {
-  //         type: "BONUS",
-  //         skill: "engineering",
-  //       },
-  //     ],
-  //   },
-  //   availability: "4L",
-  //   cost: 30000,
-  //   name: "Control Rig",
-  //   maxRating: 3,
-  //   rating: true,
-  //   rateMultiplier: "essence cost",
-  // },
+  {
+    useAs: [
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER HEADWARE",
+        essence: "1.0",
+      },
+    ],
+    modifications: {
+      edgemod: [
+        {
+          type: "BONUS",
+          skill: "perception",
+        },
+        {
+          type: "BONUS",
+          skill: "piloting",
+        },
+        {
+          type: "BONUS",
+          skill: "stealth",
+        },
+        {
+          type: "BONUS",
+          skill: "cracking",
+        },
+        {
+          type: "BONUS",
+          skill: "engineering",
+        },
+      ],
+    },
+    availability: "4L",
+    cost: 30000,
+    name: "Control Rig",
+    maxRating: 3,
+    rating: true,
+    rateMultiplier: "essence cost",
+  },
   // {
   //   useAs: [
   //     {
