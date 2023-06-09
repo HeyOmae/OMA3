@@ -1,7 +1,7 @@
 import { FC, useMemo, useState } from "react"
 import { Gear, GearTyped } from "@/types/Resources"
 import { TableCell, TableRow } from "@mui/material"
-import { Columns } from "../../../util"
+import { Columns, getEssenceFromGear } from "../../../util"
 import skillData from "@/data/skills.json"
 
 export interface Props {
@@ -25,14 +25,22 @@ interface RatingRowProps extends Props {
 
 export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
   const [currentRating, setRating] = useState(gear.minRating ?? 1)
-  const gearWithRating = useMemo(
-    () => ({
+  const gearWithRating = useMemo(() => {
+    const { rateMultiplier } = gear
+    // Currently everything gear with rating increases cost by rating
+    const cost = gear.cost * currentRating
+    const essence = /essence/.test(rateMultiplier)
+      ? +getEssenceFromGear(gear) * currentRating
+      : undefined
+    gear.rateMultiplier
+
+    return {
       ...gear,
       currentRating,
-      cost: gear.cost * currentRating,
-    }),
-    [currentRating, gear],
-  )
+      essence,
+      cost,
+    }
+  }, [currentRating, gear])
 
   // Cols live at /components/runner/resources/util/configOptions.tsx
   // Or with the gear using this row

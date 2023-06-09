@@ -5,6 +5,9 @@ import {
   waitFor,
   withTestRouter,
   getByText as getByTextInElement,
+  getByTestId as getByTestIdElement,
+  screen,
+  SliderHelper,
 } from "@/test/testUtils"
 import CyberwareMod from "./index"
 
@@ -54,6 +57,23 @@ describe("<CyberwareMod />", () => {
     expect(
       getByTextInElement(smugglingCompartmentRow, "[2]"),
     ).toBeInTheDocument()
+  })
+
+  test("changing rating should change capacity", async () => {
+    setup()
+
+    const cyberwareRatingRow = (
+      await screen.findByText("Hydraulic Jacks")
+    ).closest("tr")
+
+    expect(cyberwareRatingRow).toHaveTextContent("[1]")
+    const ratingSlider = getByTestIdElement(
+      cyberwareRatingRow,
+      "Hydraulic Jacks-rating",
+    )
+    SliderHelper.change(ratingSlider, 4, 1, 6)
+    expect(cyberwareRatingRow).toHaveTextContent("[4]")
+    expect(cyberwareRatingRow).toHaveTextContent("10000¥")
   })
 
   // TODO, missing attirubte increase mods, take a look in to fixing later

@@ -186,86 +186,86 @@ const cyberwareAll: GearCyberware[] = [
     name: "Spatial Recognizer",
   },
 
-  {
-    useAs: [
-      {
-        type: "CYBERWARE",
-        subtype: "CYBER HEADWARE",
-        essence: "1.0",
-      },
-    ],
-    modifications: {
-      edgemod: [
-        {
-          type: "BONUS",
-          skill: "perception",
-        },
-        {
-          type: "BONUS",
-          skill: "piloting",
-        },
-        {
-          type: "BONUS",
-          skill: "stealth",
-        },
-        {
-          type: "BONUS",
-          skill: "cracking",
-        },
-        {
-          type: "BONUS",
-          skill: "engineering",
-        },
-      ],
-    },
-    availability: "4L",
-    cost: 30000,
-    name: "Control Rig",
-    maxRating: 3,
-    rating: true,
-    rateMultiplier: "essence cost",
-  },
-  {
-    useAs: [
-      {
-        type: "CYBERWARE",
-        subtype: "CYBER HEADWARE",
-        essence: "1.0",
-      },
-    ],
-    modifications: {
-      edgemod: [
-        {
-          type: "BONUS",
-          skill: "perception",
-        },
-        {
-          type: "BONUS",
-          skill: "piloting",
-        },
-        {
-          type: "BONUS",
-          skill: "stealth",
-        },
-        {
-          type: "BONUS",
-          skill: "cracking",
-        },
-        {
-          type: "BONUS",
-          skill: "engineering",
-        },
-      ],
-    },
-    availability: "4L",
-    cost: 30000,
-    language: "fr",
-    name: "Control Rig Squared",
-    maxRating: 3,
-    rating: true,
-    rateMultiplier: "essence cost2",
-    modOnly: true,
-  },
+  // {
+  //   useAs: [
+  //     {
+  //       type: "CYBERWARE",
+  //       subtype: "CYBER HEADWARE",
+  //       essence: "1.0",
+  //     },
+  //   ],
+  //   modifications: {
+  //     edgemod: [
+  //       {
+  //         type: "BONUS",
+  //         skill: "perception",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "piloting",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "stealth",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "cracking",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "engineering",
+  //       },
+  //     ],
+  //   },
+  //   availability: "4L",
+  //   cost: 30000,
+  //   name: "Control Rig",
+  //   maxRating: 3,
+  //   rating: true,
+  //   rateMultiplier: "essence cost",
+  // },
+  // {
+  //   useAs: [
+  //     {
+  //       type: "CYBERWARE",
+  //       subtype: "CYBER HEADWARE",
+  //       essence: "1.0",
+  //     },
+  //   ],
+  //   modifications: {
+  //     edgemod: [
+  //       {
+  //         type: "BONUS",
+  //         skill: "perception",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "piloting",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "stealth",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "cracking",
+  //       },
+  //       {
+  //         type: "BONUS",
+  //         skill: "engineering",
+  //       },
+  //     ],
+  //   },
+  //   availability: "4L",
+  //   cost: 30000,
+  //   language: "fr",
+  //   name: "Control Rig Squared",
+  //   maxRating: 3,
+  //   rating: true,
+  //   rateMultiplier: "essence cost2",
+  //   modOnly: true,
+  // },
   {
     useAs: [
       {
@@ -348,7 +348,6 @@ const cyberwareAll: GearCyberware[] = [
     availability: "3L",
     cost: 45000,
     name: "Cyberjack 1",
-    currentRating: 1,
   },
   {
     useAs: [
@@ -378,7 +377,6 @@ const cyberwareAll: GearCyberware[] = [
     availability: "3L",
     cost: 65000,
     name: "Cyberjack 2",
-    currentRating: 2,
   },
   {
     useAs: [
@@ -408,7 +406,6 @@ const cyberwareAll: GearCyberware[] = [
     availability: "3L",
     cost: 80000,
     name: "Cyberjack 3",
-    currentRating: 3,
   },
   {
     useAs: [
@@ -438,7 +435,6 @@ const cyberwareAll: GearCyberware[] = [
     availability: "4L",
     cost: 95000,
     name: "Cyberjack 4",
-    currentRating: 4,
   },
   {
     useAs: [
@@ -468,7 +464,6 @@ const cyberwareAll: GearCyberware[] = [
     availability: "5L",
     cost: 140000,
     name: "Cyberjack 5",
-    currentRating: 5,
   },
   // {
   //   useAs: [
@@ -499,7 +494,6 @@ const cyberwareAll: GearCyberware[] = [
   //   cost: 140000,
   //   name: "Cyberjack5",
   //   language: "de",
-  //   currentRating: 6,
   //   rating: true,
   // },
   {
@@ -530,7 +524,6 @@ const cyberwareAll: GearCyberware[] = [
     availability: "6L",
     cost: 210000,
     name: "Cyberjack 6",
-    currentRating: 6,
   },
   // {
   //   useAs: [
@@ -2514,6 +2507,6 @@ export const cyberware = cyberwareAll.filter(({ useAs }) =>
   useAs.some((useage) => "essence" in useage),
 )
 
-export const mods = cyberware.filter(({ useAs }) =>
+export const mods = cyberwareAll.filter(({ useAs }) =>
   useAs.some((useage) => "capacity" in useage),
 )
