@@ -28,11 +28,12 @@ export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
   const gearWithRating = useMemo(() => {
     const { rateMultiplier } = gear
     // Currently everything gear with rating increases cost by rating
-    const cost = gear.cost * currentRating
+    const cost = /cost2/.test(rateMultiplier)
+      ? currentRating * currentRating * gear.cost
+      : gear.cost * currentRating
     const essence = /essence/.test(rateMultiplier)
       ? +getEssenceFromGear(gear) * currentRating
       : undefined
-    gear.rateMultiplier
 
     return {
       ...gear,
