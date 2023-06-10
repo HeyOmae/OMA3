@@ -5,7 +5,7 @@ import { foci } from "@/data/focus"
 describe("foci page", () => {
   beforeAll(setupIndexedDB)
   it(
-    "should be able to buy and sell electronic accessories",
+    "should be able to buy and sell foci",
     expectToBuyAndSellGear(fociPage, foci),
   )
 })
