@@ -13,7 +13,7 @@ export const SkillSelect: FC<SkillSelectProps> = ({
 }) => (
   <Select
     value={selectedSkill}
-    onChange={({ target: { value } }) => setSkill(value as string)}
+    onChange={({ target: { value } }) => setSkill(value)}
   >
     {skillData.map(({ name }) => (
       <MenuItem key={name} value={name}>

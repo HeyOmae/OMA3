@@ -1,11 +1,15 @@
 import { AddButton, RemoveButton } from "@/components/common"
 import { Quality } from "@/types/Qualities"
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
-import { FC } from "react"
+import { FC, useState } from "react"
+import { SkillSelect } from "../resources/GearPageTemplate/GearTable/ResourceButtons"
+import skillData from "@/data/skills.json"
+
+type OnAddQuality = (quality: Quality) => void
 
 interface Props {
   qualities: Quality[]
-  onAddQuality: (quality: Quality) => void
+  onAddQuality: OnAddQuality
 }
 
 export const QualityTable: FC<Props> = ({ qualities, onAddQuality }) => (
@@ -14,25 +18,48 @@ export const QualityTable: FC<Props> = ({ qualities, onAddQuality }) => (
       <TableRow>
         <TableCell>Add</TableCell>
         <TableCell>Name</TableCell>
+        <TableCell>Select</TableCell>
         <TableCell>Karma</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
       {qualities.map((quality) => (
-        <TableRow key={quality.name}>
-          <TableCell>
-            <AddButton
-              aria-label={`Add ${quality.name}`}
-              onClick={() => onAddQuality(quality)}
-            />
-          </TableCell>
-          <TableCell>{quality.name}</TableCell>
-          <TableCell>{quality.karma}</TableCell>
-        </TableRow>
+        <QualityStatefulRow
+          key={quality.name}
+          quality={quality}
+          onAddQuality={onAddQuality}
+        />
       ))}
     </TableBody>
   </Table>
 )
+
+interface QualityStatefulRowProps {
+  quality: Quality
+  onAddQuality: OnAddQuality
+}
+
+const QualityStatefulRow: FC<QualityStatefulRowProps> = ({
+  quality,
+  onAddQuality,
+}) => {
+  const [selected, setSelected] = useState(skillData[0].name)
+  return (
+    <TableRow>
+      <TableCell>
+        <AddButton
+          aria-label={`Add ${quality.name}`}
+          onClick={() => onAddQuality({ ...quality, selected })}
+        />
+      </TableCell>
+      <TableCell>{quality.name}</TableCell>
+      <TableCell>
+        <SkillSelect selectedSkill={selected} setSkill={setSelected} />
+      </TableCell>
+      <TableCell>{quality.karma}</TableCell>
+    </TableRow>
+  )
+}
 
 interface RunnerQualityTableProps {
   qualities: Quality[]
@@ -48,6 +75,7 @@ export const RunnerQualityTable: FC<RunnerQualityTableProps> = ({
       <TableRow>
         <TableCell>Remove</TableCell>
         <TableCell>Name</TableCell>
+        <TableCell>Selected</TableCell>
         <TableCell>Karma</TableCell>
       </TableRow>
     </TableHead>
@@ -61,6 +89,7 @@ export const RunnerQualityTable: FC<RunnerQualityTableProps> = ({
             />
           </TableCell>
           <TableCell>{quality.name}</TableCell>
+          <TableCell>{quality.selected}</TableCell>
           <TableCell>{quality.karma}</TableCell>
         </TableRow>
       ))}

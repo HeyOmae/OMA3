@@ -4,6 +4,7 @@ import {
   screen,
   userEvent,
   setupIndexedDB,
+  getByText as getByTextInElement,
 } from "@/test/testUtils"
 import Qualities from "."
 
@@ -71,5 +72,30 @@ describe("<Qualities />", () => {
     //remove negative
     await user.click(screen.getByLabelText("Remove AR Vertigo"))
     expect(screen.queryByLabelText("Remove AR Vertigo")).not.toBeInTheDocument()
+  })
+
+  describe("select", () => {
+    test("Aptitude and Incompetent should allow you to select a skill", async () => {
+      const user = setup()
+
+      expect(await screen.findByText("Aptitude")).toBeInTheDocument()
+
+      const aptitudeRow = screen.getByText("Aptitude").closest("tr")
+
+      const select = getByTextInElement(aptitudeRow, "Astral")
+
+      await user.click(select)
+      await user.click(screen.getByText("Firearms"))
+
+      expect(getByTextInElement(aptitudeRow, "Firearms")).toBeInTheDocument()
+
+      await user.click(screen.getByLabelText("Add Aptitude"))
+
+      const aptitudePurchasedRow = screen
+        .getByLabelText("Remove Aptitude")
+        .closest("tr")
+
+      expect(aptitudePurchasedRow).toHaveTextContent("Firearms")
+    })
   })
 })
