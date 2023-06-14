@@ -75,6 +75,21 @@ describe("<Qualities />", () => {
   })
 
   describe("select", () => {
+    test("Qualities without a select should not have a select", async () => {
+      const user = setup()
+
+      const qualityRow = (await screen.findByText("Gremlins")).closest("tr")
+
+      expect(qualityRow).toHaveTextContent("N/A")
+
+      await user.click(screen.getByLabelText("Add Gremlins"))
+
+      const purchasedQualityRow = screen
+        .getByLabelText("Remove Gremlins")
+        .closest("tr")
+
+      expect(purchasedQualityRow).toHaveTextContent("N/A")
+    })
     test("Aptitude and Incompetent should allow you to select a skill", async () => {
       const user = setup()
 
