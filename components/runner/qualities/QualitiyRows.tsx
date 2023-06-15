@@ -2,16 +2,21 @@ import { Quality } from "@/types/Qualities"
 import { OnAddQuality } from "./QualityTable"
 import { TableCell, TableRow } from "@mui/material"
 import { AddButton } from "@/components/common"
-import { FC, useState } from "react"
+import { FC, ReactNode, useState } from "react"
 import skillData from "@/data/skills.json"
 import { SkillSelect } from "../resources/GearPageTemplate/GearTable/ResourceButtons"
 
 interface QualityRowProps {
   quality: Quality
   onAddQuality: OnAddQuality
+  select?: ReactNode
 }
 
-const QualityRow: FC<QualityRowProps> = ({ quality, onAddQuality }) => (
+const QualityRow: FC<QualityRowProps> = ({
+  quality,
+  onAddQuality,
+  select = "N/A",
+}) => (
   <TableRow>
     <TableCell>
       <AddButton
@@ -20,7 +25,7 @@ const QualityRow: FC<QualityRowProps> = ({ quality, onAddQuality }) => (
       />
     </TableCell>
     <TableCell>{quality.name}</TableCell>
-    <TableCell>N/A</TableCell>
+    <TableCell>{select}</TableCell>
     <TableCell>{quality.karma}</TableCell>
   </TableRow>
 )
@@ -31,19 +36,11 @@ const QualitySelectSkillRow: FC<QualityRowProps> = ({
 }) => {
   const [selected, setSelected] = useState(skillData[0].name)
   return (
-    <TableRow>
-      <TableCell>
-        <AddButton
-          aria-label={`Add ${quality.name}`}
-          onClick={() => onAddQuality({ ...quality, selected })}
-        />
-      </TableCell>
-      <TableCell>{quality.name}</TableCell>
-      <TableCell>
-        <SkillSelect selectedSkill={selected} setSkill={setSelected} />
-      </TableCell>
-      <TableCell>{quality.karma}</TableCell>
-    </TableRow>
+    <QualityRow
+      quality={quality}
+      onAddQuality={() => onAddQuality({ ...quality, selected })}
+      select={<SkillSelect selectedSkill={selected} setSkill={setSelected} />}
+    />
   )
 }
 
