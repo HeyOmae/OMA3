@@ -1,8 +1,8 @@
 import { Quality } from "@/types/Qualities"
 import { OnAddQuality } from "./QualityTable"
-import { TableCell, TableRow } from "@mui/material"
+import { TableCell, TableRow, TextField } from "@mui/material"
 import { AddButton } from "@/components/common"
-import { FC, ReactNode, useState } from "react"
+import { FC, ReactNode, useRef, useState } from "react"
 import skillData from "@/data/skills.json"
 import { SkillSelect } from "../resources/GearPageTemplate/GearTable/ResourceButtons"
 
@@ -44,9 +44,32 @@ const QualitySelectSkillRow: FC<QualityRowProps> = ({
   )
 }
 
+const QualitySelectNameRow: FC<QualityRowProps> = ({
+  quality,
+  onAddQuality,
+}) => {
+  const nameRef = useRef<HTMLInputElement>()
+  return (
+    <QualityRow
+      quality={quality}
+      onAddQuality={() =>
+        onAddQuality({ ...quality, selected: nameRef.current.value ?? "tacos" })
+      }
+      select={
+        <TextField
+          inputRef={nameRef}
+          label={`Select ${quality.name} Name`}
+          id={`${quality.name}-select`}
+        />
+      }
+    />
+  )
+}
+
 const QualityRows = {
   default: QualityRow,
   SKILL: QualitySelectSkillRow,
+  NAME: QualitySelectNameRow,
 }
 
 export default QualityRows

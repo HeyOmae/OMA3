@@ -91,7 +91,7 @@ describe("<Qualities />", () => {
       expect(purchasedQualityRow).toHaveTextContent("N/A")
     })
 
-    test("Aptitude and Incompetent should allow you to select a skill", async () => {
+    test("Qualities should allow you to select a skill", async () => {
       const user = setup()
 
       expect(await screen.findByText("Aptitude")).toBeInTheDocument()
@@ -112,6 +112,21 @@ describe("<Qualities />", () => {
         .closest("tr")
 
       expect(aptitudePurchasedRow).toHaveTextContent("Firearms")
+    })
+
+    test("Qualities should have an input to take a name", async () => {
+      const user = setup()
+
+      expect(await screen.findByText("Prejudiced")).toBeInTheDocument()
+
+      await user.click(screen.getByLabelText("Select Prejudiced Name"))
+      await user.keyboard("Elves")
+      await user.click(screen.getByLabelText("Add Prejudiced"))
+
+      const aptitudePurchasedRow = screen
+        .getByLabelText("Remove Prejudiced")
+        .closest("tr")
+      expect(aptitudePurchasedRow).toHaveTextContent("Elves")
     })
   })
 })
