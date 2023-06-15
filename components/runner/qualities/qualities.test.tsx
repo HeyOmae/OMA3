@@ -90,6 +90,7 @@ describe("<Qualities />", () => {
 
       expect(purchasedQualityRow).toHaveTextContent("N/A")
     })
+
     test("Aptitude and Incompetent should allow you to select a skill", async () => {
       const user = setup()
 
