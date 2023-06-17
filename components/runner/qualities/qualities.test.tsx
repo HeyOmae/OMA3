@@ -91,7 +91,7 @@ describe("<Qualities />", () => {
       expect(purchasedQualityRow).toHaveTextContent("N/A")
     })
 
-    test("Qualities should allow you to select a skill", async () => {
+    test("Qualities should allow a skill to select", async () => {
       const user = setup()
 
       expect(await screen.findByText("Aptitude")).toBeInTheDocument()
@@ -103,7 +103,7 @@ describe("<Qualities />", () => {
       await user.click(select)
       await user.click(screen.getByText("Firearms"))
 
-      expect(getByTextInElement(aptitudeRow, "Firearms")).toBeInTheDocument()
+      expect(aptitudeRow).toHaveTextContent("Firearms")
 
       await user.click(screen.getByLabelText("Add Aptitude"))
 
@@ -127,6 +127,29 @@ describe("<Qualities />", () => {
         .getByLabelText("Remove Prejudiced")
         .closest("tr")
       expect(aptitudePurchasedRow).toHaveTextContent("Elves")
+    })
+
+    test("Qualities should allow an attribute to be selected", async () => {
+      const user = setup()
+
+      expect(
+        await screen.findByText("Exceptional Attribute"),
+      ).toBeInTheDocument()
+
+      const qualityRow = screen.getByText("Exceptional Attribute").closest("tr")
+
+      const select = getByTextInElement(qualityRow, "Body")
+      await user.click(select)
+      await user.click(screen.getByText("Agility"))
+      expect(qualityRow).toHaveTextContent("Agility")
+
+      await user.click(screen.getByLabelText("Add Exceptional Attribute"))
+
+      const qualityPurchasedRow = screen
+        .getByLabelText("Remove Exceptional Attribute")
+        .closest("tr")
+
+      expect(qualityPurchasedRow).toHaveTextContent("Agility")
     })
   })
 })

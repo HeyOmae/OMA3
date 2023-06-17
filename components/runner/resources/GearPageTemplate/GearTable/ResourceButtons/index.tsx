@@ -54,4 +54,4 @@ export const ModLinkButton: FC<{ gear: Gear; index: number }> = ({
 }
 
 export * from "./SettingRating"
-export * from "./SkillSelect"
+export * from "./Selects"

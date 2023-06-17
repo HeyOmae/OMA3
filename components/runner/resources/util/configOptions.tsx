@@ -154,7 +154,7 @@ export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
 
 export const gearToolsConfigOptionSetSkill: Columns<GearTools, string> = {
   display: (gear, index, setSkill, selectedSkill) => (
-    <SkillSelect selectedSkill={selectedSkill} setSkill={setSkill} />
+    <SkillSelect selected={selectedSkill} setSelected={setSkill} />
   ),
   label: "Select Skill",
 }
