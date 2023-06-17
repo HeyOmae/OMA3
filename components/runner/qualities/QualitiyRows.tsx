@@ -4,7 +4,11 @@ import { TableCell, TableRow, TextField } from "@mui/material"
 import { AddButton } from "@/components/common"
 import { FC, ReactNode, useRef, useState } from "react"
 import skillData from "@/data/skills.json"
-import { SkillSelect } from "../resources/GearPageTemplate/GearTable/ResourceButtons"
+import {
+  AttributeSelect,
+  SkillSelect,
+} from "../resources/GearPageTemplate/GearTable/ResourceButtons"
+import { attributes } from "@/data/attributes"
 
 interface QualityRowProps {
   quality: Quality
@@ -39,7 +43,7 @@ const QualitySelectSkillRow: FC<QualityRowProps> = ({
     <QualityRow
       quality={quality}
       onAddQuality={() => onAddQuality({ ...quality, selected })}
-      select={<SkillSelect selectedSkill={selected} setSkill={setSelected} />}
+      select={<SkillSelect selected={selected} setSelected={setSelected} />}
     />
   )
 }
@@ -53,7 +57,7 @@ const QualitySelectNameRow: FC<QualityRowProps> = ({
     <QualityRow
       quality={quality}
       onAddQuality={() =>
-        onAddQuality({ ...quality, selected: nameRef.current.value ?? "tacos" })
+        onAddQuality({ ...quality, selected: nameRef.current.value })
       }
       select={
         <TextField
@@ -66,10 +70,25 @@ const QualitySelectNameRow: FC<QualityRowProps> = ({
   )
 }
 
+const QualitySelectAttributeRow: FC<QualityRowProps> = ({
+  quality,
+  onAddQuality,
+}) => {
+  const [selected, setSelected] = useState(attributes.bod)
+  return (
+    <QualityRow
+      quality={quality}
+      onAddQuality={() => onAddQuality({ ...quality, selected })}
+      select={<AttributeSelect selected={selected} setSelected={setSelected} />}
+    />
+  )
+}
+
 const QualityRows = {
   default: QualityRow,
   SKILL: QualitySelectSkillRow,
   NAME: QualitySelectNameRow,
+  ATTRIBUTE: QualitySelectAttributeRow,
 }
 
 export default QualityRows

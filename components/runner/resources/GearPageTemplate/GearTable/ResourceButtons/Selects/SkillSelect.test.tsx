@@ -1,12 +1,12 @@
 import { render, fireEvent, userEvent } from "@/test/testUtils"
 import skillData from "@/data/skills.json"
-import { SkillSelect, SkillSelectProps } from "./index"
+import { SkillSelect, SelectProps } from "./index"
 
 describe("<SkillSelect/>", () => {
   const setup = () => {
-    const props: SkillSelectProps = {
-      selectedSkill: skillData[0].name,
-      setSkill: jest.fn(),
+    const props: SelectProps = {
+      selected: skillData[0].name,
+      setSelected: jest.fn(),
     }
     return { ...render(<SkillSelect {...props} />), props }
   }
@@ -26,6 +26,6 @@ describe("<SkillSelect/>", () => {
 
     await userEvent.click(getByText(electronics))
 
-    expect(props.setSkill).toHaveBeenCalledWith(electronics)
+    expect(props.setSelected).toHaveBeenCalledWith(electronics)
   })
 })
