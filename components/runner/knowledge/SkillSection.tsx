@@ -17,6 +17,7 @@ import {
 import { FC, useRef } from "react"
 import styles from "./knowledge.module.css"
 import { RemainingKnowledgePoints } from "./RemainingKnowledgePoints"
+import { capitalization } from "@/components/util"
 
 interface SkillSectionProps {
   runner: Runner
@@ -39,7 +40,7 @@ export const SkillSection: FC<SkillSectionProps> = ({
   skillKey,
   changeRating,
 }) => {
-  const skillName = skillKey.charAt(0).toUpperCase() + skillKey.slice(1)
+  const skillName = capitalization(skillKey)
   const skillInputRef = useRef<HTMLInputElement>()
   const skillFormRef = useRef<HTMLFormElement>()
   return (
