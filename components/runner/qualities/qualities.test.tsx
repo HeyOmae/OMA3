@@ -151,5 +151,28 @@ describe("<Qualities />", () => {
 
       expect(qualityPurchasedRow).toHaveTextContent("Agility")
     })
+
+    test("quality should allow an elemental effect to be selected", async () => {
+      const user = setup()
+
+      expect(
+        await screen.findByText("Elemental Resistance"),
+      ).toBeInTheDocument()
+
+      const qualityRow = screen.getByText("Elemental Resistance").closest("tr")
+
+      const select = getByTextInElement(qualityRow, "Electrical")
+      await user.click(select)
+      await user.click(screen.getByText("Cold"))
+      expect(qualityRow).toHaveTextContent("Cold")
+
+      await user.click(screen.getByLabelText("Add Elemental Resistance"))
+
+      const qualityPurchasedRow = screen
+        .getByLabelText("Remove Elemental Resistance")
+        .closest("tr")
+
+      expect(qualityPurchasedRow).toHaveTextContent("Cold")
+    })
   })
 })

@@ -6,6 +6,7 @@ import { FC, ReactNode, useRef, useState } from "react"
 import skillData from "@/data/skills.json"
 import {
   AttributeSelect,
+  ElementalSelect,
   SkillSelect,
 } from "../resources/GearPageTemplate/GearTable/ResourceButtons"
 import { attributes } from "@/data/attributes"
@@ -84,11 +85,26 @@ const QualitySelectAttributeRow: FC<QualityRowProps> = ({
   )
 }
 
+const QualitySelectElementRow: FC<QualityRowProps> = ({
+  quality,
+  onAddQuality,
+}) => {
+  const [selected, setSelected] = useState("Electrical")
+  return (
+    <QualityRow
+      quality={quality}
+      onAddQuality={() => onAddQuality({ ...quality, selected })}
+      select={<ElementalSelect selected={selected} setSelected={setSelected} />}
+    />
+  )
+}
+
 const QualityRows = {
   default: QualityRow,
   SKILL: QualitySelectSkillRow,
   NAME: QualitySelectNameRow,
   ATTRIBUTE: QualitySelectAttributeRow,
+  ELEMENTAL: QualitySelectElementRow,
 }
 
 export default QualityRows

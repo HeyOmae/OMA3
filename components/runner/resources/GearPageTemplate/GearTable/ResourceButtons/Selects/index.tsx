@@ -2,6 +2,7 @@ import { MenuItem, Select } from "@mui/material"
 import { FC } from "react"
 import skillData from "@/data/skills.json"
 import { attributes } from "@/data/attributes"
+import { elemental } from "@/data/attacks"
 
 export interface SelectProps {
   selected: string
@@ -30,6 +31,19 @@ export const AttributeSelect: FC<SelectProps> = ({ selected, setSelected }) => (
     onChange={({ target: { value } }) => setSelected(value)}
   >
     {Object.values(attributes).map((name) => (
+      <MenuItem key={name} value={name}>
+        {name}
+      </MenuItem>
+    ))}
+  </Select>
+)
+
+export const ElementalSelect: FC<SelectProps> = ({ selected, setSelected }) => (
+  <Select
+    value={selected}
+    onChange={({ target: { value } }) => setSelected(value)}
+  >
+    {Object.keys(elemental).map((name) => (
       <MenuItem key={name} value={name}>
         {name}
       </MenuItem>
