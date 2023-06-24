@@ -1,12 +1,12 @@
 [
   {
-    "name": "Adrenaline boost",
+    "name": "Adrenaline Boost",
     "cost": 0.25,
     "levels": true,
     "activation": "Minor action"
   },
   {
-    "name": "Astral perception",
+    "name": "Astral Perception",
     "cost": 1,
     "activation": "Minor action",
     "modifications": {
@@ -16,14 +16,14 @@
     }
   },
   {
-    "name": "Attribute boost",
+    "name": "Attribute Boost",
     "cost": 0.25,
     "levels": true,
     "select": "PHYSICAL ATTRIBUTE",
     "activation": "Major action"
   },
   {
-    "name": "Combat sense",
+    "name": "Combat Sense",
     "cost": 0.5,
     "levels": true,
     "activation": "Passive",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "name": "Critical strike",
+    "name": "Critical Strike",
     "cost": 1,
     "levels": true,
     "activation": "Passive",
@@ -55,22 +55,22 @@
     }
   },
   {
-    "name": "Danger sense",
+    "name": "Danger Sense",
     "cost": 0.5,
     "activation": "Passive"
   },
   {
-    "name": "Direction sense",
+    "name": "Direction Sense",
     "cost": 0.25,
     "activation": "Passive"
   },
   {
-    "name": "Enhanced perception",
+    "name": "Enhanced Perception",
     "cost": 0.5,
     "activation": "Passive"
   },
   {
-    "name": "Enhanced accuracy",
+    "name": "Enhanced Accuracy",
     "cost": 0.5,
     "activation": "Passive",
     "modifications": {
@@ -81,7 +81,7 @@
     }
   },
   {
-    "name": "Improved ability",
+    "name": "Improved Ability",
     "cost": 0.5,
     "levels": true,
     "select": "Noncombat skill",
@@ -99,7 +99,7 @@
     }
   },
   {
-    "name": "Improved ability combat",
+    "name": "Improved Ability Combat",
     "cost": 1,
     "levels": true,
     "select": "COMBAT SKILL",
@@ -117,7 +117,7 @@
     }
   },
   {
-    "name": "Improved physical attribute",
+    "name": "Improved Physical Attribute",
     "cost": 1,
     "levels": true,
     "max": 4,
@@ -130,7 +130,7 @@
     }
   },
   {
-    "name": "Improved reflexes",
+    "name": "Improved Reflexes",
     "cost": 1.0,
     "levels": true,
     "max": 4,
@@ -148,13 +148,13 @@
     ]
   },
   {
-    "name": "Improved sense",
+    "name": "Improved Sense",
     "cost": 0.25,
     "select": "SENSE",
     "activation": "Passive"
   },
   {
-    "name": "Killing hands",
+    "name": "Killing Hands",
     "cost": 0.5,
     "activation": "Minor action"
   },
@@ -164,7 +164,7 @@
     "activation": "Passive"
   },
   {
-    "name": "Mystic armor",
+    "name": "Mystic Armor",
     "cost": 0.25,
     "levels": true,
     "activation": "Passive",
@@ -176,7 +176,7 @@
     }
   },
   {
-    "name": "Pain resistance",
+    "name": "Pain Resistance",
     "cost": 0.25,
     "levels": true,
     "activation": "Passive",
@@ -188,29 +188,29 @@
     }
   },
   {
-    "name": "Rapid healing",
+    "name": "Rapid Healing",
     "cost": 0.5,
     "levels": true,
     "activation": "Passive"
   },
   {
-    "name": "Spell resistance",
+    "name": "Spell Resistance",
     "cost": 0.5,
     "activation": "Passive"
   },
   {
-    "name": "Traceless walk",
+    "name": "Traceless Walk",
     "cost": 0.5,
     "activation": "Passive"
   },
   {
-    "name": "Vocal control",
+    "name": "Vocal Control",
     "cost": 0.5,
     "levels": true,
     "activation": "Passive"
   },
   {
-    "name": "Wall running",
+    "name": "Wall Running",
     "cost": 0.5,
     "activation": "Minor action"
   }
