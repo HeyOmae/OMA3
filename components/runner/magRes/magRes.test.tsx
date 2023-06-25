@@ -7,6 +7,7 @@ import {
   runnerFromDB,
   SliderHelper,
   userEvent,
+  screen,
 } from "@/test/testUtils"
 import spellData from "@/data/spells.json"
 import ritualData from "@/data/rituals.json"
@@ -15,203 +16,191 @@ import PowersData from "@/data/adeptPowers.json"
 import complexFormData from "@/data/complexForm.json"
 
 describe("Magic and Resonance", () => {
-  const setup = (id = "2") =>
+  const setup = (id = "2") => {
+    const user = userEvent.setup()
     render(withTestRouter(<MagRes />, { query: { id } }))
+    return user
+  }
   beforeAll(setupIndexedDB)
   it("should display magic types, technomancer, and mundane selection", async () => {
-    const { getByText, getAllByText } = setup()
+    setup()
 
-    await waitFor(() => {
-      expect(getByText("Awakened")).toBeInTheDocument()
-      expect(getByText("Full Mage")).toBeInTheDocument()
-      expect(getByText("Aspected")).toBeInTheDocument()
-      expect(getByText("Mystic Adept")).toBeInTheDocument()
-      expect(getByText("Adept")).toBeInTheDocument()
+    expect(await screen.findByText("Awakened")).toBeInTheDocument()
+    expect(screen.getByText("Full Mage")).toBeInTheDocument()
+    expect(screen.getByText("Aspected")).toBeInTheDocument()
+    expect(screen.getByText("Mystic Adept")).toBeInTheDocument()
+    expect(screen.getByText("Adept")).toBeInTheDocument()
 
-      expect(getByText("Emergent")).toBeInTheDocument()
-      expect(getByText("Technomancer")).toBeInTheDocument()
+    expect(screen.getByText("Emergent")).toBeInTheDocument()
+    expect(screen.getByText("Technomancer")).toBeInTheDocument()
 
-      expect(getAllByText("Mundane")).toHaveLength(2)
-    })
+    expect(screen.getAllByText("Mundane")).toHaveLength(2)
   })
 
   it("should set the magres on the runner and display magic slider", async () => {
-    const { getByLabelText, queryByTestId } = setup()
-    await waitFor(() => {
-      getByLabelText("Full Mage")
-    })
+    const user = setup()
 
-    expect(queryByTestId("Magic-attribute=slider")).not.toBeInTheDocument()
-    await userEvent.click(getByLabelText("Full Mage"))
+    expect(await screen.findByLabelText("Full Mage")).toBeInTheDocument()
 
-    await waitFor(() => {
-      expect(getByLabelText("Full Mage")).toBeChecked()
-      expect(runnerFromDB(1).magres).toEqual("Full")
+    expect(
+      screen.queryByTestId("Magic-attribute=slider"),
+    ).not.toBeInTheDocument()
+    await user.click(screen.getByLabelText("Full Mage"))
 
-      expect(queryByTestId("Magic-attribute-slider")).toBeInTheDocument()
-    })
+    expect(screen.getByLabelText("Full Mage")).toBeChecked()
+    expect(runnerFromDB(1).magres).toEqual("Full")
+
+    expect(screen.queryByTestId("Magic-attribute-slider")).toBeInTheDocument()
   })
 
   it("should reset the attributes between selecting magres options", async () => {
-    const { getByLabelText, getByTestId, getByText } = setup()
+    const user = setup()
 
     expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
 
-    await waitFor(() => getByLabelText("Aspected"))
-    await userEvent.click(getByLabelText("Aspected"))
-    expect(getByText("1/1")).toBeInTheDocument()
-    await waitFor(() => getByTestId("Magic-attribute-slider"))
-    SliderHelper.change(getByTestId("Magic-attribute-slider"), 6, 5, 6)
+    expect(await screen.findByLabelText("Aspected")).toBeInTheDocument()
+    await user.click(screen.getByLabelText("Aspected"))
+    expect(screen.getByText("1/1")).toBeInTheDocument()
+    expect(
+      await screen.findByTestId("Magic-attribute-slider"),
+    ).toBeInTheDocument()
+    SliderHelper.change(screen.getByTestId("Magic-attribute-slider"), 6, 5, 6)
 
-    await waitFor(() => {
-      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(1)
+    expect(await screen.findByText("0/1")).toBeInTheDocument()
 
-      expect(getByText("0/1")).toBeInTheDocument()
-    })
+    await waitFor(() =>
+      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(1),
+    )
 
-    await userEvent.click(getByLabelText("Technomancer"))
+    await user.click(screen.getByLabelText("Technomancer"))
 
-    await waitFor(() => {
-      getByTestId("Resonance-attribute-slider")
+    expect(await screen.findByText("1/1")).toBeInTheDocument()
+    expect(screen.getByTestId("Resonance-attribute-slider")).toBeInTheDocument()
 
-      expect(getByText("1/1")).toBeInTheDocument()
-    })
+    SliderHelper.change(
+      screen.getByTestId("Resonance-attribute-slider"),
+      5,
+      4,
+      6,
+    )
 
-    SliderHelper.change(getByTestId("Resonance-attribute-slider"), 5, 4, 6)
-
+    expect(await screen.findByText("0/1")).toBeInTheDocument()
     await waitFor(() => {
       expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
       expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(1)
-
-      expect(getByText("0/1")).toBeInTheDocument()
     })
 
-    await userEvent.click(getByLabelText("Mystic Adept"))
+    await user.click(screen.getByLabelText("Mystic Adept"))
 
-    await waitFor(() => {
-      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
-      expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
-
-      expect(getByText("1/1")).toBeInTheDocument()
-    })
+    expect(await screen.findByText("1/1")).toBeInTheDocument()
+    expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+    expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
   })
 
   describe("setting attribute", () => {
     it("should set magic attribute", async () => {
-      const { getByTestId, getByLabelText, getByText } = setup()
+      const user = setup()
 
-      await waitFor(() => getByLabelText("Adept"))
-      await userEvent.click(getByLabelText("Adept"))
+      expect(await screen.findByLabelText("Adept")).toBeInTheDocument()
+      await user.click(screen.getByLabelText("Adept"))
       expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
 
-      await waitFor(() => getByTestId("Magic-attribute-slider"))
-      SliderHelper.change(getByTestId("Magic-attribute-slider"), 6, 4, 6)
+      SliderHelper.change(
+        await screen.findByTestId("Magic-attribute-slider"),
+        6,
+        4,
+        6,
+      )
 
-      await waitFor(() => {
-        expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(2)
-        expect(getByText("-1/1")).toHaveClass("bad-stuff")
-      })
+      expect(await screen.findByText("-1/1")).toHaveClass("bad-stuff")
+      await waitFor(() =>
+        expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(2),
+      )
     })
     it("should set resonance attribute", async () => {
-      const { getByTestId, getByLabelText, getByText } = setup()
+      const user = setup()
       expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
 
-      await waitFor(() => getByLabelText("Technomancer"))
-      await userEvent.click(getByLabelText("Technomancer"))
+      await user.click(await screen.findByLabelText("Technomancer"))
 
-      await waitFor(() => getByTestId("Resonance-attribute-slider"))
-      SliderHelper.change(getByTestId("Resonance-attribute-slider"), 6, 4, 6)
+      SliderHelper.change(
+        screen.getByTestId("Resonance-attribute-slider"),
+        6,
+        4,
+        6,
+      )
 
-      await waitFor(() => {
-        expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(2)
-        expect(getByText("-1/1")).toHaveClass("bad-stuff")
-      })
+      expect(await screen.findByText("-1/1")).toHaveClass("bad-stuff")
+      await waitFor(() =>
+        expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(2),
+      )
     })
     it("should hide this sections for mundanes", async () => {
-      const { getByLabelText, getByText } = setup("3")
+      const user = setup("3")
 
-      await waitFor(() => {
-        expect(getByLabelText("Mundane")).toBeInTheDocument()
-      })
-      await userEvent.click(getByLabelText("Mundane"))
+      await user.click(await screen.findByLabelText("Mundane"))
 
-      await waitFor(() => {
-        expect(getByText("Nothing Special Here...")).toBeInTheDocument()
-      })
+      expect(
+        await screen.findByText("Nothing Special Here..."),
+      ).toBeInTheDocument()
     })
   })
 
   describe("runner priority checks", () => {
     it("should make sure the metatype is set", async () => {
-      const { getByText } = setup("1")
+      setup("1")
 
-      await waitFor(() => {
-        expect(
-          getByText("You need to set the metatype priority"),
-        ).toBeInTheDocument()
-      })
+      expect(
+        await screen.findByText("You need to set the metatype priority"),
+      ).toBeInTheDocument()
     })
 
     it("should make sure the mag/res is set", async () => {
-      const { getByText } = setup("4")
-      await waitFor(() => {
-        expect(
-          getByText("You need to set the mag/res priority"),
-        ).toBeInTheDocument()
-      })
+      setup("4")
+      expect(
+        await screen.findByText("You need to set the mag/res priority"),
+      ).toBeInTheDocument()
     })
 
     it("should make sure the attributes are set", async () => {
-      const { getByText } = setup("6")
-      await waitFor(() => {
-        expect(
-          getByText("You need to set the attributes priority"),
-        ).toBeInTheDocument()
-      })
+      setup("6")
+
+      expect(
+        await screen.findByText("You need to set the attributes priority"),
+      ).toBeInTheDocument()
     })
   })
 
   describe("Spells", () => {
     it("should display spells for mages", async () => {
-      const { getByLabelText, getByText } = setup()
-      await waitFor(() => getByLabelText("Full Mage"))
-      await userEvent.click(getByLabelText("Full Mage"))
+      const user = setup()
+      await user.click(await screen.findByLabelText("Full Mage"))
 
-      await waitFor(() => {
-        expect(getByText("Combat Spells")).toBeInTheDocument()
-      })
+      expect(screen.getByText("Combat Spells")).toBeInTheDocument()
     })
 
     it("should display spells for aspected mages", async () => {
-      const { getByLabelText, getByText } = setup()
-      await waitFor(() => getByLabelText("Aspected"))
-      await userEvent.click(getByLabelText("Aspected"))
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByText("Detection Spells")).toBeInTheDocument()
-      })
+      await user.click(await screen.findByLabelText("Aspected"))
+
+      expect(screen.getByText("Detection Spells")).toBeInTheDocument()
     })
 
     it("should display spells for mystic adepts", async () => {
-      const { getByLabelText, getByText } = setup()
-      await waitFor(() => getByLabelText("Mystic Adept"))
-      await userEvent.click(getByLabelText("Mystic Adept"))
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByText("Health Spells")).toBeInTheDocument()
-      })
+      await user.click(await screen.findByLabelText("Mystic Adept"))
+
+      expect(screen.getByText("Health Spells")).toBeInTheDocument()
     })
 
     it("should add spells to the runner", async () => {
-      const { getByLabelText } = setup()
-      await waitFor(() => getByLabelText("Mystic Adept"))
-      await userEvent.click(getByLabelText("Mystic Adept"))
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByLabelText("Learn Fireball")).toBeInTheDocument()
-      })
+      await user.click(await screen.findByLabelText("Mystic Adept"))
 
-      await userEvent.click(getByLabelText("Learn Fireball"))
+      await user.click(screen.getByLabelText("Learn Fireball"))
 
       await waitFor(() => {
         expect(runnerFromDB(1).spells).toBeDefined()
@@ -226,7 +215,7 @@ describe("Magic and Resonance", () => {
         ({ name }) => name === "Manabolt",
       )
 
-      await userEvent.click(getByLabelText("Learn Manabolt"))
+      await user.click(screen.getByLabelText("Learn Manabolt"))
       await waitFor(() => {
         expect(runnerFromDB(1).spells.Combat).toEqual([
           fireballSpell,
@@ -237,7 +226,7 @@ describe("Magic and Resonance", () => {
       const manaBarrierSpell = spellData.Manipulation.find(
         ({ name }) => name === "Mana barrier",
       )
-      await userEvent.click(getByLabelText("Learn Mana barrier"))
+      await user.click(screen.getByLabelText("Learn Mana barrier"))
       await waitFor(() => {
         expect(runnerFromDB(1).spells.Combat).toEqual([
           fireballSpell,
@@ -249,50 +238,51 @@ describe("Magic and Resonance", () => {
 
     describe("Runner spells", () => {
       it("should display a runner's spells", async () => {
-        const { getByLabelText, getByText } = setup("5")
+        setup("5")
 
-        await waitFor(() => {
-          expect(getByText("Known Spells")).toBeInTheDocument()
-        })
+        expect(await screen.findByText("Known Spells")).toBeInTheDocument()
 
-        expect(getByLabelText("Remove Manabolt")).toBeInTheDocument()
-        expect(getByLabelText("Remove Fireball")).toBeInTheDocument()
-        expect(getByLabelText("Remove Stunball")).toBeInTheDocument()
+        expect(screen.getByLabelText("Remove Manabolt")).toBeInTheDocument()
+        expect(screen.getByLabelText("Remove Fireball")).toBeInTheDocument()
+        expect(screen.getByLabelText("Remove Stunball")).toBeInTheDocument()
 
-        expect(getByLabelText("Remove Heal")).toBeInTheDocument()
+        expect(screen.getByLabelText("Remove Heal")).toBeInTheDocument()
 
-        expect(getByLabelText("Remove Armor")).toBeInTheDocument()
-        expect(getByLabelText("Remove Levitate")).toBeInTheDocument()
-        expect(getByLabelText("Remove Mana barrier")).toBeInTheDocument()
-        expect(getByLabelText("Remove Physical barrier")).toBeInTheDocument()
+        expect(screen.getByLabelText("Remove Armor")).toBeInTheDocument()
+        expect(screen.getByLabelText("Remove Levitate")).toBeInTheDocument()
+        expect(screen.getByLabelText("Remove Mana barrier")).toBeInTheDocument()
+        expect(
+          screen.getByLabelText("Remove Physical barrier"),
+        ).toBeInTheDocument()
       })
 
       it("should remove a spell", async () => {
-        const { getByLabelText, getByText } = setup("5")
+        const user = setup("5")
         expect(runnerFromDB(4).spells.Combat.length).toEqual(3)
         expect(runnerFromDB(4).spells.Combat[1].name).toEqual("Fireball")
 
-        await waitFor(() => {
-          expect(getByLabelText("Remove Fireball")).toBeInTheDocument()
-        })
-        expect(getByText("0/8")).toBeInTheDocument()
-        await userEvent.click(getByLabelText("Remove Fireball"))
-        expect(getByText("1/8")).toBeInTheDocument()
+        expect(
+          await screen.findByLabelText("Remove Fireball"),
+        ).toBeInTheDocument()
 
-        await waitFor(() => {
-          expect(runnerFromDB(4).spells.Combat.length).toEqual(2)
-        })
+        expect(screen.getByText("0/8")).toBeInTheDocument()
+        await user.click(screen.getByLabelText("Remove Fireball"))
+        expect(screen.getByText("1/8")).toBeInTheDocument()
+
+        expect(runnerFromDB(4).spells.Combat.length).toEqual(2)
         expect(runnerFromDB(4).spells.Combat[1].name).toEqual("Stunball")
 
         expect(runnerFromDB(4).spells.Manipulation.length).toEqual(4)
         expect(runnerFromDB(4).spells.Manipulation[2].name).toEqual(
           "Mana barrier",
         )
-        await userEvent.click(getByLabelText("Remove Mana barrier"))
+        await user.click(screen.getByLabelText("Remove Mana barrier"))
 
-        await waitFor(() => {
-          expect(runnerFromDB(4).spells.Manipulation.length).toEqual(3)
-        })
+        expect(
+          screen.queryByLabelText("Remove Mana barrier"),
+        ).not.toBeInTheDocument()
+
+        expect(runnerFromDB(4).spells.Manipulation.length).toEqual(3)
         expect(runnerFromDB(4).spells.Manipulation[2].name).toEqual(
           "Physical barrier",
         )
@@ -302,33 +292,27 @@ describe("Magic and Resonance", () => {
 
   describe("Rituals", () => {
     it("should display the rituals after clicking the header", async () => {
-      const { getByText } = setup()
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByText("Rituals")).toBeInTheDocument()
-      })
+      expect(await screen.findByText("Rituals")).toBeInTheDocument()
 
       ritualData.forEach(({ name }) => {
-        expect(getByText(name)).not.toBeVisible()
+        expect(screen.getByText(name)).not.toBeVisible()
       })
 
-      await userEvent.click(getByText("Rituals"))
+      await user.click(screen.getByText("Rituals"))
 
-      await waitFor(() => {
-        ritualData.forEach(({ name }) => {
-          expect(getByText(name)).toBeVisible()
-        })
+      ritualData.forEach(({ name }) => {
+        expect(screen.getByText(name)).toBeVisible()
       })
     })
     it("should add a ritual to the runner", async () => {
-      const { getByLabelText, getByText } = setup("5")
+      const user = setup("5")
 
       expect(runnerFromDB(4).rituals).toBeUndefined()
-      await waitFor(() => {
-        expect(getByText("Rituals")).toBeInTheDocument()
-      })
+      expect(await screen.findByText("Rituals")).toBeInTheDocument()
 
-      await userEvent.click(getByLabelText("Add Ward"))
+      await user.click(screen.getByLabelText("Add Ward"))
 
       await waitFor(() => {
         expect(runnerFromDB(4).rituals).toEqual([
@@ -346,31 +330,27 @@ describe("Magic and Resonance", () => {
     })
 
     it("should render the rituals a runner knowns", async () => {
-      const { getByLabelText, getByText } = setup("7")
+      setup("7")
 
-      await waitFor(() => {
-        getByText("Known Rituals")
-      })
+      expect(await screen.findByText("Known Rituals")).toBeInTheDocument()
 
       mockedRunners[6].rituals.forEach(({ name }) => {
-        expect(getByLabelText(`Remove ${name}`)).toBeInTheDocument()
+        expect(screen.getByLabelText(`Remove ${name}`)).toBeInTheDocument()
       })
     })
 
     it("should remove a ritual from the runner", async () => {
-      const { getByLabelText, getByText, queryByLabelText } = setup("7")
+      const user = setup("7")
 
       expect(runnerFromDB(6).rituals).toHaveLength(3)
 
-      await waitFor(() => {
-        expect(getByText("Known Rituals")).toBeInTheDocument()
-      })
+      expect(await screen.findByText("Known Rituals")).toBeInTheDocument()
 
-      expect(getByText("5/8")).toBeInTheDocument()
+      expect(screen.getByText("5/8")).toBeInTheDocument()
 
-      await userEvent.click(getByLabelText("Remove Ward"))
+      await user.click(screen.getByLabelText("Remove Ward"))
 
-      expect(queryByLabelText("Remove Ward")).not.toBeInTheDocument()
+      expect(screen.queryByLabelText("Remove Ward")).not.toBeInTheDocument()
 
       await waitFor(() => {
         expect(runnerFromDB(6).rituals).toEqual([
@@ -398,70 +378,59 @@ describe("Magic and Resonance", () => {
         ])
       })
 
-      expect(getByText("6/8")).toBeInTheDocument()
+      expect(screen.getByText("6/8")).toBeInTheDocument()
     })
   })
 
   describe("Adept Powers", () => {
     it("should display for adepts and mystic adepts", async () => {
-      const { getByLabelText, getByText, queryByText } = setup()
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByLabelText("Technomancer")).toBeInTheDocument()
-      })
-      await userEvent.click(getByLabelText("Technomancer"))
+      expect(await screen.findByLabelText("Technomancer")).toBeInTheDocument()
+      await user.click(screen.getByLabelText("Technomancer"))
 
-      expect(queryByText("Adept Powers")).not.toBeInTheDocument()
+      expect(screen.queryByText("Adept Powers")).not.toBeInTheDocument()
 
-      await userEvent.click(getByLabelText("Mystic Adept"))
+      await user.click(screen.getByLabelText("Mystic Adept"))
 
-      await waitFor(() => {
-        expect(getByText("Adept Powers")).toBeInTheDocument()
-      })
+      expect(screen.getByText("Adept Powers")).toBeInTheDocument()
+      expect(screen.getByText("Spells")).toBeInTheDocument()
 
-      expect(getByText("Spells")).toBeInTheDocument()
+      await user.click(screen.getByLabelText("Adept"))
 
-      await userEvent.click(getByLabelText("Adept"))
+      expect(screen.queryByText("Spells")).not.toBeInTheDocument()
+      expect(screen.getByText("Adept Powers")).toBeInTheDocument()
 
-      expect(queryByText("Spells")).not.toBeInTheDocument()
-      expect(getByText("Adept Powers")).toBeInTheDocument()
+      await user.click(screen.getByLabelText("Full Mage"))
 
-      await userEvent.click(getByLabelText("Full Mage"))
-
-      expect(queryByText("Adept Powers")).not.toBeInTheDocument()
+      expect(screen.queryByText("Adept Powers")).not.toBeInTheDocument()
     })
 
     it("should display the powers after clicking the title", async () => {
-      const { getByText, getByLabelText } = setup()
-      await waitFor(() => {
-        expect(getByLabelText("Adept")).toBeInTheDocument()
-      })
-      await userEvent.click(getByLabelText("Adept"))
+      const user = setup()
 
-      expect(getByText("Combat sense")).not.toBeVisible()
+      await user.click(await screen.findByLabelText("Adept"))
 
-      await userEvent.click(getByText("Adept Powers"))
+      expect(screen.getByText("Combat Sense")).not.toBeVisible()
 
-      expect(getByText("Combat sense")).toBeVisible()
+      await user.click(screen.getByText("Adept Powers"))
+
+      expect(screen.getByText("Combat Sense")).toBeVisible()
     })
 
     it("should add adept power to runner", async () => {
-      const { getByLabelText, queryByText } = setup()
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByLabelText("Adept")).toBeInTheDocument()
-      })
-
-      await userEvent.click(getByLabelText("Adept"))
+      await user.click(await screen.findByLabelText("Adept"))
 
       expect(runnerFromDB(1).powers).toBeUndefined()
-      expect(queryByText("Known Adept Powers")).not.toBeInTheDocument()
-      expect(queryByText("4/4")).toBeInTheDocument()
+      expect(screen.queryByText("Known Adept Powers")).not.toBeInTheDocument()
+      expect(screen.queryByText("4/4")).toBeInTheDocument()
 
-      await userEvent.click(getByLabelText("Add Astral perception"))
+      await user.click(screen.getByLabelText("Add Astral Perception"))
 
-      expect(queryByText("Known Adept Powers")).toBeInTheDocument()
-      expect(queryByText("3/4")).toBeInTheDocument()
+      expect(screen.queryByText("Known Adept Powers")).toBeInTheDocument()
+      expect(screen.queryByText("3/4")).toBeInTheDocument()
 
       await waitFor(() => {
         expect(runnerFromDB(1).powers[0]).toEqual(PowersData[1])
@@ -469,17 +438,17 @@ describe("Magic and Resonance", () => {
     })
 
     it("should remove adept power from runner", async () => {
-      const { getByLabelText, getByText } = setup("8")
+      const user = setup("8")
 
       expect(runnerFromDB(7).powers).toHaveLength(3)
 
-      await waitFor(() => {
-        expect(getByLabelText("Remove Improved reflexes")).toBeInTheDocument()
-      })
-      expect(getByText("2/4")).toBeInTheDocument()
+      expect(
+        await screen.findByLabelText("Remove Improved Reflexes"),
+      ).toBeInTheDocument()
+      expect(screen.getByText("2/4")).toBeInTheDocument()
 
-      await userEvent.click(getByLabelText("Remove Improved reflexes"))
-      expect(getByText("3/4")).toBeInTheDocument()
+      await user.click(screen.getByLabelText("Remove Improved Reflexes"))
+      expect(screen.getByText("3/4")).toBeInTheDocument()
 
       await waitFor(() => {
         expect(runnerFromDB(7).powers).toHaveLength(2)
@@ -487,17 +456,19 @@ describe("Magic and Resonance", () => {
     })
 
     it("should update the level of an adept power", async () => {
-      const { getByTestId } = setup("8")
+      setup("8")
 
       const attributeBoostIndex = runnerFromDB(7).powers.findIndex(
-        ({ name }) => name === "Attribute boost",
+        ({ name }) => name === "Attribute Boost",
       )
       expect(runnerFromDB(7).powers[attributeBoostIndex].level).toBe(2)
-      await waitFor(() => {
-        expect(getByTestId("slider-Attribute boost")).toBeInTheDocument()
-      })
 
-      SliderHelper.change(getByTestId("slider-Attribute boost"), 6, 1, 6)
+      SliderHelper.change(
+        await screen.findByTestId("slider-Attribute Boost"),
+        6,
+        1,
+        6,
+      )
 
       await waitFor(() => {
         expect(runnerFromDB(7).powers[attributeBoostIndex].level).toBe(6)
@@ -507,43 +478,38 @@ describe("Magic and Resonance", () => {
 
   describe("Complex forms", () => {
     it("should display the complex forms", async () => {
-      const { getByText, queryByText } = setup()
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByText("Technomancer")).toBeInTheDocument()
-      })
-      expect(queryByText("Complex Forms")).not.toBeInTheDocument()
-      await userEvent.click(getByText("Technomancer"))
-      expect(queryByText("Complex Forms")).toBeInTheDocument()
-      expect(getByText("8/8")).toBeInTheDocument()
+      expect(await screen.findByText("Technomancer")).toBeInTheDocument()
 
-      complexFormData.forEach(({ name }) => {
-        expect(getByText(name)).not.toBeVisible()
-      })
-      await userEvent.click(getByText("Complex Forms"))
+      expect(screen.queryByText("Complex Forms")).not.toBeInTheDocument()
+      await user.click(screen.getByText("Technomancer"))
+      expect(screen.queryByText("Complex Forms")).toBeInTheDocument()
+      expect(screen.getByText("8/8")).toBeInTheDocument()
 
       complexFormData.forEach(({ name }) => {
-        expect(getByText(name)).toBeVisible()
+        expect(screen.getByText(name)).not.toBeVisible()
+      })
+      await user.click(screen.getByText("Complex Forms"))
+
+      complexFormData.forEach(({ name }) => {
+        expect(screen.getByText(name)).toBeVisible()
       })
     })
 
     it("should add a complex form to a runner", async () => {
-      const { getByText, getByLabelText } = setup()
+      const user = setup()
 
-      await waitFor(() => {
-        expect(getByText("Technomancer")).toBeInTheDocument()
-      })
-
-      await userEvent.click(getByText("Technomancer"))
-      expect(getByText("8/8")).toBeInTheDocument()
+      await user.click(await screen.findByText("Technomancer"))
+      expect(screen.getByText("8/8")).toBeInTheDocument()
 
       expect(runnerFromDB(1).complexForms).toBeUndefined()
 
       const complexFormToAdd = complexFormData[0]
 
-      await userEvent.click(getByLabelText(`Add ${complexFormToAdd.name}`))
+      await user.click(screen.getByLabelText(`Add ${complexFormToAdd.name}`))
 
-      expect(getByText("7/8")).toBeInTheDocument()
+      expect(screen.getByText("7/8")).toBeInTheDocument()
 
       await waitFor(() => {
         expect(runnerFromDB(1).complexForms[0]).toEqual(complexFormToAdd)
@@ -551,29 +517,28 @@ describe("Magic and Resonance", () => {
     })
 
     it("should remove a complex form from a runner", async () => {
-      const { getByLabelText, getByText, queryByLabelText } = setup("9")
+      const user = setup("9")
 
       expect(runnerFromDB(8).complexForms).toHaveLength(4)
 
-      await waitFor(() => {
-        expect(getByText("Known Complex Forms")).toBeInTheDocument()
-      })
+      expect(await screen.findByText("Known Complex Forms")).toBeInTheDocument()
+
       mockedRunners[8].complexForms.forEach(({ name }) => {
-        expect(getByLabelText(`Remove ${name}`)).toBeInTheDocument()
+        expect(screen.getByLabelText(`Remove ${name}`)).toBeInTheDocument()
       })
       const removedComplexForm = runnerFromDB(8).complexForms[1],
         removeComplexFormLabel = `Remove ${removedComplexForm.name}`
       expect(runnerFromDB(8).complexForms).toContain(removedComplexForm)
-      expect(getByText("4/8")).toBeInTheDocument()
+      expect(screen.getByText("4/8")).toBeInTheDocument()
 
-      await userEvent.click(getByLabelText(removeComplexFormLabel))
+      await user.click(screen.getByLabelText(removeComplexFormLabel))
 
-      expect(getByText("5/8")).toBeInTheDocument()
-      expect(queryByLabelText(removeComplexFormLabel)).not.toBeInTheDocument()
+      expect(screen.getByText("5/8")).toBeInTheDocument()
+      expect(
+        screen.queryByLabelText(removeComplexFormLabel),
+      ).not.toBeInTheDocument()
 
-      await waitFor(() => {
-        expect(runnerFromDB(8).complexForms).toHaveLength(3)
-      })
+      expect(runnerFromDB(8).complexForms).toHaveLength(3)
 
       expect(runnerFromDB(8).complexForms).not.toContain(removedComplexForm)
     })

@@ -1,9 +1,6 @@
 import { AdeptPowers, Props } from "./index"
-import {
-  render,
-  getByText as globalGetByText,
-} from "../../../../test/testUtils"
-import PowersData from "../../../../data/adeptPowers.json"
+import { render, getByText as globalGetByText } from "@/test/testUtils"
+import PowersData from "@/data/adeptPowers.json"
 import { SET_POWER } from ".."
 
 describe("<AdpetPowers/>", () => {
@@ -24,11 +21,11 @@ describe("<AdpetPowers/>", () => {
   it("should display the cost per level", () => {
     const { getByText } = setup()
 
-    const levelPower = getByText("Adrenaline boost").closest("tr")
+    const levelPower = getByText("Adrenaline Boost").closest("tr")
 
     expect(globalGetByText(levelPower, "0.25 per level")).toBeInTheDocument()
 
-    const nonLevelPower = getByText("Astral perception").closest("tr")
+    const nonLevelPower = getByText("Astral Perception").closest("tr")
 
     expect(globalGetByText(nonLevelPower, "1")).toBeInTheDocument()
   })
@@ -36,7 +33,7 @@ describe("<AdpetPowers/>", () => {
   it("should dispatch the set adept power action", () => {
     const { getByLabelText, props } = setup()
 
-    getByLabelText("Add Astral perception").click()
+    getByLabelText("Add Astral Perception").click()
 
     expect(props.dispatch).toHaveBeenCalledWith({
       type: SET_POWER,

@@ -72,11 +72,11 @@ describe("foci", () => {
 
       await waitFor(() => expect(getByText(/Qi Focus/)).toBeInTheDocument())
 
-      const focusRow = getByText("Adrenaline boost Qi Focus").closest("tr")
+      const focusRow = getByText("Adrenaline Boost Qi Focus").closest("tr")
 
       // current rating
       expect(
-        getByTestId("Adrenaline boost Qi Focus-rating").querySelector("input"),
+        getByTestId("Adrenaline Boost Qi Focus-rating").querySelector("input"),
       ).toHaveValue("1")
       // karma cost
       expect(getTextInContainer(focusRow, "2")).toBeInTheDocument()
@@ -85,11 +85,11 @@ describe("foci", () => {
       // availibility
       expect(getTextInContainer(focusRow, "1L")).toBeInTheDocument()
 
-      await userEvent.click(getTextInContainer(focusRow, "Adrenaline boost"))
-      await userEvent.click(getByText("Improved physical attribute"))
+      await userEvent.click(getTextInContainer(focusRow, "Adrenaline Boost"))
+      await userEvent.click(getByText("Improved Physical Attribute"))
 
       expect(
-        getByText("Improved physical attribute Qi Focus"),
+        getByText("Improved Physical Attribute Qi Focus"),
       ).toBeInTheDocument()
 
       // TODO: make qi focus only support ratings based of adept power

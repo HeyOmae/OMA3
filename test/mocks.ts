@@ -295,12 +295,12 @@ export const mockedRunners: Runner[] = [
     magres: "Adept",
     powers: [
       {
-        name: "Traceless walk",
+        name: "Traceless Walk",
         cost: 0.5,
         activation: "Passive",
       },
       {
-        name: "Improved reflexes",
+        name: "Improved Reflexes",
         cost: 1.0,
         levels: true,
         max: 4,
@@ -318,7 +318,7 @@ export const mockedRunners: Runner[] = [
         ],
       },
       {
-        name: "Attribute boost",
+        name: "Attribute Boost",
         cost: 0.25,
         levels: true,
         level: 2,
