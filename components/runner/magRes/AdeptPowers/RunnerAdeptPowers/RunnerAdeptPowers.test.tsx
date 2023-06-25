@@ -30,7 +30,7 @@ describe("<RunnerAdeptPowers/>", () => {
   it("should dispatch the remove adept power", () => {
     const { getByLabelText, props } = setup()
 
-    getByLabelText("Remove Improved reflexes").click()
+    getByLabelText("Remove Improved Reflexes").click()
 
     expect(props.dispatch).toHaveBeenCalledWith({
       type: REMOVE_POWER,
@@ -41,7 +41,7 @@ describe("<RunnerAdeptPowers/>", () => {
   it("should dispatch update adept power level", () => {
     const { getByTestId, props } = setup()
 
-    SliderHelper.change(getByTestId("slider-Improved reflexes"), 4, 1, 4)
+    SliderHelper.change(getByTestId("slider-Improved Reflexes"), 4, 1, 4)
 
     expect(props.dispatch).toHaveBeenCalledWith({
       type: CHANGE_POWER_LEVEL,

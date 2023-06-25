@@ -50,16 +50,16 @@ describe("ChoiceRatingRow", () => {
   it("should allow users to select adept powers and select rating", async () => {
     const { getByText, getByLabelText } = setup()
 
-    expect(getByText("Adrenaline boost Qi Focus")).toBeInTheDocument()
+    expect(getByText("Adrenaline Boost Qi Focus")).toBeInTheDocument()
     expect(getByLabelText(RegExp("Add .*Qi Focus"))).toBeInTheDocument()
 
-    expect(getByText("Adrenaline boost")).toBeInTheDocument()
+    expect(getByText("Adrenaline Boost")).toBeInTheDocument()
 
-    await userEvent.click(getByText("Adrenaline boost"))
+    await userEvent.click(getByText("Adrenaline Boost"))
 
-    await userEvent.click(getByText("Improved reflexes"))
-    expect(getByText("Improved reflexes Qi Focus")).toBeInTheDocument()
-    expect(getByLabelText("Add Improved reflexes Qi Focus")).toBeInTheDocument()
+    await userEvent.click(getByText("Improved Reflexes"))
+    expect(getByText("Improved Reflexes Qi Focus")).toBeInTheDocument()
+    expect(getByLabelText("Add Improved Reflexes Qi Focus")).toBeInTheDocument()
   })
 
   it("should support changing the rating of the focus", () => {
@@ -73,7 +73,7 @@ describe("ChoiceRatingRow", () => {
     expect(getByText("3000¥")).toBeInTheDocument()
 
     SliderHelper.change(
-      getByTestId("Adrenaline boost Qi Focus-rating"),
+      getByTestId("Adrenaline Boost Qi Focus-rating"),
       4,
       1,
       7,
