@@ -7,6 +7,7 @@ import skillData from "@/data/skills.json"
 import {
   AttributeSelect,
   ElementalSelect,
+  MentorSpiritSelect,
   SkillSelect,
 } from "../resources/GearPageTemplate/GearTable/ResourceButtons"
 import { attributes } from "@/data/attributes"
@@ -99,12 +100,29 @@ const QualitySelectElementRow: FC<QualityRowProps> = ({
   )
 }
 
+const QualitySelectMentorSpiritRow: FC<QualityRowProps> = ({
+  quality,
+  onAddQuality,
+}) => {
+  const [selected, setSelected] = useState("Bear")
+  return (
+    <QualityRow
+      quality={quality}
+      onAddQuality={() => onAddQuality({ ...quality, selected })}
+      select={
+        <MentorSpiritSelect selected={selected} setSelected={setSelected} />
+      }
+    />
+  )
+}
+
 const QualityRows = {
   default: QualityRow,
   SKILL: QualitySelectSkillRow,
   NAME: QualitySelectNameRow,
   ATTRIBUTE: QualitySelectAttributeRow,
   ELEMENTAL: QualitySelectElementRow,
+  "MENTOR SPIRIT": QualitySelectMentorSpiritRow,
 }
 
 export default QualityRows
