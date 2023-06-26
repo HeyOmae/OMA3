@@ -8,6 +8,7 @@ import { Columns } from "@/components/runner/resources/util"
 import { GearFocus, GearWeaponMelee } from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"
 import { CircularProgress } from "@mui/material"
+import { spirits } from "@/data/spirits"
 
 export interface ChoiceRatingRowProps extends Props {
   cols: Columns<GearFocus>[]
@@ -46,14 +47,7 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
           { name: "Manipulation" },
         ]
       case "SPIRIT":
-        return [
-          { name: "Air" },
-          { name: "Beast" },
-          { name: "Earth" },
-          { name: "Fire" },
-          { name: "Kin" },
-          { name: "Water" },
-        ]
+        return spirits
       case "MELEE_WEAPON":
         return runner?.resources?.melee ?? []
       case "ADEPT_POWER":
