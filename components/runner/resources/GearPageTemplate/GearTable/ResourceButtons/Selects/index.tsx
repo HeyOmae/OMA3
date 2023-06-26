@@ -3,6 +3,7 @@ import { FC } from "react"
 import skillData from "@/data/skills.json"
 import { attributes } from "@/data/attributes"
 import { elemental } from "@/data/attacks"
+import { mentorSpirits } from "@/data/mentorSpirits"
 
 export interface SelectProps {
   selected: string
@@ -44,6 +45,22 @@ export const ElementalSelect: FC<SelectProps> = ({ selected, setSelected }) => (
     onChange={({ target: { value } }) => setSelected(value)}
   >
     {Object.keys(elemental).map((name) => (
+      <MenuItem key={name} value={name}>
+        {name}
+      </MenuItem>
+    ))}
+  </Select>
+)
+
+export const MentorSpiritSelect: FC<SelectProps> = ({
+  selected,
+  setSelected,
+}) => (
+  <Select
+    value={selected}
+    onChange={({ target: { value } }) => setSelected(value)}
+  >
+    {mentorSpirits.map(({ name }) => (
       <MenuItem key={name} value={name}>
         {name}
       </MenuItem>

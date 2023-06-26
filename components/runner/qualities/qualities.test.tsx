@@ -174,5 +174,25 @@ describe("<Qualities />", () => {
 
       expect(qualityPurchasedRow).toHaveTextContent("Cold")
     })
+
+    test("Qualities should have a select for Mentor Spirits", async () => {
+      const user = setup()
+
+      expect(await screen.findByText("Mentor Spirit")).toBeInTheDocument()
+
+      const qualityRow = screen.getByText("Mentor Spirit").closest("tr")
+      const select = getByTextInElement(qualityRow, "Bear")
+      await user.click(select)
+      await user.click(screen.getByText("Thunderbird"))
+      expect(qualityRow).toHaveTextContent("Thunderbird")
+
+      await user.click(screen.getByLabelText("Add Mentor Spirit"))
+
+      const qualityPurchasedRow = screen
+        .getByLabelText("Remove Mentor Spirit")
+        .closest("tr")
+
+      expect(qualityPurchasedRow).toHaveTextContent("Thunderbird")
+    })
   })
 })
