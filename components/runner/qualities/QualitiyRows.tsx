@@ -98,8 +98,8 @@ const QualitySelectNameRow: FC<QualityRowProps> = ({
   return (
     <QualityRow
       quality={quality}
-      onAddQuality={() =>
-        onAddQuality({ ...quality, selected: nameRef.current.value })
+      onAddQuality={(passedDownQuality) =>
+        onAddQuality({ ...passedDownQuality, selected: nameRef.current.value })
       }
       select={
         <TextField
