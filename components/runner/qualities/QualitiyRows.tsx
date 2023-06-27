@@ -50,7 +50,7 @@ const QualityRow: FC<QualityRowProps> = ({
 const QualityLevelRow: FC<QualityRowProps> = ({
   quality,
   onAddQuality,
-  select = "N/A",
+  select,
 }) => {
   const [currentLevel, setLevel] = useState(1)
 
