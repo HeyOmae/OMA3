@@ -194,5 +194,25 @@ describe("<Qualities />", () => {
 
       expect(qualityPurchasedRow).toHaveTextContent("Thunderbird")
     })
+
+    test("Qualities should have a spirits type to be selected", async () => {
+      const user = setup()
+
+      expect(await screen.findByText("Spirit Affinity")).toBeInTheDocument()
+
+      const qualityRow = screen.getByText("Spirit Affinity").closest("tr")
+      const select = getByTextInElement(qualityRow, "Air")
+      await user.click(select)
+      await user.click(screen.getByText("Water"))
+      expect(qualityRow).toHaveTextContent("Water")
+
+      await user.click(screen.getByLabelText("Add Spirit Affinity"))
+
+      const qualityPurchasedRow = screen
+        .getByLabelText("Remove Spirit Affinity")
+        .closest("tr")
+
+      expect(qualityPurchasedRow).toHaveTextContent("Water")
+    })
   })
 })
