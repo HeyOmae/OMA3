@@ -5,6 +5,7 @@ import { attributes } from "@/data/attributes"
 import { elemental } from "@/data/attacks"
 import { mentorSpirits } from "@/data/mentorSpirits"
 import { spirits } from "@/data/spirits"
+import { sprites } from "@/data/sprites"
 
 export interface SelectProps {
   selected: string
@@ -75,6 +76,19 @@ export const SpiritSelect: FC<SelectProps> = ({ selected, setSelected }) => (
     onChange={({ target: { value } }) => setSelected(value)}
   >
     {spirits.map(({ name }) => (
+      <MenuItem key={name} value={name}>
+        {name}
+      </MenuItem>
+    ))}
+  </Select>
+)
+
+export const SpriteSelect: FC<SelectProps> = ({ selected, setSelected }) => (
+  <Select
+    value={selected}
+    onChange={({ target: { value } }) => setSelected(value)}
+  >
+    {sprites.map(({ name }) => (
       <MenuItem key={name} value={name}>
         {name}
       </MenuItem>

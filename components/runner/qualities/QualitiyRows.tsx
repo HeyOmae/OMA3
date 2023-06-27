@@ -10,6 +10,7 @@ import {
   MentorSpiritSelect,
   SkillSelect,
   SpiritSelect,
+  SpriteSelect,
 } from "../resources/GearPageTemplate/GearTable/ResourceButtons"
 import { attributes } from "@/data/attributes"
 
@@ -131,6 +132,20 @@ const QualitySelectSpiritRow: FC<QualityRowProps> = ({
   )
 }
 
+const QualitySelectSpriteRow: FC<QualityRowProps> = ({
+  quality,
+  onAddQuality,
+}) => {
+  const [selected, setSelected] = useState("Courier")
+  return (
+    <QualityRow
+      quality={quality}
+      onAddQuality={() => onAddQuality({ ...quality, selected })}
+      select={<SpriteSelect selected={selected} setSelected={setSelected} />}
+    />
+  )
+}
+
 const QualityRows = {
   default: QualityRow,
   SKILL: QualitySelectSkillRow,
@@ -139,6 +154,7 @@ const QualityRows = {
   ELEMENTAL: QualitySelectElementRow,
   "MENTOR SPIRIT": QualitySelectMentorSpiritRow,
   SPIRIT: QualitySelectSpiritRow,
+  SPRITE: QualitySelectSpriteRow,
 }
 
 export default QualityRows

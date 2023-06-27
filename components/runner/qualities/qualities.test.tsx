@@ -214,5 +214,25 @@ describe("<Qualities />", () => {
 
       expect(qualityPurchasedRow).toHaveTextContent("Water")
     })
+
+    test("Qualities should have a sprites type to be selected", async () => {
+      const user = setup()
+
+      expect(await screen.findByText("Sprite Bane")).toBeInTheDocument()
+
+      const qualityRow = screen.getByText("Sprite Bane").closest("tr")
+      const select = getByTextInElement(qualityRow, "Courier")
+      await user.click(select)
+      await user.click(screen.getByText("Fault"))
+      expect(qualityRow).toHaveTextContent("Fault")
+
+      await user.click(screen.getByLabelText("Add Sprite Bane"))
+
+      const qualityPurchasedRow = screen
+        .getByLabelText("Remove Sprite Bane")
+        .closest("tr")
+
+      expect(qualityPurchasedRow).toHaveTextContent("Fault")
+    })
   })
 })
