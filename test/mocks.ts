@@ -1016,7 +1016,7 @@ export const mockedRunners: Runner[] = [
           karma: 8,
           type: "POSITIVE",
           max: 3,
-          currentRating: 2,
+          currentLevel: 2,
         },
       ],
       negative: [
@@ -1028,7 +1028,7 @@ export const mockedRunners: Runner[] = [
           multi: true,
           select: "NAME",
           selected: "Kamikaze",
-          currentRating: 3,
+          currentLevel: 3,
         },
         {
           name: "AR Vertigo",

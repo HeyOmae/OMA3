@@ -17,6 +17,7 @@ export const QualityTable: FC<Props> = ({ qualities, onAddQuality }) => (
       <TableRow>
         <TableCell>Add</TableCell>
         <TableCell>Name</TableCell>
+        <TableCell>Level</TableCell>
         <TableCell>Select</TableCell>
         <TableCell>Karma</TableCell>
       </TableRow>
@@ -50,6 +51,7 @@ export const RunnerQualityTable: FC<RunnerQualityTableProps> = ({
       <TableRow>
         <TableCell>Remove</TableCell>
         <TableCell>Name</TableCell>
+        <TableCell>Level</TableCell>
         <TableCell>Selected</TableCell>
         <TableCell>Karma</TableCell>
       </TableRow>
@@ -64,6 +66,7 @@ export const RunnerQualityTable: FC<RunnerQualityTableProps> = ({
             />
           </TableCell>
           <TableCell>{quality.name}</TableCell>
+          <TableCell>{quality.currentLevel ?? "N/A"}</TableCell>
           <TableCell>{quality.selected ?? "N/A"}</TableCell>
           <TableCell>{quality.karma}</TableCell>
         </TableRow>
