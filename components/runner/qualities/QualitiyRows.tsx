@@ -8,6 +8,7 @@ import {
   AttributeSelect,
   ElementalSelect,
   MentorSpiritSelect,
+  RangeSelect,
   SkillSelect,
   SpiritSelect,
   SpriteSelect,
@@ -24,19 +25,56 @@ const QualityRow: FC<QualityRowProps> = ({
   quality,
   onAddQuality,
   select = "N/A",
-}) => (
-  <TableRow>
-    <TableCell>
-      <AddButton
-        aria-label={`Add ${quality.name}`}
-        onClick={() => onAddQuality(quality)}
-      />
-    </TableCell>
-    <TableCell>{quality.name}</TableCell>
-    <TableCell>{select}</TableCell>
-    <TableCell>{quality.karma}</TableCell>
-  </TableRow>
-)
+}) =>
+  quality.max ? (
+    <QualityLevelRow
+      quality={quality}
+      onAddQuality={onAddQuality}
+      select={select}
+    />
+  ) : (
+    <TableRow>
+      <TableCell>
+        <AddButton
+          aria-label={`Add ${quality.name}`}
+          onClick={() => onAddQuality(quality)}
+        />
+      </TableCell>
+      <TableCell>N/A</TableCell>
+      <TableCell>{quality.name}</TableCell>
+      <TableCell>{select}</TableCell>
+      <TableCell>{quality.karma}</TableCell>
+    </TableRow>
+  )
+
+const QualityLevelRow: FC<QualityRowProps> = ({
+  quality,
+  onAddQuality,
+  select = "N/A",
+}) => {
+  const [currentLevel, setLevel] = useState(1)
+
+  return (
+    <TableRow>
+      <TableCell>
+        <AddButton
+          aria-label={`Add ${quality.name}`}
+          onClick={() => onAddQuality({ ...quality, currentLevel })}
+        />
+      </TableCell>
+      <TableCell>{quality.name}</TableCell>
+      <TableCell>
+        <RangeSelect
+          selected={currentLevel}
+          setSelected={setLevel}
+          max={quality.max}
+        ></RangeSelect>
+      </TableCell>
+      <TableCell>{select}</TableCell>
+      <TableCell>{quality.karma}</TableCell>
+    </TableRow>
+  )
+}
 
 const QualitySelectSkillRow: FC<QualityRowProps> = ({
   quality,

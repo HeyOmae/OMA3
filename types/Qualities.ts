@@ -54,7 +54,7 @@ export interface Quality {
     | "SPRITE"
   selected?: string
   max?: number
-  currentRating?: number
+  currentLevel?: number
   multi?: true
   requires?: Requires
 }

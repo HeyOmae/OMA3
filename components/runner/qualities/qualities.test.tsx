@@ -235,4 +235,30 @@ describe("<Qualities />", () => {
       expect(qualityPurchasedRow).toHaveTextContent("Fault")
     })
   })
+
+  test("qualities should allow selecting levels", async () => {
+    const user = setup()
+
+    expect(await screen.findByText("Built Tough")).toBeInTheDocument()
+
+    const qualityRow = screen.getByText("Built Tough").closest("tr")
+    const select = getByTextInElement(qualityRow, "1")
+    await user.click(select)
+    // just make sure that the max level is there
+    expect(screen.getByRole("option", { name: "4" })).toBeInTheDocument()
+    await user.click(screen.getByRole("option", { name: "3" }))
+    expect(qualityRow).toHaveTextContent("3")
+
+    await user.click(screen.getByLabelText("Add Built Tough"))
+
+    const qualityPurchasedRow = screen
+      .getByLabelText("Remove Built Tough")
+      .closest("tr")
+
+    expect(qualityPurchasedRow).toHaveTextContent("3")
+  })
+
+  // test('a quality should allows to select a name and level', () => {
+  //   const user = setup()
+  // })
 })

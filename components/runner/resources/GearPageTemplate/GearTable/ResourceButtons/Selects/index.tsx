@@ -7,9 +7,9 @@ import { mentorSpirits } from "@/data/mentorSpirits"
 import { spirits } from "@/data/spirits"
 import { sprites } from "@/data/sprites"
 
-export interface SelectProps {
-  selected: string
-  setSelected: (skillName: string) => void
+export interface SelectProps<SelectType = string> {
+  selected: SelectType
+  setSelected: (select: SelectType) => void
 }
 
 export const SkillSelect: FC<SelectProps> = ({
@@ -95,3 +95,26 @@ export const SpriteSelect: FC<SelectProps> = ({ selected, setSelected }) => (
     ))}
   </Select>
 )
+
+export const RangeSelect: FC<SelectProps<number> & { max: number }> = ({
+  selected,
+  setSelected,
+  max,
+}) => {
+  const options = []
+  for (let i = 0; i <= max; ++i) {
+    options.push(
+      <MenuItem key={i} value={i}>
+        {i}
+      </MenuItem>,
+    )
+  }
+  return (
+    <Select
+      value={selected}
+      onChange={({ target: { value } }) => setSelected(+value)}
+    >
+      {options}
+    </Select>
+  )
+}
