@@ -258,7 +258,29 @@ describe("<Qualities />", () => {
     expect(qualityPurchasedRow).toHaveTextContent("3")
   })
 
-  // test('a quality should allows to select a name and level', () => {
-  //   const user = setup()
-  // })
+  test("a quality should allows to select a name and level", async () => {
+    const user = setup()
+
+    expect(await screen.findByText("Dependents")).toBeInTheDocument()
+
+    const qualityRow = screen.getByText("Dependents").closest("tr")
+
+    // Select level
+    const select = getByTextInElement(qualityRow, "1")
+    await user.click(select)
+    await user.click(screen.getByRole("option", { name: "3" }))
+
+    // Select name
+    await user.click(screen.getByLabelText("Select Dependents Name"))
+    await user.keyboard("Wife and kids")
+
+    await user.click(screen.getByLabelText("Add Dependents"))
+
+    const qualityPurchasedRow = screen
+      .getByLabelText("Remove Dependents")
+      .closest("tr")
+
+    expect(qualityPurchasedRow).toHaveTextContent("3")
+    expect(qualityPurchasedRow).toHaveTextContent("Wife and kids")
+  })
 })
