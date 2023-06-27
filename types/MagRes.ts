@@ -109,3 +109,5 @@ export interface ComplexForm {
 }
 
 export type SpiritTypes = "Air" | "Beast" | "Earth" | "Fire" | "Kin" | "Water"
+
+export type SpritesType = "Courier" | "Crack" | "Data" | "Fault" | "Machine"
