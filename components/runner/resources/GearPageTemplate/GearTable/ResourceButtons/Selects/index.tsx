@@ -102,7 +102,7 @@ export const RangeSelect: FC<SelectProps<number> & { max: number }> = ({
   max,
 }) => {
   const options = []
-  for (let i = 0; i <= max; ++i) {
+  for (let i = 1; i <= max; ++i) {
     options.push(
       <MenuItem key={i} value={i}>
         {i}

@@ -244,6 +244,8 @@ describe("<Qualities />", () => {
     const qualityRow = screen.getByText("Built Tough").closest("tr")
     const select = getByTextInElement(qualityRow, "1")
     await user.click(select)
+    // make sure there is no 0 level
+    expect(screen.queryByRole("option", { name: "0" })).not.toBeInTheDocument()
     // just make sure that the max level is there
     expect(screen.getByRole("option", { name: "4" })).toBeInTheDocument()
     await user.click(screen.getByRole("option", { name: "3" }))
