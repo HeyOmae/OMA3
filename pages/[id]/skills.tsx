@@ -1,7 +1,7 @@
-import { RunnerLayout } from "../../components/layout"
+import { RunnerLayout } from "@/components/layout"
 import dynamic from "next/dynamic"
 
-const Skills = dynamic(() => import("../../components/runner/skills"), {
+const Skills = dynamic(() => import("@/components/runner/skills"), {
   ssr: false,
 })
 

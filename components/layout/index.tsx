@@ -18,6 +18,7 @@ import {
   FlashOn,
   Payment,
   School,
+  AutoAwesome,
 } from "@mui/icons-material"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
@@ -130,6 +131,16 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
           href={`/${id}/magres`}
         >
           Magic & Resonance
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<AutoAwesome />}
+          component={NextLink}
+          href={`/${id}/qualities`}
+        >
+          Qualities
         </Button>
 
         <Button
