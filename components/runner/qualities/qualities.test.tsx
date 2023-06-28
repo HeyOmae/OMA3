@@ -283,4 +283,12 @@ describe("<Qualities />", () => {
     expect(qualityPurchasedRow).toHaveTextContent("3")
     expect(qualityPurchasedRow).toHaveTextContent("Wife and kids")
   })
+
+  test("display karma", async () => {
+    setup("6")
+
+    const karmaEl = await screen.findByRole("term")
+    expect(karmaEl).toHaveTextContent("Karma")
+    expect(karmaEl.closest("dl")).toHaveTextContent("25")
+  })
 })

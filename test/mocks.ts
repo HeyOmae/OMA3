@@ -330,6 +330,15 @@ export const mockedRunners: Runner[] = [
       { name: "Mandarin", rating: "Native" },
       { name: "Japanese", rating: 2 },
     ],
+    qualities: {
+      negative: [
+        {
+          name: "Gremlins",
+          karma: 6,
+          type: "NEGATIVE",
+        },
+      ],
+    },
   },
   {
     id: 9,
@@ -368,6 +377,35 @@ export const mockedRunners: Runner[] = [
         fade: 5,
       },
     ],
+    qualities: {
+      positive: [
+        {
+          modifications: {
+            edgemod: [
+              {
+                skill: "biotech",
+                type: "BONUS",
+              },
+              {
+                skill: "cracking",
+                type: "BONUS",
+              },
+              {
+                skill: "electronics",
+                type: "BONUS",
+              },
+              {
+                skill: "engineering",
+                type: "BONUS",
+              },
+            ],
+          },
+          name: "Analytical Mind",
+          karma: 3,
+          type: "POSITIVE",
+        },
+      ],
+    },
   },
   {
     id: 10,
