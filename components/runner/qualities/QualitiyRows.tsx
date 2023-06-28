@@ -40,8 +40,8 @@ const QualityRow: FC<QualityRowProps> = ({
           onClick={() => onAddQuality(quality)}
         />
       </TableCell>
-      <TableCell>N/A</TableCell>
       <TableCell>{quality.name}</TableCell>
+      <TableCell>N/A</TableCell>
       <TableCell>{select}</TableCell>
       <TableCell>{quality.karma}</TableCell>
     </TableRow>

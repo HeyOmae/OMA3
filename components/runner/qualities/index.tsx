@@ -40,7 +40,7 @@ const Qualities = () => {
   )
 
   return runner ? (
-    <div>
+    <>
       <RemainingKarma runner={runner} />
       <section>
         <h2>Positive Qualities</h2>
@@ -60,6 +60,7 @@ const Qualities = () => {
           }
         />
       </section>
+      <RemainingKarma runner={runner} />
       {runner?.qualities?.positive && (
         <section>
           <h2>{runner.name}&apos;s Positive Qualities</h2>
@@ -82,7 +83,7 @@ const Qualities = () => {
           />
         </section>
       )}
-    </div>
+    </>
   ) : (
     <CircularProgress />
   )
