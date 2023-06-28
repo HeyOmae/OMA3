@@ -13,6 +13,6 @@ describe("Quality Page", () => {
     expect(
       await screen.findByText("Cayman's Positive Qualities"),
     ).toBeInTheDocument()
-    expect(screen.getByRole("definition")).toHaveTextContent(13)
+    expect(screen.getAllByRole("definition").at(0)).toHaveTextContent("13")
   })
 })

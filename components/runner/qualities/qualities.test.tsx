@@ -289,7 +289,7 @@ describe("<Qualities />", () => {
   test("display karma", async () => {
     setup("6")
 
-    const karmaEl = await screen.findByRole("term")
+    const karmaEl = (await screen.findAllByRole("term")).at(0)
     expect(karmaEl).toHaveTextContent("Karma")
     expect(karmaEl.closest("dl")).toHaveTextContent("25")
   })
