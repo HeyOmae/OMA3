@@ -1,9 +1,9 @@
-import { FC } from "react"
+import { FC, useMemo } from "react"
 import { Payload, SPEND_ADJUSTMENT_POINTS, SPEND_ATTRIBUTE_POINTS } from ".."
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { Runner } from "../../../../types/runner"
-import { Attributes } from "../../../../types/RunnerAttributes"
-import metatypeData from "../../../../data/metatype.json"
+import { DispatchAction } from "@/hooks/useRunnerAccess"
+import { Runner } from "@/types/runner"
+import { Attributes } from "@/types/RunnerAttributes"
+import metatypeData from "@/data/metatype.json"
 import { Typography, Slider } from "@mui/material"
 
 export interface Props {
@@ -17,9 +17,13 @@ export const AttributeSelection: FC<Props> = ({
   dispatch,
   isSpendingAdjustmentPoints,
 }) => {
-  const exceptionalAttribute = runner?.qualities?.positive.find(
-    ({ name }) => name === "Exceptional Attribute",
-  ).selected
+  const exceptionalAttribute = useMemo(
+    () =>
+      runner?.qualities?.positive.find(
+        ({ name }) => name === "Exceptional Attribute",
+      ).selected,
+    [runner?.qualities?.positive],
+  )
   return (
     <>
       {metatypeData[runner.metatype] &&
