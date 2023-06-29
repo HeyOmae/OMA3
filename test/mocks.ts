@@ -93,6 +93,23 @@ export const mockedRunners: Runner[] = [
           selected: "Logic",
         },
       ],
+      negative: [
+        {
+          modifications: {
+            attrmod: {
+              val: -1,
+              type: "MAX",
+            },
+          },
+          name: "Impaired",
+          karma: 8,
+          type: "NEGATIVE",
+          select: "ATTRIBUTE",
+          multi: true,
+          max: 8,
+          selected: "Reaction",
+        },
+      ],
     },
   },
   {
