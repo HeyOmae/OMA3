@@ -129,5 +129,19 @@ describe("AttributeSelection", () => {
         payload: { key: "Logic", value: 6 },
       })
     })
+
+    test("Impaired should lower the max value of an attribute", () => {
+      const { props } = setup({
+        runner: mockedRunners[3],
+        isSpendingAdjustmentPoints: false,
+      })
+
+      SliderHelper.change(screen.getByTestId("Reaction-slider"), 5, 1, 5)
+
+      expect(props.dispatch).toHaveBeenCalledWith({
+        type: SPEND_ATTRIBUTE_POINTS,
+        payload: { key: "Reaction", value: 4 },
+      })
+    })
   })
 })

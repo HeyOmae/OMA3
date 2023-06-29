@@ -17,20 +17,36 @@ export const AttributeSelection: FC<Props> = ({
   dispatch,
   isSpendingAdjustmentPoints,
 }) => {
-  const exceptionalAttribute = useMemo(
-    () =>
-      runner?.qualities?.positive.find(
-        ({ name }) => name === "Exceptional Attribute",
-      ).selected,
-    [runner?.qualities?.positive],
-  )
+  const maxAttributeModifier = useMemo(() => {
+    const findQuality =
+      (qualityName: string) =>
+      ({ name }) =>
+        name === qualityName
+    const exceptionalAttribute = runner.qualities?.positive.find(
+      findQuality("Exceptional Attribute"),
+    ).selected
+
+    const imparedAttribute = runner.qualities?.negative.find(
+      findQuality("Impaired"),
+    ).selected
+
+    return (attribute: string) => {
+      switch (attribute) {
+        case exceptionalAttribute:
+          return 1
+        case imparedAttribute:
+          return -1
+        default:
+          return 0
+      }
+    }
+  }, [runner.qualities?.negative, runner.qualities?.positive])
   return (
     <>
       {metatypeData[runner.metatype] &&
         Object.entries(metatypeData[runner.metatype].Attributes).map(
           ([attribute, { min, max }]) => {
-            const modifiedMax =
-              max + (exceptionalAttribute === attribute ? 1 : 0)
+            const modifiedMax = max + maxAttributeModifier(attribute)
             return (
               <div key={attribute}>
                 <Typography id={`${attribute}-slider`} gutterBottom>
