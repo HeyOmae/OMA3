@@ -76,6 +76,24 @@ export const mockedRunners: Runner[] = [
     },
     metatype: "Elf",
     attributes: initRunnerAttributes,
+    qualities: {
+      positive: [
+        {
+          modifications: {
+            attrmod: {
+              val: 1,
+              type: "MAX",
+            },
+          },
+          name: "Exceptional Attribute",
+          karma: 12,
+          type: "POSITIVE",
+          select: "ATTRIBUTE",
+          multi: true,
+          selected: "Logic",
+        },
+      ],
+    },
   },
   {
     id: 5,
