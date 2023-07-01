@@ -13,7 +13,7 @@ import { CHANGE_SKILL_RATING, CHANGE_SPECIALIZATION, REMOVE_SKILL } from ".."
 describe("<RunnerSkillTable/>", () => {
   const setup = (
     props: Props = {
-      skills: mockedRunners[1].skills,
+      runner: mockedRunners[1],
       skillPoints: 20,
       dispatch: jest.fn(),
     },
@@ -139,10 +139,13 @@ describe("<RunnerSkillTable/>", () => {
 
     it("should not error out when a skill is not listed in the skills.json", async () => {
       const { getByLabelText, props } = setup({
-        skills: {
-          cooking: {
-            rating: 5,
-            attribute: { primary: "Agility", secondary: "Intuition" },
+        runner: {
+          ...mockedRunners[1],
+          skills: {
+            cooking: {
+              rating: 5,
+              attribute: { primary: "Agility", secondary: "Intuition" },
+            },
           },
         },
         skillPoints: 24,
@@ -179,7 +182,7 @@ describe("<RunnerSkillTable/>", () => {
 
     it("should alert the user about bad stuff when they've used too many skill points", () => {
       const { getByRole } = setup({
-        skills: mockedRunners[1].skills,
+        runner: mockedRunners[1],
         skillPoints: 12,
         dispatch: jest.fn(),
       })
