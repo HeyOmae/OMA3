@@ -73,6 +73,7 @@ export const mockedRunners: Runner[] = [
       "Elvin decker from Boston. Hacker her way on to JackPoint at 16 and enter the shadows.",
     priority: {
       metatype: "D",
+      skills: "B",
     },
     metatype: "Elf",
     attributes: initRunnerAttributes,
@@ -91,6 +92,19 @@ export const mockedRunners: Runner[] = [
           select: "ATTRIBUTE",
           multi: true,
           selected: "Logic",
+        },
+        {
+          modifications: {
+            skillmod: {
+              val: 1,
+              modType: "MAX",
+            },
+          },
+          name: "Aptitude",
+          karma: 12,
+          type: "POSITIVE",
+          select: "SKILL",
+          selected: "Cracking",
         },
       ],
       negative: [

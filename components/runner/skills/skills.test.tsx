@@ -13,8 +13,11 @@ import {
 
 describe("<Skills/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = (id = "3") =>
+  const setup = (id = "3") => {
+    const user = userEvent.setup()
     render(withTestRouter(<Skills />, { query: { id } }))
+    return user
+  }
 
   it("should display a list of skills", async () => {
     setup()
@@ -48,15 +51,11 @@ describe("<Skills/>", () => {
   })
 
   it("should add a skill at rating 1 to the runner skills", async () => {
-    setup()
+    const user = setup()
 
     expect(runnerFromDB(2).skills).toBeUndefined()
 
-    expect(
-      await screen.findByLabelText("add Firearms skill"),
-    ).toBeInTheDocument()
-
-    await userEvent.click(screen.getByLabelText("add Firearms skill"))
+    await user.click(await screen.findByLabelText("add Firearms skill"))
 
     await waitFor(() => {
       expect(runnerFromDB(2).skills.Firearms).toEqual({
@@ -69,11 +68,9 @@ describe("<Skills/>", () => {
   })
 
   it("should remove a skill", async () => {
-    setup()
+    const user = setup()
 
-    expect(await screen.findByLabelText("add Con skill")).toBeInTheDocument()
-
-    await userEvent.click(screen.getByLabelText("add Con skill"))
+    await user.click(await screen.findByLabelText("add Con skill"))
 
     expect(await screen.findByLabelText("remove Con skill")).toBeInTheDocument()
 
@@ -84,7 +81,7 @@ describe("<Skills/>", () => {
       },
     })
 
-    await userEvent.click(screen.getByLabelText("remove Con skill"))
+    await user.click(screen.getByLabelText("remove Con skill"))
 
     expect(screen.queryByLabelText("remove Con skill")).not.toBeInTheDocument()
     expect(runnerFromDB(2).skills.Con).toBeUndefined()
@@ -92,13 +89,9 @@ describe("<Skills/>", () => {
 
   describe("rating slider", () => {
     it("should update the rating of the skill", async () => {
-      setup()
+      const user = setup()
 
-      expect(
-        await screen.findByLabelText("add Cracking skill"),
-      ).toBeInTheDocument()
-
-      await userEvent.click(screen.getByLabelText("add Cracking skill"))
+      await user.click(await screen.findByLabelText("add Cracking skill"))
 
       expect(screen.getByTestId("Cracking-rating")).toBeInTheDocument()
       expect(runnerFromDB(2).skills.Cracking).toEqual({
@@ -113,6 +106,23 @@ describe("<Skills/>", () => {
       await waitFor(() => {
         expect(runnerFromDB(2).skills.Cracking).toEqual({
           rating: 5,
+          attribute: {
+            primary: "Logic",
+          },
+        })
+      })
+    })
+
+    test("Aptitude should raise the max for a skill", async () => {
+      const user = setup("4")
+
+      await user.click(await screen.findByLabelText("add Cracking skill"))
+
+      SliderHelper.change(screen.getByTestId("Cracking-rating"), 7, 1, 7)
+
+      await waitFor(() => {
+        expect(runnerFromDB(3).skills.Cracking).toEqual({
+          rating: 7,
           attribute: {
             primary: "Logic",
           },

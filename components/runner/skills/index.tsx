@@ -87,7 +87,7 @@ const Skills: FC = () => {
           <Grid item sm={12} md={8}>
             <h2>Known skills</h2>
             <RunnerSkillTable
-              skills={runner.skills}
+              runner={runner}
               skillPoints={skillPoints}
               dispatch={dispatch}
             />

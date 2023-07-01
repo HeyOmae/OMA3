@@ -1,5 +1,4 @@
 import React, { FC, useMemo } from "react"
-import { Skills } from "@/types/Skill"
 import {
   TableContainer,
   Table,
@@ -13,15 +12,16 @@ import { SpecializationSelector } from "./SpecializationSelector"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { ActionPayload, CHANGE_SKILL_RATING, REMOVE_SKILL } from ".."
 import { RemoveButton } from "../../../common"
+import { Runner } from "@/types/runner"
 
 export interface Props {
-  skills: Skills
+  runner: Runner
   skillPoints: number
   dispatch: DispatchAction<ActionPayload>
 }
 
 export const RunnerSkillTable: FC<Props> = ({
-  skills,
+  runner: { skills, qualities },
   skillPoints,
   dispatch,
 }) => {
@@ -31,6 +31,11 @@ export const RunnerSkillTable: FC<Props> = ({
         return acc - rating - (specialization ? 1 : 0)
       }, skillPoints),
     [skills, skillPoints],
+  )
+
+  const AptitudeSkill = useMemo(
+    () => qualities?.positive.find(({ name }) => name === "Aptitude").selected,
+    [qualities?.positive],
   )
 
   return (
@@ -81,7 +86,7 @@ export const RunnerSkillTable: FC<Props> = ({
                         step={1}
                         marks
                         min={1}
-                        max={6}
+                        max={AptitudeSkill === skillName ? 7 : 6}
                         value={rating}
                         data-testid={`${skillNameHyphen}-rating`}
                         onChange={(event, value) =>
