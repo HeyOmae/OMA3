@@ -1,31 +1,35 @@
 import { Runner } from "@/types/runner"
-import { render } from "@testing-library/react"
+import { render, screen } from "@/test/testUtils"
 import { RemainingEssence } from "./index"
 import { mockedRunners } from "@/test/mocks"
 
 describe("<RemainingEssence />", () => {
-  const setup = (runner: Runner) => {
-    return render(<RemainingEssence runner={runner} />)
-  }
+  const setup = (runner: Runner) => render(<RemainingEssence runner={runner} />)
 
   it("should display a runner's Essence", () => {
-    const { getByText } = setup(mockedRunners[2])
+    setup(mockedRunners[2])
 
-    expect(getByText("Essence")).toBeInTheDocument()
-    expect(getByText(6)).toBeInTheDocument()
+    expect(screen.getByText("Essence")).toBeInTheDocument()
+    expect(screen.getByText(6)).toBeInTheDocument()
   })
 
   it("should display a runner's Essence when they have cyberware", () => {
-    const { getByText } = setup(mockedRunners[9])
+    setup(mockedRunners[9])
 
-    expect(getByText("Essence")).toBeInTheDocument()
-    expect(getByText(2.3)).toBeInTheDocument()
+    expect(screen.getByText("Essence")).toBeInTheDocument()
+    expect(screen.getByText(2.3)).toBeInTheDocument()
   })
 
   it("should display a runner's Essence when they have cyberware and bioware", () => {
-    const { getByText } = setup(mockedRunners[10])
+    setup(mockedRunners[10])
 
-    expect(getByText("Essence")).toBeInTheDocument()
-    expect(getByText(2.8)).toBeInTheDocument()
+    expect(screen.getByText("Essence")).toBeInTheDocument()
+    expect(screen.getByText(2.8)).toBeInTheDocument()
+  })
+
+  test("Sensitive System should double cyberware and bioward essence costs", () => {
+    setup(mockedRunners[3])
+
+    expect(screen.getByRole("definition")).toHaveTextContent("2.2")
   })
 })

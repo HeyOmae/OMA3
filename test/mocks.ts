@@ -135,6 +135,73 @@ export const mockedRunners: Runner[] = [
           select: "NAME",
           selected: "Mafia",
         },
+        {
+          requires: {
+            magresreq: {
+              type: "mundane",
+            },
+          },
+          name: "Sensitive System",
+          karma: 8,
+          type: "NEGATIVE",
+        },
+      ],
+    },
+    resources: {
+      cyberware: [
+        {
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER HEADWARE",
+              essence: "1.5",
+            },
+          ],
+          cyberdeck: {
+            dataProcessing: 5,
+            firewall: 4,
+            initative: 1,
+          },
+          modifications: {
+            attrmod: [
+              {
+                attribute: "INITIATIVE MATRIX VR COLD",
+                value: 1,
+              },
+              {
+                attribute: "INITIATIVE MATRIX VR HOT",
+                value: 1,
+              },
+            ],
+          },
+          availability: "3L",
+          cost: 65000,
+          name: "Cyberjack 2",
+        },
+      ],
+      bioware: [
+        {
+          useAs: {
+            type: "BIOWARE",
+            subtype: "BIOWARE CULTURED",
+            essence: "0.2",
+          },
+          modifications: {
+            attrmod: [
+              {
+                attribute: "LOGIC",
+                value: 1,
+              },
+            ],
+          },
+          name: "Cerebral Booster",
+          availability: "5",
+          cost: 63_000,
+          maxRating: 3,
+          rating: true,
+          rateMultiplier: "essence cost modifier",
+          currentRating: 2,
+        },
       ],
     },
   },
