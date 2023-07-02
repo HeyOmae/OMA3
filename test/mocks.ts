@@ -74,6 +74,7 @@ export const mockedRunners: Runner[] = [
     priority: {
       metatype: "D",
       skills: "B",
+      resources: "A",
     },
     metatype: "Elf",
     attributes: initRunnerAttributes,
@@ -122,6 +123,17 @@ export const mockedRunners: Runner[] = [
           multi: true,
           max: 8,
           selected: "Reaction",
+        },
+        {
+          modifications: {
+            nuyen: 5000,
+            debtInterest: 500,
+          },
+          name: "In Debt",
+          karma: 1,
+          type: "NEGATIVE",
+          select: "NAME",
+          selected: "Mafia",
         },
       ],
     },

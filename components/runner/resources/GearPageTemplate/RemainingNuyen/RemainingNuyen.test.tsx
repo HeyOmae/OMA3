@@ -1,5 +1,5 @@
 import { RemainingNuyen, Props } from "."
-import { caymansCurrentlySpentNuyen, render } from "@/test/testUtils"
+import { caymansCurrentlySpentNuyen, render, screen } from "@/test/testUtils"
 import { mockedRunners } from "@/test/mocks"
 
 describe("<RemainingNuyen/>", () => {
@@ -11,16 +11,22 @@ describe("<RemainingNuyen/>", () => {
   }
 
   it("should display the max nuyen if there are not resources purchased yet", () => {
-    const { getByText } = setup({ runner: mockedRunners[8] })
-    expect(getByText("8000¥/8000¥")).toBeInTheDocument()
+    setup({ runner: mockedRunners[8] })
+    expect(screen.getByText("8000¥/8000¥")).toBeInTheDocument()
   })
 
   it("should display total nuyen and remaining nuyen", () => {
-    const { getByText } = setup()
+    setup()
 
-    expect(getByText("Nuyen:")).toBeInTheDocument()
+    expect(screen.getByText("Nuyen:")).toBeInTheDocument()
     expect(
-      getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
+      screen.getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
     ).toBeInTheDocument()
+  })
+
+  test("in debt raises max nuyen by 5000¥", () => {
+    setup({ runner: mockedRunners[3] })
+
+    expect(screen.getByRole("definition")).toHaveTextContent("455000")
   })
 })
