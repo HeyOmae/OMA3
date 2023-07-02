@@ -10,7 +10,16 @@ export interface Props {
 const { resources } = priorityTableData
 
 export const RemainingNuyen: FC<Props> = ({ runner }) => {
-  const totalNuyen = resources[runner.priority.resources],
+  const totalNuyen = useMemo(
+      () =>
+        resources[runner.priority.resources] +
+        (runner.qualities?.negative ?? []).reduce(
+          (inDebtNuyen, { name }) =>
+            name === "In Debt" ? inDebtNuyen + 5000 : inDebtNuyen,
+          0,
+        ),
+      [runner.priority.resources, runner.qualities?.negative],
+    ),
     { resources: runnerResouces } = runner,
     remainingNuyen: number = useMemo(() => {
       return Object.values(runnerResouces ?? {}).reduce(
