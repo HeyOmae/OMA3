@@ -145,6 +145,12 @@ export const mockedRunners: Runner[] = [
           karma: 8,
           type: "NEGATIVE",
         },
+        {
+          name: "Sinner",
+          karma: 8,
+          type: "NEGATIVE",
+          select: "NAME",
+        },
       ],
     },
     resources: {
@@ -201,6 +207,13 @@ export const mockedRunners: Runner[] = [
           rating: true,
           rateMultiplier: "essence cost modifier",
           currentRating: 2,
+        },
+      ],
+      lifestyle: [
+        {
+          name: "high",
+          availability: "0",
+          cost: 10_000,
         },
       ],
     },

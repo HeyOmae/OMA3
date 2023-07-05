@@ -1,7 +1,8 @@
-import { FC, useMemo } from "react"
+import { FC, useCallback, useMemo } from "react"
 import { Runner } from "@/types/runner"
 import priorityTableData from "@/data/priorityTable.json"
 import { Gear, GearModdableRated } from "@/types/Resources"
+import { useSinnerQualityNuyenModifier } from "@/hooks/useSinnerQualityNuyenModifier"
 
 export interface Props {
   runner: Runner
@@ -10,6 +11,18 @@ export interface Props {
 const { resources } = priorityTableData
 
 export const RemainingNuyen: FC<Props> = ({ runner }) => {
+  const sinnerModifier = useSinnerQualityNuyenModifier(runner)
+  const costModifier = useCallback(
+    (cost: number, gearType: string) => {
+      switch (gearType) {
+        case "lifestyle":
+          return cost * sinnerModifier
+        default:
+          return cost
+      }
+    },
+    [sinnerModifier],
+  )
   const totalNuyen = useMemo(
       () =>
         resources[runner.priority.resources] +
@@ -22,8 +35,11 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
     ),
     { resources: runnerResouces } = runner,
     remainingNuyen: number = useMemo(() => {
-      return Object.values(runnerResouces ?? {}).reduce(
-        (nuyenLeft: number, categoryOfGear: (Gear & GearModdableRated)[]) =>
+      return Object.entries(runnerResouces ?? {}).reduce(
+        (
+          nuyenLeft: number,
+          [gearType, categoryOfGear]: [string, (Gear & GearModdableRated)[]],
+        ) =>
           nuyenLeft -
           categoryOfGear.reduce((totalNuyenForThisCategory, { cost, mods }) => {
             if (mods) {
@@ -33,11 +49,11 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
                 mods.reduce((acc, { cost }) => acc + cost, 0)
               )
             }
-            return totalNuyenForThisCategory + cost
+            return totalNuyenForThisCategory + costModifier(cost, gearType)
           }, 0),
         totalNuyen,
       )
-    }, [runnerResouces, totalNuyen])
+    }, [costModifier, runnerResouces, totalNuyen])
   return (
     <dl>
       <dt>Nuyen:</dt>
