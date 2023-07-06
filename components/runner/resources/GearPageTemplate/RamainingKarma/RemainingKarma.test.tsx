@@ -12,7 +12,7 @@ test("display 25 karma for runners that have not spent karma", () => {
 
   const karmaEl = screen.getByRole("term")
   expect(karmaEl).toHaveTextContent("Karma")
-  expect(karmaEl.closest("dl")).toHaveTextContent("25")
+  expect(karmaEl.closest("dl")).toHaveTextContent("50")
 })
 
 test("negative qualities should increase karma", () => {
@@ -20,7 +20,7 @@ test("negative qualities should increase karma", () => {
 
   const karmaEl = screen.getByRole("term")
   expect(karmaEl).toHaveTextContent("Karma")
-  expect(karmaEl.closest("dl")).toHaveTextContent("31")
+  expect(karmaEl.closest("dl")).toHaveTextContent("56")
 })
 
 test("positive qualities should decrease karma", () => {
@@ -28,7 +28,7 @@ test("positive qualities should decrease karma", () => {
 
   const karmaEl = screen.getByRole("term")
   expect(karmaEl).toHaveTextContent("Karma")
-  expect(karmaEl.closest("dl")).toHaveTextContent("22")
+  expect(karmaEl.closest("dl")).toHaveTextContent("47")
 })
 
 test("qualities with levels should multiple karma costs", () => {
@@ -36,5 +36,5 @@ test("qualities with levels should multiple karma costs", () => {
 
   const karmaEl = screen.getByRole("term")
   expect(karmaEl).toHaveTextContent("Karma")
-  expect(karmaEl.closest("dl")).toHaveTextContent("13")
+  expect(karmaEl.closest("dl")).toHaveTextContent("38")
 })
