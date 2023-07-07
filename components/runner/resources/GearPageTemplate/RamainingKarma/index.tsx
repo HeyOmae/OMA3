@@ -17,8 +17,17 @@ export const RemainingKarma: FC<Props> = ({ runner }) => {
   )
   return (
     <dl>
-      <dt>Karma</dt>
-      <dd>{50 - positiveQualityKarma + negativeQualityKarma}</dd>
+      <dt aria-label="Karma">Karma</dt>
+      <dd aria-label="Karma Value">
+        {50 - positiveQualityKarma + negativeQualityKarma}
+      </dd>
+      <dt aria-label="Qualities">Qualities</dt>
+      <dd aria-label="Qualities Value">
+        {6 -
+          (runner.qualities?.positive?.length ?? 0) -
+          (runner.qualities?.negative?.length ?? 0)}
+        /6
+      </dd>
     </dl>
   )
 }
