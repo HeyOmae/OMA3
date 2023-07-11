@@ -10,7 +10,7 @@ const setup = (runner: Runner = mockedRunners[0]) => {
 test("display 25 karma for runners that have not spent karma", () => {
   setup()
 
-  const karmaEl = screen.getByRole("term", { name: /Karma/i })
+  const karmaEl = screen.getByRole("term", { name: /Available Karma/i })
   expect(karmaEl).toHaveTextContent("Karma")
   expect(karmaEl.closest("dl")).toHaveTextContent("50")
 })
@@ -18,7 +18,7 @@ test("display 25 karma for runners that have not spent karma", () => {
 test("negative qualities should increase karma", () => {
   setup(mockedRunners[7])
 
-  const karmaEl = screen.getByRole("term", { name: /Karma/i })
+  const karmaEl = screen.getByRole("term", { name: /Available Karma/i })
   expect(karmaEl).toHaveTextContent("Karma")
   expect(karmaEl.closest("dl")).toHaveTextContent("56")
 })
@@ -26,7 +26,7 @@ test("negative qualities should increase karma", () => {
 test("positive qualities should decrease karma", () => {
   setup(mockedRunners[8])
 
-  const karmaEl = screen.getByRole("term", { name: /Karma/i })
+  const karmaEl = screen.getByRole("term", { name: /Available Karma/i })
   expect(karmaEl).toHaveTextContent("Karma")
   expect(karmaEl.closest("dl")).toHaveTextContent("47")
 })
@@ -34,7 +34,7 @@ test("positive qualities should decrease karma", () => {
 test("qualities with levels should multiple karma costs", () => {
   setup(mockedRunners[9])
 
-  const karmaEl = screen.getByRole("term", { name: /Karma/i })
+  const karmaEl = screen.getByRole("term", { name: "Available Karma" })
   expect(karmaEl).toHaveTextContent("Karma")
   expect(karmaEl.closest("dl")).toHaveTextContent("38")
 })
