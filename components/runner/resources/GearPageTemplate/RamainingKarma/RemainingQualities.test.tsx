@@ -12,7 +12,7 @@ test("display the number of qualitys on a runner", () => {
 
   expect(
     screen.getByRole("term", { name: /Qualities/i }).closest("dl"),
-  ).toHaveTextContent("6/6")
+  ).toHaveTextContent("0/6")
 })
 
 test("number of qualities should be reduced by qualities on the runner", () => {
@@ -20,5 +20,13 @@ test("number of qualities should be reduced by qualities on the runner", () => {
 
   expect(
     screen.getByRole("definition", { name: "Qualities Value" }),
-  ).toHaveTextContent("0/6")
+  ).toHaveTextContent("6/6")
+})
+
+test("display the mount of bonus karma received from qualities", () => {
+  setup(mockedRunners[7])
+
+  expect(
+    screen.getByRole("definition", { name: "Bonus Karma Value" }),
+  ).toHaveTextContent("6/20")
 })

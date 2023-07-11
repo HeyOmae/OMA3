@@ -17,16 +17,19 @@ export const RemainingKarma: FC<Props> = ({ runner }) => {
   )
   return (
     <dl>
-      <dt aria-label="Karma">Karma</dt>
-      <dd aria-label="Karma Value">
+      <dt aria-label="Available Karma">Available Karma</dt>
+      <dd aria-label="Available Karma Value">
         {50 - positiveQualityKarma + negativeQualityKarma}
       </dd>
       <dt aria-label="Qualities">Qualities</dt>
       <dd aria-label="Qualities Value">
-        {6 -
-          (runner.qualities?.positive?.length ?? 0) -
+        {(runner.qualities?.positive?.length ?? 0) +
           (runner.qualities?.negative?.length ?? 0)}
         /6
+      </dd>
+      <dt aria-label="Bonus Karma">Bonus Karma</dt>
+      <dd aria-label="Bonus Karma Value">
+        {negativeQualityKarma - positiveQualityKarma}/20
       </dd>
     </dl>
   )
