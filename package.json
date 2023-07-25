@@ -59,7 +59,7 @@
     "jest-environment-jsdom": "^29.6.1",
     "jest-watch-typeahead": "^2.2.2",
     "lint-staged": "^13.2.3",
-    "msw": "^1.2.2",
+    "msw": "^1.2.3",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
     "whatwg-fetch": "^3.6.2"
