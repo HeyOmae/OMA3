@@ -41,7 +41,7 @@ const Qualities = () => {
 
   return runner ? (
     <>
-      <RemainingKarma runner={runner} />
+      <RemainingKarma runner={runner} showQualityInfo />
       <section>
         <h2>Positive Qualities</h2>
         <QualityTable

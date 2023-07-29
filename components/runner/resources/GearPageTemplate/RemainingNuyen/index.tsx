@@ -56,8 +56,8 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
     }, [costModifier, runnerResouces, totalNuyen])
   return (
     <dl>
-      <dt>Nuyen:</dt>
-      <dd>
+      <dt aria-label="Nuyen">Nuyen:</dt>
+      <dd aria-label="Nuyen Value">
         {remainingNuyen}&yen;/{totalNuyen}&yen;
       </dd>
     </dl>
