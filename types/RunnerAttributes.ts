@@ -14,4 +14,5 @@ export type Attributes =
 export interface AttributeStats {
   adjustment: number
   points: number
+  karma?: number
 }

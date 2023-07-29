@@ -12,21 +12,27 @@ describe("<RemainingNuyen/>", () => {
 
   it("should display the max nuyen if there are not resources purchased yet", () => {
     setup({ runner: mockedRunners[8] })
-    expect(screen.getByText("8000¥/8000¥")).toBeInTheDocument()
+    expect(
+      screen.getByRole("definition", { name: "Nuyen Value" }),
+    ).toHaveTextContent("8000¥/8000¥")
   })
 
   it("should display total nuyen and remaining nuyen", () => {
     setup()
 
-    expect(screen.getByText("Nuyen:")).toBeInTheDocument()
+    expect(screen.getByRole("term", { name: "Nuyen" })).toHaveTextContent(
+      "Nuyen:",
+    )
     expect(
-      screen.getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
-    ).toBeInTheDocument()
+      screen.getByRole("definition", { name: "Nuyen Value" }),
+    ).toHaveTextContent(`${caymansCurrentlySpentNuyen}¥/275000¥`)
   })
 
   test("in debt raises max nuyen by 5000¥", () => {
     setup({ runner: mockedRunners[3] })
 
-    expect(screen.getByRole("definition")).toHaveTextContent("455000")
+    expect(
+      screen.getByRole("definition", { name: "Nuyen Value" }),
+    ).toHaveTextContent("455000")
   })
 })

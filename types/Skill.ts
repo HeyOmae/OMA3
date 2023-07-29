@@ -2,6 +2,7 @@ import { Attributes } from "./RunnerAttributes"
 
 interface Skill {
   rating: number
+  karmaRating?: number
   attribute: {
     primary: Attributes
     secondary?: Attributes

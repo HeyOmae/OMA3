@@ -292,5 +292,11 @@ describe("<Qualities />", () => {
     const karmaEl = (await screen.findAllByRole("term")).at(0)
     expect(karmaEl).toHaveTextContent("Karma")
     expect(karmaEl.closest("dl")).toHaveTextContent("50")
+    expect(
+      screen.getByRole("definition", { name: "Qualities Value" }),
+    ).toHaveTextContent("0/6")
+    expect(
+      screen.getByRole("definition", { name: "Bonus Karma Value" }),
+    ).toHaveTextContent("0/20")
   })
 })

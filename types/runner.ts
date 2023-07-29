@@ -27,6 +27,7 @@ export interface Runner {
     positive?: Quality[]
     negative?: Quality[]
   }
+  karmaToNuyen?: number
 }
 
 export const initRunner: Runner = {
