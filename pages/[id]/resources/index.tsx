@@ -14,11 +14,19 @@ const ResourceSummary = dynamic(
   },
 )
 
+const KarmaToNuyen = dynamic(
+  () => import("@/components/runner/resources/KarmaToNuyen"),
+  {
+    ssr: false,
+  },
+)
+
 export const ResourcePage = (): JSX.Element => {
   const { query, asPath } = useRouter()
   return (
     <RunnerLayout>
       <h1>Resources</h1>
+      <KarmaToNuyen />
       <section>
         <h2>Weapons</h2>
         <NextLink
