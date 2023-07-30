@@ -23,6 +23,7 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
     },
     [sinnerModifier],
   )
+
   const totalNuyen = useMemo(
       () =>
         resources[runner.priority.resources] +
@@ -30,8 +31,13 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
           (inDebtNuyen, { name }) =>
             name === "In Debt" ? inDebtNuyen + 5000 : inDebtNuyen,
           0,
-        ),
-      [runner.priority.resources, runner.qualities?.negative],
+        ) +
+        2000 * (runner.karmaToNuyen ?? 0),
+      [
+        runner.karmaToNuyen,
+        runner.priority.resources,
+        runner.qualities?.negative,
+      ],
     ),
     { resources: runnerResouces } = runner,
     remainingNuyen: number = useMemo(() => {

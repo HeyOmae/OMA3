@@ -28,7 +28,7 @@ export const useGetRunner = () => {
 
 interface Action<P> {
   type: symbol
-  payload: P
+  payload?: P
 }
 const DONE_LOADING = Symbol("DONE_LOADING")
 
