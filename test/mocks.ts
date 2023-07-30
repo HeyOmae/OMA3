@@ -328,6 +328,7 @@ export const mockedRunners: Runner[] = [
         },
       ],
     },
+    karmaToNuyen: 5,
   },
   {
     id: 6,

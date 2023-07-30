@@ -16,11 +16,12 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
     () => totalKarmaFromQualities(runner?.qualities?.negative),
     [runner?.qualities?.negative],
   )
+  const karmaSpendOnNuyen = runner.karmaToNuyen ?? 0
   return (
     <dl>
       <dt aria-label="Available Karma">Available Karma</dt>
       <dd aria-label="Available Karma Value">
-        {50 - positiveQualityKarma + negativeQualityKarma}
+        {50 - positiveQualityKarma + negativeQualityKarma - karmaSpendOnNuyen}
       </dd>
       {showQualityInfo && (
         <>
