@@ -45,6 +45,10 @@ h5 {
   color: red;
 }
 
+.bad-stuff fieldset {
+  border-color: red;
+}
+
 .MuiButton-root {
   margin: 0.125em 0.25em;
 }

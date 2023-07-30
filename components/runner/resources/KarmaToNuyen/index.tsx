@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material"
+import { CircularProgress, TextField } from "@mui/material"
 import { RemainingKarma } from "../GearPageTemplate/RamainingKarma"
 import { RemainingNuyen } from "../GearPageTemplate/RemainingNuyen"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
@@ -25,29 +25,27 @@ const KarmaToNuyen = () => {
     },
   )
   return runner ? (
-    <>
-      <RemainingKarma runner={runner} />
-      <RemainingNuyen runner={runner} />
+    <section>
+      <h2>Karma &amp; Nuyen</h2>
       <div>
         <AddButton
           aria-label="Increment Karma to Nuyen"
           onClick={() => dispatch({ type: INCREMENT_KARMA_TO_NUYEN })}
         />
-        <label>
-          Karma to Nuyen
-          <input
-            className={runner.karmaToNuyen < 0 ? "bad-stuff" : ""}
-            type="number"
-            value={runner.karmaToNuyen ?? 0}
-            readOnly
-          />
-        </label>
+        <TextField
+          label="Karma to Nuyen"
+          className={runner.karmaToNuyen < 0 ? "bad-stuff" : ""}
+          type="number"
+          value={runner.karmaToNuyen ?? 0}
+        />
         <RemoveButton
           aria-label="Decrement Karma to Nuyen"
           onClick={() => dispatch({ type: DECREMENT_KARMA_TO_NUYEN })}
         />
       </div>
-    </>
+      <RemainingKarma runner={runner} />
+      <RemainingNuyen runner={runner} />
+    </section>
   ) : (
     <CircularProgress />
   )
