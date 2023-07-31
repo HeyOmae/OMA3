@@ -15,12 +15,18 @@ export const DisplayPoints: FC<Props> = ({ runner }) => {
   )
   return (
     <dl>
-      <dt>Adjustment Points</dt>
-      <dd className={adjustmentSpend < 0 ? "bad-stuff" : ""}>
+      <dt aria-label="Adjustment Points">Adjustment Points</dt>
+      <dd
+        className={adjustmentSpend < 0 ? "bad-stuff" : ""}
+        aria-label="Adjustment Points Value"
+      >
         {adjustmentSpend}
       </dd>
-      <dt>Attribute Points</dt>
-      <dd className={attributeSpend < 0 ? "bad-stuff" : ""}>
+      <dt aria-label="Attribute Points">Attribute Points</dt>
+      <dd
+        className={attributeSpend < 0 ? "bad-stuff" : ""}
+        aria-label="Attribute Points Value"
+      >
         {attributeSpend}
       </dd>
     </dl>

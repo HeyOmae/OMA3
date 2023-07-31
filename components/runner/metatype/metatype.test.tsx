@@ -5,138 +5,134 @@ import {
   waitFor,
   withTestRouter,
   SliderHelper,
-  searchRegexInNodes,
   runnerFromDB,
   userEvent,
+  screen,
 } from "@/test/testUtils"
 import { initRunnerAttributes } from "@/types/runner"
 import { Metatype } from "./index"
 
 describe("<Metatype/>", () => {
   beforeAll(setupIndexedDB)
-  const setup = (id = "3") =>
+  const setup = (id = "3") => {
+    const user = userEvent.setup()
     render(withTestRouter(<Metatype />, { query: { id } }))
+    return user
+  }
 
   describe("select metatype radio buttons", () => {
     it("should have display a radio buttons for each metatype", async () => {
-      const { getByRole, queryByText } = setup()
+      setup()
 
-      await waitFor(() => {
-        const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
-
-        expect(
-          getContentByLabelText(metatypeRadio, "Human"),
-        ).toBeInTheDocument()
-        expect(
-          getContentByLabelText(metatypeRadio, "Dwarf"),
-        ).toBeInTheDocument()
-        expect(getContentByLabelText(metatypeRadio, "Elf")).toBeInTheDocument()
-        expect(getContentByLabelText(metatypeRadio, "Ork")).toBeInTheDocument()
-        expect(
-          getContentByLabelText(metatypeRadio, "Troll"),
-        ).toBeInTheDocument()
-
-        // if metatype is not selected attributes should not display
-        expect(queryByText("Body")).not.toBeInTheDocument()
-        expect(queryByText("Agility")).not.toBeInTheDocument()
-        expect(queryByText("Reaction")).not.toBeInTheDocument()
-        expect(queryByText("Strength")).not.toBeInTheDocument()
-        expect(queryByText("Willpower")).not.toBeInTheDocument()
-        expect(queryByText("Logic")).not.toBeInTheDocument()
-        expect(queryByText("Intuition")).not.toBeInTheDocument()
-        expect(queryByText("Charisma")).not.toBeInTheDocument()
-        expect(queryByText("Edge")).not.toBeInTheDocument()
+      const metatypeRadio = await screen.findByRole("radiogroup", {
+        name: "metatypes",
       })
+
+      expect(metatypeRadio).toHaveTextContent("Human")
+      expect(metatypeRadio).toHaveTextContent("Dwarf")
+      expect(metatypeRadio).toHaveTextContent("Elf")
+      expect(metatypeRadio).toHaveTextContent("Ork")
+      expect(metatypeRadio).toHaveTextContent("Troll")
+
+      // if metatype is not selected attributes should not display
+      expect(screen.queryByText("Body")).not.toBeInTheDocument()
+      expect(screen.queryByText("Agility")).not.toBeInTheDocument()
+      expect(screen.queryByText("Reaction")).not.toBeInTheDocument()
+      expect(screen.queryByText("Strength")).not.toBeInTheDocument()
+      expect(screen.queryByText("Willpower")).not.toBeInTheDocument()
+      expect(screen.queryByText("Logic")).not.toBeInTheDocument()
+      expect(screen.queryByText("Intuition")).not.toBeInTheDocument()
+      expect(screen.queryByText("Charisma")).not.toBeInTheDocument()
+      expect(screen.queryByText("Edge")).not.toBeInTheDocument()
     })
 
     it("should disable human and elf at metatype priority A", async () => {
-      const { getByRole, getByLabelText } = setup("11")
+      setup("11")
 
-      await waitFor(() => {
-        expect(
-          getByRole("radiogroup", { name: "metatypes" }),
-        ).toBeInTheDocument()
-      })
+      expect(
+        await screen.findByRole("radiogroup", { name: "metatypes" }),
+      ).toBeInTheDocument()
 
-      expect(getByLabelText("Human")).toBeDisabled()
-      expect(getByLabelText("Elf")).toBeDisabled()
-      expect(getByLabelText("Dwarf")).not.toBeDisabled()
-      expect(getByLabelText("Ork")).not.toBeDisabled()
-      expect(getByLabelText("Troll")).not.toBeDisabled()
+      expect(screen.getByLabelText("Human")).toBeDisabled()
+      expect(screen.getByLabelText("Elf")).toBeDisabled()
+      expect(screen.getByLabelText("Dwarf")).not.toBeDisabled()
+      expect(screen.getByLabelText("Ork")).not.toBeDisabled()
+      expect(screen.getByLabelText("Troll")).not.toBeDisabled()
     })
   })
 
   it("should save the metatype selection and set attributes to initial state", async () => {
-    const { getByRole } = setup()
+    setup()
 
     expect(runnerFromDB(2).metatype).toBeUndefined()
 
     await waitFor(() => {
-      getByRole("radiogroup", { name: "metatypes" })
+      screen.getByRole("radiogroup", { name: "metatypes" })
     })
     await userEvent.click(
       getContentByLabelText(
-        getByRole("radiogroup", { name: "metatypes" }),
+        screen.getByRole("radiogroup", { name: "metatypes" }),
         "Ork",
       ),
     )
 
     await waitFor(() => {
       expect(runnerFromDB(2).metatype).toEqual("Ork")
-      expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
-
-      const metatypeRadio = getByRole("radiogroup", { name: "metatypes" })
-      expect(
-        (getContentByLabelText(metatypeRadio, "Ork") as HTMLInputElement)
-          .checked,
-      ).toBe(true)
     })
+    expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
+
+    const metatypeRadio = screen.getByRole("radiogroup", {
+      name: "metatypes",
+    })
+    expect(
+      (getContentByLabelText(metatypeRadio, "Ork") as HTMLInputElement).checked,
+    ).toBe(true)
   })
 
   describe("attributes sliders", () => {
     it("should be visible if metatype is selected", async () => {
-      const { getByLabelText, getByText } = setup()
-      await waitFor(() => {
-        getByLabelText("Ork")
-      })
-      await userEvent.click(getByLabelText("Ork"))
+      setup()
+
+      expect(await screen.findByLabelText("Ork")).toBeInTheDocument()
+
+      await userEvent.click(screen.getByLabelText("Ork"))
 
       await waitFor(() => {
         expect(runnerFromDB(2).metatype).toEqual("Ork")
       })
 
-      await waitFor(() => {
-        expect(getByText("Body")).toBeInTheDocument()
-        expect(getByText("Agility")).toBeInTheDocument()
-        expect(getByText("Reaction")).toBeInTheDocument()
-        expect(getByText("Strength")).toBeInTheDocument()
-        expect(getByText("Willpower")).toBeInTheDocument()
-        expect(getByText("Logic")).toBeInTheDocument()
-        expect(getByText("Intuition")).toBeInTheDocument()
-        expect(getByText("Charisma")).toBeInTheDocument()
-        expect(getByText("Edge")).toBeInTheDocument()
-      })
+      expect(screen.getByText("Body")).toBeInTheDocument()
+      expect(screen.getByText("Agility")).toBeInTheDocument()
+      expect(screen.getByText("Reaction")).toBeInTheDocument()
+      expect(screen.getByText("Strength")).toBeInTheDocument()
+      expect(screen.getByText("Willpower")).toBeInTheDocument()
+      expect(screen.getByText("Logic")).toBeInTheDocument()
+      expect(screen.getByText("Intuition")).toBeInTheDocument()
+      expect(screen.getByText("Charisma")).toBeInTheDocument()
+      expect(screen.getByText("Edge")).toBeInTheDocument()
     })
 
     describe("adjustment points", () => {
       it("should update indexedDB", async () => {
-        const { getByTestId, getByText } = setup()
+        const user = setup()
 
         expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
         expect(runnerFromDB(2).metatype).toEqual("Ork")
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Adjustment Points4/)),
-          ).toBeInTheDocument()
-          SliderHelper.change(getByTestId("Body-slider"), 3, 1, 9)
-        })
+        expect(
+          await screen.findByRole("definition", {
+            name: "Adjustment Points Value",
+          }),
+        ).toHaveTextContent("4")
+        await user.click(screen.getByRole("radio", { name: "Adjustment" }))
+        expect(screen.getByRole("radio", { name: "Adjustment" })).toBeChecked()
+        SliderHelper.change(screen.getByTestId("Body-slider"), 3, 1, 9)
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Adjustment Points2/)),
-          ).toBeInTheDocument()
-        })
+        expect(
+          await screen.findByRole("definition", {
+            name: "Adjustment Points Value",
+          }),
+        ).toHaveTextContent("2")
 
         await waitFor(() => {
           expect(runnerFromDB(2).attributes.Body).toEqual({
@@ -147,79 +143,69 @@ describe("<Metatype/>", () => {
       })
 
       it("should not be able to go negative", async () => {
-        const { getByTestId, getByLabelText, getByText } = setup()
+        const user = setup()
 
         // Test to see if you spend adjustment first and then attribute points
-        await waitFor(() => {
-          expect(getByLabelText("Dwarf")).toBeInTheDocument()
-          expect(getByText("Select Points to Use")).toBeInTheDocument()
-        })
+        expect(await screen.findByLabelText("Dwarf")).toBeInTheDocument()
+        expect(screen.getByText("Select Points to Use")).toBeInTheDocument()
 
-        await userEvent.click(getByLabelText("Dwarf"))
-        SliderHelper.change(getByTestId("Willpower-slider"), 4, 1, 7)
+        await user.click(screen.getByLabelText("Dwarf"))
+        SliderHelper.change(screen.getByTestId("Willpower-slider"), 4, 1, 7)
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Adjustment Points1/)),
-          ).toBeInTheDocument()
-        })
+        expect(
+          screen.getByRole("definition", { name: "Adjustment Points Value" }),
+        ).toHaveTextContent("1")
 
-        await userEvent.click(getByLabelText("Adjustment"))
+        await user.click(screen.getByLabelText("Attribute"))
 
-        SliderHelper.change(getByTestId("Willpower-slider"), 7, 1, 7)
+        SliderHelper.change(screen.getByTestId("Willpower-slider"), 7, 1, 7)
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Attribute Points9/)),
-          ).toBeInTheDocument()
-        })
+        expect(
+          screen.getByRole("definition", {
+            name: "Attribute Points Value",
+          }),
+        ).toHaveTextContent("9")
 
-        await userEvent.click(getByLabelText("Attribute"))
+        await user.click(screen.getByLabelText("Adjustment"))
 
-        SliderHelper.change(getByTestId("Willpower-slider"), 1, 1, 7)
+        SliderHelper.change(screen.getByTestId("Willpower-slider"), 1, 1, 7)
 
         await waitFor(() => {
           expect(runnerFromDB(2).attributes.Willpower).toEqual({
             adjustment: 0,
             points: 3,
           })
-
-          expect(
-            getByTestId("Willpower-slider").querySelector("input").value,
-          ).toEqual("4")
         })
+        expect(
+          screen.getByTestId("Willpower-slider").querySelector("input"),
+        ).toHaveValue("4")
       })
     })
 
     describe("spending attribute points", () => {
       it("should set the appropriate attribute on the character", async () => {
-        const { getByTestId, getByLabelText, getByText } = setup()
+        setup()
 
-        await waitFor(() => {
-          expect(getByLabelText("Troll")).toBeInTheDocument()
-          expect(getByText("Select Points to Use")).toBeInTheDocument()
-        })
+        expect(await screen.findByLabelText("Troll")).toBeInTheDocument()
+        expect(screen.getByText("Select Points to Use")).toBeInTheDocument()
 
-        await userEvent.click(getByLabelText("Troll"))
-        await userEvent.click(getByLabelText("Adjustment"))
+        await userEvent.click(screen.getByLabelText("Troll"))
+        await userEvent.click(screen.getByLabelText("Attribute"))
 
         await waitFor(() => {
           expect(runnerFromDB(2).attributes).toEqual(initRunnerAttributes)
-          expect(runnerFromDB(2).metatype).toEqual("Troll")
         })
+        expect(runnerFromDB(2).metatype).toEqual("Troll")
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Attribute Points12/)),
-          ).toBeInTheDocument()
-          SliderHelper.change(getByTestId("Body-slider"), 7, 1, 9)
-        })
+        expect(
+          screen.getByRole("definition", { name: "Attribute Points Value" }),
+        ).toHaveTextContent("12")
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Attribute Points6/)),
-          ).toBeInTheDocument()
-        })
+        SliderHelper.change(screen.getByTestId("Body-slider"), 7, 1, 9)
+
+        expect(
+          screen.getByRole("definition", { name: "Attribute Points Value" }),
+        ).toHaveTextContent("6")
 
         await waitFor(() => {
           expect(runnerFromDB(2).attributes.Body).toEqual({
@@ -230,36 +216,30 @@ describe("<Metatype/>", () => {
       })
 
       it("should not be able to go negative", async () => {
-        const { getByTestId, getByLabelText, getByText } = setup()
+        const user = setup()
 
         // Test to see if you spend adjustment first and then attribute points
-        await waitFor(() => {
-          expect(getByLabelText("Elf")).toBeInTheDocument()
-          expect(getByText("Select Points to Use")).toBeInTheDocument()
-        })
+        expect(await screen.findByLabelText("Elf")).toBeInTheDocument()
+        expect(screen.getByText("Select Points to Use")).toBeInTheDocument()
 
-        await userEvent.click(getByLabelText("Adjustment"))
-        await userEvent.click(getByLabelText("Elf"))
-        SliderHelper.change(getByTestId("Agility-slider"), 4, 1, 7)
+        await user.click(screen.getByLabelText("Attribute"))
+        await user.click(screen.getByLabelText("Elf"))
+        SliderHelper.change(screen.getByTestId("Agility-slider"), 4, 1, 7)
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Attribute Points9/)),
-          ).toBeInTheDocument()
-        })
+        expect(
+          screen.getByRole("definition", { name: "Attribute Points Value" }),
+        ).toHaveTextContent("9")
 
-        await userEvent.click(getByLabelText("Attribute"))
-        SliderHelper.change(getByTestId("Agility-slider"), 7, 1, 7)
+        await user.click(screen.getByLabelText("Adjustment"))
+        SliderHelper.change(screen.getByTestId("Agility-slider"), 7, 1, 7)
 
-        await waitFor(() => {
-          expect(
-            getByText(searchRegexInNodes(/Adjustment Points1/)),
-          ).toBeInTheDocument()
-        })
+        expect(
+          screen.getByRole("definition", { name: "Adjustment Points Value" }),
+        ).toHaveTextContent("1")
 
-        await userEvent.click(getByLabelText("Adjustment"))
+        await user.click(screen.getByLabelText("Attribute"))
 
-        SliderHelper.change(getByTestId("Agility-slider"), 1, 1, 7)
+        SliderHelper.change(screen.getByTestId("Agility-slider"), 1, 1, 7)
 
         await waitFor(() => {
           expect(runnerFromDB(2).attributes.Agility).toEqual({
@@ -268,68 +248,88 @@ describe("<Metatype/>", () => {
           })
 
           expect(
-            getByTestId("Agility-slider").querySelector("input").value,
-          ).toEqual("4")
+            screen.getByTestId("Agility-slider").querySelector("input"),
+          ).toHaveValue("4")
         })
       })
     })
 
     it("should set both adjustment and attribute points on the same attribute", async () => {
-      const { getByTestId, getByLabelText, getByText } = setup()
+      const user = setup()
 
       // Test to see if you spend adjustment first and then attribute points
+      expect(await screen.findByLabelText("Dwarf")).toBeInTheDocument()
+      expect(screen.getByLabelText("Dwarf")).not.toBeChecked()
+      expect(screen.getByText("Select Points to Use")).toBeInTheDocument()
+
+      await user.click(screen.getByLabelText("Dwarf"))
+      expect(screen.getByLabelText("Dwarf")).toBeChecked()
+      await user.click(screen.getByLabelText("Adjustment"))
+      expect(
+        screen.getByRole("definition", { name: "Adjustment Points Value" }),
+      ).toHaveTextContent("4")
+      expect(
+        screen.getByRole("definition", { name: "Attribute Points Value" }),
+      ).toHaveTextContent("12")
+
+      SliderHelper.change(screen.getByTestId("Willpower-slider"), 3, 1, 7)
+
+      expect(
+        screen.getByRole("definition", { name: "Attribute Points Value" }),
+      ).toHaveTextContent("12")
+      expect(
+        screen.getByRole("definition", { name: "Adjustment Points Value" }),
+      ).toHaveTextContent("2")
+
+      await user.click(screen.getByLabelText("Attribute"))
+
+      SliderHelper.change(screen.getByTestId("Willpower-slider"), 6, 1, 7)
+
+      expect(
+        screen.getByRole("definition", { name: "Attribute Points Value" }),
+      ).toHaveTextContent("9")
+      expect(
+        screen.getByRole("definition", { name: "Adjustment Points Value" }),
+      ).toHaveTextContent("2")
+
       await waitFor(() => {
-        expect(getByLabelText("Elf")).toBeInTheDocument()
-        expect(getByText("Select Points to Use")).toBeInTheDocument()
-      })
-
-      await userEvent.click(getByLabelText("Elf"))
-
-      SliderHelper.change(getByTestId("Agility-slider"), 3, 1, 7)
-
-      await waitFor(() => {
-        expect(
-          getByText(searchRegexInNodes(/Adjustment Points2/)),
-        ).toBeInTheDocument()
-      })
-
-      await userEvent.click(getByLabelText("Adjustment"))
-
-      SliderHelper.change(getByTestId("Agility-slider"), 7, 1, 7)
-
-      await waitFor(() => {
-        expect(
-          getByText(searchRegexInNodes(/Attribute Points8/)),
-        ).toBeInTheDocument()
-      })
-
-      await waitFor(() => {
-        expect(runnerFromDB(2).attributes.Agility).toEqual({
+        expect(runnerFromDB(2).attributes.Willpower).toEqual({
           adjustment: 2,
-          points: 4,
+          points: 3,
         })
       })
 
+      expect(
+        screen.getByRole("definition", { name: "Attribute Points Value" }),
+      ).toHaveTextContent("9")
+      expect(
+        screen.getByRole("definition", { name: "Adjustment Points Value" }),
+      ).toHaveTextContent("2")
+
       // Test to see if you spend attribute first and then adjustment
-      SliderHelper.change(getByTestId("Charisma-slider"), 2, 1, 8)
-      await userEvent.click(getByLabelText("Attribute"))
+      SliderHelper.change(screen.getByTestId("Strength-slider"), 2, 1, 8)
+      await user.click(screen.getByLabelText("Adjustment"))
+
+      expect(
+        screen.getByRole("definition", { name: "Attribute Points Value" }),
+      ).toHaveTextContent("8")
+      expect(
+        screen.getByRole("definition", { name: "Adjustment Points Value" }),
+      ).toHaveTextContent("2")
+
+      SliderHelper.change(screen.getByTestId("Strength-slider"), 4, 1, 8)
+
+      expect(
+        screen.getByRole("definition", { name: "Attribute Points Value" }),
+      ).toHaveTextContent("8")
+      expect(
+        await screen.findByRole("definition", {
+          name: "Adjustment Points Value",
+        }),
+      ).toHaveTextContent("0")
 
       await waitFor(() => {
-        expect(
-          getByText(searchRegexInNodes(/Attribute Points7/)),
-        ).toBeInTheDocument()
-      })
-
-      SliderHelper.change(getByTestId("Charisma-slider"), 4, 1, 8)
-
-      await waitFor(() => {
-        expect(
-          getByText(searchRegexInNodes(/Adjustment Points0/)),
-        ).toBeInTheDocument()
-      })
-
-      await waitFor(() => {
-        expect(runnerFromDB(2).attributes.Charisma).toEqual({
+        expect(runnerFromDB(2).attributes.Strength).toEqual({
           adjustment: 2,
           points: 1,
         })
@@ -339,40 +339,37 @@ describe("<Metatype/>", () => {
 
   describe("Priority Missing", () => {
     it("should tell the user metatype is not set", async () => {
-      const { getByText, queryByRole } = setup("1")
+      setup("1")
 
-      await waitFor(() => {
-        expect(
-          queryByRole("radiogroup", { name: "metatypes" }),
-        ).not.toBeInTheDocument()
-        expect(
-          getByText("You need to set the metatype priority"),
-        ).toBeInTheDocument()
-      })
+      expect(
+        await screen.findByText("You need to set the metatype priority"),
+      ).toBeInTheDocument()
+
+      expect(
+        screen.queryByRole("radiogroup", { name: "metatypes" }),
+      ).not.toBeInTheDocument()
     })
 
     it("should tell the user attributes is not set", async () => {
-      const { getByText, queryByText, getByRole } = setup("4")
+      setup("4")
 
-      await waitFor(() => {
-        expect(
-          getByRole("radiogroup", { name: "metatypes" }),
-        ).toBeInTheDocument()
+      expect(
+        await screen.findByRole("radiogroup", { name: "metatypes" }),
+      ).toBeInTheDocument()
 
-        expect(queryByText("Body")).not.toBeInTheDocument()
-        expect(queryByText("Agility")).not.toBeInTheDocument()
-        expect(queryByText("Reaction")).not.toBeInTheDocument()
-        expect(queryByText("Strength")).not.toBeInTheDocument()
-        expect(queryByText("Willpower")).not.toBeInTheDocument()
-        expect(queryByText("Logic")).not.toBeInTheDocument()
-        expect(queryByText("Intuition")).not.toBeInTheDocument()
-        expect(queryByText("Charisma")).not.toBeInTheDocument()
-        expect(queryByText("Edge")).not.toBeInTheDocument()
+      expect(screen.queryByText("Body")).not.toBeInTheDocument()
+      expect(screen.queryByText("Agility")).not.toBeInTheDocument()
+      expect(screen.queryByText("Reaction")).not.toBeInTheDocument()
+      expect(screen.queryByText("Strength")).not.toBeInTheDocument()
+      expect(screen.queryByText("Willpower")).not.toBeInTheDocument()
+      expect(screen.queryByText("Logic")).not.toBeInTheDocument()
+      expect(screen.queryByText("Intuition")).not.toBeInTheDocument()
+      expect(screen.queryByText("Charisma")).not.toBeInTheDocument()
+      expect(screen.queryByText("Edge")).not.toBeInTheDocument()
 
-        expect(
-          getByText("You need to set the attributes priority"),
-        ).toBeInTheDocument()
-      })
+      expect(
+        screen.getByText("You need to set the attributes priority"),
+      ).toBeInTheDocument()
     })
   })
 })

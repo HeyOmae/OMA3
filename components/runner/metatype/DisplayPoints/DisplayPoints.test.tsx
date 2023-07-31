@@ -1,23 +1,24 @@
 import { DisplayPoints, Props } from "./"
-import { render, searchRegexInNodes } from "../../../../test/testUtils"
-import { mockedRunners } from "../../../../test/mocks"
+import { render, screen } from "@/test/testUtils"
+import { mockedRunners } from "@/test/mocks"
+
 describe("DisplayPoints", () => {
   const setup = (props: Props = { runner: mockedRunners[1] }) =>
     render(<DisplayPoints {...props} />)
+
   it("should display the number of adjustment points and attribute points to spend", async () => {
-    const { getByText } = setup()
+    setup()
 
     expect(
-      getByText(searchRegexInNodes(/Adjustment Points1/)),
-    ).toBeInTheDocument()
-
+      screen.getByRole("definition", { name: "Adjustment Points Value" }),
+    ).toHaveTextContent("1")
     expect(
-      getByText(searchRegexInNodes(/Attribute Points10/)),
-    ).toBeInTheDocument()
+      screen.getByRole("definition", { name: "Attribute Points Value" }),
+    ).toHaveTextContent("10")
   })
 
   it("should display what points are left", () => {
-    const { getByText } = setup({
+    setup({
       runner: {
         ...mockedRunners[2],
         attributes: {
@@ -30,15 +31,15 @@ describe("DisplayPoints", () => {
     })
 
     expect(
-      getByText(searchRegexInNodes(/Adjustment Points1/)),
-    ).toBeInTheDocument()
+      screen.getByRole("definition", { name: "Adjustment Points Value" }),
+    ).toHaveTextContent("1")
     expect(
-      getByText(searchRegexInNodes(/Attribute Points7/)),
-    ).toBeInTheDocument()
+      screen.getByRole("definition", { name: "Attribute Points Value" }),
+    ).toHaveTextContent("7")
   })
 
   it("should give highlight negative points as bad-stuff", () => {
-    const { getByText } = setup({
+    setup({
       runner: {
         ...mockedRunners[2],
         attributes: {
@@ -50,7 +51,17 @@ describe("DisplayPoints", () => {
       },
     })
 
-    expect(getByText("-1")).toHaveClass("bad-stuff")
-    expect(getByText("-2")).toHaveClass("bad-stuff")
+    expect(
+      screen.getByRole("definition", { name: "Adjustment Points Value" }),
+    ).toHaveTextContent("-1")
+    expect(
+      screen.getByRole("definition", { name: "Adjustment Points Value" }),
+    ).toHaveClass("bad-stuff")
+    expect(
+      screen.getByRole("definition", { name: "Attribute Points Value" }),
+    ).toHaveTextContent("-2")
+    expect(
+      screen.getByRole("definition", { name: "Attribute Points Value" }),
+    ).toHaveClass("bad-stuff")
   })
 })

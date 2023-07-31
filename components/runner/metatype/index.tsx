@@ -101,7 +101,7 @@ export const Metatype = () => {
           </RadioGroup>
         </FormControl>
         {runner.attributes && (
-          <>
+          <section>
             <h1>Attributes</h1>
             {runner.priority.attributes ? (
               <>
@@ -119,7 +119,7 @@ export const Metatype = () => {
             ) : (
               <PriorityWarning requirement="attributes" />
             )}
-          </>
+          </section>
         )}
       </FormGroup>
     ) : (
