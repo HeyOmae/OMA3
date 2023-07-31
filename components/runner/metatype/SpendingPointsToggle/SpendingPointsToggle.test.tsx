@@ -1,5 +1,5 @@
 import { SpendingPointsToggle, Props } from "."
-import { render, userEvent } from "@/test/testUtils"
+import { render, userEvent, screen } from "@/test/testUtils"
 
 describe("SpendingPointsToggle", () => {
   const setup = ({
@@ -11,27 +11,24 @@ describe("SpendingPointsToggle", () => {
     }
     return { ...render(<SpendingPointsToggle {...props} />), props }
   }
+
   it("should call the toggleSpending with false callback when switching to spend attribute", async () => {
-    const { getByLabelText, props } = setup({
-      isSpendingAdjustmentPoints: false,
-    })
-
-    const selectAttribute = getByLabelText("Attribute")
-
-    await userEvent.click(selectAttribute)
-
-    expect(props.toggleSpending).toHaveBeenCalledWith(true)
-  })
-
-  it("should be unchecked if isSpendingAdjustmentPoints is false", async () => {
-    const { getByLabelText, props } = setup({
+    const { props } = setup({
       isSpendingAdjustmentPoints: true,
     })
 
-    const selectAdjustment = getByLabelText("Adjustment")
-
-    await userEvent.click(selectAdjustment)
+    await userEvent.click(screen.getByLabelText("Attribute"))
 
     expect(props.toggleSpending).toHaveBeenCalledWith(false)
+  })
+
+  it("should be unchecked if isSpendingAdjustmentPoints is false", async () => {
+    const { props } = setup({
+      isSpendingAdjustmentPoints: false,
+    })
+
+    await userEvent.click(screen.getByLabelText("Adjustment"))
+
+    expect(props.toggleSpending).toHaveBeenCalledWith(true)
   })
 })

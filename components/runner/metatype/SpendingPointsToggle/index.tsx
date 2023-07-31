@@ -27,9 +27,9 @@ export const SpendingPointsToggle: FC<Props> = ({
       <RadioGroup
         aria-label="select-points"
         name="select-points"
-        value={isSpendingAdjustmentPoints ? ATTRIBUTE : ADJUSTMENT}
+        value={isSpendingAdjustmentPoints ? ADJUSTMENT : ATTRIBUTE}
         onChange={(event, pointsToSpend) =>
-          toggleSpending(pointsToSpend === ATTRIBUTE)
+          toggleSpending(pointsToSpend === ADJUSTMENT)
         }
       >
         <Grid container alignItems="center" spacing={1}>
