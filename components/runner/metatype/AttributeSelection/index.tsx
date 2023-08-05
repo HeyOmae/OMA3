@@ -71,7 +71,7 @@ export const AttributeSelection: FC<Props> = ({
                   data-testid={`${attribute}-slider`}
                   disabled={
                     pointToSpend === ADJUSTMENT
-                      ? modifiedMax <= 6 && attribute !== "Edge"
+                      ? max <= 6 && attribute !== "Edge"
                       : attribute === "Edge"
                   }
                   onChange={(event, value: number) => {

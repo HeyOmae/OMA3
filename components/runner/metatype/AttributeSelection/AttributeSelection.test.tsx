@@ -144,5 +144,14 @@ describe("AttributeSelection", () => {
         payload: { key: "Reaction", value: 4 },
       })
     })
+
+    test("should not be able to use adjustment points on exceptional attributes that are not for that metatype", () => {
+      setup({
+        runner: mockedRunners[3],
+        pointToSpend: ADJUSTMENT,
+      })
+
+      expect(screen.getByTestId("Logic-slider")).toHaveClass("Mui-disabled")
+    })
   })
 })
