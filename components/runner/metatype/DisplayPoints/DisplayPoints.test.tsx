@@ -17,6 +17,14 @@ describe("DisplayPoints", () => {
     ).toHaveTextContent("10")
   })
 
+  test("display karma cost", () => {
+    setup()
+
+    expect(
+      screen.getByRole("definition", { name: "Available Karma Value" }),
+    ).toHaveTextContent("50")
+  })
+
   it("should display what points are left", () => {
     setup({
       runner: {

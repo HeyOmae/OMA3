@@ -150,6 +150,7 @@ describe("<Metatype/>", () => {
         expect(screen.getByText("Select Points to Use")).toBeInTheDocument()
 
         await user.click(screen.getByLabelText("Dwarf"))
+
         SliderHelper.change(screen.getByTestId("Willpower-slider"), 4, 1, 7)
 
         expect(

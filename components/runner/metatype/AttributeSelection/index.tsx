@@ -5,17 +5,18 @@ import { Runner } from "@/types/runner"
 import { Attributes } from "@/types/RunnerAttributes"
 import metatypeData from "@/data/metatype.json"
 import { Typography, Slider } from "@mui/material"
+import { ADJUSTMENT } from "../SpendingPointsToggle"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
   runner: Runner
-  isSpendingAdjustmentPoints: boolean
+  pointToSpend: string
 }
 
 export const AttributeSelection: FC<Props> = ({
   runner,
   dispatch,
-  isSpendingAdjustmentPoints,
+  pointToSpend,
 }) => {
   const maxAttributeModifier = useMemo(() => {
     const findQuality =
@@ -41,6 +42,7 @@ export const AttributeSelection: FC<Props> = ({
       }
     }
   }, [runner.qualities?.negative, runner.qualities?.positive])
+
   return (
     <>
       {metatypeData[runner.metatype] &&
@@ -68,15 +70,16 @@ export const AttributeSelection: FC<Props> = ({
                   }
                   data-testid={`${attribute}-slider`}
                   disabled={
-                    isSpendingAdjustmentPoints
+                    pointToSpend === ADJUSTMENT
                       ? modifiedMax <= 6 && attribute !== "Edge"
                       : attribute === "Edge"
                   }
                   onChange={(event, value: number) => {
                     dispatch({
-                      type: isSpendingAdjustmentPoints
-                        ? SPEND_ADJUSTMENT_POINTS
-                        : SPEND_ATTRIBUTE_POINTS,
+                      type:
+                        pointToSpend === ADJUSTMENT
+                          ? SPEND_ADJUSTMENT_POINTS
+                          : SPEND_ATTRIBUTE_POINTS,
                       payload: {
                         key: attribute as Attributes,
                         value: value - min,

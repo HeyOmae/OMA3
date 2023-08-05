@@ -10,16 +10,17 @@ import {
 } from "@mui/material"
 
 export interface Props {
-  toggleSpending: (isAdjustmentPointsSelected: boolean) => void
-  isSpendingAdjustmentPoints: boolean
+  selectSpending: (isAdjustmentPointsSelected: string) => void
+  pointToSpend: string
 }
 
-const ATTRIBUTE = "Attribute"
-const ADJUSTMENT = "Adjustment"
+export const ATTRIBUTE = "Attribute"
+export const ADJUSTMENT = "Adjustment"
+export const KARMA = "Karma"
 
 export const SpendingPointsToggle: FC<Props> = ({
-  isSpendingAdjustmentPoints,
-  toggleSpending,
+  pointToSpend,
+  selectSpending,
 }) => (
   <Typography component="div">
     <FormControl component="fieldset">
@@ -27,10 +28,8 @@ export const SpendingPointsToggle: FC<Props> = ({
       <RadioGroup
         aria-label="select-points"
         name="select-points"
-        value={isSpendingAdjustmentPoints ? ADJUSTMENT : ATTRIBUTE}
-        onChange={(event, pointsToSpend) =>
-          toggleSpending(pointsToSpend === ADJUSTMENT)
-        }
+        value={pointToSpend}
+        onChange={(event, pointsToSpend) => selectSpending(pointsToSpend)}
       >
         <Grid container alignItems="center" spacing={1}>
           <Grid item>
@@ -46,6 +45,9 @@ export const SpendingPointsToggle: FC<Props> = ({
               control={<Radio />}
               label={ADJUSTMENT}
             />
+          </Grid>
+          <Grid item>
+            <FormControlLabel value={KARMA} control={<Radio />} label={KARMA} />
           </Grid>
         </Grid>
       </RadioGroup>
