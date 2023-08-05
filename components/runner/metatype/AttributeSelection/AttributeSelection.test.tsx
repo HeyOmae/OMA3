@@ -2,16 +2,17 @@ import { AttributeSelection, Props } from "./"
 import { render, SliderHelper, screen } from "@/test/testUtils"
 import { mockedRunners, orkRunner } from "@/test/mocks"
 import { SPEND_ADJUSTMENT_POINTS, SPEND_ATTRIBUTE_POINTS } from ".."
+import { ADJUSTMENT, ATTRIBUTE } from "../SpendingPointsToggle"
 
 describe("AttributeSelection", () => {
   const setup = ({
-    isSpendingAdjustmentPoints = true,
+    pointToSpend: isSpendingAdjustmentPoints = ADJUSTMENT,
     runner = orkRunner,
   }: Partial<Props> = {}) => {
     const props: Props = {
       dispatch: jest.fn(),
       runner,
-      isSpendingAdjustmentPoints,
+      pointToSpend: isSpendingAdjustmentPoints,
     }
     render(<AttributeSelection {...props} />)
     return { props }
@@ -46,7 +47,7 @@ describe("AttributeSelection", () => {
   })
 
   describe("Adjustment Points", () => {
-    it("should dispatch SPEND_ADJUSTMENT_POINTS when isSpendingAdjustmentPoints is true", () => {
+    it("should dispatch SPEND_ADJUSTMENT_POINTS when pointToSpend is Adjustment", () => {
       const { props } = setup()
 
       SliderHelper.change(screen.getByTestId("Body-slider"), 3, 1, 9)
@@ -74,9 +75,9 @@ describe("AttributeSelection", () => {
   })
 
   describe("Attribute Points", () => {
-    it("should dispatch SPEND_ATTRIBUTE_POINTS when isSpendingAdjustmentPoints is false", () => {
+    it("should dispatch SPEND_ATTRIBUTE_POINTS when pointToSpend is Attribute", () => {
       const { props } = setup({
-        isSpendingAdjustmentPoints: false,
+        pointToSpend: ATTRIBUTE,
       })
 
       SliderHelper.change(screen.getByTestId("Agility-slider"), 4, 1, 6)
@@ -89,7 +90,7 @@ describe("AttributeSelection", () => {
 
     it("should disable the edge slider", () => {
       setup({
-        isSpendingAdjustmentPoints: false,
+        pointToSpend: ATTRIBUTE,
       })
       expect(screen.getByTestId("Body-slider")).not.toHaveClass("Mui-disabled")
       expect(screen.getByTestId("Agility-slider")).not.toHaveClass(
@@ -119,7 +120,7 @@ describe("AttributeSelection", () => {
     test("Exceptional Attribute should raise the max value of an attribute", () => {
       const { props } = setup({
         runner: mockedRunners[3],
-        isSpendingAdjustmentPoints: false,
+        pointToSpend: ATTRIBUTE,
       })
 
       SliderHelper.change(screen.getByTestId("Logic-slider"), 7, 1, 7)
@@ -133,7 +134,7 @@ describe("AttributeSelection", () => {
     test("Impaired should lower the max value of an attribute", () => {
       const { props } = setup({
         runner: mockedRunners[3],
-        isSpendingAdjustmentPoints: false,
+        pointToSpend: ATTRIBUTE,
       })
 
       SliderHelper.change(screen.getByTestId("Reaction-slider"), 5, 1, 5)

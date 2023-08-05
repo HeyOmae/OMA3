@@ -15,7 +15,7 @@ import { initRunnerAttributes, Metatypes } from "@/types/runner"
 import { Attributes } from "@/types/RunnerAttributes"
 import { DisplayPoints } from "./DisplayPoints"
 import { AttributeSelection } from "./AttributeSelection"
-import { SpendingPointsToggle } from "./SpendingPointsToggle"
+import { ADJUSTMENT, SpendingPointsToggle } from "./SpendingPointsToggle"
 import { PriorityWarning } from "../../priorityWarning"
 
 const SET_METATYPE = Symbol("SET_METATYPE")
@@ -71,7 +71,7 @@ export const Metatype = () => {
   )
 
   const [isSpendingAdjustmentPoints, setIsSpendingAdjustmentPoints] =
-    useState(true)
+    useState(ADJUSTMENT)
 
   const availibleMetatypes =
     priorityData.metatypes[runner?.priority?.metatype]?.supportedMetatypes
@@ -107,13 +107,13 @@ export const Metatype = () => {
               <>
                 <DisplayPoints runner={runner} />
                 <SpendingPointsToggle
-                  isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
-                  toggleSpending={setIsSpendingAdjustmentPoints}
+                  pointToSpend={isSpendingAdjustmentPoints}
+                  selectSpending={setIsSpendingAdjustmentPoints}
                 />
                 <AttributeSelection
                   runner={runner}
                   dispatch={dispatch}
-                  isSpendingAdjustmentPoints={isSpendingAdjustmentPoints}
+                  pointToSpend={isSpendingAdjustmentPoints}
                 />
               </>
             ) : (
