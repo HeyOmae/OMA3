@@ -496,6 +496,12 @@ export const mockedRunners: Runner[] = [
     },
     metatype: "Elf",
     attributes: initRunnerAttributes,
+    skills: {
+      Cracking: {
+        attribute: { primary: "Logic" },
+        rating: 6,
+      },
+    },
     magres: "Technomancer",
     complexForms: [
       {

@@ -34,7 +34,7 @@ export const RunnerSkillTable: FC<Props> = ({
   )
 
   const AptitudeSkill = useMemo(
-    () => qualities?.positive.find(({ name }) => name === "Aptitude").selected,
+    () => qualities?.positive.find(({ name }) => name === "Aptitude")?.selected,
     [qualities?.positive],
   )
 
