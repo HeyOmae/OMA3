@@ -6,6 +6,7 @@ import {
   getByLabelText as containerGetByLabelText,
   getByText as globalGetByText,
   userEvent,
+  screen,
 } from "@/test/testUtils"
 import { mockedRunners } from "@/test/mocks"
 import { CHANGE_SKILL_RATING, CHANGE_SPECIALIZATION, REMOVE_SKILL } from ".."
@@ -191,5 +192,17 @@ describe("<RunnerSkillTable/>", () => {
       expect(pointsRemaining).toHaveTextContent("-4/12")
       expect(pointsRemaining).toHaveClass("bad-stuff")
     })
+  })
+
+  test("runner without aptitude buy with positive qualities should render skills", () => {
+    setup({
+      runner: mockedRunners[8],
+      skillPoints: 20,
+      dispatch: jest.fn(),
+    })
+
+    expect(
+      screen.getByRole("button", { name: "remove Cracking skill" }),
+    ).toBeInTheDocument()
   })
 })
