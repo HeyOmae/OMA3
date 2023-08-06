@@ -400,4 +400,10 @@ describe("<Metatype/>", () => {
       ).toBeInTheDocument()
     })
   })
+
+  test("render attributes if infarm or expetinal attributes are not selected", async () => {
+    setup("10")
+
+    expect(await screen.findByLabelText("Attribute")).toBeInTheDocument()
+  })
 })

@@ -30,11 +30,11 @@ export const AttributeSelection: FC<Props> = ({
         name === qualityName
     const exceptionalAttribute = runner.qualities?.positive.find(
       findQuality("Exceptional Attribute"),
-    ).selected
+    )?.selected
 
     const imparedAttribute = runner.qualities?.negative.find(
       findQuality("Impaired"),
-    ).selected
+    )?.selected
 
     return (attribute: string) => {
       switch (attribute) {
