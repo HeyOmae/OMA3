@@ -255,6 +255,33 @@ describe("<Metatype/>", () => {
       })
     })
 
+    describe("spending karma", () => {
+      it("should reduce karma by 5 times next level", async () => {
+        const user = setup("2")
+
+        const karmaDisplay = await screen.findByRole("definition", {
+          name: "Available Karma Value",
+        })
+
+        expect(karmaDisplay).toHaveTextContent("50")
+        expect(screen.getByRole("slider", { name: "Body" })).toHaveValue("1")
+
+        await user.click(screen.getByRole("radio", { name: "Karma" }))
+
+        SliderHelper.change(screen.getByTestId("Body-slider"), 2, 1, 6)
+
+        expect(karmaDisplay).toHaveTextContent("40")
+        expect(screen.getByRole("slider", { name: "Body" })).toHaveValue("2")
+
+        await user.click(screen.getByRole("radio", { name: "Attribute" }))
+
+        SliderHelper.change(screen.getByTestId("Body-slider"), 3, 1, 6)
+
+        expect(karmaDisplay).toHaveTextContent("35")
+        expect(screen.getByRole("slider", { name: "Body" })).toHaveValue("3")
+      })
+    })
+
     it("should set both adjustment and attribute points on the same attribute", async () => {
       const user = setup()
 
