@@ -11,7 +11,7 @@ import { useState } from "react"
 import metatypeData from "@/data/metatype.json"
 import priorityData from "@/data/priorityTable.json"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { initRunnerAttributes, Metatypes } from "@/types/runner"
+import { initRunnerAttributes, Metatypes, Runner } from "@/types/runner"
 import { Attributes } from "@/types/RunnerAttributes"
 import { DisplayPoints } from "./DisplayPoints"
 import { AttributeSelection } from "./AttributeSelection"
@@ -21,11 +21,31 @@ import { PriorityWarning } from "../../priorityWarning"
 const SET_METATYPE = Symbol("SET_METATYPE")
 export const SPEND_ATTRIBUTE_POINTS = Symbol("SPEND_ATTRIBUTE_POINTS")
 export const SPEND_ADJUSTMENT_POINTS = Symbol("SPEND_ADJUSTMENT_POINTS")
+export const SPEND_KARMA = Symbol("SPEND_KARMA")
 
 export interface Payload {
   metatype?: Metatypes
   key?: Attributes
   value?: number
+}
+
+function updateRunnerAttribute(
+  runner: Runner,
+  attributeKey: Attributes,
+  pointsKey: string,
+  newValue: number,
+) {
+  const attribute = runner.attributes?.[attributeKey]
+  return {
+    ...runner,
+    attributes: {
+      ...runner.attributes,
+      [attributeKey]: {
+        ...attribute,
+        [pointsKey]: newValue < 0 ? 0 : newValue,
+      },
+    },
+  }
 }
 
 export const Metatype = () => {
@@ -40,38 +60,32 @@ export const Metatype = () => {
           }
         case SPEND_ATTRIBUTE_POINTS: {
           const attribute = runner.attributes?.[payload.key]
-          const newValue = payload.value - attribute.adjustment
-          return {
-            ...runner,
-            attributes: {
-              ...runner.attributes,
-              [payload.key]: {
-                ...attribute,
-                points: newValue < 0 ? 0 : newValue,
-              },
-            },
-          }
+          const newValue =
+            payload.value - attribute.adjustment - (attribute.karma ?? 0)
+          return updateRunnerAttribute(runner, payload.key, "points", newValue)
         }
         case SPEND_ADJUSTMENT_POINTS: {
           const attribute = runner.attributes?.[payload.key]
-          const newValue = payload.value - attribute.points
-          return {
-            ...runner,
-            attributes: {
-              ...runner.attributes,
-              [payload.key]: {
-                ...attribute,
-                adjustment: newValue < 0 ? 0 : newValue,
-              },
-            },
-          }
+          const newValue =
+            payload.value - attribute.points - (attribute.karma ?? 0)
+          return updateRunnerAttribute(
+            runner,
+            payload.key,
+            "adjustment",
+            newValue,
+          )
+        }
+        case SPEND_KARMA: {
+          const attribute = runner.attributes?.[payload.key]
+          const newValue =
+            payload.value - attribute.points - attribute.adjustment
+          return updateRunnerAttribute(runner, payload.key, "karma", newValue)
         }
       }
     },
   )
 
-  const [isSpendingAdjustmentPoints, setIsSpendingAdjustmentPoints] =
-    useState(ADJUSTMENT)
+  const [pointToSpend, setPointToSpend] = useState(ADJUSTMENT)
 
   const availibleMetatypes =
     priorityData.metatypes[runner?.priority?.metatype]?.supportedMetatypes
@@ -107,13 +121,13 @@ export const Metatype = () => {
               <>
                 <DisplayPoints runner={runner} />
                 <SpendingPointsToggle
-                  pointToSpend={isSpendingAdjustmentPoints}
-                  selectSpending={setIsSpendingAdjustmentPoints}
+                  pointToSpend={pointToSpend}
+                  selectSpending={setPointToSpend}
                 />
                 <AttributeSelection
                   runner={runner}
                   dispatch={dispatch}
-                  pointToSpend={isSpendingAdjustmentPoints}
+                  pointToSpend={pointToSpend}
                 />
               </>
             ) : (

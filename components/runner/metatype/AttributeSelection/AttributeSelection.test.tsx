@@ -1,8 +1,12 @@
 import { AttributeSelection, Props } from "./"
 import { render, SliderHelper, screen } from "@/test/testUtils"
 import { mockedRunners, orkRunner } from "@/test/mocks"
-import { SPEND_ADJUSTMENT_POINTS, SPEND_ATTRIBUTE_POINTS } from ".."
-import { ADJUSTMENT, ATTRIBUTE } from "../SpendingPointsToggle"
+import {
+  SPEND_ADJUSTMENT_POINTS,
+  SPEND_ATTRIBUTE_POINTS,
+  SPEND_KARMA,
+} from ".."
+import { ADJUSTMENT, ATTRIBUTE, KARMA } from "../SpendingPointsToggle"
 
 describe("AttributeSelection", () => {
   const setup = ({
@@ -41,9 +45,7 @@ describe("AttributeSelection", () => {
       },
     })
 
-    expect(
-      screen.getByTestId("Body-slider").querySelector("input").value,
-    ).toEqual("6")
+    expect(screen.getByRole("slider", { name: "Body" })).toHaveValue("6")
   })
 
   describe("Adjustment Points", () => {
@@ -113,6 +115,48 @@ describe("AttributeSelection", () => {
         "Mui-disabled",
       )
       expect(screen.getByTestId("Edge-slider")).toHaveClass("Mui-disabled")
+    })
+  })
+
+  describe("karma buy", () => {
+    test("All sliders should be enabled", () => {
+      setup({
+        pointToSpend: KARMA,
+      })
+      expect(screen.getByTestId("Body-slider")).not.toHaveClass("Mui-disabled")
+      expect(screen.getByTestId("Agility-slider")).not.toHaveClass(
+        "Mui-disabled",
+      )
+      expect(screen.getByTestId("Reaction-slider")).not.toHaveClass(
+        "Mui-disabled",
+      )
+      expect(screen.getByTestId("Strength-slider")).not.toHaveClass(
+        "Mui-disabled",
+      )
+      expect(screen.getByTestId("Willpower-slider")).not.toHaveClass(
+        "Mui-disabled",
+      )
+      expect(screen.getByTestId("Logic-slider")).not.toHaveClass("Mui-disabled")
+      expect(screen.getByTestId("Intuition-slider")).not.toHaveClass(
+        "Mui-disabled",
+      )
+      expect(screen.getByTestId("Charisma-slider")).not.toHaveClass(
+        "Mui-disabled",
+      )
+      expect(screen.getByTestId("Edge-slider")).not.toHaveClass("Mui-disabled")
+    })
+
+    test("dispatch SPEND_KARMA when pointToSpend is Karma", () => {
+      const { props } = setup({
+        pointToSpend: KARMA,
+      })
+
+      SliderHelper.change(screen.getByTestId("Agility-slider"), 4, 1, 6)
+
+      expect(props.dispatch).toHaveBeenCalledWith({
+        type: SPEND_KARMA,
+        payload: { key: "Agility", value: 3 },
+      })
     })
   })
 

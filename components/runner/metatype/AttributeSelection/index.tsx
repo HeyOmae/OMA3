@@ -1,11 +1,16 @@
-import { FC, useMemo } from "react"
-import { Payload, SPEND_ADJUSTMENT_POINTS, SPEND_ATTRIBUTE_POINTS } from ".."
+import { FC, useCallback, useMemo } from "react"
+import {
+  Payload,
+  SPEND_ADJUSTMENT_POINTS,
+  SPEND_ATTRIBUTE_POINTS,
+  SPEND_KARMA,
+} from ".."
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { Runner } from "@/types/runner"
 import { Attributes } from "@/types/RunnerAttributes"
 import metatypeData from "@/data/metatype.json"
 import { Typography, Slider } from "@mui/material"
-import { ADJUSTMENT } from "../SpendingPointsToggle"
+import { ADJUSTMENT, ATTRIBUTE, KARMA } from "../SpendingPointsToggle"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
@@ -43,6 +48,33 @@ export const AttributeSelection: FC<Props> = ({
     }
   }, [runner.qualities?.negative, runner.qualities?.positive])
 
+  const disableSlider = useCallback(
+    (att: string, max: number) => {
+      switch (pointToSpend) {
+        case ADJUSTMENT:
+          return max <= 6 && att !== "Edge"
+
+        case ATTRIBUTE:
+          return att === "Edge"
+
+        case KARMA:
+          return false
+      }
+    },
+    [pointToSpend],
+  )
+
+  const dispatchType = useMemo(() => {
+    switch (pointToSpend) {
+      case ADJUSTMENT:
+        return SPEND_ADJUSTMENT_POINTS
+      case ATTRIBUTE:
+        return SPEND_ATTRIBUTE_POINTS
+      case KARMA:
+        return SPEND_KARMA
+    }
+  }, [pointToSpend])
+
   return (
     <>
       {metatypeData[runner.metatype] &&
@@ -66,20 +98,14 @@ export const AttributeSelection: FC<Props> = ({
                   value={
                     min +
                     runner.attributes[attribute].adjustment +
-                    runner.attributes[attribute].points
+                    runner.attributes[attribute].points +
+                    (runner.attributes[attribute].karma ?? 0)
                   }
                   data-testid={`${attribute}-slider`}
-                  disabled={
-                    pointToSpend === ADJUSTMENT
-                      ? max <= 6 && attribute !== "Edge"
-                      : attribute === "Edge"
-                  }
+                  disabled={disableSlider(attribute, max)}
                   onChange={(event, value: number) => {
                     dispatch({
-                      type:
-                        pointToSpend === ADJUSTMENT
-                          ? SPEND_ADJUSTMENT_POINTS
-                          : SPEND_ATTRIBUTE_POINTS,
+                      type: dispatchType,
                       payload: {
                         key: attribute as Attributes,
                         value: value - min,

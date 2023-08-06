@@ -1,4 +1,5 @@
 import { Quality } from "@/types/Qualities"
+import { RunnerAttributes } from "@/types/RunnerAttributes"
 import { Runner } from "@/types/runner"
 import { FC, useMemo } from "react"
 
@@ -17,11 +18,19 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
     [runner?.qualities?.negative],
   )
   const karmaSpendOnNuyen = runner.karmaToNuyen ?? 0
+  const attributeKarma = useMemo(
+    () => totalKarmaFromAttributes(runner?.attributes),
+    [runner?.attributes],
+  )
   return (
     <dl>
       <dt aria-label="Available Karma">Available Karma</dt>
       <dd aria-label="Available Karma Value">
-        {50 - positiveQualityKarma + negativeQualityKarma - karmaSpendOnNuyen}
+        {50 -
+          positiveQualityKarma +
+          negativeQualityKarma -
+          karmaSpendOnNuyen -
+          attributeKarma}
       </dd>
       {showQualityInfo && (
         <>
@@ -46,6 +55,22 @@ function totalKarmaFromQualities(qualities: Quality[]) {
     return qualities.reduce(
       (karmaTotal, { karma, currentLevel = 1 }) =>
         karmaTotal + karma * currentLevel,
+      0,
+    )
+  }
+  return 0
+}
+
+function totalKarmaFromAttributes(attributes: RunnerAttributes) {
+  if (attributes) {
+    return Object.values(attributes).reduce(
+      (karmaTotal, { adjustment, points, karma }) => {
+        const attributeBeforeKarma = adjustment + points + 1
+        for (let i = 1; i <= karma; ++i) {
+          karmaTotal += (attributeBeforeKarma + i) * 5
+        }
+        return karmaTotal
+      },
       0,
     )
   }
