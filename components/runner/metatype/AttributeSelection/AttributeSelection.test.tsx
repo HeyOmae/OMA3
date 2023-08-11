@@ -23,15 +23,19 @@ describe("AttributeSelection", () => {
   }
   it("should should have sliders for the runner attributes", () => {
     setup()
-    expect(screen.getByText("Body")).toBeInTheDocument()
-    expect(screen.getByText("Agility")).toBeInTheDocument()
-    expect(screen.getByText("Reaction")).toBeInTheDocument()
-    expect(screen.getByText("Strength")).toBeInTheDocument()
-    expect(screen.getByText("Willpower")).toBeInTheDocument()
-    expect(screen.getByText("Logic")).toBeInTheDocument()
-    expect(screen.getByText("Intuition")).toBeInTheDocument()
-    expect(screen.getByText("Charisma")).toBeInTheDocument()
-    expect(screen.getByText("Edge")).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Body" })).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Agility" })).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Reaction" })).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Strength" })).toBeInTheDocument()
+    expect(
+      screen.getByRole("slider", { name: "Willpower" }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Logic" })).toBeInTheDocument()
+    expect(
+      screen.getByRole("slider", { name: "Intuition" }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Charisma" })).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Edge" })).toBeInTheDocument()
   })
 
   it("should get the value from combining the adjustment and attribute points", () => {
@@ -196,6 +200,39 @@ describe("AttributeSelection", () => {
       })
 
       expect(screen.getByTestId("Logic-slider")).toHaveClass("Mui-disabled")
+    })
+  })
+
+  describe("special attributes", () => {
+    test("awaken characters should have a magic slider", () => {
+      setup({ runner: mockedRunners[4] })
+
+      expect(screen.getByRole("slider", { name: "Magic" })).toHaveValue("4")
+      expect(
+        screen.queryByRole("slider", { name: "Resonance" }),
+      ).not.toBeInTheDocument()
+    })
+
+    test("mundance characters should not have magic or resonence", () => {
+      setup({ runner: mockedRunners[9] })
+
+      expect(
+        screen.queryByRole("slider", { name: "Magic" }),
+      ).not.toBeInTheDocument()
+      expect(
+        screen.queryByRole("slider", { name: "Resonance" }),
+      ).not.toBeInTheDocument()
+    })
+
+    test("runner's with no mag/res selected should not display magic or resonance", () => {
+      setup({ runner: mockedRunners[3] })
+
+      expect(
+        screen.queryByRole("slider", { name: "Magic" }),
+      ).not.toBeInTheDocument()
+      expect(
+        screen.queryByRole("slider", { name: "Resonance" }),
+      ).not.toBeInTheDocument()
     })
   })
 })
