@@ -230,6 +230,7 @@ export const mockedRunners: Runner[] = [
       "mag/res": "A",
       resources: "E",
     },
+    metatype: "Human",
     attributes: initRunnerAttributes,
     magres: "Full",
     spells: {
