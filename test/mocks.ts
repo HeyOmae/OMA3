@@ -435,6 +435,7 @@ export const mockedRunners: Runner[] = [
       ...initRunnerAttributes,
       Logic: { adjustment: 0, points: 4 },
     },
+    metatype: "Human",
     magres: "Adept",
     powers: [
       {

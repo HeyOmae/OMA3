@@ -29,11 +29,11 @@ export const AttributeSelection: FC<Props> = ({
       (qualityName: string) =>
       ({ name }) =>
         name === qualityName
-    const exceptionalAttribute = runner.qualities?.positive.find(
+    const exceptionalAttribute = runner.qualities?.positive?.find(
       findQuality("Exceptional Attribute"),
     )?.selected
 
-    const imparedAttribute = runner.qualities?.negative.find(
+    const imparedAttribute = runner.qualities?.negative?.find(
       findQuality("Impaired"),
     )?.selected
 
@@ -100,18 +100,25 @@ export const AttributeSelection: FC<Props> = ({
           )}
           {runner.magres && runner.magres !== "Mundane" && (
             <AttributeSlider
-              attribute="Magic"
+              attribute={
+                runner.magres === "Technomancer" ? "Resonance" : "Magic"
+              }
               min={
                 priorityData["mag/res"][runner.priority["mag/res"]][
                   runner.magres
                 ][1]
               }
               max={6}
-              modifiedMax={6 + maxAttributeModifier("Magic")}
+              modifiedMax={
+                6 +
+                maxAttributeModifier(
+                  runner.magres === "Technomancer" ? "Resonance" : "Magic",
+                )
+              }
               runner={runner}
               dispatch={dispatch}
               dispatchType={dispatchType}
-              disableSlider={() => false}
+              disableSlider={() => pointToSpend === ATTRIBUTE}
             />
           )}
         </>
