@@ -201,6 +201,12 @@ describe("AttributeSelection", () => {
 
       expect(screen.getByTestId("Logic-slider")).toHaveClass("Mui-disabled")
     })
+
+    test("having negative qualities buy not positive qualities should not throw error", () => {
+      setup({ runner: mockedRunners[7] })
+
+      expect(screen.getAllByRole("slider")).toHaveLength(10)
+    })
   })
 
   describe("special attributes", () => {
@@ -208,6 +214,15 @@ describe("AttributeSelection", () => {
       setup({ runner: mockedRunners[4] })
 
       expect(screen.getByRole("slider", { name: "Magic" })).toHaveValue("4")
+      expect(
+        screen.queryByRole("slider", { name: "Resonance" }),
+      ).not.toBeInTheDocument()
+    })
+
+    test("should disable special attribute slider if spending attribute points", () => {
+      setup({ runner: mockedRunners[4], pointToSpend: ATTRIBUTE })
+
+      expect(screen.getByTestId("Magic-slider")).toHaveClass("Mui-disabled")
       expect(
         screen.queryByRole("slider", { name: "Resonance" }),
       ).not.toBeInTheDocument()
@@ -233,6 +248,15 @@ describe("AttributeSelection", () => {
       expect(
         screen.queryByRole("slider", { name: "Resonance" }),
       ).not.toBeInTheDocument()
+    })
+
+    test("technomancers should have a resonance slider", () => {
+      setup({ runner: mockedRunners[8] })
+
+      expect(
+        screen.queryByRole("slider", { name: "Magic" }),
+      ).not.toBeInTheDocument()
+      expect(screen.getByRole("slider", { name: "Resonance" })).toHaveValue("4")
     })
   })
 })
