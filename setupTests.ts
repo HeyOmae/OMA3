@@ -1,3 +1,3 @@
-import "@testing-library/jest-dom/extend-expect"
+import "@testing-library/jest-dom"
 import "fake-indexeddb/auto"
 import "whatwg-fetch"
