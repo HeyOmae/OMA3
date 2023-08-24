@@ -22,7 +22,7 @@ describe("<Skills/>", () => {
   it("should display a list of skills", async () => {
     setup()
 
-    await screen.findByText("Astral")
+    expect(await screen.findByText("Astral")).toBeInTheDocument()
     expect(screen.getByText("Athletics")).toBeInTheDocument()
     expect(screen.getByText("Biotech")).toBeInTheDocument()
     expect(screen.getByText("Close combat")).toBeInTheDocument()
@@ -46,8 +46,10 @@ describe("<Skills/>", () => {
   it("should display the remaining skill points", async () => {
     setup("2")
 
-    await screen.findByRole("term")
-    expect(screen.getByRole("definition")).toHaveTextContent("4/20")
+    await screen.findByRole("term", { name: "Skill Points" })
+    expect(
+      screen.getByRole("definition", { name: "Skill Points Value" }),
+    ).toHaveTextContent("4/20")
   })
 
   it("should add a skill at rating 1 to the runner skills", async () => {
@@ -60,6 +62,7 @@ describe("<Skills/>", () => {
     await waitFor(() => {
       expect(runnerFromDB(2).skills.Firearms).toEqual({
         rating: 1,
+        karmaRating: 0,
         attribute: {
           primary: "Agility",
         },
@@ -76,6 +79,7 @@ describe("<Skills/>", () => {
 
     expect(runnerFromDB(2).skills.Con).toEqual({
       rating: 1,
+      karmaRating: 0,
       attribute: {
         primary: "Charisma",
       },
@@ -96,6 +100,7 @@ describe("<Skills/>", () => {
       expect(screen.getByTestId("Cracking-rating")).toBeInTheDocument()
       expect(runnerFromDB(2).skills.Cracking).toEqual({
         rating: 1,
+        karmaRating: 0,
         attribute: {
           primary: "Logic",
         },
@@ -106,6 +111,7 @@ describe("<Skills/>", () => {
       await waitFor(() => {
         expect(runnerFromDB(2).skills.Cracking).toEqual({
           rating: 5,
+          karmaRating: 0,
           attribute: {
             primary: "Logic",
           },
@@ -123,6 +129,7 @@ describe("<Skills/>", () => {
       await waitFor(() => {
         expect(runnerFromDB(3).skills.Cracking).toEqual({
           rating: 7,
+          karmaRating: 0,
           attribute: {
             primary: "Logic",
           },
@@ -145,6 +152,7 @@ describe("<Skills/>", () => {
 
       expect(runnerFromDB(2).skills["Close combat"]).toEqual({
         rating: 1,
+        karmaRating: 0,
         attribute: {
           primary: "Agility",
         },
@@ -167,5 +175,36 @@ describe("<Skills/>", () => {
     expect(
       await screen.findByText("You need to set the skills priority"),
     ).toBeInTheDocument()
+  })
+
+  describe("Spending Karma", () => {
+    test("clicking the karma radio button should spend karma when buying a skill", async () => {
+      const user = setup()
+
+      expect(
+        await screen.findByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("50")
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("16/24")
+
+      await user.click(screen.getByRole("radio", { name: "Karma" }))
+
+      await user.click(screen.getByRole("button", { name: "add Astral skill" }))
+
+      expect(
+        screen.getByRole("button", { name: "remove Astral skill" }),
+      ).toBeInTheDocument()
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("16/24")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("45")
+    })
   })
 })

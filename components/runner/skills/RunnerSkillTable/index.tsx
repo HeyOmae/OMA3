@@ -41,8 +41,11 @@ export const RunnerSkillTable: FC<Props> = ({
   return (
     <>
       <dl>
-        <dt>Skill Points</dt>
-        <dd className={pointsRemaining < 0 ? "bad-stuff" : ""}>
+        <dt aria-label="Skill Points">Skill Points</dt>
+        <dd
+          aria-label="Skill Points Value"
+          className={pointsRemaining < 0 ? "bad-stuff" : ""}
+        >
           {pointsRemaining}/{skillPoints}
         </dd>
       </dl>

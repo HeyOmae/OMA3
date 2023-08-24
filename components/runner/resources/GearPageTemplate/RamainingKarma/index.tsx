@@ -1,5 +1,6 @@
 import { Quality } from "@/types/Qualities"
 import { RunnerAttributes } from "@/types/RunnerAttributes"
+import { Skills } from "@/types/Skill"
 import { Runner } from "@/types/runner"
 import { FC, useMemo } from "react"
 
@@ -22,6 +23,10 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
     () => totalKarmaFromAttributes(runner?.attributes),
     [runner?.attributes],
   )
+  const skillKarma = useMemo(
+    () => totalKarmaFromSkills(runner?.skills),
+    [runner?.skills],
+  )
   return (
     <dl>
       <dt aria-label="Available Karma">Available Karma</dt>
@@ -30,7 +35,8 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
           positiveQualityKarma +
           negativeQualityKarma -
           karmaSpendOnNuyen -
-          attributeKarma}
+          attributeKarma -
+          skillKarma}
       </dd>
       {showQualityInfo && (
         <>
@@ -48,6 +54,16 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
       )}
     </dl>
   )
+}
+
+function totalKarmaFromSkills(skills: Skills) {
+  if (skills) {
+    return Object.values(skills).reduce(
+      (karmaTotal, { karmaRating = 0 }) => karmaTotal + karmaRating * 5,
+      0,
+    )
+  }
+  return 0
 }
 
 function totalKarmaFromQualities(qualities: Quality[]) {
