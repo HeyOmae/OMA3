@@ -7,7 +7,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material"
-import { ADD_SKILL, ActionPayload } from ".."
+import { ADD_SKILL, ActionPayload, SkillPointsToSpend } from ".."
 import { Attributes } from "@/types/RunnerAttributes"
 import skillsData from "@/data/skills.json"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
@@ -15,9 +15,10 @@ import { AddButton } from "../../../common"
 
 interface Props {
   dispatch: DispatchAction<ActionPayload>
+  pointsToSpend: SkillPointsToSpend
 }
 
-export const SkillTable: FC<Props> = ({ dispatch }) => (
+export const SkillTable: FC<Props> = ({ dispatch, pointsToSpend }) => (
   <TableContainer className="table-container">
     <Table stickyHeader>
       <TableHead>
@@ -39,7 +40,8 @@ export const SkillTable: FC<Props> = ({ dispatch }) => (
                     payload: {
                       skillToAdd: {
                         [name]: {
-                          rating: 1,
+                          rating: pointsToSpend === "Points" ? 1 : 0,
+                          karmaRating: pointsToSpend === "Karma" ? 1 : 0,
                           attribute: {
                             primary: attribute as Attributes,
                           },
