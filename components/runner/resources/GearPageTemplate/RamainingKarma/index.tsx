@@ -59,7 +59,8 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
 function totalKarmaFromSkills(skills: Skills) {
   if (skills) {
     return Object.values(skills).reduce(
-      (karmaTotal, { karmaRating = 0 }) => karmaTotal + karmaRating * 5,
+      (karmaTotal, { rating, karmaRating = 0 }) =>
+        karmaTotal + findKarmaCostPerRating(karmaRating, rating),
       0,
     )
   }
@@ -81,14 +82,21 @@ function totalKarmaFromAttributes(attributes: RunnerAttributes) {
   if (attributes) {
     return Object.values(attributes).reduce(
       (karmaTotal, { adjustment, points, karma }) => {
-        const attributeBeforeKarma = adjustment + points + 1
-        for (let i = 1; i <= karma; ++i) {
-          karmaTotal += (attributeBeforeKarma + i) * 5
-        }
-        return karmaTotal
+        const attributeRatingBeforeKarma = adjustment + points + 1
+        return (
+          karmaTotal + findKarmaCostPerRating(karma, attributeRatingBeforeKarma)
+        )
       },
       0,
     )
   }
   return 0
+}
+
+function findKarmaCostPerRating(karmaPoints: number, baseRating: number) {
+  let karmaTotal: number = 0
+  for (let i = 1; i <= karmaPoints; ++i) {
+    karmaTotal += (baseRating + i) * 5
+  }
+  return karmaTotal
 }

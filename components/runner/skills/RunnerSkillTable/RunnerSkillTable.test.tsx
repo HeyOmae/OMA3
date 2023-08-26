@@ -17,6 +17,7 @@ describe("<RunnerSkillTable/>", () => {
       runner: mockedRunners[1],
       skillPoints: 20,
       dispatch: jest.fn(),
+      pointsToSpend: "Points",
     },
   ) => ({ ...render(<RunnerSkillTable {...props} />), props })
 
