@@ -178,7 +178,7 @@ describe("<Skills/>", () => {
   })
 
   describe("Spending Karma", () => {
-    test("clicking the karma radio button should spend karma when buying a skill", async () => {
+    test("clicking the karma radio button should spend karma when buying and raising a skill", async () => {
       const user = setup()
 
       expect(
@@ -205,6 +205,93 @@ describe("<Skills/>", () => {
           name: "Available Karma Value",
         }),
       ).toHaveTextContent("45")
+
+      SliderHelper.change(screen.getByTestId("Astral-rating"), 3, 1, 6)
+
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("16/24")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("20")
+    })
+
+    test("should be able to mix between karma and skill point useage", async () => {
+      const user = setup()
+
+      expect(
+        await screen.findByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("20")
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("16/24")
+
+      await user.click(screen.getByRole("radio", { name: "Skill Points" }))
+
+      SliderHelper.change(screen.getByTestId("Astral-rating"), 4, 1, 6)
+
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("15/24")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("5")
+
+      await user.click(screen.getByRole("radio", { name: "Karma" }))
+
+      SliderHelper.change(screen.getByTestId("Astral-rating"), 3, 1, 6)
+
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("15/24")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("25")
+    })
+
+    test("runner missing karmaRating in a skill shouldn't crash the program", async () => {
+      const user = setup("2")
+
+      expect(
+        await screen.findByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("4/20")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("50")
+
+      SliderHelper.change(screen.getByTestId("Conjuring-rating"), 5, 1, 6)
+
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("5/20")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("50")
+
+      await user.click(screen.getByRole("radio", { name: "Karma" }))
+
+      SliderHelper.change(screen.getByTestId("Conjuring-rating"), 6, 1, 6)
+
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("5/20")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("20")
     })
   })
 })

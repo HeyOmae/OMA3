@@ -17,6 +17,9 @@ import { RemainingKarma } from "../resources/GearPageTemplate/RamainingKarma"
 export const ADD_SKILL = Symbol("ADD_SKILL")
 export const REMOVE_SKILL = Symbol("REMOVE_SKILL")
 export const CHANGE_SKILL_RATING = Symbol("CHANGE_SKILL_RATING")
+export const CHANGE_SKILL_RATING_WITH_KARMA = Symbol(
+  "CHANGE_SKILL_RATING_WITH_KARMA",
+)
 export const CHANGE_SPECIALIZATION = Symbol("CHANGE_SPECIALIZATION")
 
 export interface ActionPayload {
@@ -61,7 +64,23 @@ const Skills: FC = () => {
               ...runner.skills,
               [payload.skillToChangeRating.name]: {
                 ...runner.skills[payload.skillToChangeRating.name],
-                rating: payload.skillToChangeRating.rating,
+                rating:
+                  payload.skillToChangeRating.rating -
+                  (runner.skills[payload.skillToChangeRating.name]
+                    .karmaRating ?? 0),
+              },
+            },
+          }
+        case CHANGE_SKILL_RATING_WITH_KARMA:
+          return {
+            ...runner,
+            skills: {
+              ...runner.skills,
+              [payload.skillToChangeRating.name]: {
+                ...runner.skills[payload.skillToChangeRating.name],
+                karmaRating:
+                  payload.skillToChangeRating.rating -
+                  runner.skills[payload.skillToChangeRating.name].rating,
               },
             },
           }
@@ -132,6 +151,7 @@ const Skills: FC = () => {
               runner={runner}
               skillPoints={skillPoints}
               dispatch={dispatch}
+              pointsToSpend={pointsToSpend}
             />
           </Grid>
         )}

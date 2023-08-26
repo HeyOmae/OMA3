@@ -10,7 +10,13 @@ import {
 } from "@mui/material"
 import { SpecializationSelector } from "./SpecializationSelector"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
-import { ActionPayload, CHANGE_SKILL_RATING, REMOVE_SKILL } from ".."
+import {
+  ActionPayload,
+  CHANGE_SKILL_RATING,
+  CHANGE_SKILL_RATING_WITH_KARMA,
+  REMOVE_SKILL,
+  SkillPointsToSpend,
+} from ".."
 import { RemoveButton } from "../../../common"
 import { Runner } from "@/types/runner"
 
@@ -18,12 +24,14 @@ export interface Props {
   runner: Runner
   skillPoints: number
   dispatch: DispatchAction<ActionPayload>
+  pointsToSpend: SkillPointsToSpend
 }
 
 export const RunnerSkillTable: FC<Props> = ({
   runner: { skills, qualities },
   skillPoints,
   dispatch,
+  pointsToSpend,
 }) => {
   const pointsRemaining = useMemo(
     () =>
@@ -94,7 +102,10 @@ export const RunnerSkillTable: FC<Props> = ({
                         data-testid={`${skillNameHyphen}-rating`}
                         onChange={(event, value) =>
                           dispatch({
-                            type: CHANGE_SKILL_RATING,
+                            type:
+                              pointsToSpend === "Points"
+                                ? CHANGE_SKILL_RATING
+                                : CHANGE_SKILL_RATING_WITH_KARMA,
                             payload: {
                               skillToChangeRating: {
                                 name: skillName,
