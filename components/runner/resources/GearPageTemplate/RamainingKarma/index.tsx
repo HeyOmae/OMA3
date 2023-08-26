@@ -48,7 +48,7 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
           </dd>
           <dt aria-label="Bonus Karma">Bonus Karma</dt>
           <dd aria-label="Bonus Karma Value">
-            {negativeQualityKarma - positiveQualityKarma}/20
+            {Math.max(negativeQualityKarma - positiveQualityKarma, 0)}/20
           </dd>
         </>
       )}
