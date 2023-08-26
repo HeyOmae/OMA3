@@ -64,10 +64,12 @@ const Skills: FC = () => {
               ...runner.skills,
               [payload.skillToChangeRating.name]: {
                 ...runner.skills[payload.skillToChangeRating.name],
-                rating:
+                rating: Math.max(
                   payload.skillToChangeRating.rating -
-                  (runner.skills[payload.skillToChangeRating.name]
-                    .karmaRating ?? 0),
+                    (runner.skills[payload.skillToChangeRating.name]
+                      .karmaRating ?? 0),
+                  0,
+                ),
               },
             },
           }
@@ -78,9 +80,11 @@ const Skills: FC = () => {
               ...runner.skills,
               [payload.skillToChangeRating.name]: {
                 ...runner.skills[payload.skillToChangeRating.name],
-                karmaRating:
+                karmaRating: Math.max(
                   payload.skillToChangeRating.rating -
-                  runner.skills[payload.skillToChangeRating.name].rating,
+                    runner.skills[payload.skillToChangeRating.name].rating,
+                  0,
+                ),
               },
             },
           }

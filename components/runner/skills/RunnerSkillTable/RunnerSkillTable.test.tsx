@@ -152,6 +152,7 @@ describe("<RunnerSkillTable/>", () => {
         },
         skillPoints: 24,
         dispatch: jest.fn(),
+        pointsToSpend: "Points",
       })
 
       expect(getByLabelText("cooking specialization")).toBeInTheDocument()
@@ -187,6 +188,7 @@ describe("<RunnerSkillTable/>", () => {
         runner: mockedRunners[1],
         skillPoints: 12,
         dispatch: jest.fn(),
+        pointsToSpend: "Points",
       })
 
       const pointsRemaining = getByRole("definition")
@@ -200,6 +202,7 @@ describe("<RunnerSkillTable/>", () => {
       runner: mockedRunners[8],
       skillPoints: 20,
       dispatch: jest.fn(),
+      pointsToSpend: "Points",
     })
 
     expect(

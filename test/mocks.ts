@@ -503,6 +503,16 @@ export const mockedRunners: Runner[] = [
         attribute: { primary: "Logic" },
         rating: 6,
       },
+      Tasking: {
+        attribute: { primary: "Resonance" },
+        rating: 1,
+        karmaRating: 2,
+      },
+      Electronics: {
+        attribute: { primary: "Logic" },
+        rating: 2,
+        karmaRating: 1,
+      },
     },
     magres: "Technomancer",
     complexForms: [

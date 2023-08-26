@@ -28,7 +28,7 @@ test("positive qualities should decrease karma", () => {
 
   const karmaEl = screen.getByRole("term", { name: /Available Karma/i })
   expect(karmaEl).toHaveTextContent("Karma")
-  expect(karmaEl.closest("dl")).toHaveTextContent("47")
+  expect(karmaEl.closest("dl")).toHaveTextContent("7")
 })
 
 test("qualities with levels should multiple karma costs", () => {

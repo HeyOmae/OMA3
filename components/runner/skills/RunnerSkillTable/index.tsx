@@ -70,7 +70,10 @@ export const RunnerSkillTable: FC<Props> = ({
           </TableHead>
           <TableBody>
             {Object.entries(skills).map(
-              ([skillName, { rating, attribute, specialization }]) => {
+              ([
+                skillName,
+                { rating, karmaRating = 0, attribute, specialization },
+              ]) => {
                 const skillNameHyphen = skillName.replace(" ", "-")
                 return (
                   <TableRow key={skillName}>
@@ -92,13 +95,13 @@ export const RunnerSkillTable: FC<Props> = ({
                       <Slider
                         defaultValue={rating}
                         getAriaValueText={(value) => value.toString()}
-                        aria-labelledby={`${skillName} rating slider`}
+                        aria-label={`${skillName} rating slider`}
                         valueLabelDisplay="auto"
                         step={1}
                         marks
                         min={1}
                         max={AptitudeSkill === skillName ? 7 : 6}
-                        value={rating}
+                        value={rating + karmaRating}
                         data-testid={`${skillNameHyphen}-rating`}
                         onChange={(event, value) =>
                           dispatch({
