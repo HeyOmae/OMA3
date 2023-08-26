@@ -31,6 +31,14 @@ test("display the mount of bonus karma received from qualities", () => {
   ).toHaveTextContent("6/20")
 })
 
+test("bonus karma should not display a negative value", () => {
+  setup(mockedRunners[8])
+
+  expect(
+    screen.getByRole("definition", { name: "Bonus Karma Value" }),
+  ).toHaveTextContent("0/20")
+})
+
 test("does not display quality or bonus karma if showQualityInfo is false", () => {
   setup(mockedRunners[7], false)
 
