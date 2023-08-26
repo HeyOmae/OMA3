@@ -242,6 +242,9 @@ describe("<Skills/>", () => {
           name: "Available Karma Value",
         }),
       ).toHaveTextContent("5")
+      expect(
+        screen.getByRole("slider", { name: "Astral rating slider" }),
+      ).toHaveValue("4")
 
       await user.click(screen.getByRole("radio", { name: "Karma" }))
 
@@ -255,6 +258,9 @@ describe("<Skills/>", () => {
           name: "Available Karma Value",
         }),
       ).toHaveTextContent("25")
+      expect(
+        screen.getByRole("slider", { name: "Astral rating slider" }),
+      ).toHaveValue("3")
     })
 
     test("runner missing karmaRating in a skill shouldn't crash the program", async () => {
@@ -268,6 +274,9 @@ describe("<Skills/>", () => {
           name: "Available Karma Value",
         }),
       ).toHaveTextContent("50")
+      expect(
+        screen.getByRole("slider", { name: "Conjuring rating slider" }),
+      ).toHaveValue("6")
 
       SliderHelper.change(screen.getByTestId("Conjuring-rating"), 5, 1, 6)
 
@@ -279,6 +288,9 @@ describe("<Skills/>", () => {
           name: "Available Karma Value",
         }),
       ).toHaveTextContent("50")
+      expect(
+        screen.getByRole("slider", { name: "Conjuring rating slider" }),
+      ).toHaveValue("5")
 
       await user.click(screen.getByRole("radio", { name: "Karma" }))
 
@@ -292,6 +304,66 @@ describe("<Skills/>", () => {
           name: "Available Karma Value",
         }),
       ).toHaveTextContent("20")
+      expect(
+        screen.getByRole("slider", { name: "Conjuring rating slider" }),
+      ).toHaveValue("6")
+    })
+
+    test("should not be able to go negative in points", async () => {
+      const user = setup("9")
+
+      expect(
+        await screen.findByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("15/24")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("7")
+      expect(
+        screen.getByRole("slider", { name: "Tasking rating slider" }),
+      ).toHaveValue("3")
+      expect(
+        screen.getByRole("slider", { name: "Electronics rating slider" }),
+      ).toHaveValue("3")
+
+      await user.click(screen.getByRole("radio", { name: "Karma" }))
+
+      SliderHelper.change(screen.getByTestId("Electronics-rating"), 1, 1, 6)
+
+      expect(
+        screen.getByRole("slider", { name: "Electronics rating slider" }),
+      ).toHaveValue("2")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("22")
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("15/24")
+      expect(
+        screen.getByRole("slider", { name: "Tasking rating slider" }),
+      ).toHaveValue("3")
+
+      await user.click(screen.getByRole("radio", { name: "Skill Points" }))
+
+      SliderHelper.change(screen.getByTestId("Tasking-rating"), 1, 1, 6)
+
+      expect(
+        screen.getByRole("slider", { name: "Tasking rating slider" }),
+      ).toHaveValue("2")
+      expect(
+        screen.getByRole("definition", {
+          name: "Available Karma Value",
+        }),
+      ).toHaveTextContent("32")
+      expect(
+        screen.getByRole("definition", { name: "Skill Points Value" }),
+      ).toHaveTextContent("16/24")
+      expect(
+        screen.getByRole("slider", { name: "Electronics rating slider" }),
+      ).toHaveValue("2")
     })
   })
 })

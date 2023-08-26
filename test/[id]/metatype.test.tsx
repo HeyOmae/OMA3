@@ -1,22 +1,18 @@
-import { render, withTestRouter, waitFor, setupIndexedDB } from "../testUtils"
-import { MetatypePage } from "../../pages/[id]/metatype"
+import { render, withTestRouter, setupIndexedDB, screen } from "../testUtils"
+import { MetatypePage } from "@/pages/[id]/metatype"
 
 describe("Metatype Page", () => {
   beforeAll(setupIndexedDB)
   const setup = () =>
     render(withTestRouter(<MetatypePage />, { query: { id: "3" } }))
   it("should exist", async () => {
-    const { getByText } = setup()
+    setup()
 
-    expect(getByText("Metatype")).toBeInTheDocument()
-
-    await waitFor(() => {
-      expect(getByText("Metatypes")).toBeInTheDocument()
-      expect(getByText("Human")).toBeInTheDocument()
-      expect(getByText("Dwarf")).toBeInTheDocument()
-      expect(getByText("Elf")).toBeInTheDocument()
-      expect(getByText("Ork")).toBeInTheDocument()
-      expect(getByText("Troll")).toBeInTheDocument()
-    })
+    expect(await screen.findByText("Metatypes")).toBeInTheDocument()
+    expect(screen.getByText("Human")).toBeInTheDocument()
+    expect(screen.getByText("Dwarf")).toBeInTheDocument()
+    expect(screen.getByText("Elf")).toBeInTheDocument()
+    expect(screen.getByText("Ork")).toBeInTheDocument()
+    expect(screen.getByText("Troll")).toBeInTheDocument()
   })
 })
