@@ -111,3 +111,10 @@ export interface ComplexForm {
 export type SpiritTypes = "Air" | "Beast" | "Earth" | "Fire" | "Kin" | "Water"
 
 export type SpritesType = "Courier" | "Crack" | "Data" | "Fault" | "Machine"
+
+type MetaMagicType = "METAMAGIC" | "METAMAGIC_ADEPT"
+
+export interface MetaMagic {
+  type: MetaMagicType
+  name: string
+}
