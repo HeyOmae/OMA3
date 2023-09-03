@@ -1,4 +1,11 @@
-import { AdeptPower, ComplexForm, MagRes, Ritual, Spells } from "./MagRes"
+import {
+  AdeptPower,
+  ComplexForm,
+  MagRes,
+  MetaMagic,
+  Ritual,
+  Spells,
+} from "./MagRes"
 import { Priority } from "./PriorityRating"
 import { Quality } from "./Qualities"
 import { Resources } from "./Resources"
@@ -20,6 +27,7 @@ export interface Runner {
   rituals?: Ritual[]
   powers?: AdeptPower[]
   complexForms?: ComplexForm[]
+  initiation?: MetaMagic[]
   resources?: Partial<Resources>
   knowledge?: string[]
   language?: LanguageSkill[]

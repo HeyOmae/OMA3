@@ -1,8 +1,8 @@
 import { FC } from "react"
 import { Payload, SET_RITUAL } from ".."
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { Ritual } from "../../../../types/MagRes"
-import { AddButton } from "../../../common"
+import { DispatchAction } from "@/hooks/useRunnerAccess"
+import { Ritual } from "@/types/MagRes"
+import { AddButton } from "@/components/common"
 
 interface Props {
   dispatch: DispatchAction<Payload>
