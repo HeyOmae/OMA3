@@ -27,6 +27,10 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
     () => totalKarmaFromSkills(runner?.skills),
     [runner?.skills],
   )
+  const karmaFromInitiation = useMemo(
+    () => totalKarmaForInitiationGrades(runner.initiation?.length),
+    [runner.initiation?.length],
+  )
   return (
     <dl>
       <dt aria-label="Available Karma">Available Karma</dt>
@@ -36,7 +40,8 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
           negativeQualityKarma -
           karmaSpendOnNuyen -
           attributeKarma -
-          skillKarma}
+          skillKarma -
+          karmaFromInitiation}
       </dd>
       {showQualityInfo && (
         <>
@@ -99,4 +104,12 @@ function findKarmaCostPerRating(karmaPoints: number, baseRating: number) {
     karmaTotal += (baseRating + i) * 5
   }
   return karmaTotal
+}
+
+function totalKarmaForInitiationGrades(grade: number = 0) {
+  let karmaPoints = 0
+  for (let i = 0; i < grade; ++i) {
+    karmaPoints += 10 + i
+  }
+  return karmaPoints
 }
