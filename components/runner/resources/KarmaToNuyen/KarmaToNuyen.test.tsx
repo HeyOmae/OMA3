@@ -76,7 +76,7 @@ describe("<KarmaToNuyen/>", () => {
     expect(await screen.findByLabelText("Karma to Nuyen")).toHaveValue(0)
     expect(
       await screen.findByRole("definition", { name: "Available Karma Value" }),
-    ).toHaveTextContent("50")
+    ).toHaveTextContent("40")
     expect(
       screen.getByRole("definition", { name: "Nuyen Value" }),
     ).toHaveTextContent("5750¥/8000¥")
@@ -88,7 +88,7 @@ describe("<KarmaToNuyen/>", () => {
     expect(screen.getByLabelText("Karma to Nuyen")).toHaveValue(-1)
     expect(
       await screen.findByRole("definition", { name: "Available Karma Value" }),
-    ).toHaveTextContent("51")
+    ).toHaveTextContent("41")
     expect(
       screen.getByRole("definition", { name: "Nuyen Value" }),
     ).toHaveTextContent("3750¥/6000¥")
