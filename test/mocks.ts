@@ -342,6 +342,7 @@ export const mockedRunners: Runner[] = [
     id: 7,
     name: "Frosty",
     description: "Immortal elf runner",
+    metatype: "Elf",
     priority: {
       metatype: "D",
       skills: "B",
@@ -359,7 +360,7 @@ export const mockedRunners: Runner[] = [
       Intuition: { adjustment: 0, points: 2 },
       Charisma: { adjustment: 0, points: 0 },
       Edge: { adjustment: 2, points: 0 },
-      Magic: { adjustment: 0, points: 0 },
+      Magic: { adjustment: 2, points: 0 },
       Resonance: { adjustment: 0, points: 0 },
     },
     magres: "Full",
@@ -418,6 +419,12 @@ export const mockedRunners: Runner[] = [
         },
       ],
     },
+    initiation: [
+      {
+        name: "Centering",
+        type: "METAMAGIC",
+      },
+    ],
   },
   {
     id: 8,

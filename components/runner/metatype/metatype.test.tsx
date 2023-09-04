@@ -280,6 +280,29 @@ describe("<Metatype/>", () => {
         expect(karmaDisplay).toHaveTextContent("35")
         expect(screen.getByRole("slider", { name: "Body" })).toHaveValue("3")
       })
+
+      test("only karma can raise magic past 6 after initiation", async () => {
+        const user = setup("7")
+
+        const karmaDisplay = await screen.findByRole("definition", {
+          name: "Available Karma Value",
+        })
+
+        expect(karmaDisplay).toHaveTextContent("40")
+        expect(screen.getByRole("slider", { name: "Magic" })).toHaveValue("6")
+        await user.click(screen.getByRole("radio", { name: "Adjustment" }))
+
+        SliderHelper.change(screen.getByTestId("Magic-slider"), 7, 1, 7)
+
+        expect(screen.getByRole("slider", { name: "Magic" })).toHaveValue("6")
+
+        await user.click(screen.getByRole("radio", { name: "Karma" }))
+
+        SliderHelper.change(screen.getByTestId("Magic-slider"), 7, 1, 7)
+
+        expect(screen.getByRole("slider", { name: "Magic" })).toHaveValue("7")
+        expect(karmaDisplay).toHaveTextContent("5")
+      })
     })
 
     it("should set both adjustment and attribute points on the same attribute", async () => {

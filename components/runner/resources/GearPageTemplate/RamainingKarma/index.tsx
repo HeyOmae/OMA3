@@ -1,8 +1,8 @@
 import { Quality } from "@/types/Qualities"
-import { RunnerAttributes } from "@/types/RunnerAttributes"
 import { Skills } from "@/types/Skill"
 import { Runner } from "@/types/runner"
 import { FC, useMemo } from "react"
+import priorityData from "@/data/priorityTable.json"
 
 interface Props {
   runner: Runner
@@ -20,7 +20,7 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
   )
   const karmaSpendOnNuyen = runner.karmaToNuyen ?? 0
   const attributeKarma = useMemo(
-    () => totalKarmaFromAttributes(runner?.attributes),
+    () => totalKarmaFromAttributes(runner),
     [runner?.attributes],
   )
   const skillKarma = useMemo(
@@ -83,11 +83,20 @@ function totalKarmaFromQualities(qualities: Quality[]) {
   return 0
 }
 
-function totalKarmaFromAttributes(attributes: RunnerAttributes) {
-  if (attributes) {
-    return Object.values(attributes).reduce(
-      (karmaTotal, { adjustment, points, karma }) => {
-        const attributeRatingBeforeKarma = adjustment + points + 1
+function totalKarmaFromAttributes(runner: Runner) {
+  if (runner.attributes) {
+    return Object.entries(runner.attributes).reduce(
+      (karmaTotal, [name, { adjustment, points, karma }]) => {
+        const baseAttribute =
+            name === "Magic" &&
+            runner.magres !== undefined &&
+            runner.magres !== "Mundane" &&
+            runner.priority["mag/res"] !== "E"
+              ? +priorityData["mag/res"][runner.priority["mag/res"]][
+                  runner.magres
+                ][1]
+              : 1,
+          attributeRatingBeforeKarma = adjustment + points + baseAttribute
         return (
           karmaTotal + findKarmaCostPerRating(karma, attributeRatingBeforeKarma)
         )

@@ -43,11 +43,17 @@ export const AttributeSelection: FC<Props> = ({
           return 1
         case imparedAttribute:
           return -1
+        case "Magic":
+          return runner.initiation?.length ?? 0
         default:
           return 0
       }
     }
-  }, [runner.qualities?.negative, runner.qualities?.positive])
+  }, [
+    runner.initiation?.length,
+    runner.qualities?.negative,
+    runner.qualities?.positive,
+  ])
 
   const disableSlider = useCallback(
     (att: string, max: number) => {

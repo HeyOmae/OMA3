@@ -65,6 +65,18 @@ export const Metatype = () => {
           return updateRunnerAttribute(runner, payload.key, "points", newValue)
         }
         case SPEND_ADJUSTMENT_POINTS: {
+          // This is a dumb place to put this...but I can't think of a better place right now.
+          // Check to make sure only karma can raise magic past 6.
+          if (
+            payload.key === "Magic" &&
+            payload.value +
+              priorityData["mag/res"][runner.priority["mag/res"]][
+                runner.magres
+              ][1] >
+              6
+          ) {
+            return runner
+          }
           const attribute = runner.attributes?.[payload.key]
           const newValue =
             payload.value - attribute.points - (attribute.karma ?? 0)
