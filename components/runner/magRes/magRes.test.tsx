@@ -18,7 +18,9 @@ import complexFormData from "@/data/complexForm.json"
 describe("Magic and Resonance", () => {
   const setup = (id = "2") => {
     const user = userEvent.setup()
-    render(withTestRouter(<MagRes />, { query: { id } }))
+    render(
+      withTestRouter(<MagRes />, { query: { id }, asPath: `/${id}/magres` }),
+    )
     return user
   }
   beforeAll(setupIndexedDB)
@@ -542,5 +544,17 @@ describe("Magic and Resonance", () => {
 
       expect(runnerFromDB(8).complexForms).not.toContain(removedComplexForm)
     })
+  })
+
+  test("display link to initiation for awakened", async () => {
+    setup("7")
+
+    expect(
+      await screen.findByRole("definition", { name: "Initiation Grade Value" }),
+    ).toHaveTextContent("1")
+    expect(screen.getByRole("link", { name: "Initiation" })).toHaveAttribute(
+      "href",
+      "/7/magres/initiation",
+    )
   })
 })

@@ -1,4 +1,4 @@
-import { CircularProgress, Grid } from "@mui/material"
+import { Button, CircularProgress, Grid } from "@mui/material"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import {
   AdeptPower,
@@ -10,6 +10,7 @@ import {
   Spell,
   SpellCategory,
 } from "@/types/MagRes"
+import NextLink from "next/link"
 import { MagResSelection } from "./MagResSelection"
 import priorityData from "@/data/priorityTable.json"
 import { MagResPriorityTableOptions } from "@/types/PriorityRating"
@@ -28,6 +29,8 @@ import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
 import { ComplexForms } from "./ComplexForms"
 import { RunnerComplexForms } from "./ComplexForms/RunnerComplexForms"
 import { removeItemFromArray } from "@/components/util"
+import { DisplayInitiationGrade } from "./Initiation"
+import { useRouter } from "next/router"
 
 // TODO: The complexity in this component is a code smell. Refactor things out in to smaller files
 export const SET_MAGRES = Symbol("SET_MAGRES")
@@ -64,6 +67,7 @@ export interface Payload {
 }
 
 export const MagRes = () => {
+  const { asPath } = useRouter()
   const [runner, dispatch] = useRunnerAccess<Payload>(
     (runner, { type, payload }) => {
       switch (type) {
@@ -292,6 +296,13 @@ export const MagRes = () => {
                     />
                   </>
                 )}
+              </Grid>
+              <Grid item sm={12}>
+                <h2>Initiation</h2>
+                <DisplayInitiationGrade initiation={runner.initiation} />
+                <NextLink href={`${asPath}/initiation`} passHref>
+                  <Button variant="contained">Initiation</Button>
+                </NextLink>
               </Grid>
             </Grid>
           </>
