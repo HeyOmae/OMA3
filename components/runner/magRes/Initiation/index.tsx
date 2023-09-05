@@ -2,7 +2,7 @@ import { metamagic } from "@/data/metamagic"
 import { MetamagicTable } from "./MetamagicTable"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { MetaMagic } from "@/types/MagRes"
-import { CircularProgress } from "@mui/material"
+import { CircularProgress, Grid } from "@mui/material"
 import { RemainingKarma } from "../../resources/GearPageTemplate/RamainingKarma"
 import { removeItemFromArray } from "@/components/util"
 
@@ -30,14 +30,28 @@ const Initiation = () => {
     },
   )
   return runner ? (
-    <>
+    <section>
       <DisplayInitiationGrade initiation={runner.initiation} />
       <RemainingKarma runner={runner} />
-      <MetamagicTable metamagics={metamagic} add dispatch={dispatch} />
-      {runner.initiation && (
-        <MetamagicTable metamagics={runner.initiation} dispatch={dispatch} />
-      )}
-    </>
+
+      <Grid container spacing={2}>
+        <Grid item sm={12} md={6}>
+          <h2>Metamagics</h2>
+          <MetamagicTable metamagics={metamagic} add dispatch={dispatch} />
+        </Grid>
+        <Grid item sm={12} md={6}>
+          {runner.initiation && (
+            <>
+              <h2>Known Metamagics</h2>
+              <MetamagicTable
+                metamagics={runner.initiation}
+                dispatch={dispatch}
+              />
+            </>
+          )}
+        </Grid>
+      </Grid>
+    </section>
   ) : (
     <CircularProgress />
   )
