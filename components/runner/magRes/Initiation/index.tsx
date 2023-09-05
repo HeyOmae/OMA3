@@ -31,12 +31,7 @@ const Initiation = () => {
   )
   return runner ? (
     <>
-      <dl>
-        <dt aria-label="Initiation Grade">Initiation Grade</dt>
-        <dd aria-label="Initiation Grade Value">
-          {(runner.initiation ?? []).length}
-        </dd>
-      </dl>
+      <DisplayInitiationGrade initiation={runner.initiation} />
       <RemainingKarma runner={runner} />
       <MetamagicTable metamagics={metamagic} add dispatch={dispatch} />
       {runner.initiation && (
@@ -47,5 +42,16 @@ const Initiation = () => {
     <CircularProgress />
   )
 }
+
+export const DisplayInitiationGrade = ({
+  initiation = [],
+}: {
+  initiation: MetaMagic[]
+}) => (
+  <dl>
+    <dt aria-label="Initiation Grade">Initiation Grade</dt>
+    <dd aria-label="Initiation Grade Value">{initiation.length}</dd>
+  </dl>
+)
 
 export default Initiation
