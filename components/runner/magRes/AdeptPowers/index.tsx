@@ -8,10 +8,10 @@ import {
 } from "@mui/material"
 import { FC } from "react"
 import { Payload } from ".."
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { AdeptPower } from "../../../../types/MagRes"
+import { DispatchAction } from "@/hooks/useRunnerAccess"
+import { AdeptPower } from "@/types/MagRes"
 import { AddAdeptPowerButton } from "./AddAdeptPowerButton"
-import PowersData from "../../../../data/adeptPowers.json"
+import PowersData from "@/data/adeptPowers.json"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
