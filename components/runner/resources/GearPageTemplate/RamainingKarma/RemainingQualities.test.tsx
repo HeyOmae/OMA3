@@ -44,7 +44,7 @@ test("does not display quality or bonus karma if showQualityInfo is false", () =
 
   expect(
     screen.getByRole("definition", { name: "Available Karma Value" }),
-  ).toHaveTextContent("56")
+  ).toHaveTextContent("11")
   expect(
     screen.queryByRole("definition", { name: "Qualities Value" }),
   ).not.toBeInTheDocument()

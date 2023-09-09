@@ -17,6 +17,7 @@ export const mockedRunners: Runner[] = [
       "mag/res": "A",
     },
     metatype: "Human",
+    magres: "Full",
     attributes: {
       Body: { adjustment: 0, points: 0 },
       Agility: { adjustment: 0, points: 0 },
@@ -441,9 +442,16 @@ export const mockedRunners: Runner[] = [
     attributes: {
       ...initRunnerAttributes,
       Logic: { adjustment: 0, points: 4 },
+      Magic: { adjustment: 2, points: 0, karma: 1 },
     },
     metatype: "Human",
     magres: "Adept",
+    initiation: [
+      {
+        name: "Power Points",
+        type: "METAMAGIC_ADEPT",
+      },
+    ],
     powers: [
       {
         name: "Traceless Walk",
@@ -1604,6 +1612,15 @@ export const mockedRunners: Runner[] = [
               currentRating: 4,
             },
           ],
+        },
+      ],
+    },
+    qualities: {
+      negative: [
+        {
+          name: "Gremlins",
+          karma: 6,
+          type: "NEGATIVE",
         },
       ],
     },

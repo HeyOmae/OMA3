@@ -427,12 +427,16 @@ describe("Magic and Resonance", () => {
 
       expect(runnerFromDB(1).powers).toBeUndefined()
       expect(screen.queryByText("Known Adept Powers")).not.toBeInTheDocument()
-      expect(screen.queryByText("4/4")).toBeInTheDocument()
+      expect(
+        screen.getByRole("definition", { name: "Power Points Left Value" }),
+      ).toHaveTextContent("4/4")
 
       await user.click(screen.getByLabelText("Add Astral Perception"))
 
       expect(screen.queryByText("Known Adept Powers")).toBeInTheDocument()
-      expect(screen.queryByText("3/4")).toBeInTheDocument()
+      expect(
+        screen.getByRole("definition", { name: "Power Points Left Value" }),
+      ).toHaveTextContent("3/4")
 
       await waitFor(() => {
         expect(runnerFromDB(1).powers[0]).toEqual(PowersData[1])
@@ -447,10 +451,14 @@ describe("Magic and Resonance", () => {
       expect(
         await screen.findByLabelText("Remove Improved Reflexes"),
       ).toBeInTheDocument()
-      expect(screen.getByText("2/4")).toBeInTheDocument()
+      expect(
+        screen.getByRole("definition", { name: "Power Points Left Value" }),
+      ).toHaveTextContent("5/7")
 
       await user.click(screen.getByLabelText("Remove Improved Reflexes"))
-      expect(screen.getByText("3/4")).toBeInTheDocument()
+      expect(
+        screen.getByRole("definition", { name: "Power Points Left Value" }),
+      ).toHaveTextContent("6/7")
 
       await waitFor(() => {
         expect(runnerFromDB(7).powers).toHaveLength(2)

@@ -1,33 +1,22 @@
 import { FC, useMemo } from "react"
-import {
-  AdeptPower,
-  ComplexForm,
-  MagRes,
-  Ritual,
-  Spells,
-} from "../../../../types/MagRes"
+import { Runner } from "@/types/runner"
 
 export interface Props {
-  magRes: MagRes
-  rating: number
-  adjustmentPoints: number
-  spells?: Partial<Spells>
-  rituals?: Ritual[]
-  powers?: AdeptPower[]
-  complexForms?: ComplexForm[]
+  runner: Runner
+  baseMagic: number
 }
 
 const magResWithSpells = ["Mystic Adept", "Full", "Aspected"]
 
-export const RemainingSpells: FC<Props> = ({
-  magRes,
-  rating,
-  adjustmentPoints,
-  spells = {},
-  rituals = [],
-  powers = [],
-  complexForms = [],
-}) => {
+export const RemainingSpells: FC<Props> = ({ runner, baseMagic: rating }) => {
+  const {
+    magres,
+    spells = {},
+    rituals = [],
+    powers = [],
+    complexForms = [],
+    attributes: { Magic },
+  } = runner
   const totalSpells = rating * 2,
     numberOfKnownSpells = useMemo(
       () =>
@@ -42,8 +31,9 @@ export const RemainingSpells: FC<Props> = ({
   const [powerPointsTotal, remainingPowerPoints] = useMemo(() => {
     const powerPointsTotal =
       rating +
-      adjustmentPoints -
-      Math.round((magRes === "Mystic Adept" ? numberOfKnownSpells : 0) / 2)
+      Magic.adjustment +
+      (Magic?.karma ?? 0) -
+      Math.round((magres === "Mystic Adept" ? numberOfKnownSpells : 0) / 2)
     return [
       powerPointsTotal,
       powers.reduce(
@@ -52,30 +42,37 @@ export const RemainingSpells: FC<Props> = ({
         powerPointsTotal,
       ),
     ]
-  }, [magRes, rating, adjustmentPoints, numberOfKnownSpells, powers])
+  }, [magres, rating, Magic, numberOfKnownSpells, powers])
 
   return (
     <dl>
-      {magResWithSpells.includes(magRes) && (
+      {magResWithSpells.includes(magres) && (
         <>
           <dt>Spells Remaining</dt>
-          <dd className={remainingNumberOfSpells < 0 ? "bad-stuff" : ""}>
+          <dd
+            aria-label="Spells Remaining Value"
+            className={remainingNumberOfSpells < 0 ? "bad-stuff" : ""}
+          >
             {remainingNumberOfSpells}/{totalSpells}
           </dd>
         </>
       )}
-      {(magRes === "Adept" || magRes === "Mystic Adept") && (
+      {(magres === "Adept" || magres === "Mystic Adept") && (
         <>
           <dt>Power Points Left</dt>
-          <dd className={remainingPowerPoints < 0 ? "bad-stuff" : ""}>
+          <dd
+            aria-label="Power Points Left Value"
+            className={remainingPowerPoints < 0 ? "bad-stuff" : ""}
+          >
             {remainingPowerPoints}/{powerPointsTotal}
           </dd>
         </>
       )}
-      {magRes === "Technomancer" && (
+      {magres === "Technomancer" && (
         <>
           <dt>Complex Forms Remaining</dt>
           <dd
+            aria-label="Complex Forms Remaining Value"
             className={totalSpells - complexForms.length < 0 ? "bad-stuff" : ""}
           >
             {totalSpells - complexForms.length}/{totalSpells}

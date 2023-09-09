@@ -16,7 +16,7 @@ test("display 25 karma for runners that have not spent karma", () => {
 })
 
 test("negative qualities should increase karma", () => {
-  setup(mockedRunners[7])
+  setup(mockedRunners[10])
 
   const karmaEl = screen.getByRole("term", { name: /Available Karma/i })
   expect(karmaEl).toHaveTextContent("Karma")
