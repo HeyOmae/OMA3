@@ -453,12 +453,12 @@ describe("Magic and Resonance", () => {
       ).toBeInTheDocument()
       expect(
         screen.getByRole("definition", { name: "Power Points Left Value" }),
-      ).toHaveTextContent("5/7")
+      ).toHaveTextContent("6/8")
 
       await user.click(screen.getByLabelText("Remove Improved Reflexes"))
       expect(
         screen.getByRole("definition", { name: "Power Points Left Value" }),
-      ).toHaveTextContent("6/7")
+      ).toHaveTextContent("7/8")
 
       await waitFor(() => {
         expect(runnerFromDB(7).powers).toHaveLength(2)
