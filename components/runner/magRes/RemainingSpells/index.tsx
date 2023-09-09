@@ -33,7 +33,12 @@ export const RemainingSpells: FC<Props> = ({ runner, baseMagic: rating }) => {
       rating +
       Magic.adjustment +
       (Magic?.karma ?? 0) -
-      Math.round((magres === "Mystic Adept" ? numberOfKnownSpells : 0) / 2)
+      Math.round((magres === "Mystic Adept" ? numberOfKnownSpells : 0) / 2) +
+      (runner.initiation?.reduce(
+        (accumulator, { name }) =>
+          accumulator + (name === "Power Points" ? 1 : 0),
+        0,
+      ) ?? 0)
     return [
       powerPointsTotal,
       powers.reduce(
@@ -42,7 +47,15 @@ export const RemainingSpells: FC<Props> = ({ runner, baseMagic: rating }) => {
         powerPointsTotal,
       ),
     ]
-  }, [magres, rating, Magic, numberOfKnownSpells, powers])
+  }, [
+    rating,
+    Magic.adjustment,
+    Magic?.karma,
+    magres,
+    numberOfKnownSpells,
+    runner.initiation,
+    powers,
+  ])
 
   return (
     <dl>

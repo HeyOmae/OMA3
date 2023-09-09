@@ -72,14 +72,18 @@ describe("<RemainingSpell/>", () => {
 
   it("should display the power points left for adepts based off magic rating", () => {
     setup({
-      runner: mockedRunners[7],
+      runner: {
+        ...mockedRunners[7],
+        attributes: mockedRunners[1].attributes,
+        initiation: [],
+      },
     })
 
     expect(screen.queryByText("Spells Remaining")).not.toBeInTheDocument()
     expect(screen.getByText("Power Points Left")).toBeInTheDocument()
     expect(
       screen.getByRole("definition", { name: "Power Points Left Value" }),
-    ).toHaveTextContent("5/7")
+    ).toHaveTextContent("2/4")
   })
 
   it("should display the power points and spells for mystic adepts", () => {
@@ -158,7 +162,11 @@ describe("<RemainingSpell/>", () => {
     expect(screen.getByText("-1/8")).toHaveClass("bad-stuff")
   })
 
-  // test("adept should be able to get extra power points from rasing magic with karma and getting the power metamagic", () => {
-  //   setup({})
-  // })
+  test("adept should be able to get extra power points from rasing magic with karma and getting the power metamagic", () => {
+    setup({ runner: mockedRunners[7] })
+
+    expect(
+      screen.getByRole("definition", { name: "Power Points Left Value" }),
+    ).toHaveTextContent("6/8")
+  })
 })
