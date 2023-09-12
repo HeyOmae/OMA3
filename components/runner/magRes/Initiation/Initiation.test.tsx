@@ -35,7 +35,7 @@ describe("<Initiation/>", () => {
       await screen.findByRole("definition", { name: "Available Karma Value" }),
     ).toHaveTextContent("45")
 
-    await user.click(screen.getByRole("button", { name: "Add Centering" }))
+    await user.click(screen.getByRole("button", { name: "Learn Centering" }))
 
     expect(
       screen.getByRole("definition", { name: "Initiation Grade Value" }),
@@ -44,7 +44,7 @@ describe("<Initiation/>", () => {
       await screen.findByRole("definition", { name: "Available Karma Value" }),
     ).toHaveTextContent("35")
 
-    await user.click(screen.getByRole("button", { name: "Add Masking" }))
+    await user.click(screen.getByRole("button", { name: "Learn Masking" }))
 
     expect(
       screen.getByRole("definition", { name: "Initiation Grade Value" }),
@@ -54,19 +54,19 @@ describe("<Initiation/>", () => {
     ).toHaveTextContent("24")
 
     expect(
-      screen.getByRole("button", { name: "Remove Centering" }),
+      screen.getByRole("button", { name: "Forget Centering" }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole("button", { name: "Remove Masking" }),
+      screen.getByRole("button", { name: "Forget Masking" }),
     ).toBeInTheDocument()
 
-    await user.click(screen.getByRole("button", { name: "Remove Centering" }))
+    await user.click(screen.getByRole("button", { name: "Forget Centering" }))
 
     expect(
-      screen.queryByRole("button", { name: "Remove Centering" }),
+      screen.queryByRole("button", { name: "Forget Centering" }),
     ).not.toBeInTheDocument()
     expect(
-      screen.getByRole("button", { name: "Remove Masking" }),
+      screen.getByRole("button", { name: "Forget Masking" }),
     ).toBeInTheDocument()
     expect(
       screen.getByRole("definition", { name: "Initiation Grade Value" }),

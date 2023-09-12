@@ -5,6 +5,7 @@ import { MetaMagic } from "@/types/MagRes"
 import { CircularProgress, Grid } from "@mui/material"
 import { RemainingKarma } from "../../resources/GearPageTemplate/RamainingKarma"
 import { removeItemFromArray } from "@/components/util"
+import { AddButton, RemoveButton } from "@/components/common"
 
 export const ADD_METAMAGIC = Symbol("ADD_METAMAGIC")
 export const REMOVE_METAMAGIC = Symbol("REMOVE_METAMAGIC")
@@ -37,7 +38,13 @@ const Initiation = () => {
       <Grid container spacing={2}>
         <Grid item sm={12} md={6}>
           <h2>Metamagics</h2>
-          <MetamagicTable metamagics={metamagic} add dispatch={dispatch} />
+          <MetamagicTable
+            metamagics={metamagic}
+            dispatch={dispatch}
+            type={ADD_METAMAGIC}
+            label="Learn"
+            ActionButton={AddButton}
+          />
         </Grid>
         <Grid item sm={12} md={6}>
           {runner.initiation && (
@@ -46,6 +53,9 @@ const Initiation = () => {
               <MetamagicTable
                 metamagics={runner.initiation}
                 dispatch={dispatch}
+                type={REMOVE_METAMAGIC}
+                label="Forget"
+                ActionButton={RemoveButton}
               />
             </>
           )}

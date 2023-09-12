@@ -1,23 +1,30 @@
 import { MetaMagic } from "@/types/MagRes"
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { FC } from "react"
-import { ADD_METAMAGIC, Payload, REMOVE_METAMAGIC } from "./index"
+import { Payload } from "./index"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
-import { AddButton, RemoveButton } from "@/components/common"
+import { Props as ActionButtonProps } from "@/components/common"
 
 interface Props {
   metamagics: MetaMagic[]
-  add?: boolean
   dispatch: DispatchAction<Payload>
+  type: symbol
+  label: string
+  ActionButton: FC<ActionButtonProps>
 }
 
-export const MetamagicTable: FC<Props> = ({ metamagics, add, dispatch }) => {
-  const ActionButton = add ? AddButton : RemoveButton
+export function MetamagicTable({
+  metamagics,
+  dispatch,
+  type,
+  label,
+  ActionButton,
+}: Props) {
   return (
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>{add ? "Learn" : "Forget"}</TableCell>
+          <TableCell>{label}</TableCell>
           <TableCell>Name</TableCell>
         </TableRow>
       </TableHead>
@@ -26,10 +33,10 @@ export const MetamagicTable: FC<Props> = ({ metamagics, add, dispatch }) => {
           <TableRow key={metamagic.name}>
             <TableCell>
               <ActionButton
-                aria-label={`${add ? "Add" : "Remove"} ${metamagic.name}`}
+                aria-label={`${label} ${metamagic.name}`}
                 onClick={() =>
                   dispatch({
-                    type: add ? ADD_METAMAGIC : REMOVE_METAMAGIC,
+                    type,
                     payload: { metamagic, index },
                   })
                 }
