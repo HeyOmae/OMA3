@@ -6,6 +6,7 @@ import {
   Ritual,
   Spells,
 } from "./MagRes"
+import { Echo } from "./Matrix"
 import { Priority } from "./PriorityRating"
 import { Quality } from "./Qualities"
 import { Resources } from "./Resources"
@@ -28,6 +29,7 @@ export interface Runner {
   powers?: AdeptPower[]
   complexForms?: ComplexForm[]
   initiation?: MetaMagic[]
+  submersion?: Echo[]
   resources?: Partial<Resources>
   knowledge?: string[]
   language?: LanguageSkill[]

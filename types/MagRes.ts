@@ -114,7 +114,7 @@ export type SpritesType = "Courier" | "Crack" | "Data" | "Fault" | "Machine"
 
 type MetaMagicType = "METAMAGIC" | "METAMAGIC_ADEPT"
 
-export interface MetaMagic {
-  type: MetaMagicType
+export interface MetaMagic<T = MetaMagicType> {
+  type: string | T
   name: string
 }

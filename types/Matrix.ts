@@ -1,6 +1,8 @@
-export interface Echo {
-  name: string
-  type: "ECHO"
+import { MetaMagic } from "./MagRes"
+
+type EchoType = "ECHO"
+
+export interface Echo extends MetaMagic<EchoType> {
   modifications?: {
     attrmod: {
       attribute: string
