@@ -5,7 +5,7 @@ import { MetaMagic } from "@/types/MagRes"
 import { CircularProgress, Grid } from "@mui/material"
 import { RemainingKarma } from "../../resources/GearPageTemplate/RamainingKarma"
 import { removeItemFromArray } from "@/components/util"
-import { AddButton, RemoveButton } from "@/components/common"
+import { AddButton, RemoveButton, Section } from "@/components/common"
 
 export const ADD_METAMAGIC = Symbol("ADD_METAMAGIC")
 export const REMOVE_METAMAGIC = Symbol("REMOVE_METAMAGIC")
@@ -31,12 +31,12 @@ const Initiation = () => {
     },
   )
   return runner ? (
-    <section>
+    <>
       <DisplayInitiationGrade initiation={runner.initiation} />
       <RemainingKarma runner={runner} />
 
       <Grid container spacing={2}>
-        <Grid item sm={12} md={6}>
+        <Grid item sm={12} md={6} component={Section}>
           <h2>Metamagics</h2>
           <MetamagicTable
             metamagics={metamagic}
@@ -46,7 +46,7 @@ const Initiation = () => {
             ActionButton={AddButton}
           />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item sm={12} md={6} component={Section}>
           {runner.initiation && (
             <>
               <h2>Known Metamagics</h2>
@@ -61,7 +61,7 @@ const Initiation = () => {
           )}
         </Grid>
       </Grid>
-    </section>
+    </>
   ) : (
     <CircularProgress />
   )
