@@ -1625,6 +1625,27 @@ export const mockedRunners: Runner[] = [
       ],
     },
   },
+  {
+    id: 12,
+    name: "Puck",
+    description:
+      "Former Deus White, Puck is a Technomancer that is trying to make up for helping an evil AI",
+    priority: {
+      metatype: "E",
+      skills: "C",
+      attributes: "B",
+      "mag/res": "A",
+      resources: "D",
+    },
+    attributes: initRunnerAttributes,
+    magres: "Technomancer",
+    submersion: [
+      {
+        name: "Resonance Link",
+        type: "ECHO",
+      },
+    ],
+  },
 ]
 
 export const orkRunner: Runner = {

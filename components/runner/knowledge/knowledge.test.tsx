@@ -16,8 +16,13 @@ describe("knowledge", () => {
     setupIndexedDB({
       payload: [
         ...mockedRunners,
-        { id: 12, name: "", describe: "", attributes: initRunnerAttributes },
-        { id: 13, name: "Blanky", describe: "" },
+        {
+          id: mockedRunners.length + 1,
+          name: "",
+          describe: "",
+          attributes: initRunnerAttributes,
+        },
+        { id: mockedRunners.length + 2, name: "Blanky", describe: "" },
       ],
     }),
   )
@@ -79,7 +84,9 @@ describe("knowledge", () => {
   })
 
   it("should fall back to say 'Runner' if the name isn't set", async () => {
-    const { getByText, getByLabelText } = setup("12")
+    const { getByText, getByLabelText } = setup(
+      (mockedRunners.length + 1).toString(),
+    )
 
     await waitFor(() => {
       expect(getByLabelText("input knowledge skill")).toBeInTheDocument()
@@ -94,7 +101,7 @@ describe("knowledge", () => {
   })
 
   it("should show the priority warning if there is no Logic attibute", async () => {
-    const { getByText } = setup("13")
+    const { getByText } = setup((mockedRunners.length + 2).toString())
 
     await waitFor(() => {
       expect(

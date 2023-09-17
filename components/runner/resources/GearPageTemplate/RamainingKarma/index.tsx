@@ -21,7 +21,7 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
   const karmaSpendOnNuyen = runner.karmaToNuyen ?? 0
   const attributeKarma = useMemo(
     () => totalKarmaFromAttributes(runner),
-    [runner?.attributes],
+    [runner],
   )
   const skillKarma = useMemo(
     () => totalKarmaFromSkills(runner?.skills),
@@ -29,7 +29,11 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
   )
   const karmaFromInitiation = useMemo(
     () => totalKarmaForInitiationGrades(runner.initiation?.length),
-    [runner.initiation?.length],
+    [runner.initiation],
+  )
+  const karmaFromSubmersion = useMemo(
+    () => totalKarmaForInitiationGrades(runner.submersion?.length),
+    [runner.submersion],
   )
   return (
     <dl>
@@ -41,7 +45,8 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
           karmaSpendOnNuyen -
           attributeKarma -
           skillKarma -
-          karmaFromInitiation}
+          karmaFromInitiation -
+          karmaFromSubmersion}
       </dd>
       {showQualityInfo && (
         <>
