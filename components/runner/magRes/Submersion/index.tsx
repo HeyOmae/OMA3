@@ -5,6 +5,8 @@ import { echoes } from "@/data/echoes"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { Payload } from "../Initiation"
 import { removeItemFromArray } from "@/components/util"
+import { RemainingKarma } from "../../resources/GearPageTemplate/RamainingKarma"
+import { Echo } from "@/types/Matrix"
 
 const LEARN_ECHO = Symbol("LEARN_ECHO")
 const FORGET_ECHO = Symbol("FORGET_ECHO")
@@ -26,6 +28,8 @@ const Submersion = () => {
   )
   return runner ? (
     <>
+      <DisplaySubmersionLevel submersion={runner.submersion} />
+      <RemainingKarma runner={runner} />
       <Grid container spacing={2}>
         <Grid item sm={12} md={6} component={Section}>
           <h2>Echoes</h2>
@@ -55,5 +59,16 @@ const Submersion = () => {
     <CircularProgress />
   )
 }
+
+export const DisplaySubmersionLevel = ({
+  submersion = [],
+}: {
+  submersion: Echo[]
+}) => (
+  <dl>
+    <dt aria-label="Submersion Level">Submersion Level</dt>
+    <dd aria-label="Submersion Level Value">{submersion.length}</dd>
+  </dl>
+)
 
 export default Submersion
