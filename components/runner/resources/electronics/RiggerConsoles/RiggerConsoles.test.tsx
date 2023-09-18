@@ -1,6 +1,8 @@
 import { riggerConsoleData } from "@/data/electronics"
-import { setupIndexedDB } from "@/test/testUtils"
-import { expectGearToDisplayMatrixDeviceTable } from "../utils"
+import {
+  expectGearToDisplayMatrixDeviceTable,
+  setupIndexedDB,
+} from "@/test/testUtils"
 import { RiggerConsoles } from "./index"
 
 describe("<RiggerConsoles/>", () => {
