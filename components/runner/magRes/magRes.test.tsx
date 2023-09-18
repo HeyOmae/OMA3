@@ -564,5 +564,42 @@ describe("Magic and Resonance", () => {
       "href",
       "/7/magres/initiation",
     )
+    expect(
+      screen.queryByRole("link", { name: "Submersion" }),
+    ).not.toBeInTheDocument()
+  })
+
+  test("display link to submersion for techomancers", async () => {
+    setup("9")
+
+    expect(
+      await screen.findByRole("definition", { name: "Submersion Level Value" }),
+    ).toHaveTextContent("0")
+    expect(screen.getByRole("link", { name: "Submersion" })).toHaveAttribute(
+      "href",
+      "/9/magres/submersion",
+    )
+    expect(
+      screen.queryByRole("link", { name: "Initiation" }),
+    ).not.toBeInTheDocument()
+  })
+
+  test("a runner with a submersion and/or initation should have access to their pages regardless of megres selection, you know so they can remove it", async () => {
+    setup("13")
+
+    expect(
+      await screen.findByRole("definition", { name: "Initiation Grade Value" }),
+    ).toHaveTextContent("1")
+    expect(screen.getByRole("link", { name: "Initiation" })).toHaveAttribute(
+      "href",
+      "/13/magres/initiation",
+    )
+    expect(
+      screen.getByRole("definition", { name: "Submersion Level Value" }),
+    ).toHaveTextContent("1")
+    expect(screen.getByRole("link", { name: "Submersion" })).toHaveAttribute(
+      "href",
+      "/13/magres/submersion",
+    )
   })
 })

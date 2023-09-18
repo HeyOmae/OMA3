@@ -31,6 +31,7 @@ import { RunnerComplexForms } from "./ComplexForms/RunnerComplexForms"
 import { removeItemFromArray } from "@/components/util"
 import { DisplayInitiationGrade } from "./Initiation"
 import { useRouter } from "next/router"
+import { DisplaySubmersionLevel } from "./Submersion"
 
 // TODO: The complexity in this component is a code smell. Refactor things out in to smaller files
 export const SET_MAGRES = Symbol("SET_MAGRES")
@@ -259,49 +260,65 @@ export const MagRes = () => {
               </Grid>
               <Grid item sm={12} md={6} className={styles.scrollGrid}>
                 {runner.spells && (
-                  <>
+                  <section>
                     <h2>Known Spells</h2>
                     <RunnerSpells spells={runner.spells} dispatch={dispatch} />
-                  </>
+                  </section>
                 )}
                 {runner.rituals && (
-                  <>
+                  <section>
                     <h2>Known Rituals</h2>
                     <RunnerRituals
                       dispatch={dispatch}
                       rituals={runner.rituals}
                     />
-                  </>
+                  </section>
                 )}
                 {runner.powers && (
-                  <>
+                  <section>
                     <h2>Known Adept Powers</h2>
                     <RunnerAdeptPowers
                       powers={runner.powers}
                       dispatch={dispatch}
                     />
-                  </>
+                  </section>
                 )}
                 {runner.complexForms && (
-                  <>
+                  <section>
                     <h2>Known Complex Forms</h2>
                     <RunnerComplexForms
                       complexForms={runner.complexForms}
                       dispatch={dispatch}
                     />
-                  </>
+                  </section>
                 )}
-              </Grid>
-              <Grid item sm={12}>
-                <h2>Initiation</h2>
-                <DisplayInitiationGrade initiation={runner.initiation} />
-                <NextLink href={`${asPath}/initiation`} passHref>
-                  <Button variant="contained">Initiation</Button>
-                </NextLink>
               </Grid>
             </Grid>
           </>
         ))}
+
+      {(runner.initiation?.length ||
+        runner.magres === "Full" ||
+        runner.magres === "Aspected" ||
+        runner.magres === "Mystic Adept" ||
+        runner.magres === "Adept") && (
+        <section>
+          <h2>Initiation</h2>
+          <DisplayInitiationGrade initiation={runner.initiation} />
+          <NextLink href={`${asPath}/initiation`} passHref>
+            <Button variant="contained">Initiation</Button>
+          </NextLink>
+        </section>
+      )}
+      {(runner.submersion?.length || runner.magres === "Technomancer") && (
+        <section>
+          <h2>Submersion</h2>
+          <DisplaySubmersionLevel submersion={runner.submersion} />
+          <NextLink href={`${asPath}/submersion`} passHref>
+            <Button variant="contained">Submersion</Button>
+          </NextLink>
+        </section>
+      )}
     </>
   )
 }

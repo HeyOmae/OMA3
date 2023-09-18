@@ -1646,6 +1646,33 @@ export const mockedRunners: Runner[] = [
       },
     ],
   },
+  {
+    id: 13,
+    name: "Hard Exit",
+    description: "Extraction Specalist known for making her own exists.",
+    priority: {
+      metatype: "D",
+      skills: "B",
+      attributes: "A",
+      "mag/res": "E",
+      resources: "C",
+    },
+    metatype: "Human",
+    attributes: initRunnerAttributes,
+    magres: "Mundane",
+    submersion: [
+      {
+        name: "Resonance Link",
+        type: "ECHO",
+      },
+    ],
+    initiation: [
+      {
+        name: "Quickening",
+        type: "METAMAGIC",
+      },
+    ],
+  },
 ]
 
 export const orkRunner: Runner = {
