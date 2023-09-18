@@ -1,15 +1,8 @@
 import {
-  render,
-  withTestRouter,
-  getByText as getTextInContainer,
-  screen,
-} from "@/test/testUtils"
-import {
   GearElectronic,
   GearMatrixCommlink,
   GearModdableRated,
 } from "@/types/Resources"
-import { FC } from "react"
 import {
   Columns,
   gearModableTableConfigOptions,
@@ -86,42 +79,3 @@ export const sellSensorCols: SensorDeviceCols = [
   gearTableConfigOptions.cost,
   gearModableTableConfigOptions.mod,
 ]
-
-export const expectGearToDisplayMatrixDeviceTable =
-  (MatrixComponent: FC, ListOfMatrixGear: GearMatrixCommlink[]) => async () => {
-    render(withTestRouter(<MatrixComponent />, { query: { id: "10" } }))
-
-    expect(await screen.findByText("Buy")).toBeInTheDocument()
-
-    // Header
-    const buyHeader = screen.getByText("Buy").closest("thead")
-
-    expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
-    expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
-    expect(getTextInContainer(buyHeader, "D/F")).toBeInTheDocument()
-    expect(getTextInContainer(buyHeader, "Slots")).toBeInTheDocument()
-    expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
-    expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
-
-    // Stats of a commlink
-    const device = ListOfMatrixGear[0],
-      deviceRow = screen.getByLabelText(`Add ${device.name}`).closest("tr")
-
-    expect(getTextInContainer(deviceRow, device.name)).toBeInTheDocument()
-    expect(
-      getTextInContainer(deviceRow, device.deviceRating),
-    ).toBeInTheDocument()
-    expect(
-      getTextInContainer(
-        deviceRow,
-        `${device.matrixAttributes.dataProcessing}/${device.matrixAttributes.firewall}`,
-      ),
-    ).toBeInTheDocument()
-    expect(
-      getTextInContainer(deviceRow, device.matrixAttributes.programs),
-    ).toBeInTheDocument()
-    expect(
-      getTextInContainer(deviceRow, device.availability),
-    ).toBeInTheDocument()
-    expect(getTextInContainer(deviceRow, `${device.cost}¥`)).toBeInTheDocument()
-  }
