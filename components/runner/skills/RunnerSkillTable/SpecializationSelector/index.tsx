@@ -7,27 +7,34 @@ import { Autocomplete, TextField } from "@mui/material"
 export interface Props {
   skillName: string
   id: string
-  specialization: string
+  value: string
   dispatch: DispatchAction<ActionPayload>
+  type?: symbol
+  labelType?: string
+  className?: string
 }
 
 export const SpecializationSelector: FC<Props> = ({
   id,
   skillName,
-  specialization,
+  value,
   dispatch,
+  type = CHANGE_SPECIALIZATION,
+  labelType = "specialization",
+  className,
 }) => {
   return (
     <Autocomplete<string, false, false, true>
+      className={className}
       freeSolo
-      value={specialization ?? ""}
-      id={id}
+      value={value ?? ""}
+      id={`${id}-${labelType}`}
       options={(
         skillData.find(({ name }) => name === skillName)?.specializations ?? []
       ).map(({ name }) => name)}
       onChange={(event, spec) =>
         dispatch({
-          type: CHANGE_SPECIALIZATION,
+          type,
           payload: {
             specializationChange: {
               name: skillName,
@@ -40,7 +47,7 @@ export const SpecializationSelector: FC<Props> = ({
         return (
           <TextField
             {...params}
-            label={`${skillName} specialization`}
+            label={`${skillName} ${labelType}`}
             variant="filled"
           />
         )

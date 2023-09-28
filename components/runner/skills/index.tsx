@@ -21,6 +21,7 @@ export const CHANGE_SKILL_RATING_WITH_KARMA = Symbol(
   "CHANGE_SKILL_RATING_WITH_KARMA",
 )
 export const CHANGE_SPECIALIZATION = Symbol("CHANGE_SPECIALIZATION")
+export const CHANGE_EXPERTISE = Symbol("CHANGE_EXPERTISE")
 
 export interface ActionPayload {
   skillToRemove?: string
@@ -96,6 +97,17 @@ const Skills: FC = () => {
               [payload.specializationChange.name]: {
                 ...runner.skills[payload.specializationChange.name],
                 specialization: payload.specializationChange.specialization,
+              },
+            },
+          }
+        case CHANGE_EXPERTISE:
+          return {
+            ...runner,
+            skills: {
+              ...runner.skills,
+              [payload.specializationChange.name]: {
+                ...runner.skills[payload.specializationChange.name],
+                expertise: payload.specializationChange.specialization,
               },
             },
           }
