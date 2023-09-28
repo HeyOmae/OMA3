@@ -69,8 +69,10 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
 function totalKarmaFromSkills(skills: Skills) {
   if (skills) {
     return Object.values(skills).reduce(
-      (karmaTotal, { rating, karmaRating = 0 }) =>
-        karmaTotal + findKarmaCostPerRating(karmaRating, rating),
+      (karmaTotal, { rating, karmaRating = 0, expertise }) =>
+        karmaTotal +
+        findKarmaCostPerRating(karmaRating, rating) +
+        (expertise ? 10 : 0),
       0,
     )
   }

@@ -15,6 +15,7 @@ import {
   CHANGE_SKILL_RATING,
   CHANGE_SKILL_RATING_WITH_KARMA,
   REMOVE_SKILL,
+  CHANGE_EXPERTISE,
   SkillPointsToSpend,
 } from ".."
 import { RemoveButton } from "../../../common"
@@ -72,9 +73,17 @@ export const RunnerSkillTable: FC<Props> = ({
             {Object.entries(skills).map(
               ([
                 skillName,
-                { rating, karmaRating = 0, attribute, specialization },
+                {
+                  rating,
+                  karmaRating = 0,
+                  attribute,
+                  specialization,
+                  expertise,
+                },
               ]) => {
                 const skillNameHyphen = skillName.replace(" ", "-")
+                const skillRating = rating + karmaRating
+                const skillCanHaveExpertise = skillRating >= 5
                 return (
                   <TableRow key={skillName}>
                     <TableCell>
@@ -101,7 +110,7 @@ export const RunnerSkillTable: FC<Props> = ({
                         marks
                         min={1}
                         max={AptitudeSkill === skillName ? 7 : 6}
-                        value={rating + karmaRating}
+                        value={skillRating}
                         data-testid={`${skillNameHyphen}-rating`}
                         onChange={(event, value) =>
                           dispatch({
@@ -126,9 +135,22 @@ export const RunnerSkillTable: FC<Props> = ({
                       <SpecializationSelector
                         skillName={skillName}
                         id={skillNameHyphen}
-                        specialization={specialization}
+                        value={specialization}
                         dispatch={dispatch}
                       />
+                      {(skillCanHaveExpertise || expertise) && (
+                        <SpecializationSelector
+                          className={
+                            skillCanHaveExpertise ? undefined : "bad-stuff"
+                          }
+                          skillName={skillName}
+                          id={skillNameHyphen}
+                          value={expertise}
+                          dispatch={dispatch}
+                          type={CHANGE_EXPERTISE}
+                          labelType="expertise"
+                        />
+                      )}
                     </TableCell>
                   </TableRow>
                 )

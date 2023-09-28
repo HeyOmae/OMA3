@@ -140,13 +140,13 @@ describe("<Skills/>", () => {
 
   describe("specialization", () => {
     it("should set the specialization in indexedDB", async () => {
-      setup()
+      const user = setup()
 
       expect(
         await screen.findByLabelText("add Close combat skill"),
       ).toBeInTheDocument()
 
-      await userEvent.click(screen.getByLabelText("add Close combat skill"))
+      await user.click(screen.getByLabelText("add Close combat skill"))
 
       expect(screen.getByTestId("Close-combat-rating")).toBeInTheDocument()
 
@@ -160,13 +160,47 @@ describe("<Skills/>", () => {
 
       const specInput = screen.getByLabelText("Close combat specialization")
 
-      await userEvent.click(specInput)
-      await userEvent.keyboard("Blades{enter}")
+      await user.click(specInput)
+      await user.keyboard("Blades{enter}")
 
       expect(runnerFromDB(2).skills["Close combat"].specialization).toEqual(
         "Blades",
       )
     })
+  })
+
+  test("expertise", async () => {
+    const user = setup("10")
+
+    expect(
+      await screen.findByRole("definition", { name: "Available Karma Value" }),
+    ).toHaveTextContent("38")
+
+    await user.click(screen.getByRole("button", { name: "add Firearms skill" }))
+
+    expect(
+      screen.queryByRole("combobox", { name: "Firearms expertise" }),
+    ).not.toBeInTheDocument()
+
+    SliderHelper.change(screen.getByTestId("Firearms-rating"), 5, 1, 6)
+
+    const expertise = screen.getByRole("combobox", {
+      name: "Firearms expertise",
+    })
+    expect(expertise).toBeInTheDocument()
+
+    await user.click(expertise)
+    await user.click(screen.getByRole("option", { name: "Automatics" }))
+
+    expect(runnerFromDB(9).skills["Firearms"].expertise).toEqual("Automatics")
+    expect(
+      screen.getByRole("definition", { name: "Available Karma Value" }),
+    ).toHaveTextContent("28")
+
+    SliderHelper.change(screen.getByTestId("Firearms-rating"), 4, 1, 6)
+    expect(expertise).toBeInTheDocument()
+    // TODO: figure out how to know if the bad-stuff class works
+    // expect(expertise).toHaveClass("bad-stuff")
   })
 
   it("should warn the user if skill priority isn't set", async () => {

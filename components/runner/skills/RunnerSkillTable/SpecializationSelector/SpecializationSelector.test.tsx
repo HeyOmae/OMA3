@@ -9,7 +9,7 @@ describe("<SpecializationSelect/>", () => {
     props: Props = {
       skillName: "Firearms",
       id: "Firearms",
-      specialization: "",
+      value: "",
       dispatch: jest.fn(),
     },
   ) => {
