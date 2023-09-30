@@ -18,6 +18,7 @@ import { FC, useRef } from "react"
 import styles from "./knowledge.module.css"
 import { RemainingKnowledgePoints } from "./RemainingKnowledgePoints"
 import { capitalization } from "@/components/util"
+import { RemainingKarma } from "../resources/GearPageTemplate/RamainingKarma"
 
 interface SkillSectionProps {
   runner: Runner
@@ -69,6 +70,7 @@ export const SkillSection: FC<SkillSectionProps> = ({
         />
       </form>
       <RemainingKnowledgePoints runner={runner} />
+      <RemainingKarma runner={runner} />
       {runner[skillKey]?.length > 0 && (
         <>
           <h2>

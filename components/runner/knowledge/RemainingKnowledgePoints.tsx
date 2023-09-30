@@ -8,16 +8,22 @@ interface Props {
 
 export const RemainingKnowledgePoints: FC<Props> = ({ runner }) => (
   <dl className={styles.points}>
-    <dd>Knowledge Points</dd>
-    <dt>
-      {runner.attributes.Logic.adjustment +
-        runner.attributes.Logic.points +
-        1 -
-        (runner.knowledge?.length ?? 0) -
-        (runner.language?.reduce((points, { rating }) => {
-          if (rating === "Native") return points
-          return points + rating
-        }, 0) ?? 0)}
-    </dt>
+    <dt aria-label="Knowledge Points">Knowledge Points</dt>
+    <dd aria-label="Knowledge Points Value">
+      {Math.max(findKnowledgePointsSpend(runner), 0)}
+    </dd>
   </dl>
 )
+
+export function findKnowledgePointsSpend(runner: Runner) {
+  return (
+    runner.attributes.Logic.adjustment +
+    runner.attributes.Logic.points +
+    1 -
+    (runner.knowledge?.length ?? 0) -
+    (runner.language?.reduce((points, { rating }) => {
+      if (rating === "Native") return points
+      return points + rating
+    }, 0) ?? 0)
+  )
+}

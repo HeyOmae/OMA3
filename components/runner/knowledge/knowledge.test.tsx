@@ -26,87 +26,124 @@ describe("knowledge", () => {
       ],
     }),
   )
-  const setup = (id = "7") =>
+  const setup = (id = "7") => {
+    const user = userEvent.setup()
     render(withTestRouter(<KnowledgeSkills />, { query: { id } }))
+    return user
+  }
   it("should be able to add a knowledge skills", async () => {
-    const { getByLabelText, getByText } = setup()
+    const user = setup()
     const knowledgeSkill = "Gangs of Seattle"
 
-    await waitFor(() =>
-      expect(getByLabelText("input knowledge skill")).toBeInTheDocument(),
-    )
+    expect(
+      await screen.findByLabelText("input knowledge skill"),
+    ).toBeInTheDocument()
 
     const pointsElement = screen
       .getAllByText("Knowledge Points")[0]
       .closest("dl")
     expect(getByTextIn(pointsElement, "4")).toBeInTheDocument()
 
-    const input = getByLabelText("input knowledge skill")
+    const input = screen.getByLabelText("input knowledge skill")
 
-    await userEvent.click(input)
-    await userEvent.keyboard(knowledgeSkill + "{enter}")
+    await user.click(input)
+    await user.keyboard(knowledgeSkill + "{enter}")
 
     expect(getByTextIn(pointsElement, "3")).toBeInTheDocument()
 
-    expect(getByText(knowledgeSkill)).toBeInTheDocument()
+    expect(screen.getByText(knowledgeSkill)).toBeInTheDocument()
 
     const knowledgeSkill2 = "Magical Traditions"
-    await userEvent.click(input)
-    await userEvent.click(getByText(knowledgeSkill2))
-    await userEvent.click(screen.getByLabelText("submit knowledge skill"))
+    await user.click(input)
+    await user.click(screen.getByText(knowledgeSkill2))
+    await user.click(screen.getByLabelText("submit knowledge skill"))
 
     expect(getByTextIn(pointsElement, "2")).toBeInTheDocument()
 
-    expect(getByText(knowledgeSkill2)).toBeInTheDocument()
+    expect(screen.getByText(knowledgeSkill2)).toBeInTheDocument()
 
     // TODO: figure out how to reset the input without needing to click the clear button
-    await userEvent.click(getByLabelText("Clear"))
-    await userEvent.click(input)
-    await userEvent.keyboard("Pizza")
-    await userEvent.click(screen.getByLabelText("submit knowledge skill"))
+    await user.click(screen.getByLabelText("Clear"))
+    await user.click(input)
+    await user.keyboard("Pizza")
+    await user.click(screen.getByLabelText("submit knowledge skill"))
 
     expect(getByTextIn(pointsElement, "1")).toBeInTheDocument()
-    expect(getByText("Pizza")).toBeInTheDocument()
+    expect(screen.getByText("Pizza")).toBeInTheDocument()
   })
 
   it("should remove a knowledge skill", async () => {
-    const { getByLabelText, queryByText } = setup("10")
+    const user = setup("10")
 
-    await waitFor(() =>
-      expect(queryByText("Weapons Manufacturers")).toBeInTheDocument(),
+    await user.click(
+      await screen.findByLabelText("Remove Weapons Manufacturers"),
     )
 
-    await userEvent.click(getByLabelText("Remove Weapons Manufacturers"))
-
-    expect(queryByText("Weapons Manufacturers")).not.toBeInTheDocument()
-    expect(queryByText("Craft Beers")).toBeInTheDocument()
-    expect(queryByText("Law Enforcement Corps")).toBeInTheDocument()
+    expect(screen.queryByText("Weapons Manufacturers")).not.toBeInTheDocument()
+    expect(screen.queryByText("Craft Beers")).toBeInTheDocument()
+    expect(screen.queryByText("Law Enforcement Corps")).toBeInTheDocument()
   })
 
   it("should fall back to say 'Runner' if the name isn't set", async () => {
-    const { getByText, getByLabelText } = setup(
-      (mockedRunners.length + 1).toString(),
-    )
+    const user = setup((mockedRunners.length + 1).toString())
+
+    await user.click(await screen.findByLabelText("input knowledge skill"))
+    await user.keyboard("Tacos{enter}")
 
     await waitFor(() => {
-      expect(getByLabelText("input knowledge skill")).toBeInTheDocument()
-    })
-
-    await userEvent.click(getByLabelText("input knowledge skill"))
-    await userEvent.keyboard("Tacos{enter}")
-
-    await waitFor(() => {
-      expect(getByText("Runner's Knowledge Skills")).toBeInTheDocument()
+      expect(screen.getByText("Runner's Knowledge Skills")).toBeInTheDocument()
     })
   })
 
   it("should show the priority warning if there is no Logic attibute", async () => {
-    const { getByText } = setup((mockedRunners.length + 2).toString())
+    setup((mockedRunners.length + 2).toString())
 
-    await waitFor(() => {
-      expect(
-        getByText("You need to set the attributes priority"),
-      ).toBeInTheDocument()
-    })
+    expect(
+      await screen.findByText("You need to set the attributes priority"),
+    ).toBeInTheDocument()
+  })
+
+  test("knowledge skills more then availble points cost 3 karma", async () => {
+    const user = setup()
+
+    expect(
+      (
+        await screen.findAllByRole("definition", {
+          name: "Knowledge Points Value",
+        })
+      )[0],
+    ).toHaveTextContent("1")
+    expect(
+      screen.getAllByRole("definition", { name: "Available Karma Value" })[0],
+    ).toHaveTextContent("40")
+
+    await user.click(
+      screen.getByRole("combobox", { name: "input knowledge skill" }),
+    )
+    await user.keyboard("Immortal Elf Politics{enter}")
+    await user.click(screen.getByLabelText("Clear"))
+
+    expect(
+      screen.getAllByRole("definition", {
+        name: "Knowledge Points Value",
+      })[0],
+    ).toHaveTextContent("0")
+    expect(
+      screen.getAllByRole("definition", { name: "Available Karma Value" })[0],
+    ).toHaveTextContent("40")
+
+    await user.click(
+      screen.getByRole("combobox", { name: "input knowledge skill" }),
+    )
+    await user.keyboard("Dragon Politics{enter}")
+
+    expect(
+      screen.getAllByRole("definition", {
+        name: "Knowledge Points Value",
+      })[0],
+    ).toHaveTextContent("0")
+    expect(
+      screen.getAllByRole("definition", { name: "Available Karma Value" })[0],
+    ).toHaveTextContent("37")
   })
 })

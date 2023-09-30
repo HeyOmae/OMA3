@@ -3,6 +3,7 @@ import { Skills } from "@/types/Skill"
 import { Runner } from "@/types/runner"
 import { FC, useMemo } from "react"
 import priorityData from "@/data/priorityTable.json"
+import { findKnowledgePointsSpend } from "@/components/runner/knowledge/RemainingKnowledgePoints"
 
 interface Props {
   runner: Runner
@@ -35,6 +36,10 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
     () => totalKarmaForInitiationGrades(runner.submersion?.length),
     [runner.submersion],
   )
+  const karmaFromKnowledgePoints = useMemo(
+    () => totalKarmaForKnowledgePointsSpend(runner),
+    [runner],
+  )
   return (
     <dl>
       <dt aria-label="Available Karma">Available Karma</dt>
@@ -46,7 +51,8 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
           attributeKarma -
           skillKarma -
           karmaFromInitiation -
-          karmaFromSubmersion}
+          karmaFromSubmersion -
+          karmaFromKnowledgePoints}
       </dd>
       {showQualityInfo && (
         <>
@@ -128,4 +134,13 @@ function totalKarmaForInitiationGrades(grade: number = 0) {
     karmaPoints += 10 + i
   }
   return karmaPoints
+}
+
+function totalKarmaForKnowledgePointsSpend(runner: Runner) {
+  if (!runner.attributes) return 0
+  const pointsSpent = findKnowledgePointsSpend(runner)
+  if (pointsSpent < 0) {
+    return Math.abs(pointsSpent) * 3
+  }
+  return 0
 }
