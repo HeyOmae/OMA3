@@ -594,7 +594,10 @@ export const mockedRunners: Runner[] = [
       resources: "B",
     },
     metatype: "Human",
-    attributes: initRunnerAttributes,
+    attributes: {
+      ...initRunnerAttributes,
+      Logic: { points: 2, adjustment: 0 },
+    },
     magres: "Mundane",
     resources: {
       melee: [
