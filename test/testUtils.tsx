@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { NextRouter } from "next/router"
-import { RouterContext } from "next/dist/shared/lib/router-context"
+import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime"
 import {
   fireEvent,
   render,
