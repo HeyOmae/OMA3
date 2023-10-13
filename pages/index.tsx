@@ -56,12 +56,14 @@ export const Home: FC = () => {
           <div>
             <TableContainer>
               <Table aria-label="Table of Runners">
-                <TableHead>
-                  <TableCell>Name</TableCell>
-                  <TableCell width="100px" align="center">
-                    Download
-                  </TableCell>
-                </TableHead>
+                <TableRow>
+                  <TableHead>
+                    <TableCell>Name</TableCell>
+                    <TableCell width="100px" align="center">
+                      Download
+                    </TableCell>
+                  </TableHead>
+                </TableRow>
                 <TableBody>
                   {runners.map((runner) => {
                     const { id, name } = runner,
