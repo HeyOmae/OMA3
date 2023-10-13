@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Releases } from "@/types/GithubApi"
 import {
+  Alert,
   Table,
   TableBody,
   TableCell,
@@ -20,7 +21,8 @@ const ReleaseNotes = () => {
       .then((res) => res.json())
       .then((res: Releases) => setNotes(res))
   }, [])
-  return (
+
+  return Array.isArray(notes) ? (
     <TableContainer>
       <Table sx={{ minWidth: 500 }} aria-label="release notes">
         <TableHead>
@@ -65,6 +67,8 @@ const ReleaseNotes = () => {
         </TableFooter>
       </Table>
     </TableContainer>
+  ) : (
+    <Alert severity="error">Error loading release notes</Alert>
   )
 }
 

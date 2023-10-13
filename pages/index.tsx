@@ -1,13 +1,23 @@
 import { FC } from "react"
 import Head from "next/head"
 import { Layout } from "@/components/layout"
-import { Button, IconButton } from "@mui/material"
+import {
+  Button,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material"
 import dynamic from "next/dynamic"
 import { initRunner } from "@/types/runner"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 import { GitHub } from "@mui/icons-material"
 import ReleaseNotes from "@/components/ReleaseNotes"
+import DownloadModal from "@/components/DownloadModal"
 
 const AllRunnersAccess = dynamic(
   () => import("@/components/allRunnersAccess"),
@@ -44,18 +54,35 @@ export const Home: FC = () => {
       <AllRunnersAccess>
         {({ runners, add }) => (
           <div>
-            <ul>
-              {runners.map(({ name, id }) => {
-                const href = `${id}/info`
-                return (
-                  <li key={id}>
-                    <NextLink href="[id]/info" as={href} passHref>
-                      {name || id}
-                    </NextLink>
-                  </li>
-                )
-              })}
-            </ul>
+            <TableContainer>
+              <Table aria-label="Table of Runners">
+                <TableHead>
+                  <TableCell>Name</TableCell>
+                  <TableCell width="100px" align="center">
+                    Download
+                  </TableCell>
+                </TableHead>
+                <TableBody>
+                  {runners.map((runner) => {
+                    const { id, name } = runner,
+                      href = `${id}/info`
+                    return (
+                      <TableRow key={id}>
+                        <TableCell>
+                          <NextLink href="[id]/info" as={href} passHref>
+                            {name || id}
+                          </NextLink>
+                        </TableCell>
+                        <TableCell align="center">
+                          <DownloadModal runner={runner} />
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <ul></ul>
             <Button
               variant="contained"
               color="primary"
