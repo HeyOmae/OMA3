@@ -2,7 +2,7 @@
   "name": "oma3",
   "author": "@dethstrobe",
   "license": "GNU 3.0",
-  "version": "3.12.0",
+  "version": "3.13.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
@@ -61,7 +61,6 @@
     "lint-staged": "^14.0.1",
     "msw": "^1.3.2",
     "prettier": "^3.0.3",
-    "typescript": "^5.1.6",
-    "whatwg-fetch": "^3.6.19"
+    "typescript": "^5.1.6"
   }
 }

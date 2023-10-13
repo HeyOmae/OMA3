@@ -41,6 +41,11 @@ h5 {
   width: 100%;
 }
 
+hr {
+  width: 100%;
+  margin-block-end: 1rem;
+}
+
 .bad-stuff {
   color: red;
 }
@@ -164,6 +169,10 @@ body.cyberterminal3 {
 .cyberterminal3 .bad-stuff {
   text-shadow: black var(--shadowdistance) var(--shadowdistance) 0;
   animation: glow 0.7s infinite alternate;
+}
+
+.cyberterminal3 [role="dialog"] {
+  background: var(--cyberGrad);
 }
 
 .nightwatch {

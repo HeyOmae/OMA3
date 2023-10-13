@@ -1,4 +1,3 @@
-import React from "react"
 import {
   render,
   screen,
@@ -7,47 +6,64 @@ import {
   waitFor,
   userEvent,
 } from "./testUtils"
-import { Home } from "../pages/index"
+import { Home } from "@/pages/index"
 import { mockedRunners } from "./mocks"
+import { rest } from "msw"
+import { setupServer } from "msw/node"
+import { githubApiResponse } from "@/components/ReleaseNotes/githubApi.mock"
 
 describe("Home page", () => {
+  const server = setupServer(
+    rest.get(
+      "https://api.github.com/repos/HeyOmae/OMA3/releases",
+      (req, res, ctx) => res(ctx.status(200), ctx.json(githubApiResponse)),
+    ),
+  ) // Establish API mocking before all tests.
+  beforeAll(() => server.listen())
+  // Reset any request handlers that we may add during the tests,
+  // so they don't affect other tests.
+  afterEach(() => server.resetHandlers())
+  // Clean up after the tests are finished.
+  afterAll(() => server.close())
   beforeAll(setupIndexedDB)
   const setup = () => {
+    const user = userEvent.setup()
     const push = jest.fn()
-
+    render(withTestRouter(<Home />, { push, pathname: "/[id]", asPath: "/4" }))
     return {
-      ...render(
-        withTestRouter(<Home />, { push, pathname: "/[id]", asPath: "/4" }),
-      ),
+      user,
       push,
     }
   }
 
   it("should load a list of runners", async () => {
-    const { getByText } = setup()
+    setup()
 
     await waitFor(() => {
       expect(screen.getByText("Bull")).toBeInTheDocument()
     })
 
     mockedRunners.forEach(({ name, id }) => {
-      expect(getByText(name || id)).toHaveAttribute("href", `/${id}/info`)
+      expect(screen.getByText(name || id)).toHaveAttribute(
+        "href",
+        `/${id}/info`,
+      )
     })
   })
 
   it("should add a new runner to the indexed db", async () => {
-    const { getByText, push } = setup()
+    const { user, push } = setup()
 
-    await waitFor(() => {
-      expect(screen.getByText("Create Runner")).toBeInTheDocument()
-    })
+    expect(
+      await screen.findByRole("button", { name: "Create Runner" }),
+    ).toBeInTheDocument()
 
     expect(
       indexedDB._databases.get("omae").rawObjectStores.get("runners").records
         .records.length,
     ).toEqual(mockedRunners.length)
 
-    await userEvent.click(getByText("Create Runner"))
+    await user.click(screen.getByText("Create Runner"))
 
     await waitFor(() =>
       expect(push).toHaveBeenCalledWith(
@@ -63,7 +79,7 @@ describe("Home page", () => {
   })
 
   it("should not display the id if there is no name", async () => {
-    const { getByText } = setup()
+    setup()
     const runnerId = mockedRunners.length + 1
 
     expect(
@@ -72,10 +88,22 @@ describe("Home page", () => {
     ).toEqual(runnerId)
 
     await waitFor(() =>
-      expect(getByText(runnerId.toString())).toHaveAttribute(
+      expect(screen.getByText(runnerId.toString())).toHaveAttribute(
         "href",
         `/${runnerId}/info`,
       ),
+    )
+  })
+
+  test("download runner", async () => {
+    const { user } = setup()
+
+    await user.click(
+      await screen.findByRole("button", { name: "Open Download for Bull" }),
+    )
+
+    expect(screen.getByRole("textbox", { name: "Bull" })).toHaveValue(
+      JSON.stringify(mockedRunners[0]),
     )
   })
 })

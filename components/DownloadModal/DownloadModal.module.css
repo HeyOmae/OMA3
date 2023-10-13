@@ -1,0 +1,9 @@
+.close {
+  position: absolute;
+  right: 0;
+}
+
+a.download-json {
+  color: var(--neon);
+  font-size: 1rem;
+}

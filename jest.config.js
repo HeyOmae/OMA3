@@ -1,7 +1,7 @@
 module.exports = {
   roots: ["<rootDir>"],
   moduleFileExtensions: ["js", "ts", "tsx", "json"],
-  testEnvironment: "jsdom",
+  testEnvironment: "<rootDir>/test/FixJSDOMEnvironment.ts",
   testPathIgnorePatterns: ["<rootDir>[/\\\\](node_modules|.next)[/\\\\]"],
   transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
   transform: {
