@@ -2,8 +2,9 @@ import { Runner } from "@/types/runner"
 import { Dialog, IconButton, TextField, Tooltip } from "@mui/material"
 import DownloadIcon from "@mui/icons-material/Download"
 import { FC, useMemo, useState } from "react"
-import { ContentCopy, Close } from "@mui/icons-material"
+import { ContentCopy } from "@mui/icons-material"
 import styles from "./DownloadModal.module.css"
+import { CloseButton } from "../common"
 
 interface Props {
   runner: Runner
@@ -34,13 +35,8 @@ const Modal: FC<ModalProps> = ({ runner, open, setOpen }) => {
   const runnerJSONed = useMemo(() => JSON.stringify(runner), [runner])
   return (
     <Dialog fullWidth open={open} onClose={() => setOpen(false)}>
-      <IconButton
-        className={styles.close}
-        aria-label="Close"
-        onClick={() => setOpen(false)}
-      >
-        <Close />
-      </IconButton>
+      <h2>Download Runner</h2>
+      <CloseButton onClick={() => setOpen(false)} />
       <Tooltip title="Copied" open={openTip}>
         <label onPointerOut={() => setOpenTip(false)}>
           <IconButton
