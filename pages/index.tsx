@@ -18,6 +18,7 @@ import NextLink from "next/link"
 import { GitHub } from "@mui/icons-material"
 import ReleaseNotes from "@/components/ReleaseNotes"
 import DownloadModal from "@/components/DownloadModal"
+import { UploadModal } from "@/components/UploadModal"
 
 const AllRunnersAccess = dynamic(
   () => import("@/components/allRunnersAccess"),
@@ -56,14 +57,14 @@ export const Home: FC = () => {
           <div>
             <TableContainer>
               <Table aria-label="Table of Runners">
-                <TableRow>
-                  <TableHead>
+                <TableHead>
+                  <TableRow>
                     <TableCell>Name</TableCell>
                     <TableCell width="100px" align="center">
                       Download
                     </TableCell>
-                  </TableHead>
-                </TableRow>
+                  </TableRow>
+                </TableHead>
                 <TableBody>
                   {runners.map((runner) => {
                     const { id, name } = runner,
@@ -84,7 +85,6 @@ export const Home: FC = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-            <ul></ul>
             <Button
               variant="contained"
               color="primary"
@@ -96,6 +96,7 @@ export const Home: FC = () => {
             >
               Create Runner
             </Button>
+            <UploadModal add={add} push={push} />
           </div>
         )}
       </AllRunnersAccess>

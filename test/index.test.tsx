@@ -106,4 +106,47 @@ describe("Home page", () => {
       JSON.stringify(mockedRunners[0]),
     )
   })
+
+  test("fail to upload same runner", async () => {
+    const { user } = setup()
+
+    await user.click(
+      await screen.findByRole("button", { name: "Upload Runner" }),
+    )
+    await user.click(
+      screen.getByRole("textbox", { name: "Copy Runner JSON here" }),
+    )
+    await user.keyboard(
+      JSON.stringify(mockedRunners[0]).replace(
+        /[{]/g,
+        (match) => match + match,
+      ),
+    )
+    await user.click(screen.getByRole("button", { name: "Add Runner" }))
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(
+      "ConstraintError: A mutation operation in the transaction failed because a constraint was not satisfied. For example, an object such as an object store or index already exists and a request attempted to create a new one.",
+    )
+  })
+
+  test("upload a runner with an id that is already used", async () => {
+    const { user, push } = setup()
+
+    await user.click(
+      await screen.findByRole("button", { name: "Upload Runner" }),
+    )
+    await user.click(
+      screen.getByRole("textbox", { name: "Copy Runner JSON here" }),
+    )
+
+    await user.keyboard(
+      '{{"name": "Turbobunny", "description": "Nova hot latina rigger", "id": 3}',
+    )
+    await user.click(screen.getByRole("button", { name: "Add Runner" }))
+
+    expect(push).toHaveBeenCalledWith(
+      "/[id]/info",
+      `/${mockedRunners.length + 2}/info`,
+    )
+  })
 })
