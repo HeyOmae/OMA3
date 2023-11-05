@@ -1,19 +1,16 @@
 import { render, userEvent, screen } from "@/test/testUtils"
 import ReleaseNotes from "./index"
 import { githubApiResponse } from "./githubApi.mock"
-import { rest } from "msw"
+import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 
 describe("<ReleaseNotes/>", () => {
   let isSuccessful = true
   const server = setupServer(
-    rest.get(
-      "https://api.github.com/repos/HeyOmae/OMA3/releases",
-      (req, res, ctx) =>
-        res(
-          ctx.status(isSuccessful ? 200 : 403),
-          ctx.json(isSuccessful ? githubApiResponse : "Forbidden"),
-        ),
+    http.get("https://api.github.com/repos/HeyOmae/OMA3/releases", () =>
+      HttpResponse.json(isSuccessful ? githubApiResponse : "Forbidden", {
+        status: isSuccessful ? 200 : 403,
+      }),
     ),
   ) // Establish API mocking before all tests.
   beforeAll(() => server.listen())

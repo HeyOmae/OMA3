@@ -2,7 +2,7 @@ import { FC } from "react"
 import { Runner } from "@/types/runner"
 import priorityData from "@/data/priorityTable.json"
 import { useSpendPoints } from "@/hooks/useSpendPoints"
-import { RemainingKarma } from "../../resources/GearPageTemplate/RamainingKarma"
+import { RemainingKarma } from "../../resources/GearPageTemplate/RemainingKarma"
 
 export interface Props {
   runner: Runner

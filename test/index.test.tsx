@@ -8,15 +8,14 @@ import {
 } from "./testUtils"
 import { Home } from "@/pages/index"
 import { mockedRunners } from "./mocks"
-import { rest } from "msw"
+import { http, HttpResponse } from "msw"
 import { setupServer } from "msw/node"
 import { githubApiResponse } from "@/components/ReleaseNotes/githubApi.mock"
 
 describe("Home page", () => {
   const server = setupServer(
-    rest.get(
-      "https://api.github.com/repos/HeyOmae/OMA3/releases",
-      (req, res, ctx) => res(ctx.status(200), ctx.json(githubApiResponse)),
+    http.get("https://api.github.com/repos/HeyOmae/OMA3/releases", () =>
+      HttpResponse.json(githubApiResponse),
     ),
   ) // Establish API mocking before all tests.
   beforeAll(() => server.listen())

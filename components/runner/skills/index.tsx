@@ -12,7 +12,7 @@ import { SkillTable } from "./SkillTable"
 import { RunnerSkillTable } from "./RunnerSkillTable"
 import PriorityData from "../../../data/priorityTable.json"
 import { PriorityWarning } from "../../priorityWarning"
-import { RemainingKarma } from "../resources/GearPageTemplate/RamainingKarma"
+import { RemainingKarma } from "../resources/GearPageTemplate/RemainingKarma"
 
 export const ADD_SKILL = Symbol("ADD_SKILL")
 export const REMOVE_SKILL = Symbol("REMOVE_SKILL")

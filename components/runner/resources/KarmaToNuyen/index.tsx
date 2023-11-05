@@ -1,5 +1,5 @@
 import { CircularProgress, TextField } from "@mui/material"
-import { RemainingKarma } from "../GearPageTemplate/RamainingKarma"
+import { RemainingKarma } from "../GearPageTemplate/RemainingKarma"
 import { RemainingNuyen } from "../GearPageTemplate/RemainingNuyen"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { AddButton, RemoveButton } from "@/components/common"

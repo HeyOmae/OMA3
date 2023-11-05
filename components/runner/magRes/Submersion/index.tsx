@@ -5,7 +5,7 @@ import { echoes } from "@/data/echoes"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { Payload } from "../Initiation"
 import { removeItemFromArray } from "@/components/util"
-import { RemainingKarma } from "../../resources/GearPageTemplate/RamainingKarma"
+import { RemainingKarma } from "../../resources/GearPageTemplate/RemainingKarma"
 import { Echo } from "@/types/Matrix"
 
 const LEARN_ECHO = Symbol("LEARN_ECHO")

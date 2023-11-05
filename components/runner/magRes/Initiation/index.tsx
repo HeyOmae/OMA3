@@ -3,7 +3,7 @@ import { MetamagicTable } from "./MetamagicTable"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { MetaMagic } from "@/types/MagRes"
 import { CircularProgress, Grid } from "@mui/material"
-import { RemainingKarma } from "../../resources/GearPageTemplate/RamainingKarma"
+import { RemainingKarma } from "../../resources/GearPageTemplate/RemainingKarma"
 import { removeItemFromArray } from "@/components/util"
 import { AddButton, RemoveButton, Section } from "@/components/common"
 
