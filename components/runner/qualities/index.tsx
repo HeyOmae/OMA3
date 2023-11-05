@@ -4,7 +4,7 @@ import { Quality } from "@/types/Qualities"
 import { QualityTable, RunnerQualityTable } from "./QualityTable"
 import { removeItemFromArray } from "@/components/util"
 import { CircularProgress } from "@mui/material"
-import { RemainingKarma } from "../resources/GearPageTemplate/RamainingKarma"
+import { RemainingKarma } from "../resources/GearPageTemplate/RemainingKarma"
 
 const ADD_POSITIVE_QUALITY = Symbol()
 const REMOVE_POSITIVE_QUALITY = Symbol()

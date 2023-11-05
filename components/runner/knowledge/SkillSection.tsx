@@ -18,7 +18,7 @@ import { FC, useRef } from "react"
 import styles from "./knowledge.module.css"
 import { RemainingKnowledgePoints } from "./RemainingKnowledgePoints"
 import { capitalization } from "@/components/util"
-import { RemainingKarma } from "../resources/GearPageTemplate/RamainingKarma"
+import { RemainingKarma } from "../resources/GearPageTemplate/RemainingKarma"
 
 interface SkillSectionProps {
   runner: Runner
