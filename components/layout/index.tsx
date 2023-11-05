@@ -19,6 +19,7 @@ import {
   Payment,
   School,
   AutoAwesome,
+  ListAlt,
 } from "@mui/icons-material"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
@@ -151,6 +152,16 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
           href={`/${id}/resources`}
         >
           Resources
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<ListAlt />}
+          component={NextLink}
+          href={`/${id}/sheet`}
+        >
+          Character Sheet
         </Button>
 
         <Button
