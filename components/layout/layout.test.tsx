@@ -41,39 +41,40 @@ describe("<RunnerLayout />", () => {
 
     await user.click(screen.getByText("Menu"))
 
-    expect(screen.getByText("Info").closest("a")).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Info" })).toHaveAttribute(
       "href",
       "/1/info",
     )
 
-    expect(screen.getByText("Priority").closest("a")).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Priority" })).toHaveAttribute(
       "href",
       "/1/priority",
     )
     expect(
-      screen.getByText("Metatype & Attributes").closest("a"),
+      screen.getByRole("link", { name: "Metatype & Attributes" }),
     ).toHaveAttribute("href", "/1/metatype")
-    expect(screen.getByText("Active Skills").closest("a")).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Active Skills" })).toHaveAttribute(
       "href",
       "/1/skills",
     )
-    expect(screen.getByText("Knowledge Skills").closest("a")).toHaveAttribute(
-      "href",
-      "/1/knowledge",
-    )
-    expect(screen.getByText("Magic & Resonance").closest("a")).toHaveAttribute(
-      "href",
-      "/1/magres",
-    )
-    expect(screen.getByText("Qualities").closest("a")).toHaveAttribute(
+    expect(
+      screen.getByRole("link", { name: "Knowledge Skills" }),
+    ).toHaveAttribute("href", "/1/knowledge")
+    expect(
+      screen.getByRole("link", { name: "Magic & Resonance" }),
+    ).toHaveAttribute("href", "/1/magres")
+    expect(screen.getByRole("link", { name: "Qualities" })).toHaveAttribute(
       "href",
       "/1/qualities",
     )
-    expect(screen.getByText("Resources").closest("a")).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Resources" })).toHaveAttribute(
       "href",
       "/1/resources",
     )
-    expect(screen.getByText("Delete").closest("a")).toHaveAttribute(
+    expect(
+      screen.getByRole("link", { name: "Character Sheet" }),
+    ).toHaveAttribute("href", "/1/sheet")
+    expect(screen.getByRole("link", { name: "Delete" })).toHaveAttribute(
       "href",
       "/1/delete",
     )
