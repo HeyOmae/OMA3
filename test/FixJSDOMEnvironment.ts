@@ -12,6 +12,9 @@ export default class FixJSDOMEnvironment extends JSDOMEnvironment {
     this.global.fetch = fetch
     this.global.Request = Request
     this.global.Response = Response
+    // for fakeindexeddb
     this.global.structuredClone = structuredClone
+    //for mws
+    this.global.TextEncoder = TextEncoder
   }
 }
