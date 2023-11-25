@@ -123,60 +123,58 @@ const Skills: FC = () => {
   const [pointsToSpend, setPointsToSpend] =
     useState<SkillPointsToSpend>("Points")
 
-  return runner ? (
-    skillPoints ? (
-      <Grid container spacing={2}>
-        <Grid item sm={12}>
-          <RemainingKarma runner={runner} />
-        </Grid>
-        <Grid item sm={12}>
-          <RadioGroup
-            aria-label="select-points"
-            name="select-points"
-            value={pointsToSpend}
-            onChange={(event, pointsToSpend) =>
-              setPointsToSpend(pointsToSpend as SkillPointsToSpend)
-            }
-          >
-            <Grid container alignItems="center" spacing={1}>
-              <Grid item>
-                <FormControlLabel
-                  value="Points"
-                  control={<Radio />}
-                  label="Skill Points"
-                />
-              </Grid>
-              <Grid item>
-                <FormControlLabel
-                  value="Karma"
-                  control={<Radio />}
-                  label="Karma"
-                />
-              </Grid>
-            </Grid>
-          </RadioGroup>
-        </Grid>
-        <Grid item sm={12} md={4}>
-          <h2>Skills to learn</h2>
-          <SkillTable dispatch={dispatch} pointsToSpend={pointsToSpend} />
-        </Grid>
-        {runner.skills && (
-          <Grid item sm={12} md={8}>
-            <h2>Known skills</h2>
-            <RunnerSkillTable
-              runner={runner}
-              skillPoints={skillPoints}
-              dispatch={dispatch}
-              pointsToSpend={pointsToSpend}
-            />
+  return (
+    runner ?
+      skillPoints ?
+        <Grid container spacing={2}>
+          <Grid item sm={12}>
+            <RemainingKarma runner={runner} />
           </Grid>
-        )}
-      </Grid>
-    ) : (
-      <PriorityWarning requirement="skills" />
-    )
-  ) : (
-    <CircularProgress />
+          <Grid item sm={12}>
+            <RadioGroup
+              aria-label="select-points"
+              name="select-points"
+              value={pointsToSpend}
+              onChange={(event, pointsToSpend) =>
+                setPointsToSpend(pointsToSpend as SkillPointsToSpend)
+              }
+            >
+              <Grid container alignItems="center" spacing={1}>
+                <Grid item>
+                  <FormControlLabel
+                    value="Points"
+                    control={<Radio />}
+                    label="Skill Points"
+                  />
+                </Grid>
+                <Grid item>
+                  <FormControlLabel
+                    value="Karma"
+                    control={<Radio />}
+                    label="Karma"
+                  />
+                </Grid>
+              </Grid>
+            </RadioGroup>
+          </Grid>
+          <Grid item sm={12} md={4}>
+            <h2>Skills to learn</h2>
+            <SkillTable dispatch={dispatch} pointsToSpend={pointsToSpend} />
+          </Grid>
+          {runner.skills && (
+            <Grid item sm={12} md={8}>
+              <h2>Known skills</h2>
+              <RunnerSkillTable
+                runner={runner}
+                skillPoints={skillPoints}
+                dispatch={dispatch}
+                pointsToSpend={pointsToSpend}
+              />
+            </Grid>
+          )}
+        </Grid>
+      : <PriorityWarning requirement="skills" />
+    : <CircularProgress />
   )
 }
 

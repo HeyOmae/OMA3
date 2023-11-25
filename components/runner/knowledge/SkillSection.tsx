@@ -111,9 +111,9 @@ export const SkillSection: FC<SkillSectionProps> = ({
                               onChange={({ target }) =>
                                 changeRating(
                                   skill,
-                                  (target.value === "Native"
-                                    ? target.value
-                                    : +target.value) as LanguageRating,
+                                  (target.value === "Native" ?
+                                    target.value
+                                  : +target.value) as LanguageRating,
                                   index,
                                 )
                               }

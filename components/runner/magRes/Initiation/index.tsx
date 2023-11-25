@@ -30,41 +30,39 @@ const Initiation = () => {
       }
     },
   )
-  return runner ? (
-    <>
-      <DisplayInitiationGrade initiation={runner.initiation} />
-      <RemainingKarma runner={runner} />
+  return runner ?
+      <>
+        <DisplayInitiationGrade initiation={runner.initiation} />
+        <RemainingKarma runner={runner} />
 
-      <Grid container spacing={2}>
-        <Grid item sm={12} md={6} component={Section}>
-          <h2>Metamagics</h2>
-          <MetamagicTable
-            metamagics={metamagic}
-            dispatch={dispatch}
-            type={ADD_METAMAGIC}
-            label="Learn"
-            ActionButton={AddButton}
-          />
+        <Grid container spacing={2}>
+          <Grid item sm={12} md={6} component={Section}>
+            <h2>Metamagics</h2>
+            <MetamagicTable
+              metamagics={metamagic}
+              dispatch={dispatch}
+              type={ADD_METAMAGIC}
+              label="Learn"
+              ActionButton={AddButton}
+            />
+          </Grid>
+          <Grid item sm={12} md={6} component={Section}>
+            {runner.initiation && (
+              <>
+                <h2>Known Metamagics</h2>
+                <MetamagicTable
+                  metamagics={runner.initiation}
+                  dispatch={dispatch}
+                  type={REMOVE_METAMAGIC}
+                  label="Forget"
+                  ActionButton={RemoveButton}
+                />
+              </>
+            )}
+          </Grid>
         </Grid>
-        <Grid item sm={12} md={6} component={Section}>
-          {runner.initiation && (
-            <>
-              <h2>Known Metamagics</h2>
-              <MetamagicTable
-                metamagics={runner.initiation}
-                dispatch={dispatch}
-                type={REMOVE_METAMAGIC}
-                label="Forget"
-                ActionButton={RemoveButton}
-              />
-            </>
-          )}
-        </Grid>
-      </Grid>
-    </>
-  ) : (
-    <CircularProgress />
-  )
+      </>
+    : <CircularProgress />
 }
 
 export const DisplayInitiationGrade = ({

@@ -208,10 +208,9 @@ export const MagRes = () => {
         priority={priority}
       />
       {runner.magres &&
-        (runner.magres === "Mundane" ? (
+        (runner.magres === "Mundane" ?
           <h1>Nothing Special Here...</h1>
-        ) : (
-          <>
+        : <>
             <MagResAttributeSlider
               adjustmentPoints={
                 priorityData.metatypes[runner.priority.metatype]
@@ -294,8 +293,7 @@ export const MagRes = () => {
                 )}
               </Grid>
             </Grid>
-          </>
-        ))}
+          </>)}
 
       {(runner.initiation?.length ||
         runner.magres === "Full" ||

@@ -49,11 +49,9 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
 export const gearModableTableConfigOptions = {
   mod: {
     display: (gear: GearMod, index: number) =>
-      gear?.modifications?.itemhookmod?.capacity > 0 ? (
+      gear?.modifications?.itemhookmod?.capacity > 0 ?
         <ModLinkButton gear={gear} index={index} />
-      ) : (
-        "N/A"
-      ),
+      : "N/A",
     label: "Mod",
   },
   alwaysMod: {

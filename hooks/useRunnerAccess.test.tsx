@@ -30,33 +30,31 @@ describe("useRunnerAccess hook", () => {
     const Test = () => {
       const [runner, dispatch] = useRunnerAccess<string>(workingReducer)
 
-      return runner ? (
-        <div>
-          <p>{runner.name}</p>
-          <button
-            onClick={() =>
-              dispatch({
-                type: UPDATE_NAME,
-                payload: "William “Bull” MacCallister",
-              })
-            }
-          >
-            update name
-          </button>
-          <button
-            onClick={() =>
-              dispatch({
-                type: UPDATE_NAME,
-                payload: "Bull",
-              })
-            }
-          >
-            reset
-          </button>
-        </div>
-      ) : (
-        <div>Loading...</div>
-      )
+      return runner ?
+          <div>
+            <p>{runner.name}</p>
+            <button
+              onClick={() =>
+                dispatch({
+                  type: UPDATE_NAME,
+                  payload: "William “Bull” MacCallister",
+                })
+              }
+            >
+              update name
+            </button>
+            <button
+              onClick={() =>
+                dispatch({
+                  type: UPDATE_NAME,
+                  payload: "Bull",
+                })
+              }
+            >
+              reset
+            </button>
+          </div>
+        : <div>Loading...</div>
     }
     return render(withTestRouter(<Test />, { query: { id: "1" } }))
   }

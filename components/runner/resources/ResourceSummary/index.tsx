@@ -23,31 +23,32 @@ const ResourceSummary: FC = () => {
   const [runner] = useRunnerAccess()
   const { asPath } = useRouter()
 
-  return runner ? (
-    <>
-      <h1>Gear Summary</h1>
-      <div className={styles.gearSummary}>
-        {Object.entries(runner?.resources ?? {}).map(
-          ([resourceKey, gearArray]) => (
-            <Fragment key={resourceKey}>
-              <h2>
-                <NextLink
-                  href={`${asPath}/${getResourceSubpath(
-                    resourceKey,
-                  )}${resourceKey}`}
-                >
-                  {resourceKey}
-                </NextLink>
-              </h2>
-              <GearTable<Gear> cols={gearSummaryCols} listOfGear={gearArray} />
-            </Fragment>
-          ),
-        )}
-      </div>
-    </>
-  ) : (
-    <CircularProgress />
-  )
+  return runner ?
+      <>
+        <h1>Gear Summary</h1>
+        <div className={styles.gearSummary}>
+          {Object.entries(runner?.resources ?? {}).map(
+            ([resourceKey, gearArray]) => (
+              <Fragment key={resourceKey}>
+                <h2>
+                  <NextLink
+                    href={`${asPath}/${getResourceSubpath(
+                      resourceKey,
+                    )}${resourceKey}`}
+                  >
+                    {resourceKey}
+                  </NextLink>
+                </h2>
+                <GearTable<Gear>
+                  cols={gearSummaryCols}
+                  listOfGear={gearArray}
+                />
+              </Fragment>
+            ),
+          )}
+        </div>
+      </>
+    : <CircularProgress />
 }
 
 export default ResourceSummary

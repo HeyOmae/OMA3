@@ -78,11 +78,9 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
       <TableRow>
         {cols.map(({ display, label }) => (
           <TableCell key={label}>
-            {choices.length ? (
+            {choices.length ?
               display(gearWithChoice, index, setRating)
-            ) : (
-              <CircularProgress />
-            )}
+            : <CircularProgress />}
           </TableCell>
         ))}
       </TableRow>

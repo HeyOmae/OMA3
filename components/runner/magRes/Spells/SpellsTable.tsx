@@ -45,21 +45,20 @@ export const SpellsTable: FC<Props> = ({
             return (
               <TableRow key={name}>
                 <TableCell>
-                  {actionLabel === "Learn" ? (
+                  {actionLabel === "Learn" ?
                     <ActionButton
                       dispatch={dispatch}
                       actionLabel={actionLabel}
                       spell={spell}
                     />
-                  ) : (
-                    <ActionButton
+                  : <ActionButton
                       dispatch={dispatch}
                       actionLabel={actionLabel}
                       spellCategory={spell.category}
                       spellName={spell.name}
                       spellIndex={spellIndex}
                     />
-                  )}
+                  }
                 </TableCell>
                 <TableCell>{name}</TableCell>
                 <TableCell>{range}</TableCell>
