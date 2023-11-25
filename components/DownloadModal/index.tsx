@@ -66,10 +66,7 @@ const Modal: FC<ModalProps> = ({ runner, open, setOpen }) => {
 
 const DownloadButton: FC<{ json: string; name: string }> = ({ json, name }) => {
   const jsonURL = useMemo(
-    () =>
-      URL.createObjectURL(
-        new Blob([JSON.stringify(json)], { type: "application/json" }),
-      ),
+    () => URL.createObjectURL(new Blob([json], { type: "application/json" })),
     [json],
   )
 
