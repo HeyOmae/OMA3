@@ -24,31 +24,29 @@ const KarmaToNuyen = () => {
       }
     },
   )
-  return runner ? (
-    <section>
-      <h2>Karma &amp; Nuyen</h2>
-      <div>
-        <AddButton
-          aria-label="Increment Karma to Nuyen"
-          onClick={() => dispatch({ type: INCREMENT_KARMA_TO_NUYEN })}
-        />
-        <TextField
-          label="Karma to Nuyen"
-          className={runner.karmaToNuyen < 0 ? "bad-stuff" : ""}
-          type="number"
-          value={runner.karmaToNuyen ?? 0}
-        />
-        <RemoveButton
-          aria-label="Decrement Karma to Nuyen"
-          onClick={() => dispatch({ type: DECREMENT_KARMA_TO_NUYEN })}
-        />
-      </div>
-      <RemainingKarma runner={runner} />
-      <RemainingNuyen runner={runner} />
-    </section>
-  ) : (
-    <CircularProgress />
-  )
+  return runner ?
+      <section>
+        <h2>Karma &amp; Nuyen</h2>
+        <div>
+          <AddButton
+            aria-label="Increment Karma to Nuyen"
+            onClick={() => dispatch({ type: INCREMENT_KARMA_TO_NUYEN })}
+          />
+          <TextField
+            label="Karma to Nuyen"
+            className={runner.karmaToNuyen < 0 ? "bad-stuff" : ""}
+            type="number"
+            value={runner.karmaToNuyen ?? 0}
+          />
+          <RemoveButton
+            aria-label="Decrement Karma to Nuyen"
+            onClick={() => dispatch({ type: DECREMENT_KARMA_TO_NUYEN })}
+          />
+        </div>
+        <RemainingKarma runner={runner} />
+        <RemainingNuyen runner={runner} />
+      </section>
+    : <CircularProgress />
 }
 
 export default KarmaToNuyen

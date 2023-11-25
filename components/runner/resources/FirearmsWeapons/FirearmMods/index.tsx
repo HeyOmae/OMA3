@@ -41,20 +41,20 @@ const FirearmMods = () => {
           {
             ...runner.resources.firearms[gearIndex],
             mods:
-              typeof payload === "number"
-                ? [
-                    ...runner.resources.firearms[gearIndex].mods.slice(
-                      0,
-                      payload,
-                    ),
-                    ...runner.resources.firearms[gearIndex].mods.slice(
-                      payload + 1,
-                    ),
-                  ]
-                : [
-                    ...(runner.resources.firearms[gearIndex]?.mods ?? []),
+              typeof payload === "number" ?
+                [
+                  ...runner.resources.firearms[gearIndex].mods.slice(
+                    0,
                     payload,
-                  ],
+                  ),
+                  ...runner.resources.firearms[gearIndex].mods.slice(
+                    payload + 1,
+                  ),
+                ]
+              : [
+                  ...(runner.resources.firearms[gearIndex]?.mods ?? []),
+                  payload,
+                ],
           },
           ...runner.resources.firearms.slice(gearIndex + 1),
         ],

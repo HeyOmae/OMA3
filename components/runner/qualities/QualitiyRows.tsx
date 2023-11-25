@@ -26,14 +26,13 @@ const QualityRow: FC<QualityRowProps> = ({
   onAddQuality,
   select = "N/A",
 }) =>
-  quality.max ? (
+  quality.max ?
     <QualityLevelRow
       quality={quality}
       onAddQuality={onAddQuality}
       select={select}
     />
-  ) : (
-    <TableRow>
+  : <TableRow>
       <TableCell>
         <AddButton
           aria-label={`Add ${quality.name}`}
@@ -45,7 +44,6 @@ const QualityRow: FC<QualityRowProps> = ({
       <TableCell>{select}</TableCell>
       <TableCell>{quality.karma}</TableCell>
     </TableRow>
-  )
 
 const QualityLevelRow: FC<QualityRowProps> = ({
   quality,

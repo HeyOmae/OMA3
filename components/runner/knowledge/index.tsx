@@ -90,9 +90,9 @@ const KnowledgeSkills = () => {
       return {
         ...runner,
         language:
-          type === ADD_LANGUAGE
-            ? [...(runner?.language ?? []), skill]
-            : removeItemFromArray<LanguageSkill>(runner.language, index),
+          type === ADD_LANGUAGE ?
+            [...(runner?.language ?? []), skill]
+          : removeItemFromArray<LanguageSkill>(runner.language, index),
       }
     },
   )

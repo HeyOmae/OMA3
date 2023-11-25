@@ -28,47 +28,45 @@ export const Info = (): JSX.Element => {
   const description = useRef<HTMLInputElement>()
   const [runner, dispatch] = useRunnerAccess<string>(reducer)
 
-  return runner ? (
-    <form autoComplete="off">
-      <Grid container>
-        <Grid item xs={12}>
-          <TextField
-            inputRef={name}
-            defaultValue={runner.name}
-            id="runner--name"
-            label="Runner's name"
-            required
-            fullWidth
-            variant="filled"
-            onBlur={() =>
-              dispatch({ type: UPDATE_NAME, payload: name.current.value })
-            }
-          />
+  return runner ?
+      <form autoComplete="off">
+        <Grid container>
+          <Grid item xs={12}>
+            <TextField
+              inputRef={name}
+              defaultValue={runner.name}
+              id="runner--name"
+              label="Runner's name"
+              required
+              fullWidth
+              variant="filled"
+              onBlur={() =>
+                dispatch({ type: UPDATE_NAME, payload: name.current.value })
+              }
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              inputRef={description}
+              margin="normal"
+              id="runner--description"
+              label="Runner's description"
+              multiline
+              fullWidth
+              rows={5}
+              variant="filled"
+              onBlur={() =>
+                dispatch({
+                  type: UPDATE_DESCRIPTION,
+                  payload: description.current.value,
+                })
+              }
+              defaultValue={runner.description}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <TextField
-            inputRef={description}
-            margin="normal"
-            id="runner--description"
-            label="Runner's description"
-            multiline
-            fullWidth
-            rows={5}
-            variant="filled"
-            onBlur={() =>
-              dispatch({
-                type: UPDATE_DESCRIPTION,
-                payload: description.current.value,
-              })
-            }
-            defaultValue={runner.description}
-          />
-        </Grid>
-      </Grid>
-    </form>
-  ) : (
-    <CircularProgress />
-  )
+      </form>
+    : <CircularProgress />
 }
 
 export default Info

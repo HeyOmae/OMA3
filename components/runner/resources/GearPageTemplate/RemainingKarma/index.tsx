@@ -101,14 +101,16 @@ function totalKarmaFromAttributes(runner: Runner) {
     return Object.entries(runner.attributes).reduce(
       (karmaTotal, [name, { adjustment, points, karma }]) => {
         const baseAttribute =
-            name === "Magic" &&
-            runner.magres !== undefined &&
-            runner.magres !== "Mundane" &&
-            runner.priority["mag/res"] !== "E"
-              ? +priorityData["mag/res"][runner.priority["mag/res"]][
-                  runner.magres
-                ][1]
-              : 1,
+            (
+              name === "Magic" &&
+              runner.magres !== undefined &&
+              runner.magres !== "Mundane" &&
+              runner.priority["mag/res"] !== "E"
+            ) ?
+              +priorityData["mag/res"][runner.priority["mag/res"]][
+                runner.magres
+              ][1]
+            : 1,
           attributeRatingBeforeKarma = adjustment + points + baseAttribute
         return (
           karmaTotal + findKarmaCostPerRating(karma, attributeRatingBeforeKarma)

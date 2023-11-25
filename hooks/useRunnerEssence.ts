@@ -6,10 +6,13 @@ const startingEss = 6
 
 export const useRunnerEssence = (runner: Runner) =>
   useMemo(() => {
-    const senstiveSystemModifier = runner.qualities?.negative?.some(
-      ({ name }) => name === "Sensitive System",
-    )
-      ? 2
+    const senstiveSystemModifier =
+      (
+        runner.qualities?.negative?.some(
+          ({ name }) => name === "Sensitive System",
+        )
+      ) ?
+        2
       : 1
     const usedEssFromCyber =
       runner.resources?.cyberware?.reduce(

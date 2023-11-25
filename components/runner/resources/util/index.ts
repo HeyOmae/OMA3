@@ -42,10 +42,10 @@ export interface RemoveGearButtonProps extends AddGearButtonProps {
 }
 
 export const getEssenceFromGear = (gear: GearCyberware | GearBioware) =>
-  "essence" in gear.useAs
-    ? gear.useAs.essence
-    : (gear.useAs.find((useAs) => "essence" in useAs) as GearAugmentationUseAs)
-        ?.essence
+  "essence" in gear.useAs ?
+    gear.useAs.essence
+  : (gear.useAs.find((useAs) => "essence" in useAs) as GearAugmentationUseAs)
+      ?.essence
 
 export * from "./Columns"
 export * from "./configOptions"

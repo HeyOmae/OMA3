@@ -102,57 +102,53 @@ export const Metatype = () => {
   const availibleMetatypes =
     priorityData.metatypes[runner?.priority?.metatype]?.supportedMetatypes
 
-  return runner ? (
-    runner.priority?.metatype ? (
-      <FormGroup>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Metatypes</FormLabel>
-          <RadioGroup
-            aria-label="metatypes"
-            name="metatypes"
-            value={runner.metatype ?? ""}
-            onChange={(event, metatype: Metatypes) =>
-              dispatch({ type: SET_METATYPE, payload: { metatype } })
-            }
-          >
-            {Object.keys(metatypeData).map((metatypeName) => (
-              <FormControlLabel
-                disabled={!availibleMetatypes.includes(metatypeName)}
-                key={metatypeName}
-                value={metatypeName}
-                control={<Radio />}
-                label={metatypeName}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
-        {runner.attributes && (
-          <section>
-            <h1>Attributes</h1>
-            {runner.priority.attributes ? (
-              <>
-                <DisplayPoints runner={runner} />
-                <SpendingPointsToggle
-                  pointToSpend={pointToSpend}
-                  selectSpending={setPointToSpend}
+  return (
+    runner ?
+      runner.priority?.metatype ?
+        <FormGroup>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Metatypes</FormLabel>
+            <RadioGroup
+              aria-label="metatypes"
+              name="metatypes"
+              value={runner.metatype ?? ""}
+              onChange={(event, metatype: Metatypes) =>
+                dispatch({ type: SET_METATYPE, payload: { metatype } })
+              }
+            >
+              {Object.keys(metatypeData).map((metatypeName) => (
+                <FormControlLabel
+                  disabled={!availibleMetatypes.includes(metatypeName)}
+                  key={metatypeName}
+                  value={metatypeName}
+                  control={<Radio />}
+                  label={metatypeName}
                 />
-                <AttributeSelection
-                  runner={runner}
-                  dispatch={dispatch}
-                  pointToSpend={pointToSpend}
-                />
-              </>
-            ) : (
-              <PriorityWarning requirement="attributes" />
-            )}
-          </section>
-        )}
-      </FormGroup>
-    ) : (
-      <PriorityWarning requirement="metatype" />
-    )
-  ) : (
-    <CircularProgress />
+              ))}
+            </RadioGroup>
+          </FormControl>
+          {runner.attributes && (
+            <section>
+              <h1>Attributes</h1>
+              {runner.priority.attributes ?
+                <>
+                  <DisplayPoints runner={runner} />
+                  <SpendingPointsToggle
+                    pointToSpend={pointToSpend}
+                    selectSpending={setPointToSpend}
+                  />
+                  <AttributeSelection
+                    runner={runner}
+                    dispatch={dispatch}
+                    pointToSpend={pointToSpend}
+                  />
+                </>
+              : <PriorityWarning requirement="attributes" />}
+            </section>
+          )}
+        </FormGroup>
+      : <PriorityWarning requirement="metatype" />
+    : <CircularProgress />
   )
 }
 

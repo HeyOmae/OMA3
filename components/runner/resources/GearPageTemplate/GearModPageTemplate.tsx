@@ -43,20 +43,20 @@ export function GearModPageTemplate<G extends ModsType>({
             {
               ...runner.resources[resourceKey][gearIndex],
               mods:
-                typeof payload === "number"
-                  ? [
-                      ...runner.resources[resourceKey][gearIndex].mods.slice(
-                        0,
-                        payload,
-                      ),
-                      ...runner.resources[resourceKey][gearIndex].mods.slice(
-                        payload + 1,
-                      ),
-                    ]
-                  : [
-                      ...(runner.resources[resourceKey][gearIndex]?.mods ?? []),
+                typeof payload === "number" ?
+                  [
+                    ...runner.resources[resourceKey][gearIndex].mods.slice(
+                      0,
                       payload,
-                    ],
+                    ),
+                    ...runner.resources[resourceKey][gearIndex].mods.slice(
+                      payload + 1,
+                    ),
+                  ]
+                : [
+                    ...(runner.resources[resourceKey][gearIndex]?.mods ?? []),
+                    payload,
+                  ],
             },
             ...runner.resources[resourceKey].slice(+gearIndex + 1),
           ],

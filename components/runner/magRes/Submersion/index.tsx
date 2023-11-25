@@ -26,38 +26,36 @@ const Submersion = () => {
       }
     },
   )
-  return runner ? (
-    <>
-      <DisplaySubmersionLevel submersion={runner.submersion} />
-      <RemainingKarma runner={runner} />
-      <Grid container spacing={2}>
-        <Grid item sm={12} md={6} component={Section}>
-          <h2>Echoes</h2>
-          <MetamagicTable
-            metamagics={echoes}
-            label="Learn"
-            ActionButton={AddButton}
-            dispatch={dispatch}
-            type={LEARN_ECHO}
-          />
-        </Grid>
-        {runner.submersion && (
+  return runner ?
+      <>
+        <DisplaySubmersionLevel submersion={runner.submersion} />
+        <RemainingKarma runner={runner} />
+        <Grid container spacing={2}>
           <Grid item sm={12} md={6} component={Section}>
-            <h2>Known Echoes</h2>
+            <h2>Echoes</h2>
             <MetamagicTable
-              metamagics={runner.submersion}
-              label="Forget"
-              ActionButton={RemoveButton}
+              metamagics={echoes}
+              label="Learn"
+              ActionButton={AddButton}
               dispatch={dispatch}
-              type={FORGET_ECHO}
+              type={LEARN_ECHO}
             />
           </Grid>
-        )}
-      </Grid>
-    </>
-  ) : (
-    <CircularProgress />
-  )
+          {runner.submersion && (
+            <Grid item sm={12} md={6} component={Section}>
+              <h2>Known Echoes</h2>
+              <MetamagicTable
+                metamagics={runner.submersion}
+                label="Forget"
+                ActionButton={RemoveButton}
+                dispatch={dispatch}
+                type={FORGET_ECHO}
+              />
+            </Grid>
+          )}
+        </Grid>
+      </>
+    : <CircularProgress />
 }
 
 export const DisplaySubmersionLevel = ({

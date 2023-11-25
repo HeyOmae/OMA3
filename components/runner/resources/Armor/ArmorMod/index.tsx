@@ -45,14 +45,12 @@ const ArmorMods = () => {
           {
             ...runner.resources.armor[gearIndex],
             mods:
-              typeof payload === "number"
-                ? [
-                    ...runner.resources.armor[gearIndex].mods.slice(0, payload),
-                    ...runner.resources.armor[gearIndex].mods.slice(
-                      payload + 1,
-                    ),
-                  ]
-                : [...(runner.resources.armor[gearIndex]?.mods ?? []), payload],
+              typeof payload === "number" ?
+                [
+                  ...runner.resources.armor[gearIndex].mods.slice(0, payload),
+                  ...runner.resources.armor[gearIndex].mods.slice(payload + 1),
+                ]
+              : [...(runner.resources.armor[gearIndex]?.mods ?? []), payload],
           },
           ...runner.resources.armor.slice(gearIndex + 1),
         ],

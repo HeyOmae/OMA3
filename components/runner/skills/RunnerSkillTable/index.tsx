@@ -115,9 +115,8 @@ export const RunnerSkillTable: FC<Props> = ({
                         onChange={(event, value) =>
                           dispatch({
                             type:
-                              pointsToSpend === "Points"
-                                ? CHANGE_SKILL_RATING
-                                : CHANGE_SKILL_RATING_WITH_KARMA,
+                              pointsToSpend === "Points" ? CHANGE_SKILL_RATING
+                              : CHANGE_SKILL_RATING_WITH_KARMA,
                             payload: {
                               skillToChangeRating: {
                                 name: skillName,

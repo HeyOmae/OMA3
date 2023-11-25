@@ -28,29 +28,27 @@ export function GearPageTemplate<G extends Gear>({
   const [runner, dispatch] = useRunnerAccess<G | number>(
     gearPageReducerGenerator(resourceKey),
   )
-  return runner ? (
-    <>
-      <ResourceBreadCrumbs activePage={gearLabel} />
-      <RemainingNuyen runner={runner} />
-      {displayEssence && <RemainingEssence runner={runner} />}
-      <Grid container spacing={3}>
-        <DispatchContext.Provider value={dispatch}>
-          <Grid item md={6}>
-            <GearTable<G> cols={addGearTableConfig} listOfGear={listOfGear} />
-          </Grid>
-          {runner.resources?.[resourceKey] && (
+  return runner ?
+      <>
+        <ResourceBreadCrumbs activePage={gearLabel} />
+        <RemainingNuyen runner={runner} />
+        {displayEssence && <RemainingEssence runner={runner} />}
+        <Grid container spacing={3}>
+          <DispatchContext.Provider value={dispatch}>
             <Grid item md={6}>
-              <h2>Purchased {gearLabel}</h2>
-              <GearTable<G>
-                cols={removeGearTableConfig}
-                listOfGear={runner.resources[resourceKey]}
-              />
+              <GearTable<G> cols={addGearTableConfig} listOfGear={listOfGear} />
             </Grid>
-          )}
-        </DispatchContext.Provider>
-      </Grid>
-    </>
-  ) : (
-    <CircularProgress />
-  )
+            {runner.resources?.[resourceKey] && (
+              <Grid item md={6}>
+                <h2>Purchased {gearLabel}</h2>
+                <GearTable<G>
+                  cols={removeGearTableConfig}
+                  listOfGear={runner.resources[resourceKey]}
+                />
+              </Grid>
+            )}
+          </DispatchContext.Provider>
+        </Grid>
+      </>
+    : <CircularProgress />
 }

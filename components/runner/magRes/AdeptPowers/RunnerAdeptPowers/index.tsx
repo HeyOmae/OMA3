@@ -53,7 +53,7 @@ export const RunnerAdeptPowers: FC<Props> = ({ powers, dispatch }) => {
                 </TableCell>
                 <TableCell>{name}</TableCell>
                 <TableCell>
-                  {levels ? (
+                  {levels ?
                     <Slider
                       defaultValue={level}
                       getAriaValueText={(value) => value.toString()}
@@ -77,9 +77,7 @@ export const RunnerAdeptPowers: FC<Props> = ({ powers, dispatch }) => {
                         })
                       }
                     />
-                  ) : (
-                    "N/A"
-                  )}
+                  : "N/A"}
                 </TableCell>
                 <TableCell>{cost}</TableCell>
                 <TableCell>{activation}</TableCell>
