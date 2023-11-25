@@ -1,4 +1,4 @@
-import { render, fireEvent, userEvent } from "@/test/testUtils"
+import { render, screen, userEvent } from "@/test/testUtils"
 import powerData from "@/data/adeptPowers.json"
 import { ChoiceSelect } from "./index"
 import { ChoiceContext } from "../../Row/ChoiceRatingRow"
@@ -9,7 +9,8 @@ describe("ChoiceSelect", () => {
   const setup = ({
     choices,
     selectedChoiceIndex = 0,
-  }: Partial<SelectChoiceContext> = {}) =>
+  }: Partial<SelectChoiceContext> = {}) => {
+    const user = userEvent.setup()
     render(
       <ChoiceContext.Provider
         value={{
@@ -21,38 +22,43 @@ describe("ChoiceSelect", () => {
         <ChoiceSelect />
       </ChoiceContext.Provider>,
     )
-  it("display adept powers", () => {
-    const { getByText, getByRole, getAllByText } = setup()
+    return user
+  }
+  it("display adept powers", async () => {
+    const user = setup()
 
-    expect(getByText(powerData[0].name)).toBeInTheDocument()
+    expect(screen.getByText(powerData[0].name)).toBeInTheDocument()
 
-    fireEvent.mouseDown(getByRole("button"))
+    await user.click(screen.getByRole("combobox"))
+    expect(screen.getByRole("listbox")).toBeInTheDocument()
     powerData.forEach(({ name }) => {
-      expect(getAllByText(name).length).toBeGreaterThanOrEqual(1)
+      expect(screen.getByRole("option", { name })).toBeInTheDocument()
     })
   })
 
   it("should set the index of the chosen power", async () => {
     const selectedPowerIndex = 5
 
-    const { getByText } = setup()
+    const user = setup()
 
-    fireEvent.mouseDown(getByText(powerData[0].name))
+    await user.click(screen.getByRole("combobox"))
 
-    await userEvent.click(getByText(powerData[selectedPowerIndex].name))
+    await userEvent.click(
+      screen.getByRole("option", { name: powerData[selectedPowerIndex].name }),
+    )
     expect(setChoiceIndex).toHaveBeenCalledWith(selectedPowerIndex)
   })
 
-  it("should be able to take an empty array for choices", () => {
-    const { getByRole, queryByRole } = setup({
+  it("should be able to take an empty array for choices", async () => {
+    const user = setup({
       choices: [],
       selectedChoiceIndex: "",
     })
 
-    expect(getByRole("button")).toBeInTheDocument()
+    expect(screen.getByRole("combobox")).toBeInTheDocument()
 
-    fireEvent.mouseDown(getByRole("button"))
+    await user.click(screen.getByRole("combobox"))
 
-    expect(queryByRole("option")).not.toBeInTheDocument()
+    expect(screen.queryByRole("option")).not.toBeInTheDocument()
   })
 })
