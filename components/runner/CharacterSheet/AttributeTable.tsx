@@ -1,34 +1,32 @@
-import { Runner } from "@/types/runner"
 import { FC, useMemo } from "react"
-import { attributes } from "@/data/attributes"
+import { attributes as attributeData } from "@/data/attributes"
+import { useRunnerEssence } from "@/hooks/useRunnerEssence"
+import { CharSheetTableProps } from "."
+import { InitiativeTable } from "./InitiativeTable"
 
-interface Props {
-  runner: Runner
+const initAttibutes = {
+  bod: 0,
+  agi: 0,
+  rea: 0,
+  str: 0,
+  wil: 0,
+  log: 0,
+  int: 0,
+  cha: 0,
 }
 
-const initTableData = { head: [], body: [] }
-export const AttributeTable: FC<Props> = ({ runner }) => {
-  const { head, body } = useMemo(
+export const AttributeTable: FC<CharSheetTableProps> = ({ runner }) => {
+  const attributes = useMemo(
     () =>
-      Object.entries(attributes).reduce((acc, [label, key]) => {
+      Object.entries(attributeData).reduce((acc, [label, key]) => {
         const { adjustment, karma = 0, points } = runner.attributes[key]
-        return {
-          head: [
-            ...acc.head,
-            <th key={label} id={label}>
-              {label}
-            </th>,
-          ],
-          body: [
-            ...acc.body,
-            <td key={label} aria-labelledby={label}>
-              {adjustment + karma + points + 1}
-            </td>,
-          ],
-        }
-      }, initTableData),
+        acc[label] = adjustment + karma + points + 1
+        return acc
+      }, initAttibutes),
     [runner.attributes],
   )
+
+  const essence = useRunnerEssence(runner)
 
   return (
     <section>
@@ -36,22 +34,33 @@ export const AttributeTable: FC<Props> = ({ runner }) => {
       <table aria-labelledby="attribute-table">
         <thead>
           <tr>
-            {head}
-            <td id="edg">edg</td>
+            {Object.keys(attributeData).map((att) => (
+              <th id={att} key={att}>
+                {att}
+              </th>
+            ))}
+            <th id="edg">edg</th>
+            <th id="ess">ess</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            {body}
+            {Object.entries(attributes).map(([att, value]) => (
+              <td aria-labelledby={att} key={att}>
+                {value}
+              </td>
+            ))}
             <td aria-labelledby="edg">
               {Object.values(runner.attributes.Edge).reduce(
                 (acc, val) => acc + val,
                 1,
               )}
             </td>
+            <td aria-labelledby="ess">{essence}</td>
           </tr>
         </tbody>
       </table>
+      <InitiativeTable runner={runner} attributes={attributes} />
     </section>
   )
 }
