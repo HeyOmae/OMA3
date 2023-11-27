@@ -31,6 +31,6 @@ describe("Character Sheet", () => {
 
     expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
 
-    expect(screen.getByLabelText("Phy Init")).toHaveTextContent("7 + 1d6")
+    expect(screen.getByLabelText("Phy Init")).toHaveTextContent("7 + 3d6")
   })
 })
