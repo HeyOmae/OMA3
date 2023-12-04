@@ -47,7 +47,7 @@
     "babel-jest": "^29.6.4",
     "eslint": "^8.54.0",
     "eslint-config-next": "^14.0.3",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.6.0",
