@@ -26,19 +26,28 @@ describe("Character Sheet", () => {
     expect(screen.queryByLabelText("res")).not.toBeInTheDocument()
   })
 
-  test("initative from wired reflexes", async () => {
-    setup()
+  describe("physical initative", () => {
+    test("without ware", async () => {
+      setup("7")
 
-    expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
 
-    expect(screen.getByLabelText("Phy Init")).toHaveTextContent("7 + 3d6")
-  })
+      expect(screen.getByLabelText("Phy Init")).toHaveTextContent("4 + 1d6")
+    })
+    test("from Wired Reflexes", async () => {
+      setup()
 
-  test("initative from Synaptic Booster", async () => {
-    setup("13")
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
 
-    expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+      expect(screen.getByLabelText("Phy Init")).toHaveTextContent("7 + 3d6")
+    })
 
-    expect(screen.getByLabelText("Phy Init")).toHaveTextContent("2 + 4d6")
+    test("from Synaptic Booster", async () => {
+      setup("13")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Phy Init")).toHaveTextContent("2 + 4d6")
+    })
   })
 })

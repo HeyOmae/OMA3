@@ -14,7 +14,7 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
       /Synaptic Booster/.test(name),
     )
     const initiativeBoosterWare = wiredReflex || synapticBooster
-    return Array.isArray(initiativeBoosterWare.modifications.attrmod) ?
+    return Array.isArray(initiativeBoosterWare?.modifications.attrmod) ?
         initiativeBoosterWare.modifications.attrmod.find(
           ({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL",
         ).value * (initiativeBoosterWare.currentRating ?? 1)
