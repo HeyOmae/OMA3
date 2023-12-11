@@ -1678,6 +1678,36 @@ export const mockedRunners: Runner[] = [
         type: "METAMAGIC",
       },
     ],
+    resources: {
+      bioware: [
+        {
+          modifications: {
+            attrmod: [
+              {
+                attribute: "REACTION",
+                value: 1,
+              },
+              {
+                attribute: "INITIATIVE DICE PHYSICAL",
+                value: 1,
+              },
+            ],
+          },
+          useAs: {
+            type: "BIOWARE",
+            subtype: "BIOWARE CULTURED",
+            essence: "0.5",
+          },
+          name: "Synaptic Booster",
+          availability: "5L",
+          cost: 95000,
+          maxRating: 3,
+          rating: true,
+          rateMultiplier: "essence cost modifier",
+          currentRating: 3,
+        },
+      ],
+    },
   },
 ]
 
