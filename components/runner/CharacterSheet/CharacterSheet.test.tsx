@@ -1,8 +1,8 @@
 import { renderWithTestRouter, screen, setupIndexedDB } from "@/test/testUtils"
 import CharSheet from "./index"
 
-const setup = () => {
-  renderWithTestRouter(<CharSheet />, { query: { id: "10" } })
+const setup = (id = "10") => {
+  renderWithTestRouter(<CharSheet />, { query: { id } })
 }
 
 describe("Character Sheet", () => {
@@ -26,11 +26,19 @@ describe("Character Sheet", () => {
     expect(screen.queryByLabelText("res")).not.toBeInTheDocument()
   })
 
-  test("initative", async () => {
+  test("initative from wired reflexes", async () => {
     setup()
 
     expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
 
     expect(screen.getByLabelText("Phy Init")).toHaveTextContent("7 + 3d6")
+  })
+
+  test("initative from Synaptic Booster", async () => {
+    setup("13")
+
+    expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+    expect(screen.getByLabelText("Phy Init")).toHaveTextContent("2 + 4d6")
   })
 })

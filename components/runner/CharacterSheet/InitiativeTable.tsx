@@ -7,15 +7,19 @@ interface Props extends CharSheetTableProps {
 
 export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
   const physicalInitDice = useMemo(() => {
-    const wiredReflex = runner.resources.cyberware.find(({ name }) =>
+    const wiredReflex = runner.resources.cyberware?.find(({ name }) =>
       /Wired Reflexes/.test(name),
     )
-    return Array.isArray(wiredReflex.modifications.attrmod) ?
-        wiredReflex.modifications.attrmod.find(
+    const synapticBooster = runner.resources.bioware?.find(({ name }) =>
+      /Synaptic Booster/.test(name),
+    )
+    const initiativeBoosterWare = wiredReflex || synapticBooster
+    return Array.isArray(initiativeBoosterWare.modifications.attrmod) ?
+        initiativeBoosterWare.modifications.attrmod.find(
           ({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL",
-        ).value
+        ).value * (initiativeBoosterWare.currentRating ?? 1)
       : 0
-  }, [runner.resources.cyberware])
+  }, [runner.resources.bioware, runner.resources.cyberware])
   return (
     <section>
       <h2 id="initiative-table">Initiative</h2>
