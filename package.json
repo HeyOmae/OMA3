@@ -61,6 +61,14 @@
     "lint-staged": "^15.2.0",
     "msw": "^2.0.10",
     "prettier": "^3.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "msw": {
+      "typescript": "$typescript"
+    },
+    "eslint-config-next": {
+      "typescript": "$typescript"
+    }
   }
 }
