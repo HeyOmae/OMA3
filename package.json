@@ -25,7 +25,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.1",
-    "@mui/material": "^5.15.0",
+    "@mui/material": "^5.15.1",
     "@next/bundle-analyzer": "^14.0.4",
     "next": "^14.0.4",
     "next-pwa": "^5.6.0",
