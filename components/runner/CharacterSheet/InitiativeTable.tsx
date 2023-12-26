@@ -1,5 +1,6 @@
 import { FC, useMemo } from "react"
 import { CharSheetTableProps } from "."
+import { AttackRatingModifier } from "@/types/Resources"
 
 interface Props extends CharSheetTableProps {
   attributes: Record<string, number>
@@ -7,19 +8,26 @@ interface Props extends CharSheetTableProps {
 
 export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
   const physicalInitDice = useMemo(() => {
-    const wiredReflex = runner.resources.cyberware?.find(({ name }) =>
+    const adeptPower = runner.powers?.find(
+      ({ name }) => name === "Improved Reflexes",
+    )
+    if (adeptPower) {
+      return adeptPower.level
+    }
+    const wiredReflex = runner.resources?.cyberware?.find(({ name }) =>
       /Wired Reflexes/.test(name),
     )
-    const synapticBooster = runner.resources.bioware?.find(({ name }) =>
+    const synapticBooster = runner.resources?.bioware?.find(({ name }) =>
       /Synaptic Booster/.test(name),
     )
     const initiativeBoosterWare = wiredReflex || synapticBooster
     return Array.isArray(initiativeBoosterWare?.modifications.attrmod) ?
-        initiativeBoosterWare.modifications.attrmod.find(
-          ({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL",
-        ).value * (initiativeBoosterWare.currentRating ?? 1)
+        findInitBonusDices(
+          initiativeBoosterWare.modifications.attrmod,
+          initiativeBoosterWare.currentRating,
+        )
       : 0
-  }, [runner.resources.bioware, runner.resources.cyberware])
+  }, [runner.powers, runner.resources?.bioware, runner.resources?.cyberware])
   return (
     <section>
       <h2 id="initiative-table">Initiative</h2>
@@ -44,5 +52,15 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
         </tbody>
       </table>
     </section>
+  )
+}
+
+function findInitBonusDices(
+  modifiers: AttackRatingModifier[],
+  rating: number = 1,
+) {
+  return (
+    modifiers.find(({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL")
+      .value * rating
   )
 }

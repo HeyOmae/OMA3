@@ -475,6 +475,7 @@ export const mockedRunners: Runner[] = [
             val: 1,
           },
         ],
+        level: 1,
       },
       {
         name: "Attribute Boost",

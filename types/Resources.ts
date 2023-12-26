@@ -45,7 +45,7 @@ interface ItemAttributeMod {
   condindex?: number
 }
 
-interface AttackRatingModifier {
+export interface AttackRatingModifier {
   attribute: string
   attackRating?: attackRating
   value?: number
