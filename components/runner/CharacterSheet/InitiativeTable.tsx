@@ -12,7 +12,7 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
       ({ name }) => name === "Improved Reflexes",
     )
     if (adeptPower) {
-      return adeptPower.level
+      return adeptPower.level ?? 1
     }
     const wiredReflex = runner.resources?.cyberware?.find(({ name }) =>
       /Wired Reflexes/.test(name),
