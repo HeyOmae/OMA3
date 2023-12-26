@@ -49,5 +49,13 @@ describe("Character Sheet", () => {
 
       expect(screen.getByLabelText("Phy Init")).toHaveTextContent("2 + 4d6")
     })
+
+    test("from adept power improved reflex", async () => {
+      setup("8")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Phy Init")).toHaveTextContent("2 + 2d6")
+    })
   })
 })
