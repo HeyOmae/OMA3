@@ -27,7 +27,7 @@ describe("Character Sheet", () => {
   })
 
   describe("physical initative", () => {
-    test("without ware", async () => {
+    test("without ware or adept powers", async () => {
       setup("7")
 
       expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
@@ -56,6 +56,19 @@ describe("Character Sheet", () => {
       expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
 
       expect(screen.getByLabelText("Phy Init")).toHaveTextContent("2 + 2d6")
+    })
+  })
+
+  describe("matrix initiative", () => {
+    test("technomancers should have init based of mental attributes", async () => {
+      setup("9")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent(
+        "2 + 2d6",
+      )
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("2 + 3d6")
     })
   })
 })

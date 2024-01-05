@@ -7,6 +7,48 @@ interface Props extends CharSheetTableProps {
 }
 
 export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
+  return (
+    <section>
+      <h2 id="initiative-table">Initiative</h2>
+      <table aria-labelledby="initiative-table">
+        <thead>
+          <tr>
+            <th id="phy-init">Phy Init</th>
+            <th id="mat-cold-init">Mat Cold Init</th>
+            <th id="mat-hot-init">Mat Hot Init</th>
+            <th>Ast Init</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td aria-labelledby="phy-init">
+              <PhysicalInit runner={runner} attributes={attributes} />
+            </td>
+            <td aria-labelledby="mat-cold-init">
+              {attributes.log + attributes.int} + 2d6
+            </td>
+            <td aria-labelledby="mat-hot-init">
+              {attributes.log + attributes.int} + 3d6
+            </td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  )
+}
+
+function findInitBonusDices(
+  modifiers: AttackRatingModifier[],
+  rating: number = 1,
+) {
+  return (
+    modifiers.find(({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL")
+      .value * rating
+  )
+}
+
+const PhysicalInit = ({ runner, attributes }: Props) => {
   const physicalInitDice = useMemo(() => {
     const adeptPower = runner.powers?.find(
       ({ name }) => name === "Improved Reflexes",
@@ -28,39 +70,5 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
         )
       : 0
   }, [runner.powers, runner.resources?.bioware, runner.resources?.cyberware])
-  return (
-    <section>
-      <h2 id="initiative-table">Initiative</h2>
-      <table aria-labelledby="initiative-table">
-        <thead>
-          <tr>
-            <th id="phy-init">Phy Init</th>
-            <th>Mat Cold Init</th>
-            <th>Mat Hot Init</th>
-            <th>Ast Init</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td aria-labelledby="phy-init">
-              {attributes.rea + attributes.int} + {physicalInitDice + 1}d6
-            </td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  )
-}
-
-function findInitBonusDices(
-  modifiers: AttackRatingModifier[],
-  rating: number = 1,
-) {
-  return (
-    modifiers.find(({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL")
-      .value * rating
-  )
+  return `${attributes.rea + attributes.int} + ${physicalInitDice + 1}d6`
 }
