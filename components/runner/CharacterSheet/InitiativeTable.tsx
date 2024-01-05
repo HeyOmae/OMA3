@@ -34,16 +34,24 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
 }
 
 const MatrixInit: FC<Props> = ({ runner, attributes }) => {
-  return runner.magres === "Technomancer" ?
+  const dni = runner.resources?.cyberware?.some(({ name }) => {
+      return /(Cyber)jack/i.test(name)
+    }),
+    simmod = runner.resources?.cyberdeck?.length > 0,
+    dataprocessing = attributes.log,
+    { int } = attributes,
+    init =
+      runner.magres === "Technomancer" ? dataprocessing + int : `DP + ${int}`
+
+  return runner.magres === "Technomancer" || (dni && simmod) ?
       <>
-        <td aria-labelledby="mat-cold-init">
-          {attributes.log + attributes.int} + 2d6
-        </td>
-        <td aria-labelledby="mat-hot-init">
-          {attributes.log + attributes.int} + 3d6
-        </td>
+        <td aria-labelledby="mat-cold-init">{init} + 2d6</td>
+        <td aria-labelledby="mat-hot-init">{init} + 3d6</td>
       </>
-    : null
+    : <>
+        <td aria-labelledby="mat-cold-init">N/A</td>
+        <td aria-labelledby="mat-hot-init">N/A</td>
+      </>
 }
 
 function findInitBonusDices(
