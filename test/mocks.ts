@@ -217,6 +217,49 @@ export const mockedRunners: Runner[] = [
           cost: 10_000,
         },
       ],
+      cyberdeck: [
+        {
+          availability: "4I",
+          cost: 107000,
+          deviceRating: 4,
+          name: "Renraku Kitsune",
+          subtype: "Cyberdeck",
+          type: "ELECTRONICS",
+          useAs: [
+            {
+              type: "ELECTRONICS",
+              subtype: "Cyberdeck",
+            },
+            {
+              type: "CYBERWARE",
+              subtype: "Cyberdeck",
+              essence: 0.4,
+              cost: 5000,
+            },
+            {
+              type: "ACCESSORY",
+              subtype: "Cyberdeck",
+              capacity: 4,
+              slot: "HEADWARE IMPLANT",
+              cost: 5000,
+            },
+          ],
+          modifications: [
+            {
+              hook: "ELECTRONIC ACCESSORY",
+            },
+            {
+              hook: "SOFTWARE",
+              capacity: 99,
+            },
+          ],
+          matrixAttributes: {
+            attack: 7,
+            sleaze: 6,
+            programs: 8,
+          },
+        },
+      ],
     },
   },
   {

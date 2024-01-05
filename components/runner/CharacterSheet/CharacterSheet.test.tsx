@@ -71,12 +71,25 @@ describe("Character Sheet", () => {
       expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("2 + 3d6")
     })
 
-    test("char that are not TM or without DNI and hot sim do not have Matrix init", async () => {
+    test("runners that are not TM or without DNI and hot sim do not have Matrix init", async () => {
       setup("8")
       expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
 
-      expect(screen.queryByLabelText("Mat Cold Init")).not.toBeInTheDocument()
-      expect(screen.queryByLabelText("Mat Hot Init")).not.toBeInTheDocument()
+      expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent("N/A")
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("N/A")
+    })
+
+    test("runners with a deck and cyberjack get Matrix Init", async () => {
+      setup("4")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent(
+        "DP + 1 + 2d6",
+      )
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent(
+        "DP + 1 + 3d6",
+      )
     })
   })
 })
