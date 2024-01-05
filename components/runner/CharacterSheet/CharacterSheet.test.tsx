@@ -70,5 +70,13 @@ describe("Character Sheet", () => {
       )
       expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("2 + 3d6")
     })
+
+    test("char that are not TM or without DNI and hot sim do not have Matrix init", async () => {
+      setup("8")
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.queryByLabelText("Mat Cold Init")).not.toBeInTheDocument()
+      expect(screen.queryByLabelText("Mat Hot Init")).not.toBeInTheDocument()
+    })
   })
 })

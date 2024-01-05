@@ -24,18 +24,26 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
             <td aria-labelledby="phy-init">
               <PhysicalInit runner={runner} attributes={attributes} />
             </td>
-            <td aria-labelledby="mat-cold-init">
-              {attributes.log + attributes.int} + 2d6
-            </td>
-            <td aria-labelledby="mat-hot-init">
-              {attributes.log + attributes.int} + 3d6
-            </td>
+            <MatrixInit runner={runner} attributes={attributes} />
             <td>1</td>
           </tr>
         </tbody>
       </table>
     </section>
   )
+}
+
+const MatrixInit: FC<Props> = ({ runner, attributes }) => {
+  return runner.magres === "Technomancer" ?
+      <>
+        <td aria-labelledby="mat-cold-init">
+          {attributes.log + attributes.int} + 2d6
+        </td>
+        <td aria-labelledby="mat-hot-init">
+          {attributes.log + attributes.int} + 3d6
+        </td>
+      </>
+    : null
 }
 
 function findInitBonusDices(
@@ -48,7 +56,7 @@ function findInitBonusDices(
   )
 }
 
-const PhysicalInit = ({ runner, attributes }: Props) => {
+const PhysicalInit: FC<Props> = ({ runner, attributes }) => {
   const physicalInitDice = useMemo(() => {
     const adeptPower = runner.powers?.find(
       ({ name }) => name === "Improved Reflexes",
