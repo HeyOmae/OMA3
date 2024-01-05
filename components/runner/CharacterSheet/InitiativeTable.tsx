@@ -33,25 +33,38 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
   )
 }
 
-const MatrixInit: FC<Props> = ({ runner, attributes }) => {
-  const dni = runner.resources?.cyberware?.some(({ name }) => {
-      return /(Cyber)jack/i.test(name)
-    }),
-    simmod = runner.resources?.cyberdeck?.length > 0,
-    dataprocessing = attributes.log,
-    { int } = attributes,
-    init =
-      runner.magres === "Technomancer" ? dataprocessing + int : `DP + ${int}`
+type SimModes = "hot" | "cold" | undefined
 
-  return runner.magres === "Technomancer" || (dni && simmod) ?
-      <>
-        <td aria-labelledby="mat-cold-init">{init} + 2d6</td>
-        <td aria-labelledby="mat-hot-init">{init} + 3d6</td>
-      </>
-    : <>
-        <td aria-labelledby="mat-cold-init">N/A</td>
-        <td aria-labelledby="mat-hot-init">N/A</td>
-      </>
+const MatrixInit: FC<Props> = ({ runner, attributes: { int } }) => {
+  const hasDni =
+      runner.magres === "Technomancer" ||
+      runner.resources?.cyberware?.some(({ name }) =>
+        /(Cyber)jack/i.test(name),
+      ) ||
+      runner.resources?.electronicAccessories?.some(
+        ({ name }) => name === "Trodes",
+      ),
+    simmod: SimModes =
+      runner.magres === "Technomancer" ? "hot"
+      : runner.resources?.cyberdeck?.length > 0 ? "hot"
+      : (
+        runner.resources?.electronicAccessories?.some(({ name }) =>
+          /Sim Module/.test(name),
+        )
+      ) ?
+        "cold"
+      : undefined
+
+  return (
+    <>
+      <td aria-labelledby="mat-cold-init">
+        {(hasDni && simmod && `DP + ${int} + 2d6`) || "N/A"}
+      </td>
+      <td aria-labelledby="mat-hot-init">
+        {(hasDni && simmod === "hot" && `DP + ${int} + 3d6`) || "N/A"}
+      </td>
+    </>
+  )
 }
 
 function findInitBonusDices(
