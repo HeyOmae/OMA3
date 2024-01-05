@@ -66,9 +66,11 @@ describe("Character Sheet", () => {
       expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
 
       expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent(
-        "2 + 2d6",
+        "DP + 1 + 2d6",
       )
-      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("2 + 3d6")
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent(
+        "DP + 1 + 3d6",
+      )
     })
 
     test("runners that are not TM or without DNI and hot sim do not have Matrix init", async () => {
@@ -90,6 +92,17 @@ describe("Character Sheet", () => {
       expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent(
         "DP + 1 + 3d6",
       )
+    })
+
+    test("runners with basic simmod on a commlink and trodes should get cold init", async () => {
+      setup("13")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent(
+        "DP + 1 + 2d6",
+      )
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("N/A")
     })
   })
 })

@@ -1750,6 +1750,90 @@ export const mockedRunners: Runner[] = [
           currentRating: 3,
         },
       ],
+      commlink: [
+        {
+          availability: "2",
+          cost: 2500,
+          deviceRating: 4,
+          name: "Erika Elite",
+          subtype: "Commlink",
+          type: "ELECTRONICS",
+          useAs: [
+            {
+              type: "ELECTRONICS",
+              subtype: "Commlink",
+            },
+            {
+              type: "CYBERWARE",
+              subtype: "Commlink",
+              essence: 0.2,
+              cost: 2000,
+            },
+            {
+              type: "ACCESSORY",
+              subtype: "Commlink",
+              capacity: 2,
+              slot: "HEADWARE IMPLANT",
+              cost: 2000,
+            },
+          ],
+          modifications: [
+            {
+              hook: "ELECTRONIC ACCESSORY",
+            },
+            {
+              hook: "SOFTWARE",
+              capacity: 99,
+            },
+          ],
+          matrixAttributes: {
+            dataProcessing: 2,
+            firewall: 1,
+            programs: 2,
+          },
+        },
+      ],
+      electronicAccessories: [
+        {
+          availability: "2",
+          cost: 100,
+          deviceRating: 3,
+          name: "Sim Module",
+          subtype: "Electronic accessories",
+          type: "ACCESSORY",
+          requires: {
+            slotreq: {
+              slot: "ELECTRONIC ACCESSORY",
+            },
+          },
+        },
+        {
+          availability: "1",
+          cost: 70,
+          deviceRating: 3,
+          name: "Trodes",
+          subtype: "Electronic accessories",
+          type: "ELECTRONICS",
+          useAs: [
+            {
+              type: "ELECTRONICS",
+              subtype: "Electronic accessories",
+              slot: "ELECTRONIC ACCESSORY",
+            },
+            {
+              type: "ACCESSORY",
+              subtype: "Electronic accessories",
+              slot: "HELMET ACCESSORY",
+              capacity: 0,
+            },
+          ],
+          requires: {
+            slotreq: {
+              slot: "ELECTRONIC ACCESSORY",
+            },
+          },
+        },
+      ],
     },
   },
 ]

@@ -41,6 +41,6 @@ describe("<LifeStyle />", () => {
       .closest("tr")
     expect(runnerLifestyleHighRow).toHaveTextContent("11000¥")
 
-    expect(screen.getByRole("definition")).toHaveTextContent("316000¥")
+    expect(screen.getByRole("definition")).toHaveTextContent("209000")
   })
 })
