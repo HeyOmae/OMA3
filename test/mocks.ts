@@ -1311,6 +1311,7 @@ export const mockedRunners: Runner[] = [
       "mag/res": "E",
       resources: "D",
     },
+    attributes: initRunnerAttributes,
     resources: {
       imaging: [
         {
@@ -1662,6 +1663,76 @@ export const mockedRunners: Runner[] = [
             },
           ],
         },
+        {
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER HEADWARE",
+              essence: "0.1",
+            },
+          ],
+          availability: "2",
+          cost: 1000,
+          name: "Datajack",
+        },
+      ],
+      commlink: [
+        {
+          availability: "2",
+          cost: 700,
+          deviceRating: 2,
+          name: "Sony Emporer",
+          subtype: "Commlink",
+          type: "ELECTRONICS",
+          useAs: [
+            {
+              type: "ELECTRONICS",
+              subtype: "Commlink",
+            },
+            {
+              type: "CYBERWARE",
+              subtype: "Commlink",
+              essence: 0.2,
+              cost: 2000,
+            },
+            {
+              type: "ACCESSORY",
+              subtype: "Commlink",
+              capacity: 2,
+              slot: "HEADWARE IMPLANT",
+              cost: 2000,
+            },
+          ],
+          modifications: [
+            {
+              hook: "ELECTRONIC ACCESSORY",
+            },
+            {
+              hook: "SOFTWARE",
+              capacity: 99,
+            },
+          ],
+          matrixAttributes: {
+            dataProcessing: 1,
+            firewall: 1,
+            programs: 1,
+          },
+        },
+      ],
+      electronicAccessories: [
+        {
+          availability: "2I",
+          cost: 250,
+          deviceRating: 3,
+          name: "Sim Module Hot",
+          subtype: "Electronic accessories",
+          type: "ACCESSORY",
+          requires: {
+            slotreq: {
+              slot: "ELECTRONIC ACCESSORY",
+            },
+          },
+        },
       ],
     },
     qualities: {
@@ -1831,6 +1902,104 @@ export const mockedRunners: Runner[] = [
             slotreq: {
               slot: "ELECTRONIC ACCESSORY",
             },
+          },
+        },
+      ],
+    },
+  },
+  {
+    id: 14,
+    name: "Rigger X",
+    description: "Assassine and Rigger",
+    priority: {
+      metatype: "D",
+      skills: "C",
+      attributes: "B",
+      "mag/res": "E",
+      resources: "A",
+    },
+    metatype: "Human",
+    attributes: {
+      ...initRunnerAttributes,
+      Reaction: { points: 5, adjustment: 0 },
+      Logic: { points: 4, adjustment: 0 },
+      Willpower: { points: 2, adjustment: 0 },
+      Intuition: { points: 2, adjustment: 0 },
+      Edge: { points: 0, adjustment: 3 },
+    },
+    magres: "Mundane",
+    resources: {
+      cyberware: [
+        {
+          useAs: [
+            {
+              type: "CYBERWARE",
+              subtype: "CYBER HEADWARE",
+              essence: "1.0",
+            },
+          ],
+          modifications: {
+            edgemod: [
+              {
+                type: "BONUS",
+                skill: "perception",
+              },
+              {
+                type: "BONUS",
+                skill: "piloting",
+              },
+              {
+                type: "BONUS",
+                skill: "stealth",
+              },
+              {
+                type: "BONUS",
+                skill: "cracking",
+              },
+              {
+                type: "BONUS",
+                skill: "engineering",
+              },
+            ],
+          },
+          availability: "4L",
+          cost: 30000,
+          name: "Control Rig",
+          maxRating: 3,
+          rating: true,
+          rateMultiplier: "essence cost",
+          currentRating: 2,
+        },
+      ],
+      riggerConsole: [
+        {
+          availability: "5L",
+          cost: 34000,
+          deviceRating: 4,
+          name: "Maersk Spider",
+          subtype: "Rigger console",
+          type: "ELECTRONICS",
+          modifications: [
+            {
+              hook: "ELECTRONIC ACCESSORY",
+            },
+            {
+              hook: "SOFTWARE",
+              capacity: 99,
+            },
+            {
+              hook: "SOFTWARE RIGGER",
+              capacity: 99,
+            },
+            {
+              hook: "SOFTWARE DRONE",
+              capacity: 99,
+            },
+          ],
+          matrixAttributes: {
+            dataProcessing: 4,
+            firewall: 5,
+            programs: 4,
           },
         },
       ],

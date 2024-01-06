@@ -104,5 +104,31 @@ describe("Character Sheet", () => {
       )
       expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("N/A")
     })
+
+    test("runners that are riggers get hot and cold init", async () => {
+      setup("14")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent(
+        "DP + 3 + 2d6",
+      )
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent(
+        "DP + 3 + 3d6",
+      )
+    })
+
+    test("runners with hot sim mod and data jack get cold and hot init", async () => {
+      setup("11")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent(
+        "DP + 1 + 2d6",
+      )
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent(
+        "DP + 1 + 3d6",
+      )
+    })
   })
 })
