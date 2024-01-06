@@ -16,7 +16,7 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
             <th id="phy-init">Phy Init</th>
             <th id="mat-cold-init">Mat Cold Init</th>
             <th id="mat-hot-init">Mat Hot Init</th>
-            <th>Ast Init</th>
+            <th id="ast-init">Ast Init</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +25,9 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
               <PhysicalInit runner={runner} attributes={attributes} />
             </td>
             <MatrixInit runner={runner} attributes={attributes} />
-            <td>1</td>
+            <td aria-labelledby="ast-init">
+              {attributes.log + attributes.int} + 2d6
+            </td>
           </tr>
         </tbody>
       </table>
