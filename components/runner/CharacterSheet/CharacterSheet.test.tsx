@@ -131,4 +131,12 @@ describe("Character Sheet", () => {
       )
     })
   })
+
+  test("Astral initiative", async () => {
+    setup("14")
+
+    expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+    expect(screen.getByLabelText("Ast Init")).toHaveTextContent("8 + 2d6")
+  })
 })
