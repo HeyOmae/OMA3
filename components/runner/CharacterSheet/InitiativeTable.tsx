@@ -35,25 +35,32 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
 
 type SimModes = "hot" | "cold" | undefined
 
+const simModuleModes = {
+  "Sim Module": "cold",
+  "Sim Module Hot": "hot",
+}
+
 const MatrixInit: FC<Props> = ({ runner, attributes: { int } }) => {
   const hasDni =
       runner.magres === "Technomancer" ||
       runner.resources?.cyberware?.some(({ name }) =>
-        /(Cyber)jack/i.test(name),
+        /(Cyber|Data)jack|Control\sRig/i.test(name),
       ) ||
       runner.resources?.electronicAccessories?.some(
         ({ name }) => name === "Trodes",
       ),
     simmod: SimModes =
       runner.magres === "Technomancer" ? "hot"
-      : runner.resources?.cyberdeck?.length > 0 ? "hot"
       : (
-        runner.resources?.electronicAccessories?.some(({ name }) =>
-          /Sim Module/.test(name),
-        )
+        (runner.resources?.cyberdeck?.length ||
+          runner.resources?.riggerConsole?.length) > 0
       ) ?
-        "cold"
-      : undefined
+        "hot"
+      : simModuleModes[
+          runner.resources?.electronicAccessories?.find(({ name }) =>
+            /Sim Module/.test(name),
+          ).name
+        ]
 
   return (
     <>

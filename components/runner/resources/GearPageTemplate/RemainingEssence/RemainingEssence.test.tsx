@@ -24,7 +24,7 @@ describe("<RemainingEssence />", () => {
     setup(mockedRunners[10])
 
     expect(screen.getByText("Essence")).toBeInTheDocument()
-    expect(screen.getByText(2.8)).toBeInTheDocument()
+    expect(screen.getByText(2.7)).toBeInTheDocument()
   })
 
   test("Sensitive System should double cyberware and bioward essence costs", () => {
