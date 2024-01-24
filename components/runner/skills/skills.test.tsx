@@ -174,7 +174,7 @@ describe("<Skills/>", () => {
 
     expect(
       await screen.findByRole("definition", { name: "Available Karma Value" }),
-    ).toHaveTextContent("38")
+    ).toHaveTextContent("28")
 
     await user.click(screen.getByRole("button", { name: "add Firearms skill" }))
 

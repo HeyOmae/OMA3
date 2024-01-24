@@ -8,3 +8,14 @@ export const attributes = {
   int: "Intuition",
   cha: "Charisma",
 }
+
+export const attributeMap = {
+  Body: "bod",
+  Agility: "agi",
+  Reaction: "rea",
+  Strength: "str",
+  Willpower: "wil",
+  Logic: "log",
+  Intuition: "int",
+  Charisma: "cha",
+}

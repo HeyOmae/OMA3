@@ -2,7 +2,7 @@ import { FC, useMemo } from "react"
 import { CharSheetTableProps } from "."
 import { AttackRatingModifier } from "@/types/Resources"
 
-interface Props extends CharSheetTableProps {
+export interface Props extends CharSheetTableProps {
   attributes: Record<string, number>
 }
 
