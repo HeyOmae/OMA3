@@ -1299,6 +1299,22 @@ export const mockedRunners: Runner[] = [
         },
       ],
     },
+    skills: {
+      Firearms: {
+        attribute: { primary: "Agility" },
+        rating: 6,
+        specialization: "Pistols",
+        expertise: "Automatics",
+      },
+      Stealth: {
+        attribute: { primary: "Agility" },
+        rating: 5,
+      },
+      Perception: {
+        attribute: { primary: "Intuition", secondary: "Logic" },
+        rating: 3,
+      },
+    },
   },
   {
     id: 11,

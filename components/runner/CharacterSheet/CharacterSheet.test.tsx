@@ -139,4 +139,37 @@ describe("Character Sheet", () => {
 
     expect(screen.getByLabelText("Ast Init")).toHaveTextContent("8 + 2d6")
   })
+
+  test("render skills and dicepools", async () => {
+    setup()
+
+    await screen.findAllByRole("heading", { name: "Skills" })
+
+    expect(screen.getByText("Firearms")).toBeInTheDocument()
+    expect(screen.getByLabelText("Firearms-rating")).toHaveTextContent("6")
+    expect(screen.getByLabelText("Firearms-att")).toHaveTextContent("Agility")
+    expect(screen.getByLabelText("Firearms-dp")).toHaveTextContent("12")
+    expect(screen.getByLabelText("Firearms-spec")).toHaveTextContent(
+      "Pistols (14)",
+    )
+    expect(screen.getByLabelText("Firearms-exp")).toHaveTextContent(
+      "Automatics (15)",
+    )
+
+    expect(screen.getByText("Stealth")).toBeInTheDocument()
+    expect(screen.getByLabelText("Stealth-rating")).toHaveTextContent("5")
+    expect(screen.getByLabelText("Stealth-att")).toHaveTextContent("Agility")
+    expect(screen.getByLabelText("Stealth-dp")).toHaveTextContent("11")
+    expect(screen.getByLabelText("Stealth-spec")).toHaveTextContent("N/A")
+    expect(screen.getByLabelText("Stealth-exp")).toHaveTextContent("N/A")
+
+    expect(screen.getByText("Perception")).toBeInTheDocument()
+    expect(screen.getByLabelText("Perception-rating")).toHaveTextContent("3")
+    expect(screen.getByLabelText("Perception-att")).toHaveTextContent(
+      "Intuition",
+    )
+    expect(screen.getByLabelText("Perception-dp")).toHaveTextContent("5")
+    expect(screen.getByLabelText("Perception-spec")).toHaveTextContent("N/A")
+    expect(screen.getByLabelText("Perception-exp")).toHaveTextContent("N/A")
+  })
 })

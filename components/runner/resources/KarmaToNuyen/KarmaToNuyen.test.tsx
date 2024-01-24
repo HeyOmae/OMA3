@@ -21,7 +21,7 @@ describe("<KarmaToNuyen/>", () => {
 
     expect(
       await screen.findByRole("definition", { name: "Available Karma Value" }),
-    ).toHaveTextContent("38")
+    ).toHaveTextContent("28")
     expect(
       screen.getByRole("definition", { name: "Nuyen Value" }),
     ).toHaveTextContent(`${caymansCurrentlySpentNuyen}¥/275000¥`)
@@ -39,7 +39,7 @@ describe("<KarmaToNuyen/>", () => {
     expect(screen.getByLabelText("Karma to Nuyen")).toHaveValue(1)
     expect(
       await screen.findByRole("definition", { name: "Available Karma Value" }),
-    ).toHaveTextContent("37")
+    ).toHaveTextContent("27")
     expect(
       screen.getByRole("definition", { name: "Nuyen Value" }),
     ).toHaveTextContent(`${caymansCurrentlySpentNuyen + 2000}¥/277000¥`)

@@ -36,5 +36,5 @@ test("qualities with levels should multiple karma costs", () => {
 
   const karmaEl = screen.getByRole("term", { name: "Available Karma" })
   expect(karmaEl).toHaveTextContent("Karma")
-  expect(karmaEl.closest("dl")).toHaveTextContent("38")
+  expect(karmaEl.closest("dl")).toHaveTextContent("28")
 })
