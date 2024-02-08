@@ -79,7 +79,7 @@ describe("<KarmaToNuyen/>", () => {
     ).toHaveTextContent("40")
     expect(
       screen.getByRole("definition", { name: "Nuyen Value" }),
-    ).toHaveTextContent("5750¥/8000¥")
+    ).toHaveTextContent("5625¥/8000¥")
 
     await user.click(
       screen.getByRole("button", { name: "Decrement Karma to Nuyen" }),
@@ -91,6 +91,6 @@ describe("<KarmaToNuyen/>", () => {
     ).toHaveTextContent("41")
     expect(
       screen.getByRole("definition", { name: "Nuyen Value" }),
-    ).toHaveTextContent("3750¥/6000¥")
+    ).toHaveTextContent("3625¥/6000¥")
   })
 })

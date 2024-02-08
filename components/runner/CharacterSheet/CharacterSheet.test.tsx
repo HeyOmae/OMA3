@@ -130,6 +130,15 @@ describe("Character Sheet", () => {
         "DP + 1 + 3d6",
       )
     })
+
+    test("runner with electronic accessory and no sim mod do not get matrix init", async () => {
+      setup("7")
+
+      expect(await screen.findByLabelText("Initiative")).toBeInTheDocument()
+
+      expect(screen.getByLabelText("Mat Cold Init")).toHaveTextContent("N/A")
+      expect(screen.getByLabelText("Mat Hot Init")).toHaveTextContent("N/A")
+    })
   })
 
   test("Astral initiative", async () => {

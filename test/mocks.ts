@@ -462,6 +462,64 @@ export const mockedRunners: Runner[] = [
           currentRating: 6,
         },
       ],
+      commlink: [
+        {
+          availability: "2",
+          cost: 100,
+          deviceRating: 1,
+          name: "Meta Link",
+          subtype: "Commlink",
+          type: "ELECTRONICS",
+          useAs: [
+            {
+              type: "ELECTRONICS",
+              subtype: "Commlink",
+            },
+            {
+              type: "CYBERWARE",
+              subtype: "Commlink",
+              essence: 0.2,
+              cost: 2000,
+            },
+            {
+              type: "ACCESSORY",
+              subtype: "Commlink",
+              capacity: 2,
+              slot: "HEADWARE IMPLANT",
+              cost: 2000,
+            },
+          ],
+          modifications: [
+            {
+              hook: "ELECTRONIC ACCESSORY",
+            },
+            {
+              hook: "SOFTWARE",
+              capacity: 99,
+            },
+          ],
+          matrixAttributes: {
+            dataProcessing: 1,
+            firewall: 0,
+            programs: 0,
+          },
+        },
+      ],
+      electronicAccessories: [
+        {
+          availability: "1",
+          cost: 25,
+          deviceRating: 3,
+          name: "Printer",
+          subtype: "Electronic accessories",
+          type: "ELECTRONICS",
+          requires: {
+            slotreq: {
+              slot: "ELECTRONIC ACCESSORY",
+            },
+          },
+        },
+      ],
     },
     initiation: [
       {

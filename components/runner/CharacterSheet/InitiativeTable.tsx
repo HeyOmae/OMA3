@@ -61,7 +61,7 @@ const MatrixInit: FC<Props> = ({ runner, attributes: { int } }) => {
       : simModuleModes[
           runner.resources?.electronicAccessories?.find(({ name }) =>
             /Sim Module/.test(name),
-          ).name
+          )?.name
         ]
 
   return (
