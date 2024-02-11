@@ -2500,6 +2500,97 @@ const cyberwareAll: GearCyberware[] = [
     cost: 5000,
     name: "Spurs Retractable Augment",
   },
+
+  {
+    useAs: [
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EARWARE",
+        essence: "0.1",
+      },
+    ],
+    modifications: {
+      itemhookmod: {
+        capacity: 1,
+        hook: "CYBEREAR_IMPLANT",
+      },
+    },
+    availability: "2",
+    cost: 1000,
+    name: "Cyberears 1",
+  },
+  {
+    useAs: [
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EARWARE",
+        essence: "0.2",
+      },
+    ],
+    modifications: {
+      itemhookmod: {
+        capacity: 4,
+        hook: "CYBEREAR_IMPLANT",
+      },
+    },
+    availability: "2",
+    cost: 3000,
+    name: "Cyberears 2",
+  },
+  {
+    modifications: {
+      itemhookmod: {
+        capacity: 8,
+        hook: "CYBEREAR_IMPLANT",
+      },
+    },
+    useAs: [
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EARWARE",
+        essence: "0.3",
+      },
+    ],
+    availability: "3",
+    cost: 4500,
+    name: "Cyberears 3",
+  },
+  {
+    modifications: {
+      itemhookmod: {
+        capacity: 2,
+        hook: "CYBEREAR_IMPLANT",
+      },
+    },
+    useAs: [
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EARWARE",
+        essence: "0.4",
+      },
+    ],
+    availability: "3",
+    cost: 7500,
+    name: "Cyberears 4",
+  },
+  {
+    modifications: {
+      itemhookmod: {
+        capacity: 6,
+        hook: "CYBEREAR_IMPLANT",
+      },
+    },
+    useAs: [
+      {
+        type: "CYBERWARE",
+        subtype: "CYBER_EARWARE",
+        essence: "0.5",
+      },
+    ],
+    availability: "3",
+    cost: 11000,
+    name: "Cyberears 5",
+  },
 ]
 
 export const cyberware = cyberwareAll.filter(({ useAs }) =>
