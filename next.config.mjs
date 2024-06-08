@@ -9,7 +9,7 @@ const withPWA = nextPWA({
 })
 
 const defineNextConfig = {
-  output: "export",
+  // output: "export",
   reactStrictMode: true,
   images: {
     domains: [

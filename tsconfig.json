@@ -21,7 +21,8 @@
       "@/test/*": ["test/*"],
       "@/hooks/*": ["hooks/*"],
       "@/data/*": ["data/*"],
-      "@/types/*": ["types/*"]
+      "@/types/*": ["types/*"],
+      "@/xr/*": ["xr/*"]
     },
     "incremental": true
   },
