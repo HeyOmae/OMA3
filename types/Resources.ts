@@ -208,6 +208,8 @@ export interface GearWithRating extends Gear {
     | "essence cost modifier"
     | "essence cost defenseRating"
     | "cost avail capacity modifier"
+    | "cost avail3"
+    | "cost modifier avail"
   count?: true
 }
 
@@ -218,6 +220,7 @@ interface SkillMod {
   cond?: true
   condIndex?: number
   val?: number
+  modType?: string
 }
 
 interface RelevanceMod {
@@ -409,4 +412,14 @@ export interface GearWeaponFireArms extends GearWeaponMelee {
   }
   weapon: FireArm
   mods?: FirearmMod[]
+}
+
+interface UseAsSoftware extends GearTypes {
+  slot: "SOFTWARE" | "SKILLJACK" | "SOFTWARE RIGGER" | "SOFTWARE DRONE"
+  capacity: number
+}
+
+export interface GearSoftware extends GearWithRating, GearMod<UseAsSoftware> {
+  choice?: "NAME" | "PHYSICAL SKILL" | "WEAPON"
+  multi?: true
 }
