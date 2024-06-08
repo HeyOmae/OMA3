@@ -13,7 +13,7 @@
     "stage-lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test-all": "npm run lint && npm run type-check && npm test -- --coverage",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
