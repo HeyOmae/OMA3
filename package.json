@@ -27,7 +27,7 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.19",
     "@next/bundle-analyzer": "^14.2.4",
-    "next": "^14.2.3",
+    "next": "^14.2.4",
     "next-pwa": "^5.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
