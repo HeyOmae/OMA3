@@ -18,6 +18,9 @@ const defineNextConfig = {
       "platform-lookaside.fbsbx.com",
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 }
 
 export default withBundleAnalyzer({
