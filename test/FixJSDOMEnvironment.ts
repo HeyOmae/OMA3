@@ -16,5 +16,7 @@ export default class FixJSDOMEnvironment extends JSDOMEnvironment {
     this.global.structuredClone = structuredClone
     //for mws
     this.global.TextEncoder = TextEncoder
+    this.global.BroadcastChannel = BroadcastChannel
+    this.global.TransformStream = TransformStream
   }
 }
