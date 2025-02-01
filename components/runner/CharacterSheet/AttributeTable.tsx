@@ -5,7 +5,7 @@ import { CharSheetTableProps } from "."
 import { InitiativeTable } from "./InitiativeTable"
 import { SkillsTable } from "./SkillsTable"
 
-const initAttibutes = {
+const initAttributes = {
   bod: 0,
   agi: 0,
   rea: 0,
@@ -23,7 +23,7 @@ export const AttributeTable: FC<CharSheetTableProps> = ({ runner }) => {
         const { adjustment, karma = 0, points } = runner.attributes[key]
         acc[label] = adjustment + karma + points + 1
         return acc
-      }, initAttibutes),
+      }, initAttributes),
     [runner.attributes],
   )
 
