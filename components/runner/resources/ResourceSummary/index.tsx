@@ -19,6 +19,13 @@ function getResourceSubpath(resourceKey: string): string {
   return ""
 }
 
+// designed to fix resource keys that I didn't map to URI correctly
+// note to self: don't arbitrarily name things.
+const resourceKeyMap = {
+  commlink: "commlinks",
+  riggerConsole: "consoles",
+}
+
 const ResourceSummary: FC = () => {
   const [runner] = useRunnerAccess()
   const { asPath } = useRouter()
@@ -34,7 +41,7 @@ const ResourceSummary: FC = () => {
                   <NextLink
                     href={`${asPath}/${getResourceSubpath(
                       resourceKey,
-                    )}${resourceKey}`}
+                    )}${resourceKeyMap[resourceKey] ?? resourceKey}`}
                   >
                     {resourceKey}
                   </NextLink>
