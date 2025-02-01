@@ -45,7 +45,7 @@ export const Home: FC = () => {
         This is a web app for generating Shadowrun 6th Characters. You&apos;ll
         need the core rule book to make sense out of any of this. You can
         purchase a copy{" "}
-        <a href="https://www.drivethrurpg.com/product/286850/Shadowrun-Sixth-World-Core-Rulebook">
+        <a href="https://www.drivethrurpg.com/en/product/460386/shadowrun-sixth-world-core-rulebook-city-edition-berlin">
           here
         </a>
         .
