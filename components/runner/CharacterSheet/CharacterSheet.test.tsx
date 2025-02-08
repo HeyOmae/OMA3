@@ -181,4 +181,17 @@ describe("Character Sheet", () => {
     expect(screen.getByLabelText("Perception-spec")).toHaveTextContent("N/A")
     expect(screen.getByLabelText("Perception-exp")).toHaveTextContent("N/A")
   })
+
+  describe("Resources", () => {
+    test("render weapons", async () => {
+      setup()
+
+      expect(
+        await screen.findByRole("heading", { name: "Gear" }),
+      ).toBeInTheDocument()
+
+      expect(screen.getByRole("heading", { name: "melee" })).toBeInTheDocument()
+      expect(screen.getByText("Katana")).toBeInTheDocument()
+    })
+  })
 })
