@@ -26,7 +26,7 @@ describe("Character Sheet", () => {
     expect(screen.queryByLabelText("res")).not.toBeInTheDocument()
   })
 
-  describe("physical initative", () => {
+  describe("physical initiative", () => {
     test("without ware or adept powers", async () => {
       setup("7")
 
