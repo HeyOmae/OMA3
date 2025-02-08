@@ -92,7 +92,7 @@ const QualitySelectNameRow: FC<QualityRowProps> = ({
   quality,
   onAddQuality,
 }) => {
-  const nameRef = useRef<HTMLInputElement>()
+  const nameRef = useRef<HTMLInputElement>(null)
   return (
     <QualityRow
       quality={quality}

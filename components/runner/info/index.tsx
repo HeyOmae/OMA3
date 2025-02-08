@@ -24,8 +24,8 @@ export const Info = (): JSX.Element => {
     },
     [],
   )
-  const name = useRef<HTMLInputElement>()
-  const description = useRef<HTMLInputElement>()
+  const name = useRef<HTMLInputElement>(null)
+  const description = useRef<HTMLInputElement>(null)
   const [runner, dispatch] = useRunnerAccess<string>(reducer)
 
   return runner ?

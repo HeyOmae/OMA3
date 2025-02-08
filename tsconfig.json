@@ -24,7 +24,8 @@
       "@/types/*": ["types/*"],
       "@/xr/*": ["xr/*"]
     },
-    "incremental": true
+    "incremental": true,
+    "typeRoots": ["node_modules/@types", "./types/global.d.ts"]
   },
   "exclude": ["node_modules", ".next", "out"],
   "include": [
