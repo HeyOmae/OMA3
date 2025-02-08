@@ -42,8 +42,8 @@ export const SkillSection: FC<SkillSectionProps> = ({
   changeRating,
 }) => {
   const skillName = capitalization(skillKey)
-  const skillInputRef = useRef<HTMLInputElement>()
-  const skillFormRef = useRef<HTMLFormElement>()
+  const skillInputRef = useRef<HTMLInputElement>(null)
+  const skillFormRef = useRef<HTMLFormElement>(null)
   return (
     <section>
       <h2>Enter {skillName} Skill</h2>

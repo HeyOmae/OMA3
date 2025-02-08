@@ -31,7 +31,7 @@ interface ModalProps extends Props {
 const Modal: FC<ModalProps> = ({ add, push, open, setOpen }) => {
   const close = () => setOpen(false)
   const [alertMessage, setAlertMessage] = useState("")
-  const runnerJsonInput = useRef<HTMLTextAreaElement>()
+  const runnerJsonInput = useRef<HTMLTextAreaElement>(null)
   return (
     <Dialog fullWidth open={open} onClose={close}>
       <h2>Upload Runner</h2>
