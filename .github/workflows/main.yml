@@ -20,7 +20,8 @@ jobs:
         uses: actions/setup-node@v2.1.2
         with:
           node-version: 20.x
-      - run: npm ci
+      # TODO remove --legacy-peer-deps when all dependencies are updated
+      - run: npm ci --legacy-peer-deps
       - run: npm run test-all
         env:
           CI: true
