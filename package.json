@@ -34,7 +34,7 @@
     "react-indexed-db-hook": "^1.0.14"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.6",
+    "@eslint/compat": "^1.2.7",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.19.0",
     "@next/eslint-plugin-next": "^15.1.7",
