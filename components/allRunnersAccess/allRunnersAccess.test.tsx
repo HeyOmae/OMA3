@@ -1,4 +1,3 @@
-import React from "react"
 import { AllRunnersAccess } from "./index"
 import { render, screen, waitFor } from "@testing-library/react"
 import { initRunner } from "@/types/runner"

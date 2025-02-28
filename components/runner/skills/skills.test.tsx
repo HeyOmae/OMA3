@@ -1,4 +1,3 @@
-import React from "react"
 import Skills from "."
 import {
   render,

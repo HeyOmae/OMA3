@@ -1,6 +1,5 @@
 import { RunnerLayout } from "@/components/layout"
 import dynamic from "next/dynamic"
-import React from "react"
 
 const ImagingMod = dynamic(
   () => import("@/components/runner/resources/electronics/Imaging/ImagingMods"),
