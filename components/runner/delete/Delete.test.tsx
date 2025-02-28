@@ -1,4 +1,3 @@
-import React from "react"
 import { Delete } from "./"
 import {
   render,

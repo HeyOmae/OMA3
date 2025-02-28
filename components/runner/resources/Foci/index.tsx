@@ -1,6 +1,6 @@
 import { foci } from "@/data/focus"
 import { GearFocus } from "@/types/Resources"
-import React, { FC } from "react"
+import { FC } from "react"
 import { GearPageTemplate } from "../GearPageTemplate"
 import {
   gearMagicConfigOptions,
