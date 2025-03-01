@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 20.x
       # TODO remove --legacy-peer-deps when all dependencies are updated
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci
       - run: npm run test-all
         env:
           CI: true
