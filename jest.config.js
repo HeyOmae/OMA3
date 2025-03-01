@@ -8,7 +8,16 @@ module.exports = {
   testPathIgnorePatterns: ["<rootDir>[/\\\\](node_modules|.next)[/\\\\]"],
   transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
   transform: {
-    "^.+\\.(ts|tsx)$": "babel-jest",
+    "^.+\\.(ts|tsx)$": [
+      "babel-jest",
+      {
+        configFile: "./.babelrc",
+        caller: {
+          name: "babel-jest",
+          hasJsxRuntime: true,
+        },
+      },
+    ],
   },
   watchPlugins: [
     "jest-watch-typeahead/filename",
