@@ -9,6 +9,11 @@ export const attributes = {
   cha: "Charisma",
 }
 
+export const technomancerAttributes = {
+  ...attributes,
+  res: "Resonance",
+}
+
 export const attributeMap = {
   Body: "bod",
   Agility: "agi",
@@ -18,4 +23,5 @@ export const attributeMap = {
   Logic: "log",
   Intuition: "int",
   Charisma: "cha",
+  Resonance: "res",
 }

@@ -27,7 +27,12 @@ export const SkillsTable: FC<Props> = ({ runner, attributes }) => {
               const currentRating = rating + karmaRating,
                 dicepool =
                   currentRating + attributes[attributeMap[attribute.primary]]
-
+              // console.log(
+              //   "dicepool",
+              //   dicepool,
+              //   attributeMap[attribute.primary],
+              //   attributes,
+              // )
               return (
                 <tr key={`skill-${name}`}>
                   <td aria-label={`${name}-name`}>{name}</td>
