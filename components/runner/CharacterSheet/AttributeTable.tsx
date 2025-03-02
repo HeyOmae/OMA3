@@ -1,5 +1,8 @@
 import { FC, useMemo } from "react"
-import { attributes as attributeData } from "@/data/attributes"
+import {
+  attributes as attributeData,
+  technomancerAttributes,
+} from "@/data/attributes"
 import { useRunnerEssence } from "@/hooks/useRunnerEssence"
 import { CharSheetTableProps } from "."
 import { InitiativeTable } from "./InitiativeTable"
@@ -17,17 +20,22 @@ const initAttributes = {
 }
 
 export const AttributeTable: FC<CharSheetTableProps> = ({ runner }) => {
+  const isTechnomancer = runner.magres === "Technomancer"
+
   const attributes = useMemo(
     () =>
-      Object.entries(attributeData).reduce((acc, [label, key]) => {
+      Object.entries(
+        isTechnomancer ? technomancerAttributes : attributeData,
+      ).reduce((acc, [label, key]) => {
         const { adjustment, karma = 0, points } = runner.attributes[key]
         acc[label] = adjustment + karma + points + 1
         return acc
       }, initAttributes),
-    [runner.attributes],
+    [isTechnomancer, runner.attributes],
   )
 
   const essence = useRunnerEssence(runner)
+  const attributeEntries = Object.entries(attributes)
 
   return (
     <>
@@ -36,7 +44,7 @@ export const AttributeTable: FC<CharSheetTableProps> = ({ runner }) => {
         <table aria-labelledby="attribute-table">
           <thead>
             <tr>
-              {Object.keys(attributeData).map((att) => (
+              {attributeEntries.map(([att]) => (
                 <th id={att} key={att}>
                   {att}
                 </th>
@@ -47,7 +55,7 @@ export const AttributeTable: FC<CharSheetTableProps> = ({ runner }) => {
           </thead>
           <tbody>
             <tr>
-              {Object.entries(attributes).map(([att, value]) => (
+              {attributeEntries.map(([att, value]) => (
                 <td aria-labelledby={att} key={att}>
                   {value}
                 </td>

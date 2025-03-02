@@ -8,22 +8,42 @@ const setup = (id = "10") => {
 describe("Character Sheet", () => {
   beforeAll(setupIndexedDB)
 
-  test("display character attributes", async () => {
-    setup()
+  describe("display attributes", () => {
+    test("for a mundane runner", async () => {
+      setup()
 
-    expect(await screen.findByLabelText("Attributes")).toBeInTheDocument()
-    expect(screen.getByLabelText("bod")).toHaveTextContent("1")
-    expect(screen.getByLabelText("agi")).toHaveTextContent("6")
-    expect(screen.getByLabelText("rea")).toHaveTextContent("5")
-    expect(screen.getByLabelText("str")).toHaveTextContent("1")
-    expect(screen.getByLabelText("cha")).toHaveTextContent("1")
-    expect(screen.getByLabelText("wil")).toHaveTextContent("1")
-    expect(screen.getByLabelText("log")).toHaveTextContent("3")
-    expect(screen.getByLabelText("int")).toHaveTextContent("2")
-    expect(screen.getByLabelText("edg")).toHaveTextContent("1")
-    expect(screen.getByLabelText("ess")).toHaveTextContent("2.3")
-    expect(screen.queryByLabelText("mag")).not.toBeInTheDocument()
-    expect(screen.queryByLabelText("res")).not.toBeInTheDocument()
+      expect(await screen.findByLabelText("Attributes")).toBeInTheDocument()
+      expect(screen.getByLabelText("bod")).toHaveTextContent("1")
+      expect(screen.getByLabelText("agi")).toHaveTextContent("6")
+      expect(screen.getByLabelText("rea")).toHaveTextContent("5")
+      expect(screen.getByLabelText("str")).toHaveTextContent("1")
+      expect(screen.getByLabelText("cha")).toHaveTextContent("1")
+      expect(screen.getByLabelText("wil")).toHaveTextContent("1")
+      expect(screen.getByLabelText("log")).toHaveTextContent("3")
+      expect(screen.getByLabelText("int")).toHaveTextContent("2")
+      expect(screen.getByLabelText("edg")).toHaveTextContent("1")
+      expect(screen.getByLabelText("ess")).toHaveTextContent("2.3")
+      expect(screen.queryByLabelText("mag")).not.toBeInTheDocument()
+      expect(screen.queryByLabelText("res")).not.toBeInTheDocument()
+    })
+
+    test("for a technomancer", async () => {
+      setup("9")
+
+      expect(await screen.findByLabelText("Attributes")).toBeInTheDocument()
+      expect(screen.getByLabelText("bod")).toHaveTextContent("1")
+      expect(screen.getByLabelText("agi")).toHaveTextContent("1")
+      expect(screen.getByLabelText("rea")).toHaveTextContent("1")
+      expect(screen.getByLabelText("str")).toHaveTextContent("1")
+      expect(screen.getByLabelText("cha")).toHaveTextContent("1")
+      expect(screen.getByLabelText("wil")).toHaveTextContent("1")
+      expect(screen.getByLabelText("log")).toHaveTextContent("1")
+      expect(screen.getByLabelText("int")).toHaveTextContent("1")
+      expect(screen.getByLabelText("edg")).toHaveTextContent("1")
+      expect(screen.getByLabelText("ess")).toHaveTextContent("6")
+      expect(screen.getByLabelText("res")).toHaveTextContent("1")
+      expect(screen.queryByLabelText("mag")).not.toBeInTheDocument()
+    })
   })
 
   describe("physical initiative", () => {
@@ -149,37 +169,54 @@ describe("Character Sheet", () => {
     expect(screen.getByLabelText("Ast Init")).toHaveTextContent("8 + 2d6")
   })
 
-  test("render skills and dicepools", async () => {
-    setup()
+  describe("skills", () => {
+    test("render skills and dicepools", async () => {
+      setup()
 
-    await screen.findAllByRole("heading", { name: "Skills" })
+      await screen.findAllByRole("heading", { name: "Skills" })
 
-    expect(screen.getByText("Firearms")).toBeInTheDocument()
-    expect(screen.getByLabelText("Firearms-rating")).toHaveTextContent("6")
-    expect(screen.getByLabelText("Firearms-att")).toHaveTextContent("Agility")
-    expect(screen.getByLabelText("Firearms-dp")).toHaveTextContent("12")
-    expect(screen.getByLabelText("Firearms-spec")).toHaveTextContent(
-      "Pistols (14)",
-    )
-    expect(screen.getByLabelText("Firearms-exp")).toHaveTextContent(
-      "Automatics (15)",
-    )
+      expect(screen.getByText("Firearms")).toBeInTheDocument()
+      expect(screen.getByLabelText("Firearms-rating")).toHaveTextContent("6")
+      expect(screen.getByLabelText("Firearms-att")).toHaveTextContent("Agility")
+      expect(screen.getByLabelText("Firearms-dp")).toHaveTextContent("12")
+      expect(screen.getByLabelText("Firearms-spec")).toHaveTextContent(
+        "Pistols (14)",
+      )
+      expect(screen.getByLabelText("Firearms-exp")).toHaveTextContent(
+        "Automatics (15)",
+      )
 
-    expect(screen.getByText("Stealth")).toBeInTheDocument()
-    expect(screen.getByLabelText("Stealth-rating")).toHaveTextContent("5")
-    expect(screen.getByLabelText("Stealth-att")).toHaveTextContent("Agility")
-    expect(screen.getByLabelText("Stealth-dp")).toHaveTextContent("11")
-    expect(screen.getByLabelText("Stealth-spec")).toHaveTextContent("N/A")
-    expect(screen.getByLabelText("Stealth-exp")).toHaveTextContent("N/A")
+      expect(screen.getByText("Stealth")).toBeInTheDocument()
+      expect(screen.getByLabelText("Stealth-rating")).toHaveTextContent("5")
+      expect(screen.getByLabelText("Stealth-att")).toHaveTextContent("Agility")
+      expect(screen.getByLabelText("Stealth-dp")).toHaveTextContent("11")
+      expect(screen.getByLabelText("Stealth-spec")).toHaveTextContent("N/A")
+      expect(screen.getByLabelText("Stealth-exp")).toHaveTextContent("N/A")
 
-    expect(screen.getByText("Perception")).toBeInTheDocument()
-    expect(screen.getByLabelText("Perception-rating")).toHaveTextContent("3")
-    expect(screen.getByLabelText("Perception-att")).toHaveTextContent(
-      "Intuition",
-    )
-    expect(screen.getByLabelText("Perception-dp")).toHaveTextContent("5")
-    expect(screen.getByLabelText("Perception-spec")).toHaveTextContent("N/A")
-    expect(screen.getByLabelText("Perception-exp")).toHaveTextContent("N/A")
+      expect(screen.getByText("Perception")).toBeInTheDocument()
+      expect(screen.getByLabelText("Perception-rating")).toHaveTextContent("3")
+      expect(screen.getByLabelText("Perception-att")).toHaveTextContent(
+        "Intuition",
+      )
+      expect(screen.getByLabelText("Perception-dp")).toHaveTextContent("5")
+      expect(screen.getByLabelText("Perception-spec")).toHaveTextContent("N/A")
+      expect(screen.getByLabelText("Perception-exp")).toHaveTextContent("N/A")
+    })
+
+    test.skip("render resonance skills with resonance att", async () => {
+      setup("9")
+
+      await screen.findAllByRole("heading", { name: "Skills" })
+
+      expect(screen.getByText("Tasking")).toBeInTheDocument()
+      expect(screen.getByLabelText("Tasking-rating")).toHaveTextContent("3")
+      expect(screen.getByLabelText("Tasking-att")).toHaveTextContent(
+        "Resonance",
+      )
+      expect(screen.getByLabelText("Tasking-dp")).toHaveTextContent("5")
+      expect(screen.getByLabelText("Tasking-spec")).toHaveTextContent("N/A")
+      expect(screen.getByLabelText("Tasking-exp")).toHaveTextContent("N/A")
+    })
   })
 
   describe("Resources", () => {
