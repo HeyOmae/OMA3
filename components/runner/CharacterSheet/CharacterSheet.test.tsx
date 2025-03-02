@@ -203,7 +203,7 @@ describe("Character Sheet", () => {
       expect(screen.getByLabelText("Perception-exp")).toHaveTextContent("N/A")
     })
 
-    test.skip("render resonance skills with resonance att", async () => {
+    test("render resonance skills with resonance att", async () => {
       setup("9")
 
       await screen.findAllByRole("heading", { name: "Skills" })
@@ -213,7 +213,7 @@ describe("Character Sheet", () => {
       expect(screen.getByLabelText("Tasking-att")).toHaveTextContent(
         "Resonance",
       )
-      expect(screen.getByLabelText("Tasking-dp")).toHaveTextContent("5")
+      expect(screen.getByLabelText("Tasking-dp")).toHaveTextContent("4")
       expect(screen.getByLabelText("Tasking-spec")).toHaveTextContent("N/A")
       expect(screen.getByLabelText("Tasking-exp")).toHaveTextContent("N/A")
     })
