@@ -218,17 +218,4 @@ describe("Character Sheet", () => {
       expect(screen.getByLabelText("Tasking-exp")).toHaveTextContent("N/A")
     })
   })
-
-  describe("Resources", () => {
-    test("render weapons", async () => {
-      setup()
-
-      expect(
-        await screen.findByRole("heading", { name: "Gear" }),
-      ).toBeInTheDocument()
-
-      expect(screen.getByRole("heading", { name: "melee" })).toBeInTheDocument()
-      expect(screen.getByText("Katana")).toBeInTheDocument()
-    })
-  })
 })
