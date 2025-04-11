@@ -36,7 +36,7 @@
   "devDependencies": {
     "@eslint/compat": "^1.2.7",
     "@eslint/eslintrc": "^3.3.0",
-    "@eslint/js": "^9.19.0",
+    "@eslint/js": "^9.24.0",
     "@next/eslint-plugin-next": "^15.2.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
