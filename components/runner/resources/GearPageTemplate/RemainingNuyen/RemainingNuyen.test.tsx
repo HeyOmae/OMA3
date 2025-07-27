@@ -28,11 +28,11 @@ describe("<RemainingNuyen/>", () => {
     ).toHaveTextContent(`${caymansCurrentlySpentNuyen}¥/275000¥`)
   })
 
-  test("in debt raises max nuyen by 5000¥", () => {
+  test("in debt raises max nuyen by 5000¥ for every karmaToNuyen spent", () => {
     setup({ runner: mockedRunners[3] })
 
     expect(
       screen.getByRole("definition", { name: "Nuyen Value" }),
-    ).toHaveTextContent("455000")
+    ).toHaveTextContent("460000")
   })
 })
