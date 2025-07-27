@@ -27,7 +27,7 @@ describe("<KarmaToNuyen/>", () => {
     ).toHaveTextContent(`${caymansCurrentlySpentNuyen}¥/275000¥`)
   })
 
-  test("increment karma to nuyen button should reduce karam by 1 and increae nuyen by 2000", async () => {
+  test("increment karma to nuyen button should reduce karma by 1 and increase nuyen by 2000", async () => {
     const user = setup()
 
     expect(await screen.findByLabelText("Karma to Nuyen")).toHaveValue(0)
@@ -45,7 +45,7 @@ describe("<KarmaToNuyen/>", () => {
     ).toHaveTextContent(`${caymansCurrentlySpentNuyen + 2000}¥/277000¥`)
   })
 
-  test("decrement karam to nuyen button should increase karam by 1 and decrease nuyen by 2000", async () => {
+  test("decrement karma to nuyen button should increase karma by 1 and decrease nuyen by 2000", async () => {
     const user = setup("5")
 
     expect(await screen.findByLabelText("Karma to Nuyen")).toHaveValue(5)

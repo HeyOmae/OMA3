@@ -633,7 +633,7 @@ export const negative: Quality[] = [
       debtInterest: 500,
     },
     name: "In Debt",
-    karma: 1,
+    karma: 0,
     type: "NEGATIVE",
     select: "NAME",
   },

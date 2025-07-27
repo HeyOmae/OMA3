@@ -131,7 +131,7 @@ export const mockedRunners: Runner[] = [
             debtInterest: 500,
           },
           name: "In Debt",
-          karma: 1,
+          karma: 0,
           type: "NEGATIVE",
           select: "NAME",
           selected: "Mafia",
@@ -261,6 +261,7 @@ export const mockedRunners: Runner[] = [
         },
       ],
     },
+    karmaToNuyen: 2,
   },
   {
     id: 5,
