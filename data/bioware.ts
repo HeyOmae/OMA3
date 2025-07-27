@@ -423,7 +423,7 @@ export const bioware: GearBioware[] = [
         },
       ],
     },
-    name: "Toxin Etractor",
+    name: "Toxin Extractor",
     availability: "4",
     cost: 4800,
     maxRating: 6,
