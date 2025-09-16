@@ -6,6 +6,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Combat Axe",
     availability: "4",
     cost: 500,
+    reference: [{ book: "SR5", page: 422 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -31,6 +32,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Combat Knife",
     availability: "2",
     cost: 220,
+    reference: [{ book: "SR5", page: 422 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -48,6 +50,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Survival Knife",
     availability: "2",
     cost: 220,
+    reference: [{ book: "SR5", page: 422 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -107,6 +110,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Katana",
     availability: "3",
     cost: 350,
+    reference: [{ book: "SR5", page: 422 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",

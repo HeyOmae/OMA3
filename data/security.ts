@@ -10,6 +10,7 @@ export const locks: GearTyped[] = [
     rateMultiplier: "cost",
     subtype: "SECURITY",
     type: "ELECTRONICS",
+    reference: [{ book: "SR5", page: 443 }],
   },
   {
     availability: "3",
@@ -20,6 +21,7 @@ export const locks: GearTyped[] = [
     rateMultiplier: "cost",
     subtype: "SECURITY",
     type: "ELECTRONICS",
+    reference: [{ book: "SR5", page: 443 }],
   },
   {
     availability: "1",
@@ -27,6 +29,7 @@ export const locks: GearTyped[] = [
     name: "Keypad",
     subtype: "SECURITY",
     type: "ELECTRONICS",
+    reference: [{ book: "SR5", page: 443 }],
   },
   {
     availability: "1",
@@ -34,6 +37,7 @@ export const locks: GearTyped[] = [
     name: "Card Reader",
     subtype: "SECURITY",
     type: "ELECTRONICS",
+    reference: [{ book: "SR5", page: 443 }],
   },
 ]
 
@@ -45,6 +49,7 @@ export const restraints: GearTyped[] = [
     subtype: "SECURITY",
     type: "ELECTRONICS",
     count: true,
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     availability: "2",
@@ -53,6 +58,7 @@ export const restraints: GearTyped[] = [
     subtype: "SECURITY",
     type: "ELECTRONICS",
     count: true,
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     availability: "1",
@@ -61,6 +67,7 @@ export const restraints: GearTyped[] = [
     subtype: "SECURITY",
     type: "ELECTRONICS",
     count: true,
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     availability: "3",
@@ -69,6 +76,7 @@ export const restraints: GearTyped[] = [
     subtype: "SECURITY",
     type: "ELECTRONICS",
     count: true,
+    reference: [{ book: "SR5", page: 444 }],
   },
 ]
 
@@ -79,6 +87,7 @@ export const bne: GearTyped[] = [
     name: "Autopicker",
     subtype: "BREAKING",
     type: "ELECTRONICS",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     availability: "6I",
@@ -110,6 +119,7 @@ export const bne: GearTyped[] = [
     name: "Lockpick Set",
     subtype: "BREAKING",
     type: "ELECTRONICS",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     availability: "3I",

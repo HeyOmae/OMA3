@@ -11,6 +11,7 @@ export const magicSupplies: GearTyped[] = [
     type: "MAGICAL",
     subtype: "MAGICAL_SUPPLIES",
     count: true,
+    reference: [{ book: "SR5", page: 318 }],
   },
   {
     name: "Reagents per dram",
@@ -19,6 +20,7 @@ export const magicSupplies: GearTyped[] = [
     type: "MAGICAL",
     subtype: "MAGICAL_SUPPLIES",
     count: true,
+    reference: [{ book: "SR5", page: 318 }],
   },
 ]
 
@@ -27,26 +29,31 @@ export const spellFormula: Gear[] = [
     name: "Combat Formula",
     availability: "3L",
     cost: 2000,
+    reference: [{ book: "SR5", page: 319 }],
   },
   {
     name: "Detection Formula",
     availability: "2L",
     cost: 500,
+    reference: [{ book: "SR5", page: 319 }],
   },
   {
     name: "Health Formula",
     availability: "2L",
     cost: 500,
+    reference: [{ book: "SR5", page: 319 }],
   },
   {
     name: "Illusion Formula",
     availability: "3L",
     cost: 1000,
+    reference: [{ book: "SR5", page: 319 }],
   },
   {
     name: "Manipulation Formula",
     availability: "3L",
     cost: 1500,
+    reference: [{ book: "SR5", page: 319 }],
   },
 ]
 
@@ -59,6 +66,7 @@ export const focusFormula: GearTyped[] = [
     subtype: "focus formula",
     rating: true,
     rateMultiplier: "cost avail",
+    reference: [{ book: "SR5", page: 320 }],
   },
   {
     name: "Metamagic focus formula",
@@ -68,6 +76,7 @@ export const focusFormula: GearTyped[] = [
     subtype: "focus formula",
     rating: true,
     rateMultiplier: "cost avail",
+    reference: [{ book: "SR5", page: 320 }],
   },
   {
     name: "Power focus formula",
@@ -77,6 +86,7 @@ export const focusFormula: GearTyped[] = [
     subtype: "focus formula",
     rating: true,
     rateMultiplier: "cost avail",
+    reference: [{ book: "SR5", page: 320 }],
   },
   {
     name: "Qi focus formula",
@@ -86,6 +96,7 @@ export const focusFormula: GearTyped[] = [
     subtype: "focus formula",
     rating: true,
     rateMultiplier: "cost avail",
+    reference: [{ book: "SR5", page: 320 }],
   },
   {
     name: "Spell focus formula",
@@ -95,6 +106,7 @@ export const focusFormula: GearTyped[] = [
     subtype: "focus formula",
     rating: true,
     rateMultiplier: "cost avail",
+    reference: [{ book: "SR5", page: 320 }],
   },
   {
     name: "Spirit focus formula",
@@ -104,6 +116,7 @@ export const focusFormula: GearTyped[] = [
     subtype: "focus formula",
     rating: true,
     rateMultiplier: "cost avail",
+    reference: [{ book: "SR5", page: 320 }],
   },
   {
     name: "Weapon focus formula",
@@ -113,5 +126,6 @@ export const focusFormula: GearTyped[] = [
     subtype: "focus formula",
     rating: true,
     rateMultiplier: "cost avail",
+    reference: [{ book: "SR5", page: 320 }],
   },
 ]
