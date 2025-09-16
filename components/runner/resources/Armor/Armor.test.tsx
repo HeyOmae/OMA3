@@ -25,6 +25,7 @@ describe("<Armor />", () => {
     expect(getTextInContainer(buyHeader, "Cap")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
+    expect(getTextInContainer(buyHeader, "Reference")).toBeInTheDocument()
   })
 
   it("should display purchase buttons of each type of armor", async () => {

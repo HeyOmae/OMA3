@@ -34,6 +34,15 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
     display: (gear) => `${gear.cost}¥`,
     label: "Cost",
   },
+  reference: {
+    display: (gear) => {
+      if (!gear.reference || gear.reference.length === 0) {
+        return "—"
+      }
+      return gear.reference.map((ref) => `${ref.book} p.${ref.page}`).join(", ")
+    },
+    label: "Reference",
+  },
   buy: {
     display: (gear) => <AddResourceButton gear={gear} />,
     label: "Buy",

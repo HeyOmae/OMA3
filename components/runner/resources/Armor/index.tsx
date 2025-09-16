@@ -16,6 +16,7 @@ const baseCols: Columns<GearArmor>[] = [
   },
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const buyArmorCols: Columns<GearArmor>[] = [
