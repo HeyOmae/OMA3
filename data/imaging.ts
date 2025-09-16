@@ -55,6 +55,7 @@ export const imaging: ImagingGear[] = [
     name: "Microcamera",
     subtype: "IMAGING",
     type: "ELECTRONICS",
+    reference: [{ book: "SR5", page: 442 }],
   },
   {
     modifications: {
