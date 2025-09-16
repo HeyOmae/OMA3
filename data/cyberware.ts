@@ -2401,6 +2401,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "4I",
     cost: 2500,
     name: "Handblade Retractable Augment",
+    reference: [{ book: "SR5", page: 456 }],
   },
   {
     useAs: [
@@ -2520,6 +2521,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "2",
     cost: 1000,
     name: "Cyberears 1",
+    reference: [{ book: "SR5", page: 452 }],
   },
   {
     useAs: [
