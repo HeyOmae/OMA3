@@ -1,10 +1,11 @@
-import { ArmorMod, GearArmor } from "@/types/Resources"
+import type { ArmorMod, GearArmor } from "@/types/Resources"
 
 const armorData: GearArmor[] = [
   {
     availability: "1",
     cost: 10,
     name: "Clothing Street",
+    reference: [{ book: "SR5", page: 369 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     modonly: true,
@@ -22,6 +23,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 10,
     name: "Clothing Squatter",
+    reference: [{ book: "SR5", page: 369 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -38,6 +40,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 100,
     name: "Clothing Low",
+    reference: [{ book: "SR5", page: 369 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -54,6 +57,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 1000,
     name: "Clothing Middle",
+    reference: [{ book: "SR5", page: 369 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -70,6 +74,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 5000,
     name: "Clothing High",
+    reference: [{ book: "SR5", page: 369 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -86,6 +91,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 10000,
     name: "Clothing Luxury",
+    reference: [{ book: "SR5", page: 369 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -102,6 +108,7 @@ const armorData: GearArmor[] = [
     name: "Synthleather Jacket",
     availability: "1",
     cost: 300,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR BODY",
@@ -121,6 +128,7 @@ const armorData: GearArmor[] = [
     name: "Actioneer Business",
     availability: "2",
     cost: 1500,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR SOCIAL",
@@ -140,6 +148,7 @@ const armorData: GearArmor[] = [
     name: "Armor Clothing",
     availability: "2",
     cost: 500,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR SOCIAL",
@@ -159,6 +168,7 @@ const armorData: GearArmor[] = [
     name: "Armor Jacket",
     availability: "2",
     cost: 1000,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR BODY",
@@ -178,6 +188,7 @@ const armorData: GearArmor[] = [
     name: "Armor Vest",
     availability: "4",
     cost: 750,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR BODY",
@@ -197,6 +208,7 @@ const armorData: GearArmor[] = [
     name: "Chameleon Suit",
     availability: "4I",
     cost: 2000,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR BODY",
@@ -216,6 +228,7 @@ const armorData: GearArmor[] = [
     name: "Full Body Armor",
     availability: "4L",
     cost: 2000,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR BODY",
@@ -235,6 +248,7 @@ const armorData: GearArmor[] = [
     name: "Full Body Armor Helmet",
     availability: "0",
     cost: 500,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR HELMET",
@@ -254,6 +268,7 @@ const armorData: GearArmor[] = [
     name: "Lined Coat",
     availability: "4",
     cost: 900,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR BODY",
@@ -273,6 +288,7 @@ const armorData: GearArmor[] = [
     name: "Urban Explorer Jumpsuit",
     availability: "2",
     cost: 800,
+    reference: [{ book: "SR5", page: 436 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR BODY",
@@ -292,6 +308,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 200,
     name: "Helmet",
+    reference: [{ book: "SR5", page: 437 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR HELMET",
@@ -312,6 +329,7 @@ const armorData: GearArmor[] = [
     availability: "4",
     cost: 900,
     name: "Ballistic Shield",
+    reference: [{ book: "SR5", page: 437 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR SHIELD",
@@ -335,6 +353,7 @@ const armorData: GearArmor[] = [
     availability: "4",
     cost: 1200,
     name: "Riot Shield",
+    reference: [{ book: "SR5", page: 437 }],
     useAs: {
       type: "ARMOR",
       subtype: "ARMOR SHIELD",
@@ -369,6 +388,7 @@ export const mods: ArmorMod[] = [
     availability: "3",
     cost: 250,
     name: "Chemical Protection",
+    reference: [{ book: "SR5", page: 438 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -389,6 +409,7 @@ export const mods: ArmorMod[] = [
     availability: "5",
     cost: 3000,
     name: "Chemical Seal",
+    reference: [{ book: "SR5", page: 438 }],
   },
   {
     useAs: [
@@ -402,6 +423,7 @@ export const mods: ArmorMod[] = [
     availability: "3",
     cost: 250,
     name: "Cold Resistance",
+    reference: [{ book: "SR5", page: 438 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -417,6 +439,7 @@ export const mods: ArmorMod[] = [
     availability: "3",
     cost: 250,
     name: "Fire Resistance",
+    reference: [{ book: "SR5", page: 438 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -432,6 +455,7 @@ export const mods: ArmorMod[] = [
     availability: "3",
     cost: 250,
     name: "Electricity Resistance",
+    reference: [{ book: "SR5", page: 438 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -447,6 +471,7 @@ export const mods: ArmorMod[] = [
     availability: "1",
     cost: 75,
     name: "Electrochromic Feature",
+    reference: [{ book: "SR5", page: 438 }],
   },
   {
     useAs: [
@@ -460,6 +485,7 @@ export const mods: ArmorMod[] = [
     availability: "2",
     cost: 150,
     name: "Feedback Feature",
+    reference: [{ book: "SR5", page: 438 }],
   },
 ]
 

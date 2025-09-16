@@ -34,6 +34,7 @@ export const imagingMods: GearMod[] = [
     availability: "1",
     cost: 250,
     name: "Flare Compensation",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     useAs: [
@@ -68,6 +69,7 @@ export const imagingMods: GearMod[] = [
     availability: "1",
     cost: 25,
     name: "Image Link",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     useAs: [
@@ -102,6 +104,7 @@ export const imagingMods: GearMod[] = [
     availability: "2",
     cost: 500,
     name: "Low Light Vision",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     useAs: [
@@ -136,6 +139,7 @@ export const imagingMods: GearMod[] = [
     availability: "2",
     cost: 2000,
     name: "Smartlink",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     useAs: [
@@ -168,6 +172,7 @@ export const imagingMods: GearMod[] = [
     availability: "2",
     cost: 500,
     name: "Thermographic Vision",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     useAs: [
@@ -221,6 +226,7 @@ export const imagingMods: GearMod[] = [
     availability: "1",
     cost: 500,
     name: "Vision Enhancement",
+    reference: [{ book: "SR5", page: 444 }],
   },
   {
     useAs: [
@@ -261,6 +267,7 @@ export const imagingMods: GearMod[] = [
     availability: "1",
     cost: 250,
     name: "Vision Magnification",
+    reference: [{ book: "SR5", page: 444 }],
   },
 ]
 
@@ -292,6 +299,7 @@ export const audioMods: (GearMod | GearModRated)[] = [
     availability: "1",
     cost: 500,
     name: "Audio Enhancement",
+    reference: [{ book: "SR5", page: 443 }],
   },
   {
     useAs: [
@@ -321,6 +329,7 @@ export const audioMods: (GearMod | GearModRated)[] = [
     availability: "3",
     cost: 250,
     name: "Select Sound Filter",
+    reference: [{ book: "SR5", page: 443 }],
     maxRating: 3,
     rating: true,
     rateMultiplier: "capacity cost",
@@ -370,6 +379,7 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     name: "Atmosphere sensor",
     cost: 0,
     availability: "0",
+    reference: [{ book: "SR5", page: 445 }],
   },
   {
     useAs: [
@@ -388,6 +398,7 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     rating: true,
     maxRating: 6,
     rateMultiplier: "capacity cost",
+    reference: [{ book: "SR5", page: 445 }],
   },
   {
     useAs: [

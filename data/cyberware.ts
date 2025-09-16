@@ -66,6 +66,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "3L",
     cost: 2000,
     name: "Smartlink",
+    reference: [{ book: "SR5", page: 453 }],
   },
   {
     useAs: [
@@ -565,6 +566,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "2",
     cost: 1000,
     name: "Datajack",
+    reference: [{ book: "SR5", page: 453 }],
   },
   {
     useAs: [

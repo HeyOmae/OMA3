@@ -45,6 +45,7 @@ export const bioware: GearBioware[] = [
     maxRating: 3,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR5", page: 459 }],
   },
   {
     useAs: {
@@ -74,6 +75,7 @@ export const bioware: GearBioware[] = [
     name: "Bone Density Augmentation 1",
     availability: "4L",
     cost: 5000,
+    reference: [{ book: "SR5", page: 459 }],
   },
   {
     useAs: {
@@ -176,6 +178,7 @@ export const bioware: GearBioware[] = [
     name: "Cats Eyes",
     availability: "3",
     cost: 4000,
+    reference: [{ book: "SR5", page: 459 }],
   },
   {
     useAs: {
@@ -200,6 +203,7 @@ export const bioware: GearBioware[] = [
     name: "Enhanced Articulation",
     availability: "4",
     cost: 30000,
+    reference: [{ book: "SR5", page: 460 }],
   },
   {
     useAs: {
@@ -221,6 +225,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR5", page: 460 }],
   },
   {
     useAs: {
@@ -242,6 +247,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR5", page: 460 }],
   },
   {
     useAs: {
@@ -267,6 +273,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost defenseRating",
+    reference: [{ book: "SR5", page: 461 }],
   },
   {
     useAs: {

@@ -34,6 +34,7 @@ export interface Gear {
   name: string
   availability: string
   cost: number
+  reference?: { book: string; page: number }[]
 }
 
 interface ItemAttributeMod {

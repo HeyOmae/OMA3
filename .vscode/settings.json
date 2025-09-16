@@ -1,11 +1,13 @@
 {
-  "cSpell.words": [
-    "Commlinks",
-    "Cyberdecks",
-    "Cyberware",
-    "Nuyen",
-    "commlink",
-    "cyberdeck",
-    "metatype"
-  ]
+	"cSpell.words": [
+		"Commlinks",
+		"Cyberdecks",
+		"Cyberware",
+		"Nuyen",
+		"commlink",
+		"cyberdeck",
+		"metatype"
+	],
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
 }
