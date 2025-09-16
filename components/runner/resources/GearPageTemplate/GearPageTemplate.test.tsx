@@ -74,6 +74,7 @@ describe("<GearPageTemplate/>", () => {
             name: "Katana",
             availability: "3",
             cost: 350,
+            reference: [{ book: "SR5", page: 422 }],
             useAs: [
               {
                 type: "WEAPON CLOSE COMBAT",
