@@ -10,6 +10,7 @@ export const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
   gearMeleeTableConfigOption.dv,
   gearMeleeTableConfigOption.ar,
   gearTableConfigOptions.avail,
+  gearTableConfigOptions.reference,
   gearTableConfigOptions.cost,
 ]
 
