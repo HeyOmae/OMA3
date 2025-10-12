@@ -5,6 +5,8 @@ import {
   setupIndexedDB,
   withTestRouter,
   userEvent,
+  screen,
+  within,
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import MeleeWeapons from "./index"
@@ -18,36 +20,50 @@ describe("<MeleeWeapons/>", () => {
   }
 
   it("should have breadcrumbs", async () => {
-    const { getByText } = setup()
+    setup()
 
-    await waitFor(() => {
-      expect(getByText("Melee Weapons")).toBeInTheDocument()
-    })
-    expect(getByText("Resources")).toHaveAttribute("href", "/8/resources")
+    expect(await screen.findByText("Melee Weapons")).toBeInTheDocument()
+    expect(screen.getByText("Resources")).toHaveAttribute(
+      "href",
+      "/8/resources",
+    )
+    expect(screen.getByRole("link", { name: "Resources" })).toHaveAttribute(
+      "href",
+      "/8/resources",
+    )
   })
 
   it("should display the melee weapons", async () => {
-    const { getByText } = setup()
-    await waitFor(() => {
-      expect(getByText("Buy")).toBeInTheDocument()
-    })
+    setup()
+    expect(
+      await screen.findByRole("columnheader", { name: "Buy" }),
+    ).toBeInTheDocument()
+    // New TDD assertion: Reference column header should be present
+    expect(
+      await screen.findByRole("columnheader", { name: "Reference" }),
+    ).toBeInTheDocument()
     meleeData.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument()
+      expect(screen.getByRole("cell", { name })).toBeInTheDocument()
     })
+
+    // New TDD assertion: Katana should display its page reference
+    // Scope to the Katana row so we don't match other gear with the same reference
+    const katanaRow = screen.getByRole("cell", { name: "Katana" }).closest("tr")
+    expect(within(katanaRow).getByText(/SR5 p\.?422/i)).toBeInTheDocument()
   })
 
   it("purchase melee weapon", async () => {
-    const { getByLabelText, getByText } = setup()
+    setup()
 
-    await waitFor(() => {
-      expect(getByLabelText("Add Katana")).toBeInTheDocument()
-    })
-    expect(getByText("8000¥/8000¥")).toBeInTheDocument()
+    expect(await screen.findByLabelText("Add Katana")).toBeInTheDocument()
+    expect(screen.getByLabelText("Nuyen Value")).toBeInTheDocument()
 
     expect(runnerFromDB(7).resources).toBeUndefined()
 
-    await userEvent.click(getByLabelText("Add Katana"))
-    expect(getByText("7650¥/8000¥")).toBeInTheDocument()
+    await userEvent.click(screen.getByLabelText("Add Katana"))
+    expect(screen.getByLabelText("Nuyen Value")).toHaveTextContent(
+      "7650¥/8000¥",
+    )
 
     await waitFor(() => {
       expect(runnerFromDB(7).resources.melee).toEqual([
@@ -82,14 +98,15 @@ describe("<MeleeWeapons/>", () => {
   })
 
   it("should display runner melee weapons", async () => {
-    const { getByLabelText, getByText } = setup(10)
+    setup(10)
 
-    await waitFor(() => {
-      expect(getByText("Purchased Melee Weapons")).toBeInTheDocument()
-    })
+    expect(
+      await screen.findByRole("heading", { name: "Purchased Melee Weapons" }),
+    ).toBeVisible()
+
     expect(runnerFromDB(9).resources.melee).toHaveLength(2)
 
-    await userEvent.click(getByLabelText("Remove Katana"))
+    await userEvent.click(screen.getByRole("button", { name: "Remove Katana" }))
 
     await waitFor(() => {
       expect(runnerFromDB(9).resources.melee).toHaveLength(1)

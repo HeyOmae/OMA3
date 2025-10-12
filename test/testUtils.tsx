@@ -157,17 +157,6 @@ export class SliderHelper {
   }
 }
 
-export const searchRegexInNodes =
-  (regex: RegExp) => (content: string, node: HTMLElement) => {
-    const hasText = (node) => regex.test(node.textContent)
-    const nodeHasText = hasText(node)
-    const childrenDontHaveText = Array.from(node.children).every(
-      (child) => !hasText(child),
-    )
-
-    return nodeHasText && childrenDontHaveText
-  }
-
 export const runnerFromDB = (id = 0): Runner =>
   indexedDB._databases.get("omae").rawObjectStores.get("runners").records
     .records[id].value
