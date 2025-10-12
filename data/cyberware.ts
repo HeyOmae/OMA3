@@ -66,7 +66,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "3L",
     cost: 2000,
     name: "Smartlink",
-    reference: [{ book: "SR5", page: 453 }],
+    reference: [{ book: "SR6", page: 453 }],
   },
   {
     useAs: [
@@ -566,7 +566,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "2",
     cost: 1000,
     name: "Datajack",
-    reference: [{ book: "SR5", page: 453 }],
+    reference: [{ book: "SR6", page: 453 }],
   },
   {
     useAs: [
@@ -2401,7 +2401,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "4I",
     cost: 2500,
     name: "Handblade Retractable Augment",
-    reference: [{ book: "SR5", page: 456 }],
+    reference: [{ book: "SR6", page: 456 }],
   },
   {
     useAs: [
@@ -2521,7 +2521,7 @@ const cyberwareAll: GearCyberware[] = [
     availability: "2",
     cost: 1000,
     name: "Cyberears 1",
-    reference: [{ book: "SR5", page: 452 }],
+    reference: [{ book: "SR6", page: 452 }],
   },
   {
     useAs: [

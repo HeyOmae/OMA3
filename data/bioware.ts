@@ -45,7 +45,7 @@ export const bioware: GearBioware[] = [
     maxRating: 3,
     rating: true,
     rateMultiplier: "essence cost modifier",
-    reference: [{ book: "SR5", page: 459 }],
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -75,7 +75,7 @@ export const bioware: GearBioware[] = [
     name: "Bone Density Augmentation 1",
     availability: "4L",
     cost: 5000,
-    reference: [{ book: "SR5", page: 459 }],
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -105,6 +105,7 @@ export const bioware: GearBioware[] = [
     name: "Bone Density Augmentation 2",
     availability: "4L",
     cost: 10000,
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -134,6 +135,7 @@ export const bioware: GearBioware[] = [
     name: "Bone Density Augmentation 3",
     availability: "4L",
     cost: 15000,
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -163,6 +165,7 @@ export const bioware: GearBioware[] = [
     name: "Bone Density Augmentation 4",
     availability: "4L",
     cost: 20000,
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -178,7 +181,7 @@ export const bioware: GearBioware[] = [
     name: "Cats Eyes",
     availability: "3",
     cost: 4000,
-    reference: [{ book: "SR5", page: 459 }],
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -203,7 +206,7 @@ export const bioware: GearBioware[] = [
     name: "Enhanced Articulation",
     availability: "4",
     cost: 30000,
-    reference: [{ book: "SR5", page: 460 }],
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -225,7 +228,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost modifier",
-    reference: [{ book: "SR5", page: 460 }],
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -247,7 +250,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost modifier",
-    reference: [{ book: "SR5", page: 460 }],
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -273,7 +276,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost defenseRating",
-    reference: [{ book: "SR5", page: 461 }],
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -284,6 +287,7 @@ export const bioware: GearBioware[] = [
     name: "Platelet Factories",
     availability: "4",
     cost: 17000,
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -294,6 +298,7 @@ export const bioware: GearBioware[] = [
     name: "Skin Pocket",
     availability: "4",
     cost: 12000,
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -327,6 +332,7 @@ export const bioware: GearBioware[] = [
     name: "Suprathyroid Gland",
     availability: "5L",
     cost: 140000,
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -348,6 +354,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 293 }],
   },
   // {
   //   useAs: {
@@ -384,6 +391,7 @@ export const bioware: GearBioware[] = [
     maxRating: 3,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -415,6 +423,7 @@ export const bioware: GearBioware[] = [
     maxRating: 4,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -436,6 +445,7 @@ export const bioware: GearBioware[] = [
     maxRating: 6,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -457,6 +467,7 @@ export const bioware: GearBioware[] = [
     maxRating: 6,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 293 }],
   },
   {
     useAs: {
@@ -478,6 +489,7 @@ export const bioware: GearBioware[] = [
     maxRating: 3,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 294 }],
   },
   {
     useAs: {
@@ -491,6 +503,7 @@ export const bioware: GearBioware[] = [
     maxRating: 12,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 294 }],
   },
   {
     useAs: {
@@ -509,6 +522,7 @@ export const bioware: GearBioware[] = [
     maxRating: 3,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 294 }],
   },
   {
     useAs: {
@@ -535,6 +549,7 @@ export const bioware: GearBioware[] = [
     name: "Pain Editor",
     availability: "5I",
     cost: 48000,
+    reference: [{ book: "SR6", page: 294 }],
   },
   {
     useAs: {
@@ -554,6 +569,7 @@ export const bioware: GearBioware[] = [
     availability: "5",
     cost: 14000,
     choice: "PHYSICAL SKILL",
+    reference: [{ book: "SR6", page: 294 }],
   },
   {
     useAs: {
@@ -566,6 +582,7 @@ export const bioware: GearBioware[] = [
     cost: 12000,
     subtype: "BIOWARE CULTURED",
     type: "BIOWARE",
+    reference: [{ book: "SR6", page: 294 }],
   },
   {
     modifications: {
@@ -591,5 +608,6 @@ export const bioware: GearBioware[] = [
     maxRating: 3,
     rating: true,
     rateMultiplier: "essence cost modifier",
+    reference: [{ book: "SR6", page: 294 }],
   },
 ]

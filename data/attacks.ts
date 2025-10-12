@@ -11,6 +11,6 @@ export const elemental: Record<ElementalAttackTypes, ElementalAttack> = {
     effect: { name: "Corroded" },
   },
   Cold: {
-    effect: { name: "Chillded" },
+    effect: { name: "Chilled" },
   },
 }

@@ -441,7 +441,7 @@ const firearms: GearWeaponFireArms[] = [
     name: "Ceska Black Scorpion",
     availability: "3L",
     cost: 510,
-    reference: [{ book: "SR5", page: 426 }],
+    reference: [{ book: "SR6", page: 426 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -516,7 +516,7 @@ const firearms: GearWeaponFireArms[] = [
     availability: "2L",
     cost: 750,
     name: "Ares Predator VI",
-    reference: [{ book: "SR5", page: 425 }],
+    reference: [{ book: "SR6", page: 425 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -549,7 +549,7 @@ const firearms: GearWeaponFireArms[] = [
     availability: "4L",
     cost: 610,
     name: "Ares Viper Slivergun",
-    reference: [{ book: "SR5", page: 425 }],
+    reference: [{ book: "SR6", page: 425 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1072,7 +1072,7 @@ const firearms: GearWeaponFireArms[] = [
     availability: "2L",
     cost: 330,
     name: "Defiance T-250",
-    reference: [{ book: "SR5", page: 427 }],
+    reference: [{ book: "SR6", page: 427 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1226,7 +1226,7 @@ const firearms: GearWeaponFireArms[] = [
     availability: "2L",
     cost: 325,
     name: "Remington Roomsweeper",
-    reference: [{ book: "SR5", page: 427 }],
+    reference: [{ book: "SR6", page: 427 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1374,7 +1374,7 @@ const firearms: GearWeaponFireArms[] = [
     availability: "5L",
     cost: 3400,
     name: "Ares Alpha",
-    reference: [{ book: "SR5", page: 427 }],
+    reference: [{ book: "SR6", page: 427 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1419,7 +1419,7 @@ const firearms: GearWeaponFireArms[] = [
     availability: "2L",
     cost: 1500,
     name: "Colt M23",
-    reference: [{ book: "SR5", page: 427 }],
+    reference: [{ book: "SR6", page: 427 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
