@@ -16,7 +16,7 @@ export const sensors: GearModdableRated[] = [
     maxRating: 3,
     rating: true,
     rateMultiplier: "capacity cost",
-    reference: [{ book: "SR5", page: 445 }],
+    reference: [{ book: "SR6", page: 445 }],
   },
   {
     type: "ELECTRONICS",
@@ -33,7 +33,7 @@ export const sensors: GearModdableRated[] = [
     maxRating: 6,
     rating: true,
     rateMultiplier: "capacity cost",
-    reference: [{ book: "SR5", page: 445 }],
+    reference: [{ book: "SR6", page: 445 }],
   },
   {
     useAs: [
@@ -59,7 +59,7 @@ export const sensors: GearModdableRated[] = [
     rateMultiplier: "capacity cost",
     type: "ELECTRONICS",
     subtype: "SENSOR HOUSING",
-    reference: [{ book: "SR5", page: 445 }],
+    reference: [{ book: "SR6", page: 445 }],
   },
   {
     useAs: [
@@ -84,6 +84,6 @@ export const sensors: GearModdableRated[] = [
     rateMultiplier: "cost",
     type: "ELECTRONICS",
     subtype: "SENSOR HOUSING",
-    reference: [{ book: "SR5", page: 445 }],
+    reference: [{ book: "SR6", page: 445 }],
   },
 ]

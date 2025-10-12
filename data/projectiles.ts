@@ -31,7 +31,7 @@ const projectiles: GearWeaponsProjectile[] = [
         hook: "UNDER",
       },
     ],
-    reference: [{ book: "SR5", page: 425 }],
+    reference: [{ book: "SR6", page: 425 }],
   },
   {
     name: "Bow2",
@@ -462,7 +462,7 @@ const projectiles: GearWeaponsProjectile[] = [
         hook: "UNDER",
       },
     ],
-    reference: [{ book: "SR5", page: 425 }],
+    reference: [{ book: "SR6", page: 425 }],
   },
   {
     name: "Crossbow Standard",
@@ -534,7 +534,7 @@ const projectiles: GearWeaponsProjectile[] = [
       skill: "Athletics",
       specialization: "Throwing",
     },
-    reference: [{ book: "SR5", page: 426 }],
+    reference: [{ book: "SR6", page: 426 }],
   },
   {
     name: "Throwing Stars",

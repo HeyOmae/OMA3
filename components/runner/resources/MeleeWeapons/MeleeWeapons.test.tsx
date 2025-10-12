@@ -49,7 +49,7 @@ describe("<MeleeWeapons/>", () => {
     // New TDD assertion: Katana should display its page reference
     // Scope to the Katana row so we don't match other gear with the same reference
     const katanaRow = screen.getByRole("cell", { name: "Katana" }).closest("tr")
-    expect(within(katanaRow).getByText(/SR5 p\.?422/i)).toBeInTheDocument()
+    expect(within(katanaRow).getByText(/SR6 p\.?249/i)).toBeInTheDocument()
   })
 
   it("purchase melee weapon", async () => {
@@ -71,7 +71,7 @@ describe("<MeleeWeapons/>", () => {
           name: "Katana",
           availability: "3",
           cost: 350,
-          reference: [{ book: "SR5", page: 422 }],
+          reference: [{ book: "SR6", page: 249 }],
           useAs: [
             {
               type: "WEAPON CLOSE COMBAT",

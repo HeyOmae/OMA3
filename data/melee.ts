@@ -6,7 +6,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Combat Axe",
     availability: "4",
     cost: 500,
-    reference: [{ book: "SR5", page: 422 }],
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -32,7 +32,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Combat Knife",
     availability: "2",
     cost: 220,
-    reference: [{ book: "SR5", page: 422 }],
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -50,7 +50,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Survival Knife",
     availability: "2",
     cost: 220,
-    reference: [{ book: "SR5", page: 422 }],
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -68,6 +68,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Forearm Snap Blades",
     availability: "3",
     cost: 185,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -85,6 +86,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Knife",
     availability: "1",
     cost: 20,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -110,7 +112,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Katana",
     availability: "3",
     cost: 350,
-    reference: [{ book: "SR5", page: 422 }],
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -136,6 +138,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Polearm",
     availability: "2",
     cost: 210,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -153,6 +156,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Sword",
     availability: "3",
     cost: 320,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -178,6 +182,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Club",
     availability: "1",
     cost: 65,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -195,6 +200,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Extendable Baton",
     availability: "2",
     cost: 50,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -212,6 +218,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Sab",
     availability: "1",
     cost: 75,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -229,6 +236,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Staff",
     availability: "1",
     cost: 150,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -246,6 +254,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Stun Baton",
     availability: "2",
     cost: 600,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -271,6 +280,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Telescopic Staff",
     availability: "2",
     cost: 250,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -288,6 +298,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Bike Chain",
     availability: "1",
     cost: 15,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -305,6 +316,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Bullwhip",
     availability: "4",
     cost: 255,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -321,6 +333,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Knucks",
     availability: "1",
     cost: 100,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -338,6 +351,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Shock Gloves",
     availability: "4",
     cost: 790,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -355,6 +369,7 @@ const meleeWeapons: GearWeaponMelee[] = [
     name: "Monofilament Whip",
     availability: "6I",
     cost: 1300,
+    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",

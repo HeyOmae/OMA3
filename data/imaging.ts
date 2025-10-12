@@ -13,7 +13,7 @@ export const imaging: ImagingGear[] = [
     availability: "1",
     cost: 50,
     name: "Binoculars",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
     maxRating: 3,
     rating: true,
     rateMultiplier: "capacity cost",
@@ -36,7 +36,7 @@ export const imaging: ImagingGear[] = [
     availability: "1",
     cost: 100,
     name: "Camera",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
     maxRating: 6,
     rating: true,
     rateMultiplier: "capacity cost",
@@ -55,7 +55,7 @@ export const imaging: ImagingGear[] = [
     name: "Microcamera",
     subtype: "IMAGING",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     modifications: {
@@ -72,7 +72,7 @@ export const imaging: ImagingGear[] = [
     rateMultiplier: "capacity cost",
     subtype: "IMAGING",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     modifications: {
@@ -89,7 +89,7 @@ export const imaging: ImagingGear[] = [
     rateMultiplier: "capacity cost",
     subtype: "IMAGING",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     useAs: [
@@ -112,7 +112,7 @@ export const imaging: ImagingGear[] = [
     rateMultiplier: "capacity cost",
     subtype: "IMAGING",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     modifications: {
@@ -126,7 +126,7 @@ export const imaging: ImagingGear[] = [
     name: "Imaging Scope Single",
     subtype: "IMAGING",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     modifications: {
@@ -143,7 +143,7 @@ export const imaging: ImagingGear[] = [
     rateMultiplier: "capacity cost",
     subtype: "IMAGING",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     availability: "1",
@@ -151,7 +151,7 @@ export const imaging: ImagingGear[] = [
     name: "Binoculars Optical",
     subtype: "OPTICAL",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     availability: "3",
@@ -159,7 +159,7 @@ export const imaging: ImagingGear[] = [
     name: "Endoscope",
     subtype: "OPTICAL",
     type: "ELECTRONICS",
-    reference: [{ book: "SR5", page: 442 }],
+    reference: [{ book: "SR6", page: 442 }],
   },
   {
     availability: "5",

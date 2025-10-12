@@ -13,7 +13,7 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 100,
     deviceRating: 1,
     name: "Meta Link",
-    reference: [{ book: "SR5", page: 439 }],
+    reference: [{ book: "SR6", page: 439 }],
     subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
@@ -55,7 +55,7 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 700,
     deviceRating: 2,
     name: "Sony Emporer",
-    reference: [{ book: "SR5", page: 439 }],
+    reference: [{ book: "SR6", page: 439 }],
     subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
@@ -97,7 +97,7 @@ export const commlinkData: GearMatrixCommlink[] = [
     cost: 1000,
     deviceRating: 3,
     name: "Renraku Sensei",
-    reference: [{ book: "SR5", page: 439 }],
+    reference: [{ book: "SR6", page: 439 }],
     subtype: "Commlink",
     type: "ELECTRONICS",
     useAs: [
