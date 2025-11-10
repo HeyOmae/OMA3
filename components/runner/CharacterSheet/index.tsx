@@ -3,6 +3,7 @@ import { Alert, CircularProgress } from "@mui/material"
 import { AttributeTable } from "./AttributeTable"
 import { Runner } from "@/types/runner"
 import { GearTable } from "./GearTables"
+import { QualitiesTable } from "./QualitiesTable"
 
 const CharacterSheet = () => {
   const runner = useGetRunner()
@@ -13,6 +14,7 @@ const CharacterSheet = () => {
         <h1>{runner.name}</h1>
         <AttributeTable runner={runner} />
         <GearTable runner={runner} />
+        <QualitiesTable runner={runner} />
       </>
     : <CircularProgress />
 }
