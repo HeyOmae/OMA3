@@ -1,4 +1,5 @@
 import { renderWithTestRouter, screen, setupIndexedDB } from "@/test/testUtils"
+import { within } from "@testing-library/react"
 import CharSheet from "./index"
 
 const setup = (id = "10") => {
@@ -216,6 +217,56 @@ describe("Character Sheet", () => {
       expect(screen.getByLabelText("Tasking-dp")).toHaveTextContent("4")
       expect(screen.getByLabelText("Tasking-spec")).toHaveTextContent("N/A")
       expect(screen.getByLabelText("Tasking-exp")).toHaveTextContent("N/A")
+    })
+  })
+
+  describe("display qualities", () => {
+    test("should display runner's qualities on character sheet", async () => {
+      setup("4") // Runner with qualities
+
+      // Wait for the page to load by checking for attributes first
+      expect(
+        await screen.findByRole("heading", { name: /attributes/i }),
+      ).toBeInTheDocument()
+
+      // Check qualities section exists
+      const qualitiesHeading = screen.getByRole("heading", {
+        level: 2,
+        name: /qualities/i,
+      })
+      expect(qualitiesHeading).toBeInTheDocument()
+
+      // Verify positive qualities region
+      const positiveRegion = screen.getByRole("region", {
+        name: /positive qualities/i,
+      })
+      expect(
+        within(positiveRegion).getByRole("cell", {
+          name: /exceptional attribute/i,
+        }),
+      ).toBeInTheDocument()
+
+      // Verify negative qualities region
+      const negativeRegion = screen.getByRole("region", {
+        name: /negative qualities/i,
+      })
+      expect(
+        within(negativeRegion).getByRole("cell", { name: /impaired/i }),
+      ).toBeInTheDocument()
+    })
+
+    test("should not display qualities section when runner has none", async () => {
+      setup("2") // Runner without qualities
+
+      // Wait for page load
+      expect(
+        await screen.findByRole("heading", { name: /attributes/i }),
+      ).toBeInTheDocument()
+
+      // Qualities section should not exist
+      expect(
+        screen.queryByRole("heading", { name: /qualities/i }),
+      ).not.toBeInTheDocument()
     })
   })
 })
