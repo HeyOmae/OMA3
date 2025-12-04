@@ -2,7 +2,7 @@
 
 This is the third iteration of the Shadowrun Character generator; Omae, called OMA3 for the cool hype soulless corporate branding types.
 
-OMA3 is a progressive web app using IndexedDB to actually SAVE your runner for the first time. Which is something that has been requested a lot. Also, because this is a progressive web app, it also means you get to use it OFFLINE. The future is now my chummers!
+OMA3 is a web app using IndexedDB to actually SAVE your runner for the first time. Which is something that has been requested a lot. The future is now my chummers!
 
 ## Technologies
 
@@ -16,7 +16,6 @@ OMA3 is leveraging the (currently as of 2020) latest in modern web standards and
 - Formatting with [Prettier](https://prettier.io/)
 - Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
 - Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
-- [next-pwa](https://github.com/shadowwalker/next-pwa#readme)
 - [react-indexed-db](https://github.com/assuncaocharles/react-indexed-db)
 
 ## Want to contribute
