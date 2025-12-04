@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -12,22 +16,45 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/pages/*": ["pages/*"],
-      "@/runner/*": ["components/runner/*"],
-      "@/test/*": ["test/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/data/*": ["data/*"],
-      "@/types/*": ["types/*"],
-      "@/xr/*": ["xr/*"]
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/runner/*": [
+        "components/runner/*"
+      ],
+      "@/test/*": [
+        "test/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/xr/*": [
+        "xr/*"
+      ]
     },
     "incremental": true,
-    "typeRoots": ["node_modules/@types", "./types/global.d.ts"]
+    "typeRoots": [
+      "node_modules/@types",
+      "./types/global.d.ts"
+    ]
   },
-  "exclude": ["node_modules", ".next", "out"],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

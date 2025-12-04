@@ -2,7 +2,7 @@
   "name": "oma3",
   "author": "@dethstrobe",
   "license": "GNU 3.0",
-  "version": "3.13.13",
+  "version": "3.13.14",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -28,7 +28,6 @@
     "@mui/material": "^6.4.5",
     "@next/bundle-analyzer": "^15.4.6",
     "next": "^16.0.7",
-    "next-pwa": "^5.6.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-indexed-db-hook": "^1.0.14"
