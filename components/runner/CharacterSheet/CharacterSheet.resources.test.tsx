@@ -186,4 +186,35 @@ describe("Resources", () => {
     expect(streetlineRow).toHaveTextContent("SS") // mode
     expect(streetlineRow).toHaveTextContent("6(c)") // ammo
   })
+
+  test("render firearms with weapon mods", async () => {
+    // Test with runner id 10 (Cayman) who has firearms with mods
+    setup("10")
+
+    const firearmsTable = await screen.findByRole("table", { name: "firearms" })
+
+    expect(firearmsTable).toBeInTheDocument()
+
+    // Check that Mods column header exists
+    expect(
+      within(firearmsTable).getByRole("columnheader", { name: "Mods" }),
+    ).toBeInTheDocument()
+
+    // Check Ares Predator 6 has "Suppressor" and "Smartgun System External" mods
+    const predatorCell = within(firearmsTable).getByRole("cell", {
+      name: "Ares Predator 6",
+    })
+    const predatorRow = predatorCell.closest("tr")
+    expect(predatorRow).toBeInTheDocument()
+    expect(predatorRow).toHaveTextContent("Suppressor")
+    expect(predatorRow).toHaveTextContent("Smartgun System External")
+
+    // Check that firearms without mods show empty mods cell
+    const pulsarCell = within(firearmsTable).getByRole("cell", {
+      name: "Yamaha Pulsar 1",
+    })
+    const pulsarRow = pulsarCell.closest("tr")
+    expect(pulsarRow).toBeInTheDocument()
+    // Pulsar has no mods, so the mods cell should be empty
+  })
 })

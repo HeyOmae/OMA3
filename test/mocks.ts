@@ -983,6 +983,63 @@ export const mockedRunners: Runner[] = [
             specialization: "rifles",
           },
         },
+        {
+          availability: "2L",
+          cost: 725,
+          name: "Ares Predator 6",
+          useAs: [
+            {
+              type: "WEAPON FIREARMS",
+              subtype: "PISTOLS HEAVY",
+            },
+          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "BARREL",
+              },
+              {
+                hook: "TOP",
+              },
+            ],
+          },
+          weapon: {
+            ar: [10, 9, 6, 0, 0],
+            ammo: "15(c)",
+            dv: "3P",
+            mode: "SA",
+            skill: "Firearms",
+            specialization: "pistols",
+          },
+          mods: [
+            {
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "FIREARMS EXTERNAL",
+                  slot: "BARREL",
+                  capacity: 2,
+                },
+              ],
+              availability: "2L",
+              cost: 600,
+              name: "Suppressor",
+            },
+            {
+              useAs: [
+                {
+                  type: "ACCESSORY",
+                  subtype: "FIREARMS EXTERNAL",
+                  slot: "TOP",
+                  capacity: 1,
+                },
+              ],
+              availability: "4R",
+              cost: 1500,
+              name: "Smartgun System External",
+            },
+          ],
+        },
       ],
       imaging: [
         {

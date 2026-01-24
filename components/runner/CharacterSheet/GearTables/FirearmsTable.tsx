@@ -14,6 +14,7 @@ export const FirearmsTable: FC<FirearmsTableProps> = ({ gearRow }) => (
         <th>AR</th>
         <th>Modes</th>
         <th>Ammo</th>
+        <th>Mods</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,7 @@ export const FirearmsTable: FC<FirearmsTableProps> = ({ gearRow }) => (
           </td>
           <td>{gearItem?.weapon?.mode}</td>
           <td>{gearItem?.weapon?.ammo}</td>
+          <td>{gearItem?.mods?.map((mod) => mod.name).join(", ")}</td>
         </tr>
       ))}
     </tbody>
