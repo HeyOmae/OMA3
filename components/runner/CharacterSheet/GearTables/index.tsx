@@ -1,107 +1,50 @@
 import { Runner } from "@/types/runner"
-import {
-  GearArmor,
-  GearWeaponFireArms,
-  GearWeaponMelee,
-  GearWeaponsProjectile,
-  Resources,
-} from "@/types/Resources"
+import { Resources } from "@/types/Resources"
 import { FC, useMemo } from "react"
+import { ArmorTable } from "./ArmorTable"
+import { FirearmsTable } from "./FirearmsTable"
+import { GeneralGearTable } from "./GeneralGearTable"
+import { WeaponTable } from "./WeaponTable"
 
 interface Props {
   runner: Runner
 }
 
-interface ArmorTableProps {
-  gearRow: GearArmor[]
-}
-
-interface WeaponTableProps {
-  gearRow: (GearWeaponMelee | GearWeaponsProjectile | GearWeaponFireArms)[]
-}
-
-interface GeneralGearTableProps {
-  gearRow: ResourceValue
-}
-
 type ResourceKey = keyof Resources
 type ResourceValue = Resources[ResourceKey]
-type GearItem = ResourceValue extends (infer T)[] ? T : never
 
-function isArmorGear(
-  key: ResourceKey,
-  gearRow: ResourceValue,
-): gearRow is GearArmor[] {
-  return key === "armor"
+type GearTableComponents = {
+  [K in ResourceKey]: FC<{ gearRow: Resources[K] }>
 }
 
-function isWeaponGear(
-  key: ResourceKey,
-  gearRow: ResourceValue,
-): gearRow is (GearWeaponMelee | GearWeaponsProjectile | GearWeaponFireArms)[] {
-  return key === "melee" || key === "firearms" || key === "projectile"
+const gearTableComponents: Partial<GearTableComponents> = {
+  armor: ArmorTable,
+  firearms: FirearmsTable,
+  melee: WeaponTable,
+  projectile: WeaponTable,
 }
 
-const ArmorTable: FC<ArmorTableProps> = ({ gearRow }) => (
-  <>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Rating</th>
-        <th>Capacity</th>
-      </tr>
-    </thead>
-    <tbody>
-      {gearRow.map((gearItem, index: number) => (
-        <tr key={index}>
-          <td>{gearItem.name}</td>
-          <td>{gearItem?.armor?.rating}</td>
-          <td>{gearItem?.modifications?.itemhookmod?.capacity}</td>
-        </tr>
-      ))}
-    </tbody>
-  </>
-)
+interface GearTableSectionProps<K extends ResourceKey> {
+  gearKey: K
+  gearRow: Resources[K]
+}
 
-const WeaponTable: FC<WeaponTableProps> = ({ gearRow }) => (
-  <>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>DV</th>
-        <th>AR</th>
-      </tr>
-    </thead>
-    <tbody>
-      {gearRow.map((gearItem, index: number) => (
-        <tr key={index}>
-          <td>{gearItem.name}</td>
-          <td>{gearItem?.weapon?.dv}</td>
-          <td>
-            {gearItem?.weapon?.ar.map((n) => (n === 0 ? "-" : n)).join("/")}
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </>
-)
+const GearTableSection = <K extends ResourceKey>({
+  gearKey,
+  gearRow,
+}: GearTableSectionProps<K>) => {
+  const label = `${gearKey}-table`
+  const TableComponent = gearTableComponents[gearKey] ?? GeneralGearTable
 
-const GeneralGearTable: FC<GeneralGearTableProps> = ({ gearRow }) => (
-  <>
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      {gearRow.map((gearItem: GearItem, index: number) => (
-        <tr key={index}>
-          <td>{gearItem.name}</td>
-        </tr>
-      ))}
-    </tbody>
-  </>
-)
+  return (
+    <section>
+      <h3 id={label}>{gearKey}</h3>
+      <table aria-labelledby={label}>
+        <TableComponent gearRow={gearRow} />
+      </table>
+    </section>
+  )
+}
 
 export const GearTable: FC<Props> = ({ runner }) => {
   const gear = useMemo(
@@ -115,22 +58,9 @@ export const GearTable: FC<Props> = ({ runner }) => {
   return (
     <section>
       <h2 id="gear-table">Gear</h2>
-      {gear.map(([key, gearRow]) => {
-        const label = `${key}-table`
-
-        return (
-          <section key={key}>
-            <h3 id={label}>{key}</h3>
-            <table aria-labelledby={label}>
-              {isArmorGear(key, gearRow) ?
-                <ArmorTable gearRow={gearRow} />
-              : isWeaponGear(key, gearRow) ?
-                <WeaponTable gearRow={gearRow} />
-              : <GeneralGearTable gearRow={gearRow} />}
-            </table>
-          </section>
-        )
-      })}
+      {gear.map(([key, gearRow]) => (
+        <GearTableSection key={key} gearKey={key} gearRow={gearRow} />
+      ))}
     </section>
   )
 }

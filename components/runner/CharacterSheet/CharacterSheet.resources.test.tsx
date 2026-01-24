@@ -139,4 +139,51 @@ describe("Resources", () => {
     const tables = within(gearSection).queryAllByRole("table")
     expect(tables).toHaveLength(0)
   })
+
+  test("render firearms with modes and ammo", async () => {
+    setup()
+
+    const firearmsTable = await screen.findByRole("table", { name: "firearms" })
+
+    expect(firearmsTable).toBeInTheDocument()
+
+    // Check for firearms-specific column headers
+    expect(
+      within(firearmsTable).getByRole("columnheader", { name: "Name" }),
+    ).toBeInTheDocument()
+    expect(
+      within(firearmsTable).getByRole("columnheader", { name: "DV" }),
+    ).toBeInTheDocument()
+    expect(
+      within(firearmsTable).getByRole("columnheader", { name: "AR" }),
+    ).toBeInTheDocument()
+    expect(
+      within(firearmsTable).getByRole("columnheader", { name: "Modes" }),
+    ).toBeInTheDocument()
+    expect(
+      within(firearmsTable).getByRole("columnheader", { name: "Ammo" }),
+    ).toBeInTheDocument()
+
+    // Check Yamaha Pulsar 1
+    const pulsarCell = within(firearmsTable).getByRole("cell", {
+      name: "Yamaha Pulsar 1",
+    })
+    const pulsarRow = pulsarCell.closest("tr")
+    expect(pulsarRow).toBeInTheDocument()
+    expect(pulsarRow).toHaveTextContent("4S(e)") // dv
+    expect(pulsarRow).toHaveTextContent("9/9/-/-/-") // ar
+    expect(pulsarRow).toHaveTextContent("SS") // mode
+    expect(pulsarRow).toHaveTextContent("4(m)") // ammo
+
+    // Check Streetline Special
+    const streetlineCell = within(firearmsTable).getByRole("cell", {
+      name: "Streetline Special",
+    })
+    const streetlineRow = streetlineCell.closest("tr")
+    expect(streetlineRow).toBeInTheDocument()
+    expect(streetlineRow).toHaveTextContent("2P") // dv
+    expect(streetlineRow).toHaveTextContent("8/8/-/-/-") // ar
+    expect(streetlineRow).toHaveTextContent("SS") // mode
+    expect(streetlineRow).toHaveTextContent("6(c)") // ammo
+  })
 })
