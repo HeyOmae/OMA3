@@ -209,4 +209,22 @@ describe("<RunnerSkillTable/>", () => {
       screen.getByRole("button", { name: "remove Cracking skill" }),
     ).toBeInTheDocument()
   })
+
+  test("runner with negative qualities but no positive qualities should render", () => {
+    const runnerWithOnlyNegativeQualities = {
+      ...mockedRunners[1],
+      qualities: {
+        negative: [{ name: "Bad Luck", karma: 12, type: "NEGATIVE" as const }],
+      },
+    }
+
+    setup({
+      runner: runnerWithOnlyNegativeQualities,
+      skillPoints: 20,
+      dispatch: jest.fn(),
+      pointsToSpend: "Points",
+    })
+
+    expect(screen.getByRole("definition")).toBeInTheDocument()
+  })
 })
