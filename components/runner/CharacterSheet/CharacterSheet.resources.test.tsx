@@ -64,4 +64,79 @@ describe("Resources", () => {
     expect(knifeRow).toHaveTextContent("8/2/-/-/-")
     // expect(knifeRow).toHaveTextContent("4DP")
   })
+
+  test("render armor", async () => {
+    setup()
+
+    const armorTable = await screen.findByRole("table", { name: "armor" })
+
+    expect(armorTable).toBeInTheDocument()
+
+    // Check for armor-specific column headers
+    expect(
+      within(armorTable).getByRole("columnheader", { name: "Rating" }),
+    ).toBeInTheDocument()
+    expect(
+      within(armorTable).getByRole("columnheader", { name: "Capacity" }),
+    ).toBeInTheDocument()
+
+    // Check Full Body Armor
+    const fullBodyArmorCell = within(armorTable).getByRole("cell", {
+      name: "Full Body Armor",
+    })
+    const fullBodyArmorRow = fullBodyArmorCell.closest("tr")
+    expect(fullBodyArmorRow).toBeInTheDocument()
+    expect(fullBodyArmorRow).toHaveTextContent("5") // rating
+    expect(fullBodyArmorRow).toHaveTextContent("10") // capacity
+
+    // Check Lined Coat
+    const linedCoatCell = within(armorTable).getByRole("cell", {
+      name: "Lined Coat",
+    })
+    const linedCoatRow = linedCoatCell.closest("tr")
+    expect(linedCoatRow).toBeInTheDocument()
+    expect(linedCoatRow).toHaveTextContent("3") // rating
+    expect(linedCoatRow).toHaveTextContent("7") // capacity
+  })
+
+  test("render general gear", async () => {
+    setup()
+
+    const cyberwareTable = await screen.findByRole("table", {
+      name: "cyberware",
+    })
+
+    expect(cyberwareTable).toBeInTheDocument()
+
+    // Check that general gear only has Name column
+    const headers = within(cyberwareTable).getAllByRole("columnheader")
+    expect(headers).toHaveLength(1)
+    expect(headers[0]).toHaveTextContent("Name")
+
+    // Check that cyberware items are rendered
+    const cybereye = within(cyberwareTable).getByRole("cell", {
+      name: "Cybereye 3",
+    })
+    expect(cybereye).toBeInTheDocument()
+
+    const wiredReflexes = within(cyberwareTable).getByRole("cell", {
+      name: "Wired Reflexes 2",
+    })
+    expect(wiredReflexes).toBeInTheDocument()
+  })
+
+  test("renders empty gear section when runner has no resources", async () => {
+    // Test with Puck (id 12) who has no resources field
+    setup("12")
+
+    const gearSection = await (
+      await screen.findByRole("heading", { name: "Gear" })
+    ).closest("section")
+
+    expect(gearSection).toBeInTheDocument()
+
+    // Should have no tables since there are no resources
+    const tables = within(gearSection).queryAllByRole("table")
+    expect(tables).toHaveLength(0)
+  })
 })
