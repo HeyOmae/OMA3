@@ -12,6 +12,7 @@ export const ArmorTable: FC<ArmorTableProps> = ({ gearRow }) => (
         <th>Name</th>
         <th>Rating</th>
         <th>Capacity</th>
+        <th>Mods</th>
       </tr>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@ export const ArmorTable: FC<ArmorTableProps> = ({ gearRow }) => (
           <td>{gearItem.name}</td>
           <td>{gearItem?.armor?.rating}</td>
           <td>{gearItem?.modifications?.itemhookmod?.capacity}</td>
+          <td>{gearItem?.mods?.map((mod) => mod.name).join(", ")}</td>
         </tr>
       ))}
     </tbody>

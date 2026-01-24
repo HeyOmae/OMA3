@@ -99,6 +99,36 @@ describe("Resources", () => {
     expect(linedCoatRow).toHaveTextContent("7") // capacity
   })
 
+  test("render armor with mods", async () => {
+    setup()
+
+    const armorTable = await screen.findByRole("table", { name: "armor" })
+
+    expect(armorTable).toBeInTheDocument()
+
+    // Check that Mods column header exists
+    expect(
+      within(armorTable).getByRole("columnheader", { name: "Mods" }),
+    ).toBeInTheDocument()
+
+    // Check Lined Coat has "Cold Resistance" and "Fire Resistance" mods
+    const linedCoatCell = within(armorTable).getByRole("cell", {
+      name: "Lined Coat",
+    })
+    const linedCoatRow = linedCoatCell.closest("tr")
+    expect(linedCoatRow).toBeInTheDocument()
+    expect(linedCoatRow).toHaveTextContent("Cold Resistance")
+    expect(linedCoatRow).toHaveTextContent("Fire Resistance")
+
+    // Check that armor without mods shows empty mods cell
+    const fullBodyArmorCell = within(armorTable).getByRole("cell", {
+      name: "Full Body Armor",
+    })
+    const fullBodyArmorRow = fullBodyArmorCell.closest("tr")
+    expect(fullBodyArmorRow).toBeInTheDocument()
+    // Full Body Armor has no mods, so the mods cell should be empty
+  })
+
   test("render general gear", async () => {
     setup()
 
