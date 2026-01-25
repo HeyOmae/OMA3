@@ -129,7 +129,7 @@ describe("Resources", () => {
     // Full Body Armor has no mods, so the mods cell should be empty
   })
 
-  test("render general gear", async () => {
+  test("render cyberware with essence cost", async () => {
     setup()
 
     const cyberwareTable = await screen.findByRole("table", {
@@ -138,21 +138,239 @@ describe("Resources", () => {
 
     expect(cyberwareTable).toBeInTheDocument()
 
-    // Check that general gear only has Name column
-    const headers = within(cyberwareTable).getAllByRole("columnheader")
-    expect(headers).toHaveLength(1)
-    expect(headers[0]).toHaveTextContent("Name")
+    // Check for cyberware-specific column headers
+    expect(
+      within(cyberwareTable).getByRole("columnheader", { name: "Name" }),
+    ).toBeInTheDocument()
+    expect(
+      within(cyberwareTable).getByRole("columnheader", { name: "Essence" }),
+    ).toBeInTheDocument()
 
-    // Check that cyberware items are rendered
+    // Check Cybereye 3 with essence cost
     const cybereye = within(cyberwareTable).getByRole("cell", {
       name: "Cybereye 3",
     })
-    expect(cybereye).toBeInTheDocument()
+    const cybereyeRow = cybereye.closest("tr")
+    expect(cybereyeRow).toBeInTheDocument()
+    expect(cybereyeRow).toHaveTextContent("0.3")
+
+    // Check Wired Reflexes 2 with essence cost
+    const wiredReflexesRow = screen.getByRole("row", {
+      name: /Wired Reflexes 2/,
+    })
+    expect(wiredReflexesRow).toBeInTheDocument()
+    expect(wiredReflexesRow).toHaveTextContent("2.0")
+
+    // Check Muscle Replacement with rated essence
+    const muscleReplacementRow = screen.getByRole("row", {
+      name: /Muscle Replacement/,
+    })
+    expect(muscleReplacementRow).toBeInTheDocument()
+    expect(muscleReplacementRow).toHaveTextContent("0.7")
 
     const wiredReflexes = within(cyberwareTable).getByRole("cell", {
       name: "Wired Reflexes 2",
     })
     expect(wiredReflexes).toBeInTheDocument()
+  })
+
+  test("render bioware with essence cost", async () => {
+    // Test with Winterhawk (id 4) who has bioware
+    setup("4")
+
+    const biowareTable = await screen.findByRole("table", {
+      name: "bioware",
+    })
+
+    expect(biowareTable).toBeInTheDocument()
+
+    // Check for bioware-specific column headers
+    expect(
+      within(biowareTable).getByRole("columnheader", { name: "Name" }),
+    ).toBeInTheDocument()
+    expect(
+      within(biowareTable).getByRole("columnheader", { name: "Essence" }),
+    ).toBeInTheDocument()
+
+    // Check Cerebral Booster with essence cost
+    const cerebralBooster = within(biowareTable).getByRole("cell", {
+      name: "Cerebral Booster",
+    })
+    const cerebralBoosterRow = cerebralBooster.closest("tr")
+    expect(cerebralBoosterRow).toBeInTheDocument()
+    expect(cerebralBoosterRow).toHaveTextContent("0.2")
+  })
+
+  test("render vehicles with stats", async () => {
+    setup()
+
+    const vehiclesTable = await screen.findByRole("table", {
+      name: "vehicles",
+    })
+
+    expect(vehiclesTable).toBeInTheDocument()
+
+    // Check for vehicle-specific column headers
+    expect(
+      within(vehiclesTable).getByRole("columnheader", { name: "Name" }),
+    ).toBeInTheDocument()
+    expect(
+      within(vehiclesTable).getByRole("columnheader", { name: "Handling" }),
+    ).toBeInTheDocument()
+    expect(
+      within(vehiclesTable).getByRole("columnheader", { name: "Speed" }),
+    ).toBeInTheDocument()
+    expect(
+      within(vehiclesTable).getByRole("columnheader", { name: "Body" }),
+    ).toBeInTheDocument()
+    expect(
+      within(vehiclesTable).getByRole("columnheader", { name: "Armor" }),
+    ).toBeInTheDocument()
+
+    // Check Harley-Davidson Scorpion
+    const scorpion = within(vehiclesTable).getByRole("cell", {
+      name: "Harley-Davidson Scorpion",
+    })
+    const scorpionRow = scorpion.closest("tr")
+    expect(scorpionRow).toBeInTheDocument()
+    expect(scorpionRow).toHaveTextContent("3/5") // handling
+    expect(scorpionRow).toHaveTextContent("200") // topSpeed
+    expect(scorpionRow).toHaveTextContent("7") // body
+    expect(scorpionRow).toHaveTextContent("6") // armor
+  })
+
+  test("render imaging gear with rating and mods", async () => {
+    setup()
+
+    const imagingTable = await screen.findByRole("table", {
+      name: "imaging",
+    })
+
+    expect(imagingTable).toBeInTheDocument()
+
+    // Check for imaging-specific column headers
+    expect(
+      within(imagingTable).getByRole("columnheader", { name: "Name" }),
+    ).toBeInTheDocument()
+    expect(
+      within(imagingTable).getByRole("columnheader", { name: "Rating" }),
+    ).toBeInTheDocument()
+    expect(
+      within(imagingTable).getByRole("columnheader", { name: "Mods" }),
+    ).toBeInTheDocument()
+
+    // Check Contacts with rating and mods
+    const contacts = within(imagingTable).getByRole("cell", {
+      name: "Contacts",
+    })
+    const contactsRow = contacts.closest("tr")
+    expect(contactsRow).toBeInTheDocument()
+    expect(contactsRow).toHaveTextContent("3") // rating
+    expect(contactsRow).toHaveTextContent("Image Link") // mod
+  })
+
+  test("render audio gear with rating", async () => {
+    setup()
+
+    const audioTable = await screen.findByRole("table", {
+      name: "audio",
+    })
+
+    expect(audioTable).toBeInTheDocument()
+
+    // Check Earbuds with rating
+    const earbuds = within(audioTable).getByRole("cell", {
+      name: "Earbuds",
+    })
+    const earbudsRow = earbuds.closest("tr")
+    expect(earbudsRow).toBeInTheDocument()
+    expect(earbudsRow).toHaveTextContent("3") // rating
+  })
+
+  test("render sensor gear with rating and mods", async () => {
+    setup()
+
+    const sensorTable = await screen.findByRole("table", {
+      name: "sensor",
+    })
+
+    expect(sensorTable).toBeInTheDocument()
+
+    // Check Wall-mounted Housing with rating and mods
+    const wallMounted = within(sensorTable).getByRole("cell", {
+      name: "Wall-mounted Housing",
+    })
+    const wallMountedRow = wallMounted.closest("tr")
+    expect(wallMountedRow).toBeInTheDocument()
+    expect(wallMountedRow).toHaveTextContent("6") // rating
+    expect(wallMountedRow).toHaveTextContent("Laser Range Finder") // mod
+    expect(wallMountedRow).toHaveTextContent("Camera Function") // mod
+  })
+
+  test("render cyberdeck with matrix attributes", async () => {
+    // Test with Winterhawk (id 4) who has a cyberdeck
+    setup("4")
+
+    const cyberdeckTable = await screen.findByRole("table", {
+      name: "cyberdeck",
+    })
+
+    expect(cyberdeckTable).toBeInTheDocument()
+
+    // Check for cyberdeck-specific column headers
+    expect(
+      within(cyberdeckTable).getByRole("columnheader", { name: "Name" }),
+    ).toBeInTheDocument()
+    expect(
+      within(cyberdeckTable).getByRole("columnheader", {
+        name: "Device Rating",
+      }),
+    ).toBeInTheDocument()
+    expect(
+      within(cyberdeckTable).getByRole("columnheader", { name: "Attack" }),
+    ).toBeInTheDocument()
+    expect(
+      within(cyberdeckTable).getByRole("columnheader", { name: "Sleaze" }),
+    ).toBeInTheDocument()
+    expect(
+      within(cyberdeckTable).getByRole("columnheader", {
+        name: "Data Processing",
+      }),
+    ).toBeInTheDocument()
+    expect(
+      within(cyberdeckTable).getByRole("columnheader", { name: "Firewall" }),
+    ).toBeInTheDocument()
+
+    // Check Renraku Kitsune
+    const renrakuKitsune = within(cyberdeckTable).getByRole("cell", {
+      name: "Renraku Kitsune",
+    })
+    const renrakuKitsuneRow = renrakuKitsune.closest("tr")
+    expect(renrakuKitsuneRow).toBeInTheDocument()
+    expect(renrakuKitsuneRow).toHaveTextContent("4") // device rating
+    expect(renrakuKitsuneRow).toHaveTextContent("7") // attack
+    expect(renrakuKitsuneRow).toHaveTextContent("6") // sleaze
+    // Note: data processing and firewall are derived from device rating for cyberdecks
+  })
+
+  test("render commlink with matrix attributes", async () => {
+    // Test with Frosty (id 7) who has a commlink
+    setup("7")
+
+    const commlinkTable = await screen.findByRole("table", {
+      name: "commlink",
+    })
+
+    expect(commlinkTable).toBeInTheDocument()
+
+    // Check Meta Link
+    const metaLink = within(commlinkTable).getByRole("cell", {
+      name: "Meta Link",
+    })
+    const metaLinkRow = metaLink.closest("tr")
+    expect(metaLinkRow).toBeInTheDocument()
+    expect(metaLinkRow).toHaveTextContent("1") // device rating
+    expect(metaLinkRow).toHaveTextContent("0") // firewall
   })
 
   test("renders empty gear section when runner has no resources", async () => {

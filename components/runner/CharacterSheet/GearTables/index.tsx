@@ -2,8 +2,13 @@ import { Runner } from "@/types/runner"
 import { Resources } from "@/types/Resources"
 import { FC, useMemo } from "react"
 import { ArmorTable } from "./ArmorTable"
+import { BiowareTable } from "./BiowareTable"
+import { CyberwareTable } from "./CyberwareTable"
 import { FirearmsTable } from "./FirearmsTable"
 import { GeneralGearTable } from "./GeneralGearTable"
+import { MatrixDeviceTable } from "./MatrixDeviceTable"
+import { ModdableGearTable } from "./ModdableGearTable"
+import { VehiclesTable } from "./VehiclesTable"
 import { WeaponTable } from "./WeaponTable"
 
 interface Props {
@@ -19,9 +24,17 @@ type GearTableComponents = {
 
 const gearTableComponents: Partial<GearTableComponents> = {
   armor: ArmorTable,
+  audio: ModdableGearTable,
+  bioware: BiowareTable,
+  commlink: MatrixDeviceTable,
+  cyberdeck: MatrixDeviceTable,
+  cyberware: CyberwareTable,
   firearms: FirearmsTable,
+  imaging: ModdableGearTable,
   melee: WeaponTable,
   projectile: WeaponTable,
+  sensor: ModdableGearTable,
+  vehicles: VehiclesTable,
 }
 
 interface GearTableSectionProps<K extends ResourceKey> {
