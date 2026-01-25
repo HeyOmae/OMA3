@@ -111,14 +111,14 @@ describe("Resources", () => {
       within(armorTable).getByRole("columnheader", { name: "Mods" }),
     ).toBeInTheDocument()
 
-    // Check Lined Coat has "Cold Resistance" and "Fire Resistance" mods
+    // Check Lined Coat has "Cold Resistance" and "Fire Resistance" mods with ratings
     const linedCoatCell = within(armorTable).getByRole("cell", {
       name: "Lined Coat",
     })
     const linedCoatRow = linedCoatCell.closest("tr")
     expect(linedCoatRow).toBeInTheDocument()
-    expect(linedCoatRow).toHaveTextContent("Cold Resistance")
-    expect(linedCoatRow).toHaveTextContent("Fire Resistance")
+    expect(linedCoatRow).toHaveTextContent("Cold Resistance 3")
+    expect(linedCoatRow).toHaveTextContent("Fire Resistance 2")
 
     // Check that armor without mods shows empty mods cell
     const fullBodyArmorCell = within(armorTable).getByRole("cell", {
@@ -174,8 +174,30 @@ describe("Resources", () => {
     expect(wiredReflexes).toBeInTheDocument()
   })
 
+  test("render cyberware with mods", async () => {
+    // Use Street Rage (id 11) who has a cyberarm with mods
+    setup("11")
+
+    const cyberwareTable = await screen.findByRole("table", {
+      name: "cyberware",
+    })
+
+    expect(cyberwareTable).toBeInTheDocument()
+
+    // Check Cyberarm Obvious has mods displayed
+    const cyberarmCell = within(cyberwareTable).getByRole("cell", {
+      name: "Cyberarm Obvious",
+    })
+    const cyberarmRow = cyberarmCell.closest("tr")
+    expect(cyberarmRow).toBeInTheDocument()
+    expect(cyberarmRow).toHaveTextContent("Fingertip Compartment")
+    expect(cyberarmRow).toHaveTextContent("Grapple Gun Augment")
+    expect(cyberarmRow).toHaveTextContent("Smuggling Compartment")
+    expect(cyberarmRow).toHaveTextContent("Attribute Increase Agility 4")
+  })
+
   test("render bioware with essence cost", async () => {
-    // Test with Winterhawk (id 4) who has bioware
+    // Test with /dev/grrl (id 4) who has bioware
     setup("4")
 
     const biowareTable = await screen.findByRole("table", {
@@ -296,15 +318,15 @@ describe("Resources", () => {
 
     expect(sensorTable).toBeInTheDocument()
 
-    // Check Wall-mounted Housing with rating and mods
+    // Check Wall-mounted Housing with rating and mods with ratings
     const wallMounted = within(sensorTable).getByRole("cell", {
       name: "Wall-mounted Housing",
     })
     const wallMountedRow = wallMounted.closest("tr")
     expect(wallMountedRow).toBeInTheDocument()
-    expect(wallMountedRow).toHaveTextContent("6") // rating
-    expect(wallMountedRow).toHaveTextContent("Laser Range Finder") // mod
-    expect(wallMountedRow).toHaveTextContent("Camera Function") // mod
+    expect(wallMountedRow).toHaveTextContent("6") // gear rating
+    expect(wallMountedRow).toHaveTextContent("Laser Range Finder") // mod without rating
+    expect(wallMountedRow).toHaveTextContent("Camera Function 3") // mod with rating
   })
 
   test("render cyberdeck with matrix attributes", async () => {

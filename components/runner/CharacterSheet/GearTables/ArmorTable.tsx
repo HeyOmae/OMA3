@@ -1,5 +1,6 @@
 import { GearArmor } from "@/types/Resources"
 import { FC } from "react"
+import { formatModWithRating } from "./utils"
 
 interface ArmorTableProps {
   gearRow: GearArmor[]
@@ -21,7 +22,7 @@ export const ArmorTable: FC<ArmorTableProps> = ({ gearRow }) => (
           <td>{gearItem.name}</td>
           <td>{gearItem?.armor?.rating}</td>
           <td>{gearItem?.modifications?.itemhookmod?.capacity}</td>
-          <td>{gearItem?.mods?.map((mod) => mod.name).join(", ")}</td>
+          <td>{gearItem?.mods?.map(formatModWithRating).join(", ")}</td>
         </tr>
       ))}
     </tbody>

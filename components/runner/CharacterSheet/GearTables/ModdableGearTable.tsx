@@ -1,5 +1,6 @@
 import { Resources } from "@/types/Resources"
 import { FC } from "react"
+import { formatModWithRating } from "./utils"
 
 type ModdableGear =
   | Resources["imaging"]
@@ -24,7 +25,7 @@ export const ModdableGearTable: FC<ModdableGearTableProps> = ({ gearRow }) => (
         <tr key={index}>
           <td>{gearItem.name}</td>
           <td>{gearItem.currentRating}</td>
-          <td>{gearItem.mods?.map((mod) => mod.name).join(", ")}</td>
+          <td>{gearItem.mods?.map(formatModWithRating).join(", ")}</td>
         </tr>
       ))}
     </tbody>
