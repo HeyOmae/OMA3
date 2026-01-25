@@ -14,20 +14,12 @@ export const BiowareTable: FC<BiowareTableProps> = ({ gearRow }) => (
       </tr>
     </thead>
     <tbody>
-      {gearRow.map((gearItem, index) => {
-        // Extract essence from the useAs object or array
-        const essence =
-          Array.isArray(gearItem.useAs) ?
-            gearItem.useAs[0]?.essence
-          : gearItem.useAs?.essence
-
-        return (
-          <tr key={index}>
-            <td>{gearItem.name}</td>
-            <td>{essence}</td>
-          </tr>
-        )
-      })}
+      {gearRow.map((gearItem, index) => (
+        <tr key={index}>
+          <td>{gearItem.name}</td>
+          <td>{gearItem.useAs.essence}</td>
+        </tr>
+      ))}
     </tbody>
   </>
 )
