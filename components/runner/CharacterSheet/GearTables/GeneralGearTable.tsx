@@ -1,8 +1,8 @@
-import { Resources } from "@/types/Resources"
+import { Resources, GearWithRating } from "@/types/Resources"
 import { FC } from "react"
 
 type ResourceValue = Resources[keyof Resources]
-type GearItem = ResourceValue extends (infer T)[] ? T : never
+type GearItem = (ResourceValue extends (infer T)[] ? T : never) | GearWithRating
 
 interface GeneralGearTableProps {
   gearRow: ResourceValue
@@ -20,7 +20,7 @@ export const GeneralGearTable: FC<GeneralGearTableProps> = ({ gearRow }) => (
       {gearRow.map((gearItem: GearItem, index: number) => (
         <tr key={index}>
           <td>{gearItem.name}</td>
-          <td>{gearItem.currentRating}</td>
+          <td>{"currentRating" in gearItem ? gearItem.currentRating : ""}</td>
         </tr>
       ))}
     </tbody>
