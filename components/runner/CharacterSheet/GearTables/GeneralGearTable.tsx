@@ -13,12 +13,14 @@ export const GeneralGearTable: FC<GeneralGearTableProps> = ({ gearRow }) => (
     <thead>
       <tr>
         <th>Name</th>
+        <th>Rating</th>
       </tr>
     </thead>
     <tbody>
       {gearRow.map((gearItem: GearItem, index: number) => (
         <tr key={index}>
           <td>{gearItem.name}</td>
+          <td>{gearItem.currentRating}</td>
         </tr>
       ))}
     </tbody>

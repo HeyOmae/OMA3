@@ -487,4 +487,28 @@ describe("Resources", () => {
     expect(pulsarRow).toBeInTheDocument()
     // Pulsar has no mods, so the mods cell should be empty
   })
+
+  test("render general gear with rating", async () => {
+    // Test with Frosty (id 7) who has focusFormula with rating
+    setup("7")
+
+    const focusFormulaTable = await screen.findByRole("table", {
+      name: "focusFormula",
+    })
+
+    expect(focusFormulaTable).toBeInTheDocument()
+
+    // Check for rating column header
+    expect(
+      within(focusFormulaTable).getByRole("columnheader", { name: "Rating" }),
+    ).toBeInTheDocument()
+
+    // Check Weapon focus formula has rating 6
+    const weaponFocusCell = within(focusFormulaTable).getByRole("cell", {
+      name: "Weapon focus formula",
+    })
+    const weaponFocusRow = weaponFocusCell.closest("tr")
+    expect(weaponFocusRow).toBeInTheDocument()
+    expect(weaponFocusRow).toHaveTextContent("6")
+  })
 })
