@@ -139,10 +139,7 @@ export const MagRes = () => {
         case REMOVE_RITUAL:
           return {
             ...runner,
-            rituals: [
-              ...runner.rituals.slice(0, payload.removeRitual),
-              ...runner.rituals.slice(payload.removeRitual + 1),
-            ],
+            rituals: runner.rituals.toSpliced(payload.removeRitual, 1),
           }
         case SET_POWER:
           return {
@@ -152,21 +149,17 @@ export const MagRes = () => {
         case REMOVE_POWER:
           return {
             ...runner,
-            powers: [
-              ...runner.powers.slice(0, payload.removePower),
-              ...runner.powers.slice(payload.removePower + 1),
-            ],
+            powers: runner.powers.toSpliced(payload.removePower, 1),
           }
         case CHANGE_POWER_LEVEL: {
           const { powerIndex, level } = payload.powerLevel
 
           return {
             ...runner,
-            powers: [
-              ...runner.powers.slice(0, powerIndex),
-              { ...runner.powers[powerIndex], level },
-              ...runner.powers.slice(powerIndex + 1),
-            ],
+            powers: runner.powers.toSpliced(powerIndex, 1, {
+              ...runner.powers[powerIndex],
+              level,
+            }),
           }
         }
         case SET_COMPLEX_FORM:
@@ -177,10 +170,10 @@ export const MagRes = () => {
         case REMOVE_COMPLEX_FORM:
           return {
             ...runner,
-            complexForms: [
-              ...runner.complexForms.slice(0, payload.removeComplexForm),
-              ...runner.complexForms.slice(payload.removeComplexForm + 1),
-            ],
+            complexForms: runner.complexForms.toSpliced(
+              payload.removeComplexForm,
+              1,
+            ),
           }
       }
     },

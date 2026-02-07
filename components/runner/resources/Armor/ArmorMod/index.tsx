@@ -40,20 +40,13 @@ const ArmorMods = () => {
       ...runner,
       resources: {
         ...runner.resources,
-        armor: [
-          ...runner.resources.armor.slice(0, gearIndex),
-          {
-            ...runner.resources.armor[gearIndex],
-            mods:
-              typeof payload === "number" ?
-                [
-                  ...runner.resources.armor[gearIndex].mods.slice(0, payload),
-                  ...runner.resources.armor[gearIndex].mods.slice(payload + 1),
-                ]
-              : [...(runner.resources.armor[gearIndex]?.mods ?? []), payload],
-          },
-          ...runner.resources.armor.slice(gearIndex + 1),
-        ],
+        armor: runner.resources.armor.toSpliced(gearIndex, 1, {
+          ...runner.resources.armor[gearIndex],
+          mods:
+            typeof payload === "number" ?
+              runner.resources.armor[gearIndex].mods.toSpliced(payload, 1)
+            : [...(runner.resources.armor[gearIndex]?.mods ?? []), payload],
+        }),
       },
     }))
 

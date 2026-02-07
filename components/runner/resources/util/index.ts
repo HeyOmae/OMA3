@@ -9,7 +9,7 @@ import {
 
 export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
   if (typeof payload === "number") {
-    return [...list.slice(0, payload), ...list.slice(payload + 1)]
+    return list.toSpliced(payload, 1)
   }
   return [...list, payload]
 }

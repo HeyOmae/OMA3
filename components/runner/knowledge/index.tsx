@@ -79,11 +79,7 @@ const KnowledgeSkills = () => {
       } else if (type === UPDATE_LANGUAGE_RATING) {
         return {
           ...runner,
-          language: [
-            ...runner.language.slice(0, index),
-            skill,
-            ...runner.language.slice(index + 1),
-          ],
+          language: runner.language.toSpliced(index, 1, skill),
         }
       }
 

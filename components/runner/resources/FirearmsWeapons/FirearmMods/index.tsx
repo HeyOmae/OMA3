@@ -36,28 +36,13 @@ const FirearmMods = () => {
       ...runner,
       resources: {
         ...runner.resources,
-        firearms: [
-          ...runner.resources.firearms.slice(0, gearIndex),
-          {
-            ...runner.resources.firearms[gearIndex],
-            mods:
-              typeof payload === "number" ?
-                [
-                  ...runner.resources.firearms[gearIndex].mods.slice(
-                    0,
-                    payload,
-                  ),
-                  ...runner.resources.firearms[gearIndex].mods.slice(
-                    payload + 1,
-                  ),
-                ]
-              : [
-                  ...(runner.resources.firearms[gearIndex]?.mods ?? []),
-                  payload,
-                ],
-          },
-          ...runner.resources.firearms.slice(gearIndex + 1),
-        ],
+        firearms: runner.resources.firearms.toSpliced(gearIndex, 1, {
+          ...runner.resources.firearms[gearIndex],
+          mods:
+            typeof payload === "number" ?
+              runner.resources.firearms[gearIndex].mods.toSpliced(payload, 1)
+            : [...(runner.resources.firearms[gearIndex]?.mods ?? []), payload],
+        }),
       },
     }))
 
