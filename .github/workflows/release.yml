@@ -1,0 +1,23 @@
+name: Release
+
+# Opens (and keeps updated) a release PR from the conventional commits on main.
+# Merging that PR bumps the version, tags it, and publishes the GitHub release
+# that the in-app release notes read from.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    # Releases live on HeyOmae/OMA3, forks only deploy
+    if: github.repository == 'HeyOmae/OMA3'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v5
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
