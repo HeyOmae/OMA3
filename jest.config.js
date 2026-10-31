@@ -6,18 +6,22 @@ module.exports = {
     customExportConditions: [""],
   },
   testPathIgnorePatterns: ["<rootDir>[/\\\\](node_modules|.next)[/\\\\]"],
-  transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
+  // some of msw's dependencies are ESM only
+  transformIgnorePatterns: [
+    "[/\\\\]node_modules[/\\\\](?!(rettime|@open-draft|until-async)[/\\\\]).+\\.(ts|tsx|js|mjs)$",
+  ],
   transform: {
-    "^.+\\.(ts|tsx)$": [
-      "babel-jest",
-      {
-        configFile: "./.babelrc",
-        caller: {
-          name: "babel-jest",
-          hasJsxRuntime: true,
+    "^.+\\.(ts|tsx)$|[/\\\\](rettime|@open-draft|until-async)[/\\\\].+\\.m?js$":
+      [
+        "babel-jest",
+        {
+          configFile: "./.babelrc",
+          caller: {
+            name: "babel-jest",
+            hasJsxRuntime: true,
+          },
         },
-      },
-    ],
+      ],
   },
   watchPlugins: [
     "jest-watch-typeahead/filename",

@@ -18,5 +18,6 @@ export default class FixJSDOMEnvironment extends JSDOMEnvironment {
     this.global.TextEncoder = TextEncoder
     this.global.BroadcastChannel = BroadcastChannel
     this.global.TransformStream = TransformStream
+    this.global.WritableStream = WritableStream
   }
 }

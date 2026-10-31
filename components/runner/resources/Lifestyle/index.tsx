@@ -31,7 +31,7 @@ const LifeStyle = () => {
         <RemainingNuyen runner={runner} />
         <Grid container spacing={3}>
           <DispatchContext.Provider value={dispatch}>
-            <Grid item md={6}>
+            <Grid size={{ md: 6 }}>
               <TableContainer className="table-container">
                 <Table stickyHeader>
                   <TableHead>
@@ -56,7 +56,7 @@ const LifeStyle = () => {
               </TableContainer>
             </Grid>
             {runner.resources?.lifestyle && (
-              <Grid item md={6}>
+              <Grid size={{ md: 6 }}>
                 <h2>Purchased Life Styles</h2>
                 <TableContainer className="table-container">
                   <Table stickyHeader>

@@ -16,9 +16,7 @@ export interface ChoiceRatingRowProps extends Props {
 }
 
 type ChoiceType =
-  | AdeptPower
-  | { name: SpellCategory | SpiritTypes }
-  | GearWeaponMelee
+  AdeptPower | { name: SpellCategory | SpiritTypes } | GearWeaponMelee
 
 type SelectedChoiceIndex = number | ""
 

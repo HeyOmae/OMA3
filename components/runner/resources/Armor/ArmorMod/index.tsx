@@ -78,7 +78,7 @@ const ArmorMods = () => {
         <RemainingArmorCapacity armor={armor} />
         <RemainingNuyen runner={runner} />
         <DispatchContext.Provider value={dispatch}>
-          <Grid item md={6}>
+          <Grid size={{ md: 6 }}>
             <GearTable<ArmorMod>
               listOfGear={modsWithMaxRating}
               cols={buyModCol}
@@ -86,7 +86,7 @@ const ArmorMods = () => {
           </Grid>
 
           {armor.mods && (
-            <Grid item md={6}>
+            <Grid size={{ md: 6 }}>
               <h2>Mods on {gearName}</h2>
               <GearTable<ArmorMod> cols={sellModCol} listOfGear={armor.mods} />
             </Grid>

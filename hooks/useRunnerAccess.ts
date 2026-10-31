@@ -12,7 +12,7 @@ export const useGetRunner = () => {
   useEffect(() => {
     let isMounted = true
 
-    getByID<Runner>(+id).then((payload) => {
+    void getByID<Runner>(+id).then((payload) => {
       if (isMounted) {
         setRunner(payload)
       }
@@ -60,7 +60,7 @@ export const useRunnerAccess: UseRunnerAccess = <Payload>(
   useEffect(() => {
     let isMounted = true
 
-    getByID<Runner>(+id).then((payload) => {
+    void getByID<Runner>(+id).then((payload) => {
       if (isMounted) {
         dispatch({ type: DONE_LOADING, payload })
       }
@@ -72,7 +72,7 @@ export const useRunnerAccess: UseRunnerAccess = <Payload>(
   }, [getByID, id])
 
   useEffect(() => {
-    if (runner) update(runner)
+    if (runner) void update(runner)
   }, [runner, update])
 
   return [runner, dispatch]

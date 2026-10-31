@@ -8,7 +8,7 @@ import {
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import { GearPageTemplate, Props } from "."
-import { GearWeaponMelee } from "types/Resources"
+import { GearWeaponMelee } from "@/types/Resources"
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,

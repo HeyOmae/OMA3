@@ -56,8 +56,9 @@ export interface AttackRatingModifier {
   condIndex?: number
 }
 
-export interface GearMod<UseAs = (AsModAccessory | AsCyberwareInstall)[]>
-  extends Gear {
+export interface GearMod<
+  UseAs = (AsModAccessory | AsCyberwareInstall)[],
+> extends Gear {
   useAs?: UseAs
   modifications?: {
     attrmod?: AttackRatingModifier | AttackRatingModifier[]
@@ -103,8 +104,7 @@ export interface ArmorMod extends GearWithRating {
 }
 
 export interface FirearmMod
-  extends GearMod<GearModUseAs<WeaponSlot>[]>,
-    Partial<GearTypes> {
+  extends GearMod<GearModUseAs<WeaponSlot>[]>, Partial<GearTypes> {
   requires?: {
     itemsubtypereq?: {
       type: string
@@ -245,9 +245,7 @@ export interface ModifiableGear<M = (GearMod & Partial<GearModRated>)[]> {
 }
 
 export interface GearModdableRated
-  extends GearTyped,
-    ModifiableGear,
-    GearMod<Partial<GearModUseAs>[]> {}
+  extends GearTyped, ModifiableGear, GearMod<Partial<GearModUseAs>[]> {}
 
 export interface GearAugmentationUseAs extends GearTypes {
   essence: string
@@ -258,14 +256,13 @@ interface EdgeMod {
   skill: string
 }
 export interface GearAugmentation<UseAs = GearAugmentationUseAs>
-  extends GearMod<UseAs>,
-    GearWithRating,
-    Partial<GearTypes> {
+  extends GearMod<UseAs>, GearWithRating, Partial<GearTypes> {
   essence?: number
 }
 
 export interface GearCyberware
-  extends GearAugmentation<Array<GearAugmentationUseAs | GearModUseAs>>,
+  extends
+    GearAugmentation<Array<GearAugmentationUseAs | GearModUseAs>>,
     ModifiableGear<GearCyberware[]> {
   language?: "fr" | "de" | "en"
   modOnly?: true
@@ -314,9 +311,7 @@ interface BaseArmor {
 }
 
 export interface GearArmor
-  extends Gear,
-    Partial<GearTypes>,
-    GearMod<GearTypes> {
+  extends Gear, Partial<GearTypes>, GearMod<GearTypes> {
   armor: BaseArmor
   modonly?: true
   mods?: ArmorMod[]

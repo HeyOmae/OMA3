@@ -7,9 +7,7 @@ export type MentalAttributes = "Willpower" | "Logic" | "Intuition" | "Charisma"
 export type SpecialAttributes = "Edge" | "Magic" | "Resonance"
 
 export type Attributes =
-  | PhysicalAttributes
-  | MentalAttributes
-  | SpecialAttributes
+  PhysicalAttributes | MentalAttributes | SpecialAttributes
 
 export interface AttributeStats {
   adjustment: number

@@ -149,7 +149,7 @@ export class SliderHelper {
   static change(element: HTMLElement, value: number, min = 0, max = 100) {
     const getBoundingClientRect = element.getBoundingClientRect
     element.getBoundingClientRect = SliderHelper.getBoundingClientRectMock
-    fireEvent.mouseDown(element, {
+    fireEvent.pointerDown(element, {
       clientX: ((value - min) / (max - min)) * SliderHelper.width,
       clientY: SliderHelper.height,
     })
@@ -158,8 +158,12 @@ export class SliderHelper {
 }
 
 export const runnerFromDB = (id = 0): Runner =>
-  indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-    .records[id].value
+  [
+    ...indexedDB._databases
+      .get("omae")
+      .rawObjectStores.get("runners")
+      .records.records.getAllRecords(),
+  ][id].value
 
 export const caymansCurrentlySpentNuyen = 31_230
 const totalNuyen = 275_000

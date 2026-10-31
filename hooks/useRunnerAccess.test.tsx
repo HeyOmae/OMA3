@@ -82,8 +82,10 @@ describe("useRunnerAccess hook", () => {
 
     expect(runnerFromDB().name).toEqual("Bull")
     expect(
-      indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-        .records.length,
+      indexedDB._databases
+        .get("omae")
+        .rawObjectStores.get("runners")
+        .records.records.size(),
     ).toBe(mockedRunners.length)
 
     await userEvent.click(getByText("update name"))
@@ -91,8 +93,10 @@ describe("useRunnerAccess hook", () => {
     await waitFor(() => {
       expect(getByText("William “Bull” MacCallister")).toBeInTheDocument()
       expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records.length,
+        indexedDB._databases
+          .get("omae")
+          .rawObjectStores.get("runners")
+          .records.records.size(),
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
     })
@@ -110,8 +114,10 @@ describe("useRunnerAccess hook", () => {
     await waitFor(() => {
       expect(getByText("Bull")).toBeInTheDocument()
       expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records.length,
+        indexedDB._databases
+          .get("omae")
+          .rawObjectStores.get("runners")
+          .records.records.size(),
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("Bull")
     })

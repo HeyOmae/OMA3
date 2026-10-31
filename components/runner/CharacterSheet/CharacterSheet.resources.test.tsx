@@ -19,7 +19,7 @@ describe("Resources", () => {
   test("renders a table for each type of gear", async () => {
     setup()
 
-    const gearSection = await (
+    const gearSection = (
       await screen.findByRole("heading", { name: "Gear" })
     ).closest("section")
 
@@ -399,7 +399,7 @@ describe("Resources", () => {
     // Test with Puck (id 12) who has no resources field
     setup("12")
 
-    const gearSection = await (
+    const gearSection = (
       await screen.findByRole("heading", { name: "Gear" })
     ).closest("section")
 

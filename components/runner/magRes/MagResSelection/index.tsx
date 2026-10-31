@@ -28,7 +28,7 @@ export const MagResSelection: FC<Props> = ({
 
   return (
     <Grid container spacing={2}>
-      <Grid item sm={12} md={6}>
+      <Grid size={{ sm: 12, md: 6 }}>
         <h1>Awakened</h1>
         <RadioGroup
           aria-label="selection awakened"
@@ -62,7 +62,7 @@ export const MagResSelection: FC<Props> = ({
           />
         </RadioGroup>
       </Grid>
-      <Grid item sm={12} md={6}>
+      <Grid size={{ sm: 12, md: 6 }}>
         <h1>Emergent</h1>
         <RadioGroup
           aria-label="selection awakened"

@@ -58,7 +58,7 @@ const Modal: FC<ModalProps> = ({ runner, open, setOpen }) => {
         label={runner.name}
         multiline
         value={runnerJSONed}
-        inputProps={{ readOnly: true }}
+        slotProps={{ htmlInput: { readOnly: true } }}
       />
     </Dialog>
   )

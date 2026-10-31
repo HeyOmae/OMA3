@@ -31,7 +31,7 @@ export const Info = (): JSX.Element => {
   return runner ?
       <form autoComplete="off">
         <Grid container>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <TextField
               inputRef={name}
               defaultValue={runner.name}
@@ -45,7 +45,7 @@ export const Info = (): JSX.Element => {
               }
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <TextField
               inputRef={description}
               margin="normal"

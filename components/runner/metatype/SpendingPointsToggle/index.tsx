@@ -31,22 +31,22 @@ export const SpendingPointsToggle: FC<Props> = ({
         value={pointToSpend}
         onChange={(event, pointsToSpend) => selectSpending(pointsToSpend)}
       >
-        <Grid container alignItems="center" spacing={1}>
-          <Grid item>
+        <Grid container sx={{ alignItems: "center" }} spacing={1}>
+          <Grid>
             <FormControlLabel
               value={ATTRIBUTE}
               control={<Radio />}
               label={ATTRIBUTE}
             />
           </Grid>
-          <Grid item>
+          <Grid>
             <FormControlLabel
               value={ADJUSTMENT}
               control={<Radio />}
               label={ADJUSTMENT}
             />
           </Grid>
-          <Grid item>
+          <Grid>
             <FormControlLabel value={KARMA} control={<Radio />} label={KARMA} />
           </Grid>
         </Grid>

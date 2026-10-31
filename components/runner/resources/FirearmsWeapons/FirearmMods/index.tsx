@@ -60,12 +60,12 @@ const FirearmMods = () => {
         />
         <RemainingNuyen runner={runner} />
         <DispatchContext.Provider value={dispatch}>
-          <Grid item md={6}>
+          <Grid size={{ md: 6 }}>
             <GearTable<FirearmMod> listOfGear={mods} cols={buyModCol} />
           </Grid>
 
           {firearm.mods && (
-            <Grid item md={6}>
+            <Grid size={{ md: 6 }}>
               <h2>Mods on {gearName}</h2>
               <GearTable<FirearmMod>
                 cols={sellModCol}

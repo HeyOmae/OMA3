@@ -1,10 +1,5 @@
 export type MagRes =
-  | "Full"
-  | "Aspected"
-  | "Mystic Adept"
-  | "Adept"
-  | "Technomancer"
-  | "Mundane"
+  "Full" | "Aspected" | "Mystic Adept" | "Adept" | "Technomancer" | "Mundane"
 
 type Spellfeature = {
   ref: string
@@ -30,10 +25,7 @@ export type Spell = GeneralSpell | CombatSpell
 
 type CombatSpellsCategory = "Combat"
 export type NonCombatSpellsCategory =
-  | "Detection"
-  | "Health"
-  | "Illusion"
-  | "Manipulation"
+  "Detection" | "Health" | "Illusion" | "Manipulation"
 
 export type SpellCategory = CombatSpellsCategory | NonCombatSpellsCategory
 

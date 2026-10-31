@@ -17,7 +17,7 @@ const ReleaseNotes = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5)
   const [notes, setNotes] = useState<Releases>([])
   useEffect(() => {
-    fetch("https://api.github.com/repos/HeyOmae/OMA3/releases")
+    void fetch("https://api.github.com/repos/HeyOmae/OMA3/releases")
       .then((res) => res.json())
       .then((res: Releases) => setNotes(res))
   }, [])
@@ -51,11 +51,13 @@ const ReleaseNotes = () => {
                 count={notes.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
-                SelectProps={{
-                  inputProps: {
-                    "aria-label": "rows per page",
+                slotProps={{
+                  select: {
+                    inputProps: {
+                      "aria-label": "rows per page",
+                    },
+                    native: true,
                   },
-                  native: true,
                 }}
                 onPageChange={(e, pageTo) => setPage(pageTo)}
                 onRowsPerPageChange={({ target }) => {

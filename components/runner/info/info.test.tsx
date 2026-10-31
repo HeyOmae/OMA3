@@ -54,8 +54,10 @@ describe("<Info/>", () => {
 
     await waitFor(() => {
       expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records.length,
+        indexedDB._databases
+          .get("omae")
+          .rawObjectStores.get("runners")
+          .records.records.size(),
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
     })
@@ -68,7 +70,7 @@ describe("<Info/>", () => {
     })
     fireEvent.blur(getByLabelText("Runner's description"))
 
-    waitFor(() => {
+    await waitFor(() => {
       expect(runnerFromDB().description).toEqual(
         "Retired runner. Working as a fixer in the Ork Underground in Seattle.",
       )

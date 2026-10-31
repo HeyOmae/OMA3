@@ -127,10 +127,10 @@ const Skills: FC = () => {
     runner ?
       skillPoints ?
         <Grid container spacing={2}>
-          <Grid item sm={12}>
+          <Grid size={{ sm: 12 }}>
             <RemainingKarma runner={runner} />
           </Grid>
-          <Grid item sm={12}>
+          <Grid size={{ sm: 12 }}>
             <RadioGroup
               aria-label="select-points"
               name="select-points"
@@ -139,15 +139,15 @@ const Skills: FC = () => {
                 setPointsToSpend(pointsToSpend as SkillPointsToSpend)
               }
             >
-              <Grid container alignItems="center" spacing={1}>
-                <Grid item>
+              <Grid container sx={{ alignItems: "center" }} spacing={1}>
+                <Grid>
                   <FormControlLabel
                     value="Points"
                     control={<Radio />}
                     label="Skill Points"
                   />
                 </Grid>
-                <Grid item>
+                <Grid>
                   <FormControlLabel
                     value="Karma"
                     control={<Radio />}
@@ -157,12 +157,12 @@ const Skills: FC = () => {
               </Grid>
             </RadioGroup>
           </Grid>
-          <Grid item sm={12} md={4}>
+          <Grid size={{ sm: 12, md: 4 }}>
             <h2>Skills to learn</h2>
             <SkillTable dispatch={dispatch} pointsToSpend={pointsToSpend} />
           </Grid>
           {runner.skills && (
-            <Grid item sm={12} md={8}>
+            <Grid size={{ sm: 12, md: 8 }}>
               <h2>Known skills</h2>
               <RunnerSkillTable
                 runner={runner}

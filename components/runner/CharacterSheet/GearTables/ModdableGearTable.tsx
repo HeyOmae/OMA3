@@ -3,9 +3,7 @@ import { FC } from "react"
 import { formatModWithRating } from "./utils"
 
 type ModdableGear =
-  | Resources["imaging"]
-  | Resources["audio"]
-  | Resources["sensor"]
+  Resources["imaging"] | Resources["audio"] | Resources["sensor"]
 
 interface ModdableGearTableProps {
   gearRow: ModdableGear

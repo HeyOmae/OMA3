@@ -52,7 +52,7 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     switch (nav) {
       case 0:
-        push("/")
+        void push("/")
         break
 
       default:

@@ -216,13 +216,13 @@ export const MagRes = () => {
               dispatch={dispatch}
             />
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <RemainingSpells
                   runner={runner}
                   baseMagic={priority[runner.magres][1]}
                 />
               </Grid>
-              <Grid item sm={12} md={6} className={styles.scrollGrid}>
+              <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
                 {(runner.magres === "Full" ||
                   runner.magres === "Aspected" ||
                   runner.magres === "Mystic Adept") && (
@@ -250,7 +250,7 @@ export const MagRes = () => {
                   </AccordionWrapper>
                 )}
               </Grid>
-              <Grid item sm={12} md={6} className={styles.scrollGrid}>
+              <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
                 {runner.spells && (
                   <section>
                     <h2>Known Spells</h2>

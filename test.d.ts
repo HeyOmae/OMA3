@@ -1,6 +1,6 @@
 // Mock out indexedDB for unit testing
 interface Records {
-  records: { records: any[] }
+  records: { records: { getAllRecords(): Iterable<any>; size(): number } }
 }
 
 type RawObjectStores = { rawObjectStores: Map<string, Records> }

@@ -9,7 +9,7 @@ export const Delete: FC = () => {
   return (
     <Button
       onClick={() => {
-        deleteRecord(+router.query.id).then(() => router.push("/"))
+        void deleteRecord(+router.query.id).then(() => router.push("/"))
       }}
     >
       Retire Runner

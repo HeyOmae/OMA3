@@ -11,8 +11,7 @@ import { RemainingNuyen } from "./RemainingNuyen"
 import { BreadCrumpOption, ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
 
 type DisplayCapacity =
-  | typeof RemainingCapacity
-  | typeof RemainingCapacityCyberware
+  typeof RemainingCapacity | typeof RemainingCapacityCyberware
 
 interface GearModPageProps<G> extends GearPageProps<G> {
   previousPath: BreadCrumpOption
@@ -73,12 +72,12 @@ export function GearModPageTemplate<G extends ModsType>({
         <RemainingNuyen runner={runner} />
         {CapacityDisplay && <CapacityDisplay gear={gearBeingModded} />}
         <DispatchContext.Provider value={dispatch}>
-          <Grid item md={6}>
+          <Grid size={{ md: 6 }}>
             <GearTable listOfGear={listOfGear} cols={addGearTableConfig} />
           </Grid>
 
           {modsOnGear && (
-            <Grid item md={6}>
+            <Grid size={{ md: 6 }}>
               <h2>Mods on {gearName}</h2>
               <GearTable<ModsType>
                 cols={removeGearTableConfig}

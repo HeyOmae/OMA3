@@ -22,7 +22,7 @@ const LoadDynamicGear: FC<Props> = ({
   const gearType = router.query.gearType as string
 
   useEffect(() => {
-    importedGear.then((gear) => setListOfGear(gear[gearType]))
+    void importedGear.then((gear) => setListOfGear(gear[gearType]))
   }, [gearType, importedGear])
 
   return (

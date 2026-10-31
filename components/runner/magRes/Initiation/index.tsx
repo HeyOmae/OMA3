@@ -36,7 +36,7 @@ const Initiation = () => {
         <RemainingKarma runner={runner} />
 
         <Grid container spacing={2}>
-          <Grid item sm={12} md={6} component={Section}>
+          <Grid size={{ sm: 12, md: 6 }} component={Section}>
             <h2>Metamagics</h2>
             <MetamagicTable
               metamagics={metamagic}
@@ -46,7 +46,7 @@ const Initiation = () => {
               ActionButton={AddButton}
             />
           </Grid>
-          <Grid item sm={12} md={6} component={Section}>
+          <Grid size={{ sm: 12, md: 6 }} component={Section}>
             {runner.initiation && (
               <>
                 <h2>Known Metamagics</h2>

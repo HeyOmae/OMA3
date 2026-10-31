@@ -3,6 +3,7 @@ import {
   renderWithTestRouter,
   screen,
   userEvent,
+  waitFor,
   setupIndexedDB,
   getByText as getByTextInElement,
 } from "@/test/testUtils"
@@ -55,7 +56,9 @@ describe("<Qualities />", () => {
     // test buy negative
     await user.click(await screen.findByLabelText("Add AR Vertigo"))
 
-    expect(screen.getByLabelText("Remove AR Vertigo")).toBeInTheDocument()
+    expect(
+      await screen.findByLabelText("Remove AR Vertigo"),
+    ).toBeInTheDocument()
   })
 
   test("should be able to remove qualities", async () => {
@@ -64,14 +67,20 @@ describe("<Qualities />", () => {
     await user.click(await screen.findByLabelText("Remove Will To Live"))
 
     // remove positive
-    expect(
-      screen.queryByLabelText("Remove Will To Live"),
-    ).not.toBeInTheDocument()
+    await waitFor(() =>
+      expect(
+        screen.queryByLabelText("Remove Will To Live"),
+      ).not.toBeInTheDocument(),
+    )
     expect(screen.getByLabelText("Remove Guts")).toBeInTheDocument()
 
     //remove negative
     await user.click(screen.getByLabelText("Remove AR Vertigo"))
-    expect(screen.queryByLabelText("Remove AR Vertigo")).not.toBeInTheDocument()
+    await waitFor(() =>
+      expect(
+        screen.queryByLabelText("Remove AR Vertigo"),
+      ).not.toBeInTheDocument(),
+    )
   })
 
   describe("select", () => {
@@ -84,9 +93,9 @@ describe("<Qualities />", () => {
 
       await user.click(screen.getByLabelText("Add Gremlins"))
 
-      const purchasedQualityRow = screen
-        .getByLabelText("Remove Gremlins")
-        .closest("tr")
+      const purchasedQualityRow = (
+        await screen.findByLabelText("Remove Gremlins")
+      ).closest("tr")
 
       expect(purchasedQualityRow).toHaveTextContent("N/A")
     })
@@ -107,9 +116,9 @@ describe("<Qualities />", () => {
 
       await user.click(screen.getByLabelText("Add Aptitude"))
 
-      const aptitudePurchasedRow = screen
-        .getByLabelText("Remove Aptitude")
-        .closest("tr")
+      const aptitudePurchasedRow = (
+        await screen.findByLabelText("Remove Aptitude")
+      ).closest("tr")
 
       expect(aptitudePurchasedRow).toHaveTextContent("Firearms")
     })
@@ -123,9 +132,9 @@ describe("<Qualities />", () => {
       await user.keyboard("Elves")
       await user.click(screen.getByLabelText("Add Prejudiced"))
 
-      const aptitudePurchasedRow = screen
-        .getByLabelText("Remove Prejudiced")
-        .closest("tr")
+      const aptitudePurchasedRow = (
+        await screen.findByLabelText("Remove Prejudiced")
+      ).closest("tr")
       expect(aptitudePurchasedRow).toHaveTextContent("Elves")
     })
 
@@ -145,9 +154,9 @@ describe("<Qualities />", () => {
 
       await user.click(screen.getByLabelText("Add Exceptional Attribute"))
 
-      const qualityPurchasedRow = screen
-        .getByLabelText("Remove Exceptional Attribute")
-        .closest("tr")
+      const qualityPurchasedRow = (
+        await screen.findByLabelText("Remove Exceptional Attribute")
+      ).closest("tr")
 
       expect(qualityPurchasedRow).toHaveTextContent("Agility")
     })
@@ -168,9 +177,9 @@ describe("<Qualities />", () => {
 
       await user.click(screen.getByLabelText("Add Elemental Resistance"))
 
-      const qualityPurchasedRow = screen
-        .getByLabelText("Remove Elemental Resistance")
-        .closest("tr")
+      const qualityPurchasedRow = (
+        await screen.findByLabelText("Remove Elemental Resistance")
+      ).closest("tr")
 
       expect(qualityPurchasedRow).toHaveTextContent("Cold")
     })
@@ -188,9 +197,9 @@ describe("<Qualities />", () => {
 
       await user.click(screen.getByLabelText("Add Mentor Spirit"))
 
-      const qualityPurchasedRow = screen
-        .getByLabelText("Remove Mentor Spirit")
-        .closest("tr")
+      const qualityPurchasedRow = (
+        await screen.findByLabelText("Remove Mentor Spirit")
+      ).closest("tr")
 
       expect(qualityPurchasedRow).toHaveTextContent("Thunderbird")
     })
@@ -208,9 +217,9 @@ describe("<Qualities />", () => {
 
       await user.click(screen.getByLabelText("Add Spirit Affinity"))
 
-      const qualityPurchasedRow = screen
-        .getByLabelText("Remove Spirit Affinity")
-        .closest("tr")
+      const qualityPurchasedRow = (
+        await screen.findByLabelText("Remove Spirit Affinity")
+      ).closest("tr")
 
       expect(qualityPurchasedRow).toHaveTextContent("Water")
     })
@@ -228,9 +237,9 @@ describe("<Qualities />", () => {
 
       await user.click(screen.getByLabelText("Add Sprite Bane"))
 
-      const qualityPurchasedRow = screen
-        .getByLabelText("Remove Sprite Bane")
-        .closest("tr")
+      const qualityPurchasedRow = (
+        await screen.findByLabelText("Remove Sprite Bane")
+      ).closest("tr")
 
       expect(qualityPurchasedRow).toHaveTextContent("Fault")
     })
@@ -253,9 +262,9 @@ describe("<Qualities />", () => {
 
     await user.click(screen.getByLabelText("Add Built Tough"))
 
-    const qualityPurchasedRow = screen
-      .getByLabelText("Remove Built Tough")
-      .closest("tr")
+    const qualityPurchasedRow = (
+      await screen.findByLabelText("Remove Built Tough")
+    ).closest("tr")
 
     expect(qualityPurchasedRow).toHaveTextContent("3")
   })
@@ -278,9 +287,9 @@ describe("<Qualities />", () => {
 
     await user.click(screen.getByLabelText("Add Dependents"))
 
-    const qualityPurchasedRow = screen
-      .getByLabelText("Remove Dependents")
-      .closest("tr")
+    const qualityPurchasedRow = (
+      await screen.findByLabelText("Remove Dependents")
+    ).closest("tr")
 
     expect(qualityPurchasedRow).toHaveTextContent("3")
     expect(qualityPurchasedRow).toHaveTextContent("Wife and kids")

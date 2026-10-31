@@ -89,8 +89,8 @@ export const Home: FC = () => {
               variant="contained"
               color="primary"
               onClick={() => {
-                add(initRunner).then((event) => {
-                  push("/[id]/info", `/${event}/info`)
+                void add(initRunner).then((event) => {
+                  void push("/[id]/info", `/${event}/info`)
                 })
               }}
             >

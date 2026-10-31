@@ -41,10 +41,7 @@ describe("<PriorityTable/>", () => {
       await waitFor(() => getByLabelText("Dwarf, Ork, Troll (13)").click())
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority,
-        ).toEqual({ metatype: "A" })
+        expect(runnerFromDB().priority).toEqual({ metatype: "A" })
       })
     })
   })
@@ -77,10 +74,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.attributes,
-        ).toEqual("B")
+        expect(runnerFromDB().priority.attributes).toEqual("B")
       })
     })
   })
@@ -112,10 +106,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.skills,
-        ).toEqual("C")
+        expect(runnerFromDB().priority.skills).toEqual("C")
       })
     })
   })
@@ -170,10 +161,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority["mag/res"],
-        ).toEqual("D")
+        expect(runnerFromDB().priority["mag/res"]).toEqual("D")
       })
     })
   })
@@ -215,10 +203,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(
-          indexedDB._databases.get("omae").rawObjectStores.get("runners")
-            .records.records[0].value.priority.resources,
-        ).toEqual("E")
+        expect(runnerFromDB().priority.resources).toEqual("E")
       })
     })
   })

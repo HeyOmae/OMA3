@@ -30,7 +30,7 @@ describe("<Biotech />", () => {
   test("Tranq Patch price should be equal to the base times rating squared", async () => {
     setup()
 
-    await SliderHelper.change(
+    SliderHelper.change(
       await screen.findByTestId("Tranq Patch-rating"),
       5,
       1,

@@ -54,8 +54,10 @@ describe("info page", () => {
 
     await waitFor(() => {
       expect(
-        indexedDB._databases.get("omae").rawObjectStores.get("runners").records
-          .records.length,
+        indexedDB._databases
+          .get("omae")
+          .rawObjectStores.get("runners")
+          .records.records.size(),
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
     })
