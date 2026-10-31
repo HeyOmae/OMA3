@@ -11,6 +11,10 @@ export default function Document() {
           content="Shadowrun Character Generator for 6th Edition"
         />
         <meta name="keywords" content="Shadowrungit " />
+        <meta
+          name="google-site-verification"
+          content="fAOdo4dHB3LS63qW307EDn88ecZgaA-z5xPLxo0MnJQ"
+        />
 
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#317EFB" />
