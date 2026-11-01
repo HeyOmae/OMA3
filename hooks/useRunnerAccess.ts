@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import { useEffect, Reducer, useReducer, useState } from "react"
 import { useIndexedDB } from "react-indexed-db-hook"
 import { Runner } from "../types/runner"
+import { migrateRunner } from "./migrateRunner"
 
 export const useGetRunner = () => {
   const { getByID } = useIndexedDB("runners")
@@ -14,7 +15,7 @@ export const useGetRunner = () => {
 
     void getByID<Runner>(+id).then((payload) => {
       if (isMounted) {
-        setRunner(payload)
+        setRunner(migrateRunner(payload))
       }
     })
 
@@ -62,7 +63,7 @@ export const useRunnerAccess: UseRunnerAccess = <Payload>(
 
     void getByID<Runner>(+id).then((payload) => {
       if (isMounted) {
-        dispatch({ type: DONE_LOADING, payload })
+        dispatch({ type: DONE_LOADING, payload: migrateRunner(payload) })
       }
     })
 

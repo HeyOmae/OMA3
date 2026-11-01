@@ -8,7 +8,8 @@ import {
   runnerFromDB,
   userEvent,
 } from "../test/testUtils"
-import { RunnerReducer, useRunnerAccess } from "./useRunnerAccess"
+import { RunnerReducer, useGetRunner, useRunnerAccess } from "./useRunnerAccess"
+import * as runnerMigration from "./migrateRunner"
 
 describe("useRunnerAccess hook", () => {
   beforeAll(setupIndexedDB)
@@ -120,6 +121,36 @@ describe("useRunnerAccess hook", () => {
           .records.records.size(),
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("Bull")
+    })
+  })
+
+  describe("migrating saved runners", () => {
+    beforeEach(() => {
+      jest
+        .spyOn(runnerMigration, "migrateRunner")
+        .mockImplementation((runner) => ({
+          ...runner,
+          name: `${runner.name} (migrated)`,
+        }))
+    })
+    afterEach(() => jest.restoreAllMocks())
+
+    it("should migrate the runner from indexedDB and save it", async () => {
+      setup()
+
+      expect(await screen.findByText("Bull (migrated)")).toBeInTheDocument()
+      await waitFor(() =>
+        expect(runnerFromDB().name).toEqual("Bull (migrated)"),
+      )
+    })
+
+    it("should migrate a runner that is only being read", async () => {
+      const Test = () => <p>{useGetRunner()?.name}</p>
+      render(withTestRouter(<Test />, { query: { id: "2" } }))
+
+      expect(
+        await screen.findByText(`${mockedRunners[1].name} (migrated)`),
+      ).toBeInTheDocument()
     })
   })
 })

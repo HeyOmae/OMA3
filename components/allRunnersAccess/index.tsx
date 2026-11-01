@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react"
 import { useIndexedDB } from "react-indexed-db-hook"
 import { CircularProgress } from "@mui/material"
 import { Runner } from "../../types/runner"
+import { migrateRunner } from "@/hooks/migrateRunner"
 
 interface RenderProps {
   runners: Runner[]
@@ -16,7 +17,9 @@ export const AllRunnersAccess: FC<Props> = ({ children }) => {
   const { getAll, add } = useIndexedDB("runners")
   const [runners, setRunners] = useState<Runner[]>()
   useEffect(() => {
-    void getAll<Runner>().then((loadedRunners) => setRunners(loadedRunners))
+    void getAll<Runner>().then((loadedRunners) =>
+      setRunners(loadedRunners.map((runner) => migrateRunner(runner))),
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return runners ? <>{children({ runners, add })}</> : <CircularProgress />

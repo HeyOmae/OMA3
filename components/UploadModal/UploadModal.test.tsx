@@ -1,6 +1,7 @@
 import { render, screen, userEvent } from "@/test/testUtils"
 import { UploadModal } from "."
 import { mockedRunners } from "@/test/mocks"
+import * as runnerMigration from "@/hooks/migrateRunner"
 
 const setup = () => {
   const user = userEvent.setup()
@@ -81,4 +82,27 @@ test("close", async () => {
   await user.click(screen.getByRole("button", { name: "Close" }))
 
   expect(modalInput).not.toBeVisible()
+})
+
+test("migrates a runner exported from an older version", async () => {
+  jest
+    .spyOn(runnerMigration, "migrateRunner")
+    .mockImplementation((runner) => ({ ...runner, schemaVersion: 99 }))
+  const { user, addMock } = setup()
+  addMock.mockImplementation(() => Promise.resolve(123))
+
+  const { id, ...aRunner } = { ...mockedRunners[0], name: "Link" }
+
+  await user.click(screen.getByRole("button", { name: "Upload Runner" }))
+  await user.click(
+    screen.getByRole("textbox", { name: "Copy Runner JSON here" }),
+  )
+  await user.keyboard(
+    JSON.stringify(aRunner).replace(/[{]/g, (match) => match + match),
+  )
+  await user.click(screen.getByRole("button", { name: "Add Runner" }))
+
+  expect(addMock).toHaveBeenCalledWith({ ...aRunner, schemaVersion: 99 })
+
+  jest.restoreAllMocks()
 })

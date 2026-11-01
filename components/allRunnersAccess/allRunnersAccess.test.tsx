@@ -2,6 +2,7 @@ import { AllRunnersAccess } from "./index"
 import { render, screen, waitFor } from "@testing-library/react"
 import { initRunner } from "@/types/runner"
 import { mockedRunners } from "@/test/mocks"
+import * as runnerMigration from "@/hooks/migrateRunner"
 
 const mockAddToIDB = jest.fn()
 
@@ -51,5 +52,20 @@ describe("<AllRunnersAccess/>", () => {
     getByText("Add Runner").click()
 
     expect(mockAddToIDB).toHaveBeenCalledWith(initRunner)
+  })
+
+  it("should migrate the runners", async () => {
+    jest
+      .spyOn(runnerMigration, "migrateRunner")
+      .mockImplementation((runner) => ({
+        ...runner,
+        name: `${runner.name} (migrated)`,
+      }))
+
+    setup()
+
+    expect(await screen.findByText("Bull (migrated)")).toBeInTheDocument()
+
+    jest.restoreAllMocks()
   })
 })

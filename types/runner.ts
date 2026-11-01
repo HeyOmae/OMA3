@@ -10,6 +10,7 @@ import { Echo } from "./Matrix"
 import { Priority } from "./PriorityRating"
 import { Quality } from "./Qualities"
 import { Resources } from "./Resources"
+import { CURRENT_SCHEMA_VERSION } from "@/hooks/migrateRunner"
 import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
 import { LanguageSkill, Skills } from "./Skill"
 
@@ -17,6 +18,8 @@ export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
 
 export interface Runner {
   id?: number
+  // which migrations have been run on this runner, see hooks/migrateRunner
+  schemaVersion?: number
   name: string
   description: string
   priority?: Priority
@@ -43,6 +46,7 @@ export interface Runner {
 export const initRunner: Runner = {
   name: "",
   description: "",
+  schemaVersion: CURRENT_SCHEMA_VERSION,
 }
 export const initRunnerAttribute: AttributeStats = { adjustment: 0, points: 0 }
 
