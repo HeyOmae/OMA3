@@ -1,6 +1,7 @@
 import { Runner } from "@/types/runner"
 import { Resources } from "@/types/Resources"
 import { FC, useMemo } from "react"
+import { AmmoTable } from "./AmmoTable"
 import { ArmorTable } from "./ArmorTable"
 import { BiowareTable } from "./BiowareTable"
 import { CyberwareTable } from "./CyberwareTable"
@@ -23,6 +24,7 @@ type GearTableComponents = {
 }
 
 const gearTableComponents: Partial<GearTableComponents> = {
+  ammo: AmmoTable,
   armor: ArmorTable,
   audio: ModdableGearTable,
   bioware: BiowareTable,

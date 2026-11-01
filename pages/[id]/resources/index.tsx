@@ -50,6 +50,9 @@ export const ResourcePage = (): JSX.Element => {
         >
           <Button variant="contained">Firearms</Button>
         </NextLink>
+        <NextLink href={`${asPath}/ammo`} passHref>
+          <Button variant="contained">Ammo</Button>
+        </NextLink>
       </section>
       <section>
         <h2>Armor</h2>

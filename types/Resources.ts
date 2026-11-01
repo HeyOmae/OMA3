@@ -1,5 +1,6 @@
 // Everything a runner can buy with nuyen, keyed by the page it is bought on
 export interface Resources {
+  ammo: GearAmmo[]
   armor: GearArmor[]
   audio: Gear[]
   bioware: Gear[]
@@ -223,6 +224,19 @@ export interface GearWeapon extends Gear {
 
 export interface GearProjectile extends Gear {
   weapon: Weapon | Firearm
+}
+
+export type AmmoType =
+  "Regular" | "APDS" | "Explosive" | "Flechette" | "Gel" | "Stick-n-Shock"
+
+// Bought at a rating, where each point of rating is a bundle of 10 rounds
+export interface GearAmmo extends Gear {
+  ammo: {
+    type: AmmoType
+    caseless: boolean
+    // the class of weapon only has regular rounds
+    regularOnly?: true
+  }
 }
 
 export interface GearFirearm extends Gear {

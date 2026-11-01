@@ -1,6 +1,6 @@
 import { createContext } from "react"
 import { DispatchAction, RunnerReducer } from "@/hooks/useRunnerAccess"
-import { Gear } from "@/types/Resources"
+import { Gear, GearAmmo } from "@/types/Resources"
 
 export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
   if (typeof payload === "number") {
@@ -35,6 +35,8 @@ export interface AddGearButtonProps {
 export interface RemoveGearButtonProps extends AddGearButtonProps {
   index: number
 }
+
+export const isGearAmmo = (gear: Gear): gear is GearAmmo => "ammo" in gear
 
 export const getEssenceFromGear = (gear: Gear) =>
   gear.useAs?.find(({ essence }) => essence !== undefined)?.essence

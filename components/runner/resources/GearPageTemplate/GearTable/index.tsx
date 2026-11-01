@@ -1,4 +1,4 @@
-import { ReactElement } from "react"
+import { FC, ReactElement } from "react"
 import {
   Table,
   TableBody,
@@ -8,18 +8,27 @@ import {
   TableRow,
 } from "@mui/material"
 import { Gear } from "@/types/Resources"
-import { Columns } from "../../util"
-import { StandardDisplayRow, RatingRow, SelectSkillRow } from "./Row"
+import { Columns, isGearAmmo } from "../../util"
+import {
+  StandardDisplayRow,
+  RatingRow,
+  SelectSkillRow,
+  Props as RowProps,
+} from "./Row"
 import { ChoiceRatingRow } from "./Row/ChoiceRatingRow"
 import { NamedRow } from "./Row/NamedRow"
+import { AmmoRow } from "./Row/AmmoRow"
 
 export interface Props<G> {
   listOfGear: G[]
   cols: Columns<G>[]
 }
 
-function displayRow(gear: Gear, isPurchasing: boolean) {
+function displayRow(gear: Gear, isPurchasing: boolean): FC<RowProps> {
   if (isPurchasing) {
+    if (isGearAmmo(gear)) {
+      return AmmoRow
+    }
     const hasRating = "rating" in gear,
       hasChoice = "choice" in gear
     if ("choice" in gear && gear.choice === "NAME") {
