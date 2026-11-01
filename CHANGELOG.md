@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.15.1](https://github.com/HeyOmae/OMA3/compare/3.15.0...3.15.1) (2026-11-01)
+
+
+### Bug Fixes
+
+* show ¥ on lifestyle costs when buying ([a73bbf2](https://github.com/HeyOmae/OMA3/commit/a73bbf2421729b0ae84a01760812dc236a0709be))
+* targeting autosofts pick any firearm model instead of spinning forever ([e755c8d](https://github.com/HeyOmae/OMA3/commit/e755c8d80047483620a9c801f1d89dda5b3c03d5))
+
 ## [3.15.0](https://github.com/HeyOmae/OMA3/compare/3.14.0...3.15.0) (2026-11-01)
 
 
