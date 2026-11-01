@@ -48,7 +48,9 @@ const LifeStyle = () => {
                           <AddResourceButton gear={lifestyle} />
                         </TableCell>
                         <TableCell>{lifestyle.name}</TableCell>
-                        <TableCell>{lifestyle.cost * sinnerModifier}</TableCell>
+                        <TableCell>
+                          {lifestyle.cost * sinnerModifier}&yen;
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

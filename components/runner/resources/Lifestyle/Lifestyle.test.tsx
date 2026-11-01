@@ -21,7 +21,7 @@ describe("<LifeStyle />", () => {
 
     lifestyles.forEach(({ name, cost }) => {
       const row = screen.getByText(name).closest("tr")
-      expect(row).toHaveTextContent(`${cost}`)
+      expect(row).toHaveTextContent(`${cost}¥`)
     })
   })
 
@@ -33,7 +33,7 @@ describe("<LifeStyle />", () => {
       const row = screen
         .getByRole("button", { name: new RegExp(`Add ${name}`) })
         .closest("tr")
-      expect(row).toHaveTextContent(`${cost * 1.1}`)
+      expect(row).toHaveTextContent(`${cost * 1.1}¥`)
     })
 
     const runnerLifestyleHighRow = screen
