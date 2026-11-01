@@ -6,11 +6,12 @@ import { Props } from "../index"
 import { useRating } from "../useRating"
 import powerData from "@/data/adeptPowers.json"
 import { Columns } from "@/components/runner/resources/util"
-import { GearFocus, Gear, GearFirearm, GearWeapon } from "@/types/Resources"
+import { Gear, GearFirearm, GearFocus, GearWeapon } from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"
 import { CircularProgress } from "@mui/material"
 import { spirits } from "@/data/spirits"
 import skillData from "@/data/skills.json"
+import firearms from "@/data/firearms"
 
 export interface ChoiceRatingRowProps extends Props {
   cols: Columns<GearFocus | Gear>[]
@@ -54,7 +55,8 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
       case "MELEE_WEAPON":
         return runner?.resources?.melee ?? []
       case "WEAPON":
-        return runner?.resources?.firearms ?? []
+        // autosofts are skills for a model of weapon, not the runner's own gun
+        return firearms
       case "PHYSICAL SKILL":
         // skills based on Magic or Resonance can not be replaced by software
         return skillData.filter(
@@ -75,20 +77,31 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
     [gearWithRating, gear.name, choices, selectedChoiceIndex],
   )
 
+  // only weapon foci choose from the runner's gear, which can still be loading
+  if (!choices.length) {
+    return (
+      <TableRow>
+        <TableCell colSpan={cols.length}>
+          {runner ?
+            `${gear.name} needs a melee weapon, buy one first`
+          : <CircularProgress />}
+        </TableCell>
+      </TableRow>
+    )
+  }
+
   return (
     <ChoiceContext.Provider
       value={{
         choices,
         setChoiceIndex,
-        selectedChoiceIndex: choices.length ? selectedChoiceIndex : "",
+        selectedChoiceIndex,
       }}
     >
       <TableRow>
         {cols.map(({ display, label }) => (
           <TableCell key={label}>
-            {choices.length ?
-              display(gearWithChoice, index, setRating)
-            : <CircularProgress />}
+            {display(gearWithChoice, index, setRating)}
           </TableCell>
         ))}
       </TableRow>

@@ -6,6 +6,7 @@ import {
   withTestRouter,
   SliderHelper,
   userEvent,
+  screen,
 } from "@/test/testUtils"
 import Foci from "./index"
 import { foci } from "@/data/focus"
@@ -109,5 +110,20 @@ describe("foci", () => {
       // // availibility
       // expect(getTextInContainer(newFocusRow, "4L")).toBeInTheDocument()
     })
+  })
+
+  it("should ask for a melee weapon when the runner does not own one", async () => {
+    // this runner does not own any melee weapons
+    render(withTestRouter(<Foci />, { query: { id: "4" } }))
+
+    expect(
+      await screen.findByText(
+        "Weapon Focus needs a melee weapon, buy one first",
+      ),
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByLabelText(/Add .*Weapon Focus/),
+    ).not.toBeInTheDocument()
+    expect(screen.queryByRole("progressbar")).not.toBeInTheDocument()
   })
 })

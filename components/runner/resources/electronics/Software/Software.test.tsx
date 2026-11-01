@@ -8,6 +8,7 @@ import {
   runnerFromDB,
   userEvent,
   within,
+  screen,
 } from "@/test/testUtils"
 import Software from "./"
 
@@ -153,27 +154,32 @@ describe("<Software/>", () => {
     })
   })
   describe("weapon choice", () => {
-    it("should name a targeting autosoft after one of the runner's weapons", async () => {
-      const { getByLabelText, findByLabelText, getByTestId } = setup()
+    it("should name a targeting autosoft after any firearm, not just the runner's", async () => {
+      const user = userEvent.setup()
+      // this runner does not own any firearms
+      render(withTestRouter(<Software />, { query: { id: "4" } }))
 
-      const addButton = await findByLabelText("Add Yamaha Pulsar 1 Targeting")
-      SliderHelper.change(getByTestId(/Targeting-rating/), 2, 1, 9)
+      const row = (
+        await screen.findByLabelText("Add Defiance Super Shock Targeting")
+      ).closest("tr")
+
+      await user.click(within(row).getByRole("combobox"))
+      await user.click(screen.getByRole("option", { name: "Ares Predator VI" }))
+      SliderHelper.change(screen.getByTestId(/Targeting-rating/), 2, 1, 9)
 
       await waitFor(() =>
-        expect(
-          getTextInContainer(addButton.closest("tr"), "1000¥"),
-        ).toBeInTheDocument(),
+        expect(getTextInContainer(row, "1000¥")).toBeInTheDocument(),
       )
 
-      await userEvent.click(getByLabelText("Add Yamaha Pulsar 1 Targeting"))
+      await user.click(screen.getByLabelText("Add Ares Predator VI Targeting"))
 
       expect(
-        await findByLabelText("Remove Yamaha Pulsar 1 Targeting"),
+        await screen.findByLabelText("Remove Ares Predator VI Targeting"),
       ).toBeInTheDocument()
       await waitFor(() => {
         expect(
-          runnerFromDB(9).resources.software.find(
-            ({ name }) => name === "Yamaha Pulsar 1 Targeting",
+          runnerFromDB(3).resources.software.find(
+            ({ name }) => name === "Ares Predator VI Targeting",
           ).currentRating,
         ).toEqual(2)
       })
