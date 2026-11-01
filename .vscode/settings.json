@@ -1,13 +1,17 @@
 {
-	"cSpell.words": [
-		"Commlinks",
-		"Cyberdecks",
-		"Cyberware",
-		"Nuyen",
-		"commlink",
-		"cyberdeck",
-		"metatype"
-	],
-	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode"
+  "cSpell.words": [
+    "Commlinks",
+    "Cyberdecks",
+    "Cyberware",
+    "Nuyen",
+    "commlink",
+    "cyberdeck",
+    "metatype"
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "chat.tools.terminal.autoApprove": {
+    "npm exec": true,
+    "npm install": true
+  }
 }
