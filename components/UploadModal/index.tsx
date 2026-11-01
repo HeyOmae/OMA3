@@ -1,5 +1,5 @@
 import { Runner } from "@/types/runner"
-import { migrateRunner } from "@/hooks/migrateRunner"
+import { migrateIfOutdated } from "@/hooks/runnerSchema"
 import { Upload } from "@mui/icons-material"
 import { Alert, Button, Dialog, TextField } from "@mui/material"
 import { Url } from "next/dist/shared/lib/router/router"
@@ -51,7 +51,8 @@ const Modal: FC<ModalProps> = ({ add, push, open, setOpen }) => {
             const { id: discard, ...runner } = JSON.parse(
               runnerJsonInput.current.value,
             )
-            add(migrateRunner(runner))
+            migrateIfOutdated(runner)
+              .then((migratedRunner) => add(migratedRunner))
               .then((event) => push("/[id]/info", `/${event}/info`))
               .catch((err) => setAlertMessage(err.target.error.toString()))
           } catch (error) {

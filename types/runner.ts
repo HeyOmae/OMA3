@@ -10,7 +10,7 @@ import { Echo } from "./Matrix"
 import { Priority } from "./PriorityRating"
 import { Quality } from "./Qualities"
 import { Resources } from "./Resources"
-import { CURRENT_SCHEMA_VERSION } from "@/hooks/migrateRunner"
+import { CURRENT_SCHEMA_VERSION } from "@/hooks/runnerSchema"
 import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
 import { LanguageSkill, Skills } from "./Skill"
 

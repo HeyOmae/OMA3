@@ -9,7 +9,7 @@ import {
   userEvent,
 } from "../test/testUtils"
 import { RunnerReducer, useGetRunner, useRunnerAccess } from "./useRunnerAccess"
-import * as runnerMigration from "./migrateRunner"
+import * as runnerSchema from "./runnerSchema"
 
 describe("useRunnerAccess hook", () => {
   beforeAll(setupIndexedDB)
@@ -127,8 +127,8 @@ describe("useRunnerAccess hook", () => {
   describe("migrating saved runners", () => {
     beforeEach(() => {
       jest
-        .spyOn(runnerMigration, "migrateRunner")
-        .mockImplementation((runner) => ({
+        .spyOn(runnerSchema, "migrateIfOutdated")
+        .mockImplementation(async (runner) => ({
           ...runner,
           name: `${runner.name} (migrated)`,
         }))

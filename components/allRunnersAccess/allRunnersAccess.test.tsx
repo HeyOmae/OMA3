@@ -2,7 +2,7 @@ import { AllRunnersAccess } from "./index"
 import { render, screen, waitFor } from "@testing-library/react"
 import { initRunner } from "@/types/runner"
 import { mockedRunners } from "@/test/mocks"
-import * as runnerMigration from "@/hooks/migrateRunner"
+import * as runnerSchema from "@/hooks/runnerSchema"
 
 const mockAddToIDB = jest.fn()
 
@@ -56,8 +56,8 @@ describe("<AllRunnersAccess/>", () => {
 
   it("should migrate the runners", async () => {
     jest
-      .spyOn(runnerMigration, "migrateRunner")
-      .mockImplementation((runner) => ({
+      .spyOn(runnerSchema, "migrateIfOutdated")
+      .mockImplementation(async (runner) => ({
         ...runner,
         name: `${runner.name} (migrated)`,
       }))

@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { useEffect, Reducer, useReducer, useState } from "react"
 import { useIndexedDB } from "react-indexed-db-hook"
 import { Runner } from "../types/runner"
-import { migrateRunner } from "./migrateRunner"
+import { migrateIfOutdated } from "./runnerSchema"
 
 export const useGetRunner = () => {
   const { getByID } = useIndexedDB("runners")
@@ -13,11 +13,13 @@ export const useGetRunner = () => {
   useEffect(() => {
     let isMounted = true
 
-    void getByID<Runner>(+id).then((payload) => {
-      if (isMounted) {
-        setRunner(migrateRunner(payload))
-      }
-    })
+    void getByID<Runner>(+id)
+      .then((runner) => migrateIfOutdated(runner))
+      .then((payload) => {
+        if (isMounted) {
+          setRunner(payload)
+        }
+      })
 
     return () => {
       isMounted = false
@@ -61,11 +63,13 @@ export const useRunnerAccess: UseRunnerAccess = <Payload>(
   useEffect(() => {
     let isMounted = true
 
-    void getByID<Runner>(+id).then((payload) => {
-      if (isMounted) {
-        dispatch({ type: DONE_LOADING, payload: migrateRunner(payload) })
-      }
-    })
+    void getByID<Runner>(+id)
+      .then((runner) => migrateIfOutdated(runner))
+      .then((payload) => {
+        if (isMounted) {
+          dispatch({ type: DONE_LOADING, payload })
+        }
+      })
 
     return () => {
       isMounted = false

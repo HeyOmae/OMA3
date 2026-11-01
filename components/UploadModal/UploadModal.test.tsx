@@ -1,7 +1,7 @@
 import { render, screen, userEvent } from "@/test/testUtils"
 import { UploadModal } from "."
 import { mockedRunners } from "@/test/mocks"
-import * as runnerMigration from "@/hooks/migrateRunner"
+import * as runnerSchema from "@/hooks/runnerSchema"
 
 const setup = () => {
   const user = userEvent.setup()
@@ -86,8 +86,8 @@ test("close", async () => {
 
 test("migrates a runner exported from an older version", async () => {
   jest
-    .spyOn(runnerMigration, "migrateRunner")
-    .mockImplementation((runner) => ({ ...runner, schemaVersion: 99 }))
+    .spyOn(runnerSchema, "migrateIfOutdated")
+    .mockImplementation(async (runner) => ({ ...runner, schemaVersion: 99 }))
   const { user, addMock } = setup()
   addMock.mockImplementation(() => Promise.resolve(123))
 
