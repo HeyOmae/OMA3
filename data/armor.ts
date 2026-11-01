@@ -109,10 +109,12 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 300,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR BODY",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR BODY",
+      },
+    ],
     armor: {
       rating: 1,
       social: -2,
@@ -129,10 +131,12 @@ const armorData: GearArmor[] = [
     availability: "2",
     cost: 1500,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR SOCIAL",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR SOCIAL",
+      },
+    ],
     armor: {
       rating: 2,
       social: +2,
@@ -149,10 +153,12 @@ const armorData: GearArmor[] = [
     availability: "2",
     cost: 500,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR SOCIAL",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR SOCIAL",
+      },
+    ],
     armor: {
       rating: 2,
       social: 0,
@@ -169,10 +175,12 @@ const armorData: GearArmor[] = [
     availability: "2",
     cost: 1000,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR BODY",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR BODY",
+      },
+    ],
     armor: {
       rating: 4,
       social: -3,
@@ -189,10 +197,12 @@ const armorData: GearArmor[] = [
     availability: "4",
     cost: 750,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR BODY",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR BODY",
+      },
+    ],
     armor: {
       rating: 3,
       social: -1,
@@ -209,10 +219,12 @@ const armorData: GearArmor[] = [
     availability: "4I",
     cost: 2000,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR BODY",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR BODY",
+      },
+    ],
     armor: {
       rating: 2,
       social: -3,
@@ -229,10 +241,12 @@ const armorData: GearArmor[] = [
     availability: "4L",
     cost: 2000,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR BODY",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR BODY",
+      },
+    ],
     armor: {
       rating: 5,
       social: -5,
@@ -249,10 +263,12 @@ const armorData: GearArmor[] = [
     availability: "0",
     cost: 500,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR HELMET",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR HELMET",
+      },
+    ],
     armor: {
       rating: 2,
       social: -4,
@@ -269,10 +285,12 @@ const armorData: GearArmor[] = [
     availability: "4",
     cost: 900,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR BODY",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR BODY",
+      },
+    ],
     armor: {
       rating: 3,
       social: -2,
@@ -289,10 +307,12 @@ const armorData: GearArmor[] = [
     availability: "2",
     cost: 800,
     reference: [{ book: "SR6", page: 266 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR BODY",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR BODY",
+      },
+    ],
     armor: {
       rating: 3,
       social: -2,
@@ -309,10 +329,12 @@ const armorData: GearArmor[] = [
     cost: 200,
     name: "Helmet",
     reference: [{ book: "SR6", page: 267 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR HELMET",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR HELMET",
+      },
+    ],
     armor: {
       rating: 1,
       social: -4,
@@ -330,10 +352,12 @@ const armorData: GearArmor[] = [
     cost: 900,
     name: "Ballistic Shield",
     reference: [{ book: "SR6", page: 267 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR SHIELD",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR SHIELD",
+      },
+    ],
     armor: {
       rating: 2,
     },
@@ -354,10 +378,12 @@ const armorData: GearArmor[] = [
     cost: 1200,
     name: "Riot Shield",
     reference: [{ book: "SR6", page: 267 }],
-    useAs: {
-      type: "ARMOR",
-      subtype: "ARMOR SHIELD",
-    },
+    useAs: [
+      {
+        type: "ARMOR",
+        subtype: "ARMOR SHIELD",
+      },
+    ],
     armor: {
       rating: 2,
     },

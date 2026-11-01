@@ -274,7 +274,7 @@ export interface GearCyberware
   }
 }
 
-export interface GearBioware extends GearAugmentation {
+export interface GearBioware extends GearAugmentation<GearAugmentationUseAs[]> {
   choice?: "PHYSICAL SKILL"
 }
 
@@ -312,7 +312,7 @@ interface BaseArmor {
 }
 
 export interface GearArmor
-  extends Gear, Partial<GearTypes>, GearMod<GearTypes> {
+  extends Gear, Partial<GearTypes>, GearMod<GearTypes[]> {
   armor: BaseArmor
   modonly?: true
   mods?: ArmorMod[]
@@ -415,7 +415,7 @@ interface UseAsSoftware extends GearTypes {
   capacity: number
 }
 
-export interface GearSoftware extends GearWithRating, GearMod<UseAsSoftware> {
+export interface GearSoftware extends GearWithRating, GearMod<UseAsSoftware[]> {
   choice?: "NAME" | "PHYSICAL SKILL" | "WEAPON"
   multi?: true
 }

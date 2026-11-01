@@ -1,5 +1,6 @@
 import { Resources } from "@/types/Resources"
 import { FC } from "react"
+import { getEssenceFromGear } from "@/components/runner/resources/util"
 
 interface BiowareTableProps {
   gearRow: Resources["bioware"]
@@ -17,7 +18,7 @@ export const BiowareTable: FC<BiowareTableProps> = ({ gearRow }) => (
       {gearRow.map((gearItem, index) => (
         <tr key={index}>
           <td>{gearItem.name}</td>
-          <td>{gearItem.useAs.essence}</td>
+          <td>{getEssenceFromGear(gearItem)}</td>
         </tr>
       ))}
     </tbody>

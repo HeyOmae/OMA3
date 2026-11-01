@@ -2,6 +2,7 @@ import { render, screen, userEvent } from "@/test/testUtils"
 import { UploadModal } from "."
 import { mockedRunners } from "@/test/mocks"
 import * as runnerSchema from "@/hooks/runnerSchema"
+import { CURRENT_SCHEMA_VERSION } from "@/hooks/runnerSchema"
 
 const setup = () => {
   const user = userEvent.setup()
@@ -26,7 +27,11 @@ test("add runner", async () => {
   )
   await user.click(screen.getByRole("button", { name: "Add Runner" }))
 
-  expect(addMock).toHaveBeenCalledWith(aRunner)
+  // a runner exported before versioning gets migrated on the way in
+  expect(addMock).toHaveBeenCalledWith({
+    ...aRunner,
+    schemaVersion: CURRENT_SCHEMA_VERSION,
+  })
   expect(pushMock).toHaveBeenCalledWith("/[id]/info", "/123/info")
 })
 
@@ -85,13 +90,12 @@ test("close", async () => {
 })
 
 test("migrates a runner exported from an older version", async () => {
+  const { id, ...aRunner } = { ...mockedRunners[0], name: "Link" }
   jest
     .spyOn(runnerSchema, "migrateIfOutdated")
-    .mockImplementation(async (runner) => ({ ...runner, schemaVersion: 99 }))
+    .mockResolvedValue({ ...aRunner, schemaVersion: 99 })
   const { user, addMock } = setup()
   addMock.mockImplementation(() => Promise.resolve(123))
-
-  const { id, ...aRunner } = { ...mockedRunners[0], name: "Link" }
 
   await user.click(screen.getByRole("button", { name: "Upload Runner" }))
   await user.click(

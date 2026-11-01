@@ -1141,243 +1141,287 @@ export const otherElectronics: GearTyped[] = [
 
 export const softwareData: GearSoftware[] = [
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Browse",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Baby Monitor",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Configurator",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Edit",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Encryption",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Signal Scrubber",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Toolbox",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "BASIC PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "BASIC PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Virtual Machine",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Armor",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Biofeedback",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Biofeedback Filter",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Blackout",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Decryption",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Disarm",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Defuse",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Exploit",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Fork",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Lockdown",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Overclock",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Stealth",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "HACKING PROGRAM",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "HACKING PROGRAM",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Trace",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "AUTOSOFT",
-      slot: "SOFTWARE DRONE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUTOSOFT",
+        slot: "SOFTWARE DRONE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 500,
     name: "Clearsight",
@@ -1386,12 +1430,14 @@ export const softwareData: GearSoftware[] = [
     rateMultiplier: "cost modifier avail",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "AUTOSOFT",
-      slot: "SOFTWARE DRONE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUTOSOFT",
+        slot: "SOFTWARE DRONE",
+        capacity: 1,
+      },
+    ],
     availability: "1I",
     cost: 500,
     name: "Electronic Warfare",
@@ -1400,12 +1446,14 @@ export const softwareData: GearSoftware[] = [
     rateMultiplier: "cost modifier avail",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "AUTOSOFT",
-      slot: "SOFTWARE DRONE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUTOSOFT",
+        slot: "SOFTWARE DRONE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 500,
     name: "Evasion",
@@ -1415,12 +1463,14 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "AUTOSOFT",
-      slot: "SOFTWARE DRONE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUTOSOFT",
+        slot: "SOFTWARE DRONE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 500,
     name: "Maneuvering",
@@ -1430,12 +1480,14 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "AUTOSOFT",
-      slot: "SOFTWARE DRONE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUTOSOFT",
+        slot: "SOFTWARE DRONE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 500,
     name: "Stealth Auto",
@@ -1445,12 +1497,14 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "AUTOSOFT",
-      slot: "SOFTWARE DRONE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "AUTOSOFT",
+        slot: "SOFTWARE DRONE",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 500,
     name: "Targeting",
@@ -1461,78 +1515,92 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "RIGGER PROGRAM",
-      slot: "SOFTWARE RIGGER",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "RIGGER PROGRAM",
+        slot: "SOFTWARE RIGGER",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Armor Rig",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "RIGGER PROGRAM",
-      slot: "SOFTWARE RIGGER",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "RIGGER PROGRAM",
+        slot: "SOFTWARE RIGGER",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Encryption Rig",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "RIGGER PROGRAM",
-      slot: "SOFTWARE RIGGER",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "RIGGER PROGRAM",
+        slot: "SOFTWARE RIGGER",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Signal Scrubber Rig",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "RIGGER PROGRAM",
-      slot: "SOFTWARE RIGGER",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "RIGGER PROGRAM",
+        slot: "SOFTWARE RIGGER",
+        capacity: 1,
+      },
+    ],
     availability: "4I",
     cost: 250,
     name: "Stealth Rig",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "RIGGER PROGRAM",
-      slot: "SOFTWARE RIGGER",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "RIGGER PROGRAM",
+        slot: "SOFTWARE RIGGER",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Toolbox Rig",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "RIGGER PROGRAM",
-      slot: "SOFTWARE RIGGER",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "RIGGER PROGRAM",
+        slot: "SOFTWARE RIGGER",
+        capacity: 1,
+      },
+    ],
     availability: "1",
     cost: 60,
     name: "Virtual Machine Rig",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "OTHER PROGRAMS",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OTHER PROGRAMS",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "2",
     cost: 120,
     name: "Datasoft",
@@ -1540,12 +1608,14 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "OTHER PROGRAMS",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OTHER PROGRAMS",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "2",
     cost: 100,
     name: "Mapsoft",
@@ -1553,12 +1623,14 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "OTHER PROGRAMS",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OTHER PROGRAMS",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "2",
     cost: 150,
     name: "Shopsoft",
@@ -1566,12 +1638,14 @@ export const softwareData: GearSoftware[] = [
     choice: "NAME",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "OTHER PROGRAMS",
-      slot: "SOFTWARE",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "OTHER PROGRAMS",
+        slot: "SOFTWARE",
+        capacity: 1,
+      },
+    ],
     availability: "2",
     cost: 400,
     name: "Tutorsoft",
@@ -1582,12 +1656,14 @@ export const softwareData: GearSoftware[] = [
     rateMultiplier: "cost avail3",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "SKILLSOFT",
-      slot: "SKILLJACK",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "SKILLSOFT",
+        slot: "SKILLJACK",
+        capacity: 1,
+      },
+    ],
     modifications: {
       skillmod: [
         {
@@ -1607,12 +1683,14 @@ export const softwareData: GearSoftware[] = [
     choice: "PHYSICAL SKILL",
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "SKILLSOFT",
-      slot: "SKILLJACK",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "SKILLSOFT",
+        slot: "SKILLJACK",
+        capacity: 1,
+      },
+    ],
     modifications: {
       skillmod: [
         {
@@ -1629,12 +1707,14 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
-    useAs: {
-      type: "ACCESSORY",
-      subtype: "SKILLSOFT",
-      slot: "SKILLJACK",
-      capacity: 1,
-    },
+    useAs: [
+      {
+        type: "ACCESSORY",
+        subtype: "SKILLSOFT",
+        slot: "SKILLJACK",
+        capacity: 1,
+      },
+    ],
     modifications: {
       skillmod: [
         {

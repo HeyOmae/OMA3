@@ -1,18 +1,19 @@
-import type { Runner } from "@/types/runner"
+import type { StoredRunner } from "./migrations/storedRunner"
+import { useAsIsAList } from "./migrations/useAsIsAList"
 
-type Migration = (runner: Runner) => Runner
+type Migration = (runner: StoredRunner) => StoredRunner
 
 // Runners are saved in IndexedDB and exported as JSON, so they keep whatever
 // shape the gear data had when they were saved. Each migration upgrades a
 // runner from the version at its index to the next one.
 // Never edit or reorder a migration that has shipped, only add new ones, and
 // bump CURRENT_SCHEMA_VERSION in ./runnerSchema when you do.
-export const migrations: Migration[] = []
+export const migrations: Migration[] = [useAsIsAList]
 
 export const migrateRunner = (
-  runner: Runner,
+  runner: StoredRunner,
   migrationList: Migration[] = migrations,
-): Runner => {
+): StoredRunner => {
   const schemaVersion = runner.schemaVersion ?? 0
 
   if (schemaVersion >= migrationList.length) return runner

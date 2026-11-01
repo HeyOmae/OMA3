@@ -128,10 +128,10 @@ describe("useRunnerAccess hook", () => {
     beforeEach(() => {
       jest
         .spyOn(runnerSchema, "migrateIfOutdated")
-        .mockImplementation(async (runner) => ({
-          ...runner,
-          name: `${runner.name} (migrated)`,
-        }))
+        .mockImplementation(async ({ id }) => {
+          const runner = mockedRunners.find((mock) => mock.id === id)
+          return { ...runner, name: `${runner.name} (migrated)` }
+        })
     })
     afterEach(() => jest.restoreAllMocks())
 

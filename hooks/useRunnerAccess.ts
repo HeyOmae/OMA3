@@ -3,6 +3,7 @@ import { useEffect, Reducer, useReducer, useState } from "react"
 import { useIndexedDB } from "react-indexed-db-hook"
 import { Runner } from "../types/runner"
 import { migrateIfOutdated } from "./runnerSchema"
+import type { StoredRunner } from "./migrations/storedRunner"
 
 export const useGetRunner = () => {
   const { getByID } = useIndexedDB("runners")
@@ -13,7 +14,7 @@ export const useGetRunner = () => {
   useEffect(() => {
     let isMounted = true
 
-    void getByID<Runner>(+id)
+    void getByID<StoredRunner>(+id)
       .then((runner) => migrateIfOutdated(runner))
       .then((payload) => {
         if (isMounted) {
@@ -63,7 +64,7 @@ export const useRunnerAccess: UseRunnerAccess = <Payload>(
   useEffect(() => {
     let isMounted = true
 
-    void getByID<Runner>(+id)
+    void getByID<StoredRunner>(+id)
       .then((runner) => migrateIfOutdated(runner))
       .then((payload) => {
         if (isMounted) {

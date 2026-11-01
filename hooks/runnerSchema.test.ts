@@ -35,4 +35,10 @@ describe("migrateIfOutdated", () => {
     expect(await migrateIfOutdated(undefined, 2)).toBeUndefined()
     expect(migrateRunner).not.toHaveBeenCalled()
   })
+
+  it("should not hand back a runner that is still out of date", async () => {
+    await expect(
+      migrateIfOutdated({ ...runner, schemaVersion: 1 }, 3),
+    ).rejects.toThrow("Could not migrate runner to version 3")
+  })
 })

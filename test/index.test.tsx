@@ -1,3 +1,4 @@
+import { CURRENT_SCHEMA_VERSION } from "@/hooks/runnerSchema"
 import {
   render,
   screen,
@@ -107,8 +108,12 @@ describe("Home page", () => {
       await screen.findByRole("button", { name: "Open Download for Bull" }),
     )
 
+    // exports carry their schema version so they can be migrated on upload
     expect(screen.getByRole("textbox", { name: "Bull" })).toHaveValue(
-      JSON.stringify(mockedRunners[0]),
+      JSON.stringify({
+        ...mockedRunners[0],
+        schemaVersion: CURRENT_SCHEMA_VERSION,
+      }),
     )
   })
 

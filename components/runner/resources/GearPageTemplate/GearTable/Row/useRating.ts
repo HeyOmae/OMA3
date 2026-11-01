@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react"
-import { GearTyped, GearWithRating } from "@/types/Resources"
+import { GearWithRating } from "@/types/Resources"
 import { getEssenceFromGear } from "../../../util"
 
 const applyRating = <G extends GearWithRating>(
@@ -14,7 +14,7 @@ const applyRating = <G extends GearWithRating>(
     : gear.cost * currentRating
   const essence =
     /essence/.test(rateMultiplier) ?
-      +getEssenceFromGear(gear as unknown as GearTyped) * currentRating
+      +getEssenceFromGear(gear) * currentRating
     : undefined
 
   return {

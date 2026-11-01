@@ -2,11 +2,13 @@ import { GearBioware } from "@/types/Resources"
 
 export const bioware: GearBioware[] = [
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.75",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.75",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -48,11 +50,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.3",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.3",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -78,11 +82,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.6",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.6",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -108,11 +114,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.9",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.9",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -138,11 +146,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "1.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "1.2",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -168,11 +178,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.1",
+      },
+    ],
     modifications: {
       qualitymod: {
         ref: "low-light vision",
@@ -184,11 +196,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.2",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -209,11 +223,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.2",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -231,11 +247,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.2",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -253,11 +271,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.25",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.25",
+      },
+    ],
     modifications: {
       itemmod: [
         {
@@ -279,33 +299,39 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.2",
+      },
+    ],
     name: "Platelet Factories",
     availability: "4",
     cost: 17000,
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.1",
+      },
+    ],
     name: "Skin Pocket",
     availability: "4",
     cost: 12000,
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.7",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.7",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -335,11 +361,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.2",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -357,10 +385,10 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   // {
-  //   useAs: {
+  //   useAs: [{
   //     type: "BIOLOGY",
   //     subtype: "BIOTECH",
-  //   },
+  //   }],
   //   name: "Symbiote Food",
   //   availability: "4",
   //   cost: 200,
@@ -370,11 +398,13 @@ export const bioware: GearBioware[] = [
   //   count: "y",
   // },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.1",
+      },
+    ],
     modifications: {
       skillmod: [
         {
@@ -394,11 +424,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.2",
+      },
+    ],
     modifications: {
       skillmod: [
         {
@@ -426,11 +458,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.2",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -448,11 +482,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE STANDARD",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE STANDARD",
+        essence: "0.1",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -470,11 +506,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE CULTURED",
-      essence: "0.2",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE CULTURED",
+        essence: "0.2",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -492,11 +530,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE CULTURED",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE CULTURED",
+        essence: "0.1",
+      },
+    ],
     name: "Damage Compensator",
     availability: "5L",
     cost: 2000,
@@ -506,11 +546,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE CULTURED",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE CULTURED",
+        essence: "0.1",
+      },
+    ],
     modifications: {
       relevancemod: {
         topic: "SOCIAL",
@@ -525,11 +567,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE CULTURED",
-      essence: "0.3",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE CULTURED",
+        essence: "0.3",
+      },
+    ],
     modifications: {
       attrmod: [
         {
@@ -552,11 +596,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE CULTURED",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE CULTURED",
+        essence: "0.1",
+      },
+    ],
     modifications: {
       // skillmod: [
       //   {
@@ -572,11 +618,13 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE CULTURED",
-      essence: "0.1",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE CULTURED",
+        essence: "0.1",
+      },
+    ],
     name: "Sleep Regulator",
     availability: "5",
     cost: 12000,
@@ -597,11 +645,13 @@ export const bioware: GearBioware[] = [
         },
       ],
     },
-    useAs: {
-      type: "BIOWARE",
-      subtype: "BIOWARE CULTURED",
-      essence: "0.5",
-    },
+    useAs: [
+      {
+        type: "BIOWARE",
+        subtype: "BIOWARE CULTURED",
+        essence: "0.5",
+      },
+    ],
     name: "Synaptic Booster",
     availability: "5L",
     cost: 95000,

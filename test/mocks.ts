@@ -188,11 +188,13 @@ export const mockedRunners: Runner[] = [
       ],
       bioware: [
         {
-          useAs: {
-            type: "BIOWARE",
-            subtype: "BIOWARE CULTURED",
-            essence: "0.2",
-          },
+          useAs: [
+            {
+              type: "BIOWARE",
+              subtype: "BIOWARE CULTURED",
+              essence: "0.2",
+            },
+          ],
           modifications: {
             attrmod: [
               {
@@ -1194,10 +1196,12 @@ export const mockedRunners: Runner[] = [
           name: "Full Body Armor",
           availability: "4L",
           cost: 2000,
-          useAs: {
-            type: "ARMOR",
-            subtype: "ARMOR BODY",
-          },
+          useAs: [
+            {
+              type: "ARMOR",
+              subtype: "ARMOR BODY",
+            },
+          ],
           armor: {
             rating: 5,
             social: -5,
@@ -1213,10 +1217,12 @@ export const mockedRunners: Runner[] = [
           name: "Full Body Armor Helmet",
           availability: "0",
           cost: 500,
-          useAs: {
-            type: "ARMOR",
-            subtype: "ARMOR HELMET",
-          },
+          useAs: [
+            {
+              type: "ARMOR",
+              subtype: "ARMOR HELMET",
+            },
+          ],
           armor: {
             rating: 2,
             social: -4,
@@ -1232,10 +1238,12 @@ export const mockedRunners: Runner[] = [
           name: "Lined Coat",
           availability: "4",
           cost: 900,
-          useAs: {
-            type: "ARMOR",
-            subtype: "ARMOR BODY",
-          },
+          useAs: [
+            {
+              type: "ARMOR",
+              subtype: "ARMOR BODY",
+            },
+          ],
           armor: {
             rating: 3,
             social: -2,
@@ -1571,11 +1579,13 @@ export const mockedRunners: Runner[] = [
       ],
       bioware: [
         {
-          useAs: {
-            type: "BIOWARE",
-            subtype: "BIOWARE STANDARD",
-            essence: "0.2",
-          },
+          useAs: [
+            {
+              type: "BIOWARE",
+              subtype: "BIOWARE STANDARD",
+              essence: "0.2",
+            },
+          ],
           modifications: {
             attrmod: [
               {
@@ -1593,11 +1603,13 @@ export const mockedRunners: Runner[] = [
           currentRating: 3,
         },
         {
-          useAs: {
-            type: "BIOWARE",
-            subtype: "BIOWARE STANDARD",
-            essence: "0.1",
-          },
+          useAs: [
+            {
+              type: "BIOWARE",
+              subtype: "BIOWARE STANDARD",
+              essence: "0.1",
+            },
+          ],
           modifications: {
             qualitymod: {
               ref: "low-light vision",
@@ -1608,11 +1620,13 @@ export const mockedRunners: Runner[] = [
           cost: 4000,
         },
         {
-          useAs: {
-            type: "BIOWARE",
-            subtype: "BIOWARE STANDARD",
-            essence: "0.9",
-          },
+          useAs: [
+            {
+              type: "BIOWARE",
+              subtype: "BIOWARE STANDARD",
+              essence: "0.9",
+            },
+          ],
           modifications: {
             attrmod: [
               {
@@ -1939,11 +1953,13 @@ export const mockedRunners: Runner[] = [
               },
             ],
           },
-          useAs: {
-            type: "BIOWARE",
-            subtype: "BIOWARE CULTURED",
-            essence: "0.5",
-          },
+          useAs: [
+            {
+              type: "BIOWARE",
+              subtype: "BIOWARE CULTURED",
+              essence: "0.5",
+            },
+          ],
           name: "Synaptic Booster",
           availability: "5L",
           cost: 95000,

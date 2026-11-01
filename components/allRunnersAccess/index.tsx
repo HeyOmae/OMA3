@@ -3,6 +3,7 @@ import { useIndexedDB } from "react-indexed-db-hook"
 import { CircularProgress } from "@mui/material"
 import { Runner } from "../../types/runner"
 import { migrateIfOutdated } from "@/hooks/runnerSchema"
+import type { StoredRunner } from "@/hooks/migrations/storedRunner"
 
 interface RenderProps {
   runners: Runner[]
@@ -17,7 +18,7 @@ export const AllRunnersAccess: FC<Props> = ({ children }) => {
   const { getAll, add } = useIndexedDB("runners")
   const [runners, setRunners] = useState<Runner[]>()
   useEffect(() => {
-    void getAll<Runner>()
+    void getAll<StoredRunner>()
       .then((loadedRunners) =>
         Promise.all(loadedRunners.map((runner) => migrateIfOutdated(runner))),
       )
