@@ -98,6 +98,9 @@ const config = [
           allow: ["warn", "error"],
         },
       ],
+
+      // A function this branchy is doing more than one job, split it up
+      complexity: [2, 15],
     },
   },
   {
