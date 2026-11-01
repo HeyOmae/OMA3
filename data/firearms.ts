@@ -2334,10 +2334,12 @@ export const mods: FirearmMod[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 3,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 3,
+          hook: "OPTICAL",
+        },
+      ],
       accessorymod: [
         {
           hook: "OPTICAL",
@@ -2504,10 +2506,12 @@ export const mods: FirearmMod[] = [
           condindex: 2,
         },
       ],
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1L",
     cost: 500,
@@ -2542,10 +2546,12 @@ export const mods: FirearmMod[] = [
           condindex: 2,
         },
       ],
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "2L",
     cost: 200,

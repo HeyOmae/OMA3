@@ -13,10 +13,12 @@ const armorData: GearArmor[] = [
       rating: 0,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 0,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 0,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -30,10 +32,12 @@ const armorData: GearArmor[] = [
       rating: 0,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 0,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 0,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -47,10 +51,12 @@ const armorData: GearArmor[] = [
       rating: 0,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 0,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 0,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -64,10 +70,12 @@ const armorData: GearArmor[] = [
       rating: 0,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 0,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 0,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -81,10 +89,12 @@ const armorData: GearArmor[] = [
       rating: 0,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 0,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 0,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -98,10 +108,12 @@ const armorData: GearArmor[] = [
       rating: 0,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 0,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 0,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -120,10 +132,12 @@ const armorData: GearArmor[] = [
       social: -2,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 3,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 3,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -142,10 +156,12 @@ const armorData: GearArmor[] = [
       social: +2,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 6,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 6,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -164,10 +180,12 @@ const armorData: GearArmor[] = [
       social: 0,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -186,10 +204,12 @@ const armorData: GearArmor[] = [
       social: -3,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 8,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 8,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -208,10 +228,12 @@ const armorData: GearArmor[] = [
       social: -1,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 6,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 6,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -230,10 +252,12 @@ const armorData: GearArmor[] = [
       social: -3,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -252,10 +276,12 @@ const armorData: GearArmor[] = [
       social: -5,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 10,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 10,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -274,10 +300,12 @@ const armorData: GearArmor[] = [
       social: -4,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 6,
-        hook: "HELMET ACCESSORY",
-      },
+      itemhookmod: [
+        {
+          capacity: 6,
+          hook: "HELMET ACCESSORY",
+        },
+      ],
     },
   },
   {
@@ -296,10 +324,12 @@ const armorData: GearArmor[] = [
       social: -2,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 7,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 7,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -318,10 +348,12 @@ const armorData: GearArmor[] = [
       social: -2,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 6,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 6,
+          hook: "ARMOR",
+        },
+      ],
     },
   },
   {
@@ -341,10 +373,12 @@ const armorData: GearArmor[] = [
       add: true,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "HELMET ACCESSORY",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "HELMET ACCESSORY",
+        },
+      ],
     },
   },
   {
@@ -362,10 +396,12 @@ const armorData: GearArmor[] = [
       rating: 2,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 2,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 2,
+          hook: "ARMOR",
+        },
+      ],
       itemmod: [
         {
           item: "Ballistic Shield Weapon",
@@ -388,10 +424,12 @@ const armorData: GearArmor[] = [
       rating: 2,
     },
     modifications: {
-      itemhookmod: {
-        capacity: 2,
-        hook: "ARMOR",
-      },
+      itemhookmod: [
+        {
+          capacity: 2,
+          hook: "ARMOR",
+        },
+      ],
       itemmod: [
         {
           item: "Riot Shield Weapon",

@@ -13,6 +13,7 @@ import {
   gearCapacityConfigOption,
   gearRatingTableConfigOption,
   gearTableConfigOptions,
+  getModCapacity,
 } from "../../util"
 import { RemainingArmorCapacity } from "./RemainingArmorCapacity"
 
@@ -56,7 +57,7 @@ const ArmorMods = () => {
     if (armor) {
       return mods.map((mod) => ({
         ...mod,
-        maxRating: armor.modifications.itemhookmod.capacity,
+        maxRating: getModCapacity(armor),
       }))
     }
 

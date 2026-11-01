@@ -6,10 +6,12 @@ export const audio: GearModdableRated[] = [
     subtype: "AUDIO",
 
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "AUDIO",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "AUDIO",
+        },
+      ],
     },
     availability: "2",
     cost: 50,
@@ -24,10 +26,12 @@ export const audio: GearModdableRated[] = [
     subtype: "AUDIO",
 
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "AUDIO",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "AUDIO",
+        },
+      ],
     },
     availability: "1",
     cost: 50,
@@ -42,10 +46,12 @@ export const audio: GearModdableRated[] = [
     subtype: "AUDIO",
 
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "AUDIO",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "AUDIO",
+        },
+      ],
     },
     availability: "1",
     cost: 50,
@@ -60,10 +66,12 @@ export const audio: GearModdableRated[] = [
     subtype: "AUDIO",
 
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "AUDIO",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "AUDIO",
+        },
+      ],
     },
     availability: "2",
     cost: 100,
@@ -78,10 +86,12 @@ export const audio: GearModdableRated[] = [
     subtype: "AUDIO",
 
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "AUDIO",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "AUDIO",
+        },
+      ],
     },
     availability: "1",
     cost: 50,

@@ -23,14 +23,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 1,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
     reference: [{ book: "SR6", page: 425 }],
   },
   {
@@ -55,14 +57,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 2,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow3",
@@ -86,14 +90,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 3,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow4",
@@ -117,14 +123,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 4,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow5",
@@ -148,14 +156,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 5,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow6",
@@ -179,14 +189,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 6,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow7",
@@ -210,14 +222,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 7,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow8",
@@ -241,14 +255,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 8,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow9",
@@ -272,14 +288,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 9,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow10",
@@ -303,14 +321,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 10,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow11",
@@ -334,14 +354,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 11,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow12",
@@ -365,14 +387,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 12,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow13",
@@ -396,14 +420,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 13,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Bow14",
@@ -427,14 +453,16 @@ const projectiles: GearWeaponsProjectile[] = [
         value: 14,
       },
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Crossbow Light",
@@ -454,14 +482,16 @@ const projectiles: GearWeaponsProjectile[] = [
       skill: "Athletics",
       specialization: "Archery",
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
     reference: [{ book: "SR6", page: 425 }],
   },
   {
@@ -482,14 +512,16 @@ const projectiles: GearWeaponsProjectile[] = [
       skill: "Athletics",
       specialization: "Archery",
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Crossbow Heavy",
@@ -509,14 +541,16 @@ const projectiles: GearWeaponsProjectile[] = [
       skill: "Athletics",
       specialization: "Archery",
     },
-    modifications: [
-      {
-        hook: "TOP",
-      },
-      {
-        hook: "UNDER",
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "TOP",
+        },
+        {
+          hook: "UNDER",
+        },
+      ],
+    },
   },
   {
     name: "Throwing Knives",

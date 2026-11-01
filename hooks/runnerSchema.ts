@@ -3,7 +3,7 @@ import type { StoredRunner } from "./migrations/storedRunner"
 
 // Bump this when adding a migration to ./migrateRunner. It lives here, away
 // from the migrations, so runners that are up to date never load them.
-export const CURRENT_SCHEMA_VERSION = 1
+export const CURRENT_SCHEMA_VERSION = 2
 
 // A runner saved at the current schema version is in the current shape
 const isUpToDate = (

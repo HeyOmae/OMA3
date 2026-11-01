@@ -101,7 +101,7 @@ const PhysicalInit: FC<Props> = ({ runner, attributes }) => {
       /Synaptic Booster/.test(name),
     )
     const initiativeBoosterWare = wiredReflex || synapticBooster
-    return Array.isArray(initiativeBoosterWare?.modifications.attrmod) ?
+    return initiativeBoosterWare?.modifications.attrmod ?
         findInitBonusDices(
           initiativeBoosterWare.modifications.attrmod,
           initiativeBoosterWare.currentRating,

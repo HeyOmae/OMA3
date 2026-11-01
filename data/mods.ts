@@ -259,10 +259,12 @@ export const imagingMods: GearMod[] = [
       },
     ],
     modifications: {
-      attrmod: {
-        attribute: "ATTACK RATING",
-        attackRating: [0, 0, 2, 2, 2],
-      },
+      attrmod: [
+        {
+          attribute: "ATTACK RATING",
+          attackRating: [0, 0, 2, 2, 2],
+        },
+      ],
     },
     availability: "1",
     cost: 250,

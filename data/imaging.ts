@@ -5,10 +5,12 @@ export type ImagingGear = GearModdableRated | GearTyped
 export const imaging: ImagingGear[] = [
   {
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1",
     cost: 50,
@@ -28,10 +30,12 @@ export const imaging: ImagingGear[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1",
     cost: 100,
@@ -45,10 +49,12 @@ export const imaging: ImagingGear[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1",
     cost: 100,
@@ -59,10 +65,12 @@ export const imaging: ImagingGear[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "2",
     cost: 200,
@@ -76,10 +84,12 @@ export const imaging: ImagingGear[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1",
     cost: 100,
@@ -99,10 +109,12 @@ export const imaging: ImagingGear[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1",
     cost: 50,
@@ -116,10 +128,12 @@ export const imaging: ImagingGear[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 3,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 3,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1",
     cost: 350,
@@ -130,10 +144,12 @@ export const imaging: ImagingGear[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "OPTICAL",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "OPTICAL",
+        },
+      ],
     },
     availability: "1",
     cost: 120,

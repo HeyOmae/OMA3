@@ -221,11 +221,13 @@ export const drones: GearDrones[] = [
       sensor: 2,
     },
     modifications: {
-      itemattrmod: {
-        Attr: "CAPACITY",
-        Slot: "VEHICLEBODY",
-        Val: 0,
-      },
+      itemattrmod: [
+        {
+          attr: "CAPACITY",
+          slot: "VEHICLEBODY",
+          val: 0,
+        },
+      ],
     },
     availability: "2",
     cost: 5000,
@@ -262,10 +264,12 @@ export const drones: GearDrones[] = [
       sensor: 3,
     },
     modifications: {
-      accessorymod: {
-        Item: "Weapon Mount Standard",
-        Hook: "VEHICLEBODY",
-      },
+      accessorymod: [
+        {
+          item: "Weapon Mount Standard",
+          hook: "VEHICLEBODY",
+        },
+      ],
     },
     availability: "2",
     cost: 6500,
@@ -302,11 +306,13 @@ export const drones: GearDrones[] = [
       sensor: 2,
     },
     modifications: {
-      itemattrmod: {
-        Attr: "CAPACITY",
-        Val: 1,
-        Slot: "VEHICLEBODY",
-      },
+      itemattrmod: [
+        {
+          attr: "CAPACITY",
+          val: 1,
+          slot: "VEHICLEBODY",
+        },
+      ],
     },
     availability: "2",
     cost: 5000,

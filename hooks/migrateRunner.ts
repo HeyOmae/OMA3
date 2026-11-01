@@ -1,5 +1,6 @@
 import type { StoredRunner } from "./migrations/storedRunner"
 import { useAsIsAList } from "./migrations/useAsIsAList"
+import { modificationsAreConsistent } from "./migrations/modificationsAreConsistent"
 
 type Migration = (runner: StoredRunner) => StoredRunner
 
@@ -8,7 +9,10 @@ type Migration = (runner: StoredRunner) => StoredRunner
 // runner from the version at its index to the next one.
 // Never edit or reorder a migration that has shipped, only add new ones, and
 // bump CURRENT_SCHEMA_VERSION in ./runnerSchema when you do.
-export const migrations: Migration[] = [useAsIsAList]
+export const migrations: Migration[] = [
+  useAsIsAList,
+  modificationsAreConsistent,
+]
 
 export const migrateRunner = (
   runner: StoredRunner,

@@ -1,5 +1,6 @@
 import { GearArmor } from "@/types/Resources"
 import { FC, useMemo } from "react"
+import { getModCapacity } from "../../util"
 
 export interface Props {
   armor: GearArmor
@@ -21,7 +22,7 @@ export const RemainingArmorCapacity: FC<Props> = ({ armor }) => {
     <dl>
       <dt>Capacity:</dt>
       <dd>
-        {usedCapacity}/{armor.modifications.itemhookmod.capacity}
+        {usedCapacity}/{getModCapacity(armor)}
       </dd>
     </dl>
   )

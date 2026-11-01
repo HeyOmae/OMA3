@@ -119,10 +119,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      attrmod: {
-        attribute: "ATTACK RATING",
-        attackRating: [0, 0, 2, 2, 2],
-      },
+      attrmod: [
+        {
+          attribute: "ATTACK RATING",
+          attackRating: [0, 0, 2, 2, 2],
+        },
+      ],
     },
     availability: "3",
     cost: 1750,
@@ -619,10 +621,10 @@ const cyberwareAll: GearCyberware[] = [
   //     },
   //   ],
   //   modifications: {
-  //     itemhookmod: {
+  //     itemhookmod: [{
   //       hook: "SKILLJACK",
   //       capacity: 4,
-  //     },
+  //     }],
   //   },
   //   availability: "4",
   //   cost: 1000,
@@ -640,10 +642,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "SKILLJACK",
-        capacity: 4,
-      },
+      itemhookmod: [
+        {
+          hook: "SKILLJACK",
+          capacity: 4,
+        },
+      ],
     },
     availability: "4",
     cost: 20000,
@@ -662,10 +666,10 @@ const cyberwareAll: GearCyberware[] = [
   //     },
   //   ],
   //   modifications: {
-  //     itemhookmod: {
+  //     itemhookmod: [{
   //       hook: "SKILLJACK",
   //       capacity: 4,
-  //     },
+  //     }],
   //   },
   //   availability: "4",
   //   cost: 20000,
@@ -760,10 +764,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "CYBEREYE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "CYBEREYE IMPLANT",
+        },
+      ],
       accessorymod: [
         {
           hook: "CYBEREYE IMPLANT",
@@ -790,10 +796,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "CYBEREYE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "CYBEREYE IMPLANT",
+        },
+      ],
       accessorymod: [
         {
           hook: "CYBEREYE IMPLANT",
@@ -820,10 +828,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 8,
-        hook: "CYBEREYE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 8,
+          hook: "CYBEREYE IMPLANT",
+        },
+      ],
       accessorymod: [
         {
           hook: "CYBEREYE IMPLANT",
@@ -850,10 +860,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 12,
-        hook: "CYBEREYE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 12,
+          hook: "CYBEREYE IMPLANT",
+        },
+      ],
       accessorymod: [
         {
           hook: "CYBEREYE IMPLANT",
@@ -880,10 +892,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 16,
-        hook: "CYBEREYE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 16,
+          hook: "CYBEREYE IMPLANT",
+        },
+      ],
       accessorymod: [
         {
           hook: "CYBEREYE IMPLANT",
@@ -915,10 +929,12 @@ const cyberwareAll: GearCyberware[] = [
           item: "ocular drone vehicle",
         },
       ],
-      itemhookmod: {
-        capacity: 6,
-        hook: "CYBEREYE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 6,
+          hook: "CYBEREYE IMPLANT",
+        },
+      ],
       accessorymod: [
         {
           hook: "CYBEREYE IMPLANT",
@@ -1426,10 +1442,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 2,
-        hook: "HEADWARE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 2,
+          hook: "HEADWARE IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "PHYSICAL MONITOR",
@@ -1456,10 +1474,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "HEADWARE IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "HEADWARE IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "PHYSICAL MONITOR",
@@ -1486,10 +1506,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 5,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 5,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "PHYSICAL MONITOR",
@@ -1511,10 +1533,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 10,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 10,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "PHYSICAL MONITOR",
@@ -1536,10 +1560,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 8,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 8,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "AGILITY",
@@ -1575,10 +1601,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 15,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 15,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "AGILITY",
@@ -1614,10 +1642,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 5,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 5,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "AGILITY",
@@ -1653,10 +1683,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 10,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 10,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "AGILITY",
@@ -1692,10 +1724,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 2,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 2,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
     },
     availability: "3",
     cost: 6000,
@@ -1710,10 +1744,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
     },
     availability: "3",
     cost: 5000,
@@ -1728,10 +1764,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 10,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 10,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "AGILITY",
@@ -1769,10 +1807,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 20,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 20,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "AGILITY",
@@ -1810,10 +1850,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 6,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 6,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "PHYSICAL MONITOR",
@@ -1849,10 +1891,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 12,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 12,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
       attrmod: [
         {
           attribute: "PHYSICAL MONITOR",
@@ -1888,10 +1932,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 2,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 2,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
     },
     availability: "5",
     cost: 6000,
@@ -1906,10 +1952,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "CYBERLIMB IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "CYBERLIMB IMPLANT",
+        },
+      ],
     },
     availability: "5",
     cost: 5000,
@@ -2071,9 +2119,11 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "MOUNTED HOLDOUT",
-      },
+      itemhookmod: [
+        {
+          hook: "MOUNTED HOLDOUT",
+        },
+      ],
     },
     availability: "3L",
     cost: 2000,
@@ -2094,9 +2144,11 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "MOUNTED PISTOL LIGHT",
-      },
+      itemhookmod: [
+        {
+          hook: "MOUNTED PISTOL LIGHT",
+        },
+      ],
     },
     availability: "3L",
     cost: 3000,
@@ -2117,9 +2169,11 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "MOUNTED PISTOL MACHINE",
-      },
+      itemhookmod: [
+        {
+          hook: "MOUNTED PISTOL MACHINE",
+        },
+      ],
     },
     availability: "4L",
     cost: 3500,
@@ -2140,9 +2194,11 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "MOUNTED PISTOL HEAVY",
-      },
+      itemhookmod: [
+        {
+          hook: "MOUNTED PISTOL HEAVY",
+        },
+      ],
     },
     availability: "4L",
     cost: 4300,
@@ -2163,9 +2219,11 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "MOUNTED SMG",
-      },
+      itemhookmod: [
+        {
+          hook: "MOUNTED SMG",
+        },
+      ],
     },
     availability: "5L",
     cost: 4800,
@@ -2186,9 +2244,11 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "MOUNTED SHOTGUN",
-      },
+      itemhookmod: [
+        {
+          hook: "MOUNTED SHOTGUN",
+        },
+      ],
     },
     availability: "5L",
     cost: 8500,
@@ -2209,9 +2269,11 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        hook: "MOUNTED LAUNCHER",
-      },
+      itemhookmod: [
+        {
+          hook: "MOUNTED LAUNCHER",
+        },
+      ],
     },
     availability: "6I",
     cost: 24000,
@@ -2250,10 +2312,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemattrmod: {
-        attribute: "ATTACK RATING",
-        attackRating: [1, 1, 1, 1, 1],
-      },
+      itemattrmod: [
+        {
+          attribute: "ATTACK RATING",
+          attackRating: [1, 1, 1, 1, 1],
+        },
+      ],
     },
     availability: "1",
     cost: 1000,
@@ -2513,10 +2577,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "CYBEREAR_IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "CYBEREAR_IMPLANT",
+        },
+      ],
     },
     availability: "2",
     cost: 1000,
@@ -2532,10 +2598,12 @@ const cyberwareAll: GearCyberware[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 4,
-        hook: "CYBEREAR_IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 4,
+          hook: "CYBEREAR_IMPLANT",
+        },
+      ],
     },
     availability: "2",
     cost: 3000,
@@ -2543,10 +2611,12 @@ const cyberwareAll: GearCyberware[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 8,
-        hook: "CYBEREAR_IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 8,
+          hook: "CYBEREAR_IMPLANT",
+        },
+      ],
     },
     useAs: [
       {
@@ -2561,10 +2631,12 @@ const cyberwareAll: GearCyberware[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 2,
-        hook: "CYBEREAR_IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 2,
+          hook: "CYBEREAR_IMPLANT",
+        },
+      ],
     },
     useAs: [
       {
@@ -2579,10 +2651,12 @@ const cyberwareAll: GearCyberware[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 6,
-        hook: "CYBEREAR_IMPLANT",
-      },
+      itemhookmod: [
+        {
+          capacity: 6,
+          hook: "CYBEREAR_IMPLANT",
+        },
+      ],
     },
     useAs: [
       {

@@ -62,9 +62,9 @@ export interface GearMod<
 > extends Gear {
   useAs?: UseAs
   modifications?: {
-    attrmod?: AttackRatingModifier | AttackRatingModifier[]
-    itemattrmod?: ItemAttributeMod[] | AttackRatingModifier
-    itemhookmod?: GearModHooks
+    attrmod?: AttackRatingModifier[]
+    itemattrmod?: (ItemAttributeMod | AttackRatingModifier)[]
+    itemhookmod?: GearModHooks[]
     accessorymod?: AccessoryMod[]
     edgemod?: EdgeMod[]
     skillmod?: SkillMod[]
@@ -130,11 +130,11 @@ export interface GearDroneMod extends GearTyped {
     itemreq?: ItemRequirement
   }
   modifications?: {
-    itemhookmod: GearModHooks
+    itemhookmod: GearModHooks[]
     accessorymod?: {
       hook: string
       item: string
-    }
+    }[]
   }
   multi?: true
 }
@@ -153,14 +153,14 @@ export interface GearDrones extends Gear, GearTypes {
   }
   modifications?: {
     itemattrmod?: {
-      Attr: "CAPACITY"
-      Slot: "VEHICLEBODY"
-      Val: number
-    }
+      attr: "CAPACITY"
+      slot: "VEHICLEBODY"
+      val: number
+    }[]
     accessorymod?: {
-      Item: "Weapon Mount Standard"
-      Hook: "VEHICLEBODY"
-    }
+      item: "Weapon Mount Standard"
+      hook: "VEHICLEBODY"
+    }[]
   }
   mods?: GearDroneMod[]
 }
@@ -284,7 +284,7 @@ export interface GearElectronic extends GearTyped {
 
 export interface GearMatrixGear extends GearElectronic {
   useAs?: (AsAccessory | GearTypes)[]
-  modifications: GearModHooks[]
+  modifications: { itemhookmod: GearModHooks[] }
   matrixAttributes: MatrixAttributesCommlinks | MatrixAttributesCyberdeck
 }
 
@@ -372,10 +372,10 @@ export interface GearWeaponsProjectile extends GearWeaponMelee {
     }
   }
   weapon: BaseWeapon | FireArm
-  modifications?: GearModHooks[]
+  modifications?: { itemhookmod: GearModHooks[] }
 }
 
-interface GearModHooks {
+export interface GearModHooks {
   capacity?: number
   hook: string
 }

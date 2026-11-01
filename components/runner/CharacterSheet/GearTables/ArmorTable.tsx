@@ -1,3 +1,4 @@
+import { getModCapacity } from "@/components/runner/resources/util"
 import { GearArmor } from "@/types/Resources"
 import { FC } from "react"
 import { formatModWithRating } from "./utils"
@@ -21,7 +22,7 @@ export const ArmorTable: FC<ArmorTableProps> = ({ gearRow }) => (
         <tr key={index}>
           <td>{gearItem.name}</td>
           <td>{gearItem?.armor?.rating}</td>
-          <td>{gearItem?.modifications?.itemhookmod?.capacity}</td>
+          <td>{getModCapacity(gearItem)}</td>
           <td>{gearItem?.mods?.map(formatModWithRating).join(", ")}</td>
         </tr>
       ))}

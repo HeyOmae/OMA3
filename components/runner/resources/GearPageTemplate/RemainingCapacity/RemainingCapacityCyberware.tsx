@@ -1,5 +1,6 @@
 import { GearCyberware, GearModUseAs } from "@/types/Resources"
 import { FC, useMemo } from "react"
+import { getModCapacity } from "../../util"
 
 interface Props {
   gear: GearCyberware
@@ -7,7 +8,7 @@ interface Props {
 
 export const RemainingCapacityCyberware: FC<Props> = ({ gear }) => {
   const { capacity, usedCapacity } = useMemo(() => {
-    const { capacity } = gear.modifications.itemhookmod
+    const capacity = getModCapacity(gear)
     const usedCapacity =
       gear.mods?.reduce((currentCapacity, { useAs, currentRating }) => {
         const modCapacity: GearModUseAs = useAs.find(

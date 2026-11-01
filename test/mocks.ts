@@ -246,15 +246,17 @@ export const mockedRunners: Runner[] = [
               cost: 5000,
             },
           ],
-          modifications: [
-            {
-              hook: "ELECTRONIC ACCESSORY",
-            },
-            {
-              hook: "SOFTWARE",
-              capacity: 99,
-            },
-          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "ELECTRONIC ACCESSORY",
+              },
+              {
+                hook: "SOFTWARE",
+                capacity: 99,
+              },
+            ],
+          },
           matrixAttributes: {
             attack: 7,
             sleaze: 6,
@@ -492,15 +494,17 @@ export const mockedRunners: Runner[] = [
               cost: 2000,
             },
           ],
-          modifications: [
-            {
-              hook: "ELECTRONIC ACCESSORY",
-            },
-            {
-              hook: "SOFTWARE",
-              capacity: 99,
-            },
-          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "ELECTRONIC ACCESSORY",
+              },
+              {
+                hook: "SOFTWARE",
+                capacity: 99,
+              },
+            ],
+          },
           matrixAttributes: {
             dataProcessing: 1,
             firewall: 0,
@@ -774,14 +778,16 @@ export const mockedRunners: Runner[] = [
               value: 10,
             },
           },
-          modifications: [
-            {
-              hook: "TOP",
-            },
-            {
-              hook: "UNDER",
-            },
-          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "TOP",
+              },
+              {
+                hook: "UNDER",
+              },
+            ],
+          },
         },
       ],
       firearms: [
@@ -1046,10 +1052,12 @@ export const mockedRunners: Runner[] = [
       imaging: [
         {
           modifications: {
-            itemhookmod: {
-              capacity: 1,
-              hook: "OPTICAL",
-            },
+            itemhookmod: [
+              {
+                capacity: 1,
+                hook: "OPTICAL",
+              },
+            ],
           },
           availability: "2",
           cost: 600,
@@ -1104,10 +1112,12 @@ export const mockedRunners: Runner[] = [
           subtype: "AUDIO",
 
           modifications: {
-            itemhookmod: {
-              capacity: 1,
-              hook: "AUDIO",
-            },
+            itemhookmod: [
+              {
+                capacity: 1,
+                hook: "AUDIO",
+              },
+            ],
           },
           availability: "1",
           cost: 50,
@@ -1123,10 +1133,12 @@ export const mockedRunners: Runner[] = [
           type: "ELECTRONICS",
           subtype: "SENSOR HOUSING",
           modifications: {
-            itemhookmod: {
-              capacity: 1,
-              hook: "SENSOR HOUSING",
-            },
+            itemhookmod: [
+              {
+                capacity: 1,
+                hook: "SENSOR HOUSING",
+              },
+            ],
           },
           availability: "1",
           cost: 1500,
@@ -1207,10 +1219,12 @@ export const mockedRunners: Runner[] = [
             social: -5,
           },
           modifications: {
-            itemhookmod: {
-              capacity: 10,
-              hook: "ARMOR",
-            },
+            itemhookmod: [
+              {
+                capacity: 10,
+                hook: "ARMOR",
+              },
+            ],
           },
         },
         {
@@ -1228,10 +1242,12 @@ export const mockedRunners: Runner[] = [
             social: -4,
           },
           modifications: {
-            itemhookmod: {
-              capacity: 6,
-              hook: "HELMET ACCESSORY",
-            },
+            itemhookmod: [
+              {
+                capacity: 6,
+                hook: "HELMET ACCESSORY",
+              },
+            ],
           },
         },
         {
@@ -1249,10 +1265,12 @@ export const mockedRunners: Runner[] = [
             social: -2,
           },
           modifications: {
-            itemhookmod: {
-              capacity: 7,
-              hook: "ARMOR",
-            },
+            itemhookmod: [
+              {
+                capacity: 7,
+                hook: "ARMOR",
+              },
+            ],
           },
           mods: [
             {
@@ -1300,10 +1318,12 @@ export const mockedRunners: Runner[] = [
             },
           ],
           modifications: {
-            itemhookmod: {
-              capacity: 8,
-              hook: "CYBEREYE IMPLANT",
-            },
+            itemhookmod: [
+              {
+                capacity: 8,
+                hook: "CYBEREYE IMPLANT",
+              },
+            ],
             accessorymod: [
               {
                 hook: "CYBEREYE IMPLANT",
@@ -1456,10 +1476,12 @@ export const mockedRunners: Runner[] = [
       imaging: [
         {
           modifications: {
-            itemhookmod: {
-              capacity: 1,
-              hook: "OPTICAL",
-            },
+            itemhookmod: [
+              {
+                capacity: 1,
+                hook: "OPTICAL",
+              },
+            ],
           },
           availability: "1",
           cost: 120,
@@ -1478,10 +1500,12 @@ export const mockedRunners: Runner[] = [
           subtype: "AUDIO",
 
           modifications: {
-            itemhookmod: {
-              capacity: 1,
-              hook: "AUDIO",
-            },
+            itemhookmod: [
+              {
+                capacity: 1,
+                hook: "AUDIO",
+              },
+            ],
           },
           availability: "1",
           cost: 150,
@@ -1535,10 +1559,12 @@ export const mockedRunners: Runner[] = [
             },
           ],
           modifications: {
-            itemhookmod: {
-              capacity: 1,
-              hook: "SENSOR FUNCTION",
-            },
+            itemhookmod: [
+              {
+                capacity: 1,
+                hook: "SENSOR FUNCTION",
+              },
+            ],
           },
           availability: "2",
           cost: 100,
@@ -1564,11 +1590,13 @@ export const mockedRunners: Runner[] = [
             sensor: 2,
           },
           modifications: {
-            itemattrmod: {
-              Attr: "CAPACITY",
-              Val: 1,
-              Slot: "VEHICLEBODY",
-            },
+            itemattrmod: [
+              {
+                attr: "CAPACITY",
+                val: 1,
+                slot: "VEHICLEBODY",
+              },
+            ],
           },
           availability: "2",
           cost: 5000,
@@ -1689,10 +1717,12 @@ export const mockedRunners: Runner[] = [
             },
           ],
           modifications: {
-            itemhookmod: {
-              capacity: 15,
-              hook: "CYBERLIMB IMPLANT",
-            },
+            itemhookmod: [
+              {
+                capacity: 15,
+                hook: "CYBERLIMB IMPLANT",
+              },
+            ],
             attrmod: [
               {
                 attribute: "AGILITY",
@@ -1849,15 +1879,17 @@ export const mockedRunners: Runner[] = [
               cost: 2000,
             },
           ],
-          modifications: [
-            {
-              hook: "ELECTRONIC ACCESSORY",
-            },
-            {
-              hook: "SOFTWARE",
-              capacity: 99,
-            },
-          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "ELECTRONIC ACCESSORY",
+              },
+              {
+                hook: "SOFTWARE",
+                capacity: 99,
+              },
+            ],
+          },
           matrixAttributes: {
             dataProcessing: 1,
             firewall: 1,
@@ -1996,15 +2028,17 @@ export const mockedRunners: Runner[] = [
               cost: 2000,
             },
           ],
-          modifications: [
-            {
-              hook: "ELECTRONIC ACCESSORY",
-            },
-            {
-              hook: "SOFTWARE",
-              capacity: 99,
-            },
-          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "ELECTRONIC ACCESSORY",
+              },
+              {
+                hook: "SOFTWARE",
+                capacity: 99,
+              },
+            ],
+          },
           matrixAttributes: {
             dataProcessing: 2,
             firewall: 1,
@@ -2127,23 +2161,25 @@ export const mockedRunners: Runner[] = [
           name: "Maersk Spider",
           subtype: "Rigger console",
           type: "ELECTRONICS",
-          modifications: [
-            {
-              hook: "ELECTRONIC ACCESSORY",
-            },
-            {
-              hook: "SOFTWARE",
-              capacity: 99,
-            },
-            {
-              hook: "SOFTWARE RIGGER",
-              capacity: 99,
-            },
-            {
-              hook: "SOFTWARE DRONE",
-              capacity: 99,
-            },
-          ],
+          modifications: {
+            itemhookmod: [
+              {
+                hook: "ELECTRONIC ACCESSORY",
+              },
+              {
+                hook: "SOFTWARE",
+                capacity: 99,
+              },
+              {
+                hook: "SOFTWARE RIGGER",
+                capacity: 99,
+              },
+              {
+                hook: "SOFTWARE DRONE",
+                capacity: 99,
+              },
+            ],
+          },
           matrixAttributes: {
             dataProcessing: 4,
             firewall: 5,

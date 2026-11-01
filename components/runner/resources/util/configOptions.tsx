@@ -1,4 +1,4 @@
-import { Columns, getEssenceFromGear } from "../util"
+import { Columns, getEssenceFromGear, getModCapacity } from "../util"
 import {
   Gear,
   GearBioware,
@@ -58,7 +58,7 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
 export const gearModableTableConfigOptions = {
   mod: {
     display: (gear: GearMod, index: number) =>
-      gear?.modifications?.itemhookmod?.capacity > 0 ?
+      getModCapacity(gear) > 0 ?
         <ModLinkButton gear={gear} index={index} />
       : "N/A",
     label: "Mod",

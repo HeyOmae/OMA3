@@ -35,15 +35,17 @@ export const commlinkData: GearMatrixCommlink[] = [
         cost: 2000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 1,
       firewall: 0,
@@ -77,15 +79,17 @@ export const commlinkData: GearMatrixCommlink[] = [
         cost: 2000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 1,
       firewall: 1,
@@ -119,15 +123,17 @@ export const commlinkData: GearMatrixCommlink[] = [
         cost: 2000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 2,
       firewall: 0,
@@ -160,15 +166,17 @@ export const commlinkData: GearMatrixCommlink[] = [
         cost: 2000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 2,
       firewall: 1,
@@ -201,15 +209,17 @@ export const commlinkData: GearMatrixCommlink[] = [
         cost: 2000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 3,
       firewall: 0,
@@ -242,15 +252,17 @@ export const commlinkData: GearMatrixCommlink[] = [
         cost: 2000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 3,
       firewall: 1,
@@ -286,15 +298,17 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
         cost: 5000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       attack: 4,
       sleaze: 3,
@@ -327,15 +341,17 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
         cost: 5000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       attack: 5,
       sleaze: 4,
@@ -368,15 +384,17 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
         cost: 5000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       attack: 6,
       sleaze: 5,
@@ -409,15 +427,17 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
         cost: 5000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       attack: 7,
       sleaze: 6,
@@ -450,15 +470,17 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
         cost: 5000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       attack: 8,
       sleaze: 7,
@@ -491,15 +513,17 @@ export const cyberdeckData: GearMatrixCyberdeck[] = [
         cost: 5000,
       },
     ],
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       attack: 9,
       sleaze: 8,
@@ -516,23 +540,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Scratch Built Junk",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 3,
       firewall: 2,
@@ -546,23 +572,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Allegiance Control Center",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 3,
       firewall: 3,
@@ -576,23 +604,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Essy Motors Drone Master",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 4,
       firewall: 4,
@@ -606,23 +636,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Horizons Overseer",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 5,
       firewall: 4,
@@ -636,23 +668,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Maersk Spider",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 4,
       firewall: 5,
@@ -666,23 +700,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Vulcan Liegelord",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 6,
       firewall: 5,
@@ -696,23 +732,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Proteus Poseidon",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 5,
       firewall: 6,
@@ -726,23 +764,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Transys Eidolon",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 6,
       firewall: 5,
@@ -756,23 +796,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Ares Red Dog Series",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 7,
       firewall: 6,
@@ -786,23 +828,25 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
     name: "Aztechnology Tlaloc",
     subtype: "Rigger console",
     type: "ELECTRONICS",
-    modifications: [
-      {
-        hook: "ELECTRONIC ACCESSORY",
-      },
-      {
-        hook: "SOFTWARE",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE RIGGER",
-        capacity: 99,
-      },
-      {
-        hook: "SOFTWARE DRONE",
-        capacity: 99,
-      },
-    ],
+    modifications: {
+      itemhookmod: [
+        {
+          hook: "ELECTRONIC ACCESSORY",
+        },
+        {
+          hook: "SOFTWARE",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE RIGGER",
+          capacity: 99,
+        },
+        {
+          hook: "SOFTWARE DRONE",
+          capacity: 99,
+        },
+      ],
+    },
     matrixAttributes: {
       dataProcessing: 8,
       firewall: 7,

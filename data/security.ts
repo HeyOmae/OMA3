@@ -240,10 +240,12 @@ export const survival: (GearTyped | GearModdableRated)[] = [
   },
   {
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "SENSOR HOUSING",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "SENSOR HOUSING",
+        },
+      ],
     },
     availability: "3",
     cost: 3000,

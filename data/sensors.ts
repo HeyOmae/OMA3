@@ -5,10 +5,12 @@ export const sensors: GearModdableRated[] = [
     type: "ELECTRONICS",
     subtype: "SENSOR HOUSING",
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "SENSOR HOUSING",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "SENSOR HOUSING",
+        },
+      ],
     },
     availability: "1",
     cost: 100,
@@ -22,10 +24,12 @@ export const sensors: GearModdableRated[] = [
     type: "ELECTRONICS",
     subtype: "SENSOR HOUSING",
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "SENSOR HOUSING",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "SENSOR HOUSING",
+        },
+      ],
     },
     availability: "1",
     cost: 250,
@@ -45,10 +49,12 @@ export const sensors: GearModdableRated[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "SENSOR FUNCTION",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "SENSOR FUNCTION",
+        },
+      ],
     },
     availability: "3",
     cost: 1000,
@@ -71,10 +77,12 @@ export const sensors: GearModdableRated[] = [
       },
     ],
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "SENSOR FUNCTION",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "SENSOR FUNCTION",
+        },
+      ],
     },
     availability: "2",
     cost: 100,

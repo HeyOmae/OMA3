@@ -568,10 +568,12 @@ export const mods: GearDroneMod[] = [
       },
     },
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "VEHICLE WEAPON",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "VEHICLE WEAPON",
+        },
+      ],
     },
     availability: "4I",
     cost: 2500,
@@ -588,10 +590,12 @@ export const mods: GearDroneMod[] = [
       },
     },
     modifications: {
-      itemhookmod: {
-        capacity: 1,
-        hook: "VEHICLE WEAPON",
-      },
+      itemhookmod: [
+        {
+          capacity: 1,
+          hook: "VEHICLE WEAPON",
+        },
+      ],
     },
     availability: "5I",
     cost: 3000,
@@ -608,10 +612,12 @@ export const mods: GearDroneMod[] = [
       },
     },
     modifications: {
-      itemhookmod: {
-        hook: "VEHICLE WEAPON LARGE",
-        capacity: 1,
-      },
+      itemhookmod: [
+        {
+          hook: "VEHICLE WEAPON LARGE",
+          capacity: 1,
+        },
+      ],
     },
     availability: "5I",
     cost: 5000,
@@ -628,10 +634,12 @@ export const mods: GearDroneMod[] = [
       },
     },
     modifications: {
-      itemhookmod: {
-        hook: "VEHICLE WEAPON LARGE",
-        capacity: 1,
-      },
+      itemhookmod: [
+        {
+          hook: "VEHICLE WEAPON LARGE",
+          capacity: 1,
+        },
+      ],
     },
     availability: "6I",
     cost: 5500,
@@ -651,14 +659,18 @@ export const mods: GearDroneMod[] = [
       },
     },
     modifications: {
-      itemhookmod: {
-        hook: "VEHICLE WEAPON SMALL",
-        capacity: 1,
-      },
-      accessorymod: {
-        hook: "VEHICLE WEAPON SMALL",
-        item: "cyberspace Designs Quadrotor Crossbow",
-      },
+      itemhookmod: [
+        {
+          hook: "VEHICLE WEAPON SMALL",
+          capacity: 1,
+        },
+      ],
+      accessorymod: [
+        {
+          hook: "VEHICLE WEAPON SMALL",
+          item: "cyberspace Designs Quadrotor Crossbow",
+        },
+      ],
     },
     availability: "4L",
     cost: 290,

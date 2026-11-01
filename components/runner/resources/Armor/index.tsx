@@ -5,6 +5,7 @@ import {
   gearTableConfigOptions,
   Columns,
   gearModableTableConfigOptions,
+  getModCapacity,
 } from "../util"
 
 const baseCols: Columns<GearArmor>[] = [
@@ -12,7 +13,7 @@ const baseCols: Columns<GearArmor>[] = [
   { label: "DR", display: ({ armor }) => armor.rating },
   {
     label: "Cap",
-    display: ({ modifications }) => modifications.itemhookmod.capacity,
+    display: (armor) => getModCapacity(armor),
   },
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
