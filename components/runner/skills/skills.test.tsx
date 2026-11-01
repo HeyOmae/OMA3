@@ -59,7 +59,7 @@ describe("<Skills/>", () => {
     await user.click(await screen.findByLabelText("add Firearms skill"))
 
     await waitFor(() => {
-      expect(runnerFromDB(2).skills.Firearms).toEqual({
+      expect(runnerFromDB(2).skills?.Firearms).toEqual({
         rating: 1,
         karmaRating: 0,
         attribute: {
@@ -76,7 +76,7 @@ describe("<Skills/>", () => {
 
     expect(await screen.findByLabelText("remove Con skill")).toBeInTheDocument()
 
-    expect(runnerFromDB(2).skills.Con).toEqual({
+    expect(runnerFromDB(2).skills?.Con).toEqual({
       rating: 1,
       karmaRating: 0,
       attribute: {
@@ -87,7 +87,7 @@ describe("<Skills/>", () => {
     await user.click(screen.getByLabelText("remove Con skill"))
 
     expect(screen.queryByLabelText("remove Con skill")).not.toBeInTheDocument()
-    expect(runnerFromDB(2).skills.Con).toBeUndefined()
+    expect(runnerFromDB(2).skills?.Con).toBeUndefined()
   })
 
   describe("rating slider", () => {
@@ -97,7 +97,7 @@ describe("<Skills/>", () => {
       await user.click(await screen.findByLabelText("add Cracking skill"))
 
       expect(screen.getByTestId("Cracking-rating")).toBeInTheDocument()
-      expect(runnerFromDB(2).skills.Cracking).toEqual({
+      expect(runnerFromDB(2).skills?.Cracking).toEqual({
         rating: 1,
         karmaRating: 0,
         attribute: {
@@ -108,7 +108,7 @@ describe("<Skills/>", () => {
       SliderHelper.change(screen.getByTestId("Cracking-rating"), 5, 1, 6)
 
       await waitFor(() => {
-        expect(runnerFromDB(2).skills.Cracking).toEqual({
+        expect(runnerFromDB(2).skills?.Cracking).toEqual({
           rating: 5,
           karmaRating: 0,
           attribute: {
@@ -126,7 +126,7 @@ describe("<Skills/>", () => {
       SliderHelper.change(screen.getByTestId("Cracking-rating"), 7, 1, 7)
 
       await waitFor(() => {
-        expect(runnerFromDB(3).skills.Cracking).toEqual({
+        expect(runnerFromDB(3).skills?.Cracking).toEqual({
           rating: 7,
           karmaRating: 0,
           attribute: {
@@ -149,7 +149,7 @@ describe("<Skills/>", () => {
 
       expect(screen.getByTestId("Close-combat-rating")).toBeInTheDocument()
 
-      expect(runnerFromDB(2).skills["Close combat"]).toEqual({
+      expect(runnerFromDB(2).skills?.["Close combat"]).toEqual({
         rating: 1,
         karmaRating: 0,
         attribute: {
@@ -162,7 +162,7 @@ describe("<Skills/>", () => {
       await user.click(specInput)
       await user.keyboard("Blades{enter}")
 
-      expect(runnerFromDB(2).skills["Close combat"].specialization).toEqual(
+      expect(runnerFromDB(2).skills?.["Close combat"].specialization).toEqual(
         "Blades",
       )
     })
@@ -191,7 +191,7 @@ describe("<Skills/>", () => {
     await user.click(expertise)
     await user.click(screen.getByRole("option", { name: "Automatics" }))
 
-    expect(runnerFromDB(9).skills["Firearms"].expertise).toEqual("Automatics")
+    expect(runnerFromDB(9).skills?.["Firearms"].expertise).toEqual("Automatics")
     expect(
       screen.getByRole("definition", { name: "Available Karma Value" }),
     ).toHaveTextContent("28")

@@ -58,7 +58,7 @@ describe("Magic and Resonance", () => {
   it("should reset the attributes between selecting magres options", async () => {
     const user = setup()
 
-    expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+    expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
 
     expect(await screen.findByLabelText("Aspected")).toBeInTheDocument()
     await user.click(screen.getByLabelText("Aspected"))
@@ -71,7 +71,7 @@ describe("Magic and Resonance", () => {
     expect(await screen.findByText("0/1")).toBeInTheDocument()
 
     await waitFor(() =>
-      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(1),
+      expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(1),
     )
 
     await user.click(screen.getByLabelText("Technomancer"))
@@ -88,15 +88,15 @@ describe("Magic and Resonance", () => {
 
     expect(await screen.findByText("0/1")).toBeInTheDocument()
     await waitFor(() => {
-      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
-      expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(1)
+      expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(1)
     })
 
     await user.click(screen.getByLabelText("Mystic Adept"))
 
     expect(await screen.findByText("1/1")).toBeInTheDocument()
-    expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
-    expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
+    expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
+    expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(0)
   })
 
   describe("setting attribute", () => {
@@ -105,7 +105,7 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByLabelText("Adept")).toBeInTheDocument()
       await user.click(screen.getByLabelText("Adept"))
-      expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
 
       SliderHelper.change(
         await screen.findByTestId("Magic-attribute-slider"),
@@ -116,12 +116,12 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByText("-1/1")).toHaveClass("bad-stuff")
       await waitFor(() =>
-        expect(runnerFromDB(1).attributes.Magic.adjustment).toBe(2),
+        expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(2),
       )
     })
     it("should set resonance attribute", async () => {
       const user = setup()
-      expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(0)
 
       await user.click(await screen.findByLabelText("Technomancer"))
 
@@ -134,7 +134,7 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByText("-1/1")).toHaveClass("bad-stuff")
       await waitFor(() =>
-        expect(runnerFromDB(1).attributes.Resonance.adjustment).toBe(2),
+        expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(2),
       )
     })
     it("should hide this sections for mundanes", async () => {
@@ -211,7 +211,7 @@ describe("Magic and Resonance", () => {
       const fireballSpell = spellData.Combat.find(
         ({ name }) => name === "Fireball",
       )
-      expect(runnerFromDB(1).spells.Combat).toEqual([fireballSpell])
+      expect(runnerFromDB(1).spells?.Combat).toEqual([fireballSpell])
 
       const manaboltSpell = spellData.Combat.find(
         ({ name }) => name === "Manabolt",
@@ -219,7 +219,7 @@ describe("Magic and Resonance", () => {
 
       await user.click(screen.getByLabelText("Learn Manabolt"))
       await waitFor(() => {
-        expect(runnerFromDB(1).spells.Combat).toEqual([
+        expect(runnerFromDB(1).spells?.Combat).toEqual([
           fireballSpell,
           manaboltSpell,
         ])
@@ -230,11 +230,11 @@ describe("Magic and Resonance", () => {
       )
       await user.click(screen.getByLabelText("Learn Mana barrier"))
       await waitFor(() => {
-        expect(runnerFromDB(1).spells.Combat).toEqual([
+        expect(runnerFromDB(1).spells?.Combat).toEqual([
           fireballSpell,
           manaboltSpell,
         ])
-        expect(runnerFromDB(1).spells.Manipulation).toEqual([manaBarrierSpell])
+        expect(runnerFromDB(1).spells?.Manipulation).toEqual([manaBarrierSpell])
       })
     })
 
@@ -260,8 +260,8 @@ describe("Magic and Resonance", () => {
 
       it("should remove a spell", async () => {
         const user = setup("5")
-        expect(runnerFromDB(4).spells.Combat.length).toEqual(3)
-        expect(runnerFromDB(4).spells.Combat[1].name).toEqual("Fireball")
+        expect(runnerFromDB(4).spells?.Combat?.length).toEqual(3)
+        expect(runnerFromDB(4).spells?.Combat?.[1].name).toEqual("Fireball")
 
         expect(
           await screen.findByLabelText("Remove Fireball"),
@@ -271,11 +271,11 @@ describe("Magic and Resonance", () => {
         await user.click(screen.getByLabelText("Remove Fireball"))
         expect(screen.getByText("1/8")).toBeInTheDocument()
 
-        expect(runnerFromDB(4).spells.Combat.length).toEqual(2)
-        expect(runnerFromDB(4).spells.Combat[1].name).toEqual("Stunball")
+        expect(runnerFromDB(4).spells?.Combat?.length).toEqual(2)
+        expect(runnerFromDB(4).spells?.Combat?.[1].name).toEqual("Stunball")
 
-        expect(runnerFromDB(4).spells.Manipulation.length).toEqual(4)
-        expect(runnerFromDB(4).spells.Manipulation[2].name).toEqual(
+        expect(runnerFromDB(4).spells?.Manipulation?.length).toEqual(4)
+        expect(runnerFromDB(4).spells?.Manipulation?.[2].name).toEqual(
           "Mana barrier",
         )
         await user.click(screen.getByLabelText("Remove Mana barrier"))
@@ -284,8 +284,8 @@ describe("Magic and Resonance", () => {
           screen.queryByLabelText("Remove Mana barrier"),
         ).not.toBeInTheDocument()
 
-        expect(runnerFromDB(4).spells.Manipulation.length).toEqual(3)
-        expect(runnerFromDB(4).spells.Manipulation[2].name).toEqual(
+        expect(runnerFromDB(4).spells?.Manipulation?.length).toEqual(3)
+        expect(runnerFromDB(4).spells?.Manipulation?.[2].name).toEqual(
           "Physical barrier",
         )
       })
@@ -336,7 +336,7 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByText("Known Rituals")).toBeInTheDocument()
 
-      mockedRunners[6].rituals.forEach(({ name }) => {
+      mockedRunners[6].rituals?.forEach(({ name }) => {
         expect(screen.getByLabelText(`Remove ${name}`)).toBeInTheDocument()
       })
     })
@@ -439,7 +439,7 @@ describe("Magic and Resonance", () => {
       ).toHaveTextContent("3/4")
 
       await waitFor(() => {
-        expect(runnerFromDB(1).powers[0]).toEqual(PowersData[1])
+        expect(runnerFromDB(1).powers?.[0]).toEqual(PowersData[1])
       })
     })
 
@@ -468,10 +468,10 @@ describe("Magic and Resonance", () => {
     it("should update the level of an adept power", async () => {
       setup("8")
 
-      const attributeBoostIndex = runnerFromDB(7).powers.findIndex(
+      const attributeBoostIndex = runnerFromDB(7).powers?.findIndex(
         ({ name }) => name === "Attribute Boost",
       )
-      expect(runnerFromDB(7).powers[attributeBoostIndex].level).toBe(2)
+      expect(runnerFromDB(7).powers?.[attributeBoostIndex].level).toBe(2)
 
       SliderHelper.change(
         await screen.findByTestId("slider-Attribute Boost"),
@@ -481,7 +481,7 @@ describe("Magic and Resonance", () => {
       )
 
       await waitFor(() => {
-        expect(runnerFromDB(7).powers[attributeBoostIndex].level).toBe(6)
+        expect(runnerFromDB(7).powers?.[attributeBoostIndex].level).toBe(6)
       })
     })
   })
@@ -522,7 +522,7 @@ describe("Magic and Resonance", () => {
       expect(screen.getByText("7/8")).toBeInTheDocument()
 
       await waitFor(() => {
-        expect(runnerFromDB(1).complexForms[0]).toEqual(complexFormToAdd)
+        expect(runnerFromDB(1).complexForms?.[0]).toEqual(complexFormToAdd)
       })
     })
 
@@ -533,11 +533,11 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByText("Known Complex Forms")).toBeInTheDocument()
 
-      mockedRunners[8].complexForms.forEach(({ name }) => {
+      mockedRunners[8].complexForms?.forEach(({ name }) => {
         expect(screen.getByLabelText(`Remove ${name}`)).toBeInTheDocument()
       })
-      const removedComplexForm = runnerFromDB(8).complexForms[1],
-        removeComplexFormLabel = `Remove ${removedComplexForm.name}`
+      const removedComplexForm = runnerFromDB(8).complexForms?.[1],
+        removeComplexFormLabel = `Remove ${removedComplexForm?.name}`
       expect(runnerFromDB(8).complexForms).toContain(removedComplexForm)
       expect(screen.getByText("4/8")).toBeInTheDocument()
 

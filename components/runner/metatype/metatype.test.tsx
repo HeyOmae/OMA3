@@ -135,7 +135,7 @@ describe("<Metatype/>", () => {
         ).toHaveTextContent("2")
 
         await waitFor(() => {
-          expect(runnerFromDB(2).attributes.Body).toEqual({
+          expect(runnerFromDB(2).attributes?.Body).toEqual({
             adjustment: 2,
             points: 0,
           })
@@ -172,7 +172,7 @@ describe("<Metatype/>", () => {
         SliderHelper.change(screen.getByTestId("Willpower-slider"), 1, 1, 7)
 
         await waitFor(() => {
-          expect(runnerFromDB(2).attributes.Willpower).toEqual({
+          expect(runnerFromDB(2).attributes?.Willpower).toEqual({
             adjustment: 0,
             points: 3,
           })
@@ -209,7 +209,7 @@ describe("<Metatype/>", () => {
         ).toHaveTextContent("6")
 
         await waitFor(() => {
-          expect(runnerFromDB(2).attributes.Body).toEqual({
+          expect(runnerFromDB(2).attributes?.Body).toEqual({
             adjustment: 0,
             points: 6,
           })
@@ -243,7 +243,7 @@ describe("<Metatype/>", () => {
         SliderHelper.change(screen.getByTestId("Agility-slider"), 1, 1, 7)
 
         await waitFor(() => {
-          expect(runnerFromDB(2).attributes.Agility).toEqual({
+          expect(runnerFromDB(2).attributes?.Agility).toEqual({
             adjustment: 3,
             points: 0,
           })
@@ -344,7 +344,7 @@ describe("<Metatype/>", () => {
       ).toHaveTextContent("2")
 
       await waitFor(() => {
-        expect(runnerFromDB(2).attributes.Willpower).toEqual({
+        expect(runnerFromDB(2).attributes?.Willpower).toEqual({
           adjustment: 2,
           points: 3,
         })
@@ -380,7 +380,7 @@ describe("<Metatype/>", () => {
       ).toHaveTextContent("0")
 
       await waitFor(() => {
-        expect(runnerFromDB(2).attributes.Strength).toEqual({
+        expect(runnerFromDB(2).attributes?.Strength).toEqual({
           adjustment: 2,
           points: 1,
         })

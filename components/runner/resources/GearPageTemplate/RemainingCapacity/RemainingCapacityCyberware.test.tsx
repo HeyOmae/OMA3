@@ -3,7 +3,7 @@ import { render } from "@/test/testUtils"
 import { RemainingCapacityCyberware } from "./RemainingCapacityCyberware"
 
 describe("<RemaingingCapacityCyberware />", () => {
-  const setup = (gear = mockedRunners[9].resources.cyberware[0]) => {
+  const setup = (gear = mockedRunners[9].resources?.cyberware?.[0]) => {
     return render(<RemainingCapacityCyberware gear={gear} />)
   }
   it("should do display capacity", () => {
@@ -13,7 +13,7 @@ describe("<RemaingingCapacityCyberware />", () => {
   })
 
   it("should calculate the capacity used for the mod", () => {
-    const { getByText } = setup(mockedRunners[10].resources.cyberware[1])
+    const { getByText } = setup(mockedRunners[10].resources?.cyberware?.[1])
 
     expect(getByText("11/15")).toBeInTheDocument()
   })

@@ -25,11 +25,11 @@ describe("<SpecializationSelect/>", () => {
 
     await userEvent.click(input)
 
-    firearmsSkill.specializations.forEach(({ name }) => {
+    firearmsSkill?.specializations?.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument()
     })
 
-    const specToSelect = firearmsSkill.specializations[0].name
+    const specToSelect = firearmsSkill?.specializations?.[0].name
     await userEvent.click(getByText(specToSelect))
 
     expect(dispatch).toHaveBeenCalledWith({

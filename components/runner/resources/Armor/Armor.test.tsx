@@ -5,6 +5,7 @@ import {
   getByText as getTextInContainer,
   waitFor,
   setupIndexedDB,
+  closest,
 } from "@/test/testUtils"
 import { Armor } from "./index"
 
@@ -18,7 +19,7 @@ describe("<Armor />", () => {
     await waitFor(() => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
-    const buyHeader = getByText("Buy").closest("thead")
+    const buyHeader = closest(getByText("Buy"), "thead")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()

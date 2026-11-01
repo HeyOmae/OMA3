@@ -5,6 +5,7 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextInContainer,
+  closest,
 } from "@/test/testUtils"
 import { tools } from "@/data/tools"
 
@@ -20,14 +21,14 @@ describe("<Tools />", () => {
       expect(getByText("Resources")).toHaveAttribute("href", "/9/resources")
     })
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
     const tool = tools[2],
-      toolRow = getByLabelText(`Add Astral ${tool.name}`).closest("tr")
+      toolRow = closest(getByLabelText(`Add Astral ${tool.name}`), "tr")
 
     expect(
       getTextInContainer(toolRow, `Astral ${tool.name}`),

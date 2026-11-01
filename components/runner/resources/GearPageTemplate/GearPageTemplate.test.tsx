@@ -69,7 +69,7 @@ describe("<GearPageTemplate/>", () => {
       expect(getByText("7650¥/8000¥")).toBeInTheDocument()
 
       await waitFor(() => {
-        expect(runnerFromDB(7).resources.melee).toEqual([
+        expect(runnerFromDB(7).resources?.melee).toEqual([
           {
             type: "WEAPON CLOSE COMBAT",
             subtype: "BLADES",
@@ -108,12 +108,12 @@ describe("<GearPageTemplate/>", () => {
       await waitFor(() => {
         expect(getByText("Purchased Melee Weapons")).toBeInTheDocument()
       })
-      expect(runnerFromDB(9).resources.melee).toHaveLength(2)
+      expect(runnerFromDB(9).resources?.melee).toHaveLength(2)
 
       await userEvent.click(getByLabelText("Remove Katana"))
 
       await waitFor(() => {
-        expect(runnerFromDB(9).resources.melee).toHaveLength(1)
+        expect(runnerFromDB(9).resources?.melee).toHaveLength(1)
       })
     })
 

@@ -59,7 +59,7 @@ describe("<AllRunnersAccess/>", () => {
       .spyOn(runnerSchema, "migrateIfOutdated")
       .mockImplementation(async ({ id }) => {
         const runner = mockedRunners.find((mock) => mock.id === id)
-        return { ...runner, name: `${runner.name} (migrated)` }
+        return { ...runner, name: `${runner?.name} (migrated)` }
       })
 
     setup()

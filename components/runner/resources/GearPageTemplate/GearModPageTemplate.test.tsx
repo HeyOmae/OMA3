@@ -5,6 +5,7 @@ import {
   withTestRouter,
   getByText as getByTextInContainer,
   caymansCurrentlySpentNuyen,
+  closest,
 } from "@/test/testUtils"
 import { Gear } from "@/types/Resources"
 import { GearModPageTemplate } from "./GearModPageTemplate"
@@ -65,7 +66,7 @@ describe("GearModPageTemplate", () => {
 
     imagingMods.forEach(
       ({ name, availability, cost, useAs: [{ capacity }] }) => {
-        const testRow = getByLabelText(`Add ${name}`).closest("tr")
+        const testRow = closest(getByLabelText(`Add ${name}`), "tr")
         expect(getByTextInContainer(testRow, name)).toBeInTheDocument()
         expect(
           getByTextInContainer(testRow, `[${capacity}]`),
@@ -81,7 +82,7 @@ describe("GearModPageTemplate", () => {
 
     await waitFor(() => expect(getByText("Sell")).toBeInTheDocument())
 
-    const testRow = getByLabelText("Remove Image Link").closest("tr")
+    const testRow = closest(getByLabelText("Remove Image Link"), "tr")
     expect(getByTextInContainer(testRow, "Image Link")).toBeInTheDocument()
     expect(getByTextInContainer(testRow, `[1]`)).toBeInTheDocument()
     expect(getByTextInContainer(testRow, "1")).toBeInTheDocument()

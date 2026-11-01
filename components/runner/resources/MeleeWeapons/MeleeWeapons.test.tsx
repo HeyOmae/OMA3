@@ -7,6 +7,7 @@ import {
   userEvent,
   screen,
   within,
+  closest,
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import MeleeWeapons from "./index"
@@ -48,7 +49,10 @@ describe("<MeleeWeapons/>", () => {
 
     // New TDD assertion: Katana should display its page reference
     // Scope to the Katana row so we don't match other gear with the same reference
-    const katanaRow = screen.getByRole("cell", { name: "Katana" }).closest("tr")
+    const katanaRow = closest(
+      screen.getByRole("cell", { name: "Katana" }),
+      "tr",
+    )
     expect(within(katanaRow).getByText(/SR6 p\.?249/i)).toBeInTheDocument()
   })
 
@@ -66,7 +70,7 @@ describe("<MeleeWeapons/>", () => {
     )
 
     await waitFor(() => {
-      expect(runnerFromDB(7).resources.melee).toEqual([
+      expect(runnerFromDB(7).resources?.melee).toEqual([
         {
           type: "WEAPON CLOSE COMBAT",
           subtype: "BLADES",
@@ -106,12 +110,12 @@ describe("<MeleeWeapons/>", () => {
       await screen.findByRole("heading", { name: "Purchased Melee Weapons" }),
     ).toBeVisible()
 
-    expect(runnerFromDB(9).resources.melee).toHaveLength(2)
+    expect(runnerFromDB(9).resources?.melee).toHaveLength(2)
 
     await userEvent.click(screen.getByRole("button", { name: "Remove Katana" }))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources.melee).toHaveLength(1)
+      expect(runnerFromDB(9).resources?.melee).toHaveLength(1)
     })
   })
 })

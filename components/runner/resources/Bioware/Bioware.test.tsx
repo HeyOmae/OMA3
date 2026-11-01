@@ -6,6 +6,7 @@ import {
   withTestRouter,
   getByText as getByTextInElement,
   userEvent,
+  closest,
 } from "@/test/testUtils"
 import Bioware from "."
 
@@ -32,7 +33,7 @@ describe("<Bioware />", () => {
     await waitFor(() => {
       expect(getByLabelText("Add Muscle Augmentation")).toBeInTheDocument()
     })
-    const essenceDisplay = getByText("Essence").closest("dl")
+    const essenceDisplay = closest(getByText("Essence"), "dl")
     expect(getByTextInElement(essenceDisplay, 6)).toBeInTheDocument()
 
     await userEvent.click(getByLabelText("Add Muscle Augmentation"))

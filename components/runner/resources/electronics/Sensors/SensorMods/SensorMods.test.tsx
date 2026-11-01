@@ -31,7 +31,7 @@ describe("SensorMods", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
     expect(getByText("4/6")).toBeInTheDocument()
-    expect(runnerFromDB(9).resources.sensor[0].mods).toHaveLength(2)
+    expect(runnerFromDB(9).resources?.sensor?.[0].mods).toHaveLength(2)
 
     SliderHelper.change(
       getByTestId("Omnidirectional Microphone Function-rating"),
@@ -46,7 +46,7 @@ describe("SensorMods", () => {
 
     expect(getByText("6/6")).toBeInTheDocument()
     await waitFor(() =>
-      expect(runnerFromDB(9).resources.sensor[0].mods).toHaveLength(3),
+      expect(runnerFromDB(9).resources?.sensor?.[0].mods).toHaveLength(3),
     )
   })
 
@@ -56,7 +56,7 @@ describe("SensorMods", () => {
     await waitFor(() => expect(getByText("Sell")).toBeInTheDocument())
 
     expect(getByText("6/6")).toBeInTheDocument()
-    expect(runnerFromDB(9).resources.sensor[0].mods).toHaveLength(3)
+    expect(runnerFromDB(9).resources?.sensor?.[0].mods).toHaveLength(3)
 
     await userEvent.click(getByLabelText("Remove Camera Function"))
 
@@ -64,14 +64,14 @@ describe("SensorMods", () => {
 
     expect(getByText("3/6")).toBeInTheDocument()
     await waitFor(() =>
-      expect(runnerFromDB(9).resources.sensor[0].mods).toHaveLength(2),
+      expect(runnerFromDB(9).resources?.sensor?.[0].mods).toHaveLength(2),
     )
   })
 
   it("should create the mods for an unmodified piece of gear and allow rating to be set for a mod", async () => {
     const { getByText, getByLabelText } = setup("11")
 
-    expect(runnerFromDB(10).resources.sensor[0].mods).toBeUndefined()
+    expect(runnerFromDB(10).resources?.sensor?.[0].mods).toBeUndefined()
 
     await waitFor(() =>
       expect(getByLabelText("Add OlFactory Sensor")).toBeInTheDocument(),
@@ -86,7 +86,7 @@ describe("SensorMods", () => {
     expect(getByLabelText("Remove OlFactory Sensor")).toBeInTheDocument()
 
     await waitFor(() =>
-      expect(runnerFromDB(10).resources.sensor[0].mods[0].name).toBe(
+      expect(runnerFromDB(10).resources?.sensor?.[0].mods?.[0].name).toBe(
         "OlFactory Sensor",
       ),
     )

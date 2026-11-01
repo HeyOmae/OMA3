@@ -6,6 +6,7 @@ import {
   getAllByText as getAllTextInContainer,
   waitFor,
   userEvent,
+  closest,
 } from "@/test/testUtils"
 import Imaging from "./"
 
@@ -23,14 +24,14 @@ describe("<Imaging/>", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Rating")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-    const contactsRow = getByLabelText("Add Contacts").closest("tr")
+    const contactsRow = closest(getByLabelText("Add Contacts"), "tr")
 
     expect(getTextInContainer(contactsRow, "Contacts")).toBeInTheDocument()
     expect(getTextInContainer(contactsRow, "1")).toBeInTheDocument()
@@ -57,7 +58,8 @@ describe("<Imaging/>", () => {
       await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
       await userEvent.click(getByLabelText("Add Mage-sight-goggles"))
-      const mageSightRow = getByLabelText("Remove Mage-sight-goggles").closest(
+      const mageSightRow = closest(
+        getByLabelText("Remove Mage-sight-goggles"),
         "tr",
       )
 

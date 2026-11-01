@@ -7,6 +7,7 @@ import {
   SliderHelper,
   userEvent,
   screen,
+  closest,
 } from "@/test/testUtils"
 import Foci from "./index"
 import { foci } from "@/data/focus"
@@ -20,7 +21,7 @@ describe("foci", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Choice")).toBeInTheDocument()
@@ -47,7 +48,7 @@ describe("foci", () => {
         expect(getByText(/Alchemical Focus/)).toBeInTheDocument(),
       )
 
-      const focusRow = getByText(/Alchemical Focus/).closest("tr")
+      const focusRow = closest(getByText(/Alchemical Focus/), "tr")
 
       // karma cost
       expect(getTextInContainer(focusRow, "3")).toBeInTheDocument()
@@ -73,7 +74,7 @@ describe("foci", () => {
 
       await waitFor(() => expect(getByText(/Qi Focus/)).toBeInTheDocument())
 
-      const focusRow = getByText("Adrenaline Boost Qi Focus").closest("tr")
+      const focusRow = closest(getByText("Adrenaline Boost Qi Focus"), "tr")
 
       // current rating
       expect(

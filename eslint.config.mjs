@@ -104,6 +104,13 @@ const config = [
     },
   },
   {
+    // optional chaining on test data counts as branching, and that's fine
+    files: ["**/*.test.ts", "**/*.test.tsx", "test/**"],
+    rules: {
+      complexity: 0,
+    },
+  },
+  {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
       parserOptions: {

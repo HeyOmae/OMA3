@@ -7,6 +7,7 @@ import {
   getByText as globalGetByText,
   userEvent,
   screen,
+  closest,
 } from "@/test/testUtils"
 import { mockedRunners } from "@/test/mocks"
 import { CHANGE_SKILL_RATING, CHANGE_SPECIALIZATION, REMOVE_SKILL } from ".."
@@ -24,7 +25,7 @@ describe("<RunnerSkillTable/>", () => {
   it("should display a table with the runner's skills", async () => {
     const { getByText } = setup()
 
-    const conjuringRow = within(getByText("Conjuring").closest("tr"))
+    const conjuringRow = within(closest(getByText("Conjuring"), "tr"))
     // rating
     const conjuringRating = conjuringRow.getByTestId("Conjuring-rating")
     expect(conjuringRating.querySelector("input")).toHaveValue("6")
@@ -35,7 +36,7 @@ describe("<RunnerSkillTable/>", () => {
       conjuringRow.getByLabelText("Conjuring specialization"),
     ).toHaveDisplayValue("Banishing")
 
-    const sorceryRow = within(getByText("Sorcery").closest("tr"))
+    const sorceryRow = within(closest(getByText("Sorcery"), "tr"))
     // rating
     const sorceryRating = sorceryRow.getByTestId("Sorcery-rating")
     expect(sorceryRating.querySelector("input")).toHaveValue("5")
@@ -46,7 +47,7 @@ describe("<RunnerSkillTable/>", () => {
       sorceryRow.getByLabelText("Sorcery specialization"),
     ).toHaveDisplayValue("")
 
-    const perceptionRow = within(getByText("Perception").closest("tr"))
+    const perceptionRow = within(closest(getByText("Perception"), "tr"))
     // rating
     const perceptionRating = perceptionRow.getByTestId("Perception-rating")
     expect(perceptionRating.querySelector("input")).toHaveValue("4")
@@ -122,7 +123,7 @@ describe("<RunnerSkillTable/>", () => {
       const specInput = getByLabelText("Conjuring specialization")
       await userEvent.click(specInput)
       await userEvent.click(
-        containerGetByLabelText(specInput.closest("div"), "Clear"),
+        containerGetByLabelText(closest(specInput, "div"), "Clear"),
       )
       await userEvent.click(specInput)
       await userEvent.keyboard("wild{enter}")

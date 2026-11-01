@@ -3,6 +3,7 @@ import {
   screen,
   setupIndexedDB,
   within,
+  closest,
 } from "@/test/testUtils"
 import CharSheet from "./index"
 import { mockedRunners } from "@/test/mocks"
@@ -19,9 +20,10 @@ describe("Resources", () => {
   test("renders a table for each type of gear", async () => {
     setup()
 
-    const gearSection = (
-      await screen.findByRole("heading", { name: "Gear" })
-    ).closest("section")
+    const gearSection = closest(
+      await screen.findByRole("heading", { name: "Gear" }),
+      "section",
+    )
 
     expect(gearSection).toBeInTheDocument()
 
@@ -399,9 +401,10 @@ describe("Resources", () => {
     // Test with Puck (id 12) who has no resources field
     setup("12")
 
-    const gearSection = (
-      await screen.findByRole("heading", { name: "Gear" })
-    ).closest("section")
+    const gearSection = closest(
+      await screen.findByRole("heading", { name: "Gear" }),
+      "section",
+    )
 
     expect(gearSection).toBeInTheDocument()
 

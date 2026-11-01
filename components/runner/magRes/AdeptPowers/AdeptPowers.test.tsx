@@ -1,5 +1,5 @@
 import { AdeptPowers, Props } from "./index"
-import { render, getByText as globalGetByText } from "@/test/testUtils"
+import { render, getByText as globalGetByText, closest } from "@/test/testUtils"
 import PowersData from "@/data/adeptPowers.json"
 import { SET_POWER } from ".."
 
@@ -21,11 +21,11 @@ describe("<AdpetPowers/>", () => {
   it("should display the cost per level", () => {
     const { getByText } = setup()
 
-    const levelPower = getByText("Adrenaline Boost").closest("tr")
+    const levelPower = closest(getByText("Adrenaline Boost"), "tr")
 
     expect(globalGetByText(levelPower, "0.25 per level")).toBeInTheDocument()
 
-    const nonLevelPower = getByText("Astral Perception").closest("tr")
+    const nonLevelPower = closest(getByText("Astral Perception"), "tr")
 
     expect(globalGetByText(nonLevelPower, "1")).toBeInTheDocument()
   })

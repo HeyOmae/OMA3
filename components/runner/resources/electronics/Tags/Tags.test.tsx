@@ -5,6 +5,7 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextInContainer,
+  closest,
 } from "@/test/testUtils"
 import Tags from "./index"
 
@@ -17,7 +18,7 @@ describe("<Tags />", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
@@ -26,7 +27,7 @@ describe("<Tags />", () => {
 
     // using stealth tags so that it has some unique text to look for
     const tag = tagsData[2],
-      tagRow = getByLabelText(`Add ${tag.name}`).closest("tr")
+      tagRow = closest(getByLabelText(`Add ${tag.name}`), "tr")
 
     expect(getTextInContainer(tagRow, tag.name)).toBeInTheDocument()
     expect(getTextInContainer(tagRow, tag.deviceRating)).toBeInTheDocument()

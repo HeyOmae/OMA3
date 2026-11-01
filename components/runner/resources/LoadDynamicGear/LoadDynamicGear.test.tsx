@@ -6,6 +6,7 @@ import {
   setupIndexedDB,
   withTestRouter,
   waitFor,
+  closest,
 } from "@/test/testUtils"
 import LoadDynamicGear, { Props } from "."
 
@@ -27,7 +28,7 @@ describe("LoadDynamicGear Component", () => {
 
       await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-      const buyHeader = getByText("Buy").closest("tr")
+      const buyHeader = closest(getByText("Buy"), "tr")
 
       expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
       expect(getTextInContainer(buyHeader, "Rating")).toBeInTheDocument()
@@ -37,7 +38,7 @@ describe("LoadDynamicGear Component", () => {
       //stats
       const gear =
           securityGearData.find(({ rating }) => rating) ?? securityGearData[0],
-        gearRow = getByLabelText(`Add ${gear.name}`).closest("tr")
+        gearRow = closest(getByLabelText(`Add ${gear.name}`), "tr")
 
       expect(getTextInContainer(gearRow, gear.name)).toBeInTheDocument()
       if (gear.rating) {

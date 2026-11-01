@@ -28,7 +28,7 @@ describe("typeIsOnTheGear", () => {
       ],
     })
 
-    expect(typeIsOnTheGear(runner).resources.firearms).toEqual([
+    expect(typeIsOnTheGear(runner).resources?.firearms).toEqual([
       {
         name: "Ares Predator",
         type: "WEAPON FIREARMS",

@@ -71,7 +71,7 @@ describe("useAsIsAList", () => {
       },
     })
 
-    expect(useAsIsAList(runner).resources.armor).toEqual([
+    expect(useAsIsAList(runner).resources?.armor).toEqual([
       {
         name: "Armor Jacket",
         useAs: [{ type: "ARMOR", subtype: "ARMOR" }],

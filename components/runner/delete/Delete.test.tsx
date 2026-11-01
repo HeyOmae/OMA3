@@ -24,8 +24,8 @@ describe("<Delete/>", () => {
     expect(
       indexedDB._databases
         .get("omae")
-        .rawObjectStores.get("runners")
-        .records.records.size(),
+        ?.rawObjectStores.get("runners")
+        ?.records.records.size(),
     ).toBe(mockedRunners.length)
 
     getByText("Retire Runner").click()
@@ -34,8 +34,8 @@ describe("<Delete/>", () => {
       expect(
         indexedDB._databases
           .get("omae")
-          .rawObjectStores.get("runners")
-          .records.records.size(),
+          ?.rawObjectStores.get("runners")
+          ?.records.records.size(),
       ).toBe(mockedRunners.length - 1)
       expect(runnerFromDB().id).toBe(2)
     })

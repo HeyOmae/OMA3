@@ -9,6 +9,7 @@ import {
   userEvent,
   within,
   screen,
+  closest,
 } from "@/test/testUtils"
 import Software from "./"
 
@@ -25,7 +26,7 @@ describe("<Software/>", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Choice")).toBeInTheDocument()
@@ -34,7 +35,7 @@ describe("<Software/>", () => {
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-    const browseRow = getByLabelText("Add Browse").closest("tr")
+    const browseRow = closest(getByLabelText("Add Browse"), "tr")
 
     expect(getTextInContainer(browseRow, "Browse")).toBeInTheDocument()
     expect(getTextInContainer(browseRow, "BASIC PROGRAM")).toBeInTheDocument()
@@ -43,7 +44,7 @@ describe("<Software/>", () => {
     expect(getTextInContainer(browseRow, "1")).toBeInTheDocument()
     expect(getTextInContainer(browseRow, "60¥")).toBeInTheDocument()
 
-    const exploitRow = getByLabelText("Add Exploit").closest("tr")
+    const exploitRow = closest(getByLabelText("Add Exploit"), "tr")
 
     expect(
       getTextInContainer(exploitRow, "HACKING PROGRAM"),
@@ -56,7 +57,7 @@ describe("<Software/>", () => {
     const { getByText, getByLabelText } = setup()
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const row = getByLabelText("Add Electronic Warfare").closest("tr")
+    const row = closest(getByLabelText("Add Electronic Warfare"), "tr")
 
     expect(getTextInContainer(row, "AUTOSOFT")).toBeInTheDocument()
   })
@@ -65,7 +66,7 @@ describe("<Software/>", () => {
     const { getByText, getByLabelText, getByTestId } = setup()
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const clearsightRow = getByLabelText("Add Clearsight").closest("tr")
+    const clearsightRow = closest(getByLabelText("Add Clearsight"), "tr")
 
     expect(getTextInContainer(clearsightRow, "500¥")).toBeInTheDocument()
 
@@ -83,7 +84,7 @@ describe("<Software/>", () => {
     const { getByText, getByLabelText, getByTestId } = setup()
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const tutorsoftRow = getByLabelText(/Add .*Tutorsoft/).closest("tr")
+    const tutorsoftRow = closest(getByLabelText(/Add .*Tutorsoft/), "tr")
 
     SliderHelper.change(getByTestId(/Tutorsoft-rating/), 6, 1, 6)
 
@@ -103,7 +104,7 @@ describe("<Software/>", () => {
 
     expect(await findByLabelText("Remove Browse")).toBeInTheDocument()
     await waitFor(() => {
-      expect(runnerFromDB(9).resources?.software[0].name).toEqual("Browse")
+      expect(runnerFromDB(9).resources?.software?.[0].name).toEqual("Browse")
     })
   })
   describe("named software", () => {
@@ -119,7 +120,7 @@ describe("<Software/>", () => {
       ).toBeInTheDocument()
       await waitFor(() => {
         expect(
-          runnerFromDB(9).resources.software.map(({ name }) => name),
+          runnerFromDB(9).resources?.software?.map(({ name }) => name),
         ).toContain("Seattle Mapsoft")
       })
     })
@@ -132,9 +133,7 @@ describe("<Software/>", () => {
       await userEvent.type(getByLabelText("Select Linguasoft Name"), "Spanish")
       SliderHelper.change(getByTestId(/Linguasoft-rating/), 3, 1, 6)
 
-      const row = (await findByLabelText("Add Spanish Linguasoft")).closest(
-        "tr",
-      )
+      const row = closest(await findByLabelText("Add Spanish Linguasoft"), "tr")
       await waitFor(() =>
         expect(getTextInContainer(row, "4500¥")).toBeInTheDocument(),
       )
@@ -146,9 +145,9 @@ describe("<Software/>", () => {
       ).toBeInTheDocument()
       await waitFor(() => {
         expect(
-          runnerFromDB(9).resources.software.find(
+          runnerFromDB(9).resources?.software?.find(
             ({ name }) => name === "Spanish Linguasoft",
-          ).currentRating,
+          )?.currentRating,
         ).toEqual(3)
       })
     })
@@ -159,9 +158,10 @@ describe("<Software/>", () => {
       // this runner does not own any firearms
       render(withTestRouter(<Software />, { query: { id: "4" } }))
 
-      const row = (
-        await screen.findByLabelText("Add Defiance Super Shock Targeting")
-      ).closest("tr")
+      const row = closest(
+        await screen.findByLabelText("Add Defiance Super Shock Targeting"),
+        "tr",
+      )
 
       await user.click(within(row).getByRole("combobox"))
       await user.click(screen.getByRole("option", { name: "Ares Predator VI" }))
@@ -178,9 +178,9 @@ describe("<Software/>", () => {
       ).toBeInTheDocument()
       await waitFor(() => {
         expect(
-          runnerFromDB(3).resources.software.find(
+          runnerFromDB(3).resources?.software?.find(
             ({ name }) => name === "Ares Predator VI Targeting",
-          ).currentRating,
+          )?.currentRating,
         ).toEqual(2)
       })
     })
@@ -197,7 +197,7 @@ describe("<Software/>", () => {
       } = setup()
 
       const addButton = await findByLabelText("Add Athletics Activesoft")
-      const row = addButton.closest("tr")
+      const row = closest(addButton, "tr")
 
       await userEvent.click(within(row).getByRole("combobox"))
 

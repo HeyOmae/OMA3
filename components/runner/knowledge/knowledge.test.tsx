@@ -7,6 +7,7 @@ import {
   setupIndexedDB,
   screen,
   getByText as getByTextIn,
+  closest,
 } from "@/test/testUtils"
 import { initRunnerAttributes } from "@/types/runner"
 import KnowledgeSkills from "./index"
@@ -39,9 +40,10 @@ describe("knowledge", () => {
       await screen.findByLabelText("input knowledge skill"),
     ).toBeInTheDocument()
 
-    const pointsElement = screen
-      .getAllByText("Knowledge Points")[0]
-      .closest("dl")
+    const pointsElement = closest(
+      screen.getAllByText("Knowledge Points")[0],
+      "dl",
+    )
     expect(getByTextIn(pointsElement, "4")).toBeInTheDocument()
 
     const input = screen.getByLabelText("input knowledge skill")

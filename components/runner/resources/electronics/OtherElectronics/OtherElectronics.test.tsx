@@ -7,6 +7,7 @@ import {
   SliderHelper,
   runnerFromDB,
   userEvent,
+  closest,
 } from "@/test/testUtils"
 import OtherElectronics from "./"
 
@@ -19,7 +20,7 @@ describe("<OtherElectronics/>", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Category")).toBeInTheDocument()
@@ -28,7 +29,7 @@ describe("<OtherElectronics/>", () => {
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
     // Gear with no rating
-    const buyScannerRow = getByLabelText("Add Bug Scanner").closest("tr")
+    const buyScannerRow = closest(getByLabelText("Add Bug Scanner"), "tr")
 
     expect(getTextInContainer(buyScannerRow, "Bug Scanner")).toBeInTheDocument()
     expect(
@@ -39,7 +40,7 @@ describe("<OtherElectronics/>", () => {
     expect(getTextInContainer(buyScannerRow, "200¥")).toBeInTheDocument()
 
     // Gear with rating
-    const jammerRow = getByLabelText("Add Jammer Direct").closest("tr")
+    const jammerRow = closest(getByLabelText("Add Jammer Direct"), "tr")
 
     expect(getTextInContainer(jammerRow, "Jammer Direct")).toBeInTheDocument()
     expect(getTextInContainer(jammerRow, "Communication")).toBeInTheDocument()
@@ -57,14 +58,15 @@ describe("<OtherElectronics/>", () => {
     await userEvent.click(getByLabelText("Add White Noise Generator"))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources?.otherElectronics[0].name).toEqual(
+      expect(runnerFromDB(9).resources?.otherElectronics?.[0].name).toEqual(
         "White Noise Generator",
       )
     })
-    expect(runnerFromDB(9).resources.otherElectronics[0].currentRating).toEqual(
-      4,
-    )
-    const purchasedRow = getByLabelText("Remove White Noise Generator").closest(
+    expect(
+      runnerFromDB(9).resources?.otherElectronics?.[0].currentRating,
+    ).toEqual(4)
+    const purchasedRow = closest(
+      getByLabelText("Remove White Noise Generator"),
       "tr",
     )
     expect(

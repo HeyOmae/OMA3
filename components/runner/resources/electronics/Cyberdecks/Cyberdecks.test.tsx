@@ -5,6 +5,7 @@ import {
   getByText as getTextInContainer,
   setupIndexedDB,
   screen,
+  closest,
 } from "@/test/testUtils"
 import { Cyberdecks } from "."
 
@@ -17,7 +18,7 @@ describe("<Cyberdecks/>", () => {
 
     expect(await screen.findByText("Buy")).toBeInTheDocument()
 
-    const buyHeader = screen.getByText("Buy").closest("tr")
+    const buyHeader = closest(screen.getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
@@ -28,9 +29,10 @@ describe("<Cyberdecks/>", () => {
 
     // Stats of a cyberdeck
     const cyberdeck = cyberdeckData[0],
-      cyberdeckRow = screen
-        .getByLabelText(`Add ${cyberdeck.name}`)
-        .closest("tr")
+      cyberdeckRow = closest(
+        screen.getByLabelText(`Add ${cyberdeck.name}`),
+        "tr",
+      )
 
     expect(getTextInContainer(cyberdeckRow, cyberdeck.name)).toBeInTheDocument()
     expect(

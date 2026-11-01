@@ -15,7 +15,7 @@ describe("Knowledge Skill Page", () => {
       expect(getByText("Cayman's Knowledge Skills")).toBeInTheDocument()
     })
 
-    mockedRunners[9].knowledge.forEach((skillName) =>
+    mockedRunners[9].knowledge?.forEach((skillName) =>
       expect(getByText(skillName)).toBeInTheDocument(),
     )
   })

@@ -74,7 +74,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(runnerFromDB().priority.attributes).toEqual("B")
+        expect(runnerFromDB().priority?.attributes).toEqual("B")
       })
     })
   })
@@ -97,7 +97,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
-      expect(runnerFromDB().priority.skills).toBeUndefined()
+      expect(runnerFromDB().priority?.skills).toBeUndefined()
       await waitFor(() => {
         const skillRadioInputs = getByRole("radiogroup", {
           name: "skills",
@@ -106,7 +106,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(runnerFromDB().priority.skills).toEqual("C")
+        expect(runnerFromDB().priority?.skills).toEqual("C")
       })
     })
   })
@@ -149,7 +149,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
-      expect(runnerFromDB().priority["mag/res"]).toBeUndefined()
+      expect(runnerFromDB().priority?.["mag/res"]).toBeUndefined()
       await waitFor(() => {
         const magresRadioInputs = getByRole("radiogroup", {
           name: "mag/res",
@@ -161,7 +161,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(runnerFromDB().priority["mag/res"]).toEqual("D")
+        expect(runnerFromDB().priority?.["mag/res"]).toEqual("D")
       })
     })
   })
@@ -194,7 +194,7 @@ describe("<PriorityTable/>", () => {
 
     it("should create the priority property for the player", async () => {
       const { getByRole } = setup()
-      expect(runnerFromDB().priority.resources).toBeUndefined()
+      expect(runnerFromDB().priority?.resources).toBeUndefined()
       await waitFor(() => {
         const skillRadioInputs = getByRole("radiogroup", {
           name: "resources",
@@ -203,7 +203,7 @@ describe("<PriorityTable/>", () => {
       })
 
       await waitFor(() => {
-        expect(runnerFromDB().priority.resources).toEqual("E")
+        expect(runnerFromDB().priority?.resources).toEqual("E")
       })
     })
   })

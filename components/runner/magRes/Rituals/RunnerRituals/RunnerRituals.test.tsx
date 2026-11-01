@@ -14,7 +14,7 @@ describe("<RunnerRituals />", () => {
 
   it("should render rituals", () => {
     const { getByText } = setup()
-    mockedRunners[6].rituals.forEach(({ name }) => {
+    mockedRunners[6].rituals?.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument()
     })
   })

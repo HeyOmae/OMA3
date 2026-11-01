@@ -30,10 +30,9 @@ export const useGetRunner = () => {
   return runner
 }
 
-interface Action<P> {
-  type: symbol
-  payload?: P
-}
+// the payload can be left out only when the action doesn't need one
+type Action<P> = { type: symbol } & (undefined extends P ? { payload?: P }
+: { payload: P })
 const DONE_LOADING = Symbol("DONE_LOADING")
 
 export type RunnerReducer<P> = Reducer<Runner, Action<P>>

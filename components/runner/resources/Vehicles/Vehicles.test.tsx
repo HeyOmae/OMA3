@@ -6,6 +6,7 @@ import {
   withTestRouter,
   getByText as getByTextInContainer,
   getAllByText as getAllByTextInContainer,
+  closest,
 } from "@/test/testUtils"
 import Vehicles from "./index"
 
@@ -26,7 +27,7 @@ describe("<Vehicles/>", () => {
       expect(getByText("Resources")).toHaveAttribute("href", "/9/resources")
     })
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getByTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getByTextInContainer(buyHeader, "Type")).toBeInTheDocument()
@@ -43,7 +44,7 @@ describe("<Vehicles/>", () => {
     expect(getByTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
     const vehcile = vehicles[2],
-      vehicleRow = getByLabelText(`Add ${vehcile.name}`).closest("tr")
+      vehicleRow = closest(getByLabelText(`Add ${vehcile.name}`), "tr")
 
     expect(getByTextInContainer(vehicleRow, vehcile.name)).toBeInTheDocument()
     expect(

@@ -3,6 +3,7 @@ import {
   render,
   getByText as contentGetByText,
   SliderHelper,
+  closest,
 } from "@/test/testUtils"
 import { mockedRunners } from "@/test/mocks"
 import { CHANGE_POWER_LEVEL, REMOVE_POWER } from "../.."
@@ -18,10 +19,10 @@ describe("<RunnerAdeptPowers/>", () => {
   it("should display the runner's adept powers", () => {
     const { getByText } = setup()
 
-    expect(mockedRunners[7].powers.length).toBeGreaterThan(1)
-    mockedRunners[7].powers.forEach(({ name, activation }) => {
+    expect(mockedRunners[7].powers?.length).toBeGreaterThan(1)
+    mockedRunners[7].powers?.forEach(({ name, activation }) => {
       expect(getByText(name)).toBeInTheDocument()
-      const row = getByText(name).closest("tr")
+      const row = closest(getByText(name), "tr")
 
       expect(contentGetByText(row, activation)).toBeInTheDocument()
     })

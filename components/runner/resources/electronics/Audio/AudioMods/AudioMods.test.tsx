@@ -7,6 +7,7 @@ import {
   withTestRouter,
   getByText as getTextInContainer,
   userEvent,
+  closest,
 } from "@/test/testUtils"
 import { audioMods } from "@/data/mods"
 import AudioMods from "."
@@ -32,13 +33,13 @@ describe("AudioMods", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
     expect(getByText("2/3")).toBeInTheDocument()
-    expect(runnerFromDB(10).resources.audio[0].mods).toHaveLength(1)
+    expect(runnerFromDB(10).resources?.audio?.[0].mods).toHaveLength(1)
 
     await userEvent.click(getByLabelText("Add Audio Enhancement"))
 
     expect(getByText("3/3")).toBeInTheDocument()
     await waitFor(() =>
-      expect(runnerFromDB(10).resources.audio[0].mods).toHaveLength(2),
+      expect(runnerFromDB(10).resources?.audio?.[0].mods).toHaveLength(2),
     )
   })
 
@@ -48,7 +49,7 @@ describe("AudioMods", () => {
     await waitFor(() => expect(getByText("Sell")).toBeInTheDocument())
 
     expect(getByText("3/3")).toBeInTheDocument()
-    expect(runnerFromDB(10).resources.audio[0].mods).toHaveLength(2)
+    expect(runnerFromDB(10).resources?.audio?.[0].mods).toHaveLength(2)
 
     await userEvent.click(getByLabelText("Remove Spatial Recognizer"))
 
@@ -58,14 +59,14 @@ describe("AudioMods", () => {
 
     expect(getByText("1/3")).toBeInTheDocument()
     await waitFor(() =>
-      expect(runnerFromDB(10).resources.audio[0].mods).toHaveLength(1),
+      expect(runnerFromDB(10).resources?.audio?.[0].mods).toHaveLength(1),
     )
   })
 
   it("should create the mods for an unmodified piece of gear and allow rating to be set for a mod", async () => {
     const { getByText, getByLabelText, getByTestId } = setup("10")
 
-    expect(runnerFromDB(9).resources.audio[0].mods).toBeUndefined()
+    expect(runnerFromDB(9).resources?.audio?.[0].mods).toBeUndefined()
 
     await waitFor(() =>
       expect(getByLabelText("Add Select Sound Filter")).toBeInTheDocument(),
@@ -80,16 +81,16 @@ describe("AudioMods", () => {
     // Should display the capacity of the sound filter
     expect(
       getTextInContainer(
-        getByLabelText("Remove Select Sound Filter").closest("tr"),
+        closest(getByLabelText("Remove Select Sound Filter"), "tr"),
         "[3]",
       ),
     ).toBeInTheDocument()
 
     await waitFor(() =>
-      expect(runnerFromDB(9).resources.audio[0].mods[0].name).toBe(
+      expect(runnerFromDB(9).resources?.audio?.[0].mods?.[0].name).toBe(
         "Select Sound Filter",
       ),
     )
-    expect(runnerFromDB(9).resources.audio[0].mods[0].cost).toBe(750)
+    expect(runnerFromDB(9).resources?.audio?.[0].mods?.[0].cost).toBe(750)
   })
 })

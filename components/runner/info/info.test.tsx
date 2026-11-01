@@ -56,8 +56,8 @@ describe("<Info/>", () => {
       expect(
         indexedDB._databases
           .get("omae")
-          .rawObjectStores.get("runners")
-          .records.records.size(),
+          ?.rawObjectStores.get("runners")
+          ?.records.records.size(),
       ).toBe(mockedRunners.length)
       expect(runnerFromDB().name).toEqual("William “Bull” MacCallister")
     })

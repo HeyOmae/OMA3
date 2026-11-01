@@ -61,8 +61,8 @@ describe("Home page", () => {
     expect(
       indexedDB._databases
         .get("omae")
-        .rawObjectStores.get("runners")
-        .records.records.size(),
+        ?.rawObjectStores.get("runners")
+        ?.records.records.size(),
     ).toEqual(mockedRunners.length)
 
     await user.click(screen.getByText("Create Runner"))
@@ -77,8 +77,8 @@ describe("Home page", () => {
     expect(
       indexedDB._databases
         .get("omae")
-        .rawObjectStores.get("runners")
-        .records.records.size(),
+        ?.rawObjectStores.get("runners")
+        ?.records.records.size(),
     ).toEqual(mockedRunners.length + 1)
   })
 
@@ -89,8 +89,8 @@ describe("Home page", () => {
     expect(
       indexedDB._databases
         .get("omae")
-        .rawObjectStores.get("runners")
-        .records.records.size(),
+        ?.rawObjectStores.get("runners")
+        ?.records.records.size(),
     ).toEqual(runnerId)
 
     await waitFor(() =>

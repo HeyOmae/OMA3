@@ -7,6 +7,7 @@ import {
   getByText as getTextIn,
   caymansCurrentlySpentNuyen,
   userEvent,
+  closest,
 } from "@/test/testUtils"
 import FirearmsWeapons from "./"
 import FirearmsData from "@/data/firearms"
@@ -23,7 +24,7 @@ describe("<FirearmsWeapon />", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
 
-    const buyTable = getByText("Buy").closest("table")
+    const buyTable = closest(getByText("Buy"), "table")
 
     FirearmsData.forEach(({ name }) => {
       expect(getTextIn(buyTable, name)).toBeInTheDocument()
@@ -41,7 +42,7 @@ describe("<FirearmsWeapon />", () => {
     await userEvent.click(getByLabelText("Add Ingram Smartgun XI"))
 
     await waitFor(() => {
-      expect(runnerFromDB(8).resources.firearms).toEqual([
+      expect(runnerFromDB(8).resources?.firearms).toEqual([
         {
           type: "WEAPON FIREARMS",
           subtype: "SUBMACHINE GUNS",
@@ -94,25 +95,27 @@ describe("<FirearmsWeapon />", () => {
   it("should remove a weapon", async () => {
     const { getByLabelText, getByText } = setup("10")
 
-    expect(runnerFromDB(9).resources.firearms).toHaveLength(
-      mockedRunners[9].resources.firearms.length,
+    expect(runnerFromDB(9).resources?.firearms).toHaveLength(
+      mockedRunners[9].resources?.firearms?.length,
     )
-    const gunToBeRemoved = runnerFromDB(9).resources.firearms[2]
+    const gunToBeRemoved = runnerFromDB(9).resources?.firearms?.[2]
     await waitFor(() => {
       expect(
         getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
       ).toBeInTheDocument()
     })
 
-    await userEvent.click(getByLabelText(`Remove ${gunToBeRemoved.name}`))
+    await userEvent.click(getByLabelText(`Remove ${gunToBeRemoved?.name}`))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources.firearms).toHaveLength(
-        mockedRunners[9].resources.firearms.length - 1,
+      expect(runnerFromDB(9).resources?.firearms).toHaveLength(
+        mockedRunners[9].resources?.firearms?.length - 1,
       )
     })
     expect(
-      getByText(`${caymansCurrentlySpentNuyen + gunToBeRemoved.cost}¥/275000¥`),
+      getByText(
+        `${caymansCurrentlySpentNuyen + gunToBeRemoved?.cost}¥/275000¥`,
+      ),
     ).toBeInTheDocument()
   })
 

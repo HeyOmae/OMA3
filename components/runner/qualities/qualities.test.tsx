@@ -6,6 +6,7 @@ import {
   waitFor,
   setupIndexedDB,
   getByText as getByTextInElement,
+  closest,
 } from "@/test/testUtils"
 import Qualities from "."
 
@@ -105,7 +106,7 @@ describe("<Qualities />", () => {
 
       expect(await screen.findByText("Aptitude")).toBeInTheDocument()
 
-      const aptitudeRow = screen.getByText("Aptitude").closest("tr")
+      const aptitudeRow = closest(screen.getByText("Aptitude"), "tr")
 
       const select = getByTextInElement(aptitudeRow, "Astral")
 
@@ -145,7 +146,10 @@ describe("<Qualities />", () => {
         await screen.findByText("Exceptional Attribute"),
       ).toBeInTheDocument()
 
-      const qualityRow = screen.getByText("Exceptional Attribute").closest("tr")
+      const qualityRow = closest(
+        screen.getByText("Exceptional Attribute"),
+        "tr",
+      )
 
       const select = getByTextInElement(qualityRow, "Body")
       await user.click(select)
@@ -168,7 +172,7 @@ describe("<Qualities />", () => {
         await screen.findByText("Elemental Resistance"),
       ).toBeInTheDocument()
 
-      const qualityRow = screen.getByText("Elemental Resistance").closest("tr")
+      const qualityRow = closest(screen.getByText("Elemental Resistance"), "tr")
 
       const select = getByTextInElement(qualityRow, "Electrical")
       await user.click(select)
@@ -189,7 +193,7 @@ describe("<Qualities />", () => {
 
       expect(await screen.findByText("Mentor Spirit")).toBeInTheDocument()
 
-      const qualityRow = screen.getByText("Mentor Spirit").closest("tr")
+      const qualityRow = closest(screen.getByText("Mentor Spirit"), "tr")
       const select = getByTextInElement(qualityRow, "Bear")
       await user.click(select)
       await user.click(screen.getByText("Thunderbird"))
@@ -209,7 +213,7 @@ describe("<Qualities />", () => {
 
       expect(await screen.findByText("Spirit Affinity")).toBeInTheDocument()
 
-      const qualityRow = screen.getByText("Spirit Affinity").closest("tr")
+      const qualityRow = closest(screen.getByText("Spirit Affinity"), "tr")
       const select = getByTextInElement(qualityRow, "Air")
       await user.click(select)
       await user.click(screen.getByText("Water"))
@@ -229,7 +233,7 @@ describe("<Qualities />", () => {
 
       expect(await screen.findByText("Sprite Bane")).toBeInTheDocument()
 
-      const qualityRow = screen.getByText("Sprite Bane").closest("tr")
+      const qualityRow = closest(screen.getByText("Sprite Bane"), "tr")
       const select = getByTextInElement(qualityRow, "Courier")
       await user.click(select)
       await user.click(screen.getByText("Fault"))
@@ -250,7 +254,7 @@ describe("<Qualities />", () => {
 
     expect(await screen.findByText("Built Tough")).toBeInTheDocument()
 
-    const qualityRow = screen.getByText("Built Tough").closest("tr")
+    const qualityRow = closest(screen.getByText("Built Tough"), "tr")
     const select = getByTextInElement(qualityRow, "1")
     await user.click(select)
     // make sure there is no 0 level
@@ -274,7 +278,7 @@ describe("<Qualities />", () => {
 
     expect(await screen.findByText("Dependents")).toBeInTheDocument()
 
-    const qualityRow = screen.getByText("Dependents").closest("tr")
+    const qualityRow = closest(screen.getByText("Dependents"), "tr")
 
     // Select level
     const select = getByTextInElement(qualityRow, "1")
@@ -300,7 +304,7 @@ describe("<Qualities />", () => {
 
     const karmaEl = (await screen.findAllByRole("term")).at(0)
     expect(karmaEl).toHaveTextContent("Karma")
-    expect(karmaEl.closest("dl")).toHaveTextContent("50")
+    expect(karmaEl?.closest("dl")).toHaveTextContent("50")
     expect(
       screen.getByRole("definition", { name: "Qualities Value" }),
     ).toHaveTextContent("0/6")

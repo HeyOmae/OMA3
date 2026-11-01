@@ -4,6 +4,7 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextInContainer,
+  closest,
 } from "@/test/testUtils"
 import Audio from "./index"
 
@@ -21,14 +22,14 @@ describe("<Audio />", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Rating")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Avail")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "Cost")).toBeInTheDocument()
 
-    const laserMicRow = getByLabelText("Add Laser Microphone").closest("tr")
+    const laserMicRow = closest(getByLabelText("Add Laser Microphone"), "tr")
 
     expect(
       getTextInContainer(laserMicRow, "Laser Microphone"),

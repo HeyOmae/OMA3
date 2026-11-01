@@ -26,7 +26,7 @@ describe("<Cyberware />", () => {
 
     cyberware.forEach(({ name, useAs }) => {
       // I'm a terrible programmer for doing this in my test
-      if (useAs.some((useage) => "essence" in useage)) {
+      if (useAs?.some((useage) => "essence" in useage)) {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(screen.queryByText(name)).toBeInTheDocument()
       } else {

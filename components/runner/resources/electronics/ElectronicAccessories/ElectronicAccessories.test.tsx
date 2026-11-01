@@ -5,6 +5,7 @@ import {
   waitFor,
   withTestRouter,
   getByText as getTextInContainer,
+  closest,
 } from "@/test/testUtils"
 import ElectronicAccessories from "./index"
 
@@ -17,7 +18,7 @@ describe("<ElectronicAccessories/>", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    const buyHeader = getByText("Buy").closest("tr")
+    const buyHeader = closest(getByText("Buy"), "tr")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
@@ -26,7 +27,7 @@ describe("<ElectronicAccessories/>", () => {
 
     //stats
     const eA = electronicAccessoriesData[0],
-      eARow = getByLabelText(`Add ${eA.name}`).closest("tr")
+      eARow = closest(getByLabelText(`Add ${eA.name}`), "tr")
 
     expect(getTextInContainer(eARow, eA.name)).toBeInTheDocument()
     expect(getTextInContainer(eARow, eA.deviceRating)).toBeInTheDocument()

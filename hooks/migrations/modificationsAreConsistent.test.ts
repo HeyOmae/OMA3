@@ -91,7 +91,7 @@ describe("modificationsAreConsistent", () => {
       ],
     })
 
-    expect(modificationsAreConsistent(runner).resources.drones).toEqual([
+    expect(modificationsAreConsistent(runner).resources?.drones).toEqual([
       {
         name: "MCT Hornet",
         modifications: {

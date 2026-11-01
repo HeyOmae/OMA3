@@ -157,13 +157,27 @@ export class SliderHelper {
   }
 }
 
-export const runnerFromDB = (id = 0): Runner =>
-  [
-    ...indexedDB._databases
-      .get("omae")
-      .rawObjectStores.get("runners")
-      .records.records.getAllRecords(),
-  ][id].value
+// The closest ancestor with this tag, failing the test when there isn't one
+export const closest = <K extends keyof HTMLElementTagNameMap>(
+  element: Element,
+  tagName: K,
+): HTMLElementTagNameMap[K] => {
+  const ancestor = element.closest(tagName)
+  if (!ancestor) {
+    throw new Error(`No <${tagName}> around ${element.outerHTML}`)
+  }
+  return ancestor
+}
+
+export const runnerFromDB = (id = 0): Runner => {
+  const runners = indexedDB._databases
+    .get("omae")
+    ?.rawObjectStores.get("runners")
+  if (!runners) {
+    throw new Error("No runners in the test database, call setupIndexedDB")
+  }
+  return [...runners.records.records.getAllRecords()][id].value
+}
 
 export const caymansCurrentlySpentNuyen = 31_230
 const totalNuyen = 275_000
@@ -239,7 +253,7 @@ export const expectGearToDisplayMatrixDeviceTable =
     expect(await screen.findByText("Buy")).toBeInTheDocument()
 
     // Header
-    const buyHeader = screen.getByText("Buy").closest("thead")
+    const buyHeader = closest(screen.getByText("Buy"), "thead")
 
     expect(getTextInContainer(buyHeader, "Name")).toBeInTheDocument()
     expect(getTextInContainer(buyHeader, "DR")).toBeInTheDocument()
@@ -250,7 +264,7 @@ export const expectGearToDisplayMatrixDeviceTable =
 
     // Stats of a commlink
     const device = ListOfMatrixGear[0],
-      deviceRow = screen.getByLabelText(`Add ${device.name}`).closest("tr")
+      deviceRow = closest(screen.getByLabelText(`Add ${device.name}`), "tr")
 
     expect(getTextInContainer(deviceRow, device.name)).toBeInTheDocument()
     expect(

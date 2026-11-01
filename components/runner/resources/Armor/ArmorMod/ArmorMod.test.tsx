@@ -7,6 +7,7 @@ import {
   runnerFromDB,
   SliderHelper,
   userEvent,
+  closest,
 } from "@/test/testUtils"
 import ArmorMod from "./index"
 import { mods } from "@/data/armor"
@@ -22,7 +23,7 @@ describe("<ArmorMod />", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
 
-    const buyTable = getByText("Buy").closest("table")
+    const buyTable = closest(getByText("Buy"), "table")
 
     mods.forEach(({ name }) => {
       expect(getTextIn(buyTable, name)).toBeInTheDocument()
@@ -58,10 +59,10 @@ describe("<ArmorMod />", () => {
     await userEvent.click(getByLabelText("Add Chemical Seal"))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources.armor[0].mods).toHaveLength(1)
+      expect(runnerFromDB(9).resources?.armor?.[0].mods).toHaveLength(1)
     })
 
-    expect(runnerFromDB(9).resources.armor[0].mods[0].name).toEqual(
+    expect(runnerFromDB(9).resources?.armor?.[0].mods?.[0].name).toEqual(
       "Chemical Seal",
     )
     expect(getByLabelText("Remove Chemical Seal")).toBeInTheDocument()
@@ -79,10 +80,10 @@ describe("<ArmorMod />", () => {
     await userEvent.click(getByLabelText("Add Fire Resistance"))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources.armor[0].mods).toHaveLength(2)
+      expect(runnerFromDB(9).resources?.armor?.[0].mods).toHaveLength(2)
     })
 
-    expect(runnerFromDB(9).resources.armor[0].mods[1].name).toEqual(
+    expect(runnerFromDB(9).resources?.armor?.[0].mods?.[1].name).toEqual(
       "Fire Resistance",
     )
     expect(getByLabelText("Remove Fire Resistance")).toBeInTheDocument()

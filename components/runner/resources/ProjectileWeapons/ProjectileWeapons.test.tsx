@@ -26,14 +26,14 @@ describe("<ProjectileWeapons/>", () => {
     expect(getByText("7850¥/8000¥")).toBeInTheDocument()
 
     await waitFor(() => {
-      expect(runnerFromDB(8).resources.projectile).toHaveLength(1)
+      expect(runnerFromDB(8).resources?.projectile).toHaveLength(1)
     })
   })
 
   it("should remove projectile weapons", async () => {
     const { getByLabelText, getByText } = setup("10")
 
-    expect(runnerFromDB(9).resources.projectile).toHaveLength(1)
+    expect(runnerFromDB(9).resources?.projectile).toHaveLength(1)
     await waitFor(() => {
       expect(getByText("Purchased Projectile Weapons")).toBeInTheDocument()
     })
@@ -41,7 +41,7 @@ describe("<ProjectileWeapons/>", () => {
     await userEvent.click(getByLabelText("Remove Bow10"))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources.projectile).toHaveLength(0)
+      expect(runnerFromDB(9).resources?.projectile).toHaveLength(0)
     })
   })
 })

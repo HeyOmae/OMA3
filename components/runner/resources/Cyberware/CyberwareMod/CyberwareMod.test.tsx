@@ -8,6 +8,7 @@ import {
   getByTestId as getByTestIdElement,
   screen,
   SliderHelper,
+  closest,
 } from "@/test/testUtils"
 import CyberwareMod from "./index"
 
@@ -25,7 +26,7 @@ describe("<CyberwareMod />", () => {
 
     cyberware.forEach(({ name, useAs }) => {
       // I'm a terrible programmer for doing this in my test
-      if (useAs.some((useage) => "capacity" in useage)) {
+      if (useAs?.some((useage) => "capacity" in useage)) {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(queryByText(name)).toBeInTheDocument()
       } else {
@@ -50,7 +51,8 @@ describe("<CyberwareMod />", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
 
-    const smugglingCompartmentRow = getByText("Smuggling Compartment").closest(
+    const smugglingCompartmentRow = closest(
+      getByText("Smuggling Compartment"),
       "tr",
     )
 
@@ -62,9 +64,10 @@ describe("<CyberwareMod />", () => {
   test("changing rating should change capacity", async () => {
     setup()
 
-    const cyberwareRatingRow = (
-      await screen.findByText("Hydraulic Jacks")
-    ).closest("tr")
+    const cyberwareRatingRow = closest(
+      await screen.findByText("Hydraulic Jacks"),
+      "tr",
+    )
 
     expect(cyberwareRatingRow).toHaveTextContent("[1]")
     const ratingSlider = getByTestIdElement(

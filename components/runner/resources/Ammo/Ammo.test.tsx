@@ -9,6 +9,7 @@ import {
   waitFor,
   within,
   withTestRouter,
+  closest,
 } from "@/test/testUtils"
 import Ammo from "./index"
 
@@ -103,9 +104,10 @@ describe("<Ammo />", () => {
     await screen.findByText("Buy")
 
     ;["Assault Cannon", "DMSO", "Injection Dart", "Taser"].forEach((name) => {
-      const row = screen
-        .getByLabelText(`Add Regular ${name} Ammo`)
-        .closest("tr")
+      const row = closest(
+        screen.getByLabelText(`Add Regular ${name} Ammo`),
+        "tr",
+      )
 
       expect(
         within(row).queryByRole("combobox", { name: "Ammo type" }),
@@ -140,7 +142,7 @@ describe("<Ammo />", () => {
     expect(sellButton.closest("tr")).toHaveTextContent("30")
     expect(sellButton.closest("tr")).toHaveTextContent("45¥")
     await waitFor(() =>
-      expect(runnerFromDB(9).resources.ammo[0]).toMatchObject({
+      expect(runnerFromDB(9).resources?.ammo?.[0]).toMatchObject({
         name: "Gel Heavy Pistol/SMG Ammo",
         cost: 45,
         currentRating: 3,

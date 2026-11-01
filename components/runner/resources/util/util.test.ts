@@ -30,12 +30,12 @@ describe("gearPageReducerGenerator", () => {
     const reducer = gearPageReducerGenerator("melee")
 
     const newRunner = reducer(mockedRunners[9], {
-      type: undefined,
+      type: Symbol("ADD_GEAR"),
       payload: ax,
     })
 
-    expect(newRunner.resources.melee).toEqual([
-      ...mockedRunners[9].resources.melee,
+    expect(newRunner.resources?.melee).toEqual([
+      ...(mockedRunners[9].resources?.melee ?? []),
       ax,
     ])
   })

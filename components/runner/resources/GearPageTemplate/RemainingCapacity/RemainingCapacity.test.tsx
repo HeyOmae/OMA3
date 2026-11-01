@@ -7,7 +7,9 @@ describe("<RemainingCapacity />", () => {
     return render(<RemainingCapacity {...props} />)
   }
   it("should display the remaining capacity of a piece of gear", () => {
-    const { getByText } = setup({ gear: mockedRunners[9].resources.imaging[0] })
+    const { getByText } = setup({
+      gear: mockedRunners[9].resources?.imaging?.[0],
+    })
 
     expect(getByText("Capacity:")).toBeInTheDocument()
     expect(getByText("1/3")).toBeInTheDocument()
@@ -15,7 +17,7 @@ describe("<RemainingCapacity />", () => {
 
   it("should display 0 capacity used if the gear is unmodded", () => {
     const { getByText } = setup({
-      gear: mockedRunners[10].resources.imaging[0],
+      gear: mockedRunners[10].resources?.imaging?.[0],
     })
 
     expect(getByText("0/4")).toBeInTheDocument()
@@ -24,7 +26,7 @@ describe("<RemainingCapacity />", () => {
   it("should use the rating of a mod instead of the capacity", () => {
     const { getByText } = setup({
       gear: {
-        ...mockedRunners[10].resources.audio[0],
+        ...mockedRunners[10].resources?.audio?.[0],
         mods: [
           {
             useAs: [

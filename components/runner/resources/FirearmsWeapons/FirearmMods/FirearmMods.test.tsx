@@ -6,6 +6,7 @@ import {
   getByText as getTextIn,
   runnerFromDB,
   userEvent,
+  closest,
 } from "@/test/testUtils"
 import FirearmMods from "./index"
 import { mods } from "@/data/firearms"
@@ -21,13 +22,13 @@ describe("<FirearmMods />", () => {
       expect(getByText("Buy")).toBeInTheDocument()
     })
 
-    const buyTable = getByText("Buy").closest("table")
+    const buyTable = closest(getByText("Buy"), "table")
 
     mods.forEach(({ name, useAs }) => {
       expect(getTextIn(buyTable, name)).toBeInTheDocument()
-      const row = getTextIn(buyTable, name).closest("tr")
-      const slots = useAs.map(({ slot }) => slot ?? "INTEGRAL")
-      expect(getTextIn(row, slots.join(", "))).toBeInTheDocument()
+      const row = closest(getTextIn(buyTable, name), "tr")
+      const slots = useAs?.map(({ slot }) => slot ?? "INTEGRAL")
+      expect(getTextIn(row, slots?.join(", "))).toBeInTheDocument()
     })
   })
 
@@ -55,10 +56,10 @@ describe("<FirearmMods />", () => {
     await userEvent.click(getByLabelText("Add Laser Sight"))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources.firearms[5].mods).toHaveLength(1)
+      expect(runnerFromDB(9).resources?.firearms?.[5].mods).toHaveLength(1)
     })
 
-    expect(runnerFromDB(9).resources.firearms[5].mods[0].name).toEqual(
+    expect(runnerFromDB(9).resources?.firearms?.[5].mods?.[0].name).toEqual(
       "Laser Sight",
     )
     expect(getByLabelText("Remove Laser Sight")).toBeInTheDocument()
