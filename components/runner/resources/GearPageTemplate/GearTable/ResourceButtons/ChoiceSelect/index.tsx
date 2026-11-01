@@ -1,10 +1,13 @@
+import { useRequiredContext } from "@/components/useRequiredContext"
 import { MenuItem, Select } from "@mui/material"
-import { useContext } from "react"
+
 import { ChoiceContext } from "../../Row/ChoiceRatingRow"
 
 export const ChoiceSelect = () => {
-  const { choices, selectedChoiceIndex, setChoiceIndex } =
-    useContext(ChoiceContext)
+  const { choices, selectedChoiceIndex, setChoiceIndex } = useRequiredContext(
+    ChoiceContext,
+    "ChoiceContext",
+  )
   return (
     <Select
       value={selectedChoiceIndex}

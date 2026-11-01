@@ -8,7 +8,7 @@ import {
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import { GearPageTemplate, Props } from "."
-import { GearWeapon } from "@/types/Resources"
+
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,
@@ -19,11 +19,11 @@ describe("<GearPageTemplate/>", () => {
     beforeAll(setupIndexedDB)
     const setup = (
       id = 8,
-      { displayEssence }: Partial<Props<GearWeapon>> = {},
+      { displayEssence }: Partial<Props<"melee">> = {},
     ) => {
       return render(
         withTestRouter(
-          <GearPageTemplate<GearWeapon>
+          <GearPageTemplate
             gearLabel="Melee Weapons"
             resourceKey="melee"
             addGearTableConfig={addMeleeTableConfig}

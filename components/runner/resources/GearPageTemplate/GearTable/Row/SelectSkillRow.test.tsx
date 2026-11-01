@@ -5,6 +5,7 @@ import {
   DispatchContext,
   gearTableConfigOptions,
   gearToolsConfigOptionSetSkill,
+  UPDATE_GEAR,
 } from "../../../util"
 
 describe("<SelectSkillRow/>", () => {
@@ -46,7 +47,7 @@ describe("<SelectSkillRow/>", () => {
     await userEvent.click(getByLabelText("Add Engineering Kit"))
 
     expect(dispatch).toHaveBeenCalledWith({
-      type: undefined,
+      type: UPDATE_GEAR,
       payload: { ...tools[0], name: "Engineering Kit" },
     })
   })

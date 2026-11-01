@@ -65,7 +65,7 @@ const sellCols: SoftwareCols = [
 ]
 
 const Software = () => (
-  <GearPageTemplate<Gear>
+  <GearPageTemplate
     gearLabel="Software"
     resourceKey="software"
     listOfGear={softwareData}

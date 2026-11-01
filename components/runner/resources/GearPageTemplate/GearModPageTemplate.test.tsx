@@ -20,7 +20,6 @@ describe("GearModPageTemplate", () => {
         <GearModPageTemplate<Gear>
           resourceKey="imaging"
           previousPath={{ label: "Imaging", categoryPath: "imaging" }}
-          gearLabel="Imaging Mods"
           listOfGear={imagingMods}
           addGearTableConfig={buyCols}
           removeGearTableConfig={sellCols}

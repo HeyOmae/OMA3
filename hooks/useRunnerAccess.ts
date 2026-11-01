@@ -3,6 +3,7 @@ import { useEffect, Reducer, useReducer, useState } from "react"
 import { useIndexedDB } from "react-indexed-db-hook"
 import { Runner } from "../types/runner"
 import { migrateIfOutdated } from "./runnerSchema"
+import { defined } from "@/components/util"
 import type { StoredRunner } from "./migrations/storedRunner"
 
 export const useGetRunner = () => {
@@ -14,7 +15,7 @@ export const useGetRunner = () => {
   useEffect(() => {
     let isMounted = true
 
-    void getByID<StoredRunner>(+id)
+    void getByID<StoredRunner>(Number(id))
       .then((runner) => migrateIfOutdated(runner))
       .then((payload) => {
         if (isMounted) {
@@ -35,13 +36,23 @@ type Action<P> = { type: symbol } & (undefined extends P ? { payload?: P }
 : { payload: P })
 const DONE_LOADING = Symbol("DONE_LOADING")
 
+interface DoneLoading {
+  type: typeof DONE_LOADING
+  payload: Runner | undefined
+}
+
+const isDoneLoading = <P>(
+  action: Action<P> | DoneLoading,
+): action is DoneLoading => action.type === DONE_LOADING
+
 export type RunnerReducer<P> = Reducer<Runner, Action<P>>
 
 export type DispatchAction<P> = (action: Action<P>) => void
 
+// the runner is undefined while it loads
 type UseRunnerAccess = <P>(
   reducer?: RunnerReducer<P>,
-) => [runner: Runner, dispatch: DispatchAction<P>]
+) => [runner: Runner | undefined, dispatch: DispatchAction<P>]
 
 export const useRunnerAccess: UseRunnerAccess = <Payload>(
   reducer: RunnerReducer<Payload> = (runner) => runner,
@@ -49,13 +60,11 @@ export const useRunnerAccess: UseRunnerAccess = <Payload>(
   const { getByID, update } = useIndexedDB("runners")
   const router = useRouter()
   const [runner, dispatch] = useReducer(
-    (state: Runner, action: Action<Runner | Payload>) => {
-      if (action.type === DONE_LOADING) {
-        // TODO: figure out how to remove this type casting
-        return action.payload as Runner
-      }
-      return reducer(state, action as Action<Payload>)
-    },
+    (state: Runner | undefined, action: Action<Payload> | DoneLoading) =>
+      isDoneLoading(action) ?
+        action.payload
+        // nothing can change the runner before it has loaded
+      : reducer(defined(state, "runner"), action),
     undefined,
   )
 
@@ -63,7 +72,7 @@ export const useRunnerAccess: UseRunnerAccess = <Payload>(
   useEffect(() => {
     let isMounted = true
 
-    void getByID<StoredRunner>(+id)
+    void getByID<StoredRunner>(Number(id))
       .then((runner) => migrateIfOutdated(runner))
       .then((payload) => {
         if (isMounted) {

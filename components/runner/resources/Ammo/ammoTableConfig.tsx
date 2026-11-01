@@ -1,4 +1,5 @@
-import { useContext } from "react"
+import { useRequiredContext } from "@/components/useRequiredContext"
+
 import { Checkbox, MenuItem, Select } from "@mui/material"
 import { ammoTypes, roundsPerBundle } from "@/data/ammo"
 import { Gear } from "@/types/Resources"
@@ -7,7 +8,10 @@ import { SettingRating } from "../GearPageTemplate/GearTable/ResourceButtons"
 import { Columns, gearTableConfigOptions } from "../util"
 
 const AmmoTypeSelect = () => {
-  const { regularOnly, type, setType } = useContext(AmmoContext)
+  const { regularOnly, type, setType } = useRequiredContext(
+    AmmoContext,
+    "AmmoContext",
+  )
 
   return regularOnly ? "Regular" : (
       <Select
@@ -25,7 +29,10 @@ const AmmoTypeSelect = () => {
 }
 
 const CaselessCheckbox = () => {
-  const { regularOnly, caseless, setCaseless } = useContext(AmmoContext)
+  const { regularOnly, caseless, setCaseless } = useRequiredContext(
+    AmmoContext,
+    "AmmoContext",
+  )
 
   return regularOnly ? "N/A" : (
       <Checkbox

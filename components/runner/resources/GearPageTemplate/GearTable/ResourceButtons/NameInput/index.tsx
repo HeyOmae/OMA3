@@ -1,9 +1,13 @@
+import { useRequiredContext } from "@/components/useRequiredContext"
 import { TextField } from "@mui/material"
-import { useContext } from "react"
+
 import { NameContext } from "../../Row/NamedRow"
 
 export const NameInput = () => {
-  const { gearName, name, setName } = useContext(NameContext)
+  const { gearName, name, setName } = useRequiredContext(
+    NameContext,
+    "NameContext",
+  )
   return (
     <TextField
       size="small"

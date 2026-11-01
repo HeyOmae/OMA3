@@ -1,8 +1,10 @@
-import { FC, useContext } from "react"
+import { useRequiredContext } from "@/components/useRequiredContext"
+import { FC } from "react"
 import { AddButton, RemoveButton } from "@/components/common/index"
 import {
   AddGearButtonProps,
   DispatchContext,
+  UPDATE_GEAR,
   RemoveGearButtonProps,
 } from "../../../util"
 import { IconButton } from "@mui/material"
@@ -12,11 +14,11 @@ import { Gear } from "@/types/Resources"
 import { useRouter } from "next/router"
 
 export const AddResourceButton: FC<AddGearButtonProps> = ({ gear }) => {
-  const dispatch = useContext(DispatchContext)
+  const dispatch = useRequiredContext(DispatchContext, "DispatchContext")
   return (
     <AddButton
       aria-label={`Add ${gear.name}`}
-      onClick={() => dispatch({ type: undefined, payload: gear })}
+      onClick={() => dispatch({ type: UPDATE_GEAR, payload: gear })}
     />
   )
 }
@@ -25,13 +27,13 @@ export const RemoveResourceButton: FC<RemoveGearButtonProps> = ({
   gear: { name },
   index,
 }) => {
-  const dispatch = useContext(DispatchContext)
+  const dispatch = useRequiredContext(DispatchContext, "DispatchContext")
   return (
     <RemoveButton
       aria-label={`Remove ${name}`}
       onClick={() =>
         dispatch({
-          type: undefined,
+          type: UPDATE_GEAR,
           payload: index,
         })
       }

@@ -28,7 +28,7 @@ const sellCols: ElectricCols = [
 ]
 
 const OtherElectronics = () => (
-  <GearPageTemplate<Gear>
+  <GearPageTemplate
     gearLabel="Other Electronics"
     resourceKey="otherElectronics"
     listOfGear={otherElectronics}

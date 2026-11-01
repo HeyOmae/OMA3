@@ -30,7 +30,6 @@ const previousPath = { categoryPath: "audio", label: "Audio" }
 
 const AudioMods = () => (
   <GearModPageTemplate<Gear>
-    gearLabel="Audio Mods"
     resourceKey="audio"
     previousPath={previousPath}
     listOfGear={audioMods}

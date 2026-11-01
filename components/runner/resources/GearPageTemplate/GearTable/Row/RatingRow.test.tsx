@@ -4,6 +4,7 @@ import {
   DispatchContext,
   gearRatingTableConfigOption,
   gearTableConfigOptions,
+  UPDATE_GEAR,
 } from "../../../util"
 import { RatingRow } from "./index"
 
@@ -36,7 +37,7 @@ describe("<RatingRow/>", () => {
     getByLabelText(`Add ${headJammer.name}`).click()
 
     expect(dispatch).toHaveBeenCalledWith({
-      type: undefined,
+      type: UPDATE_GEAR,
       payload: { ...headJammer, currentRating: 1 },
     })
   })
@@ -49,7 +50,7 @@ describe("<RatingRow/>", () => {
     getByLabelText(`Add ${headJammer.name}`).click()
 
     expect(dispatch).toHaveBeenCalledWith({
-      type: undefined,
+      type: UPDATE_GEAR,
       payload: { ...headJammer, currentRating: 5, cost: 750 },
     })
   })

@@ -9,6 +9,7 @@ import {
   gearRatingTableConfigOption,
   gearTableConfigOptions,
   gearToolsConfigOptionSetSkill,
+  UPDATE_GEAR,
 } from "../../util"
 import { GearTable, Props } from "."
 import { otherElectronics } from "@/data/electronics"
@@ -87,7 +88,7 @@ describe("<GearTable />", () => {
       await userEvent.click(getByLabelText("Add Combat Axe"))
 
       expect(dispatch).toHaveBeenCalledWith({
-        type: undefined,
+        type: UPDATE_GEAR,
         payload: props.listOfGear[0],
       })
     })
@@ -100,7 +101,7 @@ describe("<GearTable />", () => {
       await userEvent.click(getByLabelText("Remove Combat Axe"))
 
       expect(dispatch).toHaveBeenCalledWith({
-        type: undefined,
+        type: UPDATE_GEAR,
         payload: 0,
       })
     })
@@ -137,7 +138,7 @@ describe("<GearTable />", () => {
       SliderHelper.change(queryByTestId("Headjammer-rating"), 6, 1, 6)
       await userEvent.click(getByLabelText("Add Headjammer"))
       expect(dispatch).toHaveBeenCalledWith({
-        type: undefined,
+        type: UPDATE_GEAR,
         payload: { ...headJammer, currentRating: 6, cost: 900 },
       })
 
@@ -145,7 +146,7 @@ describe("<GearTable />", () => {
       expect(queryByTestId("Bug Scanner-rating")).not.toBeInTheDocument()
       await userEvent.click(getByLabelText("Add Bug Scanner"))
       expect(dispatch).toHaveBeenCalledWith({
-        type: undefined,
+        type: UPDATE_GEAR,
         payload: bugScanner,
       })
     })
@@ -182,7 +183,7 @@ describe("<GearTable />", () => {
       await userEvent.click(getByLabelText("Add Engineering Shop"))
 
       expect(dispatch).toHaveBeenCalledWith({
-        type: undefined,
+        type: UPDATE_GEAR,
         payload: {
           ...props.listOfGear[1],
           name: "Engineering Shop",

@@ -1,13 +1,23 @@
-import { Gear } from "@/types/Resources"
+import { Gear, Resources } from "@/types/Resources"
 import { useRouter } from "next/router"
 import { FC, useEffect, useState } from "react"
+import { CircularProgress } from "@mui/material"
+import { keyOf } from "@/components/util"
 import { GearPageTemplate } from "../GearPageTemplate"
 import { buyGearWithRatingCol, Columns, sellGearWithRatingCol } from "../util"
 
+// a data module with a list of gear for each category in it
+type GearData = Partial<Record<keyof Resources, Gear[]>>
+
 export interface Props {
-  importedGear: Promise<Record<string, Gear[]>>
+  importedGear: Promise<GearData>
   addGearTableConfig?: Columns<Gear>[]
   removeGearTableConfig?: Columns<Gear>[]
+}
+
+interface LoadedGear {
+  gearKey: keyof Resources
+  listOfGear: Gear[]
 }
 
 const LoadDynamicGear: FC<Props> = ({
@@ -16,25 +26,30 @@ const LoadDynamicGear: FC<Props> = ({
   removeGearTableConfig = sellGearWithRatingCol,
 }) => {
   const router = useRouter()
-  const [listOfGear, setListOfGear] = useState<Gear[]>()
+  const [loaded, setLoaded] = useState<LoadedGear>()
 
   // the route is /[gearType], so there is only ever one
   const [gearType] = [router.query.gearType].flat()
 
   useEffect(() => {
-    void importedGear.then((gear) => setListOfGear(gear[gearType]))
+    void importedGear.then((gear) => {
+      const gearKey = keyOf(String(gearType), gear)
+      setLoaded({ gearKey, listOfGear: gear[gearKey] ?? [] })
+    })
   }, [gearType, importedGear])
 
   return (
     <>
       <h1>{gearType}</h1>
-      <GearPageTemplate<Gear>
-        gearLabel={gearType}
-        resourceKey={gearType}
-        listOfGear={listOfGear}
-        addGearTableConfig={addGearTableConfig}
-        removeGearTableConfig={removeGearTableConfig}
-      />
+      {loaded ?
+        <GearPageTemplate
+          gearLabel={loaded.gearKey}
+          resourceKey={loaded.gearKey}
+          listOfGear={loaded.listOfGear}
+          addGearTableConfig={addGearTableConfig}
+          removeGearTableConfig={removeGearTableConfig}
+        />
+      : <CircularProgress />}
     </>
   )
 }

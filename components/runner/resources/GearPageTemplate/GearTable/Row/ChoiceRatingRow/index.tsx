@@ -32,7 +32,9 @@ export interface SelectChoiceContext {
   selectedChoiceIndex: SelectedChoiceIndex
 }
 
-export const ChoiceContext = createContext<SelectChoiceContext>(null)
+export const ChoiceContext = createContext<SelectChoiceContext | undefined>(
+  undefined,
+)
 
 export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
   cols,

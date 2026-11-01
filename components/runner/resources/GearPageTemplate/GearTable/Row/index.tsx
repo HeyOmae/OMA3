@@ -40,7 +40,9 @@ interface SkillContextValue {
   setSkill: (skill: string) => void
 }
 
-export const SkillContext = createContext<SkillContextValue>(null)
+export const SkillContext = createContext<SkillContextValue | undefined>(
+  undefined,
+)
 
 export const SelectSkillRow: FC<Props> = ({ cols, gear, index }) => {
   const [selectedSkill, setSkill] = useState(skillData[0].name)

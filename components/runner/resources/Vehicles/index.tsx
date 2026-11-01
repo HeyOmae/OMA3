@@ -1,10 +1,10 @@
 import { vehicles } from "@/data/vehicles"
-import { GearVehicle } from "@/types/Resources"
+
 import { GearPageTemplate } from "../GearPageTemplate"
 import { buyGearVehiclesCols, sellGearVehiclesCols } from "../util"
 
 const Vehicles = () => (
-  <GearPageTemplate<GearVehicle>
+  <GearPageTemplate
     gearLabel="Vehicles"
     resourceKey="vehicles"
     listOfGear={vehicles}

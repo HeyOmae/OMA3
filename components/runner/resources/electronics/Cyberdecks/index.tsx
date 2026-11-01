@@ -26,7 +26,7 @@ const sellCyberdeckCol: CyberdeckCols = [
 ]
 
 export const Cyberdecks = () => (
-  <GearPageTemplate<GearMatrixCyberdeck>
+  <GearPageTemplate
     gearLabel="Cyberdecks"
     resourceKey="cyberdeck"
     listOfGear={cyberdeckData}

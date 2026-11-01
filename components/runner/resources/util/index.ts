@@ -1,6 +1,6 @@
 import { createContext } from "react"
 import { DispatchAction, RunnerReducer } from "@/hooks/useRunnerAccess"
-import { Gear, GearAmmo } from "@/types/Resources"
+import { Gear, GearAmmo, Resources } from "@/types/Resources"
 
 export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
   if (typeof payload === "number") {
@@ -11,8 +11,11 @@ export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
 
 type GearPayload = Gear | number
 
+// buying or selling gear, the payload is the gear bought or the index sold
+export const UPDATE_GEAR = Symbol("UPDATE_GEAR")
+
 export const gearPageReducerGenerator =
-  (gearKey: string): RunnerReducer<GearPayload> =>
+  (gearKey: keyof Resources): RunnerReducer<GearPayload> =>
   (runner, { payload }) => ({
     ...runner,
     resources: {
@@ -21,7 +24,9 @@ export const gearPageReducerGenerator =
     },
   })
 
-export const DispatchContext = createContext<DispatchAction<GearPayload>>(null)
+export const DispatchContext = createContext<
+  DispatchAction<GearPayload> | undefined
+>(undefined)
 
 export interface GearTableProps<G = Gear> {
   listOfGear: G[]

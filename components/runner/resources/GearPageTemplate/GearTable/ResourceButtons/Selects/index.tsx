@@ -1,5 +1,6 @@
+import { useRequiredContext } from "@/components/useRequiredContext"
 import { MenuItem, Select } from "@mui/material"
-import { FC, useContext } from "react"
+import { FC } from "react"
 import { SkillContext } from "../../Row"
 import skillData from "@/data/skills.json"
 import { attributes } from "@/data/attributes"
@@ -31,7 +32,10 @@ export const SkillSelect: FC<SelectProps> = ({
 
 // the skill picked for the gear in the row it is in
 export const RowSkillSelect = () => {
-  const { selectedSkill, setSkill } = useContext(SkillContext)
+  const { selectedSkill, setSkill } = useRequiredContext(
+    SkillContext,
+    "SkillContext",
+  )
   return <SkillSelect selected={selectedSkill} setSelected={setSkill} />
 }
 

@@ -19,7 +19,9 @@ interface AmmoContextValue {
   setCaseless: (caseless: boolean) => void
 }
 
-export const AmmoContext = createContext<AmmoContextValue>(null)
+export const AmmoContext = createContext<AmmoContextValue | undefined>(
+  undefined,
+)
 
 // Ammo is picked by type and whether it is caseless, then bought in bundles
 // of rounds, which is the rating

@@ -1,5 +1,5 @@
 import { foci } from "@/data/focus"
-import { GearFocus } from "@/types/Resources"
+
 import { FC } from "react"
 import { GearPageTemplate } from "../GearPageTemplate"
 import {
@@ -28,7 +28,7 @@ const sellCol = [
 ]
 
 const Foci: FC = () => (
-  <GearPageTemplate<GearFocus>
+  <GearPageTemplate
     gearLabel="Foci"
     resourceKey="foci"
     listOfGear={foci}

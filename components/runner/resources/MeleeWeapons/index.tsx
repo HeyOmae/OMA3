@@ -1,10 +1,10 @@
 import meleeData from "@/data/melee"
-import { GearWeapon } from "@/types/Resources"
+
 import { addMeleeTableConfig, removeMeleeTableConfig } from "./meleeTableConfig"
 import { GearPageTemplate } from "../GearPageTemplate"
 
 const MeleeWeapons = () => (
-  <GearPageTemplate<GearWeapon>
+  <GearPageTemplate
     gearLabel="Melee Weapons"
     resourceKey="melee"
     addGearTableConfig={addMeleeTableConfig}

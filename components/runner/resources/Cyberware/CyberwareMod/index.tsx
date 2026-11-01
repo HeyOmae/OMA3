@@ -31,7 +31,6 @@ const sellCyberwareModCols: Columns<GearCyberware>[] = [
 const CyberwareMods = () => {
   return (
     <GearModPageTemplate<GearCyberware>
-      gearLabel="Cyberware Mods"
       resourceKey="cyberware"
       previousPath={previousPath}
       listOfGear={mods}

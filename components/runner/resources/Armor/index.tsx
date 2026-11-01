@@ -32,7 +32,7 @@ const sellArmorCols: Columns<GearArmor>[] = [
 ]
 
 export const Armor = () => (
-  <GearPageTemplate<GearArmor>
+  <GearPageTemplate
     gearLabel="Armor"
     resourceKey="armor"
     listOfGear={armorData}

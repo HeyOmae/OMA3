@@ -3,6 +3,7 @@ export interface Resources {
   ammo: GearAmmo[]
   armor: GearArmor[]
   audio: Gear[]
+  biotech: Gear[]
   bioware: Gear[]
   bne: Gear[]
   chemicals: Gear[]
@@ -13,6 +14,7 @@ export interface Resources {
   drugs: Gear[]
   electronicAccessories: GearElectronic[]
   firearms: GearFirearm[]
+  foci: GearFocus[]
   focusFormula: Gear[]
   grappleGun: Gear[]
   imaging: Gear[]
@@ -29,6 +31,7 @@ export interface Resources {
   spellFormula: Gear[]
   survival: Gear[]
   tags: GearElectronic[]
+  tools: Gear[]
   toxins: Gear[]
   vehicles: GearVehicle[]
 }

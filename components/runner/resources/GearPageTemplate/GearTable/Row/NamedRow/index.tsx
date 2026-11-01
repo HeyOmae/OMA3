@@ -16,7 +16,9 @@ interface NameContextValue {
   setName: (name: string) => void
 }
 
-export const NameContext = createContext<NameContextValue>(null)
+export const NameContext = createContext<NameContextValue | undefined>(
+  undefined,
+)
 
 // Gear that needs the player to name it, like a mapsoft for a city
 export const NamedRow: FC<NamedRowProps> = ({ cols, gear, index }) => {

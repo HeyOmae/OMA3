@@ -1,10 +1,10 @@
 import { cyberware } from "@/data/cyberware"
-import { GearCyberware } from "@/types/Resources"
+
 import { GearPageTemplate } from "../GearPageTemplate"
 import { buyAugmentationCols, sellAugmentationCols } from "../util"
 
 const Cyberware = () => (
-  <GearPageTemplate<GearCyberware>
+  <GearPageTemplate
     gearLabel="Cyberware"
     resourceKey="cyberware"
     listOfGear={cyberware}

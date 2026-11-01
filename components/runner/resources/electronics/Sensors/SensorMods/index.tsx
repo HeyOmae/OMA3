@@ -28,7 +28,6 @@ const previousPath = { categoryPath: "sensor", label: "Sensor" }
 
 const SensorMods = () => (
   <GearModPageTemplate<Gear>
-    gearLabel="Sensor Mods"
     resourceKey="sensor"
     previousPath={previousPath}
     listOfGear={sensorMods}
