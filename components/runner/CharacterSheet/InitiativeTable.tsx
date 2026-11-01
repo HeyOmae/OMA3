@@ -1,6 +1,7 @@
 import { FC, useMemo } from "react"
 import { CharSheetTableProps } from "."
 import { AttackRatingModifier } from "@/types/Resources"
+import { Runner } from "@/types/runner"
 
 export interface Props extends CharSheetTableProps {
   attributes: Record<string, number>
@@ -42,27 +43,34 @@ const simModuleModes = {
   "Sim Module Hot": "hot",
 }
 
+// Matrix initiative needs a direct neural interface, and a sim module of some
+// sort to run in virtual reality
+const hasDirectNeuralInterface = (runner: Runner) =>
+  runner.magres === "Technomancer" ||
+  runner.resources?.cyberware?.some(({ name }) =>
+    /(Cyber|Data)jack|Control\sRig/i.test(name),
+  ) ||
+  runner.resources?.electronicAccessories?.some(({ name }) => name === "Trodes")
+
+const hasRiggerGear = (runner: Runner) =>
+  (runner.resources?.cyberdeck?.length ||
+    runner.resources?.riggerConsole?.length) > 0
+
+const findSimModuleMode = (runner: Runner): SimModes =>
+  simModuleModes[
+    runner.resources?.electronicAccessories?.find(({ name }) =>
+      /Sim Module/.test(name),
+    )?.name
+  ]
+
+const getSimMode = (runner: Runner): SimModes =>
+  runner.magres === "Technomancer" || hasRiggerGear(runner) ?
+    "hot"
+  : findSimModuleMode(runner)
+
 const MatrixInit: FC<Props> = ({ runner, attributes: { int } }) => {
-  const hasDni =
-      runner.magres === "Technomancer" ||
-      runner.resources?.cyberware?.some(({ name }) =>
-        /(Cyber|Data)jack|Control\sRig/i.test(name),
-      ) ||
-      runner.resources?.electronicAccessories?.some(
-        ({ name }) => name === "Trodes",
-      ),
-    simmod: SimModes =
-      runner.magres === "Technomancer" ? "hot"
-      : (
-        (runner.resources?.cyberdeck?.length ||
-          runner.resources?.riggerConsole?.length) > 0
-      ) ?
-        "hot"
-      : simModuleModes[
-          runner.resources?.electronicAccessories?.find(({ name }) =>
-            /Sim Module/.test(name),
-          )?.name
-        ]
+  const hasDni = hasDirectNeuralInterface(runner),
+    simmod = getSimMode(runner)
 
   return (
     <>

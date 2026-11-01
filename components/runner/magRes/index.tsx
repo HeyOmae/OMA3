@@ -1,193 +1,41 @@
-import { Button, CircularProgress, Grid } from "@mui/material"
+import { CircularProgress, Grid } from "@mui/material"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import {
-  AdeptPower,
-  CombatSpell,
-  ComplexForm,
-  GeneralSpell,
-  MagRes as MagicResonance,
-  Ritual,
-  Spell,
-  SpellCategory,
-} from "@/types/MagRes"
-import NextLink from "next/link"
 import { MagResSelection } from "./MagResSelection"
 import priorityData from "@/data/priorityTable.json"
-import { MagResPriorityTableOptions } from "@/types/PriorityRating"
+import {
+  MagResPriorityTableOptions,
+  PriorityTypes,
+} from "@/types/PriorityRating"
+import { Runner } from "@/types/runner"
 import { MagResAttributeSlider } from "./MagResAttributeSlider"
-import { initRunnerAttribute } from "@/types/runner"
 import { PriorityWarning } from "../../priorityWarning"
-import { Spells } from "./Spells"
-import { RunnerSpells } from "./Spells/RunnerSpells"
 import { RemainingSpells } from "./RemainingSpells"
 import styles from "./magRes.module.css"
-import { Rituals } from "./Rituals"
-import { RunnerRituals } from "./Rituals/RunnerRituals"
-import { AccordionWrapper } from "../../common/Accordion"
-import { AdeptPowers } from "./AdeptPowers"
-import { RunnerAdeptPowers } from "./AdeptPowers/RunnerAdeptPowers"
-import { ComplexForms } from "./ComplexForms"
-import { RunnerComplexForms } from "./ComplexForms/RunnerComplexForms"
-import { removeItemFromArray } from "@/components/util"
-import { DisplayInitiationGrade } from "./Initiation"
-import { useRouter } from "next/router"
-import { DisplaySubmersionLevel } from "./Submersion"
+import { Payload } from "./magResActions"
+import { magResReducer } from "./magResReducer"
+import { GrowthSections, KnownMagRes, LearnableMagRes } from "./MagResSections"
 
-// TODO: The complexity in this component is a code smell. Refactor things out in to smaller files
-export const SET_MAGRES = Symbol("SET_MAGRES")
-export const SET_MAGIC = Symbol("SET_MAGIC")
-export const SET_RESONANCE = Symbol("SET_RESONANCE")
-export const SET_SPELL = Symbol("SET_SPELL")
-export const REMOVE_SPELL = Symbol("REMOVE_SPELL")
-export const SET_RITUAL = Symbol("SET_RITUAL")
-export const REMOVE_RITUAL = Symbol("REMOVE_RITUAL")
-export const SET_POWER = Symbol("SET_POWER")
-export const REMOVE_POWER = Symbol("REMOVE_POWER")
-export const CHANGE_POWER_LEVEL = Symbol("CHANGE_POWER_LEVEL")
-export const SET_COMPLEX_FORM = Symbol("SET_COMPLEX_FORM")
-export const REMOVE_COMPLEX_FORM = Symbol("REMOVE_COMPLEX_FORM")
+// The actions are imported from here by everything that dispatches them
+export * from "./magResActions"
 
-export interface Payload {
-  magres?: MagicResonance
-  adjustment?: number
-  spell?: Spell
-  removeSpell?: {
-    spellCategory: SpellCategory
-    spellIndex: number
+// The part of the priority table the runner still has to fill in
+const missingRequirement = (runner: Runner): PriorityTypes | undefined => {
+  if (!runner.priority?.metatype) return "metatype"
+  if (!runner.priority["mag/res"]) return "mag/res"
+  if (!runner.attributes && runner.priority["mag/res"] !== "E") {
+    return "attributes"
   }
-  ritual?: Ritual
-  removeRitual?: number
-  power?: AdeptPower
-  removePower?: number
-  powerLevel?: {
-    powerIndex: number
-    level: number
-  }
-  complexForm?: ComplexForm
-  removeComplexForm?: number
 }
 
 export const MagRes = () => {
-  const { asPath } = useRouter()
-  const [runner, dispatch] = useRunnerAccess<Payload>(
-    (runner, { type, payload }) => {
-      switch (type) {
-        case SET_MAGRES:
-          return {
-            ...runner,
-            magres: payload.magres,
-            attributes: {
-              ...runner.attributes,
-              Magic: initRunnerAttribute,
-              Resonance: initRunnerAttribute,
-            },
-          }
-        case SET_MAGIC:
-          return {
-            ...runner,
-            attributes: {
-              ...runner.attributes,
-              Magic: {
-                ...runner.attributes.Magic,
-                adjustment: payload.adjustment,
-              },
-            },
-          }
-        case SET_RESONANCE:
-          return {
-            ...runner,
-            attributes: {
-              ...runner.attributes,
-              Resonance: {
-                ...runner.attributes.Resonance,
-                adjustment: payload.adjustment,
-              },
-            },
-          }
-        case SET_SPELL:
-          return {
-            ...runner,
-            spells: {
-              ...runner.spells,
-              [payload.spell.category]: [
-                ...(runner.spells?.[payload.spell.category] ?? []),
-                payload.spell,
-              ],
-            },
-          }
+  const [runner, dispatch] = useRunnerAccess<Payload>(magResReducer)
 
-        case REMOVE_SPELL: {
-          const {
-            removeSpell: { spellCategory, spellIndex },
-          } = payload
-          return {
-            ...runner,
-            spells: {
-              ...runner.spells,
-              [spellCategory]: removeItemFromArray<GeneralSpell | CombatSpell>(
-                runner.spells[spellCategory],
-                spellIndex,
-              ),
-            },
-          }
-        }
-        case SET_RITUAL:
-          return {
-            ...runner,
-            rituals: [...(runner.rituals ?? []), payload.ritual],
-          }
-        case REMOVE_RITUAL:
-          return {
-            ...runner,
-            rituals: runner.rituals.toSpliced(payload.removeRitual, 1),
-          }
-        case SET_POWER:
-          return {
-            ...runner,
-            powers: [...(runner.powers ?? []), payload.power],
-          }
-        case REMOVE_POWER:
-          return {
-            ...runner,
-            powers: runner.powers.toSpliced(payload.removePower, 1),
-          }
-        case CHANGE_POWER_LEVEL: {
-          const { powerIndex, level } = payload.powerLevel
-
-          return {
-            ...runner,
-            powers: runner.powers.toSpliced(powerIndex, 1, {
-              ...runner.powers[powerIndex],
-              level,
-            }),
-          }
-        }
-        case SET_COMPLEX_FORM:
-          return {
-            ...runner,
-            complexForms: [...(runner.complexForms ?? []), payload.complexForm],
-          }
-        case REMOVE_COMPLEX_FORM:
-          return {
-            ...runner,
-            complexForms: runner.complexForms.toSpliced(
-              payload.removeComplexForm,
-              1,
-            ),
-          }
-      }
-    },
-  )
-
-  // This is kind of ugly. Refactor later or something
   if (!runner) {
     return <CircularProgress />
-  } else if (!runner.priority?.metatype) {
-    return <PriorityWarning requirement="metatype" />
-  } else if (!runner.priority["mag/res"]) {
-    return <PriorityWarning requirement="mag/res" />
-  } else if (!runner.attributes && runner.priority["mag/res"] !== "E") {
-    return <PriorityWarning requirement="attributes" />
+  }
+  const missing = missingRequirement(runner)
+  if (missing) {
+    return <PriorityWarning requirement={missing} />
   }
   const priority = priorityData["mag/res"][
     runner.priority["mag/res"]
@@ -223,93 +71,14 @@ export const MagRes = () => {
                 />
               </Grid>
               <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
-                {(runner.magres === "Full" ||
-                  runner.magres === "Aspected" ||
-                  runner.magres === "Mystic Adept") && (
-                  <>
-                    <h2>Spells</h2>
-                    <Spells dispatch={dispatch} />
-
-                    <AccordionWrapper label="rituals">
-                      <h2>Rituals</h2>
-                      <Rituals dispatch={dispatch} />
-                    </AccordionWrapper>
-                  </>
-                )}
-                {(runner.magres === "Mystic Adept" ||
-                  runner.magres === "Adept") && (
-                  <AccordionWrapper label="adept-powers">
-                    <h2>Adept Powers</h2>
-                    <AdeptPowers dispatch={dispatch} />
-                  </AccordionWrapper>
-                )}
-                {runner.magres === "Technomancer" && (
-                  <AccordionWrapper label="complex-forms">
-                    <h2>Complex Forms</h2>
-                    <ComplexForms dispatch={dispatch} />
-                  </AccordionWrapper>
-                )}
+                <LearnableMagRes runner={runner} dispatch={dispatch} />
               </Grid>
               <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
-                {runner.spells && (
-                  <section>
-                    <h2>Known Spells</h2>
-                    <RunnerSpells spells={runner.spells} dispatch={dispatch} />
-                  </section>
-                )}
-                {runner.rituals && (
-                  <section>
-                    <h2>Known Rituals</h2>
-                    <RunnerRituals
-                      dispatch={dispatch}
-                      rituals={runner.rituals}
-                    />
-                  </section>
-                )}
-                {runner.powers && (
-                  <section>
-                    <h2>Known Adept Powers</h2>
-                    <RunnerAdeptPowers
-                      powers={runner.powers}
-                      dispatch={dispatch}
-                    />
-                  </section>
-                )}
-                {runner.complexForms && (
-                  <section>
-                    <h2>Known Complex Forms</h2>
-                    <RunnerComplexForms
-                      complexForms={runner.complexForms}
-                      dispatch={dispatch}
-                    />
-                  </section>
-                )}
+                <KnownMagRes runner={runner} dispatch={dispatch} />
               </Grid>
             </Grid>
           </>)}
-
-      {(runner.initiation?.length ||
-        runner.magres === "Full" ||
-        runner.magres === "Aspected" ||
-        runner.magres === "Mystic Adept" ||
-        runner.magres === "Adept") && (
-        <section>
-          <h2>Initiation</h2>
-          <DisplayInitiationGrade initiation={runner.initiation} />
-          <NextLink href={`${asPath}/initiation`} passHref>
-            <Button variant="contained">Initiation</Button>
-          </NextLink>
-        </section>
-      )}
-      {(runner.submersion?.length || runner.magres === "Technomancer") && (
-        <section>
-          <h2>Submersion</h2>
-          <DisplaySubmersionLevel submersion={runner.submersion} />
-          <NextLink href={`${asPath}/submersion`} passHref>
-            <Button variant="contained">Submersion</Button>
-          </NextLink>
-        </section>
-      )}
+      <GrowthSections runner={runner} />
     </>
   )
 }
