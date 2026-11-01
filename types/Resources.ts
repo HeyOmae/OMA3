@@ -23,6 +23,7 @@ export interface Resources {
   restraints: GearTyped[]
   riggerConsole: GearMatrixCommlink[]
   sensor: GearModdableRated[]
+  software: GearSoftware[]
   spellFormula: Gear[]
   survival: (GearTyped | GearModdableRated)[]
   tags: GearElectronic[]

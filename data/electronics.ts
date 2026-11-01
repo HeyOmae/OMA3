@@ -1388,7 +1388,7 @@ export const softwareData: GearSoftware[] = [
   {
     useAs: {
       type: "ACCESSORY",
-      subtype: "SKILLSOFT",
+      subtype: "AUTOSOFT",
       slot: "SOFTWARE DRONE",
       capacity: 1,
     },
@@ -1647,7 +1647,7 @@ export const softwareData: GearSoftware[] = [
     availability: "1",
     cost: 1500,
     name: "Linguasoft",
-    maxRating: 4,
+    maxRating: 6,
     rating: true,
     rateMultiplier: "cost",
     choice: "NAME",

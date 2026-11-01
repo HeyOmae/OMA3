@@ -71,6 +71,10 @@ describe("Resource Page", () => {
       "href",
       "/10/resources/other-electronics",
     )
+    expect(screen.getByText("Software").closest("a")).toHaveAttribute(
+      "href",
+      "/10/resources/software",
+    )
     expect(screen.getByText("Tools").closest("a")).toHaveAttribute(
       "href",
       "/10/resources/tools",

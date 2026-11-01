@@ -3,20 +3,30 @@ import { TableCell, TableRow } from "@mui/material"
 import { createContext, useMemo, useState } from "react"
 import { FC } from "react"
 import { Props } from "../index"
+import { useRating } from "../useRating"
 import powerData from "@/data/adeptPowers.json"
 import { Columns } from "@/components/runner/resources/util"
-import { GearFocus, GearWeaponMelee } from "@/types/Resources"
+import {
+  GearFocus,
+  GearSoftware,
+  GearWeaponFireArms,
+  GearWeaponMelee,
+} from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"
 import { CircularProgress } from "@mui/material"
 import { spirits } from "@/data/spirits"
+import skillData from "@/data/skills.json"
 
 export interface ChoiceRatingRowProps extends Props {
-  cols: Columns<GearFocus>[]
-  gear: GearFocus
+  cols: Columns<GearFocus | GearSoftware>[]
+  gear: GearFocus | GearSoftware
 }
 
 type ChoiceType =
-  AdeptPower | { name: SpellCategory | SpiritTypes } | GearWeaponMelee
+  | AdeptPower
+  | { name: SpellCategory | SpiritTypes | string }
+  | GearWeaponMelee
+  | GearWeaponFireArms
 
 type SelectedChoiceIndex = number | ""
 
@@ -48,21 +58,26 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
         return spirits
       case "MELEE_WEAPON":
         return runner?.resources?.melee ?? []
+      case "WEAPON":
+        return runner?.resources?.firearms ?? []
+      case "PHYSICAL SKILL":
+        // skills based on Magic or Resonance can not be replaced by software
+        return skillData.filter(
+          ({ category }) => !["Magic", "Resonance"].includes(category),
+        )
       case "ADEPT_POWER":
       default:
         return powerData as AdeptPower[]
     }
   }, [gear, runner])
-  const [currentRating, setRating] = useState(gear.minRating ?? 1)
+  const [gearWithRating, setRating] = useRating(gear)
   const [selectedChoiceIndex, setChoiceIndex] = useState<SelectedChoiceIndex>(0)
   const gearWithChoice = useMemo(
     () => ({
-      ...gear,
+      ...gearWithRating,
       name: `${choices[selectedChoiceIndex]?.name ?? ""} ${gear.name}`,
-      currentRating,
-      cost: gear.cost * currentRating,
     }),
-    [gear, choices, selectedChoiceIndex, currentRating],
+    [gearWithRating, gear.name, choices, selectedChoiceIndex],
   )
 
   return (
