@@ -18,8 +18,8 @@ const LoadDynamicGear: FC<Props> = ({
   const router = useRouter()
   const [listOfGear, setListOfGear] = useState<Gear[]>()
 
-  // I hate typecasting but I also hate writing pointless defensive code
-  const gearType = router.query.gearType as string
+  // the route is /[gearType], so there is only ever one
+  const [gearType] = [router.query.gearType].flat()
 
   useEffect(() => {
     void importedGear.then((gear) => setListOfGear(gear[gearType]))

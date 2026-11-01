@@ -1,6 +1,6 @@
-import { GearModdableRated, GearTyped } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export type ImagingGear = GearModdableRated | GearTyped
+export type ImagingGear = Gear | Gear
 
 export const imaging: ImagingGear[] = [
   {

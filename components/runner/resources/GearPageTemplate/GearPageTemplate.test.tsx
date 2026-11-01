@@ -8,7 +8,7 @@ import {
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import { GearPageTemplate, Props } from "."
-import { GearWeaponMelee } from "@/types/Resources"
+import { GearWeapon } from "@/types/Resources"
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,
@@ -19,11 +19,11 @@ describe("<GearPageTemplate/>", () => {
     beforeAll(setupIndexedDB)
     const setup = (
       id = 8,
-      { displayEssence }: Partial<Props<GearWeaponMelee>> = {},
+      { displayEssence }: Partial<Props<GearWeapon>> = {},
     ) => {
       return render(
         withTestRouter(
-          <GearPageTemplate<GearWeaponMelee>
+          <GearPageTemplate<GearWeapon>
             gearLabel="Melee Weapons"
             resourceKey="melee"
             addGearTableConfig={addMeleeTableConfig}
@@ -71,6 +71,8 @@ describe("<GearPageTemplate/>", () => {
       await waitFor(() => {
         expect(runnerFromDB(7).resources.melee).toEqual([
           {
+            type: "WEAPON CLOSE COMBAT",
+            subtype: "BLADES",
             name: "Katana",
             availability: "3",
             cost: 350,

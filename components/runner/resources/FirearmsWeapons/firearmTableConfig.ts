@@ -1,4 +1,4 @@
-import { GearWeaponFireArms } from "@/types/Resources"
+import { GearFirearm } from "@/types/Resources"
 import {
   gearMeleeTableConfigOption,
   gearTableConfigOptions,
@@ -6,7 +6,7 @@ import {
   gearModableTableConfigOptions,
 } from "../util"
 
-const baseFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
+const baseFirearmsTableConfig: Columns<GearFirearm>[] = [
   gearTableConfigOptions.name,
   gearMeleeTableConfigOption.dv,
   {
@@ -22,12 +22,12 @@ const baseFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export const addFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
+export const addFirearmsTableConfig: Columns<GearFirearm>[] = [
   gearTableConfigOptions.buy,
   ...baseFirearmsTableConfig,
 ]
 
-export const removeFirearmsTableConfig: Columns<GearWeaponFireArms>[] = [
+export const removeFirearmsTableConfig: Columns<GearFirearm>[] = [
   gearTableConfigOptions.sell,
   ...baseFirearmsTableConfig,
   gearModableTableConfigOptions.alwaysMod,

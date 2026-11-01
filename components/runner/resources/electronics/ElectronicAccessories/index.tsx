@@ -1,10 +1,10 @@
 import { electronicAccessoriesData } from "@/data/electronics"
-import { GearElectronicAccessory } from "@/types/Resources"
+import { GearElectronic } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import { buyElectronicCol, sellElectronicCol } from "../utils"
 
 const ElectronicAccessories = () => (
-  <GearPageTemplate<GearElectronicAccessory>
+  <GearPageTemplate<GearElectronic>
     gearLabel="Electronic Accessories"
     resourceKey="electronicAccessories"
     listOfGear={electronicAccessoriesData}

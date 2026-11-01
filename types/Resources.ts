@@ -1,54 +1,115 @@
+// Everything a runner can buy with nuyen, keyed by the page it is bought on
 export interface Resources {
   armor: GearArmor[]
-  audio: GearModdableRated[]
-  bioware: GearBioware[]
-  bne: GearTyped[]
-  chemicals: GearTyped[]
+  audio: Gear[]
+  bioware: Gear[]
+  bne: Gear[]
+  chemicals: Gear[]
   commlink: GearMatrixCommlink[]
   cyberdeck: GearMatrixCyberdeck[]
   cyberware: GearCyberware[]
-  drones: GearDrones[]
-  drugs: GearTyped[]
-  electronicAccessories: GearElectronicAccessory[]
-  firearms: GearWeaponFireArms[]
-  focusFormula: GearTyped[]
-  grappleGun: GearTyped[]
-  imaging: (GearModdableRated & GearTyped)[]
+  drones: GearVehicle[]
+  drugs: Gear[]
+  electronicAccessories: GearElectronic[]
+  firearms: GearFirearm[]
+  focusFormula: Gear[]
+  grappleGun: Gear[]
+  imaging: Gear[]
   lifestyle: Gear[]
-  locks: GearTyped[]
-  magicSupplies: GearTyped[]
-  melee: GearWeaponMelee[]
-  otherElectronics: GearTyped[]
-  projectile: GearWeaponsProjectile[]
-  restraints: GearTyped[]
+  locks: Gear[]
+  magicSupplies: Gear[]
+  melee: GearWeapon[]
+  otherElectronics: Gear[]
+  projectile: GearProjectile[]
+  restraints: Gear[]
   riggerConsole: GearMatrixCommlink[]
-  sensor: GearModdableRated[]
-  software: GearSoftware[]
+  sensor: Gear[]
+  software: Gear[]
   spellFormula: Gear[]
-  survival: (GearTyped | GearModdableRated)[]
+  survival: Gear[]
   tags: GearElectronic[]
-  toxins: GearTyped[]
-  vehicles: GearDrones[]
+  toxins: Gear[]
+  vehicles: GearVehicle[]
 }
 
+// Every piece of gear. Gear with stats nothing else has extends this below.
 export interface Gear {
   name: string
   availability: string
   cost: number
   reference?: { book: string; page: number }[]
+  type?: string
+  subtype?: string
+  // the ways the gear can be used, the first one is what it is
+  useAs?: UseAs[]
+  modifications?: Modifications
+  requires?: Requirements
+  mods?: Gear[]
+  // can only be bought as a mod for other gear
+  modonly?: true
+
+  // gear bought at a rating
+  rating?: true
+  minRating?: number
+  maxRating?: number
+  currentRating?: number
+  rateMultiplier?: RateMultiplier
+  // essence of augmentations at the rating they were bought
+  essence?: number
+  // gear bought by the dose or unit
+  count?: true
+
+  // something the runner picks when buying, like a skill or a weapon
+  choice?: Choice
+  // can be bought more than once
+  multi?: true
 }
 
-interface ItemAttributeMod {
-  attr: string
-  val?: number
-  objVal?: string
-  cond?: true
-  condindex?: number
+export type RateMultiplier =
+  | "cost"
+  | "cost2"
+  | "capacity cost"
+  | "cost avail"
+  | "cost avail3"
+  | "cost modifier avail"
+  | "cost avail capacity modifier"
+  | "essence cost"
+  | "essence cost modifier"
+  | "essence cost defenseRating"
+  | "essence capacity cost"
+
+export type Choice =
+  | "ADEPT_POWER"
+  | "SPELL_CATEGORY"
+  | "SPIRIT"
+  | "MELEE_WEAPON"
+  | "WEAPON"
+  | "SKILL"
+  | "PHYSICAL SKILL"
+  | "NAME"
+
+export interface UseAs {
+  type?: string
+  subtype?: string
+  // where it goes when installed in other gear, and how much room it takes
+  slot?: string
+  capacity?: number
+  essence?: number | string
+  // what it costs when bought this way, if different from the gear
+  cost?: number
+  availability?: string
+  maxRating?: number
+}
+
+// A place on gear that mods can be installed
+export interface Hook {
+  hook: string
+  capacity?: number
 }
 
 export interface AttackRatingModifier {
   attribute: string
-  attackRating?: attackRating
+  attackRating?: AttackRating
   value?: number
   type?: string
   modType?: string
@@ -57,89 +118,118 @@ export interface AttackRatingModifier {
   condIndex?: number
 }
 
-export interface GearMod<
-  UseAs = (AsModAccessory | AsCyberwareInstall)[],
-> extends Gear {
-  useAs?: UseAs
-  modifications?: {
-    attrmod?: AttackRatingModifier[]
-    itemattrmod?: (ItemAttributeMod | AttackRatingModifier)[]
-    itemhookmod?: GearModHooks[]
-    accessorymod?: AccessoryMod[]
-    edgemod?: EdgeMod[]
-    skillmod?: SkillMod[]
-    itemmod?: ItemAccessory[]
-    dmgtypemod?: { type: "PHYSICAL" | "STUN" }
-    qualitymod?: {
-      ref: string
-    }
-    lifecostmod?: {
-      percent: number
-    }
-    relevancemod?: RelevanceMod
-  }
+interface ItemAttributeModifier {
+  attr: string
+  val?: number
+  objVal?: string
+  slot?: string
+  cond?: true
+  condindex?: number
 }
 
-interface ItemRequired {
+interface AccessoryMod {
+  hook: string
   item: string
+  included?: true
+  rating?: number
 }
 
-type WeaponSlot =
-  | "TOP"
-  | "BARREL"
-  | "UNDER"
-  | "STOCK"
-  | "FIREARMS EXTERNAL"
-  | "CYBERLIMB IMPLANT"
-
-export interface GearModUseAs<SlotType = string> extends Partial<GearTypes> {
-  slot?: SlotType
-  capacity?: number
+interface SkillMod {
+  ref: string
+  val?: number
+  modType?: string
+  cond?: true
+  condIndex?: number
 }
 
-export interface ArmorMod extends GearWithRating {
-  useAs: [GearModUseAs<"ARMOR">]
-  requires?: {
-    itemreq: ItemRequirement
-  }
-}
-
-export interface FirearmMod
-  extends GearMod<GearModUseAs<WeaponSlot>[]>, Partial<GearTypes> {
-  requires?: {
-    itemsubtypereq?: {
-      type: string
-    }
-    itemtypereq?: {
-      type: string
-    }
-    itemreq?: ItemRequired[]
-    slotreq?: {
-      slot: WeaponSlot
-    }
-  }
-  multi?: true
-}
-interface ItemRequirement {
+interface ItemMod {
   item: string
+  rating?: number
+  remove?: true
 }
 
-export interface GearDroneMod extends GearTyped {
-  requires: {
-    slotreq: GearModUseAs
-    itemreq?: ItemRequirement
-  }
-  modifications?: {
-    itemhookmod: GearModHooks[]
-    accessorymod?: {
-      hook: string
-      item: string
-    }[]
-  }
-  multi?: true
+export interface Modifications {
+  itemhookmod?: Hook[]
+  attrmod?: AttackRatingModifier[]
+  itemattrmod?: (ItemAttributeModifier | AttackRatingModifier)[]
+  accessorymod?: AccessoryMod[]
+  edgemod?: { type: "BONUS"; skill: string }[]
+  skillmod?: SkillMod[]
+  itemmod?: ItemMod[]
+  dmgtypemod?: { type: "PHYSICAL" | "STUN" }
+  qualitymod?: { ref: string }
+  lifecostmod?: { percent: number }
+  relevancemod?: { topic: string }
+  moditemmod?: { ref: string }
+  powermod?: string
 }
 
-export interface GearDrones extends Gear, GearTypes {
+export interface Requirements {
+  itemreq?: { item: string }
+  itemtypereq?: { type: string }
+  itemsubtypereq?: { type: string }
+  slotreq?: UseAs
+  attrreq?: { attribute: string; value: number }
+}
+
+export interface GearArmor extends Gear {
+  armor: {
+    rating: number
+    social?: number
+    // adds to other armor instead of replacing it
+    add?: true
+  }
+}
+
+export interface GearCyberware extends Gear {
+  language?: "fr" | "de" | "en"
+  modOnly?: true
+  cyberdeck?: {
+    dataProcessing: number
+    firewall: number
+    initative: number
+  }
+  mods?: GearCyberware[]
+}
+
+export interface GearFocus extends Gear {
+  karma: number
+}
+
+type AttackRating = [
+  close: number,
+  near: number,
+  medium: number,
+  far: number,
+  extreme: number,
+]
+
+interface Weapon {
+  dv: string
+  ar: AttackRating
+  skill: string
+  specialization?: string
+}
+
+interface Firearm extends Weapon {
+  mode: string
+  ammo: string
+  nowifi?: true
+}
+
+export interface GearWeapon extends Gear {
+  weapon: Weapon
+}
+
+export interface GearProjectile extends Gear {
+  weapon: Weapon | Firearm
+}
+
+export interface GearFirearm extends Gear {
+  weapon: Firearm
+}
+
+export interface GearVehicle extends Gear {
   vehicle: {
     handling: string
     acceleration: number
@@ -151,271 +241,24 @@ export interface GearDrones extends Gear, GearTypes {
     sensor: number
     seat?: number
   }
-  modifications?: {
-    itemattrmod?: {
-      attr: "CAPACITY"
-      slot: "VEHICLEBODY"
-      val: number
-    }[]
-    accessorymod?: {
-      item: "Weapon Mount Standard"
-      hook: "VEHICLEBODY"
-    }[]
-  }
-  mods?: GearDroneMod[]
 }
 
-export interface GearModRated extends GearMod, GearTyped {}
-
-interface AsModAccessory extends GearModUseAs, Partial<Gear> {}
-
-interface AsCyberwareInstall extends Omit<AsModAccessory, "slot"> {
-  essence?: number
-  maxRating?: number
-}
-
-export interface GearTools extends Gear {
-  useAs: GearTypes[]
-  choice: "SKILL"
-}
-
-interface MatrixAttributes {
-  programs: number
-}
-
-interface MatrixAttributesCommlinks extends MatrixAttributes {
-  dataProcessing: number
-  firewall: number
-}
-
-interface MatrixAttributesCyberdeck extends MatrixAttributes {
-  attack: number
-  sleaze: number
-}
-
-export interface GearWithRating extends Gear {
-  minRating?: number
-  maxRating?: number
-  rating?: true
-  currentRating?: number
-  rateMultiplier?:
-    | "cost"
-    | "capacity cost"
-    | "cost2"
-    | "cost avail"
-    | "essence cost"
-    // | "essence cost2"
-    | "essence capacity cost"
-    | "essence cost modifier"
-    | "essence cost defenseRating"
-    | "cost avail capacity modifier"
-    | "cost avail3"
-    | "cost modifier avail"
-  count?: true
-}
-
-export interface GearTyped extends GearWithRating, GearTypes {}
-
-interface SkillMod {
-  ref: string
-  cond?: true
-  condIndex?: number
-  val?: number
-  modType?: string
-}
-
-interface RelevanceMod {
-  topic: string
-}
-
-interface FocusModifications {
-  skillmod?: SkillMod[]
-  relevancemod?: RelevanceMod
-  powermod?: string
-}
-
-export interface GearFocus extends GearWithRating {
-  karma: number
-  modifications?: FocusModifications
-  choice?: "ADEPT_POWER" | "SPELL_CATEGORY" | "SPIRIT" | "MELEE_WEAPON"
-}
-
-export interface ModifiableGear<M = (GearMod & Partial<GearModRated>)[]> {
-  // TODO: Stop being a typescript hack
-  mods?: M
-}
-
-export interface GearModdableRated
-  extends GearTyped, ModifiableGear, GearMod<Partial<GearModUseAs>[]> {}
-
-export interface GearAugmentationUseAs extends GearTypes {
-  essence: string
-}
-
-interface EdgeMod {
-  type: "BONUS"
-  skill: string
-}
-export interface GearAugmentation<UseAs = GearAugmentationUseAs>
-  extends GearMod<UseAs>, GearWithRating, Partial<GearTypes> {
-  essence?: number
-}
-
-export interface GearCyberware
-  extends
-    GearAugmentation<Array<GearAugmentationUseAs | GearModUseAs>>,
-    ModifiableGear<GearCyberware[]> {
-  language?: "fr" | "de" | "en"
-  modOnly?: true
-  cyberdeck?: {
-    dataProcessing: number
-    firewall: number
-    initative: number
-  }
-}
-
-export interface GearBioware extends GearAugmentation<GearAugmentationUseAs[]> {
-  choice?: "PHYSICAL SKILL"
-}
-
-export interface GearElectronic extends GearTyped {
+export interface GearElectronic extends Gear {
   deviceRating: number
 }
 
-export interface GearMatrixGear extends GearElectronic {
-  useAs?: (AsAccessory | GearTypes)[]
-  modifications: { itemhookmod: GearModHooks[] }
-  matrixAttributes: MatrixAttributesCommlinks | MatrixAttributesCyberdeck
-}
-
-export interface GearMatrixCommlink extends GearMatrixGear {
-  matrixAttributes: MatrixAttributesCommlinks
-}
-
-export interface GearMatrixCyberdeck extends GearMatrixGear {
-  matrixAttributes: MatrixAttributesCyberdeck
-}
-
-export interface GearElectronicAccessory extends GearElectronic {
-  requires: {
-    slotreq: {
-      slot: string
-    }
+export interface GearMatrixCommlink extends GearElectronic {
+  matrixAttributes: {
+    dataProcessing: number
+    firewall: number
+    programs: number
   }
-  useAs?: GearModUseAs[]
 }
 
-interface BaseArmor {
-  rating: number
-  social?: number
-  add?: true
-}
-
-export interface GearArmor
-  extends Gear, Partial<GearTypes>, GearMod<GearTypes[]> {
-  armor: BaseArmor
-  modonly?: true
-  mods?: ArmorMod[]
-}
-
-type attackRating = [
-  close: number,
-  near: number,
-  medium: number,
-  far: number,
-  extreme: number,
-]
-
-interface BaseWeapon {
-  dv: string
-  ar: attackRating
-  skill: string
-  specialization?: string
-}
-
-interface FireArm extends BaseWeapon {
-  mode: string
-  ammo: string
-  nowifi?: true
-}
-
-interface GearTypes {
-  type: string
-  subtype: string
-}
-
-interface AsAccessory extends GearModUseAs {
-  essence?: number
-  availability?: string
-  cost: number
-}
-
-interface AsVehicleAccessory {
-  subtype: string
-  slot: string
-}
-
-export interface GearWeaponMelee extends Gear {
-  useAs: [
-    asWeapon: GearTypes,
-    asAccessory?: AsAccessory | AsVehicleAccessory | GearTypes,
-    asVehicleAccessory?: AsVehicleAccessory,
-  ]
-  weapon: BaseWeapon
-}
-
-export interface GearWeaponsProjectile extends GearWeaponMelee {
-  requires?: {
-    attrreq: {
-      attribute: string
-      value: number
-    }
+export interface GearMatrixCyberdeck extends GearElectronic {
+  matrixAttributes: {
+    attack: number
+    sleaze: number
+    programs: number
   }
-  weapon: BaseWeapon | FireArm
-  modifications?: { itemhookmod: GearModHooks[] }
-}
-
-export interface GearModHooks {
-  capacity?: number
-  hook: string
-}
-
-interface ItemAccessory {
-  item: string
-  rating?: number
-  remove?: true
-}
-
-interface AccessoryMod extends GearModHooks, ItemAccessory {
-  included?: true
-  rating?: number
-}
-
-export interface GearWeaponFireArms extends GearWeaponMelee {
-  modonly?: true
-  requires?: {
-    itemreq: {
-      item: string
-    }
-  }
-  modifications?: {
-    itemhookmod: GearModHooks[]
-    accessorymod?: AccessoryMod[]
-    moditemmod?: {
-      ref: string
-    }
-    itemattrmod?: ItemAttributeMod[]
-  }
-  weapon: FireArm
-  mods?: FirearmMod[]
-}
-
-interface UseAsSoftware extends GearTypes {
-  slot: "SOFTWARE" | "SKILLJACK" | "SOFTWARE RIGGER" | "SOFTWARE DRONE"
-  capacity: number
-}
-
-export interface GearSoftware extends GearWithRating, GearMod<UseAsSoftware[]> {
-  choice?: "NAME" | "PHYSICAL SKILL" | "WEAPON"
-  multi?: true
 }

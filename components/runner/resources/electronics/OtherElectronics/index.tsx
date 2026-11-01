@@ -1,5 +1,5 @@
 import { otherElectronics } from "@/data/electronics"
-import { GearTyped } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import {
   Columns,
@@ -7,7 +7,7 @@ import {
   gearTableConfigOptions,
 } from "../../util"
 
-type ElectricCols = Columns<GearTyped>[]
+type ElectricCols = Columns<Gear>[]
 
 const buyCols: ElectricCols = [
   gearTableConfigOptions.buy,
@@ -28,7 +28,7 @@ const sellCols: ElectricCols = [
 ]
 
 const OtherElectronics = () => (
-  <GearPageTemplate<GearTyped>
+  <GearPageTemplate<Gear>
     gearLabel="Other Electronics"
     resourceKey="otherElectronics"
     listOfGear={otherElectronics}

@@ -1,6 +1,6 @@
-import { GearModdableRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const audio: GearModdableRated[] = [
+export const audio: Gear[] = [
   {
     type: "ELECTRONICS",
     subtype: "AUDIO",

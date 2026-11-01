@@ -1,6 +1,6 @@
 import { tools } from "@/data/tools"
 import { render, userEvent } from "@/test/testUtils"
-import { SelectSkillRow, SelectSkillProps } from "."
+import { Props, SelectSkillRow } from "."
 import {
   DispatchContext,
   gearTableConfigOptions,
@@ -9,7 +9,7 @@ import {
 
 describe("<SelectSkillRow/>", () => {
   const setup = () => {
-    const props: SelectSkillProps = {
+    const props: Props = {
         cols: [
           gearTableConfigOptions.buy,
           gearTableConfigOptions.name,

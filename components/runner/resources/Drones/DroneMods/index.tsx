@@ -1,12 +1,12 @@
 import { mods } from "@/data/vehicles"
-import { GearDroneMod } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearModPageTemplate } from "../../GearPageTemplate/GearModPageTemplate"
 import { buyDroneModCols, sellDroneModCols } from "../../util"
 
 const previousPath = { categoryPath: "drones", label: "Drones" }
 
 const DroneMods = () => (
-  <GearModPageTemplate<GearDroneMod>
+  <GearModPageTemplate<Gear>
     gearLabel="Drone Mods"
     resourceKey="drones"
     previousPath={previousPath}

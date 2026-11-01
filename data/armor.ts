@@ -1,4 +1,4 @@
-import type { ArmorMod, GearArmor } from "@/types/Resources"
+import type { Gear, GearArmor } from "@/types/Resources"
 
 const armorData: GearArmor[] = [
   {
@@ -117,6 +117,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR BODY",
     name: "Synthleather Jacket",
     availability: "1",
     cost: 300,
@@ -141,6 +143,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR SOCIAL",
     name: "Actioneer Business",
     availability: "2",
     cost: 1500,
@@ -165,6 +169,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR SOCIAL",
     name: "Armor Clothing",
     availability: "2",
     cost: 500,
@@ -189,6 +195,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR BODY",
     name: "Armor Jacket",
     availability: "2",
     cost: 1000,
@@ -213,6 +221,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR BODY",
     name: "Armor Vest",
     availability: "4",
     cost: 750,
@@ -237,6 +247,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR BODY",
     name: "Chameleon Suit",
     availability: "4I",
     cost: 2000,
@@ -261,6 +273,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR BODY",
     name: "Full Body Armor",
     availability: "4L",
     cost: 2000,
@@ -285,6 +299,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR HELMET",
     name: "Full Body Armor Helmet",
     availability: "0",
     cost: 500,
@@ -309,6 +325,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR BODY",
     name: "Lined Coat",
     availability: "4",
     cost: 900,
@@ -333,6 +351,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR BODY",
     name: "Urban Explorer Jumpsuit",
     availability: "2",
     cost: 800,
@@ -357,6 +377,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR HELMET",
     availability: "1",
     cost: 200,
     name: "Helmet",
@@ -382,6 +404,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR SHIELD",
     availability: "4",
     cost: 900,
     name: "Ballistic Shield",
@@ -410,6 +434,8 @@ const armorData: GearArmor[] = [
     },
   },
   {
+    type: "ARMOR",
+    subtype: "ARMOR SHIELD",
     availability: "4",
     cost: 1200,
     name: "Riot Shield",
@@ -439,8 +465,10 @@ const armorData: GearArmor[] = [
   },
 ]
 
-export const mods: ArmorMod[] = [
+export const mods: Gear[] = [
   {
+    type: "ACCESSORY",
+    subtype: "ARMOR BODY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -457,6 +485,8 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "ARMOR BODY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -476,6 +506,8 @@ export const mods: ArmorMod[] = [
     reference: [{ book: "SR6", page: 266 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "ARMOR BODY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -492,6 +524,8 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "ARMOR BODY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -508,6 +542,8 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "ARMOR BODY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -524,6 +560,8 @@ export const mods: ArmorMod[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "ARMOR BODY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -538,6 +576,8 @@ export const mods: ArmorMod[] = [
     reference: [{ book: "SR6", page: 266 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "ARMOR BODY",
     useAs: [
       {
         type: "ACCESSORY",

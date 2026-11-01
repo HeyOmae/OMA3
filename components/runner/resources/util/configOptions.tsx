@@ -1,23 +1,17 @@
 import { Columns, getEssenceFromGear, getModCapacity } from "../util"
 import {
   Gear,
-  GearBioware,
   GearCyberware,
-  GearDroneMod,
-  GearDrones,
+  GearVehicle,
   GearFocus,
-  GearMod,
-  GearModRated,
-  GearTools,
-  GearTyped,
-  GearWeaponMelee,
+  GearWeapon,
 } from "@/types/Resources"
 import {
   AddResourceButton,
   ModLinkButton,
   RemoveResourceButton,
   SettingRating,
-  SkillSelect,
+  RowSkillSelect,
 } from "../GearPageTemplate/GearTable/ResourceButtons"
 import { ChoiceSelect } from "../GearPageTemplate/GearTable/ResourceButtons/ChoiceSelect"
 
@@ -57,7 +51,7 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
 
 export const gearModableTableConfigOptions = {
   mod: {
-    display: (gear: GearMod, index: number) =>
+    display: (gear: Gear, index: number) =>
       getModCapacity(gear) > 0 ?
         <ModLinkButton gear={gear} index={index} />
       : "N/A",
@@ -73,52 +67,52 @@ export const gearModableTableConfigOptions = {
 
 export const gearDroneTableConfigOptions = {
   type: {
-    display: (gear: GearDrones) => gear.type,
+    display: (gear: GearVehicle) => gear.type,
     label: "Type",
   },
   subtype: {
-    display: (gear: GearDrones) => gear.subtype,
+    display: (gear: GearVehicle) => gear.subtype,
     label: "Type",
   },
   handling: {
-    display: (gear: GearDrones) => gear.vehicle.handling,
+    display: (gear: GearVehicle) => gear.vehicle.handling,
     label: "Hand",
   },
   accel: {
-    display: (gear: GearDrones) => gear.vehicle.acceleration,
+    display: (gear: GearVehicle) => gear.vehicle.acceleration,
     label: "Accel",
   },
   speedInt: {
-    display: (gear: GearDrones) => gear.vehicle.speedInterval,
+    display: (gear: GearVehicle) => gear.vehicle.speedInterval,
     label: "Speed Int",
   },
   topSpeed: {
-    display: (gear: GearDrones) => gear.vehicle.topSpeed,
+    display: (gear: GearVehicle) => gear.vehicle.topSpeed,
     label: "Top Speed",
   },
   body: {
-    display: (gear: GearDrones) => gear.vehicle.body,
+    display: (gear: GearVehicle) => gear.vehicle.body,
     label: "Body",
   },
   armor: {
-    display: (gear: GearDrones) => gear.vehicle.armor,
+    display: (gear: GearVehicle) => gear.vehicle.armor,
     label: "Armor",
   },
   pilot: {
-    display: (gear: GearDrones) => gear.vehicle.pilot,
+    display: (gear: GearVehicle) => gear.vehicle.pilot,
     label: "Pilot",
   },
   sensor: {
-    display: (gear: GearDrones) => gear.vehicle.sensor,
+    display: (gear: GearVehicle) => gear.vehicle.sensor,
     label: "Sensor",
   },
   seat: {
-    display: (gear: GearDrones) => gear.vehicle.seat,
+    display: (gear: GearVehicle) => gear.vehicle.seat,
     label: "Seat",
   },
 }
 
-export const gearRatingTableConfigOption: Record<string, Columns<GearTyped>> = {
+export const gearRatingTableConfigOption: Record<string, Columns<Gear>> = {
   category: {
     display: (gear) => gear.subtype,
     label: "Category",
@@ -159,14 +153,12 @@ export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
   },
 }
 
-export const gearToolsConfigOptionSetSkill: Columns<GearTools, string> = {
-  display: (gear, index, setSkill, selectedSkill) => (
-    <SkillSelect selected={selectedSkill} setSelected={setSkill} />
-  ),
+export const gearToolsConfigOptionSetSkill: Columns<Gear> = {
+  display: () => <RowSkillSelect />,
   label: "Select Skill",
 }
 
-export const gearCapacityConfigOption: Columns<GearMod & GearModRated> = {
+export const gearCapacityConfigOption: Columns<Gear & Gear> = {
   display: (gear) =>
     `[${
       gear.currentRating ??
@@ -175,10 +167,7 @@ export const gearCapacityConfigOption: Columns<GearMod & GearModRated> = {
   label: "Capacity",
 }
 
-export const gearMeleeTableConfigOption: Record<
-  string,
-  Columns<GearWeaponMelee>
-> = {
+export const gearMeleeTableConfigOption: Record<string, Columns<GearWeapon>> = {
   dv: {
     display: (gear) => gear.weapon.dv,
     label: "DV",
@@ -190,7 +179,7 @@ export const gearMeleeTableConfigOption: Record<
 }
 
 // extremely specific configs
-type gearWithRatingCols = Columns<GearTyped>[]
+type gearWithRatingCols = Columns<Gear>[]
 
 export const buyGearWithRatingCol: gearWithRatingCols = [
   gearTableConfigOptions.buy,
@@ -222,7 +211,7 @@ export const sellGearWithoutRatingCol: gearWithRatingCols = [
   gearTableConfigOptions.cost,
 ]
 
-const baseDroneStatsConfigOptions: Columns<GearDrones>[] = [
+const baseDroneStatsConfigOptions: Columns<GearVehicle>[] = [
   gearDroneTableConfigOptions.handling,
   gearDroneTableConfigOptions.accel,
   gearDroneTableConfigOptions.speedInt,
@@ -233,7 +222,7 @@ const baseDroneStatsConfigOptions: Columns<GearDrones>[] = [
   gearDroneTableConfigOptions.sensor,
 ]
 
-export const buyGearDronesCols: Columns<GearDrones>[] = [
+export const buyGearDronesCols: Columns<GearVehicle>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
   gearDroneTableConfigOptions.type,
@@ -242,7 +231,7 @@ export const buyGearDronesCols: Columns<GearDrones>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export const sellGearDronesCols: Columns<GearDrones>[] = [
+export const sellGearDronesCols: Columns<GearVehicle>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
   gearDroneTableConfigOptions.type,
@@ -251,7 +240,7 @@ export const sellGearDronesCols: Columns<GearDrones>[] = [
   gearModableTableConfigOptions.alwaysMod,
 ]
 
-export const buyGearVehiclesCols: Columns<GearDrones>[] = [
+export const buyGearVehiclesCols: Columns<GearVehicle>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
   gearDroneTableConfigOptions.subtype,
@@ -261,7 +250,7 @@ export const buyGearVehiclesCols: Columns<GearDrones>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export const sellGearVehiclesCols: Columns<GearDrones>[] = [
+export const sellGearVehiclesCols: Columns<GearVehicle>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
   gearDroneTableConfigOptions.subtype,
@@ -271,7 +260,7 @@ export const sellGearVehiclesCols: Columns<GearDrones>[] = [
   gearModableTableConfigOptions.alwaysMod,
 ]
 
-type VehicleModCols = Columns<GearDroneMod>
+type VehicleModCols = Columns<Gear>
 const baseCols: VehicleModCols[] = [
   gearTableConfigOptions.name,
   gearTableConfigOptions.avail,
@@ -286,7 +275,7 @@ export const sellDroneModCols: VehicleModCols[] = [
   ...baseCols,
 ]
 
-const essenceConfigOption: Columns<GearCyberware | GearBioware> = {
+const essenceConfigOption: Columns<GearCyberware | Gear> = {
   display: (gear) => {
     const essense = gear.essence ? `${gear.essence}` : getEssenceFromGear(gear)
 
@@ -295,7 +284,7 @@ const essenceConfigOption: Columns<GearCyberware | GearBioware> = {
   label: "Ess",
 }
 
-export const buyAugmentationCols: Columns<GearCyberware | GearBioware>[] = [
+export const buyAugmentationCols: Columns<GearCyberware | Gear>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
   gearRatingTableConfigOption.setRating,
@@ -304,7 +293,7 @@ export const buyAugmentationCols: Columns<GearCyberware | GearBioware>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export const sellAugmentationCols: Columns<GearCyberware | GearBioware>[] = [
+export const sellAugmentationCols: Columns<GearCyberware | Gear>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
   gearRatingTableConfigOption.displayRating,

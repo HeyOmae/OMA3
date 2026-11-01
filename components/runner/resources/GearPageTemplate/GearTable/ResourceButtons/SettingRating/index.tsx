@@ -1,10 +1,10 @@
-import { GearWithRating } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { Slider } from "@mui/material"
 import { FC } from "react"
 
 export interface SettingRatingProps {
   setRating: (rating: number) => void
-  gear: GearWithRating
+  gear: Gear
 }
 
 export const SettingRating: FC<SettingRatingProps> = ({

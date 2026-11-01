@@ -1,6 +1,6 @@
-import { GearModdableRated, GearTyped } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const locks: GearTyped[] = [
+export const locks: Gear[] = [
   {
     availability: "2",
     cost: 10,
@@ -41,7 +41,7 @@ export const locks: GearTyped[] = [
   },
 ]
 
-export const restraints: GearTyped[] = [
+export const restraints: Gear[] = [
   {
     availability: "1",
     cost: 20,
@@ -80,7 +80,7 @@ export const restraints: GearTyped[] = [
   },
 ]
 
-export const bne: GearTyped[] = [
+export const bne: Gear[] = [
   {
     availability: "4L",
     cost: 500,
@@ -165,7 +165,7 @@ export const bne: GearTyped[] = [
   },
 ]
 
-export const chemicals: GearTyped[] = [
+export const chemicals: Gear[] = [
   {
     availability: "1",
     cost: 90,
@@ -192,7 +192,7 @@ export const chemicals: GearTyped[] = [
   },
 ]
 
-export const survival: (GearTyped | GearModdableRated)[] = [
+export const survival: (Gear | Gear)[] = [
   {
     availability: "4",
     cost: 150,
@@ -310,7 +310,7 @@ export const survival: (GearTyped | GearModdableRated)[] = [
   },
 ]
 
-export const grappleGun: GearTyped[] = [
+export const grappleGun: Gear[] = [
   {
     availability: "3",
     cost: 500,
@@ -355,7 +355,7 @@ export const grappleGun: GearTyped[] = [
   },
 ]
 
-export const toxins: GearTyped[] = [
+export const toxins: Gear[] = [
   {
     type: "CHEMICALS",
     subtype: "TOXINS",
@@ -430,7 +430,7 @@ export const toxins: GearTyped[] = [
   },
 ]
 
-export const drugs: GearTyped[] = [
+export const drugs: Gear[] = [
   {
     type: "CHEMICALS",
     subtype: "DRUGS",

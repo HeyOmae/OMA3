@@ -1,11 +1,8 @@
 import { useMemo, useState } from "react"
-import { GearWithRating } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { getEssenceFromGear } from "../../../util"
 
-const applyRating = <G extends GearWithRating>(
-  gear: G,
-  currentRating: number,
-): G => {
+const applyRating = <G extends Gear>(gear: G, currentRating: number): G => {
   const { rateMultiplier } = gear
   // Currently everything gear with rating increases cost by rating
   const cost =
@@ -22,11 +19,11 @@ const applyRating = <G extends GearWithRating>(
     currentRating,
     essence,
     cost,
-  } as G
+  }
 }
 
 // Keeps the rating of a row of gear, and returns the gear priced at that rating
-export const useRating = <G extends GearWithRating>(gear: G) => {
+export const useRating = <G extends Gear>(gear: G) => {
   const [currentRating, setRating] = useState(gear.minRating ?? 1)
   const gearWithRating = useMemo(
     () => (gear.rating ? applyRating(gear, currentRating) : gear),

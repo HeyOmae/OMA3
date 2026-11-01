@@ -1,6 +1,7 @@
 import type { StoredRunner } from "./migrations/storedRunner"
 import { useAsIsAList } from "./migrations/useAsIsAList"
 import { modificationsAreConsistent } from "./migrations/modificationsAreConsistent"
+import { typeIsOnTheGear } from "./migrations/typeIsOnTheGear"
 
 type Migration = (runner: StoredRunner) => StoredRunner
 
@@ -12,6 +13,7 @@ type Migration = (runner: StoredRunner) => StoredRunner
 export const migrations: Migration[] = [
   useAsIsAList,
   modificationsAreConsistent,
+  typeIsOnTheGear,
 ]
 
 export const migrateRunner = (

@@ -1,7 +1,9 @@
-import { GearBioware } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const bioware: GearBioware[] = [
+export const bioware: Gear[] = [
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -50,6 +52,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -82,6 +86,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -114,6 +120,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -146,6 +154,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -178,6 +188,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -196,6 +208,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -223,6 +237,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -247,6 +263,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -271,6 +289,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -299,6 +319,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -312,6 +334,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -325,6 +349,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -361,6 +387,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -398,6 +426,8 @@ export const bioware: GearBioware[] = [
   //   count: "y",
   // },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -424,6 +454,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -458,6 +490,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -482,6 +516,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE STANDARD",
     useAs: [
       {
         type: "BIOWARE",
@@ -506,6 +542,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 293 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE CULTURED",
     useAs: [
       {
         type: "BIOWARE",
@@ -530,6 +568,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE CULTURED",
     useAs: [
       {
         type: "BIOWARE",
@@ -546,6 +586,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE CULTURED",
     useAs: [
       {
         type: "BIOWARE",
@@ -567,6 +609,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE CULTURED",
     useAs: [
       {
         type: "BIOWARE",
@@ -596,6 +640,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE CULTURED",
     useAs: [
       {
         type: "BIOWARE",
@@ -633,6 +679,8 @@ export const bioware: GearBioware[] = [
     reference: [{ book: "SR6", page: 294 }],
   },
   {
+    type: "BIOWARE",
+    subtype: "BIOWARE CULTURED",
     modifications: {
       attrmod: [
         {

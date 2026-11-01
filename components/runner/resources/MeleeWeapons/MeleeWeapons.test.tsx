@@ -68,6 +68,8 @@ describe("<MeleeWeapons/>", () => {
     await waitFor(() => {
       expect(runnerFromDB(7).resources.melee).toEqual([
         {
+          type: "WEAPON CLOSE COMBAT",
+          subtype: "BLADES",
           name: "Katana",
           availability: "3",
           cost: 350,

@@ -1,5 +1,5 @@
 import { softwareData } from "@/data/electronics"
-import { GearSoftware } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import { ChoiceSelect } from "../../GearPageTemplate/GearTable/ResourceButtons/ChoiceSelect"
 import { NameInput } from "../../GearPageTemplate/GearTable/ResourceButtons/NameInput"
@@ -9,9 +9,9 @@ import {
   gearTableConfigOptions,
 } from "../../util"
 
-type SoftwareCols = Columns<GearSoftware>[]
+type SoftwareCols = Columns<Gear>[]
 
-const softwareCols: Record<string, Columns<GearSoftware>> = {
+const softwareCols: Record<string, Columns<Gear>> = {
   choice: {
     display: ({ choice }) => {
       switch (choice) {
@@ -65,7 +65,7 @@ const sellCols: SoftwareCols = [
 ]
 
 const Software = () => (
-  <GearPageTemplate<GearSoftware>
+  <GearPageTemplate<Gear>
     gearLabel="Software"
     resourceKey="software"
     listOfGear={softwareData}

@@ -1,11 +1,11 @@
-import { GearWeaponMelee } from "@/types/Resources"
+import { GearWeapon } from "@/types/Resources"
 import {
   gearTableConfigOptions,
   gearMeleeTableConfigOption,
   Columns,
 } from "../util"
 
-export const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
+export const baseMeleeTableConfig: Columns<GearWeapon>[] = [
   gearTableConfigOptions.name,
   gearMeleeTableConfigOption.dv,
   gearMeleeTableConfigOption.ar,
@@ -14,11 +14,11 @@ export const baseMeleeTableConfig: Columns<GearWeaponMelee>[] = [
   gearTableConfigOptions.cost,
 ]
 
-export const addMeleeTableConfig: Columns<GearWeaponMelee>[] = [
+export const addMeleeTableConfig: Columns<GearWeapon>[] = [
   gearTableConfigOptions.buy,
   ...baseMeleeTableConfig,
 ]
-export const removeMeleeTableConfig: Columns<GearWeaponMelee>[] = [
+export const removeMeleeTableConfig: Columns<GearWeapon>[] = [
   gearTableConfigOptions.sell,
   ...baseMeleeTableConfig,
 ]

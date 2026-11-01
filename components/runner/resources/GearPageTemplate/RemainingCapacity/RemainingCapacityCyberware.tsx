@@ -1,4 +1,4 @@
-import { GearCyberware, GearModUseAs } from "@/types/Resources"
+import { GearCyberware, UseAs } from "@/types/Resources"
 import { FC, useMemo } from "react"
 import { getModCapacity } from "../../util"
 
@@ -11,8 +11,8 @@ export const RemainingCapacityCyberware: FC<Props> = ({ gear }) => {
     const capacity = getModCapacity(gear)
     const usedCapacity =
       gear.mods?.reduce((currentCapacity, { useAs, currentRating }) => {
-        const modCapacity: GearModUseAs = useAs.find(
-          (useage: GearModUseAs) => "capacity" in useage,
+        const modCapacity: UseAs = useAs.find(
+          (useage: UseAs) => "capacity" in useage,
         )
         return currentCapacity + (currentRating ?? modCapacity.capacity)
       }, 0) ?? 0

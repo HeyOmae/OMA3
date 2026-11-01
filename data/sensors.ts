@@ -1,6 +1,6 @@
-import { GearModdableRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const sensors: GearModdableRated[] = [
+export const sensors: Gear[] = [
   {
     type: "ELECTRONICS",
     subtype: "SENSOR HOUSING",

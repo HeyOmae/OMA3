@@ -1,12 +1,12 @@
-import { FC, useMemo, useState } from "react"
-import { Gear, GearTyped } from "@/types/Resources"
+import { createContext, FC, useMemo, useState } from "react"
+import { Gear } from "@/types/Resources"
 import { TableCell, TableRow } from "@mui/material"
 import { Columns } from "../../../util"
 import { useRating } from "./useRating"
 import skillData from "@/data/skills.json"
 
 export interface Props {
-  cols: Columns<Gear, unknown>[]
+  cols: Columns<Gear>[]
   gear: Gear
   index: number
 }
@@ -19,12 +19,7 @@ export const StandardDisplayRow: FC<Props> = ({ cols, gear, index }) => (
   </TableRow>
 )
 
-interface RatingRowProps extends Props {
-  cols: Columns<GearTyped>[]
-  gear: GearTyped
-}
-
-export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
+export const RatingRow: FC<Props> = ({ cols, gear, index }) => {
   const [gearWithRating, setRating] = useRating(gear)
 
   // Cols live at /components/runner/resources/util/configOptions.tsx
@@ -40,11 +35,14 @@ export const RatingRow: FC<RatingRowProps> = ({ cols, gear, index }) => {
   )
 }
 
-export interface SelectSkillProps extends Props {
-  cols: Columns<Gear, string>[]
+interface SkillContextValue {
+  selectedSkill: string
+  setSkill: (skill: string) => void
 }
 
-export const SelectSkillRow: FC<SelectSkillProps> = ({ cols, gear, index }) => {
+export const SkillContext = createContext<SkillContextValue>(null)
+
+export const SelectSkillRow: FC<Props> = ({ cols, gear, index }) => {
   const [selectedSkill, setSkill] = useState(skillData[0].name)
   const gearWithSkillName = useMemo(
     () => ({
@@ -55,12 +53,12 @@ export const SelectSkillRow: FC<SelectSkillProps> = ({ cols, gear, index }) => {
   )
 
   return (
-    <TableRow>
-      {cols.map(({ display, label }) => (
-        <TableCell key={label}>
-          {display(gearWithSkillName, index, setSkill, selectedSkill)}
-        </TableCell>
-      ))}
-    </TableRow>
+    <SkillContext.Provider value={{ selectedSkill, setSkill }}>
+      <TableRow>
+        {cols.map(({ display, label }) => (
+          <TableCell key={label}>{display(gearWithSkillName, index)}</TableCell>
+        ))}
+      </TableRow>
+    </SkillContext.Provider>
   )
 }

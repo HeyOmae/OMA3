@@ -1,11 +1,6 @@
 import { createContext } from "react"
 import { DispatchAction, RunnerReducer } from "@/hooks/useRunnerAccess"
-import {
-  Gear,
-  GearAugmentationUseAs,
-  GearModHooks,
-  GearModUseAs,
-} from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
 export const updateGearList = (list: Gear[] = [], payload: Gear | number) => {
   if (typeof payload === "number") {
@@ -41,18 +36,11 @@ export interface RemoveGearButtonProps extends AddGearButtonProps {
   index: number
 }
 
-const hasEssence = (
-  useAs: GearAugmentationUseAs | GearModUseAs,
-): useAs is GearAugmentationUseAs => "essence" in useAs
-
-export const getEssenceFromGear = (
-  gear: Gear & { useAs?: (GearAugmentationUseAs | GearModUseAs)[] },
-) => gear.useAs?.find(hasEssence)?.essence
+export const getEssenceFromGear = (gear: Gear) =>
+  gear.useAs?.find(({ essence }) => essence !== undefined)?.essence
 
 // how much capacity a piece of gear has for mods
-export const getModCapacity = (gear: {
-  modifications?: { itemhookmod?: GearModHooks[] }
-}) =>
+export const getModCapacity = (gear: Gear) =>
   gear.modifications?.itemhookmod?.find(
     ({ capacity }) => capacity !== undefined,
   )?.capacity

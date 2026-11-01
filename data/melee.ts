@@ -1,8 +1,10 @@
-import { GearWeaponMelee } from "../types/Resources"
+import { GearWeapon } from "../types/Resources"
 
 // complex types and JSON don't play nice.
-const meleeWeapons: GearWeaponMelee[] = [
+const meleeWeapons: GearWeapon[] = [
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Combat Axe",
     availability: "4",
     cost: 500,
@@ -29,6 +31,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Combat Knife",
     availability: "2",
     cost: 220,
@@ -47,6 +51,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Survival Knife",
     availability: "2",
     cost: 220,
@@ -65,6 +71,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Forearm Snap Blades",
     availability: "3",
     cost: 185,
@@ -83,6 +91,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Knife",
     availability: "1",
     cost: 20,
@@ -109,6 +119,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Katana",
     availability: "3",
     cost: 350,
@@ -135,6 +147,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Polearm",
     availability: "2",
     cost: 210,
@@ -153,6 +167,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "BLADES",
     name: "Sword",
     availability: "3",
     cost: 320,
@@ -179,6 +195,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "CLUBS",
     name: "Club",
     availability: "1",
     cost: 65,
@@ -197,6 +215,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "CLUBS",
     name: "Extendable Baton",
     availability: "2",
     cost: 50,
@@ -215,6 +235,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "CLUBS",
     name: "Sab",
     availability: "1",
     cost: 75,
@@ -233,6 +255,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "CLUBS",
     name: "Staff",
     availability: "1",
     cost: 150,
@@ -251,6 +275,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "CLUBS",
     name: "Stun Baton",
     availability: "2",
     cost: 600,
@@ -277,6 +303,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "CLUBS",
     name: "Telescopic Staff",
     availability: "2",
     cost: 250,
@@ -295,6 +323,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "UNARMED",
     name: "Bike Chain",
     availability: "1",
     cost: 15,
@@ -313,6 +343,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "WHIPS",
     name: "Bullwhip",
     availability: "4",
     cost: 255,
@@ -330,6 +362,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "UNARMED",
     name: "Knucks",
     availability: "1",
     cost: 100,
@@ -348,6 +382,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "UNARMED",
     name: "Shock Gloves",
     availability: "4",
     cost: 790,
@@ -366,6 +402,8 @@ const meleeWeapons: GearWeaponMelee[] = [
     },
   },
   {
+    type: "WEAPON CLOSE COMBAT",
+    subtype: "WHIPS",
     name: "Monofilament Whip",
     availability: "6I",
     cost: 1300,

@@ -1,9 +1,9 @@
-import { GearWeaponFireArms } from "@/types/Resources"
+import { GearFirearm } from "@/types/Resources"
 import { FC } from "react"
 import { formatModWithRating } from "./utils"
 
 interface FirearmsTableProps {
-  gearRow: GearWeaponFireArms[]
+  gearRow: GearFirearm[]
 }
 
 export const FirearmsTable: FC<FirearmsTableProps> = ({ gearRow }) => (

@@ -157,6 +157,8 @@ export const mockedRunners: Runner[] = [
     resources: {
       cyberware: [
         {
+          type: "CYBERWARE",
+          subtype: "CYBER HEADWARE",
           useAs: [
             {
               type: "CYBERWARE",
@@ -188,6 +190,8 @@ export const mockedRunners: Runner[] = [
       ],
       bioware: [
         {
+          type: "BIOWARE",
+          subtype: "BIOWARE CULTURED",
           useAs: [
             {
               type: "BIOWARE",
@@ -713,6 +717,8 @@ export const mockedRunners: Runner[] = [
     resources: {
       melee: [
         {
+          type: "WEAPON CLOSE COMBAT",
+          subtype: "BLADES",
           name: "Katana",
           availability: "3",
           cost: 350,
@@ -738,6 +744,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "WEAPON CLOSE COMBAT",
+          subtype: "BLADES",
           name: "Combat Knife",
           availability: "2",
           cost: 220,
@@ -757,6 +765,8 @@ export const mockedRunners: Runner[] = [
       ],
       projectile: [
         {
+          type: "WEAPON RANGED",
+          subtype: "BOWS",
           name: "Bow10",
           availability: "3L",
           cost: 200,
@@ -792,6 +802,8 @@ export const mockedRunners: Runner[] = [
       ],
       firearms: [
         {
+          type: "WEAPON FIREARMS",
+          subtype: "TASERS",
           name: "Yamaha Pulsar 1",
           availability: "1",
           cost: 325,
@@ -818,6 +830,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "WEAPON FIREARMS",
+          subtype: "HOLDOUTS",
           name: "Streetline Special",
           availability: "2",
           cost: 325,
@@ -837,6 +851,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "WEAPON FIREARMS",
+          subtype: "PISTOLS LIGHT",
           availability: "2L",
           cost: 260,
           name: "Beretta 101T",
@@ -866,6 +882,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "WEAPON FIREARMS",
+          subtype: "PISTOLS HEAVY",
           availability: "2L",
           cost: 640,
           name: "Browning Ultra Power",
@@ -902,6 +920,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "WEAPON FIREARMS",
+          subtype: "SUBMACHINE GUNS",
           availability: "2L",
           cost: 450,
           name: "Uzi Iv",
@@ -945,6 +965,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "WEAPON FIREARMS",
+          subtype: "RIFLE ASSAULT",
           availability: "3L",
           cost: 2100,
           name: "FN Har",
@@ -992,6 +1014,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "WEAPON FIREARMS",
+          subtype: "PISTOLS HEAVY",
           availability: "2L",
           cost: 725,
           name: "Ares Predator 6",
@@ -1021,6 +1045,8 @@ export const mockedRunners: Runner[] = [
           },
           mods: [
             {
+              type: "ACCESSORY",
+              subtype: "FIREARMS EXTERNAL",
               useAs: [
                 {
                   type: "ACCESSORY",
@@ -1034,6 +1060,8 @@ export const mockedRunners: Runner[] = [
               name: "Suppressor",
             },
             {
+              type: "ACCESSORY",
+              subtype: "FIREARMS EXTERNAL",
               useAs: [
                 {
                   type: "ACCESSORY",
@@ -1070,6 +1098,8 @@ export const mockedRunners: Runner[] = [
           currentRating: 3,
           mods: [
             {
+              type: "ACCESSORY",
+              subtype: "OPTICAL",
               useAs: [
                 {
                   type: "ACCESSORY",
@@ -1149,6 +1179,8 @@ export const mockedRunners: Runner[] = [
           rateMultiplier: "capacity cost",
           mods: [
             {
+              type: "ACCESSORY",
+              subtype: "SENSOR",
               useAs: [
                 {
                   type: "ACCESSORY",
@@ -1205,6 +1237,8 @@ export const mockedRunners: Runner[] = [
       ],
       armor: [
         {
+          type: "ARMOR",
+          subtype: "ARMOR BODY",
           name: "Full Body Armor",
           availability: "4L",
           cost: 2000,
@@ -1228,6 +1262,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "ARMOR",
+          subtype: "ARMOR HELMET",
           name: "Full Body Armor Helmet",
           availability: "0",
           cost: 500,
@@ -1251,6 +1287,8 @@ export const mockedRunners: Runner[] = [
           },
         },
         {
+          type: "ARMOR",
+          subtype: "ARMOR BODY",
           name: "Lined Coat",
           availability: "4",
           cost: 900,
@@ -1274,6 +1312,8 @@ export const mockedRunners: Runner[] = [
           },
           mods: [
             {
+              type: "ACCESSORY",
+              subtype: "ARMOR BODY",
               useAs: [
                 {
                   type: "ACCESSORY",
@@ -1290,6 +1330,8 @@ export const mockedRunners: Runner[] = [
               currentRating: 3,
             },
             {
+              type: "ACCESSORY",
+              subtype: "ARMOR BODY",
               useAs: [
                 {
                   type: "ACCESSORY",
@@ -1310,6 +1352,8 @@ export const mockedRunners: Runner[] = [
       ],
       cyberware: [
         {
+          type: "CYBERWARE",
+          subtype: "CYBER EYEWARE",
           useAs: [
             {
               type: "CYBERWARE",
@@ -1342,6 +1386,8 @@ export const mockedRunners: Runner[] = [
           name: "Cybereye 3",
         },
         {
+          type: "CYBERWARE",
+          subtype: "CYBER BODYWARE",
           modifications: {
             attrmod: [
               {
@@ -1368,6 +1414,8 @@ export const mockedRunners: Runner[] = [
           name: "Wired Reflexes 2",
         },
         {
+          type: "CYBERWARE",
+          subtype: "CYBER BODYWARE",
           useAs: [
             {
               type: "CYBERWARE",
@@ -1607,6 +1655,8 @@ export const mockedRunners: Runner[] = [
       ],
       bioware: [
         {
+          type: "BIOWARE",
+          subtype: "BIOWARE STANDARD",
           useAs: [
             {
               type: "BIOWARE",
@@ -1631,6 +1681,8 @@ export const mockedRunners: Runner[] = [
           currentRating: 3,
         },
         {
+          type: "BIOWARE",
+          subtype: "BIOWARE STANDARD",
           useAs: [
             {
               type: "BIOWARE",
@@ -1648,6 +1700,8 @@ export const mockedRunners: Runner[] = [
           cost: 4000,
         },
         {
+          type: "BIOWARE",
+          subtype: "BIOWARE STANDARD",
           useAs: [
             {
               type: "BIOWARE",
@@ -1681,6 +1735,8 @@ export const mockedRunners: Runner[] = [
       ],
       cyberware: [
         {
+          type: "CYBERWARE",
+          subtype: "CYBER BODYWARE",
           useAs: [
             {
               type: "CYBERWARE",
@@ -1709,6 +1765,8 @@ export const mockedRunners: Runner[] = [
           currentRating: 2,
         },
         {
+          type: "CYBERWARE",
+          subtype: "CYBER LIMBS",
           useAs: [
             {
               type: "CYBERWARE",
@@ -1750,6 +1808,8 @@ export const mockedRunners: Runner[] = [
           name: "Cyberarm Obvious",
           mods: [
             {
+              type: "CYBERWARE",
+              subtype: "CYBER BODYWARE",
               useAs: [
                 {
                   type: "CYBERWARE",
@@ -1768,6 +1828,8 @@ export const mockedRunners: Runner[] = [
               name: "Fingertip Compartment",
             },
             {
+              type: "CYBERWARE",
+              subtype: "CYBER BODYWARE",
               useAs: [
                 {
                   type: "CYBERWARE",
@@ -1793,6 +1855,8 @@ export const mockedRunners: Runner[] = [
               name: "Grapple Gun Augment",
             },
             {
+              type: "CYBERWARE",
+              subtype: "CYBER BODYWARE",
               useAs: [
                 {
                   type: "CYBERWARE",
@@ -1811,6 +1875,8 @@ export const mockedRunners: Runner[] = [
               name: "Smuggling Compartment",
             },
             {
+              type: "ACCESSORY",
+              subtype: "CYBER LIMB ENHANCEMENT",
               useAs: [
                 {
                   type: "ACCESSORY",
@@ -1840,6 +1906,8 @@ export const mockedRunners: Runner[] = [
           ],
         },
         {
+          type: "CYBERWARE",
+          subtype: "CYBER HEADWARE",
           useAs: [
             {
               type: "CYBERWARE",
@@ -1973,6 +2041,8 @@ export const mockedRunners: Runner[] = [
     resources: {
       bioware: [
         {
+          type: "BIOWARE",
+          subtype: "BIOWARE CULTURED",
           modifications: {
             attrmod: [
               {
@@ -2113,6 +2183,8 @@ export const mockedRunners: Runner[] = [
     resources: {
       cyberware: [
         {
+          type: "CYBERWARE",
+          subtype: "CYBER HEADWARE",
           useAs: [
             {
               type: "CYBERWARE",

@@ -2,6 +2,8 @@ import { GearCyberware } from "@/types/Resources"
 
 const cyberwareAll: GearCyberware[] = [
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -20,6 +22,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Flare Compensation",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -32,6 +36,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Image Link",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -50,6 +56,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Low Light Vision",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -69,6 +77,8 @@ const cyberwareAll: GearCyberware[] = [
     reference: [{ book: "SR6", page: 453 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -87,6 +97,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Thermographic Vision",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -105,6 +117,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Vision Enhancement",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -132,6 +146,8 @@ const cyberwareAll: GearCyberware[] = [
   },
 
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EARWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -150,6 +166,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Audio Enhancement",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EARWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -171,6 +189,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EARWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -189,6 +209,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Spatial Recognizer",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -269,6 +291,8 @@ const cyberwareAll: GearCyberware[] = [
   //   modOnly: true,
   // },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -287,6 +311,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cortex Kink Bomb",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -305,6 +331,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cortex Microbomb",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -323,6 +351,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cortex Area Bomb",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -352,6 +382,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberjack 1",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -381,6 +413,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberjack 2",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -410,6 +444,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberjack 3",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -439,6 +475,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberjack 4",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -499,6 +537,8 @@ const cyberwareAll: GearCyberware[] = [
   //   rating: true,
   // },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -558,6 +598,8 @@ const cyberwareAll: GearCyberware[] = [
   //   language: "de",
   // },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -571,6 +613,8 @@ const cyberwareAll: GearCyberware[] = [
     reference: [{ book: "SR6", page: 453 }],
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -586,6 +630,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -601,6 +647,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -634,6 +682,8 @@ const cyberwareAll: GearCyberware[] = [
   //   rateMultiplier: "capacity cost",
   // },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -680,6 +730,8 @@ const cyberwareAll: GearCyberware[] = [
   //   modOnly: true,
   // },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -703,6 +755,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -715,6 +769,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Tooth Compartment",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -733,6 +789,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Ultrasound Sensor",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER HEADWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -756,6 +814,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -788,6 +848,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cybereye 1",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -820,6 +882,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cybereye 2",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -852,6 +916,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cybereye 3",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -884,6 +950,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cybereye 4",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -916,6 +984,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cybereye 5",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -953,6 +1023,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Ocular Drone",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EYEWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -974,6 +1046,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EARWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1022,6 +1096,8 @@ const cyberwareAll: GearCyberware[] = [
     type: "CYBERWARE",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER EARWARE",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1040,6 +1116,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Soundlink",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1077,6 +1155,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Bone Lacing Plastic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1114,6 +1194,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Bone Lacing Aluminium",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1151,6 +1233,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Bone Lacing Titanium",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1178,6 +1262,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "essence cost modifier",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1196,6 +1282,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Fingertip Compartment",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1221,6 +1309,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Grapple Gun Augment",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1242,6 +1332,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1271,6 +1363,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "essence cost modifier",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1296,6 +1390,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "essence cost modifier",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1312,6 +1408,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "essence cost",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1330,6 +1428,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Smuggling Compartment",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1356,6 +1456,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Wired Reflexes 1",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     modifications: {
       attrmod: [
         {
@@ -1382,6 +1484,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Wired Reflexes 2",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     modifications: {
       attrmod: [
         {
@@ -1408,6 +1512,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Wired Reflexes 3",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER BODYWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1434,6 +1540,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Wired Reflexes 4",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1466,6 +1574,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberskull Synthetic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1498,6 +1608,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberskull Obvious",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1525,6 +1637,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cybertorso Synthetic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1552,6 +1666,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cybertorso Obvious",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1593,6 +1709,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberarm Synthetic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1634,6 +1752,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberarm Obvious",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1675,6 +1795,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberforearm Synthetic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1716,6 +1838,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberforearm Obvious",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1736,6 +1860,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberhand Synthetic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1842,6 +1968,8 @@ const cyberwareAll: GearCyberware[] = [
     type: "CYBERWARE",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1883,6 +2011,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberlowerleg Synthetic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1924,6 +2054,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberlowerleg Obvious",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1944,6 +2076,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberfoot Synthetic",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER LIMBS",
     useAs: [
       {
         type: "CYBERWARE",
@@ -1964,6 +2098,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberfoot Obvious",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ENHANCEMENT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1990,6 +2126,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost avail capacity modifier",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ENHANCEMENT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2016,6 +2154,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost avail capacity modifier",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ENHANCEMENT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2048,6 +2188,8 @@ const cyberwareAll: GearCyberware[] = [
     rateMultiplier: "cost avail capacity modifier",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2061,6 +2203,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Slide",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2074,6 +2218,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Holster",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2105,6 +2251,8 @@ const cyberwareAll: GearCyberware[] = [
     type: "ACCESSORY",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2130,6 +2278,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Holdout",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2155,6 +2305,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Light Pistol",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2180,6 +2332,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Machine Pistol",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2205,6 +2359,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Heavy Pistol",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2230,6 +2386,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Smg",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2255,6 +2413,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Shotgun",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2280,6 +2440,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Launcher",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2298,6 +2460,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Ammo Port",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2324,6 +2488,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Laser Sight",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2342,6 +2508,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyber Silencer",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2367,6 +2535,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberjaw Augment",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2392,6 +2562,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Hardening Augment",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2417,6 +2589,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Shock Limb Augment",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2442,6 +2616,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Handblade Augment",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2468,6 +2644,8 @@ const cyberwareAll: GearCyberware[] = [
     reference: [{ book: "SR6", page: 456 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2493,6 +2671,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Handrazors Augment",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2518,6 +2698,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Handrazors Retractable Augment",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2543,6 +2725,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Spurs Augment",
   },
   {
+    type: "ACCESSORY",
+    subtype: "CYBER LIMB ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2569,6 +2753,8 @@ const cyberwareAll: GearCyberware[] = [
   },
 
   {
+    type: "CYBERWARE",
+    subtype: "CYBER_EARWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -2590,6 +2776,8 @@ const cyberwareAll: GearCyberware[] = [
     reference: [{ book: "SR6", page: 452 }],
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER_EARWARE",
     useAs: [
       {
         type: "CYBERWARE",
@@ -2610,6 +2798,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberears 2",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER_EARWARE",
     modifications: {
       itemhookmod: [
         {
@@ -2630,6 +2820,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberears 3",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER_EARWARE",
     modifications: {
       itemhookmod: [
         {
@@ -2650,6 +2842,8 @@ const cyberwareAll: GearCyberware[] = [
     name: "Cyberears 4",
   },
   {
+    type: "CYBERWARE",
+    subtype: "CYBER_EARWARE",
     modifications: {
       itemhookmod: [
         {

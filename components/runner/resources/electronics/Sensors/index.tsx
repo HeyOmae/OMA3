@@ -1,10 +1,10 @@
 import { sensors } from "@/data/sensors"
-import { GearModdableRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
 import { buySensorCols, sellSensorCols } from "../utils"
 
 const Sensors = () => (
-  <GearPageTemplate<GearModdableRated>
+  <GearPageTemplate<Gear>
     gearLabel="Sensors"
     resourceKey="sensor"
     listOfGear={sensors}

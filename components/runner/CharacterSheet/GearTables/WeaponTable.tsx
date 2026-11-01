@@ -1,8 +1,8 @@
-import { GearWeaponMelee, GearWeaponsProjectile } from "@/types/Resources"
+import { GearWeapon, GearProjectile } from "@/types/Resources"
 import { FC } from "react"
 
 interface WeaponTableProps {
-  gearRow: (GearWeaponMelee | GearWeaponsProjectile)[]
+  gearRow: (GearWeapon | GearProjectile)[]
 }
 
 export const WeaponTable: FC<WeaponTableProps> = ({ gearRow }) => (

@@ -16,6 +16,9 @@ export interface StoredRunner extends Omit<Runner, "resources"> {
   resources?: { [K in keyof Resources]?: StoredGear[] }
 }
 
+export const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null && !Array.isArray(value)
+
 // Runs a change on every piece of gear the runner owns, and on the mods
 // installed in that gear. Keep this stable, shipped migrations depend on it.
 export const mapGear = (

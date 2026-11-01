@@ -1,6 +1,6 @@
-import { GearDrones } from "@/types/Resources"
+import { GearVehicle } from "@/types/Resources"
 
-export const drones: GearDrones[] = [
+export const drones: GearVehicle[] = [
   {
     vehicle: {
       handling: "3/6",

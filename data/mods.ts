@@ -1,7 +1,9 @@
-import { GearMod, GearModRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const imagingMods: GearMod[] = [
+export const imagingMods: Gear[] = [
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -37,6 +39,8 @@ export const imagingMods: GearMod[] = [
     reference: [{ book: "SR6", page: 444 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -72,6 +76,8 @@ export const imagingMods: GearMod[] = [
     reference: [{ book: "SR6", page: 444 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -107,6 +113,8 @@ export const imagingMods: GearMod[] = [
     reference: [{ book: "SR6", page: 444 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -142,6 +150,8 @@ export const imagingMods: GearMod[] = [
     reference: [{ book: "SR6", page: 444 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -175,6 +185,8 @@ export const imagingMods: GearMod[] = [
     reference: [{ book: "SR6", page: 444 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -194,6 +206,8 @@ export const imagingMods: GearMod[] = [
     name: "Ultrasound Link",
   },
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -229,6 +243,8 @@ export const imagingMods: GearMod[] = [
     reference: [{ book: "SR6", page: 444 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "OPTICAL",
     useAs: [
       {
         type: "ACCESSORY",
@@ -273,8 +289,10 @@ export const imagingMods: GearMod[] = [
   },
 ]
 
-export const audioMods: (GearMod | GearModRated)[] = [
+export const audioMods: (Gear | Gear)[] = [
   {
+    type: "ACCESSORY",
+    subtype: "AUDIO ENHANCEMENT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -304,6 +322,8 @@ export const audioMods: (GearMod | GearModRated)[] = [
     reference: [{ book: "SR6", page: 443 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "AUDIO ENHANCEMENT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -368,8 +388,10 @@ export const audioMods: (GearMod | GearModRated)[] = [
   },
 ]
 
-export const sensorMods: (GearMod | GearModRated)[] = [
+export const sensorMods: (Gear | Gear)[] = [
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -403,6 +425,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     reference: [{ book: "SR6", page: 445 }],
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -416,6 +440,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     availability: "0",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -432,6 +458,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -445,6 +473,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     availability: "0",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -461,6 +491,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -474,6 +506,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     availability: "0",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -487,6 +521,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     availability: "0",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -500,6 +536,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     availability: "0",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -513,6 +551,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     availability: "0",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",
@@ -529,6 +569,8 @@ export const sensorMods: (GearMod | GearModRated)[] = [
     rateMultiplier: "capacity cost",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SENSOR",
     useAs: [
       {
         type: "ACCESSORY",

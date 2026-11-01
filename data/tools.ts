@@ -1,7 +1,9 @@
-import { GearTools } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const tools: GearTools[] = [
+export const tools: Gear[] = [
   {
+    type: "TOOLS",
+    subtype: "TOOLS",
     useAs: [
       {
         type: "TOOLS",
@@ -15,6 +17,8 @@ export const tools: GearTools[] = [
     choice: "SKILL",
   },
   {
+    type: "TOOLS",
+    subtype: "TOOLS",
     useAs: [
       {
         type: "TOOLS",
@@ -28,6 +32,8 @@ export const tools: GearTools[] = [
     choice: "SKILL",
   },
   {
+    type: "TOOLS",
+    subtype: "TOOLS",
     useAs: [
       {
         type: "TOOLS",

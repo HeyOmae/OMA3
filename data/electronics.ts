@@ -1,10 +1,8 @@
 import {
   GearElectronic,
-  GearElectronicAccessory,
   GearMatrixCommlink,
   GearMatrixCyberdeck,
-  GearSoftware,
-  GearTyped,
+  Gear,
 } from "@/types/Resources"
 
 export const commlinkData: GearMatrixCommlink[] = [
@@ -855,7 +853,7 @@ export const riggerConsoleData: GearMatrixCommlink[] = [
   },
 ]
 
-export const electronicAccessoriesData: GearElectronicAccessory[] = [
+export const electronicAccessoriesData: GearElectronic[] = [
   {
     availability: "2",
     cost: 100,
@@ -1057,7 +1055,7 @@ export const tagsData: GearElectronic[] = [
   },
 ]
 
-export const otherElectronics: GearTyped[] = [
+export const otherElectronics: Gear[] = [
   {
     availability: "3",
     cost: 200,
@@ -1183,8 +1181,10 @@ export const otherElectronics: GearTyped[] = [
   },
 ]
 
-export const softwareData: GearSoftware[] = [
+export const softwareData: Gear[] = [
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1198,6 +1198,8 @@ export const softwareData: GearSoftware[] = [
     name: "Browse",
   },
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1211,6 +1213,8 @@ export const softwareData: GearSoftware[] = [
     name: "Baby Monitor",
   },
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1224,6 +1228,8 @@ export const softwareData: GearSoftware[] = [
     name: "Configurator",
   },
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1237,6 +1243,8 @@ export const softwareData: GearSoftware[] = [
     name: "Edit",
   },
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1250,6 +1258,8 @@ export const softwareData: GearSoftware[] = [
     name: "Encryption",
   },
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1263,6 +1273,8 @@ export const softwareData: GearSoftware[] = [
     name: "Signal Scrubber",
   },
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1276,6 +1288,8 @@ export const softwareData: GearSoftware[] = [
     name: "Toolbox",
   },
   {
+    type: "ACCESSORY",
+    subtype: "BASIC PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1289,6 +1303,8 @@ export const softwareData: GearSoftware[] = [
     name: "Virtual Machine",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1302,6 +1318,8 @@ export const softwareData: GearSoftware[] = [
     name: "Armor",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1315,6 +1333,8 @@ export const softwareData: GearSoftware[] = [
     name: "Biofeedback",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1328,6 +1348,8 @@ export const softwareData: GearSoftware[] = [
     name: "Biofeedback Filter",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1341,6 +1363,8 @@ export const softwareData: GearSoftware[] = [
     name: "Blackout",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1354,6 +1378,8 @@ export const softwareData: GearSoftware[] = [
     name: "Decryption",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1367,6 +1393,8 @@ export const softwareData: GearSoftware[] = [
     name: "Disarm",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1380,6 +1408,8 @@ export const softwareData: GearSoftware[] = [
     name: "Defuse",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1393,6 +1423,8 @@ export const softwareData: GearSoftware[] = [
     name: "Exploit",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1406,6 +1438,8 @@ export const softwareData: GearSoftware[] = [
     name: "Fork",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1419,6 +1453,8 @@ export const softwareData: GearSoftware[] = [
     name: "Lockdown",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1432,6 +1468,8 @@ export const softwareData: GearSoftware[] = [
     name: "Overclock",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1445,6 +1483,8 @@ export const softwareData: GearSoftware[] = [
     name: "Stealth",
   },
   {
+    type: "ACCESSORY",
+    subtype: "HACKING PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1458,6 +1498,8 @@ export const softwareData: GearSoftware[] = [
     name: "Trace",
   },
   {
+    type: "ACCESSORY",
+    subtype: "AUTOSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1474,6 +1516,8 @@ export const softwareData: GearSoftware[] = [
     rateMultiplier: "cost modifier avail",
   },
   {
+    type: "ACCESSORY",
+    subtype: "AUTOSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1490,6 +1534,8 @@ export const softwareData: GearSoftware[] = [
     rateMultiplier: "cost modifier avail",
   },
   {
+    type: "ACCESSORY",
+    subtype: "AUTOSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1507,6 +1553,8 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
+    type: "ACCESSORY",
+    subtype: "AUTOSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1524,6 +1572,8 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
+    type: "ACCESSORY",
+    subtype: "AUTOSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1541,6 +1591,8 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
+    type: "ACCESSORY",
+    subtype: "AUTOSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1559,6 +1611,8 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
+    type: "ACCESSORY",
+    subtype: "RIGGER PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1572,6 +1626,8 @@ export const softwareData: GearSoftware[] = [
     name: "Armor Rig",
   },
   {
+    type: "ACCESSORY",
+    subtype: "RIGGER PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1585,6 +1641,8 @@ export const softwareData: GearSoftware[] = [
     name: "Encryption Rig",
   },
   {
+    type: "ACCESSORY",
+    subtype: "RIGGER PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1598,6 +1656,8 @@ export const softwareData: GearSoftware[] = [
     name: "Signal Scrubber Rig",
   },
   {
+    type: "ACCESSORY",
+    subtype: "RIGGER PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1611,6 +1671,8 @@ export const softwareData: GearSoftware[] = [
     name: "Stealth Rig",
   },
   {
+    type: "ACCESSORY",
+    subtype: "RIGGER PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1624,6 +1686,8 @@ export const softwareData: GearSoftware[] = [
     name: "Toolbox Rig",
   },
   {
+    type: "ACCESSORY",
+    subtype: "RIGGER PROGRAM",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1637,6 +1701,8 @@ export const softwareData: GearSoftware[] = [
     name: "Virtual Machine Rig",
   },
   {
+    type: "ACCESSORY",
+    subtype: "OTHER PROGRAMS",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1652,6 +1718,8 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
+    type: "ACCESSORY",
+    subtype: "OTHER PROGRAMS",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1667,6 +1735,8 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
+    type: "ACCESSORY",
+    subtype: "OTHER PROGRAMS",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1682,6 +1752,8 @@ export const softwareData: GearSoftware[] = [
     choice: "NAME",
   },
   {
+    type: "ACCESSORY",
+    subtype: "OTHER PROGRAMS",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1700,6 +1772,8 @@ export const softwareData: GearSoftware[] = [
     rateMultiplier: "cost avail3",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SKILLSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1727,6 +1801,8 @@ export const softwareData: GearSoftware[] = [
     choice: "PHYSICAL SKILL",
   },
   {
+    type: "ACCESSORY",
+    subtype: "SKILLSOFT",
     useAs: [
       {
         type: "ACCESSORY",
@@ -1751,6 +1827,8 @@ export const softwareData: GearSoftware[] = [
     multi: true,
   },
   {
+    type: "ACCESSORY",
+    subtype: "SKILLSOFT",
     useAs: [
       {
         type: "ACCESSORY",

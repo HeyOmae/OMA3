@@ -1,6 +1,6 @@
-import { GearTyped } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const biotech: GearTyped[] = [
+export const biotech: Gear[] = [
   {
     availability: "2",
     cost: 300,

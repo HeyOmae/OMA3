@@ -1,8 +1,8 @@
-import { Resources, GearWithRating } from "@/types/Resources"
+import { Resources, Gear } from "@/types/Resources"
 import { FC } from "react"
 
 type ResourceValue = Resources[keyof Resources]
-type GearItem = (ResourceValue extends (infer T)[] ? T : never) | GearWithRating
+type GearItem = (ResourceValue extends (infer T)[] ? T : never) | Gear
 
 interface GeneralGearTableProps {
   gearRow: ResourceValue

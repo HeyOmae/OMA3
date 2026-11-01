@@ -57,11 +57,8 @@ export function GearTable<G extends Gear>({
             return (
               <Row
                 key={isPurchasing ? gear.name : index}
-                cols={
-                  // TODO: Fix this type error
-                  cols as any
-                }
-                gear={gear as any}
+                cols={cols}
+                gear={gear}
                 index={index}
               />
             )

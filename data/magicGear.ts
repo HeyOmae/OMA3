@@ -1,6 +1,6 @@
-import { Gear, GearTyped } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 
-export const magicSupplies: GearTyped[] = [
+export const magicSupplies: Gear[] = [
   {
     name: "Magical Lodge Materials",
     availability: "1",
@@ -57,7 +57,7 @@ export const spellFormula: Gear[] = [
   },
 ]
 
-export const focusFormula: GearTyped[] = [
+export const focusFormula: Gear[] = [
   {
     name: "Enchanting focus formula",
     availability: "1L",

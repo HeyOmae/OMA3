@@ -1,7 +1,9 @@
-import { GearWeaponsProjectile } from "../types/Resources"
+import { GearProjectile } from "../types/Resources"
 
-const projectiles: GearWeaponsProjectile[] = [
+const projectiles: GearProjectile[] = [
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow1",
     availability: "1L",
     cost: 110,
@@ -36,6 +38,8 @@ const projectiles: GearWeaponsProjectile[] = [
     reference: [{ book: "SR6", page: 425 }],
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow2",
     availability: "1L",
     cost: 120,
@@ -69,6 +73,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow3",
     availability: "1L",
     cost: 130,
@@ -102,6 +108,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow4",
     availability: "1L",
     cost: 140,
@@ -135,6 +143,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow5",
     availability: "2L",
     cost: 150,
@@ -168,6 +178,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow6",
     availability: "2L",
     cost: 160,
@@ -201,6 +213,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow7",
     availability: "2L",
     cost: 170,
@@ -234,6 +248,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow8",
     availability: "3L",
     cost: 180,
@@ -267,6 +283,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow9",
     availability: "3L",
     cost: 190,
@@ -300,6 +318,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow10",
     availability: "3L",
     cost: 200,
@@ -333,6 +353,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow11",
     availability: "4L",
     cost: 210,
@@ -366,6 +388,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow12",
     availability: "4L",
     cost: 220,
@@ -399,6 +423,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow13",
     availability: "4L",
     cost: 230,
@@ -432,6 +458,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "BOWS",
     name: "Bow14",
     availability: "5L",
     cost: 240,
@@ -465,6 +493,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "CROSSBOWS",
     name: "Crossbow Light",
     availability: "3",
     cost: 150,
@@ -495,6 +525,8 @@ const projectiles: GearWeaponsProjectile[] = [
     reference: [{ book: "SR6", page: 425 }],
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "CROSSBOWS",
     name: "Crossbow Standard",
     availability: "3L",
     cost: 290,
@@ -524,6 +556,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "CROSSBOWS",
     name: "Crossbow Heavy",
     availability: "4L",
     cost: 425,
@@ -553,6 +587,8 @@ const projectiles: GearWeaponsProjectile[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "THROWING",
     name: "Throwing Knives",
     availability: "2",
     cost: 155,
@@ -571,6 +607,8 @@ const projectiles: GearWeaponsProjectile[] = [
     reference: [{ book: "SR6", page: 426 }],
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "THROWING",
     name: "Throwing Stars",
     availability: "2",
     cost: 160,

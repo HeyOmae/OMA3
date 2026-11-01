@@ -1,5 +1,6 @@
 import { MenuItem, Select } from "@mui/material"
-import { FC } from "react"
+import { FC, useContext } from "react"
+import { SkillContext } from "../../Row"
 import skillData from "@/data/skills.json"
 import { attributes } from "@/data/attributes"
 import { elemental } from "@/data/attacks"
@@ -27,6 +28,12 @@ export const SkillSelect: FC<SelectProps> = ({
     ))}
   </Select>
 )
+
+// the skill picked for the gear in the row it is in
+export const RowSkillSelect = () => {
+  const { selectedSkill, setSkill } = useContext(SkillContext)
+  return <SkillSelect selected={selectedSkill} setSelected={setSkill} />
+}
 
 export const AttributeSelect: FC<SelectProps> = ({ selected, setSelected }) => (
   <Select

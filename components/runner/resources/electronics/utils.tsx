@@ -1,8 +1,4 @@
-import {
-  GearElectronic,
-  GearMatrixCommlink,
-  GearModdableRated,
-} from "@/types/Resources"
+import { GearElectronic, GearMatrixCommlink, Gear } from "@/types/Resources"
 import {
   Columns,
   gearModableTableConfigOptions,
@@ -61,7 +57,7 @@ export const sellElectronicCol: electronicCols = [
   ...baseElectronicCols,
 ]
 
-type SensorDeviceCols = Columns<GearModdableRated>[]
+type SensorDeviceCols = Columns<Gear>[]
 
 export const buySensorCols: SensorDeviceCols = [
   gearTableConfigOptions.buy,

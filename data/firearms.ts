@@ -1,7 +1,9 @@
-import { FirearmMod, GearWeaponFireArms } from "../types/Resources"
+import { Gear, GearFirearm } from "../types/Resources"
 
-const firearms: GearWeaponFireArms[] = [
+const firearms: GearFirearm[] = [
   {
+    type: "WEAPON FIREARMS",
+    subtype: "TASERS",
     name: "Defiance Super Shock",
     availability: "1",
     cost: 340,
@@ -38,6 +40,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "TASERS",
     name: "Yamaha Pulsar 1",
     availability: "1",
     cost: 325,
@@ -64,6 +68,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "TASERS",
     name: "Yamaha Pulsar 2",
     availability: "1",
     cost: 350,
@@ -99,6 +105,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "HOLDOUTS",
     name: "Fichetti Tiffani Needler",
     availability: "2",
     cost: 435,
@@ -118,6 +126,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "HOLDOUTS",
     name: "Streetline Special",
     availability: "2",
     cost: 325,
@@ -137,6 +147,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "HOLDOUTS",
     name: "Walther Palm Pistol",
     availability: "2",
     cost: 325,
@@ -156,6 +168,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS LIGHT",
     name: "Ares Light Fire 70",
     availability: "3L",
     cost: 350,
@@ -192,6 +206,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS LIGHT",
     name: "Ares Light Fire 75",
     availability: "3L",
     cost: 400,
@@ -231,6 +247,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS LIGHT",
     availability: "2L",
     cost: 260,
     name: "Beretta 101T",
@@ -260,6 +278,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS LIGHT",
     availability: "3L",
     cost: 460,
     name: "Beretta 201T",
@@ -298,6 +318,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS LIGHT",
     availability: "2L",
     cost: 230,
     name: "Colt America L36",
@@ -327,6 +349,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS LIGHT",
     availability: "2L",
     cost: 390,
     name: "Fichetti Security 600",
@@ -370,6 +394,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS LIGHT",
     name: "Rudger Redhawk",
     availability: "2L",
     cost: 250,
@@ -399,6 +425,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "MACHINE PISTOLS",
     name: "Ares Crusader Ii",
     availability: "4L",
     cost: 520,
@@ -438,6 +466,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "MACHINE PISTOLS",
     name: "Ceska Black Scorpion",
     availability: "3L",
     cost: 510,
@@ -477,6 +507,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "MACHINE PISTOLS",
     name: "Steyr TMP",
     availability: "3L",
     cost: 690,
@@ -513,6 +545,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "2L",
     cost: 750,
     name: "Ares Predator VI",
@@ -546,6 +580,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "4L",
     cost: 610,
     name: "Ares Viper Slivergun",
@@ -582,6 +618,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "2L",
     cost: 640,
     name: "Browning Ultra Power",
@@ -618,6 +656,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "3L",
     cost: 425,
     name: "Colt Government 2076",
@@ -654,6 +694,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "3L",
     cost: 425,
     name: "Colt Manhunter",
@@ -693,6 +735,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "3L",
     cost: 400,
     name: "Ruger Super Warhawk",
@@ -722,6 +766,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "2L",
     cost: 730,
     name: "Colt Cobra TZ-100",
@@ -760,6 +806,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "2L",
     cost: 785,
     name: "Colt Cobra TZ-110",
@@ -803,6 +851,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "3L",
     cost: 840,
     name: "Colt Cobra TZ-120",
@@ -851,6 +901,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "4L",
     cost: 925,
     name: "FN P93 Praetor",
@@ -897,6 +949,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "3L",
     cost: 825,
     name: "HK-227",
@@ -942,6 +996,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "3L",
     cost: 750,
     name: "Ingram Smartgun XI",
@@ -985,6 +1041,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "3L",
     cost: 725,
     name: "SCK Model 100",
@@ -1026,6 +1084,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SUBMACHINE GUNS",
     availability: "2L",
     cost: 450,
     name: "Uzi IV",
@@ -1069,6 +1129,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SHOTGUNS",
     availability: "2L",
     cost: 330,
     name: "Defiance T-250",
@@ -1105,6 +1167,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SHOTGUNS",
     availability: "2L",
     cost: 330,
     name: "Defiance T-250 Shortbarrel",
@@ -1140,6 +1204,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SHOTGUNS",
     availability: "4L",
     cost: 700,
     name: "Mossberg CMDT",
@@ -1182,6 +1248,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SHOTGUNS",
     availability: "5L",
     cost: 825,
     name: "PJSS Model 55",
@@ -1223,6 +1291,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "SHOTGUNS",
     availability: "2L",
     cost: 325,
     name: "Remington Roomsweeper",
@@ -1253,6 +1323,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE HUNTING",
     availability: "3L",
     cost: 12000,
     name: "Remington 900",
@@ -1291,6 +1363,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE HUNTING",
     availability: "2L",
     cost: 11100,
     name: "Ruger 101",
@@ -1336,6 +1410,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE ASSAULT",
     availability: "2L",
     cost: 2100,
     name: "Ak 97",
@@ -1371,6 +1447,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE ASSAULT",
     availability: "5L",
     cost: 3400,
     name: "Ares Alpha",
@@ -1416,6 +1494,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE ASSAULT",
     availability: "2L",
     cost: 1500,
     name: "Colt M23",
@@ -1458,6 +1538,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE ASSAULT",
     availability: "3L",
     cost: 2100,
     name: "FN Har",
@@ -1505,6 +1587,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE ASSAULT",
     availability: "5L",
     cost: 3200,
     name: "Yamaha Raiden",
@@ -1557,6 +1641,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE ASSAULT",
     availability: "4I",
     cost: 11000,
     name: "Ares Desert Strike",
@@ -1602,6 +1688,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE SNIPER",
     availability: "5I",
     cost: 9050,
     name: "Cavalier Arms Crocket Ebr",
@@ -1647,6 +1735,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE SNIPER",
     availability: "5I",
     cost: 13200,
     name: "Ranger Arms SM-6",
@@ -1696,6 +1786,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE SNIPER",
     availability: "6I",
     cost: 15200,
     name: "Barret Model 122",
@@ -1744,6 +1836,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "LMG",
     availability: "4L",
     cost: 4175,
     name: "Ingram Valiant",
@@ -1795,6 +1889,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "MMG",
     availability: "4L",
     cost: 6900,
     name: "Stoner Ares M202",
@@ -1830,6 +1926,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "HMG",
     availability: "5L",
     cost: 8000,
     name: "RPK HMG",
@@ -1875,6 +1973,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "ASSAULT CANNON",
     availability: "6I",
     cost: 10000,
     name: "Panther XXL",
@@ -1913,6 +2013,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "3L",
     cost: 560,
     name: "Ares S3 Super Squirt",
@@ -1945,6 +2047,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "2",
     cost: 510,
     name: "Parashield DART Pistol",
@@ -1974,6 +2078,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE HUNTING",
     availability: "3",
     cost: 710,
     name: "Parashield DART Rifle",
@@ -2015,6 +2121,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON SPECIAL",
+    subtype: "LAUNCHERS",
     availability: "3I",
     cost: 5900,
     name: "Ares Antioch-2",
@@ -2046,6 +2154,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "PISTOLS HEAVY",
     availability: "4I",
     cost: 1800,
     name: "Armtech MGL6",
@@ -2078,6 +2188,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON FIREARMS",
+    subtype: "RIFLE ASSAULT",
     availability: "4I",
     cost: 5000,
     name: "Armtech MGL12",
@@ -2117,6 +2229,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON SPECIAL",
+    subtype: "LAUNCHERS",
     availability: "5I",
     cost: 7000,
     name: "Aztechnology Striker",
@@ -2145,6 +2259,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON SPECIAL",
+    subtype: "LAUNCHERS",
     availability: "5I",
     cost: 9000,
     name: "Onotari Interceptor",
@@ -2176,6 +2292,8 @@ const firearms: GearWeaponFireArms[] = [
     },
   },
   {
+    type: "WEAPON RANGED",
+    subtype: "CROSSBOWS",
     availability: "0",
     cost: 0,
     name: "Cyberspace Designs Quadrotor Crossbow",
@@ -2220,8 +2338,10 @@ const firearms: GearWeaponFireArms[] = [
 
 export default firearms
 
-export const mods: FirearmMod[] = [
+export const mods: Gear[] = [
   {
+    type: "ACCESSORY",
+    subtype: "FIREARMS ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2282,6 +2402,8 @@ export const mods: FirearmMod[] = [
     type: "ACCESSORY",
   },
   {
+    type: "ACCESSORY",
+    subtype: "FIREARMS ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2421,6 +2543,8 @@ export const mods: FirearmMod[] = [
     type: "ACCESSORY",
   },
   {
+    type: "ACCESSORY",
+    subtype: "FIREARMS ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2448,6 +2572,8 @@ export const mods: FirearmMod[] = [
     name: "Shock Pad",
   },
   {
+    type: "ACCESSORY",
+    subtype: "FIREARMS ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",
@@ -2468,6 +2594,8 @@ export const mods: FirearmMod[] = [
     name: "Silencer",
   },
   {
+    type: "ACCESSORY",
+    subtype: "FIREARMS ACCESSORY",
     useAs: [
       {
         type: "ACCESSORY",

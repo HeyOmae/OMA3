@@ -1,7 +1,7 @@
 import { FC, useCallback, useMemo } from "react"
 import { Runner } from "@/types/runner"
 import priorityTableData from "@/data/priorityTable.json"
-import { Gear, GearModdableRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { useSinnerQualityNuyenModifier } from "@/hooks/useSinnerQualityNuyenModifier"
 
 export interface Props {
@@ -46,7 +46,7 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
       return Object.entries(runnerResouces ?? {}).reduce(
         (
           nuyenLeft: number,
-          [gearType, categoryOfGear]: [string, (Gear & GearModdableRated)[]],
+          [gearType, categoryOfGear]: [string, (Gear & Gear)[]],
         ) =>
           nuyenLeft -
           categoryOfGear.reduce((totalNuyenForThisCategory, { cost, mods }) => {

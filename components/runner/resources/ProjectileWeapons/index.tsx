@@ -1,5 +1,5 @@
 import ProjectileData from "@/data/projectiles"
-import { GearWeaponsProjectile } from "@/types/Resources"
+import { GearProjectile } from "@/types/Resources"
 import {
   addProjectileTableConfig,
   removeProjectileTableConfig,
@@ -7,7 +7,7 @@ import {
 import { GearPageTemplate } from "../GearPageTemplate"
 
 const ProjectileWeapons = () => (
-  <GearPageTemplate<GearWeaponsProjectile>
+  <GearPageTemplate<GearProjectile>
     gearLabel="Projectile Weapons"
     resourceKey="projectile"
     addGearTableConfig={addProjectileTableConfig}

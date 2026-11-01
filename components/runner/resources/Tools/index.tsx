@@ -1,5 +1,5 @@
 import { tools } from "@/data/tools"
-import { GearTools } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearPageTemplate } from "../GearPageTemplate"
 import {
   Columns,
@@ -7,7 +7,7 @@ import {
   gearToolsConfigOptionSetSkill,
 } from "../util"
 
-const buyCols: Columns<GearTools>[] = [
+const buyCols: Columns<Gear>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
   gearToolsConfigOptionSetSkill,
@@ -15,7 +15,7 @@ const buyCols: Columns<GearTools>[] = [
   gearTableConfigOptions.cost,
 ]
 
-const sellCols: Columns<GearTools>[] = [
+const sellCols: Columns<Gear>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
   gearTableConfigOptions.avail,

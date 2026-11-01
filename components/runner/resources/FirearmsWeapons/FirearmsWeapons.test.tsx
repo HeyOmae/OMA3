@@ -43,6 +43,8 @@ describe("<FirearmsWeapon />", () => {
     await waitFor(() => {
       expect(runnerFromDB(8).resources.firearms).toEqual([
         {
+          type: "WEAPON FIREARMS",
+          subtype: "SUBMACHINE GUNS",
           availability: "3L",
           cost: 750,
           name: "Ingram Smartgun XI",

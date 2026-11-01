@@ -1,10 +1,7 @@
-import { mapGear, StoredRunner } from "./storedRunner"
+import { isRecord, mapGear, StoredRunner } from "./storedRunner"
 
 // modifications a piece of gear can have more than one of
 const listFields = ["itemhookmod", "attrmod", "accessorymod", "itemattrmod"]
-
-const isRecord = (value: unknown): value is Record<string, unknown> =>
-  typeof value === "object" && value !== null && !Array.isArray(value)
 
 // drones saved some keys capitalized, like Hook and Attr
 const lowercaseKeys = (value: unknown) =>

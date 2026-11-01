@@ -1,5 +1,5 @@
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { GearDroneMod, GearMod, GearModdableRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
 import { DispatchContext } from "../util"
@@ -18,7 +18,7 @@ interface GearModPageProps<G> extends GearPageProps<G> {
   CapacityDisplay?: false | DisplayCapacity
 }
 
-type ModsType = GearMod | GearDroneMod
+type ModsType = Gear | Gear
 
 export function GearModPageTemplate<G extends ModsType>({
   previousPath,
@@ -59,8 +59,7 @@ export function GearModPageTemplate<G extends ModsType>({
     },
   )
   if (runner) {
-    const gearBeingModded: GearModdableRated =
-      runner.resources[resourceKey][gearIndex]
+    const gearBeingModded: Gear = runner.resources[resourceKey][gearIndex]
     const gearName = `${gearBeingModded.name} (${gearIndex})`
     const modsOnGear = gearBeingModded.mods
     return (

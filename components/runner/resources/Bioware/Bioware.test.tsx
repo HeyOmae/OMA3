@@ -22,7 +22,7 @@ describe("<Bioware />", () => {
     bioware.forEach(({ name, useAs: [{ essence }] }) => {
       expect(getByText(RegExp(`${name}$`))).toBeInTheDocument()
       const biowareRow = getByText(RegExp(`${name}$`)).closest("tr")
-      expect(biowareRow).toHaveTextContent(essence)
+      expect(biowareRow).toHaveTextContent(`${essence}`)
     })
   })
 

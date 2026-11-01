@@ -1,8 +1,8 @@
-import { GearModdableRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { FC, useMemo } from "react"
 
 export interface Props {
-  gear: GearModdableRated
+  gear: Gear
 }
 
 export const RemainingCapacity: FC<Props> = ({ gear }) => {

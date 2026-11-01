@@ -6,27 +6,22 @@ import { Props } from "../index"
 import { useRating } from "../useRating"
 import powerData from "@/data/adeptPowers.json"
 import { Columns } from "@/components/runner/resources/util"
-import {
-  GearFocus,
-  GearSoftware,
-  GearWeaponFireArms,
-  GearWeaponMelee,
-} from "@/types/Resources"
+import { GearFocus, Gear, GearFirearm, GearWeapon } from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"
 import { CircularProgress } from "@mui/material"
 import { spirits } from "@/data/spirits"
 import skillData from "@/data/skills.json"
 
 export interface ChoiceRatingRowProps extends Props {
-  cols: Columns<GearFocus | GearSoftware>[]
-  gear: GearFocus | GearSoftware
+  cols: Columns<GearFocus | Gear>[]
+  gear: GearFocus | Gear
 }
 
 type ChoiceType =
   | AdeptPower
   | { name: SpellCategory | SpiritTypes | string }
-  | GearWeaponMelee
-  | GearWeaponFireArms
+  | GearWeapon
+  | GearFirearm
 
 type SelectedChoiceIndex = number | ""
 
@@ -67,7 +62,7 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
         )
       case "ADEPT_POWER":
       default:
-        return powerData as AdeptPower[]
+        return powerData
     }
   }, [gear, runner])
   const [gearWithRating, setRating] = useRating(gear)

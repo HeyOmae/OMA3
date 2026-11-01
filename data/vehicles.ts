@@ -1,6 +1,6 @@
-import { GearDroneMod, GearDrones } from "@/types/Resources"
+import { Gear, GearVehicle } from "@/types/Resources"
 
-export const vehicles: GearDrones[] = [
+export const vehicles: GearVehicle[] = [
   {
     vehicle: {
       handling: "5/7",
@@ -545,7 +545,7 @@ export const vehicles: GearDrones[] = [
   },
 ]
 
-export const mods: GearDroneMod[] = [
+export const mods: Gear[] = [
   {
     requires: {
       slotreq: {

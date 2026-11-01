@@ -1,10 +1,10 @@
 import { bioware } from "@/data/bioware"
-import { GearBioware } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearPageTemplate } from "../GearPageTemplate"
 import { buyAugmentationCols, sellAugmentationCols } from "../util"
 
 const Bioware = () => (
-  <GearPageTemplate<GearBioware>
+  <GearPageTemplate<Gear>
     gearLabel="Bioware"
     resourceKey="bioware"
     listOfGear={bioware}

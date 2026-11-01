@@ -1,5 +1,5 @@
 import { imagingMods } from "@/data/mods"
-import { GearMod } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearModPageTemplate } from "../../../GearPageTemplate/GearModPageTemplate"
 import {
   Columns,
@@ -7,7 +7,7 @@ import {
   gearCapacityConfigOption,
 } from "../../../util"
 
-type ImagingModCols = Columns<GearMod>
+type ImagingModCols = Columns<Gear>
 const baseCols: ImagingModCols[] = [
   gearTableConfigOptions.name,
   gearCapacityConfigOption,
@@ -23,7 +23,7 @@ export const buyCols: ImagingModCols[] = [
 const previousPath = { categoryPath: "imaging", label: "Imaging" }
 
 const ImagingMods = () => (
-  <GearModPageTemplate<GearMod>
+  <GearModPageTemplate<Gear>
     gearLabel="Imaging Mods"
     resourceKey="imaging"
     previousPath={previousPath}

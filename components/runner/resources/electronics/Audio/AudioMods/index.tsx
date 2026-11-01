@@ -1,5 +1,5 @@
 import { audioMods } from "@/data/mods"
-import { GearMod, GearModRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearModPageTemplate } from "../../../GearPageTemplate/GearModPageTemplate"
 import {
   Columns,
@@ -8,7 +8,7 @@ import {
   gearRatingTableConfigOption,
 } from "../../../util"
 
-type AudioModCols = Columns<GearModRated>
+type AudioModCols = Columns<Gear>
 const baseCols: AudioModCols[] = [
   gearTableConfigOptions.name,
   gearCapacityConfigOption,
@@ -29,7 +29,7 @@ const buyCols: AudioModCols[] = [
 const previousPath = { categoryPath: "audio", label: "Audio" }
 
 const AudioMods = () => (
-  <GearModPageTemplate<GearMod>
+  <GearModPageTemplate<Gear>
     gearLabel="Audio Mods"
     resourceKey="audio"
     previousPath={previousPath}

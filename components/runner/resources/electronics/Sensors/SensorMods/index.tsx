@@ -1,5 +1,5 @@
 import { sensorMods } from "@/data/mods"
-import { GearMod, GearModRated } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearModPageTemplate } from "../../../GearPageTemplate/GearModPageTemplate"
 import {
   Columns,
@@ -8,7 +8,7 @@ import {
   gearRatingTableConfigOption,
 } from "../../../util"
 
-type SensorModCols = Columns<GearModRated>
+type SensorModCols = Columns<Gear>
 const baseCols: SensorModCols[] = [
   gearTableConfigOptions.name,
   gearCapacityConfigOption,
@@ -27,7 +27,7 @@ const buyCols: SensorModCols[] = [
 const previousPath = { categoryPath: "sensor", label: "Sensor" }
 
 const SensorMods = () => (
-  <GearModPageTemplate<GearMod>
+  <GearModPageTemplate<Gear>
     gearLabel="Sensor Mods"
     resourceKey="sensor"
     previousPath={previousPath}

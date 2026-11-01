@@ -1,13 +1,13 @@
 import { createContext, FC, useMemo, useState } from "react"
 import { TableCell, TableRow } from "@mui/material"
-import { GearTyped } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { Columns } from "@/components/runner/resources/util"
 import { Props } from "../index"
 import { useRating } from "../useRating"
 
 interface NamedRowProps extends Props {
-  cols: Columns<GearTyped>[]
-  gear: GearTyped
+  cols: Columns<Gear>[]
+  gear: Gear
 }
 
 interface NameContextValue {

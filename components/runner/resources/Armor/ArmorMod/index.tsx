@@ -1,6 +1,6 @@
 import { mods } from "@/data/armor"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { ArmorMod } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
 import { useMemo } from "react"
@@ -17,7 +17,7 @@ import {
 } from "../../util"
 import { RemainingArmorCapacity } from "./RemainingArmorCapacity"
 
-const buyModCol: Columns<ArmorMod>[] = [
+const buyModCol: Columns<Gear>[] = [
   gearTableConfigOptions.buy,
   gearTableConfigOptions.name,
   gearRatingTableConfigOption.setRating,
@@ -25,7 +25,7 @@ const buyModCol: Columns<ArmorMod>[] = [
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
 ]
-const sellModCol: Columns<ArmorMod>[] = [
+const sellModCol: Columns<Gear>[] = [
   gearTableConfigOptions.sell,
   gearTableConfigOptions.name,
   gearRatingTableConfigOption.displayRating,
@@ -37,7 +37,7 @@ const sellModCol: Columns<ArmorMod>[] = [
 const ArmorMods = () => {
   const { query } = useRouter(),
     gearIndex = +query.gearIndex,
-    [runner, dispatch] = useRunnerAccess<ArmorMod>((runner, { payload }) => ({
+    [runner, dispatch] = useRunnerAccess<Gear>((runner, { payload }) => ({
       ...runner,
       resources: {
         ...runner.resources,
@@ -80,16 +80,13 @@ const ArmorMods = () => {
         <RemainingNuyen runner={runner} />
         <DispatchContext.Provider value={dispatch}>
           <Grid size={{ md: 6 }}>
-            <GearTable<ArmorMod>
-              listOfGear={modsWithMaxRating}
-              cols={buyModCol}
-            />
+            <GearTable<Gear> listOfGear={modsWithMaxRating} cols={buyModCol} />
           </Grid>
 
           {armor.mods && (
             <Grid size={{ md: 6 }}>
               <h2>Mods on {gearName}</h2>
-              <GearTable<ArmorMod> cols={sellModCol} listOfGear={armor.mods} />
+              <GearTable<Gear> cols={sellModCol} listOfGear={armor.mods} />
             </Grid>
           )}
         </DispatchContext.Provider>

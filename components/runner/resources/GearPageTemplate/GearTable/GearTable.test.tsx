@@ -1,5 +1,5 @@
 import { render, SliderHelper, userEvent } from "@/test/testUtils"
-import { GearTools, GearTyped, GearWeaponMelee } from "@/types/Resources"
+import { Gear, GearWeapon } from "@/types/Resources"
 import {
   addMeleeTableConfig,
   removeMeleeTableConfig,
@@ -45,8 +45,8 @@ describe("<GearTable />", () => {
         },
       ],
       cols = addMeleeTableConfig,
-    }: Partial<Props<GearWeaponMelee>> = {}) => {
-      const props: Props<GearWeaponMelee> = {
+    }: Partial<Props<GearWeapon>> = {}) => {
+      const props: Props<GearWeapon> = {
           listOfGear,
           cols,
         },
@@ -54,7 +54,7 @@ describe("<GearTable />", () => {
       return {
         ...render(
           <DispatchContext.Provider value={dispatch}>
-            <GearTable<GearWeaponMelee> {...props} />
+            <GearTable<GearWeapon> {...props} />
           </DispatchContext.Provider>,
         ),
         props,
@@ -111,7 +111,7 @@ describe("<GearTable />", () => {
       bugScanner = otherElectronics[0]
     const setup = () => {
       const dispatch = jest.fn()
-      const props: Props<GearTyped> = {
+      const props: Props<Gear> = {
         listOfGear: [headJammer, bugScanner],
         cols: [
           gearTableConfigOptions.buy,
@@ -121,7 +121,7 @@ describe("<GearTable />", () => {
       return {
         ...render(
           <DispatchContext.Provider value={dispatch}>
-            <GearTable<GearTyped> {...props} />
+            <GearTable<Gear> {...props} />
           </DispatchContext.Provider>,
         ),
         dispatch,
@@ -153,7 +153,7 @@ describe("<GearTable />", () => {
 
   describe("tools", () => {
     const setup = () => {
-      const props: Props<GearTools> = {
+      const props: Props<Gear> = {
           listOfGear: tools,
           cols: [
             gearTableConfigOptions.buy,
@@ -165,7 +165,7 @@ describe("<GearTable />", () => {
       return {
         ...render(
           <DispatchContext.Provider value={dispatch}>
-            <GearTable<GearTools> {...props} />
+            <GearTable<Gear> {...props} />
           </DispatchContext.Provider>,
         ),
         props,

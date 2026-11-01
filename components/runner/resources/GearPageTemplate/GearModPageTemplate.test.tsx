@@ -6,7 +6,7 @@ import {
   getByText as getByTextInContainer,
   caymansCurrentlySpentNuyen,
 } from "@/test/testUtils"
-import { GearMod } from "@/types/Resources"
+import { Gear } from "@/types/Resources"
 import { GearModPageTemplate } from "./GearModPageTemplate"
 import { buyCols, sellCols } from "../electronics/Imaging/ImagingMods"
 import { imagingMods } from "@/data/mods"
@@ -16,7 +16,7 @@ describe("GearModPageTemplate", () => {
   const setup = (id = 10) => {
     return render(
       withTestRouter(
-        <GearModPageTemplate<GearMod>
+        <GearModPageTemplate<Gear>
           resourceKey="imaging"
           previousPath={{ label: "Imaging", categoryPath: "imaging" }}
           gearLabel="Imaging Mods"

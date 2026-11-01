@@ -28,7 +28,7 @@ const buyArmorCols: Columns<GearArmor>[] = [
 const sellArmorCols: Columns<GearArmor>[] = [
   gearTableConfigOptions.sell,
   ...baseCols,
-  gearModableTableConfigOptions.mod as any, // TODO: fix this hacky crap
+  gearModableTableConfigOptions.mod,
 ]
 
 export const Armor = () => (
