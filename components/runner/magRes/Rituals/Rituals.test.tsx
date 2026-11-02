@@ -1,6 +1,6 @@
 import { Rituals, Props } from "./index"
 import { render } from "../../../../test/testUtils"
-import ritualData from "../../../../data/rituals.json"
+import ritualData from "../../../../data/rituals"
 import { SET_RITUAL } from ".."
 
 describe("<Rituals />", () => {

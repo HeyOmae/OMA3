@@ -1,0 +1,88 @@
+import type { ComplexForm } from "../types/MagRes"
+
+// Every complex form a technomancer can learn
+
+const complexForms: ComplexForm[] = [
+  {
+    name: "Cleaner",
+    duration: "Permanent",
+    fade: 2,
+  },
+  {
+    name: "Diffusion",
+    duration: "Sustained",
+    fade: 4,
+    choice: "MATRIX ATTRIBUTE",
+    multiple: true,
+  },
+  {
+    name: "Editor",
+    duration: "Permanent",
+    fade: 3,
+  },
+  {
+    name: "Emulate",
+    duration: "Sustained",
+    fade: 0,
+    choice: "PROGRAM",
+    multiple: true,
+  },
+  {
+    name: "Infusion",
+    duration: "Sustained",
+    fade: 4,
+    choice: "MATRIX ATTRIBUTE",
+    multiple: true,
+  },
+  {
+    name: "Mirrored Persona",
+    duration: "Sustained",
+    fade: 3,
+  },
+  {
+    name: "Pulse Storm",
+    duration: "Immediate",
+    fade: 3,
+  },
+  {
+    name: "Puppeteer",
+    duration: "Sustained",
+    fade: 5,
+  },
+  {
+    name: "Resonance Channel",
+    duration: "Sustained",
+    fade: 2,
+  },
+  {
+    name: "Resonance Spike",
+    duration: "Immediate",
+    fade: 4,
+  },
+  {
+    name: "Resonance Veil",
+    duration: "Sustained",
+    fade: 4,
+  },
+  {
+    name: "Static Bomb",
+    duration: "Immediate",
+    fade: 6,
+  },
+  {
+    name: "Static Veil",
+    duration: "Sustained",
+    fade: 3,
+  },
+  {
+    name: "Stitches",
+    duration: "Permanent",
+    fade: 4,
+  },
+  {
+    name: "Tattletale",
+    duration: "Permanent",
+    fade: 3,
+  },
+]
+export default complexForms

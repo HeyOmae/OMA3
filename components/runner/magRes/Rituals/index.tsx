@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { Payload } from ".."
-import ritualData from "../../../../data/rituals.json"
+import ritualData from "../../../../data/rituals"
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { AddRitualButton } from "./AddRitualButton"
 import { RitualTable } from "./RitualTable"

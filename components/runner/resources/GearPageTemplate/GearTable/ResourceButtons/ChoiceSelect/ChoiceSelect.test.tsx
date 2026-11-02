@@ -1,5 +1,5 @@
 import { render, screen, userEvent } from "@/test/testUtils"
-import powerData from "@/data/adeptPowers.json"
+import powerData from "@/data/adeptPowers"
 import { ChoiceSelect } from "./index"
 import { ChoiceContext } from "../../Row/ChoiceRatingRow"
 import { SelectChoiceContext } from "../../Row/ChoiceRatingRow"
@@ -14,7 +14,7 @@ describe("ChoiceSelect", () => {
     render(
       <ChoiceContext.Provider
         value={{
-          choices: choices ?? (powerData as any),
+          choices: choices ?? powerData,
           setChoiceIndex,
           selectedChoiceIndex,
         }}

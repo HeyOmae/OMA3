@@ -4,7 +4,7 @@ import { createContext, useMemo, useState } from "react"
 
 import { Props } from "../index"
 import { useRating } from "../useRating"
-import powerData from "@/data/adeptPowers.json"
+import powerData from "@/data/adeptPowers"
 
 import { Gear, GearFirearm, GearWeapon } from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"

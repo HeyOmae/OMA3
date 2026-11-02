@@ -9,9 +9,8 @@ import {
 import { FC } from "react"
 import { Payload } from ".."
 import { DispatchAction } from "@/hooks/useRunnerAccess"
-import { AdeptPower } from "@/types/MagRes"
 import { AddAdeptPowerButton } from "./AddAdeptPowerButton"
-import PowersData from "@/data/adeptPowers.json"
+import PowersData from "@/data/adeptPowers"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
@@ -29,7 +28,7 @@ export const AdeptPowers: FC<Props> = ({ dispatch }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {(PowersData as AdeptPower[]).map((power) => {
+        {PowersData.map((power) => {
           const { name, cost, levels, activation } = power
           return (
             <TableRow key={name}>

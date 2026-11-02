@@ -11,10 +11,10 @@ import {
   screen,
 } from "@/test/testUtils"
 import spellData from "@/data/spells"
-import ritualData from "@/data/rituals.json"
+import ritualData from "@/data/rituals"
 import { mockedRunners } from "@/test/mocks"
-import PowersData from "@/data/adeptPowers.json"
-import complexFormData from "@/data/complexForm.json"
+import PowersData from "@/data/adeptPowers"
+import complexFormData from "@/data/complexForm"
 
 describe("Magic and Resonance", () => {
   const setup = (id = "2") => {

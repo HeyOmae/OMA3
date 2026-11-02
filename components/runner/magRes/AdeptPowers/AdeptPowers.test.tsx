@@ -1,6 +1,6 @@
 import { AdeptPowers, Props } from "./index"
 import { render, getByText as globalGetByText, closest } from "@/test/testUtils"
-import PowersData from "@/data/adeptPowers.json"
+import PowersData from "@/data/adeptPowers"
 import { SET_POWER } from ".."
 
 describe("<AdpetPowers/>", () => {

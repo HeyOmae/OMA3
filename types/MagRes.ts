@@ -90,6 +90,10 @@ export type AdeptPower = {
           ref: string
           lvl: number
         }
+        // a bonus that only applies to this topic, like combat
+        relevancemod?: {
+          topic: string
+        }
       }
     | Attrmod[]
   select?: string

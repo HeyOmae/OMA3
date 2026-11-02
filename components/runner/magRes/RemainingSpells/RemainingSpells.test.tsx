@@ -2,8 +2,7 @@ import { defined } from "@/components/util"
 import { RemainingSpells, Props } from "."
 import { mockedRunners } from "@/test/mocks"
 import { render, screen } from "@/test/testUtils"
-import complexFormData from "@/data/complexForm.json"
-import { ComplexForm } from "@/types/MagRes"
+import complexFormData from "@/data/complexForm"
 
 describe("<RemainingSpell/>", () => {
   const setup = (
@@ -156,7 +155,7 @@ describe("<RemainingSpell/>", () => {
     setup({
       runner: {
         ...mockedRunners[8],
-        complexForms: complexFormData.splice(0, 9) as ComplexForm[],
+        complexForms: complexFormData.slice(0, 9),
       },
     })
 
