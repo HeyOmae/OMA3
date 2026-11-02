@@ -3,7 +3,7 @@ import { Gear } from "@/types/Resources"
 export const magicSupplies: Gear[] = [
   {
     name: "Magical Lodge Materials",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "1",
     cost: 500,
     maxRating: 24,
@@ -15,7 +15,7 @@ export const magicSupplies: Gear[] = [
   },
   {
     name: "Reagents per dram",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "2",
     cost: 50,
     type: "MAGICAL",
@@ -27,31 +27,31 @@ export const magicSupplies: Gear[] = [
 export const spellFormula: Gear[] = [
   {
     name: "Combat Formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "3L",
     cost: 2000,
   },
   {
     name: "Detection Formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "2L",
     cost: 500,
   },
   {
     name: "Health Formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "2L",
     cost: 500,
   },
   {
     name: "Illusion Formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "3L",
     cost: 1000,
   },
   {
     name: "Manipulation Formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "3L",
     cost: 1500,
   },
@@ -60,7 +60,7 @@ export const spellFormula: Gear[] = [
 export const focusFormula: Gear[] = [
   {
     name: "Enchanting focus formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "1L",
     cost: 1250,
     type: "formula",
@@ -70,7 +70,7 @@ export const focusFormula: Gear[] = [
   },
   {
     name: "Metamagic focus formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "1L",
     cost: 2250,
     type: "formula",
@@ -80,7 +80,7 @@ export const focusFormula: Gear[] = [
   },
   {
     name: "Power focus formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "3L",
     cost: 4500,
     type: "formula",
@@ -90,7 +90,7 @@ export const focusFormula: Gear[] = [
   },
   {
     name: "Qi focus formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "1L",
     cost: 750,
     type: "formula",
@@ -100,7 +100,7 @@ export const focusFormula: Gear[] = [
   },
   {
     name: "Spell focus formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "1L",
     cost: 1000,
     type: "formula",
@@ -110,7 +110,7 @@ export const focusFormula: Gear[] = [
   },
   {
     name: "Spirit focus formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "1L",
     cost: 1000,
     type: "formula",
@@ -120,7 +120,7 @@ export const focusFormula: Gear[] = [
   },
   {
     name: "Weapon focus formula",
-    reference: [{ book: "SR6", page: 294 }],
+    reference: [{ book: "SR6 Berlin", page: 294 }],
     availability: "3L",
     cost: 1750,
     type: "formula",

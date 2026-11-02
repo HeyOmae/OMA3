@@ -13,7 +13,7 @@ export const tools: Gear[] = [
     availability: "1",
     cost: 500,
     name: "Kit",
-    reference: [{ book: "SR6", page: 273 }],
+    reference: [{ book: "SR6 Berlin", page: 273 }],
     choice: "SKILL",
   },
   {
@@ -28,7 +28,7 @@ export const tools: Gear[] = [
     availability: "4",
     cost: 5000,
     name: "Shop",
-    reference: [{ book: "SR6", page: 273 }],
+    reference: [{ book: "SR6 Berlin", page: 273 }],
     choice: "SKILL",
   },
   {
@@ -43,7 +43,7 @@ export const tools: Gear[] = [
     availability: "7",
     cost: 50000,
     name: "Facility",
-    reference: [{ book: "SR6", page: 273 }],
+    reference: [{ book: "SR6 Berlin", page: 273 }],
     choice: "SKILL",
   },
 ]

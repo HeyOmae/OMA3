@@ -18,7 +18,7 @@ export const caselessCostMultiplier = 2
 // how many rounds are in one bundle, a bundle is what the cost is for
 export const roundsPerBundle = 10
 
-const reference = [{ book: "SR6", page: 262 }]
+const reference = [{ book: "SR6 Berlin", page: 262 }]
 
 const ammoOf = (
   name: string,

@@ -6,7 +6,7 @@ const spells: Spells = {
   Combat: [
     {
       name: "Acid stream",
-      reference: [{ book: "SR6", page: 132 }],
+      reference: [{ book: "SR6 Berlin", page: 132 }],
       category: "Combat",
       range: "Line of sight",
       type: "Physical",
@@ -21,7 +21,7 @@ const spells: Spells = {
     },
     {
       name: "Toxic wave",
-      reference: [{ book: "SR6", page: 132 }],
+      reference: [{ book: "SR6 Berlin", page: 132 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Physical",
@@ -39,7 +39,7 @@ const spells: Spells = {
     },
     {
       name: "Blast",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Physical",
@@ -57,7 +57,7 @@ const spells: Spells = {
     },
     {
       name: "Clout",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight",
       type: "Physical",
@@ -72,7 +72,7 @@ const spells: Spells = {
     },
     {
       name: "Flamestrike",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight",
       type: "Physical",
@@ -87,7 +87,7 @@ const spells: Spells = {
     },
     {
       name: "Fireball",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Physical",
@@ -105,7 +105,7 @@ const spells: Spells = {
     },
     {
       name: "Ice spear",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight",
       type: "Physical",
@@ -120,7 +120,7 @@ const spells: Spells = {
     },
     {
       name: "Ice storm",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Physical",
@@ -138,7 +138,7 @@ const spells: Spells = {
     },
     {
       name: "Lightning bolt",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight",
       type: "Physical",
@@ -153,7 +153,7 @@ const spells: Spells = {
     },
     {
       name: "Lightning ball",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Physical",
@@ -171,7 +171,7 @@ const spells: Spells = {
     },
     {
       name: "Manabolt",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight",
       type: "Mana",
@@ -186,7 +186,7 @@ const spells: Spells = {
     },
     {
       name: "Manaball",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Mana",
@@ -204,7 +204,7 @@ const spells: Spells = {
     },
     {
       name: "Powerbolt",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight",
       type: "Physical",
@@ -219,7 +219,7 @@ const spells: Spells = {
     },
     {
       name: "Powerball",
-      reference: [{ book: "SR6", page: 133 }],
+      reference: [{ book: "SR6 Berlin", page: 133 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Physical",
@@ -237,7 +237,7 @@ const spells: Spells = {
     },
     {
       name: "Stunbolt",
-      reference: [{ book: "SR6", page: 134 }],
+      reference: [{ book: "SR6 Berlin", page: 134 }],
       category: "Combat",
       range: "Line of sight",
       type: "Mana",
@@ -252,7 +252,7 @@ const spells: Spells = {
     },
     {
       name: "Stunball",
-      reference: [{ book: "SR6", page: 134 }],
+      reference: [{ book: "SR6 Berlin", page: 134 }],
       category: "Combat",
       range: "Line of sight area",
       type: "Mana",
@@ -272,7 +272,7 @@ const spells: Spells = {
   Detection: [
     {
       name: "Analyze device",
-      reference: [{ book: "SR6", page: 134 }],
+      reference: [{ book: "SR6 Berlin", page: 134 }],
       category: "Detection",
       range: "Touch",
       type: "Physical",
@@ -281,7 +281,7 @@ const spells: Spells = {
     },
     {
       name: "Analyze magic",
-      reference: [{ book: "SR6", page: 134 }],
+      reference: [{ book: "SR6 Berlin", page: 134 }],
       category: "Detection",
       range: "Touch",
       type: "Physical",
@@ -290,7 +290,7 @@ const spells: Spells = {
     },
     {
       name: "Analyze truth",
-      reference: [{ book: "SR6", page: 134 }],
+      reference: [{ book: "SR6 Berlin", page: 134 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -299,7 +299,7 @@ const spells: Spells = {
     },
     {
       name: "Clairaudience",
-      reference: [{ book: "SR6", page: 134 }],
+      reference: [{ book: "SR6 Berlin", page: 134 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -308,7 +308,7 @@ const spells: Spells = {
     },
     {
       name: "Clairvoyance",
-      reference: [{ book: "SR6", page: 134 }],
+      reference: [{ book: "SR6 Berlin", page: 134 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -317,7 +317,7 @@ const spells: Spells = {
     },
     {
       name: "Combat sense",
-      reference: [{ book: "SR6", page: 135 }],
+      reference: [{ book: "SR6 Berlin", page: 135 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -326,7 +326,7 @@ const spells: Spells = {
     },
     {
       name: "Detect enemies",
-      reference: [{ book: "SR6", page: 135 }],
+      reference: [{ book: "SR6 Berlin", page: 135 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -335,7 +335,7 @@ const spells: Spells = {
     },
     {
       name: "Detect life",
-      reference: [{ book: "SR6", page: 135 }],
+      reference: [{ book: "SR6 Berlin", page: 135 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -344,7 +344,7 @@ const spells: Spells = {
     },
     {
       name: "Detect magic",
-      reference: [{ book: "SR6", page: 135 }],
+      reference: [{ book: "SR6 Berlin", page: 135 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -353,7 +353,7 @@ const spells: Spells = {
     },
     {
       name: "Mindlink",
-      reference: [{ book: "SR6", page: 135 }],
+      reference: [{ book: "SR6 Berlin", page: 135 }],
       category: "Detection",
       range: "Touch",
       type: "Mana",
@@ -362,7 +362,7 @@ const spells: Spells = {
     },
     {
       name: "Mind probe",
-      reference: [{ book: "SR6", page: 135 }],
+      reference: [{ book: "SR6 Berlin", page: 135 }],
       category: "Detection",
       range: "Touch",
       type: "Physical",
@@ -373,7 +373,7 @@ const spells: Spells = {
   Health: [
     {
       name: "Antidote",
-      reference: [{ book: "SR6", page: 135 }],
+      reference: [{ book: "SR6 Berlin", page: 135 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -382,7 +382,7 @@ const spells: Spells = {
     },
     {
       name: "Cleansing heal",
-      reference: [{ book: "SR6", page: 136 }],
+      reference: [{ book: "SR6 Berlin", page: 136 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -391,7 +391,7 @@ const spells: Spells = {
     },
     {
       name: "Cooling heal",
-      reference: [{ book: "SR6", page: 136 }],
+      reference: [{ book: "SR6 Berlin", page: 136 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -400,7 +400,7 @@ const spells: Spells = {
     },
     {
       name: "Decrease attribute",
-      reference: [{ book: "SR6", page: 136 }],
+      reference: [{ book: "SR6 Berlin", page: 136 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -409,7 +409,7 @@ const spells: Spells = {
     },
     {
       name: "Heal",
-      reference: [{ book: "SR6", page: 136 }],
+      reference: [{ book: "SR6 Berlin", page: 136 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -418,7 +418,7 @@ const spells: Spells = {
     },
     {
       name: "Increase attribute",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -427,7 +427,7 @@ const spells: Spells = {
     },
     {
       name: "Increase reflexes",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -436,7 +436,7 @@ const spells: Spells = {
     },
     {
       name: "Resist pain",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Health",
       range: "Touch",
       type: "Mana",
@@ -445,7 +445,7 @@ const spells: Spells = {
     },
     {
       name: "Stabilize",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Health",
       range: "Touch",
       type: "Mana",
@@ -454,7 +454,7 @@ const spells: Spells = {
     },
     {
       name: "Warming heal",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Health",
       range: "Touch",
       type: "Physical",
@@ -465,7 +465,7 @@ const spells: Spells = {
   Illusion: [
     {
       name: "Agony",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Illusion",
       range: "Line of sight",
       type: "Mana",
@@ -479,7 +479,7 @@ const spells: Spells = {
     },
     {
       name: "Confusion",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Illusion",
       range: "Line of sight",
       type: "Mana",
@@ -493,7 +493,7 @@ const spells: Spells = {
     },
     {
       name: "Chaos",
-      reference: [{ book: "SR6", page: 137 }],
+      reference: [{ book: "SR6 Berlin", page: 137 }],
       category: "Illusion",
       range: "Line of sight",
       type: "Physical",
@@ -507,7 +507,7 @@ const spells: Spells = {
     },
     {
       name: "Hush",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Touch",
       type: "Mana",
@@ -521,7 +521,7 @@ const spells: Spells = {
     },
     {
       name: "Silence",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Touch",
       type: "Physical",
@@ -535,7 +535,7 @@ const spells: Spells = {
     },
     {
       name: "Invisibility",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Touch",
       type: "Mana",
@@ -549,7 +549,7 @@ const spells: Spells = {
     },
     {
       name: "Improved invisibility",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Touch",
       type: "Physical",
@@ -563,7 +563,7 @@ const spells: Spells = {
     },
     {
       name: "Mask",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Touch",
       type: "Mana",
@@ -577,7 +577,7 @@ const spells: Spells = {
     },
     {
       name: "Physical mask",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Touch",
       type: "Physical",
@@ -591,7 +591,7 @@ const spells: Spells = {
     },
     {
       name: "Phantasm",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Line of sight area",
       type: "Mana",
@@ -605,7 +605,7 @@ const spells: Spells = {
     },
     {
       name: "Trid phantasm",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Line of sight area",
       type: "Physical",
@@ -619,7 +619,7 @@ const spells: Spells = {
     },
     {
       name: "Sensor sneak",
-      reference: [{ book: "SR6", page: 138 }],
+      reference: [{ book: "SR6 Berlin", page: 138 }],
       category: "Illusion",
       range: "Touch",
       type: "Physical",
@@ -635,7 +635,7 @@ const spells: Spells = {
   Manipulation: [
     {
       name: "Animate metal",
-      reference: [{ book: "SR6", page: 139 }],
+      reference: [{ book: "SR6 Berlin", page: 139 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -644,7 +644,7 @@ const spells: Spells = {
     },
     {
       name: "Animate plastic",
-      reference: [{ book: "SR6", page: 139 }],
+      reference: [{ book: "SR6 Berlin", page: 139 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -653,7 +653,7 @@ const spells: Spells = {
     },
     {
       name: "Animate stone",
-      reference: [{ book: "SR6", page: 139 }],
+      reference: [{ book: "SR6 Berlin", page: 139 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -662,7 +662,7 @@ const spells: Spells = {
     },
     {
       name: "Animate wood",
-      reference: [{ book: "SR6", page: 139 }],
+      reference: [{ book: "SR6 Berlin", page: 139 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -671,7 +671,7 @@ const spells: Spells = {
     },
     {
       name: "Armor",
-      reference: [{ book: "SR6", page: 140 }],
+      reference: [{ book: "SR6 Berlin", page: 140 }],
       category: "Manipulation",
       range: "Touch",
       type: "Physical",
@@ -680,7 +680,7 @@ const spells: Spells = {
     },
     {
       name: "Control actions",
-      reference: [{ book: "SR6", page: 140 }],
+      reference: [{ book: "SR6 Berlin", page: 140 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Mana",
@@ -689,7 +689,7 @@ const spells: Spells = {
     },
     {
       name: "Control thoughts",
-      reference: [{ book: "SR6", page: 140 }],
+      reference: [{ book: "SR6 Berlin", page: 140 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Mana",
@@ -698,7 +698,7 @@ const spells: Spells = {
     },
     {
       name: "Darkness",
-      reference: [{ book: "SR6", page: 140 }],
+      reference: [{ book: "SR6 Berlin", page: 140 }],
       category: "Manipulation",
       range: "Line of sight area",
       type: "Physical",
@@ -707,7 +707,7 @@ const spells: Spells = {
     },
     {
       name: "Light",
-      reference: [{ book: "SR6", page: 140 }],
+      reference: [{ book: "SR6 Berlin", page: 140 }],
       category: "Manipulation",
       range: "Line of sight area",
       type: "Physical",
@@ -716,7 +716,7 @@ const spells: Spells = {
     },
     {
       name: "Elemental armor",
-      reference: [{ book: "SR6", page: 140 }],
+      reference: [{ book: "SR6 Berlin", page: 140 }],
       category: "Manipulation",
       range: "Touch",
       type: "Mana",
@@ -725,7 +725,7 @@ const spells: Spells = {
     },
     {
       name: "Fling",
-      reference: [{ book: "SR6", page: 140 }],
+      reference: [{ book: "SR6 Berlin", page: 140 }],
       category: "Manipulation",
       range: "Touch",
       type: "Physical",
@@ -734,7 +734,7 @@ const spells: Spells = {
     },
     {
       name: "Focus burst",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Touch",
       type: "Mana",
@@ -743,7 +743,7 @@ const spells: Spells = {
     },
     {
       name: "Levitate",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -752,7 +752,7 @@ const spells: Spells = {
     },
     {
       name: "Mana barrier",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight area",
       type: "Mana",
@@ -761,7 +761,7 @@ const spells: Spells = {
     },
     {
       name: "Mystic armor",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Touch",
       type: "Mana",
@@ -770,7 +770,7 @@ const spells: Spells = {
     },
     {
       name: "Overclock",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -779,7 +779,7 @@ const spells: Spells = {
     },
     {
       name: "Physical barrier",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight area",
       type: "Physical",
@@ -788,7 +788,7 @@ const spells: Spells = {
     },
     {
       name: "Shape metal",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -797,7 +797,7 @@ const spells: Spells = {
     },
     {
       name: "Shape plastic",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -806,7 +806,7 @@ const spells: Spells = {
     },
     {
       name: "Shape stone",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -815,7 +815,7 @@ const spells: Spells = {
     },
     {
       name: "Shape wood",
-      reference: [{ book: "SR6", page: 141 }],
+      reference: [{ book: "SR6 Berlin", page: 141 }],
       category: "Manipulation",
       range: "Line of sight",
       type: "Physical",
@@ -824,7 +824,7 @@ const spells: Spells = {
     },
     {
       name: "Strengthen wall",
-      reference: [{ book: "SR6", page: 142 }],
+      reference: [{ book: "SR6 Berlin", page: 142 }],
       category: "Manipulation",
       range: "Line of sight area",
       type: "Physical",
@@ -833,7 +833,7 @@ const spells: Spells = {
     },
     {
       name: "Thunder",
-      reference: [{ book: "SR6", page: 142 }],
+      reference: [{ book: "SR6 Berlin", page: 142 }],
       category: "Manipulation",
       range: "Line of sight area",
       type: "Physical",
@@ -842,7 +842,7 @@ const spells: Spells = {
     },
     {
       name: "Vehicle armor",
-      reference: [{ book: "SR6", page: 142 }],
+      reference: [{ book: "SR6 Berlin", page: 142 }],
       category: "Manipulation",
       range: "Touch",
       type: "Physical",

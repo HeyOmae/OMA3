@@ -5,14 +5,14 @@ import type { AdeptPower } from "../types/MagRes"
 const adeptPowers: AdeptPower[] = [
   {
     name: "Adrenaline Boost",
-    reference: [{ book: "SR6", page: 156 }],
+    reference: [{ book: "SR6 Berlin", page: 156 }],
     cost: 0.25,
     levels: true,
     activation: "Minor action",
   },
   {
     name: "Astral Perception",
-    reference: [{ book: "SR6", page: 156 }],
+    reference: [{ book: "SR6 Berlin", page: 156 }],
     cost: 1,
     activation: "Minor action",
     modifications: {
@@ -23,7 +23,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Attribute Boost",
-    reference: [{ book: "SR6", page: 156 }],
+    reference: [{ book: "SR6 Berlin", page: 156 }],
     cost: 0.25,
     levels: true,
     select: "PHYSICAL ATTRIBUTE",
@@ -31,7 +31,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Combat Sense",
-    reference: [{ book: "SR6", page: 156 }],
+    reference: [{ book: "SR6 Berlin", page: 156 }],
     cost: 0.5,
     levels: true,
     activation: "Passive",
@@ -51,7 +51,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Critical Strike",
-    reference: [{ book: "SR6", page: 156 }],
+    reference: [{ book: "SR6 Berlin", page: 156 }],
     cost: 1,
     levels: true,
     activation: "Passive",
@@ -65,25 +65,25 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Danger Sense",
-    reference: [{ book: "SR6", page: 156 }],
+    reference: [{ book: "SR6 Berlin", page: 156 }],
     cost: 0.5,
     activation: "Passive",
   },
   {
     name: "Direction Sense",
-    reference: [{ book: "SR6", page: 156 }],
+    reference: [{ book: "SR6 Berlin", page: 156 }],
     cost: 0.25,
     activation: "Passive",
   },
   {
     name: "Enhanced Perception",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.5,
     activation: "Passive",
   },
   {
     name: "Enhanced Accuracy",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.5,
     activation: "Passive",
     modifications: {
@@ -95,7 +95,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Improved Ability",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.5,
     levels: true,
     select: "Noncombat skill",
@@ -114,7 +114,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Improved Ability Combat",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 1,
     levels: true,
     select: "COMBAT SKILL",
@@ -133,7 +133,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Improved Physical Attribute",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 1,
     levels: true,
     max: 4,
@@ -147,7 +147,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Improved Reflexes",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 1.0,
     levels: true,
     max: 4,
@@ -166,26 +166,26 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Improved Sense",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.25,
     select: "SENSE",
     activation: "Passive",
   },
   {
     name: "Killing Hands",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.5,
     activation: "Minor action",
   },
   {
     name: "Kinesics",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.25,
     activation: "Passive",
   },
   {
     name: "Mystic Armor",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.25,
     levels: true,
     activation: "Passive",
@@ -198,7 +198,7 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Pain Resistance",
-    reference: [{ book: "SR6", page: 157 }],
+    reference: [{ book: "SR6 Berlin", page: 157 }],
     cost: 0.25,
     levels: true,
     activation: "Passive",
@@ -211,33 +211,33 @@ const adeptPowers: AdeptPower[] = [
   },
   {
     name: "Rapid Healing",
-    reference: [{ book: "SR6", page: 158 }],
+    reference: [{ book: "SR6 Berlin", page: 158 }],
     cost: 0.5,
     levels: true,
     activation: "Passive",
   },
   {
     name: "Spell Resistance",
-    reference: [{ book: "SR6", page: 158 }],
+    reference: [{ book: "SR6 Berlin", page: 158 }],
     cost: 0.5,
     activation: "Passive",
   },
   {
     name: "Traceless Walk",
-    reference: [{ book: "SR6", page: 158 }],
+    reference: [{ book: "SR6 Berlin", page: 158 }],
     cost: 0.5,
     activation: "Passive",
   },
   {
     name: "Vocal Control",
-    reference: [{ book: "SR6", page: 158 }],
+    reference: [{ book: "SR6 Berlin", page: 158 }],
     cost: 0.5,
     levels: true,
     activation: "Passive",
   },
   {
     name: "Wall Running",
-    reference: [{ book: "SR6", page: 158 }],
+    reference: [{ book: "SR6 Berlin", page: 158 }],
     cost: 0.5,
     activation: "Minor action",
   },

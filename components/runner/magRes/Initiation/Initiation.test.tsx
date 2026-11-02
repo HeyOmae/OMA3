@@ -82,6 +82,6 @@ describe("<Initiation/>", () => {
     setup()
 
     const centering = closest(await screen.findByText("Centering"), "tr")
-    expect(globalGetByText(centering, "SR6 p.167")).toBeInTheDocument()
+    expect(globalGetByText(centering, "SR6 Berlin p.167")).toBeInTheDocument()
   })
 })

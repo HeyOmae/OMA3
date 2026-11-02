@@ -136,10 +136,10 @@ describe("<Spells/>", () => {
 
     await userEvent.click(getByText("Combat Spells"))
     const manabolt = closest(getByText("Manabolt (Direct Combat)"), "tr")
-    expect(globalGetByText(manabolt, "SR6 p.133")).toBeVisible()
+    expect(globalGetByText(manabolt, "SR6 Berlin p.133")).toBeVisible()
 
     await userEvent.click(getByText("Detection Spells"))
     const combatSense = closest(getByText("Combat sense"), "tr")
-    expect(globalGetByText(combatSense, "SR6 p.135")).toBeVisible()
+    expect(globalGetByText(combatSense, "SR6 Berlin p.135")).toBeVisible()
   })
 })

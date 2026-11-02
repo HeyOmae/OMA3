@@ -5,7 +5,7 @@ import type { Ritual } from "../types/MagRes"
 const rituals: Ritual[] = [
   {
     name: "Circle of healing",
-    reference: [{ book: "SR6", page: 144 }],
+    reference: [{ book: "SR6 Berlin", page: 144 }],
     threshold: 7,
     ritualfeature: [
       {
@@ -18,7 +18,7 @@ const rituals: Ritual[] = [
   },
   {
     name: "Circle of protection",
-    reference: [{ book: "SR6", page: 144 }],
+    reference: [{ book: "SR6 Berlin", page: 144 }],
     threshold: 6,
     ritualfeature: [
       {
@@ -28,7 +28,7 @@ const rituals: Ritual[] = [
   },
   {
     name: "Curse",
-    reference: [{ book: "SR6", page: 145 }],
+    reference: [{ book: "SR6 Berlin", page: 145 }],
     threshold: 5,
     ritualfeature: [
       {
@@ -41,7 +41,7 @@ const rituals: Ritual[] = [
   },
   {
     name: "Prodigal spell",
-    reference: [{ book: "SR6", page: 145 }],
+    reference: [{ book: "SR6 Berlin", page: 145 }],
     threshold: 6,
     ritualfeature: [
       {
@@ -54,7 +54,7 @@ const rituals: Ritual[] = [
   },
   {
     name: "Remote sensing",
-    reference: [{ book: "SR6", page: 145 }],
+    reference: [{ book: "SR6 Berlin", page: 145 }],
     threshold: 5,
     ritualfeature: [
       {
@@ -67,7 +67,7 @@ const rituals: Ritual[] = [
   },
   {
     name: "Renascence",
-    reference: [{ book: "SR6", page: 145 }],
+    reference: [{ book: "SR6 Berlin", page: 145 }],
     threshold: 6,
     ritualfeature: [
       {
@@ -80,7 +80,7 @@ const rituals: Ritual[] = [
   },
   {
     name: "Ward",
-    reference: [{ book: "SR6", page: 145 }],
+    reference: [{ book: "SR6 Berlin", page: 145 }],
     threshold: 6,
     ritualfeature: [
       {
@@ -90,7 +90,7 @@ const rituals: Ritual[] = [
   },
   {
     name: "Watcher",
-    reference: [{ book: "SR6", page: 146 }],
+    reference: [{ book: "SR6 Berlin", page: 146 }],
     threshold: 4,
     ritualfeature: [
       {

@@ -47,6 +47,6 @@ describe("<AdpetPowers/>", () => {
     const { getByText } = setup()
 
     const mysticArmor = closest(getByText("Mystic Armor"), "tr")
-    expect(globalGetByText(mysticArmor, "SR6 p.157")).toBeInTheDocument()
+    expect(globalGetByText(mysticArmor, "SR6 Berlin p.157")).toBeInTheDocument()
   })
 })

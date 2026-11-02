@@ -289,5 +289,5 @@ export const expectGearToDisplayMatrixDeviceTable =
 export const findGearReference = async (name: string, page: number) =>
   getTextInContainer(
     closest(await screen.findByLabelText(`Add ${name}`), "tr"),
-    `SR6 p.${page}`,
+    `SR6 Berlin p.${page}`,
   )

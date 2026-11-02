@@ -5,7 +5,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "TASERS",
     name: "Defiance Super Shock",
-    reference: [{ book: "SR6", page: 251 }],
+    reference: [{ book: "SR6 Berlin", page: 251 }],
     availability: "1",
     cost: 340,
     useAs: [
@@ -44,7 +44,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "TASERS",
     name: "Yamaha Pulsar 1",
-    reference: [{ book: "SR6", page: 250 }],
+    reference: [{ book: "SR6 Berlin", page: 250 }],
     availability: "1",
     cost: 325,
     useAs: [
@@ -73,7 +73,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "TASERS",
     name: "Yamaha Pulsar 2",
-    reference: [{ book: "SR6", page: 250 }],
+    reference: [{ book: "SR6 Berlin", page: 250 }],
     availability: "1",
     cost: 350,
     useAs: [
@@ -111,7 +111,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "HOLDOUTS",
     name: "Fichetti Tiffani Needler",
-    reference: [{ book: "SR6", page: 251 }],
+    reference: [{ book: "SR6 Berlin", page: 251 }],
     availability: "2",
     cost: 435,
     useAs: [
@@ -133,7 +133,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "HOLDOUTS",
     name: "Streetline Special",
-    reference: [{ book: "SR6", page: 251 }],
+    reference: [{ book: "SR6 Berlin", page: 251 }],
     availability: "2",
     cost: 325,
     useAs: [
@@ -155,7 +155,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "HOLDOUTS",
     name: "Walther Palm Pistol",
-    reference: [{ book: "SR6", page: 251 }],
+    reference: [{ book: "SR6 Berlin", page: 251 }],
     availability: "2",
     cost: 325,
     useAs: [
@@ -177,7 +177,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "PISTOLS LIGHT",
     name: "Ares Light Fire 70",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     availability: "3L",
     cost: 350,
     useAs: [
@@ -216,7 +216,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "PISTOLS LIGHT",
     name: "Ares Light Fire 75",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     availability: "3L",
     cost: 400,
     useAs: [
@@ -260,7 +260,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 260,
     name: "Beretta 101T",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -292,7 +292,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 460,
     name: "Beretta 201T",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -333,7 +333,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 230,
     name: "Colt America L36",
-    reference: [{ book: "SR6", page: 252 }],
+    reference: [{ book: "SR6 Berlin", page: 252 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -365,7 +365,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 390,
     name: "Fichetti Security 600",
-    reference: [{ book: "SR6", page: 252 }],
+    reference: [{ book: "SR6 Berlin", page: 252 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -409,7 +409,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "PISTOLS LIGHT",
     name: "Rudger Redhawk",
-    reference: [{ book: "SR6", page: 252 }],
+    reference: [{ book: "SR6 Berlin", page: 252 }],
     availability: "2L",
     cost: 250,
     useAs: [
@@ -441,7 +441,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "MACHINE PISTOLS",
     name: "Ares Crusader Ii",
-    reference: [{ book: "SR6", page: 252 }],
+    reference: [{ book: "SR6 Berlin", page: 252 }],
     availability: "4L",
     cost: 520,
     useAs: [
@@ -483,7 +483,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "MACHINE PISTOLS",
     name: "Ceska Black Scorpion",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     availability: "3L",
     cost: 510,
     useAs: [
@@ -524,7 +524,7 @@ const firearms: GearFirearm[] = [
     type: "WEAPON FIREARMS",
     subtype: "MACHINE PISTOLS",
     name: "Steyr TMP",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     availability: "3L",
     cost: 690,
     useAs: [
@@ -565,7 +565,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 750,
     name: "Ares Predator VI",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -600,7 +600,7 @@ const firearms: GearFirearm[] = [
     availability: "4L",
     cost: 610,
     name: "Ares Viper Slivergun",
-    reference: [{ book: "SR6", page: 253 }],
+    reference: [{ book: "SR6 Berlin", page: 253 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -638,7 +638,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 640,
     name: "Browning Ultra Power",
-    reference: [{ book: "SR6", page: 254 }],
+    reference: [{ book: "SR6 Berlin", page: 254 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -677,7 +677,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 425,
     name: "Colt Government 2076",
-    reference: [{ book: "SR6", page: 254 }],
+    reference: [{ book: "SR6 Berlin", page: 254 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -716,7 +716,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 425,
     name: "Colt Manhunter",
-    reference: [{ book: "SR6", page: 254 }],
+    reference: [{ book: "SR6 Berlin", page: 254 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -758,7 +758,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 400,
     name: "Ruger Super Warhawk",
-    reference: [{ book: "SR6", page: 254 }],
+    reference: [{ book: "SR6 Berlin", page: 254 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -790,7 +790,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 730,
     name: "Colt Cobra TZ-100",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -831,7 +831,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 785,
     name: "Colt Cobra TZ-110",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -877,7 +877,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 840,
     name: "Colt Cobra TZ-120",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -928,7 +928,7 @@ const firearms: GearFirearm[] = [
     availability: "4L",
     cost: 925,
     name: "FN P93 Praetor",
-    reference: [{ book: "SR6", page: 254 }],
+    reference: [{ book: "SR6 Berlin", page: 254 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -977,7 +977,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 825,
     name: "HK-227",
-    reference: [{ book: "SR6", page: 254 }],
+    reference: [{ book: "SR6 Berlin", page: 254 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1025,7 +1025,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 750,
     name: "Ingram Smartgun XI",
-    reference: [{ book: "SR6", page: 254 }],
+    reference: [{ book: "SR6 Berlin", page: 254 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1071,7 +1071,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 725,
     name: "SCK Model 100",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1115,7 +1115,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 450,
     name: "Uzi IV",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1161,7 +1161,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 330,
     name: "Defiance T-250",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1199,7 +1199,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 330,
     name: "Defiance T-250 Shortbarrel",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1237,7 +1237,7 @@ const firearms: GearFirearm[] = [
     availability: "4L",
     cost: 700,
     name: "Mossberg CMDT",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1282,7 +1282,7 @@ const firearms: GearFirearm[] = [
     availability: "5L",
     cost: 825,
     name: "PJSS Model 55",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1326,7 +1326,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 325,
     name: "Remington Roomsweeper",
-    reference: [{ book: "SR6", page: 255 }],
+    reference: [{ book: "SR6 Berlin", page: 255 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1358,7 +1358,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 12000,
     name: "Remington 900",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1399,7 +1399,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 11100,
     name: "Ruger 101",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1447,7 +1447,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 2100,
     name: "Ak 97",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1485,7 +1485,7 @@ const firearms: GearFirearm[] = [
     availability: "5L",
     cost: 3400,
     name: "Ares Alpha",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1532,7 +1532,7 @@ const firearms: GearFirearm[] = [
     availability: "2L",
     cost: 1500,
     name: "Colt M23",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1576,7 +1576,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 2100,
     name: "FN Har",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1626,7 +1626,7 @@ const firearms: GearFirearm[] = [
     availability: "5L",
     cost: 3200,
     name: "Yamaha Raiden",
-    reference: [{ book: "SR6", page: 256 }],
+    reference: [{ book: "SR6 Berlin", page: 256 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1681,7 +1681,7 @@ const firearms: GearFirearm[] = [
     availability: "4I",
     cost: 11000,
     name: "Ares Desert Strike",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1729,7 +1729,7 @@ const firearms: GearFirearm[] = [
     availability: "5I",
     cost: 9050,
     name: "Cavalier Arms Crocket Ebr",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1777,7 +1777,7 @@ const firearms: GearFirearm[] = [
     availability: "5I",
     cost: 13200,
     name: "Ranger Arms SM-6",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1829,7 +1829,7 @@ const firearms: GearFirearm[] = [
     availability: "6I",
     cost: 15200,
     name: "Barret Model 122",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1880,7 +1880,7 @@ const firearms: GearFirearm[] = [
     availability: "4L",
     cost: 4175,
     name: "Ingram Valiant",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1934,7 +1934,7 @@ const firearms: GearFirearm[] = [
     availability: "4L",
     cost: 6900,
     name: "Stoner Ares M202",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -1972,7 +1972,7 @@ const firearms: GearFirearm[] = [
     availability: "5L",
     cost: 8000,
     name: "RPK HMG",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2020,7 +2020,7 @@ const firearms: GearFirearm[] = [
     availability: "6I",
     cost: 10000,
     name: "Panther XXL",
-    reference: [{ book: "SR6", page: 257 }],
+    reference: [{ book: "SR6 Berlin", page: 257 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2061,7 +2061,7 @@ const firearms: GearFirearm[] = [
     availability: "3L",
     cost: 560,
     name: "Ares S3 Super Squirt",
-    reference: [{ book: "SR6", page: 258 }],
+    reference: [{ book: "SR6 Berlin", page: 258 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2096,7 +2096,7 @@ const firearms: GearFirearm[] = [
     availability: "2",
     cost: 510,
     name: "Parashield DART Pistol",
-    reference: [{ book: "SR6", page: 258 }],
+    reference: [{ book: "SR6 Berlin", page: 258 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2128,7 +2128,7 @@ const firearms: GearFirearm[] = [
     availability: "3",
     cost: 710,
     name: "Parashield DART Rifle",
-    reference: [{ book: "SR6", page: 258 }],
+    reference: [{ book: "SR6 Berlin", page: 258 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2172,7 +2172,7 @@ const firearms: GearFirearm[] = [
     availability: "3I",
     cost: 5900,
     name: "Ares Antioch-2",
-    reference: [{ book: "SR6", page: 258 }],
+    reference: [{ book: "SR6 Berlin", page: 258 }],
     useAs: [
       {
         type: "WEAPON SPECIAL",
@@ -2206,7 +2206,7 @@ const firearms: GearFirearm[] = [
     availability: "4I",
     cost: 1800,
     name: "Armtech MGL6",
-    reference: [{ book: "SR6", page: 258 }],
+    reference: [{ book: "SR6 Berlin", page: 258 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2241,7 +2241,7 @@ const firearms: GearFirearm[] = [
     availability: "4I",
     cost: 5000,
     name: "Armtech MGL12",
-    reference: [{ book: "SR6", page: 258 }],
+    reference: [{ book: "SR6 Berlin", page: 258 }],
     useAs: [
       {
         type: "WEAPON FIREARMS",
@@ -2283,7 +2283,7 @@ const firearms: GearFirearm[] = [
     availability: "5I",
     cost: 7000,
     name: "Aztechnology Striker",
-    reference: [{ book: "SR6", page: 259 }],
+    reference: [{ book: "SR6 Berlin", page: 259 }],
     useAs: [
       {
         type: "WEAPON SPECIAL",
@@ -2314,7 +2314,7 @@ const firearms: GearFirearm[] = [
     availability: "5I",
     cost: 9000,
     name: "Onotari Interceptor",
-    reference: [{ book: "SR6", page: 259 }],
+    reference: [{ book: "SR6 Berlin", page: 259 }],
     useAs: [
       {
         type: "WEAPON SPECIAL",
@@ -2348,7 +2348,7 @@ const firearms: GearFirearm[] = [
     availability: "0",
     cost: 0,
     name: "Cyberspace Designs Quadrotor Crossbow",
-    reference: [{ book: "SR6", page: 300 }],
+    reference: [{ book: "SR6 Berlin", page: 300 }],
     modonly: true,
     useAs: [
       {
@@ -2412,7 +2412,7 @@ export const mods: Gear[] = [
     availability: "1",
     cost: 200,
     name: "Bipod",
-    reference: [{ book: "SR6", page: 259 }],
+    reference: [{ book: "SR6 Berlin", page: 259 }],
   },
   {
     useAs: [
@@ -2438,7 +2438,7 @@ export const mods: Gear[] = [
     availability: "1",
     cost: 150,
     name: "Concealable Holster",
-    reference: [{ book: "SR6", page: 259 }],
+    reference: [{ book: "SR6 Berlin", page: 259 }],
     type: "ACCESSORY",
     subtype: "ACCESSORY",
   },
@@ -2453,7 +2453,7 @@ export const mods: Gear[] = [
     availability: "3",
     cost: 500,
     name: "Gas-Vent System",
-    reference: [{ book: "SR6", page: 259 }],
+    reference: [{ book: "SR6 Berlin", page: 259 }],
     type: "ACCESSORY",
   },
   {
@@ -2475,7 +2475,7 @@ export const mods: Gear[] = [
     availability: "3",
     cost: 1400,
     name: "Gyro Mount",
-    reference: [{ book: "SR6", page: 261 }],
+    reference: [{ book: "SR6 Berlin", page: 261 }],
   },
   {
     useAs: [
@@ -2501,7 +2501,7 @@ export const mods: Gear[] = [
     availability: "2",
     cost: 350,
     name: "Hidden Arm Slide",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
     type: "ACCESSORY",
   },
   {
@@ -2535,7 +2535,7 @@ export const mods: Gear[] = [
     availability: "1",
     cost: 350,
     name: "Imaging Scope",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
     type: "ACCESSORY",
   },
   {
@@ -2562,7 +2562,7 @@ export const mods: Gear[] = [
     availability: "1",
     cost: 125,
     name: "Laser Sight",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
     type: "ACCESSORY",
   },
   {
@@ -2581,7 +2581,7 @@ export const mods: Gear[] = [
     availability: "3",
     cost: 70,
     name: "Periscope",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
     type: "ACCESSORY",
   },
   {
@@ -2600,7 +2600,7 @@ export const mods: Gear[] = [
     availability: "2",
     cost: 175,
     name: "Quick Draw Holster",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
     type: "ACCESSORY",
   },
   {
@@ -2631,7 +2631,7 @@ export const mods: Gear[] = [
     availability: "2",
     cost: 50,
     name: "Shock Pad",
-    reference: [{ book: "SR6", page: 261 }],
+    reference: [{ book: "SR6 Berlin", page: 261 }],
   },
   {
     type: "ACCESSORY",
@@ -2654,7 +2654,7 @@ export const mods: Gear[] = [
     availability: "4",
     cost: 500,
     name: "Silencer",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
   },
   {
     type: "ACCESSORY",
@@ -2674,7 +2674,7 @@ export const mods: Gear[] = [
     availability: "5",
     cost: 2500,
     name: "Smart Firing Platform",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
   },
   {
     useAs: [
@@ -2708,7 +2708,7 @@ export const mods: Gear[] = [
     availability: "1L",
     cost: 500,
     name: "Smartgun System",
-    reference: [{ book: "SR6", page: 260 }],
+    reference: [{ book: "SR6 Berlin", page: 260 }],
     type: "ACCESSORY",
   },
   {
@@ -2749,7 +2749,7 @@ export const mods: Gear[] = [
     availability: "2L",
     cost: 200,
     name: "Smartgun System External",
-    reference: [{ book: "SR6", page: 261 }],
+    reference: [{ book: "SR6 Berlin", page: 261 }],
     type: "ACCESSORY",
   },
   {
@@ -2768,7 +2768,7 @@ export const mods: Gear[] = [
     availability: "2",
     cost: 5,
     name: "Spare Clip",
-    reference: [{ book: "SR6", page: 261 }],
+    reference: [{ book: "SR6 Berlin", page: 261 }],
     type: "ACCESSORY",
     multi: true,
   },
@@ -2788,7 +2788,7 @@ export const mods: Gear[] = [
     availability: "1",
     cost: 25,
     name: "Speed Loader",
-    reference: [{ book: "SR6", page: 261 }],
+    reference: [{ book: "SR6 Berlin", page: 261 }],
     type: "ACCESSORY",
     multi: true,
   },
@@ -2824,7 +2824,7 @@ export const mods: Gear[] = [
     availability: "2",
     cost: 500,
     name: "Tripod",
-    reference: [{ book: "SR6", page: 261 }],
+    reference: [{ book: "SR6 Berlin", page: 261 }],
     type: "ACCESSORY",
   },
   {

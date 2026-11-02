@@ -51,7 +51,7 @@ describe("<FirearmsWeapon />", () => {
           availability: "3L",
           cost: 750,
           name: "Ingram Smartgun XI",
-          reference: [{ book: "SR6", page: 254 }],
+          reference: [{ book: "SR6 Berlin", page: 254 }],
           useAs: [
             {
               type: "WEAPON FIREARMS",

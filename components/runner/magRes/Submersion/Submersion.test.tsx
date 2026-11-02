@@ -87,6 +87,6 @@ describe("<Submersion />", () => {
     setup("9")
 
     const machineMind = closest(await screen.findByText("Machine Mind"), "tr")
-    expect(globalGetByText(machineMind, "SR6 p.195")).toBeInTheDocument()
+    expect(globalGetByText(machineMind, "SR6 Berlin p.195")).toBeInTheDocument()
   })
 })

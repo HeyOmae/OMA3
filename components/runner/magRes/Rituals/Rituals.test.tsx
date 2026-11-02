@@ -44,6 +44,6 @@ describe("<Rituals />", () => {
     const { getByText } = setup()
 
     const watcher = closest(getByText("Watcher"), "tr")
-    expect(globalGetByText(watcher, "SR6 p.146")).toBeInTheDocument()
+    expect(globalGetByText(watcher, "SR6 Berlin p.146")).toBeInTheDocument()
   })
 })

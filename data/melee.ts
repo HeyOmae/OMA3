@@ -6,7 +6,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Combat Axe",
-    reference: [{ book: "SR6", page: 247 }],
+    reference: [{ book: "SR6 Berlin", page: 247 }],
     availability: "4",
     cost: 500,
     useAs: [
@@ -34,7 +34,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Combat Knife",
-    reference: [{ book: "SR6", page: 247 }],
+    reference: [{ book: "SR6 Berlin", page: 247 }],
     availability: "2",
     cost: 220,
     useAs: [
@@ -54,7 +54,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Survival Knife",
-    reference: [{ book: "SR6", page: 248 }],
+    reference: [{ book: "SR6 Berlin", page: 248 }],
     availability: "2",
     cost: 220,
     useAs: [
@@ -74,7 +74,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Forearm Snap Blades",
-    reference: [{ book: "SR6", page: 247 }],
+    reference: [{ book: "SR6 Berlin", page: 247 }],
     availability: "3",
     cost: 185,
     useAs: [
@@ -94,7 +94,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Knife",
-    reference: [{ book: "SR6", page: 247 }],
+    reference: [{ book: "SR6 Berlin", page: 247 }],
     availability: "1",
     cost: 20,
     useAs: [
@@ -122,7 +122,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Katana",
-    reference: [{ book: "SR6", page: 247 }],
+    reference: [{ book: "SR6 Berlin", page: 247 }],
     availability: "3",
     cost: 350,
     useAs: [
@@ -150,7 +150,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Polearm",
-    reference: [{ book: "SR6", page: 247 }],
+    reference: [{ book: "SR6 Berlin", page: 247 }],
     availability: "2",
     cost: 210,
     useAs: [
@@ -170,7 +170,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Sword",
-    reference: [{ book: "SR6", page: 248 }],
+    reference: [{ book: "SR6 Berlin", page: 248 }],
     availability: "3",
     cost: 320,
     useAs: [
@@ -198,7 +198,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Club",
-    reference: [{ book: "SR6", page: 248 }],
+    reference: [{ book: "SR6 Berlin", page: 248 }],
     availability: "1",
     cost: 65,
     useAs: [
@@ -218,7 +218,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Extendable Baton",
-    reference: [{ book: "SR6", page: 248 }],
+    reference: [{ book: "SR6 Berlin", page: 248 }],
     availability: "2",
     cost: 50,
     useAs: [
@@ -238,7 +238,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Sab",
-    reference: [{ book: "SR6", page: 248 }],
+    reference: [{ book: "SR6 Berlin", page: 248 }],
     availability: "1",
     cost: 75,
     useAs: [
@@ -258,7 +258,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Staff",
-    reference: [{ book: "SR6", page: 249 }],
+    reference: [{ book: "SR6 Berlin", page: 249 }],
     availability: "1",
     cost: 150,
     useAs: [
@@ -278,7 +278,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Stun Baton",
-    reference: [{ book: "SR6", page: 249 }],
+    reference: [{ book: "SR6 Berlin", page: 249 }],
     availability: "2",
     cost: 600,
     useAs: [
@@ -306,7 +306,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Telescopic Staff",
-    reference: [{ book: "SR6", page: 249 }],
+    reference: [{ book: "SR6 Berlin", page: 249 }],
     availability: "2",
     cost: 250,
     useAs: [
@@ -326,7 +326,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "UNARMED",
     name: "Bike Chain",
-    reference: [{ book: "SR6", page: 249 }],
+    reference: [{ book: "SR6 Berlin", page: 249 }],
     availability: "1",
     cost: 15,
     useAs: [
@@ -346,7 +346,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "WHIPS",
     name: "Bullwhip",
-    reference: [{ book: "SR6", page: 249 }],
+    reference: [{ book: "SR6 Berlin", page: 249 }],
     availability: "4",
     cost: 255,
     useAs: [
@@ -365,7 +365,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "UNARMED",
     name: "Knucks",
-    reference: [{ book: "SR6", page: 249 }],
+    reference: [{ book: "SR6 Berlin", page: 249 }],
     availability: "1",
     cost: 100,
     useAs: [
@@ -385,7 +385,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "UNARMED",
     name: "Shock Gloves",
-    reference: [{ book: "SR6", page: 250 }],
+    reference: [{ book: "SR6 Berlin", page: 250 }],
     availability: "4",
     cost: 790,
     useAs: [
@@ -405,7 +405,7 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "WHIPS",
     name: "Monofilament Whip",
-    reference: [{ book: "SR6", page: 249 }],
+    reference: [{ book: "SR6 Berlin", page: 249 }],
     availability: "6I",
     cost: 1300,
     useAs: [

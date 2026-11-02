@@ -34,7 +34,7 @@ describe("<ComplexForms/>", () => {
       payload: {
         complexForm: {
           name: "Puppeteer",
-          reference: [{ book: "SR6", page: 190 }],
+          reference: [{ book: "SR6 Berlin", page: 190 }],
           duration: "Sustained",
           fade: 5,
         },
@@ -46,6 +46,6 @@ describe("<ComplexForms/>", () => {
     const { getByText } = setup()
 
     const staticVeil = closest(getByText("Static Veil"), "tr")
-    expect(globalGetByText(staticVeil, "SR6 p.191")).toBeInTheDocument()
+    expect(globalGetByText(staticVeil, "SR6 Berlin p.191")).toBeInTheDocument()
   })
 })

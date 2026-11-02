@@ -5,7 +5,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 10,
     name: "Clothing Street",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     modonly: true,
@@ -25,7 +25,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 10,
     name: "Clothing Squatter",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -44,7 +44,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 100,
     name: "Clothing Low",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -63,7 +63,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 1000,
     name: "Clothing Middle",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -82,7 +82,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 5000,
     name: "Clothing High",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -101,7 +101,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 10000,
     name: "Clothing Luxury",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     subtype: "ARMOR CLOTHES",
     type: "ARMOR",
     armor: {
@@ -120,7 +120,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR BODY",
     name: "Synthleather Jacket",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     availability: "1",
     cost: 300,
     useAs: [
@@ -146,7 +146,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR SOCIAL",
     name: "Actioneer Business",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     availability: "2",
     cost: 1500,
     useAs: [
@@ -172,7 +172,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR SOCIAL",
     name: "Armor Clothing",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     availability: "2",
     cost: 500,
     useAs: [
@@ -198,7 +198,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR BODY",
     name: "Armor Jacket",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     availability: "2",
     cost: 1000,
     useAs: [
@@ -224,7 +224,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR BODY",
     name: "Armor Vest",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     availability: "4",
     cost: 750,
     useAs: [
@@ -250,7 +250,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR BODY",
     name: "Chameleon Suit",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     availability: "4I",
     cost: 2000,
     useAs: [
@@ -276,7 +276,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR BODY",
     name: "Full Body Armor",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     availability: "4L",
     cost: 2000,
     useAs: [
@@ -302,7 +302,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR HELMET",
     name: "Full Body Armor Helmet",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     availability: "0",
     cost: 500,
     useAs: [
@@ -328,7 +328,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR BODY",
     name: "Lined Coat",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     availability: "4",
     cost: 900,
     useAs: [
@@ -354,7 +354,7 @@ const armorData: GearArmor[] = [
     type: "ARMOR",
     subtype: "ARMOR BODY",
     name: "Urban Explorer Jumpsuit",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
     availability: "2",
     cost: 800,
     useAs: [
@@ -382,7 +382,7 @@ const armorData: GearArmor[] = [
     availability: "1",
     cost: 200,
     name: "Helmet",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     useAs: [
       {
         type: "ARMOR",
@@ -409,7 +409,7 @@ const armorData: GearArmor[] = [
     availability: "4",
     cost: 900,
     name: "Ballistic Shield",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     useAs: [
       {
         type: "ARMOR",
@@ -439,7 +439,7 @@ const armorData: GearArmor[] = [
     availability: "4",
     cost: 1200,
     name: "Riot Shield",
-    reference: [{ book: "SR6", page: 267 }],
+    reference: [{ book: "SR6 Berlin", page: 267 }],
     useAs: [
       {
         type: "ARMOR",
@@ -480,7 +480,7 @@ export const mods: Gear[] = [
     availability: "3",
     cost: 250,
     name: "Chemical Protection",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -503,7 +503,7 @@ export const mods: Gear[] = [
     availability: "5",
     cost: 3000,
     name: "Chemical Seal",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
   },
   {
     type: "ACCESSORY",
@@ -519,7 +519,7 @@ export const mods: Gear[] = [
     availability: "3",
     cost: 250,
     name: "Cold Resistance",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -537,7 +537,7 @@ export const mods: Gear[] = [
     availability: "3",
     cost: 250,
     name: "Fire Resistance",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -555,7 +555,7 @@ export const mods: Gear[] = [
     availability: "3",
     cost: 250,
     name: "Electricity Resistance",
-    reference: [{ book: "SR6", page: 266 }],
+    reference: [{ book: "SR6 Berlin", page: 266 }],
     rating: true,
     rateMultiplier: "capacity cost",
   },
@@ -573,7 +573,7 @@ export const mods: Gear[] = [
     availability: "1",
     cost: 75,
     name: "Electrochromic Feature",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
   },
   {
     type: "ACCESSORY",
@@ -589,7 +589,7 @@ export const mods: Gear[] = [
     availability: "2",
     cost: 150,
     name: "Feedback Feature",
-    reference: [{ book: "SR6", page: 265 }],
+    reference: [{ book: "SR6 Berlin", page: 265 }],
   },
 ]
 
