@@ -1,7 +1,7 @@
 import { CombatSpells } from "./CombatSpells"
 import { SpellsTable } from "./SpellsTable"
-import SpellsData from "@/data/spells.json"
-import { GeneralSpell, CombatSpell, Spell } from "@/types/MagRes"
+import SpellsData from "@/data/spells"
+import { Spell } from "@/types/MagRes"
 import { Payload, SET_SPELL } from ".."
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { FC } from "react"
@@ -41,7 +41,7 @@ export const Spells: FC<Props> = ({ dispatch }) => {
       <AccordionWrapper label="combat-spells">
         <h3>Combat Spells</h3>
         <CombatSpells
-          spells={Combat as CombatSpell[]}
+          spells={Combat}
           actionLabel="Learn"
           renderAction={(spell) => (
             <AddSpellButton
@@ -55,7 +55,7 @@ export const Spells: FC<Props> = ({ dispatch }) => {
       <AccordionWrapper label="detection-spells">
         <h3>Detection Spells</h3>
         <SpellsTable
-          spells={Detection as GeneralSpell[]}
+          spells={Detection}
           actionLabel="Learn"
           renderAction={(spell) => (
             <AddSpellButton
@@ -69,7 +69,7 @@ export const Spells: FC<Props> = ({ dispatch }) => {
       <AccordionWrapper label="health-spells">
         <h3>Health Spells</h3>
         <SpellsTable
-          spells={Health as GeneralSpell[]}
+          spells={Health}
           actionLabel="Learn"
           renderAction={(spell) => (
             <AddSpellButton
@@ -83,7 +83,7 @@ export const Spells: FC<Props> = ({ dispatch }) => {
       <AccordionWrapper label="illusion-spells">
         <h3>Illusion Spells</h3>
         <SpellsTable
-          spells={Illusion as GeneralSpell[]}
+          spells={Illusion}
           actionLabel="Learn"
           renderAction={(spell) => (
             <AddSpellButton
@@ -97,7 +97,7 @@ export const Spells: FC<Props> = ({ dispatch }) => {
       <AccordionWrapper label="manipulation-spells">
         <h3>Manipulation Spells</h3>
         <SpellsTable
-          spells={Manipulation as GeneralSpell[]}
+          spells={Manipulation}
           actionLabel="Learn"
           renderAction={(spell) => (
             <AddSpellButton

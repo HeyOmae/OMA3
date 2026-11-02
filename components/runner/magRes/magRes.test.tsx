@@ -10,7 +10,7 @@ import {
   userEvent,
   screen,
 } from "@/test/testUtils"
-import spellData from "@/data/spells.json"
+import spellData from "@/data/spells"
 import ritualData from "@/data/rituals.json"
 import { mockedRunners } from "@/test/mocks"
 import PowersData from "@/data/adeptPowers.json"

@@ -1,5 +1,5 @@
 import { Spells, Props } from "./index"
-import spellsData from "../../../../data/spells.json"
+import spellsData from "../../../../data/spells"
 import { render, userEvent } from "../../../../test/testUtils"
 import { SET_SPELL } from ".."
 
