@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { FC, useMemo } from "react"
 import {
   TableContainer,
@@ -29,11 +30,14 @@ export interface Props {
 }
 
 export const RunnerSkillTable: FC<Props> = ({
-  runner: { skills, qualities },
+  runner,
   skillPoints,
   dispatch,
   pointsToSpend,
 }) => {
+  // the table is only shown once the runner has skills
+  const skills = defined(runner.skills, "skills"),
+    { qualities } = runner
   const pointsRemaining = useMemo(
     () =>
       Object.values(skills).reduce((acc, { rating, specialization }) => {

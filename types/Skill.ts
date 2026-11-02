@@ -1,6 +1,6 @@
 import { Attributes } from "./RunnerAttributes"
 
-interface Skill {
+export interface Skill {
   rating: number
   karmaRating?: number
   attribute: {

@@ -7,7 +7,7 @@ import { Autocomplete, TextField } from "@mui/material"
 export interface Props {
   skillName: string
   id: string
-  value: string
+  value?: string
   dispatch: DispatchAction<ActionPayload>
   type?: symbol
   labelType?: string
@@ -38,7 +38,8 @@ export const SpecializationSelector: FC<Props> = ({
           payload: {
             specializationChange: {
               name: skillName,
-              specialization: spec,
+              // clearing the field takes the specialization away
+              specialization: spec ?? undefined,
             },
           },
         })
