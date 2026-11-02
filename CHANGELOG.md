@@ -1,5 +1,37 @@
 # Changelog
 
+## [3.16.0](https://github.com/HeyOmae/OMA3/compare/3.15.1...3.16.0) (2026-11-02)
+
+
+### Features
+
+* add ammo ([4d99f00](https://github.com/HeyOmae/OMA3/commit/4d99f006e013bb23771faf0f00fb67925d2c40b2)), closes [#2298](https://github.com/HeyOmae/OMA3/issues/2298)
+
+
+### Performance
+
+* import MUI icons by path instead of from the barrel ([5a58efe](https://github.com/HeyOmae/OMA3/commit/5a58efe019eda61688eee0b76e016b94486c8d37))
+* rewrite MUI icon barrel imports in tests ([0430419](https://github.com/HeyOmae/OMA3/commit/0430419d795d4487f88b509fccf9ddc2afef60df))
+
+
+### Refactors
+
+* split up the magic and initiative components ([66c0f19](https://github.com/HeyOmae/OMA3/commit/66c0f194ecba1fe745006abca69c8914f40c5d9c))
+* strict types for gear tables, mods and magic ([47cbd4c](https://github.com/HeyOmae/OMA3/commit/47cbd4c19f4ab28788d3f54c2625c2e01fb9dcdb))
+* strict types for skills ([0317cd0](https://github.com/HeyOmae/OMA3/commit/0317cd0ac9af65767f5e34320ba93c5b84f8346f))
+* strict types for the rest of the app ([534281d](https://github.com/HeyOmae/OMA3/commit/534281de12afa43b6ae9acd2de6ca7d905adf927))
+* type the complex form, ritual and adept power data ([81e835e](https://github.com/HeyOmae/OMA3/commit/81e835ef739ae9186e2d70053ea473cf4dd25a8a))
+* type the gear pages by the resources they save to ([54d1288](https://github.com/HeyOmae/OMA3/commit/54d1288d793d4040542bca44ab7374579af7e211))
+* type the priority table and the metatype page ([3f4d950](https://github.com/HeyOmae/OMA3/commit/3f4d9509d1c2848389a5a679f15f8d77a200513e))
+* type the skill and metatype data ([7df0aa5](https://github.com/HeyOmae/OMA3/commit/7df0aa575f2c9682fd8f116927c877569df6ec60))
+* type the spell data ([80df72a](https://github.com/HeyOmae/OMA3/commit/80df72a29ab0420d5f6fbdd3459e6ab7964059e2))
+
+
+### Maintenance
+
+* lint for functions that are too complex ([ca3a6b0](https://github.com/HeyOmae/OMA3/commit/ca3a6b012a9263b28776d47b77b359b7fad39a97))
+* turn on strict type checking ([a4c0e0b](https://github.com/HeyOmae/OMA3/commit/a4c0e0b77f4c3fde8b4cfd078fb4066868a2ba0d))
+
 ## [3.15.1](https://github.com/HeyOmae/OMA3/compare/3.15.0...3.15.1) (2026-11-01)
 
 
