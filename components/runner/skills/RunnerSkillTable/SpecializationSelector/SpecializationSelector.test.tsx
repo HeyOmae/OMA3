@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { render, userEvent } from "@/test/testUtils"
 import skillData from "@/data/skills.json"
 import { SpecializationSelector, Props } from "./index"
@@ -30,7 +31,7 @@ describe("<SpecializationSelect/>", () => {
     })
 
     const specToSelect = firearmsSkill?.specializations?.[0].name
-    await userEvent.click(getByText(specToSelect))
+    await userEvent.click(getByText(defined(specToSelect, "specialization")))
 
     expect(dispatch).toHaveBeenCalledWith({
       type: CHANGE_SPECIALIZATION,

@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import {
   render,
   setupIndexedDB,
@@ -63,17 +64,14 @@ describe("GearModPageTemplate", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    imagingMods.forEach(
-      ({ name, availability, cost, useAs: [{ capacity }] }) => {
-        const testRow = closest(getByLabelText(`Add ${name}`), "tr")
-        expect(getByTextInContainer(testRow, name)).toBeInTheDocument()
-        expect(
-          getByTextInContainer(testRow, `[${capacity}]`),
-        ).toBeInTheDocument()
-        expect(getByTextInContainer(testRow, availability)).toBeInTheDocument()
-        expect(getByTextInContainer(testRow, `${cost}¥`)).toBeInTheDocument()
-      },
-    )
+    imagingMods.forEach(({ name, availability, cost, useAs }) => {
+      const [{ capacity }] = defined(useAs, "useAs")
+      const testRow = closest(getByLabelText(`Add ${name}`), "tr")
+      expect(getByTextInContainer(testRow, name)).toBeInTheDocument()
+      expect(getByTextInContainer(testRow, `[${capacity}]`)).toBeInTheDocument()
+      expect(getByTextInContainer(testRow, availability)).toBeInTheDocument()
+      expect(getByTextInContainer(testRow, `${cost}¥`)).toBeInTheDocument()
+    })
   })
 
   it("should display mods already on a piece of gear", async () => {

@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { drones } from "@/data/drones"
 import {
   render,
@@ -41,7 +42,9 @@ describe("<Drones/>", () => {
       droneRow = closest(getByLabelText(`Add ${drone.name}`), "tr")
 
     expect(getByTextInContainer(droneRow, drone.name)).toBeInTheDocument()
-    expect(getByTextInContainer(droneRow, drone.type)).toBeInTheDocument()
+    expect(
+      getByTextInContainer(droneRow, defined(drone.type, "type")),
+    ).toBeInTheDocument()
     expect(
       getAllByTextInContainer(droneRow, drone.vehicle.handling).length,
     ).toBeGreaterThanOrEqual(1)

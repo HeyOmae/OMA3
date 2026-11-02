@@ -14,7 +14,7 @@ import { Runner } from "../types/runner"
 import { Gear, GearMatrixCommlink } from "@/types/Resources"
 import userEvent from "@testing-library/user-event"
 
-const Providers = ({ children }) => {
+const Providers = ({ children }: { children: React.ReactNode }) => {
   return children
 }
 

@@ -1,9 +1,12 @@
+import { defined } from "@/components/util"
 import { mockedRunners } from "@/test/mocks"
 import { render } from "@/test/testUtils"
 import { RemainingCapacityCyberware } from "./RemainingCapacityCyberware"
 
 describe("<RemaingingCapacityCyberware />", () => {
-  const setup = (gear = mockedRunners[9].resources?.cyberware?.[0]) => {
+  const setup = (
+    gear = defined(mockedRunners[9].resources?.cyberware?.[0], "cyberware"),
+  ) => {
     return render(<RemainingCapacityCyberware gear={gear} />)
   }
   it("should do display capacity", () => {

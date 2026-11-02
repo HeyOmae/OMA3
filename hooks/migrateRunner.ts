@@ -3,7 +3,7 @@ import { useAsIsAList } from "./migrations/useAsIsAList"
 import { modificationsAreConsistent } from "./migrations/modificationsAreConsistent"
 import { typeIsOnTheGear } from "./migrations/typeIsOnTheGear"
 
-type Migration = (runner: StoredRunner) => StoredRunner
+export type Migration = (runner: StoredRunner) => StoredRunner
 
 // Runners are saved in IndexedDB and exported as JSON, so they keep whatever
 // shape the gear data had when they were saved. Each migration upgrades a

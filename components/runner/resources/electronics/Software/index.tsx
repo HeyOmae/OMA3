@@ -28,7 +28,7 @@ const softwareCols: Record<string, Columns<Gear>> = {
     label: "Choice",
   },
   category: {
-    display: ({ useAs: [{ subtype }] }) => subtype,
+    display: ({ useAs }) => defined(useAs, "useAs")[0].subtype,
     label: "Category",
   },
   avail: {

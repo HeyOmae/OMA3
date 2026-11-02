@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { MagRes } from "./index"
 import {
   render,
@@ -58,7 +59,7 @@ describe("Magic and Resonance", () => {
   it("should reset the attributes between selecting magres options", async () => {
     const user = setup()
 
-    expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
+    expect(runnerFromDB(1).attributes?.Magic?.adjustment).toBe(0)
 
     expect(await screen.findByLabelText("Aspected")).toBeInTheDocument()
     await user.click(screen.getByLabelText("Aspected"))
@@ -71,7 +72,7 @@ describe("Magic and Resonance", () => {
     expect(await screen.findByText("0/1")).toBeInTheDocument()
 
     await waitFor(() =>
-      expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(1),
+      expect(runnerFromDB(1).attributes?.Magic?.adjustment).toBe(1),
     )
 
     await user.click(screen.getByLabelText("Technomancer"))
@@ -88,15 +89,15 @@ describe("Magic and Resonance", () => {
 
     expect(await screen.findByText("0/1")).toBeInTheDocument()
     await waitFor(() => {
-      expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
-      expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(1)
+      expect(runnerFromDB(1).attributes?.Magic?.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes?.Resonance?.adjustment).toBe(1)
     })
 
     await user.click(screen.getByLabelText("Mystic Adept"))
 
     expect(await screen.findByText("1/1")).toBeInTheDocument()
-    expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
-    expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(0)
+    expect(runnerFromDB(1).attributes?.Magic?.adjustment).toBe(0)
+    expect(runnerFromDB(1).attributes?.Resonance?.adjustment).toBe(0)
   })
 
   describe("setting attribute", () => {
@@ -105,7 +106,7 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByLabelText("Adept")).toBeInTheDocument()
       await user.click(screen.getByLabelText("Adept"))
-      expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes?.Magic?.adjustment).toBe(0)
 
       SliderHelper.change(
         await screen.findByTestId("Magic-attribute-slider"),
@@ -116,12 +117,12 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByText("-1/1")).toHaveClass("bad-stuff")
       await waitFor(() =>
-        expect(runnerFromDB(1).attributes?.Magic.adjustment).toBe(2),
+        expect(runnerFromDB(1).attributes?.Magic?.adjustment).toBe(2),
       )
     })
     it("should set resonance attribute", async () => {
       const user = setup()
-      expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(0)
+      expect(runnerFromDB(1).attributes?.Resonance?.adjustment).toBe(0)
 
       await user.click(await screen.findByLabelText("Technomancer"))
 
@@ -134,7 +135,7 @@ describe("Magic and Resonance", () => {
 
       expect(await screen.findByText("-1/1")).toHaveClass("bad-stuff")
       await waitFor(() =>
-        expect(runnerFromDB(1).attributes?.Resonance.adjustment).toBe(2),
+        expect(runnerFromDB(1).attributes?.Resonance?.adjustment).toBe(2),
       )
     })
     it("should hide this sections for mundanes", async () => {
@@ -471,7 +472,11 @@ describe("Magic and Resonance", () => {
       const attributeBoostIndex = runnerFromDB(7).powers?.findIndex(
         ({ name }) => name === "Attribute Boost",
       )
-      expect(runnerFromDB(7).powers?.[attributeBoostIndex].level).toBe(2)
+      expect(
+        runnerFromDB(7).powers?.[
+          defined(attributeBoostIndex, "Attribute Boost")
+        ].level,
+      ).toBe(2)
 
       SliderHelper.change(
         await screen.findByTestId("slider-Attribute Boost"),
@@ -481,7 +486,11 @@ describe("Magic and Resonance", () => {
       )
 
       await waitFor(() => {
-        expect(runnerFromDB(7).powers?.[attributeBoostIndex].level).toBe(6)
+        expect(
+          runnerFromDB(7).powers?.[
+            defined(attributeBoostIndex, "Attribute Boost")
+          ].level,
+        ).toBe(6)
       })
     })
   })

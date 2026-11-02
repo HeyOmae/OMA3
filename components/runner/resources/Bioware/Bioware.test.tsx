@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { bioware } from "@/data/bioware"
 import {
   render,
@@ -20,7 +21,8 @@ describe("<Bioware />", () => {
 
     await waitFor(() => expect(getByText("Buy")).toBeInTheDocument())
 
-    bioware.forEach(({ name, useAs: [{ essence }] }) => {
+    bioware.forEach(({ name, useAs }) => {
+      const [{ essence }] = defined(useAs, "useAs")
       expect(getByText(RegExp(`${name}$`))).toBeInTheDocument()
       const biowareRow = getByText(RegExp(`${name}$`)).closest("tr")
       expect(biowareRow).toHaveTextContent(`${essence}`)

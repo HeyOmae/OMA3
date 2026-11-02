@@ -30,9 +30,9 @@ describe("Resources", () => {
     // should display a name column for each piece of gear
     expect(
       within(gearSection).getAllByRole("columnheader", { name: "Name" }),
-    ).toHaveLength(Object.keys(cayman.resources).length)
+    ).toHaveLength(Object.keys(cayman.resources ?? {}).length)
 
-    Object.keys(cayman.resources).forEach((category) => {
+    Object.keys(cayman.resources ?? {}).forEach((category) => {
       expect(
         screen.getByRole("heading", { name: category }),
       ).toBeInTheDocument()

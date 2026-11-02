@@ -18,7 +18,7 @@ describe("<Ammo />", () => {
   const setup = () => render(withTestRouter(<Ammo />, { query: { id: "10" } }))
 
   const heavyPistolRow = () =>
-    screen.getByLabelText(/Add .*Heavy Pistol\/SMG Ammo/).closest("tr")
+    closest(screen.getByLabelText(/Add .*Heavy Pistol\/SMG Ammo/), "tr")
 
   it("lists a row for each class of weapon", async () => {
     setup()

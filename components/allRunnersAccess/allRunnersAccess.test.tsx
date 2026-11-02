@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { AllRunnersAccess } from "./index"
 import { render, screen, waitFor } from "@testing-library/react"
 import { initRunner } from "@/types/runner"
@@ -38,7 +39,7 @@ describe("<AllRunnersAccess/>", () => {
     })
 
     mockedRunners.forEach(({ name, id }) => {
-      expect(getByText(name || id)).toBeInTheDocument()
+      expect(getByText(name || String(id))).toBeInTheDocument()
     })
   })
 
@@ -57,9 +58,12 @@ describe("<AllRunnersAccess/>", () => {
   it("should migrate the runners", async () => {
     jest
       .spyOn(runnerSchema, "migrateIfOutdated")
-      .mockImplementation(async ({ id }) => {
-        const runner = mockedRunners.find((mock) => mock.id === id)
-        return { ...runner, name: `${runner?.name} (migrated)` }
+      .mockImplementation(async (stored) => {
+        const runner = defined(
+          mockedRunners.find((mock) => mock.id === stored?.id),
+          "mocked runner",
+        )
+        return { ...runner, name: `${runner.name} (migrated)` }
       })
 
     setup()

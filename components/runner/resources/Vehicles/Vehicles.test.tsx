@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { vehicles } from "@/data/vehicles"
 import {
   render,
@@ -48,7 +49,7 @@ describe("<Vehicles/>", () => {
 
     expect(getByTextInContainer(vehicleRow, vehcile.name)).toBeInTheDocument()
     expect(
-      getByTextInContainer(vehicleRow, vehcile.subtype),
+      getByTextInContainer(vehicleRow, defined(vehcile.subtype, "subtype")),
     ).toBeInTheDocument()
     expect(
       getAllByTextInContainer(vehicleRow, vehcile.vehicle.handling).length,
@@ -75,7 +76,8 @@ describe("<Vehicles/>", () => {
       getAllByTextInContainer(vehicleRow, vehcile.vehicle.sensor).length,
     ).toBeGreaterThanOrEqual(1)
     expect(
-      getAllByTextInContainer(vehicleRow, vehcile.vehicle.seat).length,
+      getAllByTextInContainer(vehicleRow, defined(vehcile.vehicle.seat, "seat"))
+        .length,
     ).toBeGreaterThanOrEqual(1)
     expect(
       getByTextInContainer(vehicleRow, `${vehcile.cost}¥`),

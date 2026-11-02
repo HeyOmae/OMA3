@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import {
   render,
   setupIndexedDB,
@@ -28,7 +29,9 @@ describe("<FirearmMods />", () => {
       expect(getTextIn(buyTable, name)).toBeInTheDocument()
       const row = closest(getTextIn(buyTable, name), "tr")
       const slots = useAs?.map(({ slot }) => slot ?? "INTEGRAL")
-      expect(getTextIn(row, slots?.join(", "))).toBeInTheDocument()
+      expect(
+        getTextIn(row, defined(slots, "slots").join(", ")),
+      ).toBeInTheDocument()
     })
   })
 

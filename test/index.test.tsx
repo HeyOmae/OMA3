@@ -44,7 +44,7 @@ describe("Home page", () => {
     })
 
     mockedRunners.forEach(({ name, id }) => {
-      expect(screen.getByText(name || id)).toHaveAttribute(
+      expect(screen.getByText(name || String(id))).toHaveAttribute(
         "href",
         `/${id}/info`,
       )

@@ -90,7 +90,7 @@ describe("<RunnerSkillTable/>", () => {
 
   describe("specialization", () => {
     it("should set specialization from dropdown", async () => {
-      const { getByLabelText, props, queryByRole } = setup()
+      const { getByLabelText, props, queryByRole, getByRole } = setup()
       const specInput = getByLabelText("Conjuring specialization")
 
       expect(queryByRole("listbox")).not.toBeInTheDocument()
@@ -99,9 +99,7 @@ describe("<RunnerSkillTable/>", () => {
 
       expect(queryByRole("listbox")).toBeInTheDocument()
 
-      await userEvent.click(
-        globalGetByText(queryByRole("listbox"), "Summoning"),
-      )
+      await userEvent.click(globalGetByText(getByRole("listbox"), "Summoning"))
 
       expect(getByLabelText("Conjuring specialization")).toHaveValue(
         "Summoning",

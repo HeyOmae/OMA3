@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { mockedRunners } from "../test/mocks"
 import {
   render,
@@ -15,7 +16,7 @@ describe("useRunnerAccess hook", () => {
   beforeAll(setupIndexedDB)
   const UPDATE_NAME = Symbol("updateName")
   const setup = (
-    reducer: RunnerReducer<string> = (state, { type, payload }) => {
+    reducer: RunnerReducer<string> | null = (state, { type, payload }) => {
       switch (type) {
         case UPDATE_NAME:
           return { ...state, name: payload }
@@ -128,9 +129,12 @@ describe("useRunnerAccess hook", () => {
     beforeEach(() => {
       jest
         .spyOn(runnerSchema, "migrateIfOutdated")
-        .mockImplementation(async ({ id }) => {
-          const runner = mockedRunners.find((mock) => mock.id === id)
-          return { ...runner, name: `${runner?.name} (migrated)` }
+        .mockImplementation(async (stored) => {
+          const runner = defined(
+            mockedRunners.find((mock) => mock.id === stored?.id),
+            "mocked runner",
+          )
+          return { ...runner, name: `${runner.name} (migrated)` }
         })
     })
     afterEach(() => jest.restoreAllMocks())

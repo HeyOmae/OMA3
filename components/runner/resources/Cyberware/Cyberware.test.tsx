@@ -6,6 +6,7 @@ import {
   userEvent,
   screen,
   SliderHelper,
+  closest,
 } from "@/test/testUtils"
 import Cyberware from "."
 
@@ -70,7 +71,7 @@ describe("<Cyberware />", () => {
 
     expect(screen.queryByLabelText("Mod Cybereye 3 (0)")).toBeInTheDocument()
     expect(
-      screen.queryByLabelText("Mod Cybereye 3 (0)").closest("a").href,
+      closest(screen.getByLabelText("Mod Cybereye 3 (0)"), "a").href,
     ).toContain("/cyberware/0")
 
     expect(

@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { RunnerSpells, Props } from "."
 import { render } from "../../../../../test/testUtils"
 import { mockedRunners } from "../../../../../test/mocks"
@@ -6,7 +7,7 @@ import { REMOVE_SPELL } from "../.."
 describe("<RunnerSpells/>", () => {
   const setup = () => {
     const props: Props = {
-      spells: mockedRunners[4].spells,
+      spells: defined(mockedRunners[4].spells, "spells"),
       dispatch: jest.fn(),
     }
     return { ...render(<RunnerSpells {...props} />), props }

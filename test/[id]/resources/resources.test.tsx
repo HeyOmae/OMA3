@@ -22,7 +22,7 @@ describe("Resource Page", () => {
     return user
   }
 
-  const gear = Object.entries(mockedRunners[9].resources)
+  const gear = Object.entries(mockedRunners[9].resources ?? {})
 
   it("should exist", async () => {
     setup()

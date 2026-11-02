@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { mockedRunners } from "@/test/mocks"
 import { render } from "@/test/testUtils"
 import { RemainingCapacity, Props } from "./index"
@@ -8,7 +9,7 @@ describe("<RemainingCapacity />", () => {
   }
   it("should display the remaining capacity of a piece of gear", () => {
     const { getByText } = setup({
-      gear: mockedRunners[9].resources?.imaging?.[0],
+      gear: defined(mockedRunners[9].resources?.imaging?.[0], "imaging"),
     })
 
     expect(getByText("Capacity:")).toBeInTheDocument()
@@ -17,7 +18,7 @@ describe("<RemainingCapacity />", () => {
 
   it("should display 0 capacity used if the gear is unmodded", () => {
     const { getByText } = setup({
-      gear: mockedRunners[10].resources?.imaging?.[0],
+      gear: defined(mockedRunners[10].resources?.imaging?.[0], "imaging"),
     })
 
     expect(getByText("0/4")).toBeInTheDocument()
@@ -26,7 +27,7 @@ describe("<RemainingCapacity />", () => {
   it("should use the rating of a mod instead of the capacity", () => {
     const { getByText } = setup({
       gear: {
-        ...mockedRunners[10].resources?.audio?.[0],
+        ...defined(mockedRunners[10].resources?.audio?.[0], "audio"),
         mods: [
           {
             useAs: [

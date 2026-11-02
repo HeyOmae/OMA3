@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { Props, RunnerAdeptPowers } from "."
 import {
   render,
@@ -11,7 +12,7 @@ import { CHANGE_POWER_LEVEL, REMOVE_POWER } from "../.."
 describe("<RunnerAdeptPowers/>", () => {
   const setup = () => {
     const props: Props = {
-      powers: mockedRunners[7].powers,
+      powers: defined(mockedRunners[7].powers, "powers"),
       dispatch: jest.fn(),
     }
     return { ...render(<RunnerAdeptPowers {...props} />), props }

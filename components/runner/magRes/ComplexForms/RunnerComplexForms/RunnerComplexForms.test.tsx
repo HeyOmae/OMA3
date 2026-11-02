@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { render } from "../../../../../test/testUtils"
 import { RunnerComplexForms, Props } from "./index"
 import { mockedRunners } from "../../../../../test/mocks"
@@ -7,7 +8,7 @@ describe("<RunnerComplexForms", () => {
   const setup = () => {
     const props: Props = {
       dispatch: jest.fn(),
-      complexForms: mockedRunners[8].complexForms,
+      complexForms: defined(mockedRunners[8].complexForms, "complexForms"),
     }
     return { ...render(<RunnerComplexForms {...props} />), props }
   }

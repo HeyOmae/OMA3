@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { MagResAttributeSlider, Props } from "./index"
 import { render, SliderHelper } from "../../../../test/testUtils"
 import { SET_MAGIC, SET_RESONANCE } from ".."
@@ -6,7 +7,7 @@ import { mockedRunners } from "../../../../test/mocks"
 describe("Magic/Resonance Attribute Slider", () => {
   const setup = ({
     attribute = "Magic",
-    attributes = mockedRunners[1].attributes,
+    attributes = defined(mockedRunners[1].attributes, "attributes"),
     adjustmentPoints = 9,
   }: Partial<Props> = {}) => {
     const props: Props = {
@@ -26,7 +27,10 @@ describe("Magic/Resonance Attribute Slider", () => {
       expect(getByText("Magic")).toBeInTheDocument()
       expect(getByTestId("Magic-attribute-slider")).toBeInTheDocument()
       expect(
-        getByTestId("Magic-attribute-slider").querySelector("input").value,
+        defined(
+          getByTestId("Magic-attribute-slider").querySelector("input"),
+          "slider input",
+        ).value,
       ).toEqual("4")
       expect(getByText("9/9")).toBeInTheDocument()
     })
@@ -40,7 +44,10 @@ describe("Magic/Resonance Attribute Slider", () => {
       })
 
       expect(
-        getByTestId("Magic-attribute-slider").querySelector("input").value,
+        defined(
+          getByTestId("Magic-attribute-slider").querySelector("input"),
+          "slider input",
+        ).value,
       ).toEqual("6")
       expect(getByText("7/9")).toBeInTheDocument()
     })
@@ -63,7 +70,10 @@ describe("Magic/Resonance Attribute Slider", () => {
       expect(getByText("Resonance")).toBeInTheDocument()
       expect(getByTestId("Resonance-attribute-slider")).toBeInTheDocument()
       expect(
-        getByTestId("Resonance-attribute-slider").querySelector("input").value,
+        defined(
+          getByTestId("Resonance-attribute-slider").querySelector("input"),
+          "slider input",
+        ).value,
       ).toEqual("4")
       expect(getByText("9/9")).toBeInTheDocument()
     })
@@ -78,7 +88,10 @@ describe("Magic/Resonance Attribute Slider", () => {
       })
 
       expect(
-        getByTestId("Resonance-attribute-slider").querySelector("input").value,
+        defined(
+          getByTestId("Resonance-attribute-slider").querySelector("input"),
+          "slider input",
+        ).value,
       ).toEqual("6")
       expect(getByText("7/9")).toBeInTheDocument()
     })

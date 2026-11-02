@@ -1,13 +1,13 @@
 import { Runner } from "@/types/runner"
-import { migrateRunner, migrations } from "./migrateRunner"
+import { Migration, migrateRunner, migrations } from "./migrateRunner"
 import { CURRENT_SCHEMA_VERSION } from "./runnerSchema"
 
 describe("migrateRunner", () => {
   const runner: Runner = { name: "Bull", description: "Fixer" }
-  const testMigrations = [
-    (r: Runner) => ({ ...r, description: `${r.description} 1` }),
-    (r: Runner) => ({ ...r, description: `${r.description} 2` }),
-    (r: Runner) => ({ ...r, description: `${r.description} 3` }),
+  const testMigrations: Migration[] = [
+    (r) => ({ ...r, description: `${r.description} 1` }),
+    (r) => ({ ...r, description: `${r.description} 2` }),
+    (r) => ({ ...r, description: `${r.description} 3` }),
   ]
 
   it("should run every migration in order on a runner saved before versioning", () => {

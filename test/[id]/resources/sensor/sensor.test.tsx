@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import SensorPage from "@/pages/[id]/resources/sensor"
 import {
   caymansCurrentlySpentNuyen,
@@ -37,7 +38,7 @@ describe("sensor page", () => {
         `${
           caymansCurrentlySpentNuyen -
           gearA.cost -
-          gearB.cost * gearB.minRating -
+          gearB.cost * defined(gearB.minRating, "minRating") -
           gearC.cost
         }¥/${totalNuyen}¥`,
       ),

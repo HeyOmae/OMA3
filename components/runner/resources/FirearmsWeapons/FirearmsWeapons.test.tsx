@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import {
   render,
   runnerFromDB,
@@ -95,27 +96,28 @@ describe("<FirearmsWeapon />", () => {
   it("should remove a weapon", async () => {
     const { getByLabelText, getByText } = setup("10")
 
-    expect(runnerFromDB(9).resources?.firearms).toHaveLength(
-      mockedRunners[9].resources?.firearms?.length,
+    const firearmCount = defined(
+      mockedRunners[9].resources?.firearms,
+      "firearms",
+    ).length
+    expect(runnerFromDB(9).resources?.firearms).toHaveLength(firearmCount)
+    const gunToBeRemoved = defined(
+      runnerFromDB(9).resources?.firearms?.[2],
+      "firearm",
     )
-    const gunToBeRemoved = runnerFromDB(9).resources?.firearms?.[2]
     await waitFor(() => {
       expect(
         getByText(`${caymansCurrentlySpentNuyen}¥/275000¥`),
       ).toBeInTheDocument()
     })
 
-    await userEvent.click(getByLabelText(`Remove ${gunToBeRemoved?.name}`))
+    await userEvent.click(getByLabelText(`Remove ${gunToBeRemoved.name}`))
 
     await waitFor(() => {
-      expect(runnerFromDB(9).resources?.firearms).toHaveLength(
-        mockedRunners[9].resources?.firearms?.length - 1,
-      )
+      expect(runnerFromDB(9).resources?.firearms).toHaveLength(firearmCount - 1)
     })
     expect(
-      getByText(
-        `${caymansCurrentlySpentNuyen + gunToBeRemoved?.cost}¥/275000¥`,
-      ),
+      getByText(`${caymansCurrentlySpentNuyen + gunToBeRemoved.cost}¥/275000¥`),
     ).toBeInTheDocument()
   })
 

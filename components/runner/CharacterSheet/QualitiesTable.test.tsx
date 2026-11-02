@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { render, screen, within } from "@testing-library/react"
 import { QualitiesTable } from "./QualitiesTable"
 import { mockedRunners } from "@/test/mocks"
@@ -139,7 +140,9 @@ describe("QualitiesTable", () => {
       within(row).queryByRole("cell", { name: /will to live/i }),
     )
 
-    const cells = within(willToLiveRow).getAllByRole("cell")
+    const cells = within(
+      defined(willToLiveRow, "Will To Live row"),
+    ).getAllByRole("cell")
     const levelCell = cells.find((cell) => cell.textContent === "2")
     expect(levelCell).toBeInTheDocument()
   })
@@ -160,7 +163,9 @@ describe("QualitiesTable", () => {
     )
 
     // Should have N/A cells for level and selected
-    const cells = within(gremlinsRow).getAllByRole("cell")
+    const cells = within(defined(gremlinsRow, "Gremlins row")).getAllByRole(
+      "cell",
+    )
     const naCells = cells.filter((cell) => cell.textContent === "N/A")
     expect(naCells.length).toBe(2) // Level and Selected columns
   })

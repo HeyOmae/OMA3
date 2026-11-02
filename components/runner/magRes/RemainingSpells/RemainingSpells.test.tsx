@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { RemainingSpells, Props } from "."
 import { mockedRunners } from "@/test/mocks"
 import { render, screen } from "@/test/testUtils"
@@ -10,7 +11,13 @@ describe("<RemainingSpell/>", () => {
       runner: mockedRunners[4],
       baseMagic: 4,
     },
-  ) => render(<RemainingSpells runner={runner} baseMagic={baseMagic} />)
+  ) =>
+    render(
+      <RemainingSpells
+        runner={defined(runner, "runner")}
+        baseMagic={baseMagic}
+      />,
+    )
 
   it("should display the number of spells a runner can know", () => {
     setup({ runner: mockedRunners[1] })
