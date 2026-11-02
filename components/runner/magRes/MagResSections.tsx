@@ -26,11 +26,11 @@ interface RunnerProps extends DispatchProps {
   runner: Runner
 }
 
-const castsSpells = (magres: MagRes) =>
-  ["Full", "Aspected", "Mystic Adept"].includes(magres)
+const castsSpells = (magres?: MagRes) =>
+  magres !== undefined && ["Full", "Aspected", "Mystic Adept"].includes(magres)
 
-const usesAdeptPowers = (magres: MagRes) =>
-  ["Mystic Adept", "Adept"].includes(magres)
+const usesAdeptPowers = (magres?: MagRes) =>
+  magres !== undefined && ["Mystic Adept", "Adept"].includes(magres)
 
 // what the runner can learn, depending on how they are awakened
 export const LearnableMagRes: FC<RunnerProps> = ({

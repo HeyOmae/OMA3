@@ -9,20 +9,12 @@ const DECREMENT_KARMA_TO_NUYEN = Symbol()
 
 const KarmaToNuyen = () => {
   const [runner, dispatch] = useRunnerAccess<undefined | number>(
-    (runner, { type }) => {
-      switch (type) {
-        case INCREMENT_KARMA_TO_NUYEN:
-          return {
-            ...runner,
-            karmaToNuyen: (runner.karmaToNuyen ?? 0) + 1,
-          }
-        case DECREMENT_KARMA_TO_NUYEN:
-          return {
-            ...runner,
-            karmaToNuyen: (runner.karmaToNuyen ?? 0) - 1,
-          }
-      }
-    },
+    (runner, { type }) => ({
+      ...runner,
+      karmaToNuyen:
+        (runner.karmaToNuyen ?? 0) +
+        (type === INCREMENT_KARMA_TO_NUYEN ? 1 : -1),
+    }),
   )
   return runner ?
       <section>
@@ -34,7 +26,7 @@ const KarmaToNuyen = () => {
           />
           <TextField
             label="Karma to Nuyen"
-            className={runner.karmaToNuyen < 0 ? "bad-stuff" : ""}
+            className={(runner.karmaToNuyen ?? 0) < 0 ? "bad-stuff" : ""}
             type="number"
             value={runner.karmaToNuyen ?? 0}
           />

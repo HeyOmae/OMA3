@@ -1,7 +1,7 @@
-import { CombatSpell, GeneralSpell } from "@/types/MagRes"
+import { CombatSpell, GeneralSpell, Spell, Spells } from "@/types/MagRes"
 import { RunnerReducer } from "@/hooks/useRunnerAccess"
 import { initRunnerAttribute, Runner } from "@/types/runner"
-import { removeItemFromArray } from "@/components/util"
+import { defined, removeItemFromArray } from "@/components/util"
 import {
   CHANGE_POWER_LEVEL,
   Payload,
@@ -20,117 +20,113 @@ import {
 
 type Handler = (runner: Runner, payload: Payload) => Runner
 
-const handlers = new Map<symbol, Handler>([
-  [
-    SET_MAGRES,
-    (runner, { magres }) => ({
-      ...runner,
-      magres,
-      attributes: {
-        ...runner.attributes,
-        Magic: initRunnerAttribute,
-        Resonance: initRunnerAttribute,
+// Combat spells and the other spells are kept in lists of their own type
+const addSpell = (
+  spells: Partial<Spells> = {},
+  spell: Spell,
+): Partial<Spells> =>
+  spell.category === "Combat" ?
+    { ...spells, Combat: [...(spells.Combat ?? []), spell] }
+  : { ...spells, [spell.category]: [...(spells[spell.category] ?? []), spell] }
+
+const handlers: Record<symbol, Handler> = {
+  [SET_MAGRES]: (runner, { magres }) => ({
+    ...runner,
+    magres,
+    attributes: {
+      ...runner.attributes,
+      Magic: initRunnerAttribute,
+      Resonance: initRunnerAttribute,
+    },
+  }),
+  [SET_MAGIC]: (runner, { adjustment }) => ({
+    ...runner,
+    attributes: {
+      ...runner.attributes,
+      Magic: {
+        ...defined(runner.attributes?.Magic, "Magic"),
+        adjustment: defined(adjustment, "adjustment"),
       },
-    }),
-  ],
-  [
-    SET_MAGIC,
-    (runner, { adjustment }) => ({
-      ...runner,
-      attributes: {
-        ...runner.attributes,
-        Magic: { ...runner.attributes.Magic, adjustment },
+    },
+  }),
+  [SET_RESONANCE]: (runner, { adjustment }) => ({
+    ...runner,
+    attributes: {
+      ...runner.attributes,
+      Resonance: {
+        ...defined(runner.attributes?.Resonance, "Resonance"),
+        adjustment: defined(adjustment, "adjustment"),
       },
-    }),
-  ],
-  [
-    SET_RESONANCE,
-    (runner, { adjustment }) => ({
-      ...runner,
-      attributes: {
-        ...runner.attributes,
-        Resonance: { ...runner.attributes.Resonance, adjustment },
-      },
-    }),
-  ],
-  [
-    SET_SPELL,
-    (runner, { spell }) => ({
-      ...runner,
-      spells: {
-        ...runner.spells,
-        [spell.category]: [...(runner.spells?.[spell.category] ?? []), spell],
-      },
-    }),
-  ],
-  [
-    REMOVE_SPELL,
-    (runner, { removeSpell: { spellCategory, spellIndex } }) => ({
+    },
+  }),
+  [SET_SPELL]: (runner, { spell }) => ({
+    ...runner,
+    spells: addSpell(runner.spells, defined(spell, "spell")),
+  }),
+  [REMOVE_SPELL]: (runner, { removeSpell }) => {
+    const { spellCategory, spellIndex } = defined(removeSpell, "removeSpell")
+    return {
       ...runner,
       spells: {
         ...runner.spells,
         [spellCategory]: removeItemFromArray<GeneralSpell | CombatSpell>(
-          runner.spells[spellCategory],
+          defined(runner.spells?.[spellCategory], spellCategory),
           spellIndex,
         ),
       },
-    }),
-  ],
-  [
-    SET_RITUAL,
-    (runner, { ritual }) => ({
+    }
+  },
+  [SET_RITUAL]: (runner, { ritual }) => ({
+    ...runner,
+    rituals: [...(runner.rituals ?? []), defined(ritual, "ritual")],
+  }),
+  [REMOVE_RITUAL]: (runner, { removeRitual }) => ({
+    ...runner,
+    rituals: defined(runner.rituals, "rituals").toSpliced(
+      defined(removeRitual, "removeRitual"),
+      1,
+    ),
+  }),
+  [SET_POWER]: (runner, { power }) => ({
+    ...runner,
+    powers: [...(runner.powers ?? []), defined(power, "power")],
+  }),
+  [REMOVE_POWER]: (runner, { removePower }) => ({
+    ...runner,
+    powers: defined(runner.powers, "powers").toSpliced(
+      defined(removePower, "removePower"),
+      1,
+    ),
+  }),
+  [CHANGE_POWER_LEVEL]: (runner, { powerLevel }) => {
+    const { powerIndex, level } = defined(powerLevel, "powerLevel")
+    const powers = defined(runner.powers, "powers")
+    return {
       ...runner,
-      rituals: [...(runner.rituals ?? []), ritual],
-    }),
-  ],
-  [
-    REMOVE_RITUAL,
-    (runner, { removeRitual }) => ({
-      ...runner,
-      rituals: runner.rituals.toSpliced(removeRitual, 1),
-    }),
-  ],
-  [
-    SET_POWER,
-    (runner, { power }) => ({
-      ...runner,
-      powers: [...(runner.powers ?? []), power],
-    }),
-  ],
-  [
-    REMOVE_POWER,
-    (runner, { removePower }) => ({
-      ...runner,
-      powers: runner.powers.toSpliced(removePower, 1),
-    }),
-  ],
-  [
-    CHANGE_POWER_LEVEL,
-    (runner, { powerLevel: { powerIndex, level } }) => ({
-      ...runner,
-      powers: runner.powers.toSpliced(powerIndex, 1, {
-        ...runner.powers[powerIndex],
+      powers: powers.toSpliced(powerIndex, 1, {
+        ...powers[powerIndex],
         level,
       }),
-    }),
-  ],
-  [
-    SET_COMPLEX_FORM,
-    (runner, { complexForm }) => ({
-      ...runner,
-      complexForms: [...(runner.complexForms ?? []), complexForm],
-    }),
-  ],
-  [
-    REMOVE_COMPLEX_FORM,
-    (runner, { removeComplexForm }) => ({
-      ...runner,
-      complexForms: runner.complexForms.toSpliced(removeComplexForm, 1),
-    }),
-  ],
-])
+    }
+  },
+  [SET_COMPLEX_FORM]: (runner, { complexForm }) => ({
+    ...runner,
+    complexForms: [
+      ...(runner.complexForms ?? []),
+      defined(complexForm, "complexForm"),
+    ],
+  }),
+  [REMOVE_COMPLEX_FORM]: (runner, { removeComplexForm }) => ({
+    ...runner,
+    complexForms: defined(runner.complexForms, "complexForms").toSpliced(
+      defined(removeComplexForm, "removeComplexForm"),
+      1,
+    ),
+  }),
+}
 
+// an action nothing handles is a bug, so it fails loudly
 export const magResReducer: RunnerReducer<Payload> = (
   runner,
   { type, payload },
-) => handlers.get(type)(runner, payload)
+) => defined(handlers[type], type.toString())(runner, payload)

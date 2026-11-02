@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { defined } from "@/components/util"
 import { Slider } from "@mui/material"
 import { Payload, SET_MAGIC, SET_RESONANCE } from ".."
 import { DispatchAction } from "../../../../hooks/useRunnerAccess"
@@ -36,7 +37,7 @@ export const MagResAttributeSlider: FC<Props> = ({
         </dd>
       </dl>
       <Slider
-        value={min + attributes[attribute].adjustment}
+        value={min + defined(attributes[attribute], attribute).adjustment}
         aria-labelledby={`${attribute} attribute`}
         getAriaValueText={(value) => value.toString()}
         valueLabelDisplay="auto"

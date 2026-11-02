@@ -1,9 +1,10 @@
 import { mods } from "@/data/armor"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
+import { defined } from "@/components/util"
+import { modGearReducer } from "../../GearPageTemplate/GearModPageTemplate"
 import { Gear } from "@/types/Resources"
 import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
-import { useMemo } from "react"
 import { GearTable } from "../../GearPageTemplate/GearTable"
 import { RemainingNuyen } from "../../GearPageTemplate/RemainingNuyen"
 import { ResourceBreadCrumbs } from "../../GearPageTemplate/ResourceBreadCrumbs"
@@ -35,37 +36,16 @@ const sellModCol: Columns<Gear>[] = [
 ]
 
 const ArmorMods = () => {
-  const { query } = useRouter(),
-    gearIndex = +query.gearIndex,
-    [runner, dispatch] = useRunnerAccess<Gear>((runner, { payload }) => ({
-      ...runner,
-      resources: {
-        ...runner.resources,
-        armor: runner.resources.armor.toSpliced(gearIndex, 1, {
-          ...runner.resources.armor[gearIndex],
-          mods:
-            typeof payload === "number" ?
-              runner.resources.armor[gearIndex].mods.toSpliced(payload, 1)
-            : [...(runner.resources.armor[gearIndex]?.mods ?? []), payload],
-        }),
-      },
-    }))
-
-  const modsWithMaxRating = useMemo(() => {
-    const armor = runner?.resources.armor[gearIndex]
-
-    if (armor) {
-      return mods.map((mod) => ({
-        ...mod,
-        maxRating: getModCapacity(armor),
-      }))
-    }
-
-    return mods
-  }, [gearIndex, runner?.resources.armor])
+  const gearIndex = Number(useRouter().query.gearIndex),
+    [runner, dispatch] = useRunnerAccess(modGearReducer("armor", gearIndex))
 
   if (runner) {
-    const armor = runner.resources.armor[gearIndex]
+    const armor = defined(runner.resources?.armor, "armor")[gearIndex]
+    // a mod can't be rated higher than the armor's capacity
+    const modsWithMaxRating = mods.map((mod) => ({
+      ...mod,
+      maxRating: getModCapacity(armor),
+    }))
     const gearName = `${armor.name} (${gearIndex})`
     return (
       <>

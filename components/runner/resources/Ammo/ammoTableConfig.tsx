@@ -3,6 +3,7 @@ import { useRequiredContext } from "@/components/useRequiredContext"
 import { Checkbox, MenuItem, Select } from "@mui/material"
 import { ammoTypes, roundsPerBundle } from "@/data/ammo"
 import { Gear } from "@/types/Resources"
+import { defined } from "@/components/util"
 import { AmmoContext } from "../GearPageTemplate/GearTable/Row/AmmoRow"
 import { SettingRating } from "../GearPageTemplate/GearTable/ResourceButtons"
 import { Columns, gearTableConfigOptions } from "../util"
@@ -44,13 +45,14 @@ const CaselessCheckbox = () => {
 }
 
 const roundsCol: Columns<Gear> = {
-  display: ({ currentRating }) => currentRating * roundsPerBundle,
+  display: ({ currentRating }) =>
+    defined(currentRating, "bundles") * roundsPerBundle,
   label: "Rounds",
 }
 
 const bundlesCol: Columns<Gear> = {
   display: (gear, index, setRating) => (
-    <SettingRating gear={gear} setRating={setRating} />
+    <SettingRating gear={gear} setRating={defined(setRating, "setRating")} />
   ),
   label: "Bundles",
 }

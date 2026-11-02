@@ -42,45 +42,70 @@ export const Spells: FC<Props> = ({ dispatch }) => {
         <h3>Combat Spells</h3>
         <CombatSpells
           spells={Combat as CombatSpell[]}
-          dispatch={dispatch}
           actionLabel="Learn"
-          ActionButton={AddSpellButton}
+          renderAction={(spell) => (
+            <AddSpellButton
+              spell={spell}
+              dispatch={dispatch}
+              actionLabel="Learn"
+            />
+          )}
         />
       </AccordionWrapper>
       <AccordionWrapper label="detection-spells">
         <h3>Detection Spells</h3>
         <SpellsTable
           spells={Detection as GeneralSpell[]}
-          dispatch={dispatch}
           actionLabel="Learn"
-          ActionButton={AddSpellButton}
+          renderAction={(spell) => (
+            <AddSpellButton
+              spell={spell}
+              dispatch={dispatch}
+              actionLabel="Learn"
+            />
+          )}
         />
       </AccordionWrapper>
       <AccordionWrapper label="health-spells">
         <h3>Health Spells</h3>
         <SpellsTable
           spells={Health as GeneralSpell[]}
-          dispatch={dispatch}
           actionLabel="Learn"
-          ActionButton={AddSpellButton}
+          renderAction={(spell) => (
+            <AddSpellButton
+              spell={spell}
+              dispatch={dispatch}
+              actionLabel="Learn"
+            />
+          )}
         />
       </AccordionWrapper>
       <AccordionWrapper label="illusion-spells">
         <h3>Illusion Spells</h3>
         <SpellsTable
           spells={Illusion as GeneralSpell[]}
-          dispatch={dispatch}
           actionLabel="Learn"
-          ActionButton={AddSpellButton}
+          renderAction={(spell) => (
+            <AddSpellButton
+              spell={spell}
+              dispatch={dispatch}
+              actionLabel="Learn"
+            />
+          )}
         />
       </AccordionWrapper>
       <AccordionWrapper label="manipulation-spells">
         <h3>Manipulation Spells</h3>
         <SpellsTable
           spells={Manipulation as GeneralSpell[]}
-          dispatch={dispatch}
           actionLabel="Learn"
-          ActionButton={AddSpellButton}
+          renderAction={(spell) => (
+            <AddSpellButton
+              spell={spell}
+              dispatch={dispatch}
+              actionLabel="Learn"
+            />
+          )}
         />
       </AccordionWrapper>
     </>

@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { softwareData } from "@/data/electronics"
 import { Gear } from "@/types/Resources"
 import { GearPageTemplate } from "../../GearPageTemplate"
@@ -32,7 +33,10 @@ const softwareCols: Record<string, Columns<Gear>> = {
   },
   avail: {
     display: ({ availability, currentRating = 1, rateMultiplier = "" }) => {
-      const [, baseAvail, restriction] = availability.match(/(\d+)(\D*)/)
+      const [, baseAvail, restriction] = defined(
+        availability.match(/(\d+)(\D*)/),
+        "availability",
+      )
 
       if (/avail3/.test(rateMultiplier)) {
         return `${Math.ceil(currentRating / 3)}${restriction}`

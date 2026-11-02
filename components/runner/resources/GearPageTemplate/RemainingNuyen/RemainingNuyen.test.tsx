@@ -17,6 +17,13 @@ describe("<RemainingNuyen/>", () => {
     ).toHaveTextContent("8000¥/8000¥")
   })
 
+  it("has no nuyen until a priority for resources is picked", () => {
+    setup({ runner: { ...mockedRunners[8], priority: { metatype: "E" } } })
+    expect(
+      screen.getByRole("definition", { name: "Nuyen Value" }),
+    ).toHaveTextContent("0¥/0¥")
+  })
+
   it("should display total nuyen and remaining nuyen", () => {
     setup()
 

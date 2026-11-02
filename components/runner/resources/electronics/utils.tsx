@@ -9,10 +9,18 @@ import {
 export type CommlinkCols = Columns<GearMatrixCommlink>[]
 
 export const gearMatrixTableConfigOptions = {
-  deviceRating: { label: "DR", display: ({ deviceRating }) => deviceRating },
+  deviceRating: {
+    label: "DR",
+    display: ({ deviceRating }: GearElectronic) => deviceRating,
+  },
   slots: {
     label: "Slots",
-    display: ({ matrixAttributes }) => matrixAttributes.programs,
+    // commlinks and cyberdecks both have slots for programs
+    display: ({
+      matrixAttributes,
+    }: {
+      matrixAttributes: { programs: number }
+    }) => matrixAttributes.programs,
   },
 }
 

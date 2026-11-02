@@ -1,6 +1,7 @@
 import { Quality } from "@/types/Qualities"
 import { Skills } from "@/types/Skill"
 import { Runner } from "@/types/runner"
+import { defined } from "@/components/util"
 import { FC, useMemo } from "react"
 import priorityData from "@/data/priorityTable.json"
 import { findKnowledgePointsSpend } from "@/components/runner/knowledge/RemainingKnowledgePoints"
@@ -72,7 +73,7 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
   )
 }
 
-function totalKarmaFromSkills(skills: Skills) {
+function totalKarmaFromSkills(skills?: Skills) {
   if (skills) {
     return Object.values(skills).reduce(
       (karmaTotal, { rating, karmaRating = 0, expertise }) =>
@@ -85,7 +86,7 @@ function totalKarmaFromSkills(skills: Skills) {
   return 0
 }
 
-function totalKarmaFromQualities(qualities: Quality[]) {
+function totalKarmaFromQualities(qualities?: Quality[]) {
   if (qualities) {
     return qualities.reduce(
       (karmaTotal, { karma, currentLevel = 1 }) =>
@@ -105,11 +106,11 @@ function totalKarmaFromAttributes(runner: Runner) {
               name === "Magic" &&
               runner.magres !== undefined &&
               runner.magres !== "Mundane" &&
-              runner.priority["mag/res"] !== "E"
+              runner.priority?.["mag/res"] !== "E"
             ) ?
-              +priorityData["mag/res"][runner.priority["mag/res"]][
-                runner.magres
-              ][1]
+              +priorityData["mag/res"][
+                defined(runner.priority?.["mag/res"], "mag/res priority")
+              ][runner.magres][1]
             : 1,
           attributeRatingBeforeKarma = adjustment + points + baseAttribute
         return (
@@ -122,7 +123,7 @@ function totalKarmaFromAttributes(runner: Runner) {
   return 0
 }
 
-function findKarmaCostPerRating(karmaPoints: number, baseRating: number) {
+function findKarmaCostPerRating(karmaPoints = 0, baseRating: number) {
   let karmaTotal: number = 0
   for (let i = 1; i <= karmaPoints; ++i) {
     karmaTotal += (baseRating + i) * 5

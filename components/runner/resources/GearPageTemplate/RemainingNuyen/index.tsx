@@ -1,5 +1,6 @@
 import { FC, useCallback, useMemo } from "react"
 import { Runner } from "@/types/runner"
+import { PriorityRating } from "@/types/PriorityRating"
 import priorityTableData from "@/data/priorityTable.json"
 import { Gear } from "@/types/Resources"
 import { useSinnerQualityNuyenModifier } from "@/hooks/useSinnerQualityNuyenModifier"
@@ -9,6 +10,10 @@ export interface Props {
 }
 
 const { resources } = priorityTableData
+
+// nothing until the runner picks a priority for resources
+const startingNuyen = (priority?: PriorityRating) =>
+  priority ? resources[priority] : 0
 
 export const RemainingNuyen: FC<Props> = ({ runner }) => {
   const sinnerModifier = useSinnerQualityNuyenModifier(runner)
@@ -26,7 +31,7 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
 
   const totalNuyen = useMemo(
       () =>
-        resources[runner.priority.resources] +
+        startingNuyen(runner.priority?.resources) +
         ((
           (runner.qualities?.negative ?? []).some(
             ({ name }) => name === "In Debt",
@@ -37,7 +42,7 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
           (runner.karmaToNuyen ?? 0),
       [
         runner.karmaToNuyen,
-        runner.priority.resources,
+        runner.priority?.resources,
         runner.qualities?.negative,
       ],
     ),

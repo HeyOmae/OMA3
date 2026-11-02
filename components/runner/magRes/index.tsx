@@ -1,5 +1,8 @@
 import { CircularProgress, Grid } from "@mui/material"
-import { useRunnerAccess } from "@/hooks/useRunnerAccess"
+import { DispatchAction, useRunnerAccess } from "@/hooks/useRunnerAccess"
+import { FC } from "react"
+import { defined } from "@/components/util"
+import { MagRes as MagicResonance } from "@/types/MagRes"
 import { MagResSelection } from "./MagResSelection"
 import priorityData from "@/data/priorityTable.json"
 import {
@@ -27,6 +30,49 @@ const missingRequirement = (runner: Runner): PriorityTypes | undefined => {
   }
 }
 
+interface AwakenedProps {
+  runner: Runner
+  magres: Exclude<MagicResonance, "Mundane">
+  priority: MagResPriorityTableOptions
+  dispatch: DispatchAction<Payload>
+}
+
+const Awakened: FC<AwakenedProps> = ({
+  runner,
+  magres,
+  priority,
+  dispatch,
+}) => {
+  const [attribute, baseRating] = defined(priority[magres], magres)
+  const metatypePriority = defined(runner.priority?.metatype, "metatype")
+
+  return (
+    <>
+      <MagResAttributeSlider
+        adjustmentPoints={
+          priorityData.metatypes[metatypePriority].adjustmentPoints
+        }
+        attribute={attribute}
+        min={baseRating}
+        max={6}
+        attributes={defined(runner.attributes, "attributes")}
+        dispatch={dispatch}
+      />
+      <Grid container spacing={2}>
+        <Grid size={12}>
+          <RemainingSpells runner={runner} baseMagic={baseRating} />
+        </Grid>
+        <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
+          <LearnableMagRes runner={runner} dispatch={dispatch} />
+        </Grid>
+        <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
+          <KnownMagRes runner={runner} dispatch={dispatch} />
+        </Grid>
+      </Grid>
+    </>
+  )
+}
+
 export const MagRes = () => {
   const [runner, dispatch] = useRunnerAccess<Payload>(magResReducer)
 
@@ -38,7 +84,7 @@ export const MagRes = () => {
     return <PriorityWarning requirement={missing} />
   }
   const priority = priorityData["mag/res"][
-    runner.priority["mag/res"]
+    defined(runner.priority?.["mag/res"], "mag/res")
   ] as MagResPriorityTableOptions
 
   return (
@@ -51,33 +97,12 @@ export const MagRes = () => {
       {runner.magres &&
         (runner.magres === "Mundane" ?
           <h1>Nothing Special Here...</h1>
-        : <>
-            <MagResAttributeSlider
-              adjustmentPoints={
-                priorityData.metatypes[runner.priority.metatype]
-                  .adjustmentPoints
-              }
-              attribute={priority[runner.magres][0]}
-              min={priority[runner.magres][1]}
-              max={6}
-              attributes={runner.attributes}
-              dispatch={dispatch}
-            />
-            <Grid container spacing={2}>
-              <Grid size={12}>
-                <RemainingSpells
-                  runner={runner}
-                  baseMagic={priority[runner.magres][1]}
-                />
-              </Grid>
-              <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
-                <LearnableMagRes runner={runner} dispatch={dispatch} />
-              </Grid>
-              <Grid size={{ sm: 12, md: 6 }} className={styles.scrollGrid}>
-                <KnownMagRes runner={runner} dispatch={dispatch} />
-              </Grid>
-            </Grid>
-          </>)}
+        : <Awakened
+            runner={runner}
+            magres={runner.magres}
+            priority={priority}
+            dispatch={dispatch}
+          />)}
       <GrowthSections runner={runner} />
     </>
   )

@@ -18,7 +18,10 @@ export interface GeneralSpell {
 export interface CombatSpell extends Omit<GeneralSpell, "category"> {
   category: "Combat"
   damage: "Physical special" | "Physical" | "Stun"
-  spellfeature: [Direct: { ref: "Direct" | "Indirect" }, Area?: { ref: "Area" }]
+  // whether it's direct, then whether it's an area spell
+  spellfeature:
+    | [Direct: { ref: "Direct" | "Indirect" }]
+    | [Direct: { ref: "Direct" | "Indirect" }, Area: { ref: "Area" }]
 }
 
 export type Spell = GeneralSpell | CombatSpell
@@ -38,7 +41,7 @@ export type Spells = {
 export type Ritual = {
   name: string
   threshold: number
-  ritualfeature?: Spellfeature[]
+  ritualfeature: Spellfeature[]
 }
 
 interface Attrmod {

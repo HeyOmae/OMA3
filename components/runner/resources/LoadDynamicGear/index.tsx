@@ -2,7 +2,7 @@ import { Gear, Resources } from "@/types/Resources"
 import { useRouter } from "next/router"
 import { FC, useEffect, useState } from "react"
 import { CircularProgress } from "@mui/material"
-import { keyOf } from "@/components/util"
+import { defined, keyOf } from "@/components/util"
 import { GearPageTemplate } from "../GearPageTemplate"
 import { buyGearWithRatingCol, Columns, sellGearWithRatingCol } from "../util"
 
@@ -34,7 +34,7 @@ const LoadDynamicGear: FC<Props> = ({
   useEffect(() => {
     void importedGear.then((gear) => {
       const gearKey = keyOf(String(gearType), gear)
-      setLoaded({ gearKey, listOfGear: gear[gearKey] ?? [] })
+      setLoaded({ gearKey, listOfGear: defined(gear[gearKey], gearKey) })
     })
   }, [gearType, importedGear])
 

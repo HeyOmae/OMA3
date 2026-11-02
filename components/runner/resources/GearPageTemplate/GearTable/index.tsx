@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "react"
+import { ReactElement } from "react"
 import {
   Table,
   TableBody,
@@ -7,7 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material"
-import { Gear } from "@/types/Resources"
+import { Gear, GearAmmo } from "@/types/Resources"
 import { Columns, isGearAmmo } from "../../util"
 import {
   StandardDisplayRow,
@@ -24,25 +24,30 @@ export interface Props<G> {
   cols: Columns<G>[]
 }
 
-function displayRow(gear: Gear, isPurchasing: boolean): FC<RowProps> {
-  if (isPurchasing) {
-    if (isGearAmmo(gear)) {
-      return AmmoRow
-    }
-    const hasRating = "rating" in gear,
-      hasChoice = "choice" in gear
-    if ("choice" in gear && gear.choice === "NAME") {
-      return NamedRow
-    } else if (hasRating && hasChoice) {
-      return ChoiceRatingRow
-    } else if (hasRating) {
-      return RatingRow
-    } else if (hasChoice) {
-      return SelectSkillRow
-    }
-  }
+// Buying some gear needs choices made first, like its rating or a name, and
+// each kind of choice has its own row
+function GearRow<G extends Gear>({
+  isPurchasing,
+  ...props
+}: RowProps<G> & { isPurchasing: boolean }) {
+  const { gear } = props
+  const hasRating = "rating" in gear,
+    hasChoice = "choice" in gear
 
-  return StandardDisplayRow
+  if (!isPurchasing) {
+    return <StandardDisplayRow {...props} />
+  } else if (isGearAmmo(gear)) {
+    return <AmmoRow<G & GearAmmo> {...props} gear={gear} />
+  } else if (gear.choice === "NAME") {
+    return <NamedRow {...props} />
+  } else if (hasRating && hasChoice) {
+    return <ChoiceRatingRow {...props} />
+  } else if (hasRating) {
+    return <RatingRow {...props} />
+  } else if (hasChoice) {
+    return <SelectSkillRow {...props} />
+  }
+  return <StandardDisplayRow {...props} />
 }
 
 export function GearTable<G extends Gear>({
@@ -62,10 +67,10 @@ export function GearTable<G extends Gear>({
         <TableBody>
           {listOfGear.map((gear, index) => {
             const isPurchasing = cols[0].label === "Buy"
-            const Row = displayRow(gear, isPurchasing)
             return (
-              <Row
+              <GearRow
                 key={isPurchasing ? gear.name : index}
+                isPurchasing={isPurchasing}
                 cols={cols}
                 gear={gear}
                 index={index}

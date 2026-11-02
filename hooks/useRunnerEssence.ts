@@ -20,7 +20,7 @@ export const useRunnerEssence = (runner: Runner) =>
     ].reduce(
       (ess, augmentation) =>
         ess -
-        +getEssenceFromGear(augmentation) *
+        Number(getEssenceFromGear(augmentation)) *
           (augmentation.currentRating ?? 1) *
           senstiveSystemModifier,
       startingEss,

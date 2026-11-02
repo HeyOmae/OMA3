@@ -12,12 +12,15 @@ import {
   waitFor,
   withTestRouter,
 } from "@/test/testUtils"
-import { ChoiceRatingRow, ChoiceRatingRowProps } from "./index"
+import { ChoiceRatingRow } from "./index"
+import { Props } from "../index"
+import { GearFocus } from "@/types/Resources"
+import { defined } from "@/components/util"
 
 describe("ChoiceRatingRow", () => {
   beforeAll(setupIndexedDB)
   const setup = (focusName = "Qi Focus") => {
-    const props: ChoiceRatingRowProps = {
+    const props: Props<GearFocus> = {
         cols: [
           gearTableConfigOptions.buy,
           gearTableConfigOptions.name,
@@ -27,7 +30,10 @@ describe("ChoiceRatingRow", () => {
           gearMagicConfigOptions.avail,
           gearTableConfigOptions.cost,
         ],
-        gear: foci.find(({ name }) => name === focusName),
+        gear: defined(
+          foci.find(({ name }) => name === focusName),
+          focusName,
+        ),
         index: 0,
       },
       dispatch = jest.fn()

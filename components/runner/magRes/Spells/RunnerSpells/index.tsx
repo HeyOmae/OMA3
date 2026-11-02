@@ -1,11 +1,7 @@
 import { FC, Fragment } from "react"
 import { CombatSpells } from "../CombatSpells"
-import {
-  GeneralSpell,
-  NonCombatSpellsCategory,
-  SpellCategory,
-  Spells,
-} from "../../../../../types/MagRes"
+import { Spell, SpellCategory, Spells } from "../../../../../types/MagRes"
+import { defined } from "@/components/util"
 import { SpellsTable } from "../SpellsTable"
 import { DispatchAction } from "../../../../../hooks/useRunnerAccess"
 import { Payload, REMOVE_SPELL } from "../.."
@@ -47,6 +43,15 @@ export const RunnerSpells: FC<Props> = ({
   spells: { Combat, ...nonCombatSpells },
   dispatch,
 }) => {
+  const renderRemoveButton = (spell: Spell, spellIndex: number) => (
+    <RemoveSpellButton
+      dispatch={dispatch}
+      actionLabel="Remove"
+      spellCategory={spell.category}
+      spellName={spell.name}
+      spellIndex={spellIndex}
+    />
+  )
   return (
     <>
       {Combat && (
@@ -55,27 +60,20 @@ export const RunnerSpells: FC<Props> = ({
           <CombatSpells
             spells={Combat}
             actionLabel="Remove"
-            dispatch={dispatch}
-            ActionButton={RemoveSpellButton}
+            renderAction={renderRemoveButton}
           />
         </>
       )}
-      {Object.entries(nonCombatSpells).map(
-        ([category, spells]: [
-          category: NonCombatSpellsCategory,
-          spells: GeneralSpell[],
-        ]) => (
-          <Fragment key={category}>
-            <h3>{category}</h3>
-            <SpellsTable
-              spells={spells}
-              actionLabel="Remove"
-              dispatch={dispatch}
-              ActionButton={RemoveSpellButton}
-            />
-          </Fragment>
-        ),
-      )}
+      {Object.entries(nonCombatSpells).map(([category, spells]) => (
+        <Fragment key={category}>
+          <h3>{category}</h3>
+          <SpellsTable
+            spells={defined(spells, category)}
+            actionLabel="Remove"
+            renderAction={renderRemoveButton}
+          />
+        </Fragment>
+      ))}
     </>
   )
 }

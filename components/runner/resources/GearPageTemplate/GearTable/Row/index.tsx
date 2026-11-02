@@ -1,17 +1,21 @@
-import { createContext, FC, useMemo, useState } from "react"
+import { createContext, useMemo, useState } from "react"
 import { Gear } from "@/types/Resources"
 import { TableCell, TableRow } from "@mui/material"
 import { Columns } from "../../../util"
 import { useRating } from "./useRating"
 import skillData from "@/data/skills.json"
 
-export interface Props {
-  cols: Columns<Gear>[]
-  gear: Gear
+export interface Props<G extends Gear = Gear> {
+  cols: Columns<G>[]
+  gear: G
   index: number
 }
 
-export const StandardDisplayRow: FC<Props> = ({ cols, gear, index }) => (
+export const StandardDisplayRow = <G extends Gear>({
+  cols,
+  gear,
+  index,
+}: Props<G>) => (
   <TableRow>
     {cols.map(({ display, label }) => (
       <TableCell key={label}>{display(gear, index)}</TableCell>
@@ -19,7 +23,7 @@ export const StandardDisplayRow: FC<Props> = ({ cols, gear, index }) => (
   </TableRow>
 )
 
-export const RatingRow: FC<Props> = ({ cols, gear, index }) => {
+export const RatingRow = <G extends Gear>({ cols, gear, index }: Props<G>) => {
   const [gearWithRating, setRating] = useRating(gear)
 
   // Cols live at /components/runner/resources/util/configOptions.tsx
@@ -44,7 +48,11 @@ export const SkillContext = createContext<SkillContextValue | undefined>(
   undefined,
 )
 
-export const SelectSkillRow: FC<Props> = ({ cols, gear, index }) => {
+export const SelectSkillRow = <G extends Gear>({
+  cols,
+  gear,
+  index,
+}: Props<G>) => {
   const [selectedSkill, setSkill] = useState(skillData[0].name)
   const gearWithSkillName = useMemo(
     () => ({

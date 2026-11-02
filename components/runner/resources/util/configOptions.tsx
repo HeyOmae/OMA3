@@ -1,4 +1,10 @@
-import { Columns, getEssenceFromGear, getModCapacity } from "../util"
+import {
+  Columns,
+  getCapacity,
+  getEssenceFromGear,
+  getModCapacity,
+} from "../util"
+import { defined } from "@/components/util"
 import {
   Gear,
   GearCyberware,
@@ -52,7 +58,7 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
 export const gearModableTableConfigOptions = {
   mod: {
     display: (gear: Gear, index: number) =>
-      getModCapacity(gear) > 0 ?
+      (getModCapacity(gear) ?? 0) > 0 ?
         <ModLinkButton gear={gear} index={index} />
       : "N/A",
     label: "Mod",
@@ -119,7 +125,12 @@ export const gearRatingTableConfigOption: Record<string, Columns<Gear>> = {
   },
   setRating: {
     display: (gear, index, setRating) =>
-      gear.rating ? <SettingRating gear={gear} setRating={setRating} /> : "N/A",
+      gear.rating ?
+        <SettingRating
+          gear={gear}
+          setRating={defined(setRating, "setRating")}
+        />
+      : "N/A",
     label: "Rating",
   },
   displayRating: {
@@ -131,12 +142,13 @@ export const gearRatingTableConfigOption: Record<string, Columns<Gear>> = {
 export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
   setRating: {
     display: (gear, index, setRating) => (
-      <SettingRating gear={gear} setRating={setRating} />
+      <SettingRating gear={gear} setRating={defined(setRating, "setRating")} />
     ),
     label: "Rating",
   },
   karmaCost: {
-    display: ({ currentRating, karma }) => currentRating * karma,
+    display: ({ currentRating, karma }) =>
+      defined(currentRating, "rating") * karma,
     label: "Karma Cost",
   },
   choice: {
@@ -145,9 +157,12 @@ export const gearMagicConfigOptions: Record<string, Columns<GearFocus>> = {
   },
   avail: {
     display: ({ availability, currentRating }) => {
-      const [availRating, availRestriction] = availability.match(/[\d]+|\D+/g)
+      const [availRating, availRestriction] = defined(
+        availability.match(/[\d]+|\D+/g),
+        "availability",
+      )
 
-      return `${+availRating * currentRating}${availRestriction}`
+      return `${+availRating * defined(currentRating, "rating")}${availRestriction}`
     },
     label: "Avail",
   },
@@ -159,11 +174,7 @@ export const gearToolsConfigOptionSetSkill: Columns<Gear> = {
 }
 
 export const gearCapacityConfigOption: Columns<Gear & Gear> = {
-  display: (gear) =>
-    `[${
-      gear.currentRating ??
-      gear.useAs.find((useage) => "capacity" in useage).capacity
-    }]`,
+  display: (gear) => `[${gear.currentRating ?? getCapacity(gear)}]`,
   label: "Capacity",
 }
 
@@ -277,9 +288,9 @@ export const sellDroneModCols: VehicleModCols[] = [
 
 const essenceConfigOption: Columns<GearCyberware | Gear> = {
   display: (gear) => {
-    const essense = gear.essence ? `${gear.essence}` : getEssenceFromGear(gear)
+    const essence = Number(gear.essence || getEssenceFromGear(gear))
 
-    return parseFloat((+essense).toFixed(12))
+    return parseFloat(essence.toFixed(12))
   },
   label: "Ess",
 }

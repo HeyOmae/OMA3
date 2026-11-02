@@ -6,12 +6,12 @@ const applyRating = <G extends Gear>(gear: G, currentRating: number): G => {
   const { rateMultiplier } = gear
   // Currently everything gear with rating increases cost by rating
   const cost =
-    /cost2/.test(rateMultiplier) ?
+    rateMultiplier?.includes("cost2") ?
       currentRating * currentRating * gear.cost
     : gear.cost * currentRating
   const essence =
-    /essence/.test(rateMultiplier) ?
-      +getEssenceFromGear(gear) * currentRating
+    rateMultiplier?.includes("essence") ?
+      Number(getEssenceFromGear(gear)) * currentRating
     : undefined
 
   return {

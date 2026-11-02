@@ -1,4 +1,5 @@
-export type RunnerAttributes = Record<Attributes, AttributeStats>
+// attributes are added as the runner is built, so any of them can be missing
+export type RunnerAttributes = Partial<Record<Attributes, AttributeStats>>
 
 export type PhysicalAttributes = "Body" | "Agility" | "Reaction" | "Strength"
 

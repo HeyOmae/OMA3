@@ -130,12 +130,12 @@ describe("<GearTable />", () => {
       }
     }
     it("should display a slider for gear with rating and while buying", async () => {
-      const { getByLabelText, queryByTestId, dispatch } = setup()
+      const { getByLabelText, getByTestId, queryByTestId, dispatch } = setup()
 
       expect(getByLabelText("Add Headjammer")).toBeInTheDocument()
       expect(queryByTestId("Headjammer-rating")).toBeInTheDocument()
 
-      SliderHelper.change(queryByTestId("Headjammer-rating"), 6, 1, 6)
+      SliderHelper.change(getByTestId("Headjammer-rating"), 6, 1, 6)
       await userEvent.click(getByLabelText("Add Headjammer"))
       expect(dispatch).toHaveBeenCalledWith({
         type: UPDATE_GEAR,

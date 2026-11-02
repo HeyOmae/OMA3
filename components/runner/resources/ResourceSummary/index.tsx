@@ -21,7 +21,7 @@ function getResourceSubpath(resourceKey: string): string {
 
 // designed to fix resource keys that I didn't map to URI correctly
 // note to self: don't arbitrarily name things.
-const resourceKeyMap = {
+const resourceKeyMap: Record<string, string> = {
   commlink: "commlinks",
   riggerConsole: "consoles",
 }

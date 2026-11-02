@@ -4,7 +4,7 @@ import { MetamagicTable } from "../Initiation/MetamagicTable"
 import { echoes } from "@/data/echoes"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { Payload } from "../Initiation"
-import { removeItemFromArray } from "@/components/util"
+import { defined, removeItemFromArray } from "@/components/util"
 import { RemainingKarma } from "../../resources/GearPageTemplate/RemainingKarma"
 import { Echo } from "@/types/Matrix"
 
@@ -12,17 +12,23 @@ const LEARN_ECHO = Symbol("LEARN_ECHO")
 const FORGET_ECHO = Symbol("FORGET_ECHO")
 
 const Submersion = () => {
-  const [runner, dispatch] = useRunnerAccess<Payload>(
+  const [runner, dispatch] = useRunnerAccess<Payload<Echo>>(
     (runner, { type, payload }) => {
       if (type === LEARN_ECHO) {
         return {
           ...runner,
-          submersion: [...(runner.submersion ?? []), payload.metamagic],
+          submersion: [
+            ...(runner.submersion ?? []),
+            defined(payload.metamagic, "echo"),
+          ],
         }
       }
       return {
         ...runner,
-        submersion: removeItemFromArray(runner.submersion, payload.index),
+        submersion: removeItemFromArray(
+          defined(runner.submersion, "submersion"),
+          defined(payload.index, "index"),
+        ),
       }
     },
   )
@@ -61,7 +67,7 @@ const Submersion = () => {
 export const DisplaySubmersionLevel = ({
   submersion = [],
 }: {
-  submersion: Echo[]
+  submersion?: Echo[]
 }) => (
   <dl>
     <dt aria-label="Submersion Level">Submersion Level</dt>

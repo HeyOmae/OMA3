@@ -1,22 +1,17 @@
 import { AdeptPower, SpellCategory, SpiritTypes } from "@/types/MagRes"
 import { TableCell, TableRow } from "@mui/material"
 import { createContext, useMemo, useState } from "react"
-import { FC } from "react"
+
 import { Props } from "../index"
 import { useRating } from "../useRating"
 import powerData from "@/data/adeptPowers.json"
-import { Columns } from "@/components/runner/resources/util"
-import { Gear, GearFirearm, GearFocus, GearWeapon } from "@/types/Resources"
+
+import { Gear, GearFirearm, GearWeapon } from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"
 import { CircularProgress } from "@mui/material"
 import { spirits } from "@/data/spirits"
 import skillData from "@/data/skills.json"
 import firearms from "@/data/firearms"
-
-export interface ChoiceRatingRowProps extends Props {
-  cols: Columns<GearFocus | Gear>[]
-  gear: GearFocus | Gear
-}
 
 type ChoiceType =
   | AdeptPower
@@ -24,6 +19,7 @@ type ChoiceType =
   | GearWeapon
   | GearFirearm
 
+// empty when there is nothing to choose from
 type SelectedChoiceIndex = number | ""
 
 export interface SelectChoiceContext {
@@ -36,11 +32,11 @@ export const ChoiceContext = createContext<SelectChoiceContext | undefined>(
   undefined,
 )
 
-export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
+export const ChoiceRatingRow = <G extends Gear>({
   cols,
   gear,
   index,
-}) => {
+}: Props<G>) => {
   const runner = useGetRunner()
   const choices: ChoiceType[] = useMemo(() => {
     switch (gear.choice) {
@@ -70,7 +66,7 @@ export const ChoiceRatingRow: FC<ChoiceRatingRowProps> = ({
     }
   }, [gear, runner])
   const [gearWithRating, setRating] = useRating(gear)
-  const [selectedChoiceIndex, setChoiceIndex] = useState<SelectedChoiceIndex>(0)
+  const [selectedChoiceIndex, setChoiceIndex] = useState(0)
   const gearWithChoice = useMemo(
     () => ({
       ...gearWithRating,

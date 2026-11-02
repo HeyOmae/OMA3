@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 import {
   Table,
   TableBody,
@@ -7,24 +7,20 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material"
-import { Payload } from ".."
 import { CombatSpell } from "../../../../types/MagRes"
-import { DispatchAction } from "../../../../hooks/useRunnerAccess"
-import { ActionLabel, AddSpellButtonProps } from "."
-import { RemoveSpellButtonProps } from "./RunnerSpells"
+import { ActionLabel } from "."
 
 interface Props {
   spells: CombatSpell[]
-  dispatch: DispatchAction<Payload>
   actionLabel: ActionLabel
-  ActionButton: FC<AddSpellButtonProps | RemoveSpellButtonProps>
+  // the button to learn or forget the spell in this row
+  renderAction: (spell: CombatSpell, spellIndex: number) => ReactNode
 }
 
 export const CombatSpells: FC<Props> = ({
   spells,
-  dispatch,
   actionLabel,
-  ActionButton,
+  renderAction,
 }) => {
   return (
     <TableContainer className="table-container">
@@ -54,22 +50,7 @@ export const CombatSpells: FC<Props> = ({
             } = spell
             return (
               <TableRow key={name}>
-                <TableCell>
-                  {actionLabel === "Learn" ?
-                    <ActionButton
-                      dispatch={dispatch}
-                      actionLabel={actionLabel}
-                      spell={spell}
-                    />
-                  : <ActionButton
-                      dispatch={dispatch}
-                      actionLabel={actionLabel}
-                      spellCategory={spell.category}
-                      spellName={spell.name}
-                      spellIndex={spellIndex}
-                    />
-                  }
-                </TableCell>
+                <TableCell>{renderAction(spell, spellIndex)}</TableCell>
                 <TableCell>
                   {name} ({ref} {category}
                   {area ? `, ${area.ref}` : ""})

@@ -1,7 +1,7 @@
 import { Runner } from "@/types/runner"
 import { useMemo } from "react"
 
-export const useSinnerQualityNuyenModifier = (runner: Runner) =>
+export const useSinnerQualityNuyenModifier = (runner: Runner | undefined) =>
   useMemo(
     () =>
       runner?.qualities?.negative?.some(({ name }) => name === "Sinner") ?

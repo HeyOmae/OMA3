@@ -1,5 +1,6 @@
-import { useRunnerAccess } from "@/hooks/useRunnerAccess"
+import { RunnerReducer, useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { Gear, Resources } from "@/types/Resources"
+import { Runner } from "@/types/runner"
 import { CircularProgress, Grid } from "@mui/material"
 import { useRouter } from "next/router"
 import { defined } from "@/components/util"
@@ -20,9 +21,43 @@ interface GearModPageProps<M> {
   // the mods that can be put on the gear
   listOfGear: M[]
   addGearTableConfig: Columns<M>[]
-  removeGearTableConfig: Columns<M>[]
+  // mods are saved on the gear as plain gear
+  removeGearTableConfig: Columns<Gear>[]
   CapacityDisplay?: false | DisplayCapacity
 }
+
+// the gear at gearIndex under resourceKey, which the mod page is for
+export const gearToMod = (
+  runner: Runner,
+  resourceKey: keyof Resources,
+  gearIndex: number,
+): Gear => defined(runner.resources?.[resourceKey], resourceKey)[gearIndex]
+
+// adds a mod to the gear, or removes the mod at the index in the payload
+export const modGearReducer =
+  (
+    resourceKey: keyof Resources,
+    gearIndex: number,
+  ): RunnerReducer<Gear | number> =>
+  (runner, { payload }) => {
+    const gearList: Gear[] = defined(
+      runner.resources?.[resourceKey],
+      resourceKey,
+    )
+    const gear = gearList[gearIndex]
+    const mods =
+      typeof payload === "number" ?
+        defined(gear.mods, "mods").toSpliced(payload, 1)
+      : [...(gear.mods ?? []), payload]
+
+    return {
+      ...runner,
+      resources: {
+        ...runner.resources,
+        [resourceKey]: gearList.toSpliced(gearIndex, 1, { ...gear, mods }),
+      },
+    }
+  }
 
 export function GearModPageTemplate<M extends Gear>({
   previousPath,
@@ -33,32 +68,11 @@ export function GearModPageTemplate<M extends Gear>({
   CapacityDisplay = RemainingCapacity,
 }: GearModPageProps<M>) {
   const gearIndex = Number(useRouter().query.gearIndex)
-  const [runner, dispatch] = useRunnerAccess<Gear | number>(
-    (runner, { payload }) => {
-      const gearList: Gear[] = defined(
-        runner.resources?.[resourceKey],
-        resourceKey,
-      )
-      const gear = gearList[gearIndex]
-      const mods =
-        typeof payload === "number" ?
-          defined(gear.mods, "mods").toSpliced(payload, 1)
-        : [...(gear.mods ?? []), payload]
-
-      return {
-        ...runner,
-        resources: {
-          ...runner.resources,
-          [resourceKey]: gearList.toSpliced(gearIndex, 1, { ...gear, mods }),
-        },
-      }
-    },
+  const [runner, dispatch] = useRunnerAccess(
+    modGearReducer(resourceKey, gearIndex),
   )
   if (runner) {
-    const gearBeingModded: Gear = defined(
-      runner.resources?.[resourceKey],
-      resourceKey,
-    )[gearIndex]
+    const gearBeingModded = gearToMod(runner, resourceKey, gearIndex)
     const gearName = `${gearBeingModded.name} (${gearIndex})`
     const modsOnGear = gearBeingModded.mods
     return (

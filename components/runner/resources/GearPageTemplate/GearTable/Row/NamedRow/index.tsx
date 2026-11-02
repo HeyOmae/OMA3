@@ -1,14 +1,9 @@
-import { createContext, FC, useMemo, useState } from "react"
+import { createContext, useMemo, useState } from "react"
 import { TableCell, TableRow } from "@mui/material"
 import { Gear } from "@/types/Resources"
-import { Columns } from "@/components/runner/resources/util"
+
 import { Props } from "../index"
 import { useRating } from "../useRating"
-
-interface NamedRowProps extends Props {
-  cols: Columns<Gear>[]
-  gear: Gear
-}
 
 interface NameContextValue {
   gearName: string
@@ -21,7 +16,7 @@ export const NameContext = createContext<NameContextValue | undefined>(
 )
 
 // Gear that needs the player to name it, like a mapsoft for a city
-export const NamedRow: FC<NamedRowProps> = ({ cols, gear, index }) => {
+export const NamedRow = <G extends Gear>({ cols, gear, index }: Props<G>) => {
   const [name, setName] = useState("")
   const [gearWithRating, setRating] = useRating(gear)
   const namedGear = useMemo(

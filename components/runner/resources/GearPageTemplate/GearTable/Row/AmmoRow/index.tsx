@@ -1,15 +1,9 @@
-import { createContext, FC, useMemo, useState } from "react"
+import { createContext, useMemo, useState } from "react"
 import { TableCell, TableRow } from "@mui/material"
-import { AmmoType, Gear, GearAmmo } from "@/types/Resources"
+import { AmmoType, GearAmmo } from "@/types/Resources"
 import { ammoTypes, caselessCostMultiplier } from "@/data/ammo"
-import { Columns } from "../../../../util"
+import { Props } from "../index"
 import { useRating } from "../useRating"
-
-export interface AmmoRowProps {
-  cols: Columns<Gear>[]
-  gear: GearAmmo
-  index: number
-}
 
 interface AmmoContextValue {
   regularOnly: boolean
@@ -25,7 +19,11 @@ export const AmmoContext = createContext<AmmoContextValue | undefined>(
 
 // Ammo is picked by type and whether it is caseless, then bought in bundles
 // of rounds, which is the rating
-export const AmmoRow: FC<AmmoRowProps> = ({ cols, gear, index }) => {
+export const AmmoRow = <G extends GearAmmo>({
+  cols,
+  gear,
+  index,
+}: Props<G>) => {
   const [type, setType] = useState<AmmoType>(gear.ammo.type)
   const [caseless, setCaseless] = useState(gear.ammo.caseless)
   const ammoOfType = useMemo(

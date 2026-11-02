@@ -4,14 +4,15 @@ import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { MetaMagic } from "@/types/MagRes"
 import { CircularProgress, Grid } from "@mui/material"
 import { RemainingKarma } from "../../resources/GearPageTemplate/RemainingKarma"
-import { removeItemFromArray } from "@/components/util"
+import { defined, removeItemFromArray } from "@/components/util"
 import { AddButton, RemoveButton, Section } from "@/components/common"
 
 export const ADD_METAMAGIC = Symbol("ADD_METAMAGIC")
 export const REMOVE_METAMAGIC = Symbol("REMOVE_METAMAGIC")
 
-export interface Payload {
-  metamagic?: MetaMagic
+// learning a metamagic, or forgetting the one at index
+export interface Payload<M = MetaMagic> {
+  metamagic?: M
   index?: number
 }
 
@@ -21,12 +22,18 @@ const Initiation = () => {
       if (type === ADD_METAMAGIC) {
         return {
           ...runner,
-          initiation: [...(runner.initiation ?? []), payload.metamagic],
+          initiation: [
+            ...(runner.initiation ?? []),
+            defined(payload.metamagic, "metamagic"),
+          ],
         }
       }
       return {
         ...runner,
-        initiation: removeItemFromArray(runner.initiation, payload.index),
+        initiation: removeItemFromArray(
+          defined(runner.initiation, "initiation"),
+          defined(payload.index, "index"),
+        ),
       }
     },
   )
@@ -68,7 +75,7 @@ const Initiation = () => {
 export const DisplayInitiationGrade = ({
   initiation = [],
 }: {
-  initiation: MetaMagic[]
+  initiation?: MetaMagic[]
 }) => (
   <dl>
     <dt aria-label="Initiation Grade">Initiation Grade</dt>

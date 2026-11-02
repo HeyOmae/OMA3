@@ -1,12 +1,14 @@
 import { FC, useMemo } from "react"
 import { Runner } from "@/types/runner"
+import { MagRes } from "@/types/MagRes"
+import { defined } from "@/components/util"
 
 export interface Props {
   runner: Runner
   baseMagic: number
 }
 
-const magResWithSpells = ["Mystic Adept", "Full", "Aspected"]
+const magResWithSpells: MagRes[] = ["Mystic Adept", "Full", "Aspected"]
 
 export const RemainingSpells: FC<Props> = ({ runner, baseMagic: rating }) => {
   const {
@@ -15,8 +17,8 @@ export const RemainingSpells: FC<Props> = ({ runner, baseMagic: rating }) => {
     rituals = [],
     powers = [],
     complexForms = [],
-    attributes: { Magic },
   } = runner
+  const Magic = defined(runner.attributes?.Magic, "Magic")
   const totalSpells = rating * 2,
     numberOfKnownSpells = useMemo(
       () =>
@@ -59,7 +61,7 @@ export const RemainingSpells: FC<Props> = ({ runner, baseMagic: rating }) => {
 
   return (
     <dl>
-      {magResWithSpells.includes(magres) && (
+      {magResWithSpells.includes(defined(magres, "magres")) && (
         <>
           <dt>Spells Remaining</dt>
           <dd
