@@ -53,7 +53,7 @@ describe("<MeleeWeapons/>", () => {
       screen.getByRole("cell", { name: "Katana" }),
       "tr",
     )
-    expect(within(katanaRow).getByText(/SR6 p\.?249/i)).toBeInTheDocument()
+    expect(within(katanaRow).getByText(/SR6 p\.?247/i)).toBeInTheDocument()
   })
 
   it("purchase melee weapon", async () => {
@@ -77,7 +77,7 @@ describe("<MeleeWeapons/>", () => {
           name: "Katana",
           availability: "3",
           cost: 350,
-          reference: [{ book: "SR6", page: 249 }],
+          reference: [{ book: "SR6", page: 247 }],
           useAs: [
             {
               type: "WEAPON CLOSE COMBAT",

@@ -193,6 +193,7 @@ export const buyGearWithRatingCol: gearWithRatingCols = [
   gearRatingTableConfigOption.setRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const sellGearWithRatingCol: gearWithRatingCols = [
@@ -201,6 +202,7 @@ export const sellGearWithRatingCol: gearWithRatingCols = [
   gearRatingTableConfigOption.displayRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const buyGearWithoutRatingCol: gearWithRatingCols = [
@@ -208,6 +210,7 @@ export const buyGearWithoutRatingCol: gearWithRatingCols = [
   gearTableConfigOptions.name,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const sellGearWithoutRatingCol: gearWithRatingCols = [
@@ -215,6 +218,7 @@ export const sellGearWithoutRatingCol: gearWithRatingCols = [
   gearTableConfigOptions.name,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const baseDroneStatsConfigOptions: Columns<GearVehicle>[] = [
@@ -235,6 +239,7 @@ export const buyGearDronesCols: Columns<GearVehicle>[] = [
   ...baseDroneStatsConfigOptions,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const sellGearDronesCols: Columns<GearVehicle>[] = [
@@ -243,6 +248,7 @@ export const sellGearDronesCols: Columns<GearVehicle>[] = [
   gearDroneTableConfigOptions.type,
   ...baseDroneStatsConfigOptions,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
   gearModableTableConfigOptions.alwaysMod,
 ]
 
@@ -254,6 +260,7 @@ export const buyGearVehiclesCols: Columns<GearVehicle>[] = [
   gearDroneTableConfigOptions.seat,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const sellGearVehiclesCols: Columns<GearVehicle>[] = [
@@ -263,6 +270,7 @@ export const sellGearVehiclesCols: Columns<GearVehicle>[] = [
   ...baseDroneStatsConfigOptions,
   gearDroneTableConfigOptions.seat,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
   gearModableTableConfigOptions.alwaysMod,
 ]
 
@@ -271,6 +279,7 @@ const baseCols: VehicleModCols[] = [
   gearTableConfigOptions.name,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 export const buyDroneModCols: VehicleModCols[] = [
   gearTableConfigOptions.buy,
@@ -297,6 +306,7 @@ export const buyAugmentationCols: Columns<GearCyberware | Gear>[] = [
   essenceConfigOption,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const sellAugmentationCols: Columns<GearCyberware | Gear>[] = [
@@ -305,6 +315,7 @@ export const sellAugmentationCols: Columns<GearCyberware | Gear>[] = [
   gearRatingTableConfigOption.displayRating,
   essenceConfigOption,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
   gearModableTableConfigOptions.mod,
 ]
 

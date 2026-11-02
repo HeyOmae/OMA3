@@ -8,6 +8,7 @@ import {
   runnerFromDB,
   userEvent,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import FirearmMods from "./index"
 import { mods } from "@/data/firearms"
@@ -66,5 +67,10 @@ describe("<FirearmMods />", () => {
       "Laser Sight",
     )
     expect(getByLabelText("Remove Laser Sight")).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Gas-Vent System", 259)).toBeInTheDocument()
   })
 })

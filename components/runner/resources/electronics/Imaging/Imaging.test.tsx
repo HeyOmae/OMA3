@@ -7,6 +7,7 @@ import {
   waitFor,
   userEvent,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Imaging from "./"
 
@@ -66,5 +67,10 @@ describe("<Imaging/>", () => {
       // No rating and no mods
       expect(getAllTextInContainer(mageSightRow, "N/A")).toHaveLength(2)
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Binoculars", 274)).toBeInTheDocument()
   })
 })

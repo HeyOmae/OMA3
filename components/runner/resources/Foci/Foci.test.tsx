@@ -8,6 +8,7 @@ import {
   userEvent,
   screen,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Foci from "./index"
 import { foci } from "@/data/focus"
@@ -126,5 +127,10 @@ describe("foci", () => {
       screen.queryByLabelText(/Add .*Weapon Focus/),
     ).not.toBeInTheDocument()
     expect(screen.queryByRole("progressbar")).not.toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Power Focus", 155)).toBeInTheDocument()
   })
 })

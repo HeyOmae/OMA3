@@ -12,6 +12,7 @@ type SensorModCols = Columns<Gear>
 const baseCols: SensorModCols[] = [
   gearTableConfigOptions.name,
   gearCapacityConfigOption,
+  gearTableConfigOptions.reference,
 ]
 const buyCols: SensorModCols[] = [
     gearTableConfigOptions.buy,

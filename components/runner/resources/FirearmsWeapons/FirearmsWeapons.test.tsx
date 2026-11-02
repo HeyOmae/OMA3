@@ -9,6 +9,7 @@ import {
   caymansCurrentlySpentNuyen,
   userEvent,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import FirearmsWeapons from "./"
 import FirearmsData from "@/data/firearms"
@@ -50,6 +51,7 @@ describe("<FirearmsWeapon />", () => {
           availability: "3L",
           cost: 750,
           name: "Ingram Smartgun XI",
+          reference: [{ book: "SR6", page: 254 }],
           useAs: [
             {
               type: "WEAPON FIREARMS",
@@ -132,5 +134,10 @@ describe("<FirearmsWeapon />", () => {
     expect(getByLabelText("Mod Browning Ultra Power (2)")).toBeInTheDocument()
     expect(getByLabelText("Mod Uzi Iv (3)")).toBeInTheDocument()
     expect(getByLabelText("Mod FN Har (4)")).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Ares Predator VI", 253)).toBeInTheDocument()
   })
 })

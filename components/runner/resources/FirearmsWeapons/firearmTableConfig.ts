@@ -20,6 +20,7 @@ const baseFirearmsTableConfig: Columns<GearFirearm>[] = [
   },
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const addFirearmsTableConfig: Columns<GearFirearm>[] = [

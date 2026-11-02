@@ -8,6 +8,7 @@ import {
   getByText as getByTextInContainer,
   getAllByText as getAllByTextInContainer,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Vehicles from "./index"
 
@@ -95,5 +96,10 @@ describe("<Vehicles/>", () => {
         getByLabelText("Mod Harley-Davidson Scorpion (0)").closest("a"),
       ).toHaveAttribute("href", "/10/resources/vehicles/0")
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Dodge Scoot", 295)).toBeInTheDocument()
   })
 })

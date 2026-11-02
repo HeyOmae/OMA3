@@ -6,6 +6,7 @@ import {
   userEvent,
   waitFor,
   withTestRouter,
+  findGearReference,
 } from "@/test/testUtils"
 import { sensorMods } from "@/data/mods"
 import SensorMods from "."
@@ -90,5 +91,12 @@ describe("SensorMods", () => {
         "OlFactory Sensor",
       ),
     )
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(
+      await findGearReference("Atmosphere sensor", 278),
+    ).toBeInTheDocument()
   })
 })

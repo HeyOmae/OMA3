@@ -16,6 +16,7 @@ const buyCol = [
   gearMagicConfigOptions.karmaCost,
   gearMagicConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const sellCol = [
@@ -25,6 +26,7 @@ const sellCol = [
   gearMagicConfigOptions.karmaCost,
   gearMagicConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const Foci: FC = () => (

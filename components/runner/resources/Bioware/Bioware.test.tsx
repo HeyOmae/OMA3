@@ -8,6 +8,7 @@ import {
   getByText as getByTextInElement,
   userEvent,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Bioware from "."
 
@@ -43,5 +44,10 @@ describe("<Bioware />", () => {
 
     await userEvent.click(getByLabelText("Remove Muscle Augmentation"))
     expect(getByTextInElement(essenceDisplay, 6)).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Cats Eyes", 291)).toBeInTheDocument()
   })
 })

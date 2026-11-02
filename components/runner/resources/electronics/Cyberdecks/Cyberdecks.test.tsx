@@ -6,6 +6,7 @@ import {
   setupIndexedDB,
   screen,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import { Cyberdecks } from "."
 
@@ -53,5 +54,10 @@ describe("<Cyberdecks/>", () => {
     expect(
       getTextInContainer(cyberdeckRow, `${cyberdeck.cost}¥`),
     ).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Erika Mcd6", 267)).toBeInTheDocument()
   })
 })

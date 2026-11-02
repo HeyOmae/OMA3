@@ -6,9 +6,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Combat Axe",
+    reference: [{ book: "SR6", page: 247 }],
     availability: "4",
     cost: 500,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -34,9 +34,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Combat Knife",
+    reference: [{ book: "SR6", page: 247 }],
     availability: "2",
     cost: 220,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -54,9 +54,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Survival Knife",
+    reference: [{ book: "SR6", page: 248 }],
     availability: "2",
     cost: 220,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -74,9 +74,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Forearm Snap Blades",
+    reference: [{ book: "SR6", page: 247 }],
     availability: "3",
     cost: 185,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -94,9 +94,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Knife",
+    reference: [{ book: "SR6", page: 247 }],
     availability: "1",
     cost: 20,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -122,9 +122,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Katana",
+    reference: [{ book: "SR6", page: 247 }],
     availability: "3",
     cost: 350,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -150,9 +150,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Polearm",
+    reference: [{ book: "SR6", page: 247 }],
     availability: "2",
     cost: 210,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -170,9 +170,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "BLADES",
     name: "Sword",
+    reference: [{ book: "SR6", page: 248 }],
     availability: "3",
     cost: 320,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -198,9 +198,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Club",
+    reference: [{ book: "SR6", page: 248 }],
     availability: "1",
     cost: 65,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -218,9 +218,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Extendable Baton",
+    reference: [{ book: "SR6", page: 248 }],
     availability: "2",
     cost: 50,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -238,9 +238,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Sab",
+    reference: [{ book: "SR6", page: 248 }],
     availability: "1",
     cost: 75,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -258,9 +258,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Staff",
+    reference: [{ book: "SR6", page: 249 }],
     availability: "1",
     cost: 150,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -278,9 +278,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Stun Baton",
+    reference: [{ book: "SR6", page: 249 }],
     availability: "2",
     cost: 600,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -306,9 +306,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "CLUBS",
     name: "Telescopic Staff",
+    reference: [{ book: "SR6", page: 249 }],
     availability: "2",
     cost: 250,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -326,9 +326,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "UNARMED",
     name: "Bike Chain",
+    reference: [{ book: "SR6", page: 249 }],
     availability: "1",
     cost: 15,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -346,9 +346,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "WHIPS",
     name: "Bullwhip",
+    reference: [{ book: "SR6", page: 249 }],
     availability: "4",
     cost: 255,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -365,9 +365,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "UNARMED",
     name: "Knucks",
+    reference: [{ book: "SR6", page: 249 }],
     availability: "1",
     cost: 100,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -385,9 +385,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "UNARMED",
     name: "Shock Gloves",
+    reference: [{ book: "SR6", page: 250 }],
     availability: "4",
     cost: 790,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",
@@ -405,9 +405,9 @@ const meleeWeapons: GearWeapon[] = [
     type: "WEAPON CLOSE COMBAT",
     subtype: "WHIPS",
     name: "Monofilament Whip",
+    reference: [{ book: "SR6", page: 249 }],
     availability: "6I",
     cost: 1300,
-    reference: [{ book: "SR6", page: 249 }],
     useAs: [
       {
         type: "WEAPON CLOSE COMBAT",

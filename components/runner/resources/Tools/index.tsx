@@ -13,6 +13,7 @@ const buyCols: Columns<Gear>[] = [
   gearToolsConfigOptionSetSkill,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const sellCols: Columns<Gear>[] = [
@@ -20,6 +21,7 @@ const sellCols: Columns<Gear>[] = [
   gearTableConfigOptions.name,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const Tools = () => (

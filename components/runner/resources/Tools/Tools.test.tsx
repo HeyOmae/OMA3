@@ -6,6 +6,7 @@ import {
   withTestRouter,
   getByText as getTextInContainer,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import { tools } from "@/data/tools"
 
@@ -35,5 +36,10 @@ describe("<Tools />", () => {
     ).toBeInTheDocument()
     expect(getTextInContainer(toolRow, tool.availability)).toBeInTheDocument()
     expect(getTextInContainer(toolRow, `${tool.cost}¥`)).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Astral Kit", 273)).toBeInTheDocument()
   })
 })

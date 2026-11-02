@@ -18,6 +18,7 @@ const buyCyberwareModCols: Columns<GearCyberware>[] = [
   gearCapacityConfigOption,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 const sellCyberwareModCols: Columns<GearCyberware>[] = [
   gearTableConfigOptions.sell,
@@ -26,6 +27,7 @@ const sellCyberwareModCols: Columns<GearCyberware>[] = [
   gearCapacityConfigOption,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const CyberwareMods = () => {

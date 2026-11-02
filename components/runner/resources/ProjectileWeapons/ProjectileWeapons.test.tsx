@@ -6,6 +6,7 @@ import {
   userEvent,
   waitFor,
   withTestRouter,
+  findGearReference,
 } from "../../../../test/testUtils"
 
 describe("<ProjectileWeapons/>", () => {
@@ -43,5 +44,10 @@ describe("<ProjectileWeapons/>", () => {
     await waitFor(() => {
       expect(runnerFromDB(9).resources?.projectile).toHaveLength(0)
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Throwing Knives", 250)).toBeInTheDocument()
   })
 })

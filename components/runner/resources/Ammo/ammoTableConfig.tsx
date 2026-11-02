@@ -76,6 +76,7 @@ export const buyAmmoCols: Columns<Gear>[] = [
   roundsCol,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const sellAmmoCols: Columns<Gear>[] = [
@@ -84,4 +85,5 @@ export const sellAmmoCols: Columns<Gear>[] = [
   roundsCol,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]

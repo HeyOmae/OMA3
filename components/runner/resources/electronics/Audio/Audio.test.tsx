@@ -5,6 +5,7 @@ import {
   withTestRouter,
   getByText as getTextInContainer,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Audio from "./index"
 
@@ -50,5 +51,10 @@ describe("<Audio />", () => {
         "/10/resources/audio/0",
       )
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Earbuds", 275)).toBeInTheDocument()
   })
 })

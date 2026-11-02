@@ -8,6 +8,7 @@ import {
   getByText as getTextInContainer,
   userEvent,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import { audioMods } from "@/data/mods"
 import AudioMods from "."
@@ -92,5 +93,12 @@ describe("AudioMods", () => {
       ),
     )
     expect(runnerFromDB(9).resources?.audio?.[0].mods?.[0].cost).toBe(750)
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(
+      await findGearReference("Select Sound Filter", 276),
+    ).toBeInTheDocument()
   })
 })

@@ -57,6 +57,7 @@ const buyCols: SoftwareCols = [
   gearRatingTableConfigOption.setRating,
   softwareCols.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const sellCols: SoftwareCols = [
@@ -66,6 +67,7 @@ const sellCols: SoftwareCols = [
   gearRatingTableConfigOption.displayRating,
   softwareCols.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const Software = () => (

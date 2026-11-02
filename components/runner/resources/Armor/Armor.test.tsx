@@ -6,6 +6,7 @@ import {
   waitFor,
   setupIndexedDB,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import { Armor } from "./index"
 
@@ -47,5 +48,10 @@ describe("<Armor />", () => {
     await waitFor(() => {
       expect(getByLabelText("Mod Full Body Armor (0)")).toBeInTheDocument()
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Armor Vest", 265)).toBeInTheDocument()
   })
 })

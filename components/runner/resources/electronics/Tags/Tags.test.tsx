@@ -6,6 +6,7 @@ import {
   withTestRouter,
   getByText as getTextInContainer,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Tags from "./index"
 
@@ -33,5 +34,10 @@ describe("<Tags />", () => {
     expect(getTextInContainer(tagRow, tag.deviceRating)).toBeInTheDocument()
     expect(getTextInContainer(tagRow, tag.availability)).toBeInTheDocument()
     expect(getTextInContainer(tagRow, `${tag.cost}¥`)).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    render(withTestRouter(<Tags />, { query: { id: "10" } }))
+    expect(await findGearReference("Standard Tag", 269)).toBeInTheDocument()
   })
 })

@@ -15,10 +15,10 @@ export const sensors: Gear[] = [
     availability: "1",
     cost: 100,
     name: "Handheld Housing",
+    reference: [{ book: "SR6", page: 276 }],
     maxRating: 3,
     rating: true,
     rateMultiplier: "capacity cost",
-    reference: [{ book: "SR6", page: 445 }],
   },
   {
     type: "ELECTRONICS",
@@ -34,10 +34,10 @@ export const sensors: Gear[] = [
     availability: "1",
     cost: 250,
     name: "Wall-mounted Housing",
+    reference: [{ book: "SR6", page: 276 }],
     maxRating: 6,
     rating: true,
     rateMultiplier: "capacity cost",
-    reference: [{ book: "SR6", page: 445 }],
   },
   {
     useAs: [
@@ -59,13 +59,13 @@ export const sensors: Gear[] = [
     availability: "3",
     cost: 1000,
     name: "Sensor Array",
+    reference: [{ book: "SR6", page: 276 }],
     minRating: 2,
     maxRating: 8,
     rating: true,
     rateMultiplier: "capacity cost",
     type: "ELECTRONICS",
     subtype: "SENSOR HOUSING",
-    reference: [{ book: "SR6", page: 445 }],
   },
   {
     useAs: [
@@ -87,11 +87,11 @@ export const sensors: Gear[] = [
     availability: "2",
     cost: 100,
     name: "Single Sensor",
+    reference: [{ book: "SR6", page: 276 }],
     maxRating: 8,
     rating: true,
     rateMultiplier: "cost",
     type: "ELECTRONICS",
     subtype: "SENSOR HOUSING",
-    reference: [{ book: "SR6", page: 445 }],
   },
 ]

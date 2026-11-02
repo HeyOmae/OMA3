@@ -7,6 +7,7 @@ import {
   screen,
   SliderHelper,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Cyberware from "."
 
@@ -116,5 +117,10 @@ describe("<Cyberware />", () => {
     expect(boughtCyberjackRow).toHaveTextContent("95000¥")
     expect(boughtCyberjackRow).toHaveTextContent("2.3")
     expect(displayEssence).toHaveTextContent("3.7")
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Datajack", 283)).toBeInTheDocument()
   })
 })

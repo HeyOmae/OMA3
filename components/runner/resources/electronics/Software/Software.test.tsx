@@ -10,6 +10,7 @@ import {
   within,
   screen,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Software from "./"
 
@@ -219,5 +220,10 @@ describe("<Software/>", () => {
         await findByLabelText("Remove Firearms Activesoft"),
       ).toBeInTheDocument()
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Browse", 184)).toBeInTheDocument()
   })
 })

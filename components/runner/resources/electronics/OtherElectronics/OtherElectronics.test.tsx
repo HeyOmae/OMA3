@@ -8,6 +8,7 @@ import {
   runnerFromDB,
   userEvent,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import OtherElectronics from "./"
 
@@ -78,5 +79,10 @@ describe("<OtherElectronics/>", () => {
     expect(getTextInContainer(purchasedRow, "4")).toBeInTheDocument()
     expect(getTextInContainer(purchasedRow, "3")).toBeInTheDocument()
     expect(getTextInContainer(purchasedRow, "200¥")).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Data Tap", 271)).toBeInTheDocument()
   })
 })

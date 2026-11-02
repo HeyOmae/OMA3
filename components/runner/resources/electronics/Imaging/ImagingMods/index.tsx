@@ -13,6 +13,7 @@ const baseCols: ImagingModCols[] = [
   gearCapacityConfigOption,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 export const buyCols: ImagingModCols[] = [
     gearTableConfigOptions.buy,

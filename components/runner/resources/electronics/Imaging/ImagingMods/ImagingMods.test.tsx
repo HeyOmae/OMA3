@@ -5,6 +5,7 @@ import {
   userEvent,
   waitFor,
   withTestRouter,
+  findGearReference,
 } from "@/test/testUtils"
 import { imagingMods } from "@/data/mods"
 import ImagingMods from "."
@@ -77,5 +78,12 @@ describe("ImagingMods", () => {
         "Low Light Vision",
       ),
     )
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(
+      await findGearReference("Flare Compensation", 275),
+    ).toBeInTheDocument()
   })
 })

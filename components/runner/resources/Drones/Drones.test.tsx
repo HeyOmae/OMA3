@@ -8,6 +8,7 @@ import {
   getByText as getByTextInContainer,
   getAllByText as getAllByTextInContainer,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Drones from "./index"
 
@@ -80,5 +81,10 @@ describe("<Drones/>", () => {
         getByLabelText("Mod MCT-Nissan Roto Drone (0)"),
       ).toBeInTheDocument()
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("MCT Hornet", 299)).toBeInTheDocument()
   })
 })

@@ -6,6 +6,7 @@ import {
   withTestRouter,
   getByText as getTextInContainer,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import ElectronicAccessories from "./index"
 
@@ -33,5 +34,10 @@ describe("<ElectronicAccessories/>", () => {
     expect(getTextInContainer(eARow, eA.deviceRating)).toBeInTheDocument()
     expect(getTextInContainer(eARow, eA.availability)).toBeInTheDocument()
     expect(getTextInContainer(eARow, `${eA.cost}¥`)).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    render(withTestRouter(<ElectronicAccessories />, { query: { id: "10" } }))
+    expect(await findGearReference("Trodes", 268)).toBeInTheDocument()
   })
 })

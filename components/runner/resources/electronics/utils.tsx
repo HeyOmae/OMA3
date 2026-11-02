@@ -35,6 +35,7 @@ const baseCols: CommlinkCols = [
   gearMatrixTableConfigOptions.slots,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const buyCommlinkCols: CommlinkCols = [
@@ -54,6 +55,7 @@ const baseElectronicCols: electronicCols = [
   gearMatrixTableConfigOptions.deviceRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const buyElectronicCol: electronicCols = [
@@ -73,6 +75,7 @@ export const buySensorCols: SensorDeviceCols = [
   gearRatingTableConfigOption.setRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 export const sellSensorCols: SensorDeviceCols = [
@@ -81,5 +84,6 @@ export const sellSensorCols: SensorDeviceCols = [
   gearRatingTableConfigOption.displayRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
   gearModableTableConfigOptions.mod,
 ]

@@ -10,6 +10,7 @@ import {
   within,
   withTestRouter,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Ammo from "./index"
 
@@ -157,5 +158,12 @@ describe("<Ammo />", () => {
         screen.queryByLabelText("Remove Gel Heavy Pistol/SMG Ammo"),
       ).not.toBeInTheDocument(),
     )
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(
+      await findGearReference("Regular Rifle Ammo", 262),
+    ).toBeInTheDocument()
   })
 })

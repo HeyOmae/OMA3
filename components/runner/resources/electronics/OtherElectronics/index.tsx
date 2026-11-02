@@ -16,6 +16,7 @@ const buyCols: ElectricCols = [
   gearRatingTableConfigOption.setRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const sellCols: ElectricCols = [
@@ -25,6 +26,7 @@ const sellCols: ElectricCols = [
   gearRatingTableConfigOption.displayRating,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const OtherElectronics = () => (

@@ -8,6 +8,7 @@ import {
   SliderHelper,
   userEvent,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import ArmorMod from "./index"
 import { mods } from "@/data/armor"
@@ -88,5 +89,10 @@ describe("<ArmorMod />", () => {
     )
     expect(getByLabelText("Remove Fire Resistance")).toBeInTheDocument()
     expect(getByText("10/10")).toBeInTheDocument()
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Fire Resistance", 266)).toBeInTheDocument()
   })
 })

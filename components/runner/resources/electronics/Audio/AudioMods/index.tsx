@@ -14,6 +14,7 @@ const baseCols: AudioModCols[] = [
   gearCapacityConfigOption,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 const buyCols: AudioModCols[] = [
     gearTableConfigOptions.buy,

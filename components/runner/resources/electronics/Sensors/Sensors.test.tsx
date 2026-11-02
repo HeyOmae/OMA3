@@ -5,6 +5,7 @@ import {
   getByText as getTextInContainer,
   waitFor,
   closest,
+  findGearReference,
 } from "@/test/testUtils"
 import Sensors from "./"
 
@@ -48,5 +49,10 @@ describe("<Sensors/>", () => {
         getByLabelText("Mod Wall-mounted Housing (0)").closest("a"),
       ).toHaveAttribute("href", "/10/resources/sensor/0")
     })
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Sensor Array", 276)).toBeInTheDocument()
   })
 })

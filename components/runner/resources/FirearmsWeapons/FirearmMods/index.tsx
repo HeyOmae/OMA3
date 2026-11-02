@@ -18,6 +18,7 @@ const buyModCol: Columns<Gear>[] = [
   slotColumn,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 const sellModCol: Columns<Gear>[] = [
   gearTableConfigOptions.sell,
@@ -25,6 +26,7 @@ const sellModCol: Columns<Gear>[] = [
   slotColumn,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const FirearmMods = () => (

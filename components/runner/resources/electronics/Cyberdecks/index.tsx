@@ -17,6 +17,7 @@ const baseCols: CyberdeckCols = [
   gearMatrixTableConfigOptions.slots,
   gearTableConfigOptions.avail,
   gearTableConfigOptions.cost,
+  gearTableConfigOptions.reference,
 ]
 
 const buyCyberdeckCol: CyberdeckCols = [gearTableConfigOptions.buy, ...baseCols]

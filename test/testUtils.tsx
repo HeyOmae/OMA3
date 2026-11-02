@@ -284,3 +284,10 @@ export const expectGearToDisplayMatrixDeviceTable =
     ).toBeInTheDocument()
     expect(getTextInContainer(deviceRow, `${device.cost}¥`)).toBeInTheDocument()
   }
+
+// finds the rulebook page shown in the buy row for a piece of gear
+export const findGearReference = async (name: string, page: number) =>
+  getTextInContainer(
+    closest(await screen.findByLabelText(`Add ${name}`), "tr"),
+    `SR6 p.${page}`,
+  )

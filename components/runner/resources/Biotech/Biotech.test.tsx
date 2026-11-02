@@ -5,6 +5,7 @@ import {
   withTestRouter,
   screen,
   SliderHelper,
+  findGearReference,
 } from "@/test/testUtils"
 import Biotech from "./index"
 
@@ -40,5 +41,10 @@ describe("<Biotech />", () => {
     expect(
       screen.getByLabelText("Add Tranq Patch").closest("tr"),
     ).toHaveTextContent("250¥")
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("Medkit", 281)).toBeInTheDocument()
   })
 })

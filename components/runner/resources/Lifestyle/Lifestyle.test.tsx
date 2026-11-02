@@ -5,6 +5,7 @@ import {
   withTestRouter,
   render,
   screen,
+  findGearReference,
 } from "@/test/testUtils"
 
 describe("<LifeStyle />", () => {
@@ -42,5 +43,10 @@ describe("<LifeStyle />", () => {
     expect(runnerLifestyleHighRow).toHaveTextContent("11000¥")
 
     expect(screen.getByRole("definition")).toHaveTextContent("214000")
+  })
+
+  it("should show the rulebook page for gear", async () => {
+    setup()
+    expect(await findGearReference("squatter", 57)).toBeInTheDocument()
   })
 })
