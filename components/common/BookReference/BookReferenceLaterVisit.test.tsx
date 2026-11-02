@@ -55,6 +55,9 @@ describe("<BookReference/> on a later visit", () => {
     await user.click(screen.getByRole("button", { name: "SR6 Berlin p.133" }))
 
     expect(window.showOpenFilePicker).toHaveBeenCalled()
-    expect(window.open).toHaveBeenCalledWith("blob:berlin#page=134", "_blank")
+    expect(window.open).toHaveBeenCalledWith(
+      "blob:berlin#page=134",
+      "oma3-rulebook",
+    )
   })
 })

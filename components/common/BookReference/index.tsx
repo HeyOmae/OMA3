@@ -18,6 +18,8 @@ export const BookReference: FC<{ reference?: Reference[] }> = ({
     ))
   : "—"
 
+const rulebookTab = "oma3-rulebook"
+
 const BookPage: FC<Reference> = ({ book, page }) => {
   const url = useBookUrl(book)
   const label = `${book} p.${page}`
@@ -26,8 +28,10 @@ const BookPage: FC<Reference> = ({ book, page }) => {
   if (!canOpenLocalFiles() || pdfPageOffset === undefined) return label
 
   const pageFragment = `#page=${page + pdfPageOffset}`
+  // Every reference opens in the same named tab, so the PDF isn't opened again.
+  // No rel="noopener", because with it the browser won't reuse a named tab.
   return url ?
-      <Link href={url + pageFragment} target="_blank" rel="noopener noreferrer">
+      <Link href={url + pageFragment} target={rulebookTab}>
         {label}
       </Link>
     : <Tooltip
@@ -38,7 +42,7 @@ const BookPage: FC<Reference> = ({ book, page }) => {
           component="button"
           onClick={async () => {
             const opened = await connectBook(book)
-            if (opened) window.open(opened + pageFragment, "_blank")
+            if (opened) window.open(opened + pageFragment, rulebookTab)
           }}
         >
           {label}

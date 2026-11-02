@@ -84,10 +84,14 @@ describe("<BookReference/>", () => {
 
     // the PDF's page numbers run one ahead of the printed ones
     await user.click(screen.getByRole("button", { name: "SR6 Berlin p.133" }))
-    expect(open).toHaveBeenCalledWith("blob:berlin#page=134", "_blank")
+    expect(open).toHaveBeenCalledWith("blob:berlin#page=134", "oma3-rulebook")
     expect(
       await screen.findByRole("link", { name: "SR6 Berlin p.133" }),
     ).toHaveAttribute("href", "blob:berlin#page=134")
+    // every reference opens in the same tab, so the PDF isn't opened again
+    expect(
+      screen.getByRole("link", { name: "SR6 Berlin p.133" }),
+    ).toHaveAttribute("target", "oma3-rulebook")
     expect(
       screen.getByRole("link", { name: "SR6 Berlin p.140" }),
     ).toHaveAttribute("href", "blob:berlin#page=141")
