@@ -99,7 +99,7 @@ export default function Document() {
 
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Audiowide&display=swap"
+          href="https://fonts.googleapis.com/css?family=Audiowide|Cinzel:400,700&display=swap"
         />
       </Head>
       <body>

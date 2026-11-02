@@ -214,3 +214,178 @@ body.cyberterminal3 {
 .nightwatch .MuiRadio-root {
   color: #aaa;
 }
+
+/* Astral Plane */
+.astral {
+  --void: #0d0718;
+  --aura: #7b4dff;
+  --aura2: #ff5fd2;
+  --spirit: #4de8c2;
+  --mana: #f2c96b;
+  --ether: #e6dcff;
+  --veil: rgba(28, 16, 52, 0.82);
+}
+
+@keyframes astral-drift {
+  from {
+    background-position:
+      0% 0%,
+      100% 100%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      100% 50%,
+      0% 50%,
+      50% 0%;
+  }
+}
+
+body.astral {
+  min-height: 100%;
+  color: var(--ether);
+  background-color: var(--void);
+  background-image:
+    radial-gradient(circle at center, #7b4dff55, transparent 40%),
+    radial-gradient(circle at center, #ff5fd233, transparent 35%),
+    radial-gradient(circle at center, #4de8c222, transparent 45%);
+  background-size: 160% 160%;
+  background-attachment: fixed;
+  animation: astral-drift 30s ease-in-out infinite alternate;
+}
+
+.astral main {
+  background: var(--veil);
+  border: 1px solid var(--mana);
+  border-radius: 0.5rem;
+  box-shadow:
+    0 0 1.5rem #7b4dff66,
+    inset 0 0 2rem #7b4dff22;
+}
+
+@keyframes astral-shimmer {
+  to {
+    text-shadow:
+      0 0 0.15em #f2c96bcc,
+      0 0 0.6em #f2c96b88,
+      0 0.25em 1.2em #ff5fd2aa,
+      0 0.4em 2.4em #7b4dffaa;
+  }
+}
+
+.astral h1,
+.astral h2,
+.astral h3,
+.astral h4,
+.astral h5 {
+  color: var(--mana);
+  font-family: Cinzel, serif;
+  letter-spacing: 0.08em;
+  text-shadow:
+    0 0 0.1em #f2c96b99,
+    0 0 0.4em #f2c96b55,
+    0 0.2em 1em #7b4dffcc,
+    0 0.35em 2em #7b4dff88;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, transparent, var(--mana), transparent)
+    1;
+  animation: astral-shimmer 3s ease-in-out infinite alternate;
+}
+
+.astral a {
+  color: var(--spirit);
+}
+
+.astral .MuiPaper-root,
+.astral [role="dialog"] {
+  background-color: var(--void);
+  color: var(--ether);
+}
+
+.astral td,
+.astral th,
+.astral legend,
+.astral label,
+.astral input,
+.astral textarea,
+.astral .MuiBreadcrumbs-ol,
+.astral .MuiSelect-select,
+.astral .MuiTypography-root,
+.astral .MuiButton-text,
+.astral .MuiButton-outlined {
+  color: var(--ether);
+}
+
+.astral th {
+  background: #1c1034;
+  color: var(--mana);
+  font-family: Cinzel, serif;
+}
+
+.astral td,
+.astral th {
+  border-bottom-color: #7b4dff44;
+}
+
+.astral tbody tr:hover td {
+  background: #7b4dff1a;
+}
+
+.astral label.Mui-focused {
+  color: var(--spirit);
+}
+
+.astral .MuiOutlinedInput-notchedOutline {
+  border-color: #7b4dff88;
+}
+
+.astral .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: var(--aura2);
+}
+
+.astral .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: var(--spirit);
+}
+
+.astral .MuiButton-contained {
+  background: linear-gradient(30deg, var(--aura), var(--aura2));
+  color: white;
+}
+
+.astral .MuiButton-outlined {
+  border-color: var(--mana);
+}
+
+.astral .MuiSvgIcon-root,
+.astral .MuiRadio-root,
+.astral .MuiCheckbox-root {
+  color: var(--mana);
+}
+
+.astral .Mui-disabled,
+.astral .MuiTypography-root.Mui-disabled {
+  color: #8a7fa8;
+}
+
+.astral hr {
+  border-color: #7b4dff44;
+}
+
+.astral .bad-stuff {
+  color: #ff6b8b;
+}
+
+.astral .bad-stuff fieldset {
+  border-color: #ff6b8b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.astral,
+  .astral h1,
+  .astral h2,
+  .astral h3,
+  .astral h4,
+  .astral h5 {
+    animation: none;
+  }
+}

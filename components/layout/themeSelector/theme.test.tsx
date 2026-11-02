@@ -16,6 +16,17 @@ describe("<ThemeSelector />", () => {
     expect(localStorage.getItem(SELECTED_THEME_KEY)).toEqual("mundane")
   })
 
+  it("should offer the Astral Plane theme", async () => {
+    localStorage.removeItem(SELECTED_THEME_KEY)
+    const { getByText, findByText } = setup()
+    await userEvent.click(getByText("CyberTerminal 3.0"))
+
+    await userEvent.click(await findByText("Astral Plane"))
+
+    expect(localStorage.getItem(SELECTED_THEME_KEY)).toEqual("astral")
+    expect(document.body).toHaveClass("astral")
+  })
+
   it("should set the valued of the selector based off of localstorage", () => {
     localStorage.setItem(SELECTED_THEME_KEY, "mundane")
     const { getByText } = setup()
