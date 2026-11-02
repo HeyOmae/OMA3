@@ -43,6 +43,18 @@ describe("<BookReference/>", () => {
     expect(screen.queryByRole("button")).not.toBeInTheDocument()
   })
 
+  it("should tell the user to link their PDF of the book", async () => {
+    const user = userEvent.setup()
+    window.showOpenFilePicker = jest.fn()
+    render(<BookReference reference={[{ book: "SR6 Berlin", page: 133 }]} />)
+
+    await user.hover(screen.getByRole("button", { name: "SR6 Berlin p.133" }))
+
+    expect(await screen.findByRole("tooltip")).toHaveTextContent(
+      "Link your PDF of SR6 Berlin to open it at this page",
+    )
+  })
+
   it("should ask for the PDF the first time and then open it at the page", async () => {
     const user = userEvent.setup()
     // the fake IndexedDB can't copy a handle with functions, so store it as is

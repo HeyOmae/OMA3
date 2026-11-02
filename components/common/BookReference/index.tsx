@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react"
-import { Link } from "@mui/material"
+import { Link, Tooltip } from "@mui/material"
 import { Reference } from "@/types/generalTypes"
 import { rulebooks } from "@/data/rulebooks"
 import { canOpenLocalFiles, connectBook, useBookUrl } from "./rulebookFiles"
@@ -30,14 +30,18 @@ const BookPage: FC<Reference> = ({ book, page }) => {
       <Link href={url + pageFragment} target="_blank" rel="noopener noreferrer">
         {label}
       </Link>
-    : <Link
-        component="button"
-        title={`Choose your PDF of ${book} to open it at this page`}
-        onClick={async () => {
-          const opened = await connectBook(book)
-          if (opened) window.open(opened + pageFragment, "_blank")
-        }}
+    : <Tooltip
+        describeChild
+        title={`Link your PDF of ${book} to open it at this page`}
       >
-        {label}
-      </Link>
+        <Link
+          component="button"
+          onClick={async () => {
+            const opened = await connectBook(book)
+            if (opened) window.open(opened + pageFragment, "_blank")
+          }}
+        >
+          {label}
+        </Link>
+      </Tooltip>
 }
