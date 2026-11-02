@@ -1,0 +1,216 @@
+import type { MetatypeData, Metatypes } from "../types/runner"
+
+// Every metatype
+
+const metatypes: Record<Metatypes, MetatypeData> = {
+  Human: {
+    "Racial Qualities": [],
+    Attributes: {
+      Body: {
+        min: 1,
+        max: 6,
+      },
+      Agility: {
+        min: 1,
+        max: 6,
+      },
+      Reaction: {
+        min: 1,
+        max: 6,
+      },
+      Strength: {
+        min: 1,
+        max: 6,
+      },
+      Willpower: {
+        min: 1,
+        max: 6,
+      },
+      Logic: {
+        min: 1,
+        max: 6,
+      },
+      Intuition: {
+        min: 1,
+        max: 6,
+      },
+      Charisma: {
+        min: 1,
+        max: 6,
+      },
+      Edge: {
+        min: 1,
+        max: 7,
+      },
+    },
+  },
+  Dwarf: {
+    "Racial Qualities": ["Toxin Resistance", "Thermographic Vision"],
+    Attributes: {
+      Body: {
+        min: 1,
+        max: 7,
+      },
+      Agility: {
+        min: 1,
+        max: 6,
+      },
+      Reaction: {
+        min: 1,
+        max: 5,
+      },
+      Strength: {
+        min: 1,
+        max: 8,
+      },
+      Willpower: {
+        min: 1,
+        max: 7,
+      },
+      Logic: {
+        min: 1,
+        max: 6,
+      },
+      Intuition: {
+        min: 1,
+        max: 6,
+      },
+      Charisma: {
+        min: 1,
+        max: 6,
+      },
+      Edge: {
+        min: 1,
+        max: 6,
+      },
+    },
+  },
+  Elf: {
+    "Racial Qualities": ["Low-light Vision"],
+    Attributes: {
+      Body: {
+        min: 1,
+        max: 6,
+      },
+      Agility: {
+        min: 1,
+        max: 7,
+      },
+      Reaction: {
+        min: 1,
+        max: 6,
+      },
+      Strength: {
+        min: 1,
+        max: 6,
+      },
+      Willpower: {
+        min: 1,
+        max: 6,
+      },
+      Logic: {
+        min: 1,
+        max: 6,
+      },
+      Intuition: {
+        min: 1,
+        max: 6,
+      },
+      Charisma: {
+        min: 1,
+        max: 8,
+      },
+      Edge: {
+        min: 1,
+        max: 6,
+      },
+    },
+  },
+  Ork: {
+    "Racial Qualities": ["Low-light Vision", "Built Tough 1"],
+    Attributes: {
+      Body: {
+        min: 1,
+        max: 8,
+      },
+      Agility: {
+        min: 1,
+        max: 6,
+      },
+      Reaction: {
+        min: 1,
+        max: 6,
+      },
+      Strength: {
+        min: 1,
+        max: 8,
+      },
+      Willpower: {
+        min: 1,
+        max: 6,
+      },
+      Logic: {
+        min: 1,
+        max: 6,
+      },
+      Intuition: {
+        min: 1,
+        max: 6,
+      },
+      Charisma: {
+        min: 1,
+        max: 5,
+      },
+      Edge: {
+        min: 1,
+        max: 6,
+      },
+    },
+  },
+  Troll: {
+    "Racial Qualities": [
+      "Dermal Deposits",
+      "Thermographic Vision",
+      "Built Tough 2",
+    ],
+    Attributes: {
+      Body: {
+        min: 1,
+        max: 9,
+      },
+      Agility: {
+        min: 1,
+        max: 5,
+      },
+      Reaction: {
+        min: 1,
+        max: 6,
+      },
+      Strength: {
+        min: 1,
+        max: 9,
+      },
+      Willpower: {
+        min: 1,
+        max: 6,
+      },
+      Logic: {
+        min: 1,
+        max: 6,
+      },
+      Intuition: {
+        min: 1,
+        max: 6,
+      },
+      Charisma: {
+        min: 1,
+        max: 5,
+      },
+      Edge: {
+        min: 1,
+        max: 6,
+      },
+    },
+  },
+}
+export default metatypes

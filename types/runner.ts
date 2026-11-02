@@ -11,10 +11,20 @@ import { Priority } from "./PriorityRating"
 import { Quality } from "./Qualities"
 import { Resources } from "./Resources"
 import { CURRENT_SCHEMA_VERSION } from "@/hooks/runnerSchema"
-import { AttributeStats, RunnerAttributes } from "./RunnerAttributes"
+import {
+  Attributes,
+  AttributeStats,
+  RunnerAttributes,
+} from "./RunnerAttributes"
 import { LanguageSkill, Skills } from "./Skill"
 
 export type Metatypes = "Human" | "Dwarf" | "Elf" | "Ork" | "Troll"
+
+// what a metatype starts with, and the range of each of its attributes
+export interface MetatypeData {
+  "Racial Qualities": string[]
+  Attributes: Partial<Record<Attributes, { min: number; max: number }>>
+}
 
 export interface Runner {
   id?: number

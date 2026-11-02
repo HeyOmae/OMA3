@@ -3,7 +3,7 @@ import { Gear } from "@/types/Resources"
 import { TableCell, TableRow } from "@mui/material"
 import { Columns } from "../../../util"
 import { useRating } from "./useRating"
-import skillData from "@/data/skills.json"
+import skillData from "@/data/skills"
 
 export interface Props<G extends Gear = Gear> {
   cols: Columns<G>[]

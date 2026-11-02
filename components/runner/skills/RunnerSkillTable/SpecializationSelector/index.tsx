@@ -1,5 +1,5 @@
 import { FC } from "react"
-import skillData from "@/data/skills.json"
+import skillData from "@/data/skills"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { ActionPayload, CHANGE_SPECIALIZATION } from "../.."
 import { Autocomplete, TextField } from "@mui/material"

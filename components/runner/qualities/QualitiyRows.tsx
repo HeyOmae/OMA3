@@ -4,7 +4,7 @@ import { OnAddQuality } from "./QualityTable"
 import { TableCell, TableRow, TextField } from "@mui/material"
 import { AddButton } from "@/components/common"
 import { FC, ReactNode, useRef, useState } from "react"
-import skillData from "@/data/skills.json"
+import skillData from "@/data/skills"
 import {
   AttributeSelect,
   ElementalSelect,

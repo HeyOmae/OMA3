@@ -10,7 +10,7 @@ import { Gear, GearFirearm, GearWeapon } from "@/types/Resources"
 import { useGetRunner } from "@/hooks/useRunnerAccess"
 import { CircularProgress } from "@mui/material"
 import { spirits } from "@/data/spirits"
-import skillData from "@/data/skills.json"
+import skillData from "@/data/skills"
 import firearms from "@/data/firearms"
 
 type ChoiceType =

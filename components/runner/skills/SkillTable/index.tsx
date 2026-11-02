@@ -8,8 +8,7 @@ import {
   TableBody,
 } from "@mui/material"
 import { ADD_SKILL, ActionPayload, SkillPointsToSpend } from ".."
-import { Attributes } from "@/types/RunnerAttributes"
-import skillsData from "@/data/skills.json"
+import skillsData from "@/data/skills"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { AddButton } from "../../../common"
 
@@ -43,7 +42,7 @@ export const SkillTable: FC<Props> = ({ dispatch, pointsToSpend }) => (
                           rating: pointsToSpend === "Points" ? 1 : 0,
                           karmaRating: pointsToSpend === "Karma" ? 1 : 0,
                           attribute: {
-                            primary: attribute as Attributes,
+                            primary: attribute,
                           },
                         },
                       },

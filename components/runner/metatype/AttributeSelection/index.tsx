@@ -8,7 +8,7 @@ import {
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { Runner } from "@/types/runner"
 import { Attributes, attributeTotal } from "@/types/RunnerAttributes"
-import metatypeData from "@/data/metatype.json"
+import metatypeData from "@/data/metatype"
 import { Typography, Slider } from "@mui/material"
 import { ADJUSTMENT, ATTRIBUTE } from "../SpendingPointsToggle"
 import { startingMagResRating } from "@/data/priorityTable"
@@ -90,25 +90,25 @@ export const AttributeSelection: FC<Props> = ({
     <>
       {runner.metatype && (
         <>
-          {Object.entries<{ min: number; max: number }>(
-            metatypeData[runner.metatype].Attributes,
-          ).map(([attributeName, { min, max }]) => {
-            const attribute = keyOf(attributeName, initRunnerAttributes)
-            const modifiedMax = max + maxAttributeModifier(attribute)
-            return (
-              <AttributeSlider
-                key={attribute}
-                attribute={attribute}
-                min={min}
-                max={max}
-                modifiedMax={modifiedMax}
-                runner={runner}
-                dispatch={dispatch}
-                dispatchType={dispatchType}
-                disableSlider={disableSlider}
-              />
-            )
-          })}
+          {Object.entries(metatypeData[runner.metatype].Attributes).map(
+            ([attributeName, { min, max }]) => {
+              const attribute = keyOf(attributeName, initRunnerAttributes)
+              const modifiedMax = max + maxAttributeModifier(attribute)
+              return (
+                <AttributeSlider
+                  key={attribute}
+                  attribute={attribute}
+                  min={min}
+                  max={max}
+                  modifiedMax={modifiedMax}
+                  runner={runner}
+                  dispatch={dispatch}
+                  dispatchType={dispatchType}
+                  disableSlider={disableSlider}
+                />
+              )
+            },
+          )}
           {isAwakened(runner.magres) && (
             <AttributeSlider
               attribute={

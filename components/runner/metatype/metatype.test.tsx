@@ -84,9 +84,7 @@ describe("<Metatype/>", () => {
     const metatypeRadio = screen.getByRole("radiogroup", {
       name: "metatypes",
     })
-    expect(
-      (getContentByLabelText(metatypeRadio, "Ork") as HTMLInputElement).checked,
-    ).toBe(true)
+    expect(getContentByLabelText(metatypeRadio, "Ork")).toBeChecked()
   })
 
   describe("attributes sliders", () => {

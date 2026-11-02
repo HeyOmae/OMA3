@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { FC, useMemo, useState } from "react"
 import { useRunnerAccess } from "../../../hooks/useRunnerAccess"
 import {
@@ -19,6 +20,15 @@ import { skillsReducer } from "./skillsReducer"
 export * from "./skillsActions"
 
 export type SkillPointsToSpend = "Karma" | "Points"
+
+const skillPointsToSpend: SkillPointsToSpend[] = ["Karma", "Points"]
+
+// the radio buttons give back the value as a string
+const toSkillPointsToSpend = (value: string) =>
+  defined(
+    skillPointsToSpend.find((option) => option === value),
+    `${value} as points to spend`,
+  )
 
 const Skills: FC = () => {
   const [runner, dispatch] = useRunnerAccess<ActionPayload>(skillsReducer)
@@ -44,7 +54,7 @@ const Skills: FC = () => {
               name="select-points"
               value={pointsToSpend}
               onChange={(event, pointsToSpend) =>
-                setPointsToSpend(pointsToSpend as SkillPointsToSpend)
+                setPointsToSpend(toSkillPointsToSpend(pointsToSpend))
               }
             >
               <Grid container sx={{ alignItems: "center" }} spacing={1}>

@@ -8,7 +8,7 @@ import {
   RadioGroup,
 } from "@mui/material"
 import { useState } from "react"
-import metatypeData from "@/data/metatype.json"
+import metatypeData from "@/data/metatype"
 import priorityData from "@/data/priorityTable"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { keyOf } from "@/components/util"

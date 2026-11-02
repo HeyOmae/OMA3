@@ -2,12 +2,11 @@ import { MagResSelection, Props } from "./index"
 import { render } from "../../../../test/testUtils"
 import { SET_MAGRES } from ".."
 import priorityData from "../../../../data/priorityTable"
-import { MagResPriorityTableOptions } from "../../../../types/PriorityRating"
 
 describe("Magic and Resonance", () => {
   const setup = ({
     selected,
-    priority = priorityData["mag/res"].A as MagResPriorityTableOptions,
+    priority = priorityData["mag/res"].A,
   }: Partial<Props> = {}) => {
     const props: Props = {
       selected,
@@ -92,7 +91,7 @@ describe("Magic and Resonance", () => {
 
   it("should disable the other mag/res options if priority is set to E", () => {
     const { getByLabelText, props } = setup({
-      priority: priorityData["mag/res"].E as MagResPriorityTableOptions,
+      priority: priorityData["mag/res"].E,
     })
 
     expect(getByLabelText("Full Mage")).toBeDisabled()

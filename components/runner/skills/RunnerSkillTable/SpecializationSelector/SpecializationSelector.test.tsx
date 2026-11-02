@@ -1,6 +1,6 @@
 import { defined } from "@/components/util"
 import { render, userEvent } from "@/test/testUtils"
-import skillData from "@/data/skills.json"
+import skillData from "@/data/skills"
 import { SpecializationSelector, Props } from "./index"
 import { CHANGE_SPECIALIZATION } from "../.."
 

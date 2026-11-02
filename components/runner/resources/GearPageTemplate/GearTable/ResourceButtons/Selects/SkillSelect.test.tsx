@@ -1,5 +1,5 @@
 import { render, fireEvent, userEvent } from "@/test/testUtils"
-import skillData from "@/data/skills.json"
+import skillData from "@/data/skills"
 import { SkillSelect, SelectProps } from "./index"
 
 describe("<SkillSelect/>", () => {
