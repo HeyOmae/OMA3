@@ -2,7 +2,12 @@ import { FC, Fragment } from "react"
 import { Link, Tooltip } from "@mui/material"
 import { Reference } from "@/types/generalTypes"
 import { rulebooks } from "@/data/rulebooks"
-import { canOpenLocalFiles, connectBook, useBookUrl } from "./rulebookFiles"
+import {
+  canOpenLocalFiles,
+  connectBook,
+  openBookPage,
+  useIsBookLinked,
+} from "./rulebookFiles"
 
 // Where something is in the rulebook. In Chrome and Edge it links to the
 // page in the reader's own PDF of the book.
@@ -18,34 +23,31 @@ export const BookReference: FC<{ reference?: Reference[] }> = ({
     ))
   : "—"
 
-const rulebookTab = "oma3-rulebook"
-
 const BookPage: FC<Reference> = ({ book, page }) => {
-  const url = useBookUrl(book)
+  const linked = useIsBookLinked(book)
   const label = `${book} p.${page}`
   const pdfPageOffset = rulebooks.get(book)?.pdfPageOffset
 
   if (!canOpenLocalFiles() || pdfPageOffset === undefined) return label
 
-  const pageFragment = `#page=${page + pdfPageOffset}`
-  // Every reference opens in the same named tab, so the PDF isn't opened again.
-  // No rel="noopener", because with it the browser won't reuse a named tab.
-  return url ?
-      <Link href={url + pageFragment} target={rulebookTab}>
-        {label}
-      </Link>
-    : <Tooltip
+  const link = (
+    <Link
+      component="button"
+      color="inherit"
+      onClick={async () => {
+        if (!linked) await connectBook(book)
+        openBookPage(book, page + pdfPageOffset)
+      }}
+    >
+      {label}
+    </Link>
+  )
+  return linked ? link : (
+      <Tooltip
         describeChild
         title={`Link your PDF of ${book} to open it at this page`}
       >
-        <Link
-          component="button"
-          onClick={async () => {
-            const opened = await connectBook(book)
-            if (opened) window.open(opened + pageFragment, rulebookTab)
-          }}
-        >
-          {label}
-        </Link>
+        {link}
       </Tooltip>
+    )
 }

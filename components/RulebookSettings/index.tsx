@@ -4,7 +4,7 @@ import { rulebooks } from "@/data/rulebooks"
 import {
   canOpenLocalFiles,
   chooseBook,
-  useBookUrl,
+  useIsBookLinked,
 } from "../common/BookReference/rulebookFiles"
 
 // Pick the rulebook PDFs that page references open, or swap in another file
@@ -23,10 +23,10 @@ const RulebookSettings: FC = () =>
   )
 
 const ChooseBookButton: FC<{ book: string }> = ({ book }) => {
-  const url = useBookUrl(book)
+  const linked = useIsBookLinked(book)
   return (
     <Button variant="outlined" onClick={() => void chooseBook(book)}>
-      {url ? "Change" : "Choose"} {book} PDF
+      {linked ? "Change" : "Choose"} {book} PDF
     </Button>
   )
 }

@@ -9,8 +9,10 @@ export type RulebookFile = Pick<
   "getFile" | "queryPermission" | "requestPermission"
 >
 
-// the PDF of each book, opened as a URL the browser's PDF viewer can show
-const urls = new Map<string, string>()
+// the PDF of each book, once it is picked and readable
+const files = new Map<string, File>()
+// the URL each book's PDF was last opened with
+const openUrls = new Map<string, string>()
 const listeners = new Set<() => void>()
 const restoring = new Set<string>()
 
@@ -49,9 +51,7 @@ async function openBook(book: string, handle: RulebookFile) {
   } catch {
     return false
   }
-  const oldUrl = urls.get(book)
-  if (oldUrl) URL.revokeObjectURL(oldUrl)
-  urls.set(book, URL.createObjectURL(file))
+  files.set(book, file)
   listeners.forEach((listener) => listener())
   return true
 }
@@ -75,7 +75,7 @@ export async function chooseBook(book: string) {
   await openBook(book, handle)
 }
 
-// Open the PDF from a click on a reference: ask for permission to read the
+// Link the PDF from a click on a reference: ask for permission to read the
 // file picked on an earlier visit, or ask for the file if there isn't one.
 export async function connectBook(book: string) {
   const handle = await getBookHandle(book)
@@ -87,12 +87,26 @@ export async function connectBook(book: string) {
   ) {
     await chooseBook(book)
   }
-  return urls.get(book)
+}
+
+export const rulebookTab = "oma3-rulebook"
+
+// Open the PDF at a page, in the same tab every time. The browser's PDF viewer
+// only reads the page from the URL when it loads, and changing just the #page
+// of the PDF it shows doesn't move it, so each time gets a new URL.
+export function openBookPage(book: string, pdfPage: number) {
+  const file = files.get(book)
+  if (!file) return
+  const oldUrl = openUrls.get(book)
+  if (oldUrl) URL.revokeObjectURL(oldUrl)
+  const url = URL.createObjectURL(file)
+  openUrls.set(book, url)
+  window.open(`${url}#page=${pdfPage}`, rulebookTab)
 }
 
 // reopen the PDF on a later visit, if the browser still lets us read it
 async function restoreBook(book: string) {
-  if (urls.has(book) || restoring.has(book)) return
+  if (files.has(book) || restoring.has(book)) return
   restoring.add(book)
   const handle = await getBookHandle(book)
   if (handle && (await handle.queryPermission({ mode: "read" })) === "granted")
@@ -107,10 +121,10 @@ function subscribe(listener: () => void) {
   }
 }
 
-// the URL of the book's PDF, once one is picked and readable
-export function useBookUrl(book: string) {
+// whether the book's PDF is picked and readable
+export function useIsBookLinked(book: string) {
   useEffect(() => {
     if (canOpenLocalFiles()) void restoreBook(book)
   }, [book])
-  return useSyncExternalStore(subscribe, () => urls.get(book))
+  return useSyncExternalStore(subscribe, () => files.has(book))
 }

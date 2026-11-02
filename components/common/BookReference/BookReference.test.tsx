@@ -59,7 +59,14 @@ describe("<BookReference/>", () => {
     const user = userEvent.setup()
     // the fake IndexedDB can't copy a handle with functions, so store it as is
     jest.spyOn(global, "structuredClone").mockImplementation((value) => value)
-    jest.spyOn(URL, "createObjectURL").mockReturnValue("blob:berlin")
+    jest
+      .spyOn(URL, "createObjectURL")
+      .mockReturnValueOnce("blob:first")
+      .mockReturnValueOnce("blob:second")
+      .mockReturnValueOnce("blob:third")
+    const revoke = jest
+      .spyOn(URL, "revokeObjectURL")
+      .mockImplementation(() => undefined)
     const open = jest.spyOn(window, "open").mockReturnValue(null)
     window.showOpenFilePicker = jest
       .fn()
@@ -82,25 +89,25 @@ describe("<BookReference/>", () => {
     expect(window.showOpenFilePicker).toHaveBeenCalledTimes(1)
     expect(open).not.toHaveBeenCalled()
 
-    // the PDF's page numbers run one ahead of the printed ones
+    // every reference opens in the same tab, and the PDF's page numbers run
+    // one ahead of the printed ones
     await user.click(screen.getByRole("button", { name: "SR6 Berlin p.133" }))
-    expect(open).toHaveBeenCalledWith("blob:berlin#page=134", "oma3-rulebook")
-    expect(
-      await screen.findByRole("link", { name: "SR6 Berlin p.133" }),
-    ).toHaveAttribute("href", "blob:berlin#page=134")
-    // every reference opens in the same tab, so the PDF isn't opened again
-    expect(
-      screen.getByRole("link", { name: "SR6 Berlin p.133" }),
-    ).toHaveAttribute("target", "oma3-rulebook")
-    expect(
-      screen.getByRole("link", { name: "SR6 Berlin p.140" }),
-    ).toHaveAttribute("href", "blob:berlin#page=141")
+    expect(open).toHaveBeenCalledWith("blob:first#page=134", "oma3-rulebook")
 
-    // other tables use the PDF that is already open
+    // the PDF viewer only reads the page when it loads, so each click gives
+    // the PDF a new URL, and lets go of the last one
+    await user.click(screen.getByRole("button", { name: "SR6 Berlin p.140" }))
+    expect(window.showOpenFilePicker).toHaveBeenCalledTimes(2)
+    expect(open).toHaveBeenLastCalledWith(
+      "blob:second#page=141",
+      "oma3-rulebook",
+    )
+    expect(revoke).toHaveBeenCalledWith("blob:first")
+
+    // other tables use the PDF that was picked
     unmount()
     render(<BookReference reference={[{ book: "SR6 Berlin", page: 72 }]} />)
-    expect(
-      screen.getByRole("link", { name: "SR6 Berlin p.72" }),
-    ).toHaveAttribute("href", "blob:berlin#page=73")
+    await user.click(screen.getByRole("button", { name: "SR6 Berlin p.72" }))
+    expect(open).toHaveBeenLastCalledWith("blob:third#page=73", "oma3-rulebook")
   })
 })

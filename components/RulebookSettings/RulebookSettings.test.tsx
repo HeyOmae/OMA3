@@ -18,13 +18,6 @@ describe("<RulebookSettings/>", () => {
     const user = userEvent.setup()
     // the fake IndexedDB can't copy a handle with functions, so store it as is
     jest.spyOn(global, "structuredClone").mockImplementation((value) => value)
-    jest
-      .spyOn(URL, "createObjectURL")
-      .mockReturnValueOnce("blob:first")
-      .mockReturnValueOnce("blob:second")
-    const revoke = jest
-      .spyOn(URL, "revokeObjectURL")
-      .mockImplementation(() => undefined)
     await saveBookHandle("SR6 Berlin", {
       getFile: jest.fn().mockResolvedValue(new File(["%PDF"], "first.pdf")),
       queryPermission: jest.fn().mockResolvedValue("granted"),
@@ -43,6 +36,8 @@ describe("<RulebookSettings/>", () => {
     )
 
     expect(window.showOpenFilePicker).toHaveBeenCalled()
-    expect(revoke).toHaveBeenCalledWith("blob:first")
+    expect(
+      screen.getByRole("button", { name: "Change SR6 Berlin PDF" }),
+    ).toBeInTheDocument()
   })
 })
