@@ -1,3 +1,5 @@
+import type { Reference } from "./generalTypes"
+
 interface EdgeMod {
   skill?: string
   attr?: string
@@ -42,6 +44,7 @@ interface Requires {
 export interface Quality {
   karma: number
   name: string
+  reference?: Reference[]
   type: "POSITIVE" | "NEGATIVE"
   modifications?: Modifications
   select?:

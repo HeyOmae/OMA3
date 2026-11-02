@@ -312,4 +312,27 @@ describe("<Qualities />", () => {
       screen.getByRole("definition", { name: "Bonus Karma Value" }),
     ).toHaveTextContent("0/20")
   })
+
+  test("should show the page reference for each quality", async () => {
+    const user = setup()
+
+    // the browse tables come before the runner's own qualities
+    const row = async (name: string) =>
+      closest((await screen.findAllByText(name))[0], "tr")
+
+    expect(
+      getByTextInElement(await row("Ambidextrous"), "SR6 p.70"),
+    ).toBeInTheDocument()
+    expect(
+      getByTextInElement(await row("Focused Concentration"), "SR6 p.71"),
+    ).toBeInTheDocument()
+    expect(
+      getByTextInElement(await row("Mentor Spirit"), "SR6 p.73"),
+    ).toBeInTheDocument()
+
+    await user.click(screen.getByLabelText("Add Uncouth"))
+
+    const known = closest(await screen.findByLabelText("Remove Uncouth"), "tr")
+    expect(getByTextInElement(known, "SR6 p.79")).toBeInTheDocument()
+  })
 })

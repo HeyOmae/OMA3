@@ -1,4 +1,4 @@
-import { defined } from "@/components/util"
+import { defined, formatReference } from "@/components/util"
 import { Quality } from "@/types/Qualities"
 import { OnAddQuality } from "./QualityTable"
 import { TableCell, TableRow, TextField } from "@mui/material"
@@ -45,6 +45,7 @@ const QualityRow: FC<QualityRowProps> = ({
       <TableCell>N/A</TableCell>
       <TableCell>{select}</TableCell>
       <TableCell>{quality.karma}</TableCell>
+      <TableCell>{formatReference(quality.reference)}</TableCell>
     </TableRow>
 
 // a quality that can be taken more than once, up to max
@@ -74,6 +75,7 @@ const QualityLevelRow: FC<QualityRowProps & { max: number }> = ({
       </TableCell>
       <TableCell>{select}</TableCell>
       <TableCell>{quality.karma}</TableCell>
+      <TableCell>{formatReference(quality.reference)}</TableCell>
     </TableRow>
   )
 }

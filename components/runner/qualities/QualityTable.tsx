@@ -1,4 +1,5 @@
 import { RemoveButton } from "@/components/common"
+import { formatReference } from "@/components/util"
 import { Quality } from "@/types/Qualities"
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { FC } from "react"
@@ -20,6 +21,7 @@ export const QualityTable: FC<Props> = ({ qualities, onAddQuality }) => (
         <TableCell>Level</TableCell>
         <TableCell>Select</TableCell>
         <TableCell>Karma</TableCell>
+        <TableCell>Reference</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -55,6 +57,7 @@ export const RunnerQualityTable: FC<RunnerQualityTableProps> = ({
         <TableCell>Level</TableCell>
         <TableCell>Selected</TableCell>
         <TableCell>Karma</TableCell>
+        <TableCell>Reference</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -70,6 +73,7 @@ export const RunnerQualityTable: FC<RunnerQualityTableProps> = ({
           <TableCell>{quality.currentLevel ?? "N/A"}</TableCell>
           <TableCell>{quality.selected ?? "N/A"}</TableCell>
           <TableCell>{quality.karma}</TableCell>
+          <TableCell>{formatReference(quality.reference)}</TableCell>
         </TableRow>
       ))}
     </TableBody>
