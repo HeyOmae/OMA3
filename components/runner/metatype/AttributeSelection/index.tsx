@@ -10,8 +10,11 @@ import { Runner } from "@/types/runner"
 import { Attributes } from "@/types/RunnerAttributes"
 import metatypeData from "@/data/metatype.json"
 import { Typography, Slider } from "@mui/material"
-import { ADJUSTMENT, ATTRIBUTE, KARMA } from "../SpendingPointsToggle"
-import priorityData from "@/data/priorityTable.json"
+import { ADJUSTMENT, ATTRIBUTE } from "../SpendingPointsToggle"
+import { startingMagResRating } from "@/data/priorityTable"
+import { initRunnerAttributes } from "@/types/runner"
+import { isAwakened } from "@/types/MagRes"
+import { defined, keyOf } from "@/components/util"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
@@ -27,7 +30,7 @@ export const AttributeSelection: FC<Props> = ({
   const maxAttributeModifier = useMemo(() => {
     const findQuality =
       (qualityName: string) =>
-      ({ name }) =>
+      ({ name }: { name: string }) =>
         name === qualityName
     const exceptionalAttribute = runner.qualities?.positive?.find(
       findQuality("Exceptional Attribute"),
@@ -64,7 +67,8 @@ export const AttributeSelection: FC<Props> = ({
         case ATTRIBUTE:
           return att === "Edge"
 
-        case KARMA:
+        default:
+          // karma can raise any attribute
           return false
       }
     },
@@ -77,43 +81,40 @@ export const AttributeSelection: FC<Props> = ({
         return SPEND_ADJUSTMENT_POINTS
       case ATTRIBUTE:
         return SPEND_ATTRIBUTE_POINTS
-      case KARMA:
+      default:
         return SPEND_KARMA
     }
   }, [pointToSpend])
 
   return (
     <>
-      {metatypeData[runner.metatype] && (
+      {runner.metatype && (
         <>
-          {Object.entries(metatypeData[runner.metatype].Attributes).map(
-            ([attribute, { min, max }]) => {
-              const modifiedMax = max + maxAttributeModifier(attribute)
-              return (
-                <AttributeSlider
-                  key={attribute}
-                  attribute={attribute}
-                  min={min}
-                  max={max}
-                  modifiedMax={modifiedMax}
-                  runner={runner}
-                  dispatch={dispatch}
-                  dispatchType={dispatchType}
-                  disableSlider={disableSlider}
-                />
-              )
-            },
-          )}
-          {runner.magres && runner.magres !== "Mundane" && (
+          {Object.entries<{ min: number; max: number }>(
+            metatypeData[runner.metatype].Attributes,
+          ).map(([attributeName, { min, max }]) => {
+            const attribute = keyOf(attributeName, initRunnerAttributes)
+            const modifiedMax = max + maxAttributeModifier(attribute)
+            return (
+              <AttributeSlider
+                key={attribute}
+                attribute={attribute}
+                min={min}
+                max={max}
+                modifiedMax={modifiedMax}
+                runner={runner}
+                dispatch={dispatch}
+                dispatchType={dispatchType}
+                disableSlider={disableSlider}
+              />
+            )
+          })}
+          {isAwakened(runner.magres) && (
             <AttributeSlider
               attribute={
                 runner.magres === "Technomancer" ? "Resonance" : "Magic"
               }
-              min={
-                priorityData["mag/res"][runner.priority["mag/res"]][
-                  runner.magres
-                ][1]
-              }
+              min={startingMagResRating(runner.priority, runner.magres)}
               max={6}
               modifiedMax={
                 6 +
@@ -134,7 +135,7 @@ export const AttributeSelection: FC<Props> = ({
 }
 
 interface AttributeSliderProps {
-  attribute: string
+  attribute: Attributes
   min: number
   max: number
   modifiedMax: number
@@ -142,6 +143,16 @@ interface AttributeSliderProps {
   dispatch: DispatchAction<Payload>
   dispatchType: symbol
   disableSlider: (att: string, max: number) => boolean
+}
+
+// the points spent on an attribute, on top of the metatype's minimum
+const attributeTotal = (runner: Runner, attribute: Attributes) => {
+  const {
+    adjustment,
+    points,
+    karma = 0,
+  } = defined(runner.attributes?.[attribute], attribute)
+  return adjustment + points + karma
 }
 
 const AttributeSlider: FC<AttributeSliderProps> = ({
@@ -167,19 +178,14 @@ const AttributeSlider: FC<AttributeSliderProps> = ({
       marks
       min={min}
       max={modifiedMax}
-      value={
-        min +
-        runner.attributes[attribute].adjustment +
-        runner.attributes[attribute].points +
-        (runner.attributes[attribute].karma ?? 0)
-      }
+      value={min + attributeTotal(runner, attribute)}
       data-testid={`${attribute}-slider`}
       disabled={disableSlider(attribute, max)}
       onChange={(event, value: number) => {
         dispatch({
           type: dispatchType,
           payload: {
-            key: attribute as Attributes,
+            key: attribute,
             value: value - min,
           },
         })

@@ -4,7 +4,7 @@ import { FC } from "react"
 import { defined } from "@/components/util"
 import { MagRes as MagicResonance } from "@/types/MagRes"
 import { MagResSelection } from "./MagResSelection"
-import priorityData from "@/data/priorityTable.json"
+import priorityData from "@/data/priorityTable"
 import {
   MagResPriorityTableOptions,
   PriorityTypes,
@@ -83,9 +83,8 @@ export const MagRes = () => {
   if (missing) {
     return <PriorityWarning requirement={missing} />
   }
-  const priority = priorityData["mag/res"][
-    defined(runner.priority?.["mag/res"], "mag/res")
-  ] as MagResPriorityTableOptions
+  const priority =
+    priorityData["mag/res"][defined(runner.priority?.["mag/res"], "mag/res")]
 
   return (
     <>

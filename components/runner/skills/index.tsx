@@ -9,7 +9,7 @@ import {
 } from "@mui/material"
 import { SkillTable } from "./SkillTable"
 import { RunnerSkillTable } from "./RunnerSkillTable"
-import PriorityData from "../../../data/priorityTable.json"
+import PriorityData from "../../../data/priorityTable"
 import { PriorityWarning } from "../../priorityWarning"
 import { RemainingKarma } from "../resources/GearPageTemplate/RemainingKarma"
 import { ActionPayload } from "./skillsActions"

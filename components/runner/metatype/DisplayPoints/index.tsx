@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { Runner } from "@/types/runner"
-import priorityData from "@/data/priorityTable.json"
+import { defined } from "@/components/util"
+import priorityData from "@/data/priorityTable"
 import { useSpendPoints } from "@/hooks/useSpendPoints"
 import { RemainingKarma } from "../../resources/GearPageTemplate/RemainingKarma"
 
@@ -10,9 +11,10 @@ export interface Props {
 
 export const DisplayPoints: FC<Props> = ({ runner }) => {
   const [adjustmentSpend, attributeSpend] = useSpendPoints(
-    priorityData.metatypes[runner.priority.metatype].adjustmentPoints,
-    priorityData.attributes[runner.priority.attributes],
-    runner.attributes,
+    priorityData.metatypes[defined(runner.priority?.metatype, "metatype")]
+      .adjustmentPoints,
+    priorityData.attributes[defined(runner.priority?.attributes, "attributes")],
+    defined(runner.attributes, "attributes"),
   )
   return (
     <>

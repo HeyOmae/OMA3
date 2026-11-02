@@ -1,6 +1,11 @@
 export type MagRes =
   "Full" | "Aspected" | "Mystic Adept" | "Adept" | "Technomancer" | "Mundane"
 
+export type Awakened = Exclude<MagRes, "Mundane">
+
+export const isAwakened = (magres?: MagRes): magres is Awakened =>
+  magres !== undefined && magres !== "Mundane"
+
 type Spellfeature = {
   ref: string
 }

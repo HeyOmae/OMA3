@@ -2866,9 +2866,9 @@ const cyberwareAll: GearCyberware[] = [
 ]
 
 export const cyberware = cyberwareAll.filter(({ useAs }) =>
-  useAs.some((useage) => "essence" in useage),
+  useAs?.some((useage) => "essence" in useage),
 )
 
 export const mods = cyberwareAll.filter(({ useAs }) =>
-  useAs.some((useage) => "capacity" in useage),
+  useAs?.some((useage) => "capacity" in useage),
 )

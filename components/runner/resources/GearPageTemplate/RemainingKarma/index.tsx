@@ -3,7 +3,7 @@ import { Skills } from "@/types/Skill"
 import { Runner } from "@/types/runner"
 import { defined } from "@/components/util"
 import { FC, useMemo } from "react"
-import priorityData from "@/data/priorityTable.json"
+import priorityData from "@/data/priorityTable"
 import { findKnowledgePointsSpend } from "@/components/runner/knowledge/RemainingKnowledgePoints"
 
 interface Props {

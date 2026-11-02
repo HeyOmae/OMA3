@@ -6,7 +6,7 @@ import {
   Radio,
   CircularProgress,
 } from "@mui/material"
-import priorityData from "@/data/priorityTable.json"
+import priorityData from "@/data/priorityTable"
 import { PriorityRating } from "@/types/PriorityRating"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import styles from "./priorityTable.module.css"

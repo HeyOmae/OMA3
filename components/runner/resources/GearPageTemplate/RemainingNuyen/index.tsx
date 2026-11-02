@@ -1,7 +1,7 @@
 import { FC, useCallback, useMemo } from "react"
 import { Runner } from "@/types/runner"
 import { PriorityRating } from "@/types/PriorityRating"
-import priorityTableData from "@/data/priorityTable.json"
+import priorityTableData from "@/data/priorityTable"
 import { Gear } from "@/types/Resources"
 import { useSinnerQualityNuyenModifier } from "@/hooks/useSinnerQualityNuyenModifier"
 

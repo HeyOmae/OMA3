@@ -1,7 +1,7 @@
 import { MagResSelection, Props } from "./index"
 import { render } from "../../../../test/testUtils"
 import { SET_MAGRES } from ".."
-import priorityData from "../../../../data/priorityTable.json"
+import priorityData from "../../../../data/priorityTable"
 import { MagResPriorityTableOptions } from "../../../../types/PriorityRating"
 
 describe("Magic and Resonance", () => {
