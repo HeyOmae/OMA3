@@ -1,5 +1,6 @@
 import { PriorityWarning } from "@/components/priorityWarning"
-import { removeItemFromArray } from "@/components/util"
+import { defined, removeItemFromArray } from "@/components/util"
+import { Runner } from "@/types/runner"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { LanguageSkill } from "@/types/Skill"
 import { CircularProgress } from "@mui/material"
@@ -58,39 +59,50 @@ const REMOVE_LANGUAGE = Symbol()
 const UPDATE_LANGUAGE_RATING = Symbol()
 
 interface ReducerPayload {
-  skill?: string | LanguageSkill
+  knowledge?: string
+  language?: LanguageSkill
   index?: number
+}
+
+type Handler = (runner: Runner, payload: ReducerPayload) => Runner
+
+const handlers: Record<symbol, Handler> = {
+  [ADD_KNOWLEDGE]: (runner, { knowledge }) => ({
+    ...runner,
+    knowledge: [...(runner.knowledge ?? []), defined(knowledge, "knowledge")],
+  }),
+  [REMOVE_KNOWLEDGE]: (runner, { index }) => ({
+    ...runner,
+    knowledge: removeItemFromArray(
+      defined(runner.knowledge, "knowledge"),
+      defined(index, "index"),
+    ),
+  }),
+  [ADD_LANGUAGE]: (runner, { language }) => ({
+    ...runner,
+    language: [...(runner.language ?? []), defined(language, "language")],
+  }),
+  [REMOVE_LANGUAGE]: (runner, { index }) => ({
+    ...runner,
+    language: removeItemFromArray(
+      defined(runner.language, "language"),
+      defined(index, "index"),
+    ),
+  }),
+  [UPDATE_LANGUAGE_RATING]: (runner, { index, language }) => ({
+    ...runner,
+    language: defined(runner.language, "language").toSpliced(
+      defined(index, "index"),
+      1,
+      defined(language, "language"),
+    ),
+  }),
 }
 
 const KnowledgeSkills = () => {
   const [runner, dispatch] = useRunnerAccess<ReducerPayload>(
-    (runner, { type, payload: { skill, index } }) => {
-      // Forgive me future contributor for I have sinned while trying to be cleaver while writing this reducer.
-      if (typeof skill === "string") {
-        return {
-          ...runner,
-          knowledge: [...(runner?.knowledge ?? []), skill],
-        }
-      } else if (type === REMOVE_KNOWLEDGE) {
-        return {
-          ...runner,
-          knowledge: removeItemFromArray<string>(runner.knowledge, index),
-        }
-      } else if (type === UPDATE_LANGUAGE_RATING) {
-        return {
-          ...runner,
-          language: runner.language.toSpliced(index, 1, skill),
-        }
-      }
-
-      return {
-        ...runner,
-        language:
-          type === ADD_LANGUAGE ?
-            [...(runner?.language ?? []), skill]
-          : removeItemFromArray<LanguageSkill>(runner.language, index),
-      }
-    },
+    (runner, { type, payload }) =>
+      defined(handlers[type], type.toString())(runner, payload),
   )
   if (!runner) {
     return <CircularProgress />
@@ -104,7 +116,7 @@ const KnowledgeSkills = () => {
           addSkill={(skill: string) =>
             dispatch({
               type: ADD_KNOWLEDGE,
-              payload: { skill },
+              payload: { knowledge: skill },
             })
           }
           removeSkill={(index: number) =>
@@ -121,7 +133,7 @@ const KnowledgeSkills = () => {
           addSkill={(skill: string) =>
             dispatch({
               type: ADD_LANGUAGE,
-              payload: { skill: { name: skill, rating: 1 } },
+              payload: { language: { name: skill, rating: 1 } },
             })
           }
           removeSkill={(index: number) =>
@@ -133,7 +145,7 @@ const KnowledgeSkills = () => {
           changeRating={(skill, rating, index) =>
             dispatch({
               type: UPDATE_LANGUAGE_RATING,
-              payload: { index, skill: { ...skill, rating } },
+              payload: { index, language: { ...skill, rating } },
             })
           }
           exampleOptions={exampleLanguageSkills}

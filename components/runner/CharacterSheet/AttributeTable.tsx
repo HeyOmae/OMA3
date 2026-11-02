@@ -1,5 +1,11 @@
 import { FC, useMemo } from "react"
 import {
+  Attributes,
+  attributeTotal,
+  RunnerAttributes,
+} from "@/types/RunnerAttributes"
+import { defined } from "@/components/util"
+import {
   attributes as attributeData,
   technomancerAttributes,
 } from "@/data/attributes"
@@ -8,29 +14,25 @@ import { CharSheetTableProps } from "."
 import { InitiativeTable } from "./InitiativeTable"
 import { SkillsTable } from "./SkillsTable"
 
-const initAttributes = {
-  bod: 0,
-  agi: 0,
-  rea: 0,
-  str: 0,
-  wil: 0,
-  log: 0,
-  int: 0,
-  cha: 0,
-}
+// every attribute starts at 1
+const attributeValue = (
+  attributes: RunnerAttributes | undefined,
+  attribute: Attributes,
+) => attributeTotal(defined(attributes?.[attribute], attribute)) + 1
 
 export const AttributeTable: FC<CharSheetTableProps> = ({ runner }) => {
   const isTechnomancer = runner.magres === "Technomancer"
 
   const attributes = useMemo(
     () =>
-      Object.entries(
-        isTechnomancer ? technomancerAttributes : attributeData,
-      ).reduce((acc, [label, key]) => {
-        const { adjustment, karma = 0, points } = runner.attributes[key]
-        acc[label] = adjustment + karma + points + 1
-        return acc
-      }, initAttributes),
+      Object.fromEntries(
+        Object.entries(
+          isTechnomancer ? technomancerAttributes : attributeData,
+        ).map(([label, key]) => [
+          label,
+          attributeValue(runner.attributes, key),
+        ]),
+      ),
     [isTechnomancer, runner.attributes],
   )
 
@@ -61,10 +63,7 @@ export const AttributeTable: FC<CharSheetTableProps> = ({ runner }) => {
                 </td>
               ))}
               <td aria-labelledby="edg">
-                {Object.values(runner.attributes.Edge).reduce(
-                  (acc, val) => acc + val,
-                  1,
-                )}
+                {attributeValue(runner.attributes, "Edge")}
               </td>
               <td aria-labelledby="ess">{essence}</td>
             </tr>

@@ -7,7 +7,7 @@ import {
 } from ".."
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { Runner } from "@/types/runner"
-import { Attributes } from "@/types/RunnerAttributes"
+import { Attributes, attributeTotal } from "@/types/RunnerAttributes"
 import metatypeData from "@/data/metatype.json"
 import { Typography, Slider } from "@mui/material"
 import { ADJUSTMENT, ATTRIBUTE } from "../SpendingPointsToggle"
@@ -145,16 +145,6 @@ interface AttributeSliderProps {
   disableSlider: (att: string, max: number) => boolean
 }
 
-// the points spent on an attribute, on top of the metatype's minimum
-const attributeTotal = (runner: Runner, attribute: Attributes) => {
-  const {
-    adjustment,
-    points,
-    karma = 0,
-  } = defined(runner.attributes?.[attribute], attribute)
-  return adjustment + points + karma
-}
-
 const AttributeSlider: FC<AttributeSliderProps> = ({
   attribute,
   min,
@@ -178,7 +168,9 @@ const AttributeSlider: FC<AttributeSliderProps> = ({
       marks
       min={min}
       max={modifiedMax}
-      value={min + attributeTotal(runner, attribute)}
+      value={
+        min + attributeTotal(defined(runner.attributes?.[attribute], attribute))
+      }
       data-testid={`${attribute}-slider`}
       disabled={disableSlider(attribute, max)}
       onChange={(event, value: number) => {

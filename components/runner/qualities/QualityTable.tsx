@@ -24,7 +24,8 @@ export const QualityTable: FC<Props> = ({ qualities, onAddQuality }) => (
     </TableHead>
     <TableBody>
       {qualities.map((quality) => {
-        const Row = QualityRows[quality.select] ?? QualityRows.default
+        const Row =
+          quality.select ? QualityRows[quality.select] : QualityRows.default
         return (
           <Row
             key={quality.name}

@@ -1,53 +1,34 @@
-import { useCallback, useRef } from "react"
 import { CircularProgress, Grid, TextField } from "@mui/material"
-import { RunnerReducer, useRunnerAccess } from "@/hooks/useRunnerAccess"
-import { Runner } from "@/types/runner"
+import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 
 const UPDATE_NAME = Symbol("updateName"),
   UPDATE_DESCRIPTION = Symbol("updateDescription")
 
 export const Info = (): JSX.Element => {
-  const reducer: RunnerReducer<string> = useCallback(
-    (state: Runner, { type, payload }) => {
-      switch (type) {
-        case UPDATE_NAME:
-          return {
-            ...state,
-            name: payload,
-          }
-        case UPDATE_DESCRIPTION:
-          return {
-            ...state,
-            description: payload,
-          }
-      }
-    },
-    [],
+  const [runner, dispatch] = useRunnerAccess<string>(
+    (state, { type, payload }) =>
+      type === UPDATE_NAME ?
+        { ...state, name: payload }
+      : { ...state, description: payload },
   )
-  const name = useRef<HTMLInputElement>(null)
-  const description = useRef<HTMLInputElement>(null)
-  const [runner, dispatch] = useRunnerAccess<string>(reducer)
-
   return runner ?
       <form autoComplete="off">
         <Grid container>
           <Grid size={12}>
             <TextField
-              inputRef={name}
               defaultValue={runner.name}
               id="runner--name"
               label="Runner's name"
               required
               fullWidth
               variant="filled"
-              onBlur={() =>
-                dispatch({ type: UPDATE_NAME, payload: name.current.value })
+              onBlur={({ target: { value } }) =>
+                dispatch({ type: UPDATE_NAME, payload: value })
               }
             />
           </Grid>
           <Grid size={12}>
             <TextField
-              inputRef={description}
               margin="normal"
               id="runner--description"
               label="Runner's description"
@@ -55,11 +36,8 @@ export const Info = (): JSX.Element => {
               fullWidth
               rows={5}
               variant="filled"
-              onBlur={() =>
-                dispatch({
-                  type: UPDATE_DESCRIPTION,
-                  payload: description.current.value,
-                })
+              onBlur={({ target: { value } }) =>
+                dispatch({ type: UPDATE_DESCRIPTION, payload: value })
               }
               defaultValue={runner.description}
             />

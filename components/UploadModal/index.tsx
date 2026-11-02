@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { Runner } from "@/types/runner"
 import { migrateIfOutdated } from "@/hooks/runnerSchema"
 import { Upload } from "@mui/icons-material"
@@ -49,14 +50,14 @@ const Modal: FC<ModalProps> = ({ add, push, open, setOpen }) => {
         onClick={() => {
           try {
             const { id: discard, ...runner } = JSON.parse(
-              runnerJsonInput.current.value,
+              defined(runnerJsonInput.current, "runner JSON input").value,
             )
             migrateIfOutdated(runner)
               .then((migratedRunner) => add(migratedRunner))
               .then((event) => push("/[id]/info", `/${event}/info`))
               .catch((err) => setAlertMessage(err.target.error.toString()))
           } catch (error) {
-            setAlertMessage(error.toString())
+            setAlertMessage(String(error))
           }
         }}
       >

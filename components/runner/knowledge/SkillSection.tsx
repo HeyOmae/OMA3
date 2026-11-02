@@ -17,8 +17,17 @@ import {
 import { FC, useRef } from "react"
 import styles from "./knowledge.module.css"
 import { RemainingKnowledgePoints } from "./RemainingKnowledgePoints"
-import { capitalization } from "@/components/util"
+import { capitalization, defined } from "@/components/util"
 import { RemainingKarma } from "../resources/GearPageTemplate/RemainingKarma"
+
+const languageRatings: LanguageRating[] = ["Native", 1, 2, 3, 4]
+
+// the select gives back the rating as a string
+const toLanguageRating = (value: string | number) =>
+  defined(
+    languageRatings.find((rating) => String(rating) === String(value)),
+    `${value} as a language rating`,
+  )
 
 interface SkillSectionProps {
   runner: Runner
@@ -52,7 +61,7 @@ export const SkillSection: FC<SkillSectionProps> = ({
         className={styles.skillForm}
         onSubmit={(e) => {
           e.preventDefault()
-          addSkill(skillInputRef.current.value)
+          addSkill(defined(skillInputRef.current, "skill input").value)
         }}
       >
         <AddButton type="submit" aria-label={`submit ${skillKey} skill`} />
@@ -71,7 +80,7 @@ export const SkillSection: FC<SkillSectionProps> = ({
       </form>
       <RemainingKnowledgePoints runner={runner} />
       <RemainingKarma runner={runner} />
-      {runner[skillKey]?.length > 0 && (
+      {(runner[skillKey]?.length ?? 0) > 0 && (
         <>
           <h2>
             {runner.name || "Runner"}&apos;s {skillName} Skills
@@ -109,11 +118,9 @@ export const SkillSection: FC<SkillSectionProps> = ({
                               label={`${name} Rating`}
                               value={skill.rating}
                               onChange={({ target }) =>
-                                changeRating(
+                                defined(changeRating, "changeRating")(
                                   skill,
-                                  (target.value === "Native" ?
-                                    target.value
-                                  : +target.value) as LanguageRating,
+                                  toLanguageRating(target.value),
                                   index,
                                 )
                               }

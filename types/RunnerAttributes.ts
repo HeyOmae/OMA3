@@ -15,3 +15,10 @@ export interface AttributeStats {
   points: number
   karma?: number
 }
+
+// everything spent on an attribute, on top of where it starts
+export const attributeTotal = ({
+  adjustment,
+  points,
+  karma = 0,
+}: AttributeStats) => adjustment + points + karma

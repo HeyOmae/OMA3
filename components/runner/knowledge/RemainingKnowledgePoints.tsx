@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { Runner } from "@/types/runner"
 import { FC } from "react"
 import styles from "./RemainingKnowledgePoints.module.css"
@@ -16,9 +17,10 @@ export const RemainingKnowledgePoints: FC<Props> = ({ runner }) => (
 )
 
 export function findKnowledgePointsSpend(runner: Runner) {
+  const { adjustment, points } = defined(runner.attributes?.Logic, "Logic")
   return (
-    runner.attributes.Logic.adjustment +
-    runner.attributes.Logic.points +
+    adjustment +
+    points +
     1 -
     (runner.knowledge?.length ?? 0) -
     (runner.language?.reduce((points, { rating }) => {

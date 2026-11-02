@@ -11,10 +11,19 @@ const isUpToDate = (
   currentVersion: number,
 ): runner is Runner => (runner.schemaVersion ?? 0) >= currentVersion
 
-export const migrateIfOutdated = async (
+// a runner always migrates to a runner, and no runner stays no runner
+export async function migrateIfOutdated(
+  runner: StoredRunner,
+  currentVersion?: number,
+): Promise<Runner>
+export async function migrateIfOutdated(
+  runner: StoredRunner | undefined,
+  currentVersion?: number,
+): Promise<Runner | undefined>
+export async function migrateIfOutdated(
   runner: StoredRunner | undefined,
   currentVersion = CURRENT_SCHEMA_VERSION,
-): Promise<Runner | undefined> => {
+): Promise<Runner | undefined> {
   if (!runner) return undefined
   if (isUpToDate(runner, currentVersion)) return runner
 

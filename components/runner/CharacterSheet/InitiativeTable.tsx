@@ -2,6 +2,7 @@ import { FC, useMemo } from "react"
 import { CharSheetTableProps } from "."
 import { AttackRatingModifier } from "@/types/Resources"
 import { Runner } from "@/types/runner"
+import { defined } from "@/components/util"
 
 export interface Props extends CharSheetTableProps {
   attributes: Record<string, number>
@@ -38,7 +39,7 @@ export const InitiativeTable: FC<Props> = ({ attributes, runner }) => {
 
 type SimModes = "hot" | "cold" | undefined
 
-const simModuleModes = {
+const simModuleModes: Record<string, SimModes> = {
   "Sim Module": "cold",
   "Sim Module Hot": "hot",
 }
@@ -53,15 +54,17 @@ const hasDirectNeuralInterface = (runner: Runner) =>
   runner.resources?.electronicAccessories?.some(({ name }) => name === "Trodes")
 
 const hasRiggerGear = (runner: Runner) =>
-  (runner.resources?.cyberdeck?.length ||
-    runner.resources?.riggerConsole?.length) > 0
+  Boolean(
+    runner.resources?.cyberdeck?.length ||
+    runner.resources?.riggerConsole?.length,
+  )
 
-const findSimModuleMode = (runner: Runner): SimModes =>
-  simModuleModes[
-    runner.resources?.electronicAccessories?.find(({ name }) =>
-      /Sim Module/.test(name),
-    )?.name
-  ]
+const findSimModuleMode = (runner: Runner): SimModes => {
+  const simModule = runner.resources?.electronicAccessories?.find(({ name }) =>
+    /Sim Module/.test(name),
+  )
+  return simModule ? simModuleModes[simModule.name] : undefined
+}
 
 const getSimMode = (runner: Runner): SimModes =>
   runner.magres === "Technomancer" || hasRiggerGear(runner) ?
@@ -89,8 +92,12 @@ function findInitBonusDices(
   rating: number = 1,
 ) {
   return (
-    modifiers.find(({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL")
-      .value * rating
+    defined(
+      modifiers.find(
+        ({ attribute }) => attribute === "INITIATIVE DICE PHYSICAL",
+      )?.value,
+      "initiative dice",
+    ) * rating
   )
 }
 
@@ -109,7 +116,7 @@ const PhysicalInit: FC<Props> = ({ runner, attributes }) => {
       /Synaptic Booster/.test(name),
     )
     const initiativeBoosterWare = wiredReflex || synapticBooster
-    return initiativeBoosterWare?.modifications.attrmod ?
+    return initiativeBoosterWare?.modifications?.attrmod ?
         findInitBonusDices(
           initiativeBoosterWare.modifications.attrmod,
           initiativeBoosterWare.currentRating,

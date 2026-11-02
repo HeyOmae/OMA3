@@ -2,7 +2,7 @@ import { negative, positive } from "@/data/qualities"
 import { useRunnerAccess } from "@/hooks/useRunnerAccess"
 import { Quality } from "@/types/Qualities"
 import { QualityTable, RunnerQualityTable } from "./QualityTable"
-import { removeItemFromArray } from "@/components/util"
+import { defined, removeItemFromArray } from "@/components/util"
 import { CircularProgress } from "@mui/material"
 import { RemainingKarma } from "../resources/GearPageTemplate/RemainingKarma"
 
@@ -22,7 +22,7 @@ const Qualities = () => {
           qualities: {
             ...runner.qualities,
             [qualityKey]: removeItemFromArray<Quality>(
-              runner.qualities[qualityKey],
+              defined(runner.qualities?.[qualityKey], qualityKey),
               payload,
             ),
           },

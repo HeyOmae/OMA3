@@ -1,3 +1,4 @@
+import { defined } from "@/components/util"
 import { Quality } from "@/types/Qualities"
 import { OnAddQuality } from "./QualityTable"
 import { TableCell, TableRow, TextField } from "@mui/material"
@@ -29,6 +30,7 @@ const QualityRow: FC<QualityRowProps> = ({
   quality.max ?
     <QualityLevelRow
       quality={quality}
+      max={quality.max}
       onAddQuality={onAddQuality}
       select={select}
     />
@@ -45,10 +47,12 @@ const QualityRow: FC<QualityRowProps> = ({
       <TableCell>{quality.karma}</TableCell>
     </TableRow>
 
-const QualityLevelRow: FC<QualityRowProps> = ({
+// a quality that can be taken more than once, up to max
+const QualityLevelRow: FC<QualityRowProps & { max: number }> = ({
   quality,
   onAddQuality,
   select,
+  max,
 }) => {
   const [currentLevel, setLevel] = useState(1)
 
@@ -65,7 +69,7 @@ const QualityLevelRow: FC<QualityRowProps> = ({
         <RangeSelect
           selected={currentLevel}
           setSelected={setLevel}
-          max={quality.max}
+          max={max}
         ></RangeSelect>
       </TableCell>
       <TableCell>{select}</TableCell>
@@ -97,7 +101,10 @@ const QualitySelectNameRow: FC<QualityRowProps> = ({
     <QualityRow
       quality={quality}
       onAddQuality={(passedDownQuality) =>
-        onAddQuality({ ...passedDownQuality, selected: nameRef.current.value })
+        onAddQuality({
+          ...passedDownQuality,
+          selected: defined(nameRef.current, "name input").value,
+        })
       }
       select={
         <TextField
@@ -114,7 +121,7 @@ const QualitySelectAttributeRow: FC<QualityRowProps> = ({
   quality,
   onAddQuality,
 }) => {
-  const [selected, setSelected] = useState(attributes.bod)
+  const [selected, setSelected] = useState<string>(attributes.bod)
   return (
     <QualityRow
       quality={quality}

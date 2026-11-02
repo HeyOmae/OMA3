@@ -3,6 +3,11 @@ import { FC } from "react"
 
 type MatrixDevice = Resources["cyberdeck"] | Resources["commlink"]
 
+// cyberdecks have attack and sleaze, commlinks data processing and firewall
+type MatrixAttributes = Partial<
+  Record<"attack" | "sleaze" | "dataProcessing" | "firewall", number>
+>
+
 interface MatrixDeviceTableProps {
   gearRow: MatrixDevice
 }
@@ -20,16 +25,19 @@ export const MatrixDeviceTable: FC<MatrixDeviceTableProps> = ({ gearRow }) => (
       </tr>
     </thead>
     <tbody>
-      {gearRow.map((gearItem, index) => (
-        <tr key={index}>
-          <td>{gearItem.name}</td>
-          <td>{gearItem.deviceRating}</td>
-          <td>{gearItem.matrixAttributes?.attack}</td>
-          <td>{gearItem.matrixAttributes?.sleaze}</td>
-          <td>{gearItem.matrixAttributes?.dataProcessing}</td>
-          <td>{gearItem.matrixAttributes?.firewall}</td>
-        </tr>
-      ))}
+      {gearRow.map((gearItem, index) => {
+        const matrixAttributes: MatrixAttributes = gearItem.matrixAttributes
+        return (
+          <tr key={index}>
+            <td>{gearItem.name}</td>
+            <td>{gearItem.deviceRating}</td>
+            <td>{matrixAttributes.attack}</td>
+            <td>{matrixAttributes.sleaze}</td>
+            <td>{matrixAttributes.dataProcessing}</td>
+            <td>{matrixAttributes.firewall}</td>
+          </tr>
+        )
+      })}
     </tbody>
   </>
 )

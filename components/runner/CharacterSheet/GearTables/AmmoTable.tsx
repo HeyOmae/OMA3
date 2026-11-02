@@ -1,6 +1,7 @@
 import { GearAmmo } from "@/types/Resources"
 import { roundsPerBundle } from "@/data/ammo"
 import { FC } from "react"
+import { defined } from "@/components/util"
 
 interface AmmoTableProps {
   gearRow: GearAmmo[]
@@ -22,7 +23,7 @@ export const AmmoTable: FC<AmmoTableProps> = ({ gearRow }) => (
           <td>{name}</td>
           <td>{ammo.type}</td>
           <td>{ammo.caseless ? "Yes" : "No"}</td>
-          <td>{currentRating * roundsPerBundle}</td>
+          <td>{defined(currentRating, "bundles") * roundsPerBundle}</td>
         </tr>
       ))}
     </tbody>

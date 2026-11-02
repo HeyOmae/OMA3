@@ -1,9 +1,9 @@
 import { Quality } from "@/types/Qualities"
 import { Skills } from "@/types/Skill"
 import { Runner } from "@/types/runner"
-import { defined } from "@/components/util"
 import { FC, useMemo } from "react"
-import priorityData from "@/data/priorityTable"
+import { startingMagResRating } from "@/data/priorityTable"
+import { isAwakened } from "@/types/MagRes"
 import { findKnowledgePointsSpend } from "@/components/runner/knowledge/RemainingKnowledgePoints"
 
 interface Props {
@@ -104,13 +104,10 @@ function totalKarmaFromAttributes(runner: Runner) {
         const baseAttribute =
             (
               name === "Magic" &&
-              runner.magres !== undefined &&
-              runner.magres !== "Mundane" &&
+              isAwakened(runner.magres) &&
               runner.priority?.["mag/res"] !== "E"
             ) ?
-              +priorityData["mag/res"][
-                defined(runner.priority?.["mag/res"], "mag/res priority")
-              ][runner.magres][1]
+              startingMagResRating(runner.priority, runner.magres)
             : 1,
           attributeRatingBeforeKarma = adjustment + points + baseAttribute
         return (
