@@ -17,6 +17,7 @@ import {
   getModCapacity,
 } from "../../util"
 import { RemainingArmorCapacity } from "./RemainingArmorCapacity"
+import { PURCHASED_GEAR_ID } from "../../GearPageTemplate/GearTable/ResourceButtons"
 
 const buyModCol: Columns<Gear>[] = [
   gearTableConfigOptions.buy,
@@ -66,7 +67,7 @@ const ArmorMods = () => {
           </Grid>
 
           {armor.mods && (
-            <Grid size={{ md: 6 }}>
+            <Grid id={PURCHASED_GEAR_ID} size={{ md: 6 }}>
               <h2>Mods on {gearName}</h2>
               <GearTable<Gear> cols={sellModCol} listOfGear={armor.mods} />
             </Grid>

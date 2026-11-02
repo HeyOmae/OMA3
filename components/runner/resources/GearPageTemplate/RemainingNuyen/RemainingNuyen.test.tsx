@@ -17,6 +17,20 @@ describe("<RemainingNuyen/>", () => {
     ).toHaveTextContent("8000¥/8000¥")
   })
 
+  it("should flag nuyen that is overspent", () => {
+    setup({ runner: { ...mockedRunners[9], priority: { resources: "E" } } })
+    expect(screen.getByRole("definition", { name: "Nuyen Value" })).toHaveClass(
+      "bad-stuff",
+    )
+  })
+
+  it("should not flag nuyen that is left to spend", () => {
+    setup()
+    expect(
+      screen.getByRole("definition", { name: "Nuyen Value" }),
+    ).not.toHaveClass("bad-stuff")
+  })
+
   it("has no nuyen until a priority for resources is picked", () => {
     setup({ runner: { ...mockedRunners[8], priority: { metatype: "E" } } })
     expect(

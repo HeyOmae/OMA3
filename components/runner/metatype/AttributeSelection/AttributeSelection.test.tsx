@@ -52,6 +52,22 @@ describe("AttributeSelection", () => {
     expect(screen.getByRole("slider", { name: "Body" })).toHaveValue("6")
   })
 
+  it("should show each attribute's rating out of its max", () => {
+    setup({
+      runner: {
+        ...orkRunner,
+        attributes: {
+          ...orkRunner.attributes,
+          Body: { adjustment: 2, points: 3 },
+        },
+      },
+    })
+
+    expect(
+      screen.getByRole("status", { name: "Body rating" }),
+    ).toHaveTextContent("6/8")
+  })
+
   describe("Adjustment Points", () => {
     it("should dispatch SPEND_ADJUSTMENT_POINTS when pointToSpend is Adjustment", () => {
       const { props } = setup()

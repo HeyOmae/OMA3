@@ -1,3 +1,4 @@
 .with-app-bar {
-  margin-bottom: calc(54px + 1rem);
+  /* room for the bottom navigation and the points tracker above it */
+  margin-bottom: calc(56px + 5rem);
 }

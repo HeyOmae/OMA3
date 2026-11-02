@@ -9,7 +9,7 @@ import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { Runner } from "@/types/runner"
 import { Attributes, attributeTotal } from "@/types/RunnerAttributes"
 import metatypeData from "@/data/metatype"
-import { Typography, Slider } from "@mui/material"
+import { Box, Typography, Slider } from "@mui/material"
 import { ADJUSTMENT, ATTRIBUTE } from "../SpendingPointsToggle"
 import { startingMagResRating } from "@/data/priorityTable"
 import { initRunnerAttributes } from "@/types/runner"
@@ -154,34 +154,41 @@ const AttributeSlider: FC<AttributeSliderProps> = ({
   dispatch,
   dispatchType,
   disableSlider,
-}) => (
-  <div>
-    <Typography id={`${attribute}-slider`} gutterBottom>
-      {attribute}
-    </Typography>
-    <Slider
-      defaultValue={1}
-      getAriaValueText={(value) => value.toString()}
-      aria-labelledby={`${attribute}-slider`}
-      valueLabelDisplay="auto"
-      step={1}
-      marks
-      min={min}
-      max={modifiedMax}
-      value={
-        min + attributeTotal(defined(runner.attributes?.[attribute], attribute))
-      }
-      data-testid={`${attribute}-slider`}
-      disabled={disableSlider(attribute, max)}
-      onChange={(event, value: number) => {
-        dispatch({
-          type: dispatchType,
-          payload: {
-            key: attribute,
-            value: value - min,
-          },
-        })
-      }}
-    />
-  </div>
-)
+}) => {
+  const rating =
+    min + attributeTotal(defined(runner.attributes?.[attribute], attribute))
+  return (
+    <div>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography id={`${attribute}-slider`} gutterBottom>
+          {attribute}
+        </Typography>
+        <Typography component="output" aria-label={`${attribute} rating`}>
+          {rating}/{modifiedMax}
+        </Typography>
+      </Box>
+      <Slider
+        defaultValue={1}
+        getAriaValueText={(value) => value.toString()}
+        aria-labelledby={`${attribute}-slider`}
+        valueLabelDisplay="auto"
+        step={1}
+        marks
+        min={min}
+        max={modifiedMax}
+        value={rating}
+        data-testid={`${attribute}-slider`}
+        disabled={disableSlider(attribute, max)}
+        onChange={(event, value: number) => {
+          dispatch({
+            type: dispatchType,
+            payload: {
+              key: attribute,
+              value: value - min,
+            },
+          })
+        }}
+      />
+    </div>
+  )
+}

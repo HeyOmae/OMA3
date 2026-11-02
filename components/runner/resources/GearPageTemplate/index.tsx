@@ -7,6 +7,7 @@ import { RemainingNuyen } from "./RemainingNuyen"
 import { ResourceBreadCrumbs } from "./ResourceBreadCrumbs"
 import { DispatchContext, gearPageReducerGenerator, Columns } from "../util"
 import { RemainingEssence } from "./RemainingEssence"
+import { PURCHASED_GEAR_ID } from "./GearTable/ResourceButtons"
 
 // the gear the runner keeps under this key of their resources
 export type GearOf<K extends keyof Resources> = Resources[K][number]
@@ -47,7 +48,12 @@ export function GearPageTemplate<K extends keyof Resources>({
               />
             </Grid>
             {purchased && (
-              <Grid size={{ md: 6 }}>
+              <Grid
+                id={PURCHASED_GEAR_ID}
+                size={{ xs: 12, md: 6 }}
+                // on phones what was bought comes before the long list to buy from
+                sx={{ order: { xs: -1, md: 0 } }}
+              >
                 <h2>Purchased {gearLabel}</h2>
                 <GearTable<GearOf<K>>
                   cols={removeGearTableConfig}

@@ -9,6 +9,7 @@ import {
   closest,
 } from "@/test/testUtils"
 import Qualities from "."
+import { RunnerLayout } from "@/components/layout"
 
 describe("<Qualities />", () => {
   beforeAll(setupIndexedDB)
@@ -60,6 +61,27 @@ describe("<Qualities />", () => {
     expect(
       await screen.findByLabelText("Remove AR Vertigo"),
     ).toBeInTheDocument()
+  })
+
+  test("should tell the user which quality they added", async () => {
+    const user = userEvent.setup()
+    renderWithTestRouter(
+      <RunnerLayout>
+        <Qualities />
+      </RunnerLayout>,
+      { query: { id: "7" } },
+    )
+
+    await user.click(await screen.findByLabelText("Add Guts"))
+
+    expect(await screen.findByText("Added Guts")).toBeInTheDocument()
+    expect(document.getElementById("runner-qualities")).toContainElement(
+      await screen.findByLabelText("Remove Guts"),
+    )
+
+    await user.click(screen.getByLabelText("Add Bad Rep"))
+
+    expect(await screen.findByText("Added Bad Rep")).toBeInTheDocument()
   })
 
   test("should be able to remove qualities", async () => {

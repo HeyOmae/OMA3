@@ -4,6 +4,7 @@ import { PriorityRating } from "@/types/PriorityRating"
 import priorityTableData from "@/data/priorityTable"
 import { Gear } from "@/types/Resources"
 import { useSinnerQualityNuyenModifier } from "@/hooks/useSinnerQualityNuyenModifier"
+import { PointsHud } from "@/components/layout/hud"
 
 export interface Props {
   runner: Runner
@@ -68,11 +69,16 @@ export const RemainingNuyen: FC<Props> = ({ runner }) => {
       )
     }, [costModifier, runnerResouces, totalNuyen])
   return (
-    <dl>
-      <dt aria-label="Nuyen">Nuyen:</dt>
-      <dd aria-label="Nuyen Value">
-        {remainingNuyen}&yen;/{totalNuyen}&yen;
-      </dd>
-    </dl>
+    <PointsHud>
+      <dl>
+        <dt aria-label="Nuyen">Nuyen:</dt>
+        <dd
+          aria-label="Nuyen Value"
+          className={remainingNuyen < 0 ? "bad-stuff" : ""}
+        >
+          {remainingNuyen}&yen;/{totalNuyen}&yen;
+        </dd>
+      </dl>
+    </PointsHud>
   )
 }

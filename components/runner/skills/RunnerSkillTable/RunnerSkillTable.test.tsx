@@ -29,6 +29,9 @@ describe("<RunnerSkillTable/>", () => {
     // rating
     const conjuringRating = conjuringRow.getByTestId("Conjuring-rating")
     expect(conjuringRating.querySelector("input")).toHaveValue("6")
+    expect(
+      conjuringRow.getByRole("status", { name: "Conjuring rating" }),
+    ).toHaveTextContent("6")
     // attribute
     expect(conjuringRow.getByText("Magic")).toBeInTheDocument()
     // specialization

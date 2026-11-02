@@ -1,6 +1,7 @@
 import { Runner } from "@/types/runner"
 import { FC } from "react"
 import { useRunnerEssence } from "@/hooks/useRunnerEssence"
+import { PointsHud } from "@/components/layout/hud"
 
 interface Props {
   runner: Runner
@@ -9,9 +10,11 @@ interface Props {
 export const RemainingEssence: FC<Props> = ({ runner }) => {
   const essence = useRunnerEssence(runner)
   return (
-    <dl>
-      <dt>Essence</dt>
-      <dd>{essence}</dd>
-    </dl>
+    <PointsHud>
+      <dl>
+        <dt>Essence</dt>
+        <dd>{essence}</dd>
+      </dl>
+    </PointsHud>
   )
 }

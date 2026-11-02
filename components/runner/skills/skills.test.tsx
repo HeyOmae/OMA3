@@ -1,4 +1,5 @@
 import Skills from "."
+import { RunnerLayout } from "@/components/layout"
 import {
   render,
   withTestRouter,
@@ -67,6 +68,27 @@ describe("<Skills/>", () => {
         },
       })
     })
+  })
+
+  it("should tell the user which skill they learned", async () => {
+    const user = userEvent.setup()
+    render(
+      withTestRouter(
+        <RunnerLayout>
+          <Skills />
+        </RunnerLayout>,
+        { query: { id: "3" } },
+      ),
+    )
+
+    await user.click(await screen.findByLabelText("add Piloting skill"))
+
+    expect(await screen.findByText("Learned Piloting")).toBeInTheDocument()
+    expect(document.getElementById("known-skills")).toContainElement(
+      await screen.findByLabelText("remove Piloting skill"),
+    )
+
+    await user.click(screen.getByLabelText("remove Piloting skill"))
   })
 
   it("should remove a skill", async () => {

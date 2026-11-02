@@ -8,6 +8,8 @@ import {
   TableCell,
   TableBody,
   Slider,
+  Box,
+  Typography,
 } from "@mui/material"
 import { SpecializationSelector } from "./SpecializationSelector"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
@@ -21,6 +23,7 @@ import {
 } from ".."
 import { RemoveButton } from "../../../common"
 import { Runner } from "@/types/runner"
+import { PointsHud } from "@/components/layout/hud"
 
 export interface Props {
   runner: Runner
@@ -54,15 +57,17 @@ export const RunnerSkillTable: FC<Props> = ({
 
   return (
     <>
-      <dl>
-        <dt aria-label="Skill Points">Skill Points</dt>
-        <dd
-          aria-label="Skill Points Value"
-          className={pointsRemaining < 0 ? "bad-stuff" : ""}
-        >
-          {pointsRemaining}/{skillPoints}
-        </dd>
-      </dl>
+      <PointsHud>
+        <dl>
+          <dt aria-label="Skill Points">Skill Points</dt>
+          <dd
+            aria-label="Skill Points Value"
+            className={pointsRemaining < 0 ? "bad-stuff" : ""}
+          >
+            {pointsRemaining}/{skillPoints}
+          </dd>
+        </dl>
+      </PointsHud>
       <TableContainer className="table-container">
         <Table stickyHeader>
           <TableHead>
@@ -106,31 +111,41 @@ export const RunnerSkillTable: FC<Props> = ({
                     </TableCell>
                     <TableCell>{skillName}</TableCell>
                     <TableCell width="30%">
-                      <Slider
-                        defaultValue={rating}
-                        getAriaValueText={(value) => value.toString()}
-                        aria-label={`${skillName} rating slider`}
-                        valueLabelDisplay="auto"
-                        step={1}
-                        marks
-                        min={1}
-                        max={AptitudeSkill === skillName ? 7 : 6}
-                        value={skillRating}
-                        data-testid={`${skillNameHyphen}-rating`}
-                        onChange={(event, value) =>
-                          dispatch({
-                            type:
-                              pointsToSpend === "Points" ? CHANGE_SKILL_RATING
-                              : CHANGE_SKILL_RATING_WITH_KARMA,
-                            payload: {
-                              skillToChangeRating: {
-                                name: skillName,
-                                rating: +value,
+                      <Box
+                        sx={{ display: "flex", alignItems: "center", gap: 2 }}
+                      >
+                        <Slider
+                          defaultValue={rating}
+                          getAriaValueText={(value) => value.toString()}
+                          aria-label={`${skillName} rating slider`}
+                          valueLabelDisplay="auto"
+                          step={1}
+                          marks
+                          min={1}
+                          max={AptitudeSkill === skillName ? 7 : 6}
+                          value={skillRating}
+                          data-testid={`${skillNameHyphen}-rating`}
+                          onChange={(event, value) =>
+                            dispatch({
+                              type:
+                                pointsToSpend === "Points" ? CHANGE_SKILL_RATING
+                                : CHANGE_SKILL_RATING_WITH_KARMA,
+                              payload: {
+                                skillToChangeRating: {
+                                  name: skillName,
+                                  rating: +value,
+                                },
                               },
-                            },
-                          })
-                        }
-                      />
+                            })
+                          }
+                        />
+                        <Typography
+                          component="output"
+                          aria-label={`${skillName} rating`}
+                        >
+                          {skillRating}
+                        </Typography>
+                      </Box>
                     </TableCell>
                     <TableCell>{`${attribute.primary}${
                       attribute.secondary ? `/${attribute.secondary}` : ""

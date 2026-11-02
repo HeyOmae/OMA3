@@ -4,6 +4,7 @@ import { defined } from "@/components/util"
 import priorityData from "@/data/priorityTable"
 import { useSpendPoints } from "@/hooks/useSpendPoints"
 import { RemainingKarma } from "../../resources/GearPageTemplate/RemainingKarma"
+import { PointsHud } from "@/components/layout/hud"
 
 export interface Props {
   runner: Runner
@@ -18,22 +19,24 @@ export const DisplayPoints: FC<Props> = ({ runner }) => {
   )
   return (
     <>
-      <dl>
-        <dt aria-label="Adjustment Points">Adjustment Points</dt>
-        <dd
-          className={adjustmentSpend < 0 ? "bad-stuff" : ""}
-          aria-label="Adjustment Points Value"
-        >
-          {adjustmentSpend}
-        </dd>
-        <dt aria-label="Attribute Points">Attribute Points</dt>
-        <dd
-          className={attributeSpend < 0 ? "bad-stuff" : ""}
-          aria-label="Attribute Points Value"
-        >
-          {attributeSpend}
-        </dd>
-      </dl>
+      <PointsHud>
+        <dl>
+          <dt aria-label="Adjustment Points">Adjustment Points</dt>
+          <dd
+            className={adjustmentSpend < 0 ? "bad-stuff" : ""}
+            aria-label="Adjustment Points Value"
+          >
+            {adjustmentSpend}
+          </dd>
+          <dt aria-label="Attribute Points">Attribute Points</dt>
+          <dd
+            className={attributeSpend < 0 ? "bad-stuff" : ""}
+            aria-label="Attribute Points Value"
+          >
+            {attributeSpend}
+          </dd>
+        </dl>
+      </PointsHud>
       <RemainingKarma runner={runner} />
     </>
   )

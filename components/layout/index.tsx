@@ -25,6 +25,9 @@ import { useRouter } from "next/router"
 import NextLink from "next/link"
 import styles from "./layout.module.css"
 import { SELECTED_THEME_KEY, ThemeSelector } from "./themeSelector"
+import { HudProvider } from "./hud"
+
+export { PointsHud, useNotify } from "./hud"
 
 interface Props extends PropsWithChildren {
   className?: string
@@ -48,6 +51,7 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
     query: { id },
   } = useRouter()
   const [nav, setNav] = useState<number>()
+  const [hudSlot, setHudSlot] = useState<HTMLDivElement | null>(null)
 
   useEffect(() => {
     switch (nav) {
@@ -60,9 +64,10 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [nav, push])
   return (
-    <>
+    <HudProvider slot={hudSlot}>
       <Layout className={styles["with-app-bar"]}>{children}</Layout>
       <AppBar position="fixed" color="primary">
+        <div ref={setHudSlot} className="points-hud" />
         <BottomNavigation
           value={nav}
           onChange={(e, selection: number) => setNav(selection)}
@@ -174,6 +179,6 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
           Delete
         </Button>
       </Drawer>
-    </>
+    </HudProvider>
   )
 }

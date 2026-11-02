@@ -8,7 +8,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material"
-import { SkillTable } from "./SkillTable"
+import { KNOWN_SKILLS_ID, SkillTable } from "./SkillTable"
 import { RunnerSkillTable } from "./RunnerSkillTable"
 import PriorityData from "../../../data/priorityTable"
 import { PriorityWarning } from "../../priorityWarning"
@@ -45,10 +45,8 @@ const Skills: FC = () => {
     runner ?
       skillPoints ?
         <Grid container spacing={2}>
-          <Grid size={{ sm: 12 }}>
-            <RemainingKarma runner={runner} />
-          </Grid>
-          <Grid size={{ sm: 12 }}>
+          <RemainingKarma runner={runner} />
+          <Grid size={{ xs: 12 }} sx={{ order: { xs: -2, md: 0 } }}>
             <RadioGroup
               aria-label="select-points"
               name="select-points"
@@ -75,12 +73,17 @@ const Skills: FC = () => {
               </Grid>
             </RadioGroup>
           </Grid>
-          <Grid size={{ sm: 12, md: 4 }}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <h2>Skills to learn</h2>
             <SkillTable dispatch={dispatch} pointsToSpend={pointsToSpend} />
           </Grid>
           {runner.skills && (
-            <Grid size={{ sm: 12, md: 8 }}>
+            <Grid
+              id={KNOWN_SKILLS_ID}
+              size={{ xs: 12, md: 8 }}
+              // on phones the known skills come before the list to learn from
+              sx={{ order: { xs: -1, md: 0 } }}
+            >
               <h2>Known skills</h2>
               <RunnerSkillTable
                 runner={runner}

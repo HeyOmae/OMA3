@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import { defined } from "@/components/util"
 import { Columns, DispatchContext } from "../util"
 import { GearTable } from "./GearTable"
+import { PURCHASED_GEAR_ID } from "./GearTable/ResourceButtons"
 import { RemainingCapacity } from "./RemainingCapacity"
 import { RemainingCapacityCyberware } from "./RemainingCapacity/RemainingCapacityCyberware"
 import { RemainingNuyen } from "./RemainingNuyen"
@@ -89,7 +90,7 @@ export function GearModPageTemplate<M extends Gear>({
           </Grid>
 
           {modsOnGear && (
-            <Grid size={{ md: 6 }}>
+            <Grid id={PURCHASED_GEAR_ID} size={{ md: 6 }}>
               <h2>Mods on {gearName}</h2>
               <GearTable cols={removeGearTableConfig} listOfGear={modsOnGear} />
             </Grid>

@@ -38,3 +38,19 @@ test("qualities with levels should multiple karma costs", () => {
   expect(karmaEl).toHaveTextContent("Karma")
   expect(karmaEl.closest("dl")).toHaveTextContent("28")
 })
+
+test("should flag karma that is overspent", () => {
+  setup({ ...mockedRunners[0], karmaToNuyen: 51 })
+
+  expect(
+    screen.getByRole("definition", { name: "Available Karma Value" }),
+  ).toHaveClass("bad-stuff")
+})
+
+test("should not flag karma that is left to spend", () => {
+  setup()
+
+  expect(
+    screen.getByRole("definition", { name: "Available Karma Value" }),
+  ).not.toHaveClass("bad-stuff")
+})

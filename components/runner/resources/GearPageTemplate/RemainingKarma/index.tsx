@@ -5,6 +5,7 @@ import { FC, useMemo } from "react"
 import { startingMagResRating } from "@/data/priorityTable"
 import { isAwakened } from "@/types/MagRes"
 import { findKnowledgePointsSpend } from "@/components/runner/knowledge/RemainingKnowledgePoints"
+import { PointsHud } from "@/components/layout/hud"
 
 interface Props {
   runner: Runner
@@ -41,35 +42,42 @@ export const RemainingKarma: FC<Props> = ({ runner, showQualityInfo }) => {
     () => totalKarmaForKnowledgePointsSpend(runner),
     [runner],
   )
+  const availableKarma =
+    50 -
+    positiveQualityKarma +
+    negativeQualityKarma -
+    karmaSpendOnNuyen -
+    attributeKarma -
+    skillKarma -
+    karmaFromInitiation -
+    karmaFromSubmersion -
+    karmaFromKnowledgePoints
   return (
-    <dl>
-      <dt aria-label="Available Karma">Available Karma</dt>
-      <dd aria-label="Available Karma Value">
-        {50 -
-          positiveQualityKarma +
-          negativeQualityKarma -
-          karmaSpendOnNuyen -
-          attributeKarma -
-          skillKarma -
-          karmaFromInitiation -
-          karmaFromSubmersion -
-          karmaFromKnowledgePoints}
-      </dd>
-      {showQualityInfo && (
-        <>
-          <dt aria-label="Qualities">Qualities</dt>
-          <dd aria-label="Qualities Value">
-            {(runner.qualities?.positive?.length ?? 0) +
-              (runner.qualities?.negative?.length ?? 0)}
-            /6
-          </dd>
-          <dt aria-label="Bonus Karma">Bonus Karma</dt>
-          <dd aria-label="Bonus Karma Value">
-            {Math.max(negativeQualityKarma - positiveQualityKarma, 0)}/20
-          </dd>
-        </>
-      )}
-    </dl>
+    <PointsHud>
+      <dl>
+        <dt aria-label="Available Karma">Available Karma</dt>
+        <dd
+          aria-label="Available Karma Value"
+          className={availableKarma < 0 ? "bad-stuff" : ""}
+        >
+          {availableKarma}
+        </dd>
+        {showQualityInfo && (
+          <>
+            <dt aria-label="Qualities">Qualities</dt>
+            <dd aria-label="Qualities Value">
+              {(runner.qualities?.positive?.length ?? 0) +
+                (runner.qualities?.negative?.length ?? 0)}
+              /6
+            </dd>
+            <dt aria-label="Bonus Karma">Bonus Karma</dt>
+            <dd aria-label="Bonus Karma Value">
+              {Math.max(negativeQualityKarma - positiveQualityKarma, 0)}/20
+            </dd>
+          </>
+        )}
+      </dl>
+    </PointsHud>
   )
 }
 

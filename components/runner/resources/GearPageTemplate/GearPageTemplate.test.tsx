@@ -8,6 +8,8 @@ import {
 } from "@/test/testUtils"
 import meleeData from "@/data/melee"
 import { GearPageTemplate, Props } from "."
+import { RunnerLayout } from "@/components/layout"
+import { screen } from "@/test/testUtils"
 
 import {
   addMeleeTableConfig,
@@ -35,6 +37,41 @@ describe("<GearPageTemplate/>", () => {
         ),
       )
     }
+
+    it("should tell the user what they bought", async () => {
+      const user = userEvent.setup()
+      render(
+        withTestRouter(
+          <RunnerLayout>
+            <GearPageTemplate
+              gearLabel="Melee Weapons"
+              resourceKey="melee"
+              addGearTableConfig={addMeleeTableConfig}
+              listOfGear={meleeData}
+              removeGearTableConfig={removeMeleeTableConfig}
+            />
+          </RunnerLayout>,
+          { query: { id: "10" } },
+        ),
+      )
+      const [weapon] = meleeData
+      const meleeOwned = runnerFromDB(9).resources?.melee?.length ?? 0
+
+      await user.click(await screen.findByLabelText(`Add ${weapon.name}`))
+
+      expect(
+        await screen.findByText(`Bought ${weapon.name}`),
+      ).toBeInTheDocument()
+      const purchased = await screen.findAllByLabelText(`Remove ${weapon.name}`)
+      expect(document.getElementById("purchased-gear")).toContainElement(
+        purchased[purchased.length - 1],
+      )
+
+      await user.click(purchased[purchased.length - 1])
+      await waitFor(() =>
+        expect(runnerFromDB(9).resources?.melee ?? []).toHaveLength(meleeOwned),
+      )
+    })
 
     it("should have breadcrumbs", async () => {
       const { getByText } = setup()

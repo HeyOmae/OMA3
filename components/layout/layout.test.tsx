@@ -1,10 +1,11 @@
-import { RunnerLayout } from "."
+import { PointsHud, RunnerLayout, useNotify } from "."
 import {
   render,
   withTestRouter,
   waitForElementToBeRemoved,
   userEvent,
   screen,
+  within,
 } from "@/test/testUtils"
 
 describe("<RunnerLayout />", () => {
@@ -119,5 +120,70 @@ describe("<RunnerLayout />", () => {
 
       expect(document.body).toHaveClass("mundane")
     })
+  })
+})
+
+describe("<RunnerLayout /> points and notices", () => {
+  const Notifier = () => {
+    const notify = useNotify()
+    return (
+      <button
+        onClick={() => notify({ message: "Added Guts", target: "my-stuff" })}
+      >
+        add guts
+      </button>
+    )
+  }
+
+  const setup = () => {
+    const user = userEvent.setup()
+    render(
+      withTestRouter(
+        <RunnerLayout>
+          <PointsHud>
+            <span>Karma 42</span>
+          </PointsHud>
+          <Notifier />
+          <section id="my-stuff">My stuff</section>
+        </RunnerLayout>,
+        { query: { id: "1" } },
+      ),
+    )
+    return { user }
+  }
+
+  it("should keep the points in the bottom bar, always on screen", () => {
+    setup()
+
+    expect(
+      within(screen.getByRole("banner")).getByText("Karma 42"),
+    ).toBeInTheDocument()
+  })
+
+  it("should tell the user what they added and take them to it", async () => {
+    const scrollIntoView = jest.fn()
+    Element.prototype.scrollIntoView = scrollIntoView
+    const { user } = setup()
+
+    await user.click(screen.getByText("add guts"))
+
+    expect(await screen.findByText("Added Guts")).toBeInTheDocument()
+
+    await user.click(screen.getByRole("button", { name: "Show" }))
+
+    expect(scrollIntoView).toHaveBeenCalled()
+    expect(scrollIntoView.mock.contexts[0]).toBe(screen.getByText("My stuff"))
+  })
+
+  it("should stay up while adding more, and close with escape", async () => {
+    const { user } = setup()
+
+    await user.click(screen.getByText("add guts"))
+    await user.click(screen.getByText("add guts"))
+    expect(await screen.findByText("Added Guts")).toBeInTheDocument()
+
+    await user.keyboard("{Escape}")
+
+    await waitForElementToBeRemoved(() => screen.queryByText("Added Guts"))
   })
 })

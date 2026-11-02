@@ -2,6 +2,7 @@ import { FC, useMemo } from "react"
 import { Runner } from "@/types/runner"
 import { MagRes } from "@/types/MagRes"
 import { defined } from "@/components/util"
+import { PointsHud } from "@/components/layout/hud"
 
 export interface Props {
   runner: Runner
@@ -60,40 +61,44 @@ export const RemainingSpells: FC<Props> = ({ runner, baseMagic: rating }) => {
   ])
 
   return (
-    <dl>
-      {magResWithSpells.includes(defined(magres, "magres")) && (
-        <>
-          <dt>Spells Remaining</dt>
-          <dd
-            aria-label="Spells Remaining Value"
-            className={remainingNumberOfSpells < 0 ? "bad-stuff" : ""}
-          >
-            {remainingNumberOfSpells}/{totalSpells}
-          </dd>
-        </>
-      )}
-      {(magres === "Adept" || magres === "Mystic Adept") && (
-        <>
-          <dt>Power Points Left</dt>
-          <dd
-            aria-label="Power Points Left Value"
-            className={remainingPowerPoints < 0 ? "bad-stuff" : ""}
-          >
-            {remainingPowerPoints}/{powerPointsTotal}
-          </dd>
-        </>
-      )}
-      {magres === "Technomancer" && (
-        <>
-          <dt>Complex Forms Remaining</dt>
-          <dd
-            aria-label="Complex Forms Remaining Value"
-            className={totalSpells - complexForms.length < 0 ? "bad-stuff" : ""}
-          >
-            {totalSpells - complexForms.length}/{totalSpells}
-          </dd>
-        </>
-      )}
-    </dl>
+    <PointsHud>
+      <dl>
+        {magResWithSpells.includes(defined(magres, "magres")) && (
+          <>
+            <dt>Spells Remaining</dt>
+            <dd
+              aria-label="Spells Remaining Value"
+              className={remainingNumberOfSpells < 0 ? "bad-stuff" : ""}
+            >
+              {remainingNumberOfSpells}/{totalSpells}
+            </dd>
+          </>
+        )}
+        {(magres === "Adept" || magres === "Mystic Adept") && (
+          <>
+            <dt>Power Points Left</dt>
+            <dd
+              aria-label="Power Points Left Value"
+              className={remainingPowerPoints < 0 ? "bad-stuff" : ""}
+            >
+              {remainingPowerPoints}/{powerPointsTotal}
+            </dd>
+          </>
+        )}
+        {magres === "Technomancer" && (
+          <>
+            <dt>Complex Forms Remaining</dt>
+            <dd
+              aria-label="Complex Forms Remaining Value"
+              className={
+                totalSpells - complexForms.length < 0 ? "bad-stuff" : ""
+              }
+            >
+              {totalSpells - complexForms.length}/{totalSpells}
+            </dd>
+          </>
+        )}
+      </dl>
+    </PointsHud>
   )
 }
