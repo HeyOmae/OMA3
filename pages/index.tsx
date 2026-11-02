@@ -20,6 +20,13 @@ import ReleaseNotes from "@/components/ReleaseNotes"
 import DownloadModal from "@/components/DownloadModal"
 import { UploadModal } from "@/components/UploadModal"
 
+const RulebookSettings = dynamic(
+  () => import("@/components/RulebookSettings"),
+  {
+    ssr: false,
+  },
+)
+
 const AllRunnersAccess = dynamic(
   () => import("@/components/allRunnersAccess"),
   {
@@ -50,6 +57,8 @@ export const Home: FC = () => {
         </a>
         .
       </p>
+
+      <RulebookSettings />
 
       <h2>List of Runners</h2>
       <AllRunnersAccess>

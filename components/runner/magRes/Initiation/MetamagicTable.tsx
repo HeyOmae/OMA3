@@ -4,7 +4,7 @@ import { FC } from "react"
 import { Payload } from "./index"
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { Props as ActionButtonProps } from "@/components/common"
-import { formatReference } from "@/components/util"
+import { BookReference } from "@/components/common/BookReference"
 
 interface Props {
   metamagics: MetaMagic[]
@@ -45,7 +45,9 @@ export function MetamagicTable({
               />
             </TableCell>
             <TableCell>{metamagic.name}</TableCell>
-            <TableCell>{formatReference(metamagic.reference)}</TableCell>
+            <TableCell>
+              <BookReference reference={metamagic.reference} />
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

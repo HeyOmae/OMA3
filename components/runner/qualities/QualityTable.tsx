@@ -1,5 +1,5 @@
 import { RemoveButton } from "@/components/common"
-import { formatReference } from "@/components/util"
+import { BookReference } from "@/components/common/BookReference"
 import { Quality } from "@/types/Qualities"
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { FC } from "react"
@@ -73,7 +73,9 @@ export const RunnerQualityTable: FC<RunnerQualityTableProps> = ({
           <TableCell>{quality.currentLevel ?? "N/A"}</TableCell>
           <TableCell>{quality.selected ?? "N/A"}</TableCell>
           <TableCell>{quality.karma}</TableCell>
-          <TableCell>{formatReference(quality.reference)}</TableCell>
+          <TableCell>
+            <BookReference reference={quality.reference} />
+          </TableCell>
         </TableRow>
       ))}
     </TableBody>

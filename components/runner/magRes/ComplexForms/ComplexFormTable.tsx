@@ -12,7 +12,7 @@ import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { ComplexForm } from "../../../../types/MagRes"
 import { AddComplexFormButton } from "./AddComplexFormButton"
 import { RemoveComplexFormButton } from "./RunnerComplexForms/RemoveComplexFormButton"
-import { formatReference } from "@/components/util"
+import { BookReference } from "@/components/common/BookReference"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
@@ -51,7 +51,9 @@ export const ComplexFormTable: FC<Props> = ({
               <TableCell>{name}</TableCell>
               <TableCell>{fade}</TableCell>
               <TableCell>{duration}</TableCell>
-              <TableCell>{formatReference(reference)}</TableCell>
+              <TableCell>
+                <BookReference reference={reference} />
+              </TableCell>
             </TableRow>
           )
         })}

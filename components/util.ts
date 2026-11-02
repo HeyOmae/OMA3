@@ -1,5 +1,3 @@
-import type { Reference } from "@/types/generalTypes"
-
 export function removeItemFromArray<ItemType>(
   items: ItemType[],
   indexToRemove: number,
@@ -34,11 +32,4 @@ export function keyOf<T extends object>(
     throw new Error(`No ${key} in ${keys.join(", ")}`)
   }
   return found
-}
-
-export function formatReference(reference?: Reference[]) {
-  if (!reference || reference.length === 0) {
-    return "—"
-  }
-  return reference.map(({ book, page }) => `${book} p.${page}`).join(", ")
 }

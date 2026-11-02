@@ -19,7 +19,7 @@ import {
   RemoveResourceButton,
 } from "../GearPageTemplate/GearTable/ResourceButtons"
 import { useSinnerQualityNuyenModifier } from "@/hooks/useSinnerQualityNuyenModifier"
-import { formatReference } from "@/components/util"
+import { BookReference } from "@/components/common/BookReference"
 
 const LifeStyle = () => {
   const [runner, dispatch] = useRunnerAccess<Gear | number>(
@@ -54,7 +54,7 @@ const LifeStyle = () => {
                           {lifestyle.cost * sinnerModifier}&yen;
                         </TableCell>
                         <TableCell>
-                          {formatReference(lifestyle.reference)}
+                          <BookReference reference={lifestyle.reference} />
                         </TableCell>
                       </TableRow>
                     ))}
@@ -89,7 +89,7 @@ const LifeStyle = () => {
                             {lifestyle.cost * sinnerModifier}&yen;
                           </TableCell>
                           <TableCell>
-                            {formatReference(lifestyle.reference)}
+                            <BookReference reference={lifestyle.reference} />
                           </TableCell>
                         </TableRow>
                       ))}

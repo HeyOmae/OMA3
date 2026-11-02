@@ -12,7 +12,7 @@ import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { Ritual } from "../../../../types/MagRes"
 import { AddRitualButton } from "./AddRitualButton"
 import { RemoveRitualButton } from "./RunnerRituals/RemoveRitualButton"
-import { formatReference } from "@/components/util"
+import { BookReference } from "@/components/common/BookReference"
 
 interface Props {
   rituals: Ritual[]
@@ -49,7 +49,9 @@ export const RitualTable: FC<Props> = ({ rituals, ActionButton, dispatch }) => (
                 ({ritualfeature.map(({ ref }) => ref).join(", ")})
               </TableCell>
               <TableCell>{threshold}</TableCell>
-              <TableCell>{formatReference(reference)}</TableCell>
+              <TableCell>
+                <BookReference reference={reference} />
+              </TableCell>
             </TableRow>
           )
         })}

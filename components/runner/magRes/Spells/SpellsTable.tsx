@@ -9,7 +9,7 @@ import {
 import { FC, ReactNode } from "react"
 import { ActionLabel } from "."
 import { GeneralSpell } from "../../../../types/MagRes"
-import { formatReference } from "@/components/util"
+import { BookReference } from "@/components/common/BookReference"
 
 interface Props {
   spells: GeneralSpell[]
@@ -48,7 +48,9 @@ export const SpellsTable: FC<Props> = ({
                 <TableCell>{type}</TableCell>
                 <TableCell>{duration}</TableCell>
                 <TableCell>{drain}</TableCell>
-                <TableCell>{formatReference(reference)}</TableCell>
+                <TableCell>
+                  <BookReference reference={reference} />
+                </TableCell>
               </TableRow>
             )
           })}
