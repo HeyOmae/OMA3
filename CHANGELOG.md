@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.17.0](https://github.com/HeyOmae/OMA3/compare/3.16.0...3.17.0) (2026-11-02)
+
+
+### Features
+
+* show core rulebook page references for all gear ([07745b4](https://github.com/HeyOmae/OMA3/commit/07745b4f098ab2e3eb55de68067b4eaa643c3061)), closes [#797](https://github.com/HeyOmae/OMA3/issues/797)
+* show core rulebook page references for magic and resonance ([c6f0105](https://github.com/HeyOmae/OMA3/commit/c6f01055504ae986c57d46f666f8d8861b1e5c92)), closes [#797](https://github.com/HeyOmae/OMA3/issues/797)
+* show core rulebook page references for qualities ([bc2c82c](https://github.com/HeyOmae/OMA3/commit/bc2c82c50bf243518e58465cbdd1de591140fcd7)), closes [#797](https://github.com/HeyOmae/OMA3/issues/797)
+
+
+### Refactors
+
+* label rulebook references as the SR6 Berlin edition ([e12976f](https://github.com/HeyOmae/OMA3/commit/e12976f4a7b62081300a9860b644be97641a7265)), closes [#797](https://github.com/HeyOmae/OMA3/issues/797)
+
 ## [3.16.0](https://github.com/HeyOmae/OMA3/compare/3.15.1...3.16.0) (2026-11-02)
 
 
