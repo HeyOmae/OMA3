@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.19.0](https://github.com/HeyOmae/OMA3/compare/3.18.0...3.19.0) (2026-11-02)
+
+
+### Features
+
+* Astral Plane theme ([81dbd5a](https://github.com/HeyOmae/OMA3/commit/81dbd5a62ea0718008079585a176a192269367f1))
+* keep points on screen and confirm what was added ([a5a2989](https://github.com/HeyOmae/OMA3/commit/a5a2989787644e75b814a0018d644cde305f9eae))
+
 ## [3.18.0](https://github.com/HeyOmae/OMA3/compare/3.17.0...3.18.0) (2026-11-02)
 
 
