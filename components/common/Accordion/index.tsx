@@ -1,5 +1,5 @@
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material"
-import ExpandMore from "@mui/icons-material/ExpandMore"
+import { ExpandMore } from "@mui/icons-material"
 import { FC, ReactNode } from "react"
 
 interface Props {

@@ -101,21 +101,6 @@ const config = [
 
       // A function this branchy is doing more than one job, split it up
       complexity: [2, 15],
-
-      // The barrel loads all ~10,000 icons, which makes every test that
-      // renders one slow and memory hungry. Import each icon by its path.
-      "no-restricted-imports": [
-        2,
-        {
-          paths: [
-            {
-              name: "@mui/icons-material",
-              message:
-                'Import the icon by its path, like "@mui/icons-material/Add".',
-            },
-          ],
-        },
-      ],
     },
   },
   {

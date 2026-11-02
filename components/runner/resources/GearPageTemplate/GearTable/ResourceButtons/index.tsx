@@ -8,7 +8,7 @@ import {
   RemoveGearButtonProps,
 } from "../../../util"
 import { IconButton } from "@mui/material"
-import Extension from "@mui/icons-material/Extension"
+import { Extension } from "@mui/icons-material"
 import NextLink from "next/link"
 import { Gear } from "@/types/Resources"
 import { useRouter } from "next/router"

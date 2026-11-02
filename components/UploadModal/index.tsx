@@ -1,7 +1,7 @@
 import { defined } from "@/components/util"
 import { Runner } from "@/types/runner"
 import { migrateIfOutdated } from "@/hooks/runnerSchema"
-import Upload from "@mui/icons-material/Upload"
+import { Upload } from "@mui/icons-material"
 import { Alert, Button, Dialog, TextField } from "@mui/material"
 import { Url } from "next/dist/shared/lib/router/router"
 import { FC, useRef, useState } from "react"

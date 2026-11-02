@@ -2,7 +2,7 @@ import { Runner } from "@/types/runner"
 import { Dialog, IconButton, TextField, Tooltip } from "@mui/material"
 import DownloadIcon from "@mui/icons-material/Download"
 import { FC, useMemo, useState } from "react"
-import ContentCopy from "@mui/icons-material/ContentCopy"
+import { ContentCopy } from "@mui/icons-material"
 import styles from "./DownloadModal.module.css"
 import { CloseButton } from "../common"
 

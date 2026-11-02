@@ -1,3 +1,18 @@
 {
-  "presets": ["next/babel"]
+  "presets": ["next/babel"],
+  "env": {
+    "test": {
+      "plugins": [
+        [
+          "transform-imports",
+          {
+            "@mui/icons-material": {
+              "transform": "@mui/icons-material/${member}",
+              "preventFullImport": true
+            }
+          }
+        ]
+      ]
+    }
+  }
 }

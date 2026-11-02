@@ -7,18 +7,20 @@ import {
   Button,
   AppBar,
 } from "@mui/material"
-import Delete from "@mui/icons-material/Delete"
-import Home from "@mui/icons-material/Home"
-import Menu from "@mui/icons-material/Menu"
-import TableChart from "@mui/icons-material/TableChart"
-import AccountBox from "@mui/icons-material/AccountBox"
-import AccessibilityNew from "@mui/icons-material/AccessibilityNew"
-import DirectionsRun from "@mui/icons-material/DirectionsRun"
-import FlashOn from "@mui/icons-material/FlashOn"
-import Payment from "@mui/icons-material/Payment"
-import School from "@mui/icons-material/School"
-import AutoAwesome from "@mui/icons-material/AutoAwesome"
-import ListAlt from "@mui/icons-material/ListAlt"
+import {
+  Delete,
+  Home,
+  Menu,
+  TableChart,
+  AccountBox,
+  AccessibilityNew,
+  DirectionsRun,
+  FlashOn,
+  Payment,
+  School,
+  AutoAwesome,
+  ListAlt,
+} from "@mui/icons-material"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
 import styles from "./layout.module.css"
