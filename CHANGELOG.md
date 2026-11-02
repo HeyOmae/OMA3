@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.18.0](https://github.com/HeyOmae/OMA3/compare/3.17.0...3.18.0) (2026-11-02)
+
+
+### Features
+
+* open every rulebook reference in the same tab ([ccb033c](https://github.com/HeyOmae/OMA3/commit/ccb033c3484a40dd8368ea59f2582f99fbb30af9))
+* open the rulebook PDF at a reference's page in Chrome and Edge ([0431d16](https://github.com/HeyOmae/OMA3/commit/0431d1646a7517ff3e993529d9c1e6b7e69afbe3))
+* tooltip on rulebook references asking to link the PDF ([8202193](https://github.com/HeyOmae/OMA3/commit/8202193352bcd09114c30bf80c134fa5d91d203b))
+
+
+### Bug Fixes
+
+* jump to the new page when the rulebook tab is already open ([c4d8073](https://github.com/HeyOmae/OMA3/commit/c4d807310b6446aef4b5bcf5eaef5e46cdb81fab))
+
 ## [3.17.0](https://github.com/HeyOmae/OMA3/compare/3.16.0...3.17.0) (2026-11-02)
 
 
