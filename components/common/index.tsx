@@ -1,5 +1,7 @@
 import { IconButton, IconButtonProps } from "@mui/material"
-import { Add, Close, Remove } from "@mui/icons-material"
+import Add from "@mui/icons-material/Add"
+import Close from "@mui/icons-material/Close"
+import Remove from "@mui/icons-material/Remove"
 import { FC, HTMLProps } from "react"
 import styles from "./common.module.css"
 
