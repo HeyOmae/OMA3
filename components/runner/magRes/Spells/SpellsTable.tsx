@@ -9,6 +9,7 @@ import {
 import { FC, ReactNode } from "react"
 import { ActionLabel } from "."
 import { GeneralSpell } from "../../../../types/MagRes"
+import { formatReference } from "@/components/util"
 
 interface Props {
   spells: GeneralSpell[]
@@ -33,11 +34,12 @@ export const SpellsTable: FC<Props> = ({
             <TableCell>Type</TableCell>
             <TableCell>Duration</TableCell>
             <TableCell>Drain</TableCell>
+            <TableCell>Reference</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {spells.map((spell, spellIndex) => {
-            const { name, range, type, duration, drain } = spell
+            const { name, range, type, duration, drain, reference } = spell
             return (
               <TableRow key={name}>
                 <TableCell>{renderAction(spell, spellIndex)}</TableCell>
@@ -46,6 +48,7 @@ export const SpellsTable: FC<Props> = ({
                 <TableCell>{type}</TableCell>
                 <TableCell>{duration}</TableCell>
                 <TableCell>{drain}</TableCell>
+                <TableCell>{formatReference(reference)}</TableCell>
               </TableRow>
             )
           })}

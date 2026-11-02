@@ -3,6 +3,8 @@ import {
   screen,
   setupIndexedDB,
   userEvent,
+  closest,
+  getByText as globalGetByText,
 } from "@/test/testUtils"
 import Submersion from "./index"
 import { echoes } from "@/data/echoes"
@@ -79,5 +81,12 @@ describe("<Submersion />", () => {
     expect(removeButton).toBeInTheDocument()
     expect(karma).toHaveTextContent("-3")
     expect(submersion).toHaveTextContent("1")
+  })
+
+  test("should show the page reference for each echo", async () => {
+    setup("9")
+
+    const machineMind = closest(await screen.findByText("Machine Mind"), "tr")
+    expect(globalGetByText(machineMind, "SR6 p.195")).toBeInTheDocument()
   })
 })

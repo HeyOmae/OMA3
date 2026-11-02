@@ -9,6 +9,7 @@ import {
 } from "@mui/material"
 import { CombatSpell } from "../../../../types/MagRes"
 import { ActionLabel } from "."
+import { formatReference } from "@/components/util"
 
 interface Props {
   spells: CombatSpell[]
@@ -34,6 +35,7 @@ export const CombatSpells: FC<Props> = ({
             <TableCell>Duration</TableCell>
             <TableCell>Drain</TableCell>
             <TableCell>Damage</TableCell>
+            <TableCell>Reference</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -46,6 +48,7 @@ export const CombatSpells: FC<Props> = ({
               duration,
               drain,
               damage,
+              reference,
               spellfeature: [{ ref }, area],
             } = spell
             return (
@@ -60,6 +63,7 @@ export const CombatSpells: FC<Props> = ({
                 <TableCell>{duration}</TableCell>
                 <TableCell>{drain}</TableCell>
                 <TableCell>{damage}</TableCell>
+                <TableCell>{formatReference(reference)}</TableCell>
               </TableRow>
             )
           })}

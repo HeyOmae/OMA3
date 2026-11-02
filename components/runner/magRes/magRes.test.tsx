@@ -321,6 +321,7 @@ describe("Magic and Resonance", () => {
         expect(runnerFromDB(4).rituals).toEqual([
           {
             name: "Ward",
+            reference: [{ book: "SR6", page: 145 }],
             threshold: 6,
             ritualfeature: [
               {

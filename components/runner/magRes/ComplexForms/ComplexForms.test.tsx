@@ -1,6 +1,10 @@
 import { Props } from "."
 import { ComplexForms } from "./"
-import { render } from "../../../../test/testUtils"
+import {
+  render,
+  closest,
+  getByText as globalGetByText,
+} from "../../../../test/testUtils"
 import complexFormData from "../../../../data/complexForm"
 import { SET_COMPLEX_FORM } from ".."
 
@@ -30,10 +34,18 @@ describe("<ComplexForms/>", () => {
       payload: {
         complexForm: {
           name: "Puppeteer",
+          reference: [{ book: "SR6", page: 190 }],
           duration: "Sustained",
           fade: 5,
         },
       },
     })
+  })
+
+  it("should show the page reference for each complex form", () => {
+    const { getByText } = setup()
+
+    const staticVeil = closest(getByText("Static Veil"), "tr")
+    expect(globalGetByText(staticVeil, "SR6 p.191")).toBeInTheDocument()
   })
 })

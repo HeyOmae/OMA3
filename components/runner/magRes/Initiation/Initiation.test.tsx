@@ -3,6 +3,8 @@ import {
   screen,
   setupIndexedDB,
   userEvent,
+  closest,
+  getByText as globalGetByText,
 } from "@/test/testUtils"
 import Initiation from "./index"
 import { metamagic } from "@/data/metamagic"
@@ -74,5 +76,12 @@ describe("<Initiation/>", () => {
     expect(
       await screen.findByRole("definition", { name: "Available Karma Value" }),
     ).toHaveTextContent("35")
+  })
+
+  test("should show the page reference for each metamagic", async () => {
+    setup()
+
+    const centering = closest(await screen.findByText("Centering"), "tr")
+    expect(globalGetByText(centering, "SR6 p.167")).toBeInTheDocument()
   })
 })

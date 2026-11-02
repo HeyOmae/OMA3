@@ -1,5 +1,9 @@
 import { Rituals, Props } from "./index"
-import { render } from "../../../../test/testUtils"
+import {
+  render,
+  closest,
+  getByText as globalGetByText,
+} from "../../../../test/testUtils"
 import ritualData from "../../../../data/rituals"
 import { SET_RITUAL } from ".."
 
@@ -34,5 +38,12 @@ describe("<Rituals />", () => {
       type: SET_RITUAL,
       payload: { ritual: ritualData[0] },
     })
+  })
+
+  it("should show the page reference for each ritual", () => {
+    const { getByText } = setup()
+
+    const watcher = closest(getByText("Watcher"), "tr")
+    expect(globalGetByText(watcher, "SR6 p.146")).toBeInTheDocument()
   })
 })

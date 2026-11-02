@@ -12,6 +12,7 @@ import { DispatchAction } from "../../../../hooks/useRunnerAccess"
 import { ComplexForm } from "../../../../types/MagRes"
 import { AddComplexFormButton } from "./AddComplexFormButton"
 import { RemoveComplexFormButton } from "./RunnerComplexForms/RemoveComplexFormButton"
+import { formatReference } from "@/components/util"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
@@ -32,11 +33,12 @@ export const ComplexFormTable: FC<Props> = ({
           <TableCell>Name</TableCell>
           <TableCell>Fade</TableCell>
           <TableCell>Duration</TableCell>
+          <TableCell>Reference</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {complexForms.map((complexForm, index) => {
-          const { name, fade, duration } = complexForm
+          const { name, fade, duration, reference } = complexForm
           return (
             <TableRow key={name}>
               <TableCell>
@@ -49,6 +51,7 @@ export const ComplexFormTable: FC<Props> = ({
               <TableCell>{name}</TableCell>
               <TableCell>{fade}</TableCell>
               <TableCell>{duration}</TableCell>
+              <TableCell>{formatReference(reference)}</TableCell>
             </TableRow>
           )
         })}

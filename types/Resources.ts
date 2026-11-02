@@ -1,3 +1,5 @@
+import type { Reference } from "./generalTypes"
+
 // Everything a runner can buy with nuyen, keyed by the page it is bought on
 export interface Resources {
   ammo: GearAmmo[]
@@ -41,7 +43,7 @@ export interface Gear {
   name: string
   availability: string
   cost: number
-  reference?: { book: string; page: number }[]
+  reference?: Reference[]
   type?: string
   subtype?: string
   // the ways the gear can be used, the first one is what it is

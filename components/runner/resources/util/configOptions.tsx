@@ -4,7 +4,7 @@ import {
   getEssenceFromGear,
   getModCapacity,
 } from "../util"
-import { defined } from "@/components/util"
+import { defined, formatReference } from "@/components/util"
 import {
   Gear,
   GearCyberware,
@@ -35,12 +35,7 @@ export const gearTableConfigOptions: Record<string, Columns<Gear, any>> = {
     label: "Cost",
   },
   reference: {
-    display: (gear) => {
-      if (!gear.reference || gear.reference.length === 0) {
-        return "—"
-      }
-      return gear.reference.map((ref) => `${ref.book} p.${ref.page}`).join(", ")
-    },
+    display: (gear) => formatReference(gear.reference),
     label: "Reference",
   },
   buy: {

@@ -7,3 +7,9 @@ export interface ElementalAttack {
     name: string
   }
 }
+
+// Where something is described in a rulebook, like { book: "SR6", page: 133 }
+export interface Reference {
+  book: string
+  page: number
+}

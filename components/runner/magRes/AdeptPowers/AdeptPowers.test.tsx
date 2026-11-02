@@ -42,4 +42,11 @@ describe("<AdpetPowers/>", () => {
       },
     })
   })
+
+  it("should show the page reference for each power", () => {
+    const { getByText } = setup()
+
+    const mysticArmor = closest(getByText("Mystic Armor"), "tr")
+    expect(globalGetByText(mysticArmor, "SR6 p.157")).toBeInTheDocument()
+  })
 })

@@ -1,3 +1,5 @@
+import type { Reference } from "./generalTypes"
+
 export type MagRes =
   "Full" | "Aspected" | "Mystic Adept" | "Adept" | "Technomancer" | "Mundane"
 
@@ -12,6 +14,7 @@ type Spellfeature = {
 
 export interface GeneralSpell {
   name: string
+  reference?: Reference[]
   category: "Illusion" | "Health" | "Manipulation" | "Detection"
   range: "Touch" | "Line of sight" | "Line of sight area" | "Special"
   type: "Physical" | "Mana"
@@ -45,6 +48,7 @@ export type Spells = {
 
 export type Ritual = {
   name: string
+  reference?: Reference[]
   threshold: number
   ritualfeature: Spellfeature[]
 }
@@ -58,6 +62,7 @@ interface Attrmod {
 
 export type AdeptPower = {
   name: string
+  reference?: Reference[]
   cost: number
   levels?: true
   max?: number
@@ -106,6 +111,7 @@ export type AdeptPower = {
 
 export interface ComplexForm {
   name: string
+  reference?: Reference[]
   duration: "Immediate" | "Sustained" | "Permanent"
   fade: number
   choice?: "MATRIX ATTRIBUTE" | "PROGRAM"
@@ -121,4 +127,5 @@ type MetaMagicType = "METAMAGIC" | "METAMAGIC_ADEPT"
 export interface MetaMagic<T = MetaMagicType> {
   type: string | T
   name: string
+  reference?: Reference[]
 }

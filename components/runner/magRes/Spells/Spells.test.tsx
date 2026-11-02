@@ -1,6 +1,11 @@
 import { Spells, Props } from "./index"
 import spellsData from "../../../../data/spells"
-import { render, userEvent } from "../../../../test/testUtils"
+import {
+  render,
+  userEvent,
+  closest,
+  getByText as globalGetByText,
+} from "../../../../test/testUtils"
 import { SET_SPELL } from ".."
 
 describe("<Spells/>", () => {
@@ -124,5 +129,17 @@ describe("<Spells/>", () => {
         },
       })
     })
+  })
+
+  it("should show the page reference for each spell", async () => {
+    const { getByText } = setup()
+
+    await userEvent.click(getByText("Combat Spells"))
+    const manabolt = closest(getByText("Manabolt (Direct Combat)"), "tr")
+    expect(globalGetByText(manabolt, "SR6 p.133")).toBeVisible()
+
+    await userEvent.click(getByText("Detection Spells"))
+    const combatSense = closest(getByText("Combat sense"), "tr")
+    expect(globalGetByText(combatSense, "SR6 p.135")).toBeVisible()
   })
 })

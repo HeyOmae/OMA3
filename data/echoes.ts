@@ -3,10 +3,12 @@ import { Echo } from "@/types/Matrix"
 export const echoes: Echo[] = [
   {
     name: "Living Network",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
   },
   {
     name: "Machine Mind",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
   },
   {
@@ -18,6 +20,7 @@ export const echoes: Echo[] = [
       },
     },
     name: "Attack Upgrade",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
     max: 2,
   },
@@ -30,6 +33,7 @@ export const echoes: Echo[] = [
       },
     },
     name: "Data Processing Upgrade",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
     max: 2,
   },
@@ -42,6 +46,7 @@ export const echoes: Echo[] = [
       },
     },
     name: "Firewall Upgrade",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
     max: 2,
   },
@@ -54,11 +59,13 @@ export const echoes: Echo[] = [
       },
     },
     name: "Sleaze Upgrade",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
     max: 2,
   },
   {
     name: "Neurofilter",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
     max: 2,
   },
@@ -71,14 +78,17 @@ export const echoes: Echo[] = [
       },
     },
     name: "Overclocking",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
   },
   {
     name: "Resonance Link",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
   },
   {
     name: "Skin Link",
+    reference: [{ book: "SR6", page: 195 }],
     type: "ECHO",
   },
 ]

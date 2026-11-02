@@ -11,6 +11,7 @@ import { Payload } from ".."
 import { DispatchAction } from "@/hooks/useRunnerAccess"
 import { AddAdeptPowerButton } from "./AddAdeptPowerButton"
 import PowersData from "@/data/adeptPowers"
+import { formatReference } from "@/components/util"
 
 export interface Props {
   dispatch: DispatchAction<Payload>
@@ -25,11 +26,12 @@ export const AdeptPowers: FC<Props> = ({ dispatch }) => (
           <TableCell>Name</TableCell>
           <TableCell>Cost</TableCell>
           <TableCell>Activation</TableCell>
+          <TableCell>Reference</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {PowersData.map((power) => {
-          const { name, cost, levels, activation } = power
+          const { name, cost, levels, activation, reference } = power
           return (
             <TableRow key={name}>
               <TableCell>
@@ -41,6 +43,7 @@ export const AdeptPowers: FC<Props> = ({ dispatch }) => (
                 {levels && " per level"}
               </TableCell>
               <TableCell>{activation}</TableCell>
+              <TableCell>{formatReference(reference)}</TableCell>
             </TableRow>
           )
         })}
