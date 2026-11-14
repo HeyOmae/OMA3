@@ -3,6 +3,7 @@ import { CircularProgress } from "@mui/material"
 import { AttributeTable } from "./AttributeTable"
 import { Runner } from "@/types/runner"
 import { GearTable } from "./GearTables"
+import { KnowledgeTable } from "./KnowledgeTable"
 import { MagicTable } from "./MagicTable"
 import { QualitiesTable } from "./QualitiesTable"
 import { SheetHeader } from "./SheetHeader"
@@ -15,6 +16,7 @@ const CharacterSheet = () => {
       <div className={styles.sheet}>
         <SheetHeader runner={runner} />
         <AttributeTable runner={runner} />
+        <KnowledgeTable runner={runner} />
         <MagicTable runner={runner} />
         <GearTable runner={runner} />
         <QualitiesTable runner={runner} />

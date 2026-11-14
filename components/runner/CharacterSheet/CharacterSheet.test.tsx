@@ -14,6 +14,41 @@ const setup = (id = "10") => {
 describe("Character Sheet", () => {
   beforeAll(setupIndexedDB)
 
+  describe("knowledge skills and languages", () => {
+    test("lists knowledge skills", async () => {
+      setup("10")
+
+      const knowledge = await screen.findByRole("table", {
+        name: "Knowledge Skills",
+      })
+      expect(within(knowledge).getByText("Craft Beers")).toBeInTheDocument()
+      expect(
+        within(knowledge).getByText("Law Enforcement Corps"),
+      ).toBeInTheDocument()
+    })
+
+    test("lists languages with their rating", async () => {
+      setup("8")
+
+      const languages = await screen.findByRole("table", {
+        name: "Languages",
+      })
+      const mandarin = within(languages).getByRole("row", { name: /Mandarin/ })
+      expect(within(mandarin).getByText("Native")).toBeInTheDocument()
+      const japanese = within(languages).getByRole("row", { name: /Japanese/ })
+      expect(within(japanese).getByText("2")).toBeInTheDocument()
+    })
+
+    test("has no knowledge section when the runner has none", async () => {
+      setup("2")
+
+      await screen.findByRole("heading", { name: /attributes/i })
+      expect(
+        screen.queryByRole("heading", { name: /knowledge|languages/i }),
+      ).not.toBeInTheDocument()
+    })
+  })
+
   describe("magic and resonance", () => {
     test("lists spells with their details", async () => {
       setup("5")
