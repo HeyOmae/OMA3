@@ -1,4 +1,9 @@
-import { renderWithTestRouter, screen, setupIndexedDB } from "@/test/testUtils"
+import {
+  renderWithTestRouter,
+  screen,
+  setupIndexedDB,
+  userEvent,
+} from "@/test/testUtils"
 import { within } from "@testing-library/react"
 import CharSheet from "./index"
 
@@ -8,6 +13,43 @@ const setup = (id = "10") => {
 
 describe("Character Sheet", () => {
   beforeAll(setupIndexedDB)
+
+  describe("header", () => {
+    test("shows who the runner is", async () => {
+      setup("2")
+
+      expect(
+        await screen.findByRole("heading", {
+          level: 1,
+          name: "Man-of-many-names",
+        }),
+      ).toBeInTheDocument()
+      expect(screen.getByText("Human")).toBeInTheDocument()
+      expect(screen.getByText("Full")).toBeInTheDocument()
+      expect(
+        screen.getByText("Not knowns by any other name"),
+      ).toBeInTheDocument()
+    })
+
+    test("is no longer marked as a work in progress", async () => {
+      setup("2")
+
+      await screen.findByRole("heading", { level: 1 })
+      expect(screen.queryByText(/work in progress/i)).not.toBeInTheDocument()
+    })
+
+    test("prints the sheet", async () => {
+      const print = jest.spyOn(window, "print").mockImplementation(() => {})
+      setup("2")
+
+      await userEvent.click(
+        await screen.findByRole("button", { name: /print/i }),
+      )
+
+      expect(print).toHaveBeenCalledTimes(1)
+      print.mockRestore()
+    })
+  })
 
   describe("display attributes", () => {
     test("for a mundane runner", async () => {

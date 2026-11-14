@@ -66,7 +66,7 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <HudProvider slot={hudSlot}>
       <Layout className={styles["with-app-bar"]}>{children}</Layout>
-      <AppBar position="fixed" color="primary">
+      <AppBar position="fixed" color="primary" className="no-print">
         <div ref={setHudSlot} className="points-hud" />
         <BottomNavigation
           value={nav}
@@ -77,7 +77,7 @@ export const RunnerLayout: FC<PropsWithChildren> = ({ children }) => {
         </BottomNavigation>
       </AppBar>
       <Drawer
-        className="app-nav"
+        className="app-nav no-print"
         anchor="bottom"
         open={nav === 1}
         onClose={() => setNav(undefined)}

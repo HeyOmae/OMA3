@@ -471,3 +471,62 @@ body.astral {
 body .points-hud dd.bad-stuff {
   color: #ff4d6d;
 }
+
+/*
+ * Printing: every theme collapses to black text on white paper, and the app
+ * chrome (navigation, points tracker, anything marked .no-print) goes away.
+ * !important is needed to beat the theme rules, which target the body class.
+ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body,
+  body[class] {
+    background: white !important;
+    color: black !important;
+    animation: none !important;
+  }
+
+  body main,
+  body main * {
+    color: black !important;
+    background: transparent !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+    border-image: none !important;
+    font-family: inherit;
+  }
+
+  body main {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible;
+    border: none !important;
+  }
+
+  body main h1,
+  body main h2,
+  body main h3 {
+    border-radius: 0 !important;
+    border-bottom: 1px solid black !important;
+  }
+
+  body main th {
+    background: #e6e6e6 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body main table,
+  body main tr {
+    break-inside: avoid;
+  }
+
+  @page {
+    margin: 1cm;
+  }
+}

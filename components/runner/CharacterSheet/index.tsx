@@ -1,21 +1,22 @@
 import { useGetRunner } from "@/hooks/useRunnerAccess"
-import { Alert, CircularProgress } from "@mui/material"
+import { CircularProgress } from "@mui/material"
 import { AttributeTable } from "./AttributeTable"
 import { Runner } from "@/types/runner"
 import { GearTable } from "./GearTables"
 import { QualitiesTable } from "./QualitiesTable"
+import { SheetHeader } from "./SheetHeader"
+import styles from "./sheet.module.css"
 
 const CharacterSheet = () => {
   const runner = useGetRunner()
 
   return runner ?
-      <>
-        <Alert severity="warning">work in Progress!</Alert>
-        <h1>{runner.name}</h1>
+      <div className={styles.sheet}>
+        <SheetHeader runner={runner} />
         <AttributeTable runner={runner} />
         <GearTable runner={runner} />
         <QualitiesTable runner={runner} />
-      </>
+      </div>
     : <CircularProgress />
 }
 

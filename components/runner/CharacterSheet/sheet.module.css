@@ -1,0 +1,105 @@
+.sheet {
+  display: grid;
+  gap: 1rem;
+  /* the global heading rule is built for form pages; the sheet sets its own */
+}
+
+.sheet h1,
+.sheet h2,
+.sheet h3 {
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+}
+
+.sheet h2 {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sheet h3 {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.sheet section {
+  break-inside: avoid;
+}
+
+/* sections inside a section (gear categories, qualities) sit tighter */
+.sheet section section {
+  margin-top: 0.75rem;
+}
+
+.sheet table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.sheet th,
+.sheet td {
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid currentColor;
+  border-bottom-color: rgba(128, 128, 128, 0.35);
+}
+
+.sheet th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sheet tbody tr:nth-child(even) {
+  background: rgba(128, 128, 128, 0.08);
+}
+
+/* attributes and initiative are a single row of stats, so centre them */
+.sheet table[aria-labelledby="attribute-table"] th,
+.sheet table[aria-labelledby="attribute-table"] td,
+.sheet table[aria-labelledby="initiative-table"] th,
+.sheet table[aria-labelledby="initiative-table"] td {
+  text-align: center;
+}
+
+.sheet table[aria-labelledby="attribute-table"] td {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.header h1 {
+  padding-left: 0;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 2rem;
+  margin: 0;
+}
+
+.facts dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.description {
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
