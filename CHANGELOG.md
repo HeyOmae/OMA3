@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.20.0](https://github.com/HeyOmae/OMA3/compare/3.19.0...3.20.0) (2026-11-14)
+
+
+### Features
+
+* nicer, print-friendly character sheet ([300d295](https://github.com/HeyOmae/OMA3/commit/300d295fd633e6fc183edd0699a0dfadad041e3c))
+* show knowledge skills and languages on the character sheet ([369cdf6](https://github.com/HeyOmae/OMA3/commit/369cdf6827ae623995849e2ec4eb81b218cdd796))
+* show magic and resonance on the character sheet ([e63df64](https://github.com/HeyOmae/OMA3/commit/e63df644739e7fb864a4f73bee57f1de0d69b4c4))
+
 ## [3.19.0](https://github.com/HeyOmae/OMA3/compare/3.18.0...3.19.0) (2026-11-02)
 
 
