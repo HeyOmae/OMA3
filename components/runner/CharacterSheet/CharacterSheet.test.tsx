@@ -14,6 +14,79 @@ const setup = (id = "10") => {
 describe("Character Sheet", () => {
   beforeAll(setupIndexedDB)
 
+  describe("magic and resonance", () => {
+    test("lists spells with their details", async () => {
+      setup("5")
+
+      const spells = await screen.findByRole("table", { name: "Spells" })
+      const manabolt = within(spells).getByRole("row", { name: /Manabolt/ })
+      expect(within(manabolt).getByText("Combat")).toBeInTheDocument()
+      expect(within(manabolt).getByText("Line of sight")).toBeInTheDocument()
+      expect(within(manabolt).getByText("Mana")).toBeInTheDocument()
+      expect(within(manabolt).getByText("Instantaneous")).toBeInTheDocument()
+      expect(within(manabolt).getByText("4")).toBeInTheDocument()
+    })
+
+    test("lists rituals", async () => {
+      setup("7")
+
+      const rituals = await screen.findByRole("table", { name: "Rituals" })
+      const curse = within(rituals).getByRole("row", { name: /Curse/ })
+      expect(within(curse).getByText("5")).toBeInTheDocument()
+      expect(
+        within(curse).getByText("material link, spell"),
+      ).toBeInTheDocument()
+    })
+
+    test("lists initiation metamagics", async () => {
+      setup("7")
+
+      const initiation = await screen.findByRole("table", {
+        name: "Initiation",
+      })
+      expect(within(initiation).getByText("Centering")).toBeInTheDocument()
+    })
+
+    test("lists adept powers with their level", async () => {
+      setup("8")
+
+      const powers = await screen.findByRole("table", { name: "Adept Powers" })
+      expect(within(powers).getByText("Traceless Walk")).toBeInTheDocument()
+      const boost = within(powers).getByRole("row", {
+        name: /Attribute Boost/,
+      })
+      expect(within(boost).getByText("Major action")).toBeInTheDocument()
+      expect(within(boost).getByText("2")).toBeInTheDocument()
+    })
+
+    test("lists complex forms", async () => {
+      setup("9")
+
+      const forms = await screen.findByRole("table", { name: "Complex Forms" })
+      const puppeteer = within(forms).getByRole("row", { name: /Puppeteer/ })
+      expect(within(puppeteer).getByText("Sustained")).toBeInTheDocument()
+      expect(within(puppeteer).getByText("5")).toBeInTheDocument()
+    })
+
+    test("lists echoes from submersion", async () => {
+      setup("13")
+
+      const submersion = await screen.findByRole("table", {
+        name: "Submersion",
+      })
+      expect(within(submersion).getByText("Resonance Link")).toBeInTheDocument()
+    })
+
+    test("has no magic section for a mundane runner", async () => {
+      setup("2")
+
+      await screen.findByRole("heading", { name: /attributes/i })
+      expect(
+        screen.queryByRole("heading", { name: /magic|resonance/i }),
+      ).not.toBeInTheDocument()
+    })
+  })
+
   describe("header", () => {
     test("shows who the runner is", async () => {
       setup("2")
