@@ -27,7 +27,7 @@
     "@mui/icons-material": "^9.5.0",
     "@mui/material": "^9.5.0",
     "@next/bundle-analyzer": "^16.4.3",
-    "next": "^16.4.3",
+    "next": "^16.4.5",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-indexed-db-hook": "^1.0.14"
